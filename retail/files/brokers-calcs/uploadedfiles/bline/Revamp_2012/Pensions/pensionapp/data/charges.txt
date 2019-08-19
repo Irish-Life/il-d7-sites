@@ -1,0 +1,644 @@
+﻿[
+  {
+    "charges":[
+      {
+        "allocationPct":"100.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6061",
+            "takeUp":"100.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, PC 0.25%, Alloc 98% [6061]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"98.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"100.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6073",
+            "takeUp":"100.0",
+            "name":"5% Intro, 0% Renewal, 0.25% Fund,0.5% PC,Alloc 98% [6073]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"98.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6047",
+            "takeUp":"100.0",
+            "name":"5% Intro,0% Renewal,0.25% Fund,0.25% PC,Alloc96% [6047]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6063",
+            "takeUp":"100.0",
+            "name":"4% Intro, 0% Renewal, 0% Fund, 0.25% PC, Alloc 99% [6063]",
+            "introPct":"4.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"99.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"80.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6075",
+            "takeUp":"100.0",
+            "name":"4% Intro, 0% Renewal, 0.25% Fund,0.5% PC,Alloc 99% [6075]",
+            "introPct":"4.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"99.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6047",
+            "takeUp":"80.0",
+            "name":"5% Intro,0% Renewal,0.25% Fund,0.25% PC,Alloc96% [6047]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"102.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6065",
+            "takeUp":"100.0",
+            "name":"3% Intro, 0% Renewal, 0% Fund, 0.25% PC,Alloc 100% [6065]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"60.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"102.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6077",
+            "takeUp":"100.0",
+            "name":"3% Intro, 0% Renewal,0.25% Fund,0.5% PC,Alloc 100% [6077]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6085",
+            "takeUp":"100.0",
+            "name":"3% Intro, 0% Renewal,0.25% Fund,0.25% PC,Alloc 98% [6085]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"98.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6049",
+            "takeUp":"100.0",
+            "name":"3% Intro, 0% Renewal, 0.25% Fund, Alloc 96% [6049]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6093",
+            "takeUp":"100.0",
+            "name":"3% Intro, 0% Renewal, 0.5% Fund, 0.5% PC,Alloc 98% [6093]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"98.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6051",
+            "takeUp":"100.0",
+            "name":"3% Intro,0% Renewal,0.5% Fund,0.25% PC,Alloc 96% [6051]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"103.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6067",
+            "takeUp":"100.0",
+            "name":"2% Intro, 0% Renewal, 0% Fund, 0.25% PC,Alloc 101% [6067]",
+            "introPct":"2.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"40.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"103.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6079",
+            "takeUp":"100.0",
+            "name":"2% Intro, 0% Renewal,0.25% Fund,0.5% PC,Alloc 101% [6079]",
+            "introPct":"2.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6087",
+            "takeUp":"100.0",
+            "name":"2% Intro, 0% Renewal,0.25% Fund,0.25% PC,Alloc 99% [6087]",
+            "introPct":"2.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"99.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6049",
+            "takeUp":"66.0",
+            "name":"3% Intro, 0% Renewal, 0.25% Fund, Alloc 96% [6049]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6095",
+            "takeUp":"100.0",
+            "name":"2% Intro, 0% Renewal, 0.5% Fund, 0.5% PC,Alloc 99% [6095]",
+            "introPct":"2.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"99.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6051",
+            "takeUp":"66.0",
+            "name":"3% Intro,0% Renewal,0.5% Fund,0.25% PC,Alloc 96% [6051]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"104.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6069",
+            "takeUp":"100.0",
+            "name":"1% Intro, 0% Renewal, 0% Fund, 0.25% PC,Alloc 102% [6069]",
+            "introPct":"1.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"102.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"20.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"104.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6081",
+            "takeUp":"100.0",
+            "name":"1% Intro, 0% Renewal,0.25% Fund,0.5% PC,Alloc 102% [6081]",
+            "introPct":"1.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"102.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6089",
+            "takeUp":"100.0",
+            "name":"1% Intro,0% Renewal,0.25% Fund,0.25% PC,Alloc 100% [6089]",
+            "introPct":"1.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6049",
+            "takeUp":"33.0",
+            "name":"3% Intro, 0% Renewal, 0.25% Fund, Alloc 96% [6049]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"102.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6097",
+            "takeUp":"100.0",
+            "name":"1% Intro, 0% Renewal, 0.5% Fund,0.5% PC,Alloc 100% [6097]",
+            "introPct":"1.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"100.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6051",
+            "takeUp":"33.0",
+            "name":"3% Intro,0% Renewal,0.5% Fund,0.25% PC,Alloc 96% [6051]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"105.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6071",
+            "takeUp":"100.0",
+            "name":"0% Intro, 0% Renewal, 0% Fund, 0.25% PC,Alloc 103% [6071]",
+            "introPct":"0.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"103.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6045",
+            "takeUp":"0.0",
+            "name":"5% Intro, 0% Renewal, 0% Fund, Alloc 96% [6045]",
+            "introPct":"5.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.0",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement."
+            ]
+          }
+        ],
+        "allocationPct":"105.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6083",
+            "takeUp":"100.0",
+            "name":"0% Intro, 0% Renewal,0.25% Fund,0.5% PC,Alloc 103% [6083]",
+            "introPct":"0.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"103.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6091",
+            "takeUp":"100.0",
+            "name":"0% Intro,0% Renewal,0.25% Fund,0.25% PC,Alloc 101% [6091]",
+            "introPct":"0.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"0.75",
+        "profile":[
+          {
+            "profileId":"6049",
+            "takeUp":"0.0",
+            "name":"3% Intro, 0% Renewal, 0.25% Fund, Alloc 96% [6049]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.25",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"103.0",
+        "chargePct":"1.25",
+        "profile":[
+          {
+            "profileId":"6099",
+            "takeUp":"100.0",
+            "name":"0% Intro, 0% Renewal, 0.5% Fund,0.5% PC,Alloc 101% [6099]",
+            "introPct":"0.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ],
+        "allocationPct":"101.0",
+        "chargePct":"1.0",
+        "profile":[
+          {
+            "profileId":"6051",
+            "takeUp":"0.0",
+            "name":"3% Intro,0% Renewal,0.5% Fund,0.25% PC,Alloc 96% [6051]",
+            "introPct":"3.0",
+            "renewalPct":"0.0",
+            "trailPct":"0.5",
+            "messages":[
+              "These figures are purely for illustration purposes only and assume investment in the Consensus Fund. Investment in a different fund could lead to a higher Annual Management Charge.  The actual commission payable will be determined by the charging structure selected at the time the contract is issued.",
+              "A minimum term of 5 years is required to NRA",
+              "An early exit penalty will apply to any Single Premium investment that is transferred in the first 5 years at a rate of 5%, 5%, 5%, 3% or 1% (Years 1 to 5). This charge will also apply on early retirement.",
+              "Any trail commission figure(s) are purely for indicative purposes and show an approximate amount that may be paid at the end of year one, assuming 0% fund growth and no withdrawals over the year. The actual amount(s) payable at the end of year one and in any future years would be determined by the value of the contract at the relevant time. Fund based renewal commission is payable from year 9 once premiums continue to be paid.  The fund based renewal commission figure above is purely for indicative purposes and shows an approximate amount that may be paid at from year 9, assuming 0% fund growth.  The actual amounts payable would be determined by the value of the contract at the relevant time."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+header, .menu-level-2{
+	display:none!important;
+}
+
+.show{display:block!important;}

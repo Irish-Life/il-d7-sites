@@ -1,0 +1,5 @@
+; $Id: pension_calc.info,v 1.0.0.0 2014/06/18 10:11:15 Conor Exp $
+name = "Customer Service Contact Form"
+description = "Customer Service Contact Form"
+core = "7.x"
+package = "Irish Life"

@@ -1,0 +1,27 @@
+h1,h2,h3,p {font-size:14px;text-align:left; font-family: Arial,sans-serif; color:#686868;}
+
+#RiskProfileQuestionsResponse{
+	height:650px;
+	padding:10px;}
+#RiskProfileQuestionsResponse h1{	
+	font-size: 26px;
+	text-transform: uppercase !important;
+	color: #17536b;
+    margin-bottom: 0px;
+	padding-bottom:0px;}
+#importantInformation h3{font-size:20px; color: #47a7b7;text-transform:uppercase !important;margin-top: 0px;padding-top:0px;}
+#risk-profile-questions h3{font-size:20px; color: #47a7b7;text-transform:uppercase !important;margin: 0px;padding:0px;}
+#risk-profile-questions { 
+	font-family: Arial,sans-serif !important; 
+	color:#686868 !important;
+    line-height: 1.7em;
+    margin-bottom: 1em;
+	clear:both;}
+.risk-question-text{
+	font-size:14px;
+	font-family: Arial,sans-serif !important; 
+	color:#686868 !important;}
+.risk-questions{float:left;clear:both; list-style-type:none; padding-left:10px;}
+.risk-question-alternatives{list-style-type:none; padding:15px;font-size:14px;}
+#riskProfileResults h3{font-size:20px; color: #47a7b7;text-transform:uppercase; padding-top:10px;}
+#riskProfileResults{font-size:12px;}

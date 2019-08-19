@@ -1,0 +1,547 @@
+<?php
+
+/**
+ * Implementation of hook_block_info().
+ */
+function lifeLens_block_info() {
+  $blocks['lifeLens'] = array(
+    'info' => t('LifeLens Block'),
+  );
+  return $blocks;
+}
+
+function lifeLens_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#lifeLens":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function lifeLens_contents(){
+	$base_url = $GLOBALS['base_url'];
+  return '<div id="ffr">
+  <div id="splash" class="row screen hide-for-print">
+    <div class="large-10 small-12 large-centered columns" >
+      <div class="row center">
+        <img alt="life lens life insurance calculator" src="/sites/all/modules/lifeLens/images/logo-shadow.png">
+      </div>
+
+      <div  class="row">
+        <div class="large-8 large-centered small-12 columns">
+          <h6>This application aims to help you start to think about how much life insurance you might need and how long you may need it for.</h6>
+          <ol class="startList">
+            <li>Creates a simple scenario for calculating a possible life insurance need.</li>
+            <li>Takes just 2 minutes to complete!</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 large-centered small-12 columns" style="border: 1px solid #435399;padding: 10px;margin-bottom: 10px;">
+          <h6>Note that this application does not constitute financial advice. You should always assess the level 
+          of cover appropriate for your specific circumstances with your Financial Broker or Advisor.</h6>          
+        </div>
+      </div>
+      <div class="row center">
+        <a id= "getStarted" href="javascript:void(0)" class="large button">Let\'s Go</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="yourInfoScreen" class="row screen hide-for-print hidden">
+    <div class="large-12 center columns">
+        <h2 >About You</h2>
+    </div>
+    <div class="large-9 small-12 large-centered columns">
+      <div class="row">
+        <div class="large-6 columns ">
+          <div class="row">
+            <div class="small-12 large-12 columns sliderGroup center">
+              <h6>What is your age?</h6>
+            </div>
+          </div>
+          <div class="row ie8Hide">
+            <div class="small-12 large-12 large-centered sliderGroup columns dob" >
+              <div id="age" class="centerDiv">
+                <input class="knob" data-max="70" data-min="1" data-width="200" data-height="200" data-angleOffset="1" data-fgColor="#00ADD0" data-bgcolor="#fff" data-thickness=".4" value="35">
+              </div>
+              <div class="clearer"></div>
+            </div>
+            <div class="small-12 large-9 large-centered columns">
+              <p id="dobError" class="sliderGroup"></p>
+            </div>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="row">
+            <div class="small-10 small-centered large-9 large-centered columns sliderGroup">
+              <label for="maritalStatus">
+                <h6><span id="maritalStatusError" class="">Marital Status</span></h6>
+              </label>
+              <div class="dropdownArrow">
+                <select id="maritalStatus">
+                  <option value="" disabled >Select...</option>
+                  <option value="Single">Single</option>
+                  <option selected value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Separated">Separated</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-10 small-centered large-9 large-centered columns sliderGroup">
+              <label for="smoker"><h6><span id="smokerError" class="">Do you smoke?</span></h6></label>
+              <div class="dropdownArrow">
+                <select id="smoker">
+                  <option value="" disabled >Select...</option>
+                  <option value="Y">Smoker</option>
+                  <option value="N" selected>Non-Smoker</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 center columns buttonGroup">
+          <a class="button moveForward">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="yourFamilyScreen" class="row screen hide-for-print hidden">
+      <div class="large-12 small-12 large-centered center columns">
+        <h2>Your Family</h2>
+      </div>
+    <div class="large-10 small-12 large-centered columns">
+      <div class="row">
+        <div class="small-12 small-centered large-12 large-centered columns sliderGroup ie8Hide">
+          <div class="row">
+            <div class="small-5 large-3 columns blurb">
+              <h5>How many <span style="color:#5582AB">children</span> do you have?</h5>
+            </div>
+
+            <div id="numChild" class="small-7 large-3 columns dob">
+              <div class="centerDiv">
+                <input class="knob" data-bgcolor="#fff" data-width="175" data-min="1" data-height="175" data-angleOffset="1" data-fgColor="#5582AB" data-cursor="true" data-thickness=".4" value="3" data-max="8"></input>
+              </div>
+            </div>
+
+            <div class="small-5 large-3 columns blurb">
+              <h5>What is the age of your <span style="color:#69923A">youngest</span> child?</h5>
+            </div>
+            <div id="ageChild" class="small-7 large-3 columns dob">
+              <div class="centerDiv">
+                <input class="knob" data-bgcolor="#fff" data-cursor=true data-angleOffset="1" data-min="1" data-fgColor="#69923A" data-width="175" data-height="175" value="1" data-max="21" data-thickness=".4"></input>
+              </div>
+            </div>
+          </div>
+          <div id="disabler"><span></span></div>
+        </div>
+
+        <div class="small-6 small-centered large-3 large-centered columns sliderGroup ">
+          <span>
+            <input id="noKids" type="checkbox" class="regular-checkbox" />
+            <label for="noKids"></label>
+          <span>
+          <label id="checkBoxLabel" for="noKids"><h5>No <span style="color:#EAAB00;">kids</span> yet!</h5></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 center buttonGroup columns">
+          <a class="button moveBack">Back</a>
+          <a class="button moveForward">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="yourJobScreen" class="row screen hide-for-print hidden">
+    <div class="large-9 small-12 large-centered center columns">
+        <h2>Your Income</h2>
+        <h6>Could you tell us a little bit about your occupation?</h6>
+    </div>
+    <div class="large-9 small-12 large-centered columns">
+      <div class="row ie8Hide">
+        <div class="small-12 large-12 columns center dob">
+          <div id="monthlyWage" class="centerDiv">
+            <input type="textbox" class="knob" data-width="260" data-height="175" data-step="100" data-min="100" data-max="6000" data-fgColor="#00ADD0"  data-bgColor="#fff" data-displayPrevious=true data-angleOffset="-95"  data-angleArc="190" data-thickness=".3" value="2000"></input>
+          </div>
+          <div class="clearer"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-12 columns ie8Hide center">
+          <h6>What is your <span style="color:#00ADD0">net monthly</span> take home pay?</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 buttonGroup columns center">
+          <a class="button moveBack">Back</a>
+          <a class="button moveForward">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="yourExpensesScreen" class="row screen hide-for-print hidden">
+    <div class="small-7 small-centered large-7 large-centered columns center">
+      <h2>Your Expenses</h2>
+      <h6>Tell us a little bit about your family\'s expenses!</h6>
+    </div>
+    <div class="large-9 small-12 large-centered columns">
+      <div class="row ie8Hide">
+        <div class="small-12 small-centered large-9 large-centered columns">
+          <div class="row">
+            <div class="small-12 large-6 columns">
+            <h6 class="expensesError">Thinking about your <span style="color:#EAAB00">current monthly expenses</span>, how much do you spend each month, not including any mortgages?<br>
+                <ul>
+                 <li> Bills</li>
+                 <li> Rent</li>
+                 <li> Education (fees, books, uniforms)</li>
+                 <li> Travel</li>
+                 <li> Living Expenses</li>
+                 <li> Credit cards and other debt</li>
+                </ul> 
+              </h6>
+            </div>
+            <div class="small-12 large-6 columns">
+              <div class="row">
+                <div class="show-for-small small-12 ">
+                  <div class="idir small-2 columns center" style="font-size:26px;"></div>
+                  <div class="small-10 columns center" style="font-size:50px;color:#EAAB00;margin-bottom: 20px;">
+                    <i class="icon-eur"></i> <span class= "p1Ival">0</span>
+                  </div>
+                </div>
+
+                <div class="small-12 large-9 columns dob">
+                  <div class="centerDiv">
+                    <input  id="infiniteDial" data-width="160" data-height="160" data-angleOffset="1" data-thickness=".5" data-fgcolor="#EAAB00" data-bgcolor="#fff" data-displayinput="false"  data-cursor="true" value="20">
+                  </div>
+                </div>
+                <div class="hide-for-small large-3 columns">
+                  <div style="font-size:50px;color:#EAAB00">
+                    <i class="icon-eur"></i> <span id="p1Ival" class="p1Ival">2000</span></div>
+                  <div id="idir" style="width:80px;font-size:50px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class ="row">
+        <div class="small-12 large-12 large-centered columns">
+          <p id="needsError" class="error">This value is required, so that we can give you a better estimate. If you don\'t have life insurance please select the checkbox indicating that you have no existing life insurance</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 center buttonGroup columns">
+          <a class="button moveBack">Back</a>
+          <a class="button moveForward">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div id="resultsScreen" class="invisible row screen hide-for-print">
+    <div class="centerDiv">
+      <div class="large-12 small-12 large-centered columns">
+        <div id="firstResultsScreen" class="hide-for-print">
+          <div class="row content">
+            <div class="small-12 large-12 columns center">
+                <h3>Scenario for people like you</h3>
+            </div>
+            <div class="large-8 small-12 columns">
+              <div id="problemChart"></div>
+            </div>
+
+            <div class="large-4 small-12 columns">
+              <div class="row">
+                <ol class="startList" id="notFullyCovered">
+                  <li>Families like yours may need to replace <span class="monthlyNeed highlight"></span> per month to help maintain their standard of living if you died.</li>
+                  </li>
+                  <li>Based on your inputs you may have a life cover need of <span class="recommendedCover highlight"></span>
+                  </li>
+                  <li>This would be for <span class="term highlight"></span> <span class="highlight">years</span><span id ="hasChild"></span>.
+                  </li>
+                </ol>
+                <div id="agePlusTermProblem" class="small-12 large-12 columns hidden">
+                  <p>We cannot supply a quote as we can only cover you up until you are 80 years of age.</p>
+                </div>
+                <div class="small-12 large-12 columns hidden" id="fullyCovered">
+                  <p>Based on your existing life insurance it looks like you may currently be adequately covered. We would still recommend that you talk to a Qualified Financial Advisor to regularly review your life insurance needs.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-12 large-10 large-centered columns buttonGroup">
+                  <p class="center highlight">How much life insurance do you currently have?</p>
+                  <div id="coverPercent" value="0" class="slider sliderGroup" outputDiv="coverSliderOutput" max= "100"></div>
+                </div>
+                <div class="small-12 large-6 columns">
+                  <input class="sliderOutput sliderGroup hidden" id="coverSliderOutput" value="0" maxlength="3"></input>
+                </div>
+                <div class="small-12 large-12 columns">
+                  <span class="sliderOutput sliderGroup" id="coverSliderAmtOutput" value="0" maxlength="7"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns buttonGroup center">
+              <a id="changeDetails" href="javascript:void(0)" class="button">Change Details</a>
+              <a href="javascript:void(0)" class="button moveForwardTwo" id="directToCallbackFromChart" style="">Get a Callback</a>
+              <a id="canQuote" href="javascript:void(0)" class="button moveForward">Get a Quote for <span class="recommendedCover"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div id="secondResultsScreen" class="hide-for-print hidden">
+            <div class="row">
+              <div class="small-12 large-12 columns hide-for-print center">
+                <h3>Life Insurance Quote</h3>
+              </div>
+            </div>
+
+            <div id="coveredText" class="row hidden">
+              <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-6 large-centered columns"><img "alt="life lens life insurance calculator" src="https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/banner.bubble.jan.2013.jpg"></div>
+                  </div>
+                <div class="row" style="margin-top:15px">
+                  <div class="large-8 large-centered center columns">
+                    <h4>You appear to have enough life insurance for your needs at the moment. Interested in other things?</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="uncoveredText" class="row">
+              <div class="large-5 small-12 columns">
+                <ul id="choiceTwo" class="pricing-table">
+                  <li class="title">Term Life Insurance</li>
+                  <li class="price"><span class="recommendedCover"></span> Costing </br><span class="monthlyPrem" >&#8364;15</span>/month
+				  <br /><span class="term">25</span> years</li>
+                  <li class="description">
+                    <div id="breakdown">
+                      <div> Cost of life Insurance: <span class="costLife highlight"></span></div>
+                      <div> Policy Fee: <span class="fee highlight"></span></div>
+                      <div> Government Levy: <span class="levy highlight"></span></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="large-7 small-12 columns">
+                  <p class="complyText"><strong>Note:</strong> This indicative quotation is for a <a href="https://www.irishlife.ie/life-insurance/protect-my-family/term-life-insurance" target="_blank">Term Life Insurance</a> protection policy which is provided by Irish Life Assurance plc. and is subject to underwriting. It can provide a cash sum in the event of death (life cover). No cash will be returned if you cancel your plan or stop making regular payments on your plan during the term. If this happens you will no longer be covered.</p>
+
+                <p class="complyText">The quote is valid either for 7 days or to your next birthday, whichever is sooner. This is subject to no changes to the regulatory or tax rules applying to the product within that period.</p>
+
+                <p class="complyText">For the online quote we assume that your contributions do not increase in line with inflation and that you are not choosing the Guaranteed Cover Again option. You can update these over the phone to receive a different quote.</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="large-4 columns center">
+                  <a class="ABOptionsBlock" target="_blank" href="/life-insurance/protect-my-family/term-life-insurance-comparison-survey">
+                    <i class="fa fa-bar-chart fa-3x"></i>
+                    <h4>Compare Benefits</h4>
+                    <p>See how the National Consumer Agency rated our benefits</p>
+                    <span>Find out more &gt; </span>
+                    </a>
+                </div>
+
+                <div class="large-4 columns center">
+                  <a id="callbackScreen" class="ABOptionsBlock moveForward" href="javascript:void(0);">
+                    <i class="fa fa-phone fa-3x"></i>
+                    <h4>Call me back</h4>
+                    <p>Discuss your options further with a qualified Financial Advisor</p>
+                    <span>Find out more &gt; </span>
+                  </a>
+                </div>
+
+                <div id="detailsABOption1" class="large-4 columns center" style="display: none;">
+                  <a class="ABOptionsBlock" target="_blank" href="/financial-advice/financial-planning/find-a-financial-advisor">
+                    <i class="fa fa-compass fa-3x"></i>
+                    <h4>Find a local Advisor</h4>
+                    <p>Find a financial advisor local to you</p>
+                    <span>Find out more &gt; </span>
+                  </a>
+                </div>
+
+                <div id="detailsABOption2" style="" class="large-4 columns center">
+                  <a class="ABOptionsBlock" target="_blank" href="/life-insurance/protect-your-family/buy-online/simple-life-insurance-online">
+                    <i class="fa fa-umbrella fa-3x"></i>
+                    <h4>Simple Life Insurance</h4>
+                    <p>Find out about our on-line Simple Life Insurance today</p>
+                    <span>Find out more &gt; </span>
+                  </a>
+                </div>
+
+                <div id="detailsABOption3" class="hidden large-4 columns center">
+                 <a class="ABOptionsBlock" target="_blank" href="/financial-advice/financial-planning/find-a-financial-advisor">
+                  <i class="fa fa-compass fa-3x"></i>
+                  <h4>Find a local Advisor</h4>
+                  <p>Find a financial advisor local to you</p>
+                  <span>Find out more &gt; </span></a>
+               </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="small-12 large-12 columns hide-for-print center">
+                <a class="button buttonGroup moveBack" href="javascript:void(0)">Change Details</a>
+              </div>
+            </div>
+        </div>
+
+        <div id="thirdResultsScreen" class="hide-for-print hidden">
+          <div class="row content">
+            <div class="large-9 large-centered columns ">
+              <div class="row">
+                <div class="large-12 large-centered columns">
+                  <h2 style="color:#5261ac">Talk to us about your Life Insurance</h2>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="large-12 columns">
+                
+                <p>Now that you\'ve completed a quote a Financial Advisor can call you back to look at all your options, answer your questions and see what protection plan may suit your life cover needs. Irish Life Financial Service is a tied agent of Irish Life Assurance plc for life and pensions.</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="large-6 columns">
+                    <label id="nameError" for="callbackName">Name:</label>
+                    <input id="callbackName" placeholder="Enter your Name here" type="text">
+                </div>
+                <div class="large-6 columns">
+                    <label id="phoneError" for="callbackTelephone">Phone Number:</label>
+                    <input id="callbackTelephone" placeholder="Enter your phone number here" type="text">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns">
+                  <label id="emailError" for="callbackEmail">Email:</label>
+                  <input id="callbackEmail" placeholder="Enter your email" type="text">
+                </div>
+
+                <div class="large-6 columns">
+                  <label for="callbackCallTime">Call Time:</label>
+                    <div class="dropdownArrow">
+                    <select id="callbackCallTime">
+                      <option selected="" value="Now">Now</option>
+                      <option value="Anytime">Anytime</option>
+                      <option value="Morning">Morning (Before 12pm)</option>
+                      <option value="Afternoon">Afternoon (12pm to 5pm)</option>
+                      <option value="Evening">Evening (5pm to 8pm)</option>
+                    </select>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                    <p id="callbackSent"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">                
+                <p class="complyText">In the interest of customer service we will record and monitor calls. We will only use your personal details for the purpose of dealing with your request. Your privacy is important to us. By completing your contact details above, you authorise us to contact you by telephone, mobile and/or email.</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 large-12 center columns buttonGroup">
+                  <a id="callbackBackOne" href="javascript:void(0)" class="button moveBack">Back</a>
+                  <a id="callbackBackTwo" href="javascript:void(0)" class="button moveBackTwo">Back</a>
+                  <a id="callback" href="javascript:void(0)" class="button">Call Me Back</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div id="fourthResultsScreen" class="row hidden">
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="row">
+                <div class="large-8 large-centered columns"><img src="https://www.irishlife.ie/uploadedImages/retail/images/fatherson.banner.quote.jpg" alt="life lens life insurance calculator"></div>
+              </div>
+              <div class="row">
+                <div class="large-8 large-centered columns">
+                  <h3>Interested in other things?</h3>
+                  <p>Why not try the latest version of our <a title="irish life pension calculator" href="https://www.irishlife.ie/pensions/pension-calculator">Pension Calculator</a> and figure out your pension needs or try the latest version of our <a title="Income Protection calculator" href="https://www.irishlife.ie/life-insurance/income-protection-quote">Income Protection Calculator</a> and get an instant quote.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 center columns">
+                  <a id="frthResultsBckBtn" class="small button">Back to my results</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="navMenu" class="hide-for-print menu-bar hidden">
+      <div id="main-nav">
+        <ul id="sub-nav" class="row">
+          <li id="yourInfo" class="active large-3 small-3 columns">
+            <i class="fa icon fa-pencil"><h4 class="hide-for-small">About you</h4></i>
+            <i class="fa fa-check-circle"></i>
+          </li>
+          <li id="yourFamily" class="large-3 small-3 columns">
+            <i class="fa icon fa-users"><h4 class="hide-for-small">Your Family</h4></i>
+            <i class="fa fa-check-circle"></i>
+          </li>
+          <li id="yourJob" class="large-3 small-3 columns">
+            <i class="fa icon fa-briefcase"><h4 class="hide-for-small">Your Income</h4></i>
+            <i class="fa fa-check-circle"></i>
+          </li>
+          <li id="yourExpenses" class="large-3 small-3 columns">
+            <i class="fa icon fa-credit-card"><h4 class="hide-for-small">Your Expenses</h4></i>
+            <i class="fa fa-check-circle"></i>
+          </li>
+        </ul>
+      </div>
+  </div>
+</div>
+';
+}
+
+function lifeLens_block_view($delta = '') {
+  switch($delta) {
+    case 'lifeLens':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = lifeLens_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'css') . '/css/foundation.min.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'lifeLens') . '/css/financial.review.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'lifeLens') . '/css/alt-css.css', array('group' => CSS_DEFAULT));
+    
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/munchkin.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/mk-uncompressed.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.easing.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highCharts.min.js');
+      drupal_add_js(drupal_get_path('module', 'lifeLens') .'/js/alt.js');
+      drupal_add_js(drupal_get_path('module', 'lifeLens') .'/js/full.financial.review.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui-1.10.3.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'lifeLens') .'/js/jquery.knob.js');
+    }
+    return $block;
+  }
+ }

@@ -1,0 +1,60 @@
+/* 1: Top banner */
+.pc-pageHeaderInfo{
+    background-color: #5261ac !important; /* #5261ac */
+}
+/* also change arrow point down*/
+.pc-pageHeaderInfo:after{
+    border-color: #5261ac transparent !important; /* #5261ac */
+}
+
+/* 2: Circle Selected*/
+.meter-wrap .circle.selected{
+    background-color: ##50c9b5 !important; /* #50c9b5 */    
+}
+/* also change the color of the header text */
+.meter-wrap .selected .circleText{
+    color: ##50c9b5 !important; /* #50c9b5 */
+}
+
+/* 3: Slider bar */
+.ui-widget-header {
+    background: linear-gradient(to bottom, #05c6a6 2%,#9adcc6 100%) !important; /* #05c6a6 - #9adcc6 */
+}
+
+/* 4: Slider selector */
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .calcSlider .ui-slider-horizontal .ui-slider-handle {
+    background-color: #53A295 !important; /* #53A295 */
+    border: 1px solid #53A295 !important; /* #53A295 */
+}
+/* also change the color of selected value text */
+.calcSliderHolder .sliderActive{
+    color: #53A295 !important; /* #53A295 */
+    border: 1px solid #53A295 !important; /* #53A295 */
+}
+
+/* 5: radio buttons */
+#radioInputs input[type=radio]:checked + label {
+    background-color: #53A295 !important;  /* #50C9B5 */
+    border: 1px solid #53A295 !important;
+}
+
+/* 6: info box button */
+.pc-btn-grey{
+    background-color: #675C53 !important;  /* #675C53 */
+}
+
+/* 7: Next button*/
+.pc-btn,a:hover.pc-btn{
+    background-color: #45A293 !important;  /* #45A293 */
+    border: 1px solid #50c9b5 !important;
+}
+
+/* 8: info box background color */
+.pc-more-info-btn{
+    background-color: #50C9B5 !important;  /* #50C9B5 */
+    border: 1px solid #50c9b5 !important;
+}
+/* 9: info box text color */
+#infoModal a{
+    color: #fff !important;  /* #fff */
+}

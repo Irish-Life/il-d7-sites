@@ -1,0 +1,17 @@
+body{font-family:Arial, sans-serif; font-size:62.5%; text-align:center; background-color:#eee; background:url(/corporatebusiness/img/bg/body.jpg) top center repeat-y;}
+body,html{}
+input, select, textarea{font-family:Arial, sans-serif;} 
+.r {float:right; margin: 5px 0px 5px 7px;}
+
+/*
+----------------------------------------------------------------
+ Header
+----------------------------------------------------------------
+*/
+
+#header{margin:5px 0px 15px 0px; height:130px; position:relative;}
+#header p{font-family:Arial, sans-serif, Helvetica; width:550px; position:absolute; top:30px; left:240px; color:#3f3a98; font-size:1.4em; 
+#header a{top:30px;left:11px; position:relative;}
+
+.banner2 {background:url(/uploadedImages/Corporate_Business_New/content/header1.JPG) no-repeat top right;  width:906px; height:130px;}
+

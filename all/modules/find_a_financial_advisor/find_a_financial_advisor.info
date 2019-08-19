@@ -1,0 +1,5 @@
+; $Id: find_a_financial_advisor.info,v 1.0.0.0 2014/09/02 10:11:15 Ger Exp $
+name = "Find a Financial Advisor"
+description = "Find a financial advisor block"
+core = "7.x"
+package = "Irish Life"

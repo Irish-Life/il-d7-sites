@@ -1,0 +1,981 @@
+<?php
+/**
+ * Implementation of hook_block_info().
+ */
+function document_smart_filter_block_info() {
+  $blocks['document_smart_filter'] = array(
+    'info' => t('Document Smart Filter'),
+  );
+  return $blocks;
+}
+
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function document_smart_filter_permission() {
+  return array(
+    'document_smart_filter' => array(
+      'title' => t('Administer Document Smart Filter'),
+      'description' => t('Perform administration tasks for Fund Centre.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+
+function document_smart_filter_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#document_smart_filter":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function document_smart_filter_menu() {
+  
+ $items['admin/content/document_smart_filter'] = array(
+    'title' => 'Document Smart Filter',
+    'description' => 'Settings for Bline Document Smart Filter',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('document_smart_filter_admin'),
+    'access arguments' => array('document_smart_filter'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+   
+
+  return $items;
+}
+
+function document_smart_filter_admin()
+{
+  $query = new EntityFieldQuery();
+  $result = $query  ->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'bline_document')
+          ->execute();   
+      	
+            $entity_type = 'node';
+            $result = $query->execute();
+
+            if (!empty($result[$entity_type])) {
+            $entities = entity_load($entity_type, array_keys($result[$entity_type]));
+            }
+
+            $nodes = entity_load('node', array_keys($result['node']));
+
+  
+		$stack = array();
+  foreach ($nodes as $node) {
+     	
+     	//print $node;
+     	//print $node->uuid.'<br/>';
+		//print json_encode($node->field_bline_file_uploaded);
+     	//print json_encode($node->field_bline_document_type[und][0][tid]);
+     	//print json_encode($node);
+     	//print '<br/>---<br/>';
+     	//print_r(($node->field_bline_file_uploaded[und][0][uri]));
+       //$file_path = drupal_realpath($uriIn);
+
+
+		if (!empty($node->field_bline_file_uploaded[und][0][uri]) || strlen($node->field_bline_file_uploaded[und][0][uri])>=5) {
+
+			$uriIn = $node->field_bline_file_uploaded[und][0][uri];
+			$dir_uri = file_stream_wrapper_get_instance_by_uri($uriIn);
+			$result = $dir_uri->getExternalUrl();
+			$stack[t($result)] = t($node->title);
+		}
+  }
+  
+		asort($stack);
+		
+		/*
+		1. Additional Info for PRSA AVCs
+		2. ARF/AMRF Application Form
+		3. AVC Transfer Out Form
+		4. Company Pension Application Form
+		5. Company Pension TV In Form 
+		6. Company Pension TV Out Form
+		7. Confirmation of Investment Choice 
+		8. Evidence of Salary for 20% directors
+		9. Personal Pension Application Form
+		10. Personal Pension TV In Form 
+		11. PRB Application Form
+		12. PRB TV Out Form
+		13. PRSA Application Form
+		14. PRSA AVC Application Form
+		15. PRSA TV In Form
+		16. PRSA TV Out Form
+		17. Source of Investment Certificate
+		18. Transfer Rules document
+		19. TV In Requirements / Forms
+		20. Vested PRSA TV In Endorsement
+		*/
+	
+	   $form['document_smart_filter_additional_info_for_prsa_avcs'] = array(
+		   '#type' => 'select',
+		   '#title' => t('1. Additional Info for PRSA AVCs'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_additional_info_for_prsa_avcs'),
+		   '#description' => t('1. Additional Info for PRSA AVCs'),
+	   );
+	   
+	   $form['document_smart_filter_arf_amrf_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('2. ARF/AMRF Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_arf_amrf_application_form'),
+		   '#description' => t('2. ARF/AMRF Application Form'),
+	   );
+	   $form['document_smart_filter_avc_transfer_out_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('3. AVC Transfer Out Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_avc_transfer_out_form'),
+		   '#description' => t('3. AVC Transfer Out Form'),
+	   );
+	   $form['document_smart_filter_company_pension_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('4. Company Pension Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_company_pension_application_form'),
+		   '#description' => t('4. Company Pension Application Form'),
+	   );
+	   $form['document_smart_filter_company_pension_tv_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('5. Company Pension TV In Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_company_pension_tv_form'),
+		   '#description' => t('5. Company Pension TV In Form'),
+	   );
+	   $form['document_smart_filter_company_pension_tv_out_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('6. Company Pension TV Out Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_company_pension_tv_out_form'),
+		   '#description' => t('6. Company Pension TV Out Form'),
+	   );
+	   $form['document_smart_filter_confirmation_of_investment_choice'] = array(
+		   '#type' => 'select',
+		   '#title' => t('7. Confirmation of Investment Choice'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_confirmation_of_investment_choice'),
+		   '#description' => t('7. Confirmation of Investment Choice'),
+	   );
+	   $form['document_smart_filter_evidence_of_salary_for_20_directors'] = array(
+		   '#type' => 'select',
+		   '#title' => t('8. Evidence of Salary for 20% directors'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_evidence_of_salary_for_20_directors'),
+		   '#description' => t('8. Evidence of Salary for 20% directors'),
+	   );
+	   $form['document_smart_filter_personal_pension_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('9. Personal Pension Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_personal_pension_application_form'),
+		   '#description' => t('9. Personal Pension Application Form'),
+	   );
+	   $form['document_smart_filter_personal_pension_tv_in_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('10. Personal Pension TV In Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_personal_pension_tv_in_form'),
+		   '#description' => t('10. Personal Pension TV In Form'),
+	   );
+	   $form['document_smart_filter_prb_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('11. PRB Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prb_application_form'),
+		   '#description' => t('11. PRB Application Form'),
+	   );
+	   $form['document_smart_filter_prb_tv_out_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('12. PRB TV Out Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prb_tv_out_form'),
+		   '#description' => t('12. PRB TV Out Form'),
+	   );
+	   $form['document_smart_filter_prsa_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('13. PRSA Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prsa_application_form'),
+		   '#description' => t('13. PRSA Application Form'),
+	   );
+	   $form['document_smart_filter_prsa_avc_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('14. PRSA AVC Application Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prsa_avc_application_form'),
+		   '#description' => t('14. PRSA AVC Application Form'),
+	   );
+	   $form['document_smart_filter_prsa_tv_in_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('15. PRSA TV In Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prsa_tv_in_form'),
+		   '#description' => t('15. PRSA TV In Form'),
+	   );
+	   $form['document_smart_filter_prsa_tv_out_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('16. PRSA TV Out Form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_prsa_tv_out_form'),
+		   '#description' => t('16. PRSA TV Out Form'),
+	   );
+	   $form['document_smart_filter_source_of_investment_certificate'] = array(
+		   '#type' => 'select',
+		   '#title' => t('17. Source of Investment Certificate'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_source_of_investment_certificate'),
+		   '#description' => t('17. Source of Investment Certificate'),
+	   );
+	   $form['document_smart_filter_transfer_rules'] = array(
+		   '#type' => 'select',
+		   '#title' => t('18. Transfer Rules document'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_transfer_rules'),
+		   '#description' => t('18. Transfer Rules document'),
+	   );
+	   $form['document_smart_filter_tv_in_requirements_forms'] = array(
+		   '#type' => 'select',
+		   '#title' => t('19. TV In Requirements / Forms'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_tv_in_requirements_forms'),
+		   '#description' => t('19. TV In Requirements / Forms'),
+	   );
+	   $form['document_smart_filter_vested_prsa_tv_in_endorsement'] = array(
+		   '#type' => 'select',
+		   '#title' => t('20. Vested PRSA TV In Endorsement'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_vested_prsa_tv_in_endorsement'),
+		   '#description' => t('20. Vested PRSA TV In Endorsement'),
+	   );
+	   
+	   
+	   
+	   
+	
+	
+	/*
+	
+	   $form['document_smart_filter_complete_solutions_personal_pension_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('1. Complete Solutions personal pension application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_personal_pension_application_form'),
+		   '#description' => t('Set the correct Complete Solutions personal pension application form here to be used by the document smart filter. This document must be set up as a bline document in order for it to appear in this list.'),
+	   );
+	
+	   $form['document_smart_filter_complete_solutions_company_pension_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('2. Complete Solutions company pension application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_company_pension_application_form'),
+		   '#description' => t('Complete Solutions company pension application form'),
+	   );
+	   $form['document_smart_filter_complete_solutions_amrf_arf_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('3. Complete Solutions AMRF/ARF application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_amrf_arf_application_form'),
+		   '#description' => t('Complete Solutions AMRF/ARF application form'),
+	   );
+	   $form['document_smart_filter_complete_solutions_company_pension_application'] = array(
+		   '#type' => 'select',
+		   '#title' => t('4. Complete Solutions Company Pension application'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_company_pension_application'),
+		   '#description' => t('Complete Solutions Company Pension application'),
+	   );
+	   $form['document_smart_filter_complete_solutions_personal_pension_application'] = array(
+		   '#type' => 'select',
+		   '#title' => t('5. Complete Solutions Personal Pension application '),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_personal_pension_application'),
+		   '#description' => t('Complete Solutions Personal Pension application '),
+	   );
+	   $form['document_smart_filter_complete_solutions_PRB_application'] = array(
+		   '#type' => 'select',
+		   '#title' => t('6. Complete Solutions PRB Application Form '),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_complete_solutions_PRB_application'),
+		   '#description' => t('Complete Solutions PRB application '),
+	   );
+     
+     
+	   $form['document_smart_filter_company_pension_transfer_trustee_declaration'] = array(
+		   '#type' => 'select',
+		   '#title' => t('7. Company Pension Transfer Trustee Declaration'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_company_pension_transfer_trustee_declaration'),
+		   '#description' => t('Company Pension Transfer Trustee Declaration'),
+	   );
+	   $form['document_smart_filter_dc_company_transfer_to_prsa'] = array(
+		   '#type' => 'select',
+		   '#title' => t('8. DC Company Transfer To PRSA'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_dc_company_transfer_to_prsa'),
+		   '#description' => t('DC Company Transfer To PRSA'),
+	   );
+	   
+	   $form['document_smart_filter_PRSA_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('9. PRSA application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_PRSA_application_form'),
+		   '#description' => t('PRSA application form'),
+	   );
+	   
+	   $form['document_smart_filter_PRSA_transfer_in_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('10. PRSA Transfer In application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_PRSA_transfer_in_application_form'),
+		   '#description' => t('PRSA Transfer in application form'),
+	   );
+	   
+	   $form['document_smart_filter_additional_information_form_for_PRSA_AVC_transfers'] = array(
+		   '#type' => 'select',
+		   '#title' => t('11. Additional Information Form for PRSA AVC Transfers'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_additional_information_form_for_PRSA_AVC_transfers'),
+		   '#description' => t('Additional Information Form for PRSA AVC Transfers'),
+	   );
+	   $form['document_smart_filter_transfer_rules_document'] = array(
+		   '#type' => 'select',
+		   '#title' => t('12. Transfer Rules document'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_transfer_rules_document'),
+		   '#description' => t('Transfer Rules document'),
+	   );
+	   
+	   $form['document_smart_filter_PRSA_AVC_application_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('13. PRSA AVC application form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_PRSA_AVC_application_form'),
+		   '#description' => t('PRSA AVC application form'),
+	   );
+	   
+	   $form['document_smart_filter_vested_PRSA_transfer_in_form_and_endorsement'] = array(
+		   '#type' => 'select',
+		   '#title' => t('14. Vested PRSA Transfer in Form &amp; Endorsement'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_vested_PRSA_transfer_in_form_and_endorsement'),
+		   '#description' => t('Vested PRSA Transfer in Form &amp; Endorsement'),
+	   );
+	   $form['document_smart_filter_PRSA_TV_in_form'] = array(
+		   '#type' => 'select',
+		   '#title' => t('15. Vested PRSA TV in form'),
+		   '#options' => $stack,
+		   '#default_value' => variable_get('document_smart_filter_PRSA_TV_in_form'),
+		   '#description' => t('Vested PRSA TV in form'),
+	   );
+	   */
+	   
+   
+	return system_settings_form($form);
+}
+/**
+ * Page callback for /hello.
+ */
+
+
+
+
+function document_smart_filter_content(){
+
+	$base_url = $GLOBALS['base_url'];
+ $HTML =  '<div class="document_smart_filter_welcome screens-container">
+ <span class="beta-tag" style="color:#cecece;">v0.180904</span>
+        <div class="left-holder-clean">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/suitcase-icon.png">
+		</div>
+        <div class="right-holder-clean">            
+          <div class="desc" style="margin-bottom:20px">In a few steps, this pathfinder tool will guide towards your requirements for transferring a pension into an existing or new Irish Life pension product.<br/><br/>Get an exact answer in just a few seconds.</div>
+	<a href="javascript:void(0);" class="welcomeBtn">Get Started&nbsp;<i class="fa fa-chevron-right"></i></a><br/>
+	<a href="http://www.bline.ie/pensions/pension-transfers" class="welcomeLink">or view all documents as a list</a>
+  </div>
+  <div class="clearer"></div>
+ </div>
+ 
+ <div class="document_smart_filter" style="display:none;">
+ <div class="steps">
+   <ul class="steps-container">
+      <li id="step1" style="width:25%;" class="activated">
+         <div class="step">
+            <div class="step-image"><span></span></div>
+            <div class="step-description">Source Organisation</div>
+         </div>
+      </li>
+      <li id="step2" style="width:25%;" class="">
+         <div class="step">
+            <div class="step-image"><span></span></div>
+            <div class="step-description">Source of Funds</div>
+         </div>
+      </li>
+      <li id="step3" style="width:25%;" class="">
+         <div class="step">
+            <div class="step-image"><span></span></div>
+            <div class="step-description">Destination Product</div>
+         </div>
+      </li>
+      <li id="step4" style="width:25%;" class="">
+         <div class="step">
+            <div class="step-image"><span></span></div>
+            <div class="step-description">Product Type</div>
+         </div>
+      </li>
+   </ul>
+   <div class="step-bar" style="width: 12%;"></div>
+</div>
+
+<div class="screens-container">
+    <div id="select-0" class="smart-filter-holder" style="display:none;">
+      <ul class="menuBlocks" >
+        <li class="menu">
+          <a href="javascript:void(0);" class="block-menu-item screen-1 phase">1.</a>
+        </li>
+        <li class="menu">
+          <span class="block-menu-item screen-2">2.</span>
+        </li>
+        <li class="menu">
+          <span class="block-menu-item screen-3">3.</span>
+        </li>
+        <li class="menu">
+          <span class="block-menu-item screen-4">4.</span>
+        </li>
+      </ul>
+    </div>
+	  
+	  
+	  
+	  
+      <div class="screen-block-1">
+        <div class="left-holder">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/suitcase-icon.png">
+          <div class="title">Source Organisation of Transfer</div>
+          <div class="desc">Where are you transferring the pension from? Is it an external company or is it from an Irish Life source?</div>
+        </div>
+        <div class="right-holder" style="margin-top:35px;">
+          <ul class="buildingBlocks" >
+            <li class="large">
+              <a href="javascript:void(0);" class="block select-1-a lightshade">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/external-transfer.png"/></span>
+                <span class="block-text">External Company</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+            <li class="large">
+              <a href="javascript:void(0);" class="block select-1-aa">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/irishlife-transfer.png"/></span>
+                <span class="block-text">Irish Life Corporate Business</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+            <li class="large">
+              <a href="javascript:void(0);" class="block select-1-b">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/irishlife-transfer.png"/></span>
+                <span class="block-text">Irish Life Retail</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="clearer"></div>
+        
+        </div>
+		
+
+	  
+	  
+	  
+	  
+      <div class="screen-block-2" style="display:none;">
+      
+        <div class="left-holder">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/purse.png">
+          <div class="title">Source of Funds</div>
+          <div class="desc">What is the type of product that you are transferring these funds from?</div>
+          <div class="subdesc">Select the current product type using the buttons on the right. This is the product that your client is currently invested in and you want to move funds from.</div>
+          <div class="subdesccc" style="display:none;">Please contact your account manager for Corporate Business Claim Requirements</div>
+        </div>
+        <div class="right-holder" style="margin-top:15px;">
+		
+		<a href="javascript:void(0);" class="backBtn back-step1"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;BACK</a>
+      <ul class="buildingBlocks" >
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-a">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">Personal Pension</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-b">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">PRSA</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-c">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">PRSA AVC</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-e">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">Company Pension</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-f">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">PRB</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block select-2-h">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">AVC Scheme</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block lightshade select-2-g">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">ARF</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block lightshade select-2-i">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">AMRF</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small">
+          <a href="javascript:void(0);" class="block lightshade select-2-d">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">Vested PRSA</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+      </ul>
+	  </div>
+	  
+        <div class="clearer"></div>
+	  
+        </div>
+      
+	  
+	  
+	  
+	  
+	  
+      <div class="screen-block-3" style="display:none;">
+        <div class="left-holder">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/target.png">
+          <div class="title">Destination Product</div>
+          <div class="desc">What type of product are you transferring the <span class="title-screen-2" style="font-weight:bold;"></span> into?</div>
+        </div>
+        <div class="right-holder" style="margin-top:15px;">
+		<a href="javascript:void(0);" class="backBtn back-step2"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;BACK</a>
+          <ul class="buildingBlocks" >
+          
+          
+           <li class="small product-box product-into-show-2" style="display:none;">
+              <a href="javascript:void(0);" class="block select-3-a">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">Personal Pension</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+           <li class="small product-box product-into-show-1" style="display:none;">
+              <a href="javascript:void(0);" class="block select-3-b">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">PRSA</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+            
+           <li class="small product-box product-into-show-6" style="display:none;">
+              <a href="javascript:void(0);" class="block select-3-c">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">PRSA AVC</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+           <li class="small product-box product-into-show-3" style="display:none;">
+              <a href="javascript:void(0);" class="block select-3-e">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">Company Pension</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+           <li class="small product-box product-into-show-0" style="display:none;">
+              <a href="javascript:void(0);" class="block select-3-f">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">PRB</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+       <li class="small product-box product-into-show-7" style="display:none;">
+          <a href="javascript:void(0);" class="block select-3-h">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">AVC Scheme</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+       <li class="small product-box product-into-show-9" style="display:none;">
+          <a href="javascript:void(0);" class="block select-3-j">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">Annuity</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+           <li class="small product-box product-into-show-4" style="display:none;">
+              <a href="javascript:void(0);" class="block lightshade select-3-g">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">ARF</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+       <li class="small product-box product-into-show-8" style="display:none;">
+          <a href="javascript:void(0);" class="block lightshade select-3-i">
+            <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+            <span class="block-text">AMRF</span>
+            <div class="clearer"></div>
+          </a>
+        </li>
+           <li class="small product-box product-into-show-5" style="display:none;">
+              <a href="javascript:void(0);" class="block lightshade select-3-d">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/pension-product.png"/></span>
+                <span class="block-text">Vested PRSA</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="clearer"></div>
+	  </div>
+	  
+	  
+	  
+    
+    
+    
+	  
+      <div class="screen-block-4" style="display:none;">
+        <div class="left-holder">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/wheel.png">
+          <div class="title">Product Type</div>
+          <div class="desc">Is it an existing or new <span class="title-screen-3" style="font-weight:bold;"></span> you are transferring the <span class="title-screen-2" style="font-weight:bold;"></span> into?</div>
+        </div>
+        
+        <div class="right-holder" >
+		<a href="javascript:void(0);" class="backBtn back-step3" style="margin-top:10px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;BACK</a>
+          <ul class="buildingBlocks" style="margin-top:85px;">
+          
+            <li class="large">
+              <a href="javascript:void(0);" class="block select-4-a">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/exisiting-product.png"/></span>
+                <span class="block-text">An Existing Plan</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+            <li class="large">
+              <a href="javascript:void(0);" class="block select-4-b">
+                <span class="block-icon"><img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/new-product.png"/></span>
+                <span class="block-text">A New Plan</span>
+                <div class="clearer"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="clearer"></div>
+	  </div>
+    
+    
+    
+    
+	  
+		  <div class="screen-block-extra" style="display:none;">
+      
+        <div class="left-holder left-holder-complete">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/chart-board.png">
+          <div class="title">EXTRA QUESTIONS</div>
+          <div class="desc">There are a few more questions to ask on this specific case in order to understand exactly what it is you are looking for.</div>
+        </div>
+        
+        <div class="right-holder" style="margin-top:20px;">
+			<div class="buildingBlocks extra-31" style="display:none;">
+				<span class="extraQuestion extra-31-a">
+					<h5>Does the client have less than 15 years service in the pension scheme or in any company pension scheme with this employer or associated employer?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-31-a-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-31-a-no">No</a>
+				</span>
+				<span class="extraQuestion extra-31-b" style="display:none;">
+					<h5>Is the scheme winding up?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-31-b-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-31-b-no">No</a>
+				</span>
+				<span class="extraQuestion extra-31-c" style="display:none;">
+					<h5>Is the member leaving employment?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-31-c-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-31-c-no">No</a>
+				</span>
+				<span class="extraQuestion extra-31-d" style="display:none;">
+					<h5>Is the transfer value less than €10,000 or Has the member left employment without a preserved benefit?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-31-d-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-31-d-no">No</a>
+				</span>
+				<span class="extraQuestion extra-31-e" style="display:none;">
+					<h5>Is the pension scheme Defined Benefit (DB) or Defined Contribution (DC)?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-31-e-db">DB</a>
+					<a href="javascript:void(0);" class="extraBtn extra-31-e-dc">DC</a>
+				</span>
+					
+			</div>
+			
+			
+			<div class="buildingBlocks extra-71" style="display:none;">
+				<span class="extraQuestion extra-71-a">
+					<h5>Is the scheme winding up?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-71-a-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-71-a-no">No</a>
+				</span>
+				<span class="extraQuestion extra-71-b" style="display:none;">
+					<h5>Is the transfer value less than €10,000 <strong>or</strong> has the member left employment without a preserved benefit?</h5>
+					<a href="javascript:void(0);" class="extraBtn extra-71-b-yes">Yes</a>
+					<a href="javascript:void(0);" class="extraBtn extra-71-b-no">No</a>
+				</span>
+				<div class="extraQuestion extra-71-b" style="display:none;">
+					<p><strong>Preserved Benefit:</strong> Members with more than two years qualifying service in the scheme on leaving employment are entitled to a preserved benefit under the Pensions Act</p>
+					<p><strong>Qualifying Service is where:</strong><ul style="margin-left:30px;"><li>Member completed at least two years service in the pension scheme, or</li><li>Member has at least two years service when combining the service in the scheme with service relating to any transfer value paid into the scheme</li></ul></p>
+				</div>
+					
+			</div>
+        </div>
+        <div class="clearer"></div>
+        </div>
+	  
+	  
+	  
+	  
+	  
+	  
+      <div class="screen-block-5" style="display:none;">
+      
+        <div class="left-holder left-holder-complete">
+          <img src="'.$base_url.'/sites/all/modules/document_smart_filter/images/chart-board.png">
+          <div class="title">RESULT!</div>
+          <div class="desc">Everything you need to transfer an <span class="title-screen-1" style="font-weight:bold;"></span> <span class="title-screen-2" style="font-weight:bold;"></span> into a </span> <span class="title-screen-4" style="font-weight:bold;"></span> that is a <span class="title-screen-3" style="font-weight:bold;"></span>. 
+		<table style="margin-bottom: 0px;border-width:0px;">
+            <tr>
+              <td style="background: black;color: white;padding: 0px 6px;" colspan="3"><span class="code"></span></td>
+            </tr>
+        </table></div>
+        </div>
+        
+        <div class="right-holder" style="margin-top:10px;">
+		<a href="javascript:void(0);" class="backBtn back-step5"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;BACK</a>
+        <div class="final-screen-notice ">
+		
+		
+		
+		<!--
+		AVC Transfer Out Form
+		Company Pension TV Out Form
+		or written request from customer 
+		Personal Pension TV In Form 
+		PRB TV Out Form
+		PRSA TV Out Form
+		Vested PRSA TV In Endorsement
+		Written request from customer
+
+		-->
+		<span class="resultnote r-1603 r-1313 r-1707-2 r-1707-3 r-1717-3 r-1717-2 r-1703 r-1710 r-1103 r-1303-1  r-1202 r-1212 r-1101 r-1111 r-1606 r-1616 r-1010 r-1000 r-1003 r-1013 r-1518 r-1508 r-1514 r-1504 r-1519 r-1404 r-1414 r-1419 r-1808 r-1818 r-1819 r-1113 r-1013 r-1713 r-1201 r-1211 r-1505 r-1613 r-1515  r-1303 r-1310 r-1300  r-1313-1 " style="display:none;">
+		<h4>Transfer out<span class="resultDoc r-1515 r-1202 r-1212 r-1505" style="display:none;">/In</span> requirements</h4>
+		<p>These are the forms or the other pieces of information that you need to be aware of to transfer out of the <span class="title-screen-2" ></span> <span class="resultDoc r-1505 r-1515 r-1202 r-1212" style="display:none;"> and into a <span class="title-screen-3"></span></span> </p>
+		</span>
+		
+		<span class="resultDoc r-1707-2 r-1707-3  r-1717-3 r-1717-2 r-1703 r-1713 r-1710" style="display:none;"><a href="'.variable_get('document_smart_filter_avc_transfer_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;AVC Transfer Out Form</a></span>
+		
+		<span class="resultDoc r-1313 r-1303 r-1303-1 r-1310 r-1300 r-1313-1" style="display:none;"><a href="'.variable_get('document_smart_filter_company_pension_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Company Pension TV Out Form</a></span>
+		
+		<span class="resultDoc r-1202 r-1212" style="display:none;"><a href="'.variable_get('document_smart_filter_personal_pension_tv_in_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Personal Pension TV In Form </a></span>
+		
+		<span class="resultDoc r-1010 r-1000 r-1003 r-1013" style="display:none;"><a href="'.variable_get('document_smart_filter_prb_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRB TV Out Form</a></span>
+		
+		<span class="resultDoc r-1101 r-1613 r-1111 r-1103 r-1113 r-1606 r-1616 r-1603" style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp5. PRSA TV Out Form</a></span>
+		
+		<span class="resultDoc r-1505 r-1515 " style="display:none;"><a href="'.variable_get('document_smart_filter_vested_prsa_tv_in_endorsement').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Vested PRSA TV In Endorsement</a></span>
+		  
+		<span class="resultDoc r-1515" style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRSA Application Form</a></span>
+		  
+		
+		<div class="result-note postit  r-1310 r-1300  r-1313 r-1202 r-1212 r-1101 r-1111 r-1606 r-1616 r-1010 r-1000 r-1003 r-1013 r-1518 r-1508 r-1514 r-1504 r-1519 r-1404 r-1414 r-1419 r-1808 r-1818 r-1819 r-1113 r-1013 r-1713 r-1201 r-1211" style="display:none;">
+			<span class="resultnote r-1202 r-1212 r-1101 r-1111 r-1606 r-1616 r-1010 r-1000 r-1003 r-1013" style="display:none;">or a written request from the customer</span>	
+			
+			<span class="resultnote r-1518 r-1508 r-1514 r-1504 r-1519 r-1404 r-1414 r-1419 r-1808 r-1818 r-1819" style="display:none;">Written request from the customer</span>
+			
+			<span class="resultnote r-1201 r-1211" style="display:none;">A written request from the customer (it can be noted on the PRSA TV In form)</span>
+			
+			<span class="resultnote r-1113 r-1013 r-1713 r-1313" style="display:none;">Note: The transfer will not be paid until the receiving scheme is Revenue approved</span>			
+			<span class="resultnote r-1310 r-1300" style="display:none;">Evidence of salary required for 20% directors and all independent trustee cases</span>			
+		</div>
+		
+		
+		<!-- this is the In requ -->
+		
+		
+		
+		
+		<span class="seperateinout resultnote r-1313 r-0010 r-0000 r-0013 r-0101 r-0103 r-0111 r-0113 r-0201 r-0202 r-0211 r-0212 r-0301-1  r-0310 r-0300 r-0311 r-0313 r-0313-1 r-0404 r-0414 r-0504 r-0505 r-0508 r-0514 r-0515 r-0518 r-0603 r-0606 r-0616 r-0703 r-0707-2 r-0710 r-0713 r-0717-2 r-0707-3 r-0717-3 r-0613 r-0808 r-0818 r-1003 r-1010 r-1000 r-1013 r-1101 r-1103 r-1111 r-1113 r-1201 r-1211 r-1301 r-1303 r-1303-1 r-1310 r-1300  r-1311 r-1313-1 r-1404 r-1613 r-1414 r-1504 r-1508 r-1514 r-1518 r-1603 r-1606 r-1616 r-1703 r-1707-2 r-1707-3 r-1717-3 r-1710 r-1713 r-1717-2 r-1818 r-0303 r-0303-1" style="display:none;">
+			<h4>Transfer In Requirements</h4>
+			<p>These are the forms or the other pieces of information that you need to be aware of to transfer into a <span class="title-screen-3"></span></p>
+		</span>
+		
+		<span class="resultDoc r-0707-2 r-0606 r-1606 r-1707-2 r-1707-3 r-1717-3" style="display:none;"><a href="'.variable_get('document_smart_filter_additional_info_for_prsa_avcs').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Additional Info for PRSA AVCs</a></span>
+		
+		<span class="resultDoc r-0518 r-0514 r-0414 r-0818 r-1518 r-1514 r-1414 r-1818" style="display:none;"><a href="'.variable_get('document_smart_filter_arf_amrf_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;ARF/AMRF Application Form</a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_avc_transfer_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;AVC Transfer Out Form</a></span>
+		
+		<span class="resultDoc r-0113 r-0313 r-1613 r-1113 r-1313 r-0613 r-0713 r-1013 r-0013 r-1713" style="display:none;"><a href="'.variable_get('document_smart_filter_company_pension_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Company Pension Application Form</a></span>
+		
+		<span class="resultDoc r-0703 r-0713 r-0103 r-1313 r-0613 r-0113 r-1613 r-0603 r-0313  r-0003 r-0013 r-1103 r-1113 r-1603 r-1303 r-1003 r-0303 r-1013 r-1703 r-1713" style="display:none;"><a href="'.variable_get('document_smart_filter_company_pension_tv_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Company Pension TV In Form </a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_company_pension_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Company Pension TV Out Form</a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_evidence_of_salary_for_20_directors').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Evidence of Salary for 20% directors</a></span>
+		
+		<span class="resultDoc r-1212 r-0212" style="display:none;"><a href="'.variable_get('document_smart_filter_personal_pension_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Personal Pension Application Form</a></span>
+		
+		<span class="resultDoc r-0202 r-0212" style="display:none;"><a href="'.variable_get('document_smart_filter_personal_pension_tv_in_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Personal Pension TV In Form </a></span>
+		
+		<span class="resultDoc r-0710 r-0310 r-0300 r-0010 r-0000 r-1310 r-1300  r-1010 r-1000 r-1710" style="display:none;"><a href="'.variable_get('document_smart_filter_prb_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRB Application Form</a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_prb_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRB TV Out Form</a></span>
+		
+		<span class="resultDoc r-0313-1  r-1313-1 r-0211 r-0211 r-0111 r-0515 r-0311 r-1211 r-1111 r-1311" style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRSA Application Form</a></span>
+		
+		<span class="resultDoc r-0717-2 r-0707-3 r-0717-3 r-0616 r-1616 r-1717-2" style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_avc_application_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRSA AVC Application Form</a></span>
+		
+		<span class="resultDoc r-0313-1 r-0707-2 r-0717-2 r-0707-3 r-0717-3 r-0201 r-0201 r-0211 r-0101 r-0111 r-0606 r-0616 r-0301-1 r-0311 r-1201 r-1211 r-1101 r-1111 r-1606 r-1616 r-1301 r-1311 r-1707-2 r-1707-3 r-1717-3 r-1717-2 r-0303-1 r-1303-1 r-1313-1" style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_tv_in_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRSA TV In Form</a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_prsa_tv_out_form').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;PRSA TV Out Form</a></span>
+		
+		<span class="resultDoc r-0508 r-0504 r-0404 r-0808 r-1508 r-1504 r-1404 r-1404 r-1818" style="display:none;"><a href="'.variable_get('document_smart_filter_source_of_investment_certificate').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Source of Investment Certificate</a></span>
+		
+		<span class="resultDoc r-0707-2 r-0717-2 r-0707-3 r-0717-3 r-0301-1 r-0311 r-1301 r-1311 r-1707-2 r-1707-3 r-1717-3 r-1717-2" style="display:none;"><a href="'.variable_get('document_smart_filter_transfer_rules').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Transfer Rules document</a></span>
+		
+		<span class="resultDoc " style="display:none;"><a href="'.variable_get('document_smart_filter_tv_in_requirements_forms').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;TV In Requirements / Forms</a></span>
+		
+		<span class="resultDoc r-0515 r-0505 " style="display:none;"><a href="'.variable_get('document_smart_filter_vested_prsa_tv_in_endorsement').'" class="pdf"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Vested PRSA TV In Endorsement</a></span>
+		
+		
+		
+		<div class="result-note postit r-0313 r-1313 r-1303-2 r-1313-2 r-0313-1a r-0707-2 r-0717-2 r-0707-3 r-0717-3 r-1707-2 r-1707-3 r-1717-3 r-1717-2 r-0703 r-0713 r-0113 r-0013 r-1113 r-1013 r-1713 r-0700 r-1700 r-0710 r-1710 r-0606 r-0616 r-0603 r-0508 r-0504 r-0808 r-1508 r-1504 r-1404 r-0404 r-1808 r-0519 r-0419 r-0819 r-1519 r-1419 r-1819 r-0301-1 r-0311 r-1301 r-1311 r-0300 r-0310 r-0300 r-0010 r-0000 r-0000 r-1300 r-1000 r-1603 r-1303 r-1703 r-0313-1-2 r-0303-1-2 r-0303-2 r-0313-2 r-0613 r-1613 r-0409 r-0809 r-1509 r-1409 r-1809 r-0303-3 r-0313-3 r-1303-3 r-1313-3 r-0509" style="display:none;">
+			<span class="resultnote r-0707-2 r-0717-2 r-0707-3 r-0717-3 r-1707-2 r-1707-3 r-1717-3 r-1717-2" style="display:none;">Note: PRSA AVC must be in respect of the same employment as the AVC Scheme</span>
+			
+			<span class="resultnote r-0703" style="display:none;">Note: Company Pension must be in respect of the same employment as the AVC Scheme</span>
+			
+			<span class="resultnote r-0713 r-0113 r-0013 r-1113 r-0313 r-1313 r-1013 r-1713" style="display:none;">Note: Transfer can only be accepted where a scheme has been Revenue approved or an application for approval has been submitted.</span>
+			
+			<span class="resultnote r-0613 r-1613" style="display:none;">Note: Transfer can only be accepted once the scheme is Revenue approved.</span>
+			<span class="resultnote r-0613 r-1613" style="display:none;">Note: Irish Life will only accept PRSA AVC can only transfer to company pension schemes in respect of the same employment.</span>
+			
+			<span class="resultnote r-0313-1a r-0707-3 r-0717-3  r-1707-3 r-1717-3" style="display:none;">Note: Certificate of Comparison required</span>
+			
+			<span class="resultnote r-0713" style="display:none;">Note: Company Pension must be in respect of the same employment as the AVC Scheme</span>
+			
+			<span class="resultnote r-0700" style="display:none;">Note: It is not possible to move an external AVC Scheme to an existing PRB</span>
+			<span class="resultnote r-1700" style="display:none;">Note: It is not possible to move an AVC Scheme to an existing PRB</span>
+			
+			<span class="resultnote r-0710 r-1710" style="display:none;">Note: Retirement benefits from the PRB must be taken at the same time as those from the main occupational pension scheme</span>
+			
+			<span class="resultnote r-0606 r-0616" style="display:none;">Note: PRSA AVC must be in respect of the same employment</span>
+			
+			<span class="resultnote r-0603" style="display:none;">Note: Company Pension must be in respect of the same employment as the PRSA AVC</span>
+			
+			<span class="resultnote r-0508 r-0504 r-0808 r-1508 r-1504 r-1404 r-1404 r-0404 r-1808" style="display:none;">Confirmation of Investment choice is also required</span>
+			
+			<span class="resultnote r-0509 r-0409 r-0809 r-0509" style="display:none;">Unfortunately it is not possible to top up an existing annuity. To set up a new annuity visit the Corporate Business website <a href="http://www.irishlifecorporatebusiness.ie/annuities" target="_new">www.irishlifecorporatebusiness.ie/annuities</a></span> 
+			
+			<span class="resultnote  r-1509 r-1409 r-1809 " style="display:none;">Unfortunately it is not possible to top up an existing annuity. To set up a new annuity a written request from the customer to transfer out and please visit the Corporate Business website <a href="http://www.irishlifecorporatebusiness.ie/annuities" target="_new">www.irishlifecorporatebusiness.ie/annuities</a> for annuity information.</span> 
+			
+			<span class="resultnote r-1519 r-1819  r-1419" style="display:none;">To set up a new annuity visit the Corporate Business website <a href="http://www.irishlifecorporatebusiness.ie/annuities" target="_new">www.irishlifecorporatebusiness.ie/annuities</a></span> 
+			
+			<span class="resultnote r-0519 r-0419 r-0819  " style="display:none;">Visit the Corporate Business website to get this information <a href="http://www.irishlifecorporatebusiness.ie" target="_new">www.irishlifecorporatebusiness.ie</a></span>
+			
+			<span class="resultnote r-0301-1 r-0311 r-1301 r-1311 " style="display:none;">Note: Member must have less than 15 years scheme service</span>
+			
+			<span class="resultnote r-0301-1 r-0311 " style="display:none;">Note: IL cannot accept transfers from DB schemes where Cert of Benefit Comparison required</span>
+			
+			<span class="resultnote r-0300" style="display:none;color:red;">Top ups generally not allowed on PRBs / all benefits must be from same employment & schemes must have same trustees</span>
+			
+			<span class="resultnote r-0310 r-0300 r-0010 r-0000" style="display:none;">Note: Evidence of Salary for 20% directors</span>
+			
+			<span class="resultnote r-0000 r-1300 r-1000" style="display:none;color:red;">Tops ups are generally not allowed on PRBs. The requirements above are for setting up a new PRB</span>
+			
+			<span class="resultnote r-1603" style="display:none;">Note: PRSA AVC can only transfer to company pension scheme in respect of the same employment</span>
+			
+			<span class="resultnote r-1303 r-1313 r-1013 r-0313 " style="display:none;">Note: IL will only accept company pension tranfser from different employment if member has left that employment</span>
+			
+			<span class="resultnote r-1703 r-1713" style="display:none;">Note: AVC Scheme can only trasnfer to company pension scheme in respect of the same employment</span>
+			<span class="resultnote r-0303-2 r-0313-2 r-0313-1-2 r-1303-2 r-1313-2" style="display:none;">Based on the client’s circumstances a transfer from a company pension to a PRSA is not allowed.</span>
+			<span class="resultnote r-0303-3 r-0313-3 r-1303-3 r-1313-3" style="display:none;">Irish Life can not facilitate this transfer type.</span>
+			
+		</div>		
+        </div>
+	  
+	   
+			</div>
+        <div class="clearer"></div>
+	  </div>
+	  </div>
+	  </div>
+	  <div class="warningMessage">In all cases Irish Life may need to request further information from the transferring office. For more information please contact your Irish Life Account Manager.</div>
+			
+		  
+		';
+  return $HTML;
+  //return '<div class="maincontent" style="margin-top:30px;">test</div>';
+  
+}
+
+function document_smart_filter_block_view($delta = '') {
+  switch($delta) {
+    case 'document_smart_filter':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = document_smart_filter_content();
+      // No content in the last week
+
+      $block['content'] = $result;
+      drupal_add_css(drupal_get_path('module', 'document_smart_filter') . '/css/document_smart_filter.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'document_smart_filter') .'/js/document-smart-filter.js');
+
+
+    }
+    return $block;
+  }
+ }
+ 

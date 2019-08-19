@@ -1,0 +1,729 @@
+	
+/*	General CSS resets;
+ *		The target itself is not affected, allowing
+ *		the remainder of the document to use an
+ *		alternate box-sizing model;
+ *		Support for box-sizing is wide spread:
+ *		http://caniuse.com/#search=box-sizing
+ */
+	.noUi-target * {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+-webkit-touch-callout: none;
+    -ms-touch-action: none;
+-webkit-user-select: none;
+   -moz-user-select: none;
+    -ms-user-select: none;
+		cursor: pointer;
+	}
+
+/*	Main slider bar;
+ *		Standard styles no longer incorrectly force a
+ *		width or height on the slider.
+ */
+	.noUi-base {
+		width: 100%;
+		height: 9px;
+		position: relative;
+		max-width: 100%;
+		max-height: 100%;
+		border: 1px solid #BFBFBF;
+		z-index: 1;
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+	}
+
+/*	Handles + active state;
+ *		The :after pseudo-element wont inherit
+ *		box-sizing, so it needs to applied manually.
+ */
+	.noUi-handle {
+
+height: 30px;
+width: 30px;
+margin: -10px 0 0 -15px;
+background: url("http://www.irishlife.ie/uploadedImages/retail/123/img/123-slider.handle.sprite.png") repeat scroll 0px 0 transparent;
+border: 0px solid #BFBFBF;
+margin: -11px 0 0 -23px;
+-moz-border-radius: 13px;
+-webkit-border-radius: 16px;
+border-radius: 19px;
+	}
+		
+
+	.noUi-active {
+background: url("http://www.irishlife.ie/uploadedImages/retail/123/img/123-slider.handle.sprite.png") repeat scroll 0 -28px transparent;
+
+	}
+	.noUi-active:after {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		height: 100%;
+	}
+
+/*	Styling-only classes;
+ *		Structured to prevent double declarations
+ *		for various states of the slider.
+ */
+	.noUi-connect {	background: #57ce7e ;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwYzkzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzBkN2UxNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top, #57ce7e 0%, #219a4a 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#57ce7e), color-stop(99%,#219a4a));
+	background: -webkit-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: -o-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: -ms-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: linear-gradient(to bottom, #57ce7e 0%,#219a4a 99%);
+	}
+	.noUi-background {
+		background: #DDD;
+		
+background: url("http://www.irishlife.ie/uploadedImages/retail/123/img/123-slider.inside.bg.png") repeat scroll 0 0 #aaa;
+	}
+
+/*	Functional styles for handle positioning;
+ *		Note that the origins have z-index 0, the base has
+ *		z-index 1; This fixes a bug where borders become invisible.
+ */
+	.noUi-origin {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 0;
+		border-radius: inherit;
+	}
+	.noUi-origin-upper {
+		background: inherit !important;
+	}
+	.noUi-z-index {
+		z-index: 10;
+	}
+
+/*	Adaptations for the vertical slider;
+ *		Some standard styles have been extended to keep
+ *		exceptions for the vertical slider as minimal as possible.
+ */
+	.noUi-vertical {
+		width: 40px;
+		height: 100%;
+	}
+	.noUi-vertical .noUi-origin {
+		bottom: 0;
+		left: 0;
+	}
+	.noUi-vertical .noUi-handle  {
+		margin: -23px 0 0 -3px;
+	}
+
+/*	Various alternate slider states;
+ *		Support for transition is widely available,
+ *		Only IE7, IE8 and IE9 will ignore these rules.
+ *		Since this is merely a progressive enhancement,
+ *		this is no problem at all.
+ *		http://caniuse.com/#search=transition
+ */
+	.noUi-target[disabled] .noUi-base {
+		background: #999;
+	}
+	.noUi-target[disabled] .noUi-connect {
+		background: #BBB;
+	}
+	.noUi-state-tap .noUi-origin {
+		-webkit-transition: left 0.3s, top 0.3s;
+		transition: left 0.3s, top 0.3s;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+a {
+cursor: pointer;
+color: #4885d6;
+}
+a:hover {
+color: #134585;
+}
+a {
+cursor: pointer;
+text-decoration: none;
+-webkit-transition: color 0.2s linear;
+-moz-transition: color 0.2s linear;
+-ms-transition: color 0.2s linear;
+-o-transition: color 0.2s linear;
+transition: color 0.2s linear;
+color: #4885d6;
+}
+p {
+font-size: 0.8em;
+color: #333;
+line-height: 19px;
+}
+
+/* small rows need less row width */
+.smallRow{min-width: 150px;}	
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+.ILFSLoading{background-color:#FFFFC2;
+width: 100%;
+padding: 10px;
+position: fixed;
+top: 0px;
+margin: auto;
+text-align: center;
+z-index: 0;
+font-size:20px;
+z-index:4;
+left: 0px;}
+.ILFSLoading span{
+background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/123-ajax-loader.gif");
+width: 16px;
+height: 16px;
+display: inline-block;
+margin-right: 10px;
+top: 3px;
+position: relative;}
+
+h2.ilfsTitle {
+
+background-color:#134585;
+-moz-border-radius: 3px 3px 0px 0px; -webkit-border-radius: 3px 3px 0px 0px;  border-radius:  3px 3px 0px 0px;
+clear: both;
+color: #FFFFFF;
+font-size: 1.2em;
+height: 28px;
+line-height: normal;
+padding: 12px 0 0 20px;
+font-weight: normal;
+border: 1px solid #134585;
+}
+
+ .ilfs-right-callback{
+border:1px solid #cfe3fd;
+padding:1em;
+} .ilfs-right-callback input{
+float:none ;
+}
+.ilfsFormColumn {
+border-width: 0 1px 1px 1px;
+border-color: #b0c9eb; 
+border-style: solid; 
+padding: 10px;
+}
+.ilfsSliderResultHolder {
+width: 100%;
+box-shadow: 0 0 6px rgba(0,0,0,0.3);
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+background-color: #eeeeee;
+}
+.ilfsFormColumn label {
+font-weight: bold;
+color: #174d94;
+font-size:1	em;
+padding: 10px 0px 0px 0px;
+*padding:3px 0px 0px 0px;
+display: block;
+}
+.ilfsFormColumn .labelHolder {
+width: 50%;
+float: left;
+}
+.ilfsDetailsPanel {
+
+box-shadow: 0 0 6px rgba(0,0,0,0.3);
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+background-color: #eeeeee;
+width: 100%;
+		margin:10px 5px 10px 5px ;
+}
+.ilfsDetailsPanel fieldset {
+top: 45px; 
+margin: 0px 5px; 
+height: 92px; 
+position: relative;
+
+background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/123-slider-lines.png") repeat-x scroll 0px 4px transparent;
+}
+.stepHold .stepCol span.title {
+text-transform: uppercase;
+}.stepHold .stepCol span.step {
+text-transform: uppercase;
+}
+
+.stepHold .first {
+border-radius: 4px 0 0 4px;
+-webkit-border-radius: 4px 0 0 4px;
+border-left: 1px solid #7cabe8;
+}.stepHold .last {
+border-radius: 0 4px 4px 0;
+-webkit-border-radius: 0 4px 4px 0;
+border-right: 1px solid #7cabe8;
+}
+.stepHold .stepActive {
+background: #cfe3fd;
+}
+.stepHold .stepActive .ilfsArrowRight {
+position: absolute;
+right: -19px;
+z-index:1;
+top: 0;
+background: url('http://www.irishlife.ie/uploadedImages/retail/123/img/123-arrow-trans.png');
+width: 20px;
+height: 39px;
+display: block;
+}
+.stepHold .stepCol {
+float: left;
+width: 33%;
+display: block;
+padding: 9px 0 0;
+height: 30px;
+text-align: center;
+border-top: 1px solid #7cabe8;
+border-bottom: 1px solid #7cabe8;
+margin: 0 0 1em;
+font-weight: bold;
+color: #15488b;
+font-size: 1em;
+position: relative;
+}
+.stepHold .ilfsArrowRight{
+position: absolute;
+right: 0;
+top: 0;
+background: url('http://www.irishlife.ie/uploadedImages/retail/123/img/123-arrow-white-trans.png');
+width: 20px;
+height: 39px;
+display: block;
+}
+
+/* .ilfsSliderTextPanel{
+	background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/123-move.slider.text.png") repeat-x scroll 0px 0px transparent;
+	height:49px;
+	width:152px;
+	position:absolute;
+	top:-55px;
+	left:8%;
+	
+} */
+
+.ilfsSliderTextPanel{
+	background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/123-move.slider.arrow.png") repeat-x scroll 0px 0px transparent;
+height: 100px;
+width: 81px;
+position: absolute;
+top: -85px;
+left: -85px;
+	
+}
+.sliderResultBlock {
+padding: 10px 0px 0px 0px;
+text-align: center;
+font-size: 16px;
+vertical-align: middle;
+min-height: 80px;
+-webkit-transition: background 100ms ease-in 2s; /* property duration timing-function delay */
+    -moz-transition: background 100ms ease-in 2s;
+    -o-transition: background 100ms ease-in 2s;
+    transition: background 100ms ease-in 2s;
+
+
+    -webkit-transition-property: background;
+    -webkit-transition-duration: 100ms;
+    -webkit-transition-timing-function: ease-in;
+    -webkit-transition-delay: 0ms;
+
+    -moz-transition-property: background;
+    -moz-transition-duration: 100ms;
+    -moz-transition-timing-function: ease-in;
+    -moz-transition-delay: 0ms;
+
+    -o-transition-property: background;
+    -o-transition-duration: 100ms;
+    -o-transition-timing-function: ease-in;
+    -o-transition-delay: 0ms;
+
+    transition-property: background;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in;
+    transition-delay: 0ms;
+}
+.sliderResultBlock.sliderMove{
+padding: 30px 0px 0px 0px;
+background-color:#219a4a;
+color:#fff;
+vertical-align: middle;
+min-height: 60px;
+}
+.sliderResultBlock.termFalse{
+padding: 30px 0px 0px 0px;
+vertical-align: middle;
+min-height: 60px;
+}
+.sliderResultBlock.termFalse #quoteResult{
+font-size: 29px;
+font-weight: bold;
+}
+.sliderResultBlock.sliderMove #quoteResult{
+font-size: 29px;
+font-weight: bold;
+}
+#quoteResult{
+font-size: 24px;
+font-weight: bold;
+}
+.termHolder {
+margin-top: 3px;
+font-size: 12px;
+color: #666;
+font-weight: normal;
+}
+#term{
+width: 40%;
+}
+.ilfsAddUserbtnHolder {
+width: 100%;
+padding: 90px 0px;
+position: relative;
+text-align: center;
+}
+a.ilfsAddUserbtn {
+background-color: #134585;
+color:#ffffff;
+font-weight:bold;
+font-size:0.7em;
+text-decoration:none;
+padding:10px;
+margin: 1px 0px 0px 0px;
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+}
+a:hover.ilfsAddUserbtn {
+
+background-color:#4573AF;
+}
+
+
+a.ilfsRHSSubmitbtn {
+display:block;
+margin-top:1em;
+-webkit-box-shadow: inset 0px 1px 3px 0px #cfcfcf;
+box-shadow: inset 0px 1px 3px 0px #cfcfcf;
+background: linear-gradient(to bottom, #436EA5 0%, #123D74 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+background-color:#436EA5;
+-webkit-user-modify: read-write-plaintext-only;
+border: 1px solid #b8b8b8;
+-webkit-box-shadow: 0 1px 1px #fff;
+-moz-box-shadow: 0 1px 1px #fff;
+box-shadow: 0 1px 1px #fff;
+font: bold 12px;
+text-align:center;
+padding: 6px 10px;
+white-space: nowrap;
+vertical-align: middle;
+color: #ffffff;
+cursor: pointer;
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+}
+a:hover.ilfsRHSSubmitbtn {
+background: linear-gradient(to bottom, #436EA5 0%, #123D74 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+
+.ilfsDOBday{width:28%;margin-right:2%}
+.ilfsDOBmonth{width:28%;margin-right:2%}
+.ilfsDOByear{width:40%;}
+.pushDown{margin-top:10px;}
+#wholepage{background-color:#fff;}
+.ilfsDetailsBlock{padding:10px;position:relative;}
+.leftbtn{float:left;}
+.rightbtn{float:right;}
+.ilfsDetailsBlock h3{text-align:center;font-size:18px;margin:5px 0px 15px 0px;color:#174d94;font-weight:bold;}
+select {
+width: 101%;
+background: #ffffff;
+background: -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0));
+background: -webkit-linear-gradient(top, #ffffff 0%,#e0e0e0 100%);
+background: -o-linear-gradient(top, #ffffff 0%,#e0e0e0 100%);
+background: -ms-linear-gradient(top, #ffffff 0%,#e0e0e0 100%);
+background: linear-gradient(to bottom, #ffffff 0%,#e0e0e0 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 );
+border: 1px solid #ababab;
+border-radius: 3px;
+-webkit-border-radius: 3px;
+padding: 0.6em 3%;
+}
+input {
+float: left;
+width: 94%;
+padding: 0.6em 3%;
+border: 1px solid #b8b8b8;
+border-radius: 3px;
+-webkit-border-radius: 3px;
+color: #666;
+-webkit-box-shadow: inset 0px 1px 3px 0px #cfcfcf;
+box-shadow: inset 0px 1px 3px 0px #cfcfcf;
+display: inline !important;
+background: #f5f5f5;
+-webkit-user-modify: read-write-plaintext-only;
+}
+a.ilfsMovebtn {
+	background: #57ce7e;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwYzkzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzBkN2UxNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top, #57ce7e 0%, #219a4a 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#57ce7e), color-stop(99%,#219a4a));
+	background: -webkit-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: -o-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: -ms-linear-gradient(top, #57ce7e 0%,#219a4a 99%);
+	background: linear-gradient(to bottom, #57ce7e 0%,#219a4a 99%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ce7e', endColorstr='#219a4a',GradientType=0 );
+	color:#fff;
+	font-weight:bold;
+	text-decoration:none;
+	font-size:16px;
+	padding: 15px;
+	position: relative;
+	text-align: center;
+	margin: 10px 0px 10px 0px;
+	-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+	/* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.53);  */
+}
+
+
+a:hover.ilfsMovebtn {
+	background: #219a4a;
+	}
+#progressError {
+	background-color: #fde0e0;
+	color: red;
+	border: 1px solid red;
+	margin-top: 10px;
+	}
+.errorMessage {
+	background-color: #fde0e0;
+	color: red;
+	padding:0 1em;
+	margin-bottom:1em;
+	text-align:left;
+}
+.ilfsFormColumn table{
+	background-color: #cfe3fc;
+	color: #000;
+	border: 0px solid #fff;
+	width: 70%;
+	margin: auto;
+	}
+.ilfsFormColumn table thead{
+	background-color: #73a9ef;
+	color: #fff;
+	}
+.ilfsFormColumn table th{
+	padding: 10px 0 10px 0;
+	font-weight: bold;
+	font-size: 2em;
+	/* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.53);  */
+	}
+.ilfsFormColumn table td,.ilfsFormColumn table th{
+	text-align: center;
+	}
+.ilfsFormColumn table td.content{
+	padding: 20px 0 20px 0;
+	}
+.ilfsFormColumn table td.content .ilfsQuoteResult{
+	font-size:2.1em;
+	}
+	
+.ilfsFormColumn table tr.ilfsQuoteBenefits{
+	padding-top:10px;
+	}
+.ilfsFormColumn table tr.ilfsQuoteBenefits td{
+	text-align:left;
+	border-top:1px solid #73a9ef;
+	padding-top:10px;
+	}
+.ilfsFormColumn ul 
+{
+	list-style-image:url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/ilfs-123-check.png');
+list-style-position: inside;
+color:#174d94;
+font-size:0.9em;
+}
+.ilfsFormColumn ul li
+{
+margin: 0px 0px 8px 8px;
+}
+.ilfsComply{
+font-size:12px;
+color:#666;
+}
+.ilfs-hide-for-large,.ilfs-show-for-small {
+  display: none !important; 
+  }
+  
+.ilfs-callback-text{
+text-align:center;
+}
+.ilfs-callback-text h4{
+font-size:1em;
+color:#134585;
+margin-top:18px;
+}
+.ilfs-callback-text a{
+background-color:#639be5;
+color:#fff;
+padding:8px;
+font-size:1em;
+top:35px;
+position:relative;
+-moz-border-radius: 3px; -webkit-border-radius:  3px;  border-radius:  3px; 
+}
+.ilfs-callback-text a:hover{
+background-color:#b6d6ff;
+color:#15488b;
+}
+body{
+	font-size:16px;
+	font-family: 'Arial', sans-serif;
+}
+
+a.ilfsUserBClose{
+position: absolute;
+top: -4px;
+right: -3px;
+font-size: 10px;
+background-color: #134585;
+color: #ffffff;
+font-weight: bold;
+text-decoration: none;
+padding: 3px 3px 3px 3px;
+margin: 0px 0px 0px 0px;
+-moz-border-radius: 999px;
+-webkit-border-radius: 9999px;
+border-radius: 9999px;
+height: 14PX;
+WIDTH: 14PX;
+text-align: center;
+}
+a:hover.ilfsUserBClose {
+
+background-color:#4573AF;
+}
+/* For large mobile devices */
+@media only screen and (max-width: 860px) {
+
+body{
+	font-size:16px;
+}	
+.ilfsFormColumn label{
+text-align:left;
+}
+.ilfsDetailsPanel{
+		margin:10px 0px 10px 0px ;
+}
+.ilfs-hide-for-medium,.ilfs-show-for-small {
+  display: none !important; 
+}
+.ilfsFormColumn table {
+width: 80%;
+}
+.ilfsAddUserbtnHolder {
+width: 100%;
+padding: 20px 0px;
+}
+h2.ilfsTitle {
+font-size:1em;
+}
+span.step {
+display: none;
+}
+
+.ilfs-callback-text h4{
+font-size:2em;
+color:#134585;
+margin-top:30px;
+}
+.ilfs-callback-text a{
+padding:15px;
+font-size:1.3em;
+top:50px;
+}
+select {
+font-size:1.2em;
+}
+
+	.noUi-handle {
+height: 60px;
+width: 60px;
+margin: -25px 0 0 -30px;
+background: url("http://www.irishlife.ie/uploadedImages/retail/123/img/123-slider.handle.sprite-large.png") repeat scroll 0 0 transparent;
+z-index:12;
+	}
+	.noUi-active {
+height: 60px;
+width: 60px;
+margin: -25px 0 0 -30px;
+background: url("http://www.irishlife.ie/uploadedImages/retail/123/img/123-slider.handle.sprite-large.png") repeat scroll 0 -55px transparent;
+
+	}
+
+}
+
+
+/* For small mobile devices */
+@media only screen and (max-width: 640px) {
+body{
+	font-size:14px;
+}
+
+
+h2.ilfsTitle {
+font-size:0.7em;
+}
+.ilrfsDetailsPanel{
+	margin:10px 0px 10px 0px ;
+}
+
+.ilfs-hide-for-small{
+  display: none !important; 
+  }
+.ilfs-show-for-small {
+  display: inline !important; 
+  }	.ilfsFormColumn table {
+width: 95%;
+}
+.ilfs-callback-text h4{
+font-size:1em;
+color:#134585;
+margin-top:20px;
+}
+.ilfs-callback-text a{
+padding:8px;
+font-size:.9em;
+top:20px;
+}
+.stepHold .stepCol span.title {
+display: none;
+}
+.ilfsSliderTextPanel{
+	background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/123/img/123-move.slider.arrow.small.png") repeat-x scroll 0px 0px transparent;
+height: 60px;
+width: 31px;
+position: absolute;
+top: -80px;
+left: -20px;
+	
+}
+select {
+font-size: 0.85em;
+}
+}

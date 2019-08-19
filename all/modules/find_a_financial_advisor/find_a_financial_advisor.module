@@ -1,0 +1,149 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function find_a_financial_advisor_block_info() {
+  $blocks['find_a_financial_advisor'] = array(
+    'info' => t('Find a Financial Advisor Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function find_a_financial_advisor_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#find_a_financial_advisor":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function find_a_financial_advisor_contents(){
+  return '
+  <!--Widget Code Starts-->
+
+   <div class="mobileAdvisorMapAddress">
+    <h3>Find a Financial Advisor in your area:</h3>
+    
+    <div class="mapAddressInputs">
+      <div class="checkBox">
+        <img src="'.$GLOBALS['base_url'].'/sites/all/modules/find_a_financial_advisor/img/map.person.icon.png" height="20" /> Irish Life Tied Agent
+      </div>
+
+      <div class="checkBox">
+        <img src="'.$GLOBALS['base_url'].'/sites/all/modules/find_a_financial_advisor/img/map.person2.icon.png" height="20" />
+        <input id="mobIibCheckBox" class="mapCheckBox" type="checkbox" /> Financial Broker or Advisor
+      </div>
+    </div>
+  </div>
+<div class="advisorMapHolder">
+  <div id="map-container">
+    <div id="map" class="advisormap"></div>
+  </div>
+
+  <div class="advisorMapAddress">
+    <h3>Find a Financial Advisor in your area:</h3>
+    <div class="mapAddressInputs">
+      <p><label>County:</label>
+      <select id="mapOptionsCounty" class="mapSelect" name="mapOptionsCounty">
+      <option selected="selected" value="">Select your county</option>
+      <option value="carlow">Carlow</option>
+      <option value="cavan">Cavan</option>
+      <option value="clare">Clare</option>
+      <option value="cork">Cork</option>
+      <option value="donegal">Donegal</option>
+      <option value="dublin">Dublin</option>
+      <option value="galway">Galway</option>
+      <option value="kerry">Kerry</option>
+      <option value="kildare">Kildare</option>
+      <option value="kilkenny">Kilkenny</option>
+      <option value="laois">Laois</option>
+      <option value="leitrim">Leitrim</option>
+      <option value="limerick">Limerick</option>
+      <option value="longford">Longford</option>
+      <option value="louth">Louth</option>
+      <option value="mayo">Mayo</option>
+      <option value="meath">Meath</option>
+      <option value="monaghan">Monaghan</option>
+      <option value="offaly">Offaly</option>
+      <option value="roscommon">Roscommon</option>
+      <option value="sligo">Sligo</option>
+      <option value="tipperary">Tipperary</option>
+      <option value="waterford">Waterford</option>
+      <option value="westmeath">Westmeath</option>
+      <option value="wexford">Wexford</option>
+      <option value="wicklow">Wicklow</option>
+      </select>
+      </p>
+      <div class="checkBox">
+        <img src="'.$GLOBALS['base_url'].'/sites/all/modules/find_a_financial_advisor/img/map.person.icon.png" height="20" /> Irish Life Tied Agent
+      </div>
+
+      <div class="checkBox">
+        <img src="'.$GLOBALS['base_url'].'/sites/all/modules/find_a_financial_advisor/img/map.person2.icon.png" height="20" />
+        <input id="iibCheckBox" class="mapCheckBox" type="checkbox" /> Financial Broker or Advisor
+      </div>
+
+      <br />
+      
+      <div id="advisorButton">
+        <a class="button" id="findFAAddress" onclick="countyChange(this)"><span class="ui-button-text find-advisor-button">Find an Advisor now</span></a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!--Widget Code Ends-->';
+}
+
+function find_a_financial_advisor_block_view($delta = '') {
+  switch($delta) {
+    case 'find_a_financial_advisor':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = find_a_financial_advisor_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'find_a_financial_advisor') . '/css/find-a-financial-advisor.css', array('group' => CSS_DEFAULT,'weight' => 100));
+
+      drupal_add_js('https://maps.google.com/maps/api/js?key=AIzaSyBAVVo_41ZmuVGJ2azdfwRAIf0vZPxT3wY&sensor=false','external');
+	  //drupal_add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyBAVVo_41ZmuVGJ2azdfwRAIf0vZPxT3wY&callback=initMap');
+      drupal_add_js(drupal_get_path('module', 'find_a_financial_advisor') .'/js/markerclusterer.js', array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'find_a_financial_advisor') .'/js/find-a-financial-advisor.js', array('scope' => 'footer'));
+
+
+    }
+    return $block;
+  }
+ }

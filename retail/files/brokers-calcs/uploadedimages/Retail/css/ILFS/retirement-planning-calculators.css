@@ -1,0 +1,31 @@
+ /*==============================================
+	reset.css into main file - reduce server calls
+============================================== */
+
+.slidingBlockInputs input {
+	text-align: center !important;
+}
+
+.slidingBlockInputsOutputs {
+	margin-top: 5px !important;
+}
+
+.sliderRow legend {
+    font-size: 13px;
+}
+
+.sliderRow fieldset select {
+    margin-left: 0px;
+}
+
+.sliderRowHalf fieldset {
+	text-align: center;
+}
+
+.resultHolder table.inputsTableHolder td {
+    font-size: 15px;
+}
+
+.resultHolder table td {
+    font-size: 13px;
+}

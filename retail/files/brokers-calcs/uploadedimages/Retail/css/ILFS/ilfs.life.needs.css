@@ -1,0 +1,1106 @@
+.ui-widget-content {border-left: 1px solid #A5A5A5;
+border-right: 1px solid #A5A5A5;
+border-top: 1px solid #A5A5A5;
+border-bottom: 1px solid #777; background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.inside.bg.life.insurance.png") repeat scroll 0 0 #aaa }
+
+.ui-widget-header { border: 1px solid #B7BAC4;  background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.highlight.bg.life.insurance.png") repeat-x scroll 0 0 transparent; color: #ffffff; font-weight: bold; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 0 transparent; *background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 0 transparent; -moz-border-radius: 15px !important; -webkit-border-radius:  15px !important; border-radius:  15px !important; border:0px solid white !important;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 -28px transparent;*background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 -28px transparent;border:0px solid white !important;}
+.ui-state-hover a, .ui-state-hover a:hover { color: #2b2b2b; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 -56px transparent;*background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 -56px transparent; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+.ui-corner-all { -moz-border-radius: 9px; -webkit-border-radius: 9px; border-radius: 9px; }
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 30px; height: 30px; cursor: pointer;outline-width: 0; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 0/*1*/; font-size: .7em; display: block; border: 0; background-position: 0 0; -moz-border-radius-topleft: 9px; -webkit-border-top-left-radius: 9px; border-top-left-radius: 9px; -moz-border-radius-bottomleft: 9px; -webkit-border-bottom-left-radius: 9px; border-bottom-left-radius: 9px;}
+
+.ui-slider-horizontal { height: 7px; }
+.ui-slider-horizontal .ui-slider-handle { top: -10px; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+/*  */
+
+.progressButtons{
+	color:#ffffff;
+	background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/lifeinsuranceprocessbutsprite.png?180112");
+	background-repeat: no-repeat;
+	display: block;height: 47px;width: 220px;margin-top:0px;margin-bottom:1px;border: 0 solid #CCCCCC;
+}
+
+
+#lifeInsuranceProgress,#lifeInsuranceComplete {
+	float:left;
+    width: 593px;
+    margin: 0px;
+    height: 40px;
+    background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.progress.new.png);
+    position:relative;
+}
+#lifeInsuranceComplete { 
+    background-position: 0px 68px;
+    margin-top: 0;
+}
+#lifeInsuranceComplete #LifeInsuranceMarker {
+	position: absolute;
+	top: 7px;
+	left: 74px;
+	background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.markers.new.png);
+	width: 32px;
+	height: 32px;
+}
+
+#lifeInsuranceProgress .s1 {
+    width: 106px;
+	overflow:visible !important;
+}
+#lifeInsuranceProgress .s2 {
+    width:314px;
+	overflow:visible !important;
+}
+#lifeInsuranceProgress .s3 {
+    width:518px;
+	overflow:visible !important;
+}
+#lifeInsuranceProgress .s2 #LifeInsuranceMarker {
+    background-position: 0px -32px;
+}
+#lifeInsuranceProgress .s3 #LifeInsuranceMarker {
+    background-position: 0px -64px;
+}
+
+
+.lifeInsuranceProgressBox {
+    background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.pattern.bg.png);
+	background-color: #FAFAFA;
+	border-top: 1px solid #e9e9e9;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #d8d8d8;
+	border-left: 1px solid #d8d8d8;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width: 610px;
+	margin-bottom: 10px;
+	min-height: 670px;
+	padding: 10px 25px 30px;
+	float: left;
+	position: relative;
+	-moz-box-shadow: 0px 0px 7px 1px #D3D3D3;
+	-webkit-box-shadow: 0px 0px 7px 1px #D3D3D3;
+	box-shadow: 0px 0px 7px 1px #D3D3D3;
+	z-index:10;
+	text-align: left;
+}
+
+.lifeInsuranceProgressBoxSummary{
+    background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.pattern.bg.png);
+    margin: 3px 0px 0px 0px;
+    min-height: 0;
+	float:left;
+    background-color: #fafafa;
+	position:relative;
+	width:240px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-bottomright: 6px;
+}
+
+.lifeInsuranceProgressBoxSummary hr{
+	margin: 5px 0px 5px 0px;
+	position: relative;
+	height: 0;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid white;
+}
+
+.lifeInsuranceProgressBoxSummary h5{
+	color: #666;
+	margin: 0;
+}
+.sideFade{
+	background: -webkit-linear-gradient(left,rgba(0, 0, 0, .12),rgba(0, 0, 0, .08) 1px,rgba(0, 0, 0, .08) 1px,transparent 30px,transparent 100%);
+	background: -moz-linear-gradient(left,rgba(0, 0, 0, .12),rgba(0, 0, 0, .08) 1px,rgba(0, 0, 0, .08) 1px,transparent 30px,transparent 100%);
+	background: -webkit-linear-gradient(left,rgba(0, 0, 0, .12),rgba(0, 0, 0, .08) 1px,rgba(0, 0, 0, .08) 1px,transparent 30px,transparent 100%);
+	background: -o-linear-gradient(left,rgba(0, 0, 0, .12),rgba(0, 0, 0, .08) 1px,rgba(0, 0, 0, .08) 1px,transparent 30px,transparent 100%);
+	min-height:400px;
+	padding: 10px 10px 30px 15px;
+	color: #666;
+}
+
+.userDetailsCallbackScreenInformation{
+	padding-left:10px;
+}
+
+.sideFade .extraDetails {
+	position: relative;
+	padding: 4px 0;
+	background: #E3E3E3;
+	z-index: 0;
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.25);
+	-ms-box-shadow: inset 0 1px 3px rgba(0,0,0,.25);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+	cursor:pointer;
+}
+.sideFade .extraDetails:hover {
+	background: #fefefe;
+	cursor:pointer;
+}
+
+.sideFade .extraDetails img{
+float:left;
+}
+
+.userDetailsCallbackScreen{
+	position:absolute;
+	top:0px;
+	padding-left:0px;
+	padding-top:10px;
+	left:0px;
+    background-color: #fff;
+	width:0px;
+	min-height:400px;
+	border-top: 1px solid #cacaca;
+	border-right: 1px solid #cacaca;
+	border-bottom: 1px solid #cacaca;
+	border-left: 0px solid #d8d8d8;	
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-bottomright: 6px;
+	z-index:9;
+	color: #666;
+	font-size:11px;
+	line-height:11px;
+}
+
+.lifeInsuranceProgressBoxSummary input,.lifeInsuranceProgressBoxSummary select{
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	font: bold 11px Sans-Serif;
+	padding: 6px 10px;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: rgba(255, 255, 255, 0.6);
+	width:190px;
+}
+
+.lifeInsuranceProgressBoxSummary button,.lifeInsuranceProgressBoxSummary select{
+	width:210px;
+}
+
+.lifeInsuranceProgressSideDetailsLabel{
+	margin-top:2px;
+	margin-bottom:-3px;
+}
+
+.lifeInsuranceProgressSideDetails{
+	border-bottom: 1px dashed #D8D8D8;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+}
+
+.lifeInsuranceCallbackInputs select{
+	border: 1px solid #AAA;
+	color: #333;
+	margin-right: 3px;
+	font-size: 110%;
+}
+
+.lifeInsuranceCallbackInputs{width:270px; float:left;}
+
+.lifeInsuranceCallbackInputs input,.lifeInsuranceCallbackInputs select{
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	font: bold 11px Sans-Serif;
+	padding: 6px 10px;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: rgba(255, 255, 255, 0.6);
+	width:250px;
+}
+
+.lifeInsuranceCallbackInputs select{
+	width:270px;
+}
+
+.error{
+	color:red;
+}
+
+.sliderRow {
+	position: relative;
+	width: 600px;
+}
+
+#progressBoxStep1 {
+	position:relative;
+	top:30px;
+}
+
+#progressBoxStep1 .sliderRow {
+	margin-top:0px;
+	margin-bottom:10px;
+}
+
+.embolden{font-weight:bold;}
+
+#sliderLeft {
+	width: 550px;
+	height: 68px;
+	display: inline;
+	position: relative;
+}
+
+.sliderRow fieldset {	
+	padding: 10px 20px 10px 10px;
+	height: 58px;
+	width: 440px;
+	position:relative;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.slidrRow select{
+	border:1px solid #ccc;
+	color:#666;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#sliderRight {
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 125px;
+}
+
+
+#sliderBubble {
+background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/sliderBubbleLifeCoverCalc.png") no-repeat scroll 0 0 transparent;
+    font-weight: bold;
+    height: 65px;
+    left: 343px !important;
+    overflow: hidden;
+    padding: 8px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 86px !important;
+    width: 213px;
+    z-index: 10;
+}
+
+
+#firstScreenError {
+    float: left;
+    font-size: 16px;
+    height: 0;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    text-align: center;
+    width: 612px;
+}
+
+
+.introText{
+	background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.arrow.down.png");
+	background-repeat: no-repeat;
+	background-position: 5px 12px;
+	width: 550px;
+	position: absolute;
+	top: -42px;
+	padding-left: 65px;
+	padding-top:10px;
+	z-index: 150;
+	font-size: 16px;
+	height:60px;
+	text-shadow: -1px 1px 0px white;
+}
+
+#quoteSlider{
+	margin-top:25px;
+}
+
+.termHolder{
+	margin-top:3px;
+	*margin-top:12px;
+	font-size: 12px;
+	color: #666;
+	font-weight: normal;
+}
+
+.lifeInsurancePerson1{
+	width:270px; 
+	float:left; 
+	padding:15px;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: rgba(255, 255, 255, 0.6);
+}
+
+#progressPersonAdd{
+	width:270px;
+	float:right;
+	padding:15px;
+	position:relative;
+	text-align:center;
+	margin-top: 55px;
+}
+
+.lifeInsurancePerson2{
+	width:270px; 
+	float:right;
+	padding:15px; 
+	position:relative;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: rgba(255, 255, 255, 0.6);
+}
+
+table tbody tr {
+    background: none !important;
+}	
+	
+.progressBarHolder{
+	padding-bottom: 10px;
+    padding-left: 143px;
+    width: 737px;
+}		
+.tooltip{
+    background-color: #FFFFFF;
+    border: 1px solid #C9C9C9;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 10pt;
+    max-width: 200px;
+    padding: 10px 12px;
+    position: absolute;
+}
+
+.center{
+    left: 43% !important;
+    position: absolute;
+    top: 42% !important;
+}
+.loading, #progressBoxStep1, #progressBoxStep2, #progressBoxStep3 {
+    float: left;
+    height: 640px;
+    top: 0 !important;
+    width: 880px;
+}
+
+.legend {
+	float: left;
+    margin-left: 20px;
+    margin-top: 35px;
+    width: 200px;
+}
+
+.thirdScreenResults{
+	height: 70%;
+    margin: 4% 7% 7%;
+    width: 90%;
+}
+
+.secondScreenLeft {
+    float: left;
+    width: 390px;
+}
+
+#RSA{
+	font-size:15px;
+}
+
+
+.secondScreenRight {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #EEEEEE;
+    color: #666666;
+    display: inline;
+    float: left;
+    margin-left: 17px;
+    margin-top: 20px;
+    padding: 15px 10px 10px 30px;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    width: 298px;
+}
+
+.left {
+    float: left;
+    height: 426px;
+    padding-left: 12px;
+    padding-right: 20px;
+    width: 45%;
+}
+
+.right {
+    float: left;
+    height: 426px;
+    padding-left: 23px;
+    width: 45%;
+}
+
+.left th, .right th{
+	border: none !important;
+	padding: 20px;
+	height: 1px !important;
+}
+
+.left > table, .right > table{
+	height: 100%;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #EEEEEE;
+}
+
+.left td, .right td {
+	padding-left: 20px;
+	height: 22px;
+}
+
+.desciption {
+    float: left;
+    padding-top: 5px;
+	padding-left: 5px;
+    position: relative;
+    width: 100px;
+}
+.sliderHolder{
+	height:43px;
+	margin-bottom:2px;
+}
+
+.sliderLeftBox{
+	background: white;
+	float:left;
+	width:430px;
+	height:32px;
+	padding-top:8px;
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #eee;
+    color: #666666;
+    position: relative;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.sliderRightBox{
+    background: white;
+	float:right;
+	width:185px;
+	height:32px;
+	padding-top:8px;
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #eee;
+    color: #666666;
+    position: relative;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#progressBoxStep4{
+	line-height: 18px;
+    padding-left: 137px;
+    width: 622px;
+}
+
+#progressBoxStep2 .sliderLeftBox {
+    height: 39px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    width: 608px;
+}
+
+#progressBoxStep2 .sliderRightBox {
+    background: none repeat scroll 0 0 transparent;
+    color: white;
+    height: 39px;
+    text-shadow: none;
+    width: 107px;
+}
+
+.slider {
+    left: 0;
+	top:6px;
+    margin-left: 85px;
+    position: relative;
+    width: 330px;
+}
+
+.sliderGroup {
+    float: left;
+    padding-left: 45px;
+    position: relative;
+    width: 748px;
+}
+
+.sliderGroup .slider {
+    left: 35px;
+    margin-top: 4px;
+    width: 460px;
+}
+
+.sliderResultBlock {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px white;
+    color: #666666;
+    font-size: 16px;
+    font-weight: bold;
+    height: 18px;
+    line-height: 10px;
+    margin-top: -9px;
+    padding: 20px 5px 10px;
+    text-align: center;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 97px
+}
+
+.current_value{
+	padding:5px;
+}
+
+.legendAndDescription{
+	padding-top: 20px;
+}
+
+.hoverColor{
+	background: none repeat scroll 0 0 #82A623 !important;
+    color: #FFFFFF !important;
+    text-shadow: none !important;
+	font-weight:bold;
+}
+
+.sumAssuredChangeColor{
+	background: none repeat scroll 0 0 #FEFFC6 !important;
+    color: #EE1C23 !important;
+}
+
+.firstScreenResults {
+	background: white;
+    font-size: 16px;
+    margin-top: 3px;
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #EEEEEE;
+    color: #666666;
+    float: left;
+	padding: 30px 26px 25px;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    width: 612px;
+}
+
+.firstScreenButtons{
+	float: right;
+    padding-right: 30px;
+    padding-top: 20px;
+    width: 289px;
+}
+
+.secondScreenResults {
+	background: white;
+    display: inline;
+    padding: 25px;
+    width: 569px;	
+	font-size: 16px;
+    margin-top: 3px;
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #EEEEEE;
+    color: #666666;
+    float: left;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;	
+}
+
+.secondScreenButtons{
+    bottom: 1%;
+    left: 22%;
+    position: absolute;
+    width: 55%;
+}
+
+.secondScreenButtons .progressButtons{
+	position: relative !important;
+	right: 0 !important;
+}
+
+.fourthScreenButtons {
+    bottom: 18%;
+    left: 25%;
+    position: absolute;
+    width: 53%;
+}
+
+table tbody td {
+   padding: 4px;
+}
+
+table {
+	background-color: #F9F9F9;
+    border-collapse: collapse;
+    border-spacing: 0;
+    float: left;
+    margin-top: -11px;
+    width: 100%;
+}
+
+.button {
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	text-shadow: 0 1px 1px white;
+	-webkit-box-shadow: 0 1px 1px #fff;
+	-moz-box-shadow:    0 1px 1px #fff;
+	box-shadow:         0 1px 1px #fff;
+	font: bold 11px Sans-Serif;
+	padding: 6px 10px;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #666;
+	background: transparent;
+	cursor: pointer;
+}
+
+.button:hover, .button:focus {
+   border-color: #999;
+   background: -webkit-linear-gradient(top, white, #E0E0E0);
+   background:    -moz-linear-gradient(top, white, #E0E0E0);
+   background:     -ms-linear-gradient(top, white, #E0E0E0);
+   background:      -o-linear-gradient(top, white, #E0E0E0);
+   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+   -moz-box-shadow:    0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+   box-shadow:         0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+}
+
+.button:active,.selected {
+   background: #E6E6E6 !important;
+   border: 1px solid #AAA;
+   border-bottom-color: #CCC;
+   border-top-color: #999;
+   -webkit-box-shadow: inset 0 1px 2px #aaa;
+   -moz-box-shadow:    inset 0 1px 2px #aaa;
+   box-shadow:         inset 0 1px 2px #aaa;
+   background: -webkit-linear-gradient(top, #E6E6E6, gainsboro);
+   background:    -moz-linear-gradient(top, #E6E6E6, gainsboro);
+   background:     -ms-linear-gradient(top, #E6E6E6, gainsboro);
+   background:      -o-linear-gradient(top, #E6E6E6, gainsboro);
+  
+}
+
+.button:hover:after {
+   border-top-color: black;
+}
+
+.infoGroup {
+    float: left;
+    padding-left: 5%;
+    padding-top: 15px;
+    position: relative;
+    text-align: inherit;
+    width: 770px;
+}
+
+.tabs {
+	position: relative;
+    display: block;
+	float: left;
+    font-size: 12px;
+    width: 880px;
+	line-height: 12px;
+    background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.pattern.bg.png);
+	background-color: #FAFAFA;
+	border-top: 1px solid #e9e9e9;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #d8d8d8;
+	border-left: 1px solid #d8d8d8;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	margin-bottom: 10px;
+	padding: 10px;
+	-moz-box-shadow: 0px 0px 7px 1px #D3D3D3;
+	-webkit-box-shadow: 0px 0px 7px 1px #D3D3D3;
+	box-shadow: 0px 0px 7px 1px #D3D3D3;
+	text-align: left;
+	min-height:300px;
+}
+
+.pieChart {
+    float: left;
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+#sidebar{
+	float: left;
+    height: 100%;
+    width: 180px;
+}
+
+.nav {
+    display: block;
+    height: 417px;
+	width:180px;
+}
+
+.nav > li{
+	background: white;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border-color: #DDDDDD;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    box-shadow: 0 1px 1px #FFFFFF;
+    color: #666666;
+	cursor: pointer;
+    display: block;
+    float: left;
+    height: 49px;
+    margin-bottom: 1px;
+    padding: 9px 5px;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 170px;
+}
+
+.current{
+	background: #E6E6E6 !important;
+	margin-bottom:0px !important;
+	border-right: 1px solid #AAA;
+	border-bottom: 1px solid #AAA;
+	border-bottom-color: #CCC !important;
+	border-top-color: #999 !important;
+	-webkit-box-shadow: inset 0 1px 2px #aaa !important;
+	-moz-box-shadow:    inset 0 1px 2px #aaa !important;
+	box-shadow:         inset 0 1px 2px #aaa !important;
+	background: -webkit-linear-gradient(top, #E6E6E6, gainsboro) !important;
+	background:    -moz-linear-gradient(top, #E6E6E6, gainsboro) !important;
+	background:     -ms-linear-gradient(top, #E6E6E6, gainsboro) !important;
+	background:      -o-linear-gradient(top, #E6E6E6, gainsboro) !important;
+}
+
+
+.nav > li:hover, .current:hover{
+	margin-bottom:0px !important;
+	border-color: #999 !important;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	background: -webkit-linear-gradient(top, white, #E0E0E0) !important;
+	background:    -moz-linear-gradient(top, white, #E0E0E0) !important;
+	background:     -ms-linear-gradient(top, white, #E0E0E0) !important;
+	background:      -o-linear-gradient(top, white, #E0E0E0) !important;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff !important;
+	-moz-box-shadow:    0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff !important;
+	box-shadow:         0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff !important;
+}
+
+#tabs-titles{
+    float:left;
+    margin-right:10px;
+}
+
+#tabs-titles li{
+    cursor: pointer;
+}
+
+#tabs-titles li.current{
+    font-weight:bolder;
+}
+
+#tabs-contents {
+    -moz-border-bottom-colors: none !important;
+    -moz-border-left-colors: none !important;
+    -moz-border-right-colors: none !important;
+    -moz-border-top-colors: none !important;
+    background: -moz-linear-gradient(center top , #E6E6E6, gainsboro) repeat scroll 0 0 transparent !important;
+    border-color: #999999 #AAAAAA #CCCCCC !important;
+    border-image: none !important;
+    border-left: 1px solid #AAAAAA !important;
+    border-right: 1px solid #AAAAAA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    box-shadow: 0 1px 2px #AAAAAA inset !important;
+    float: left;
+    height: 308px;
+    padding: 17px;
+    width: 630px;
+}
+
+#tabs-contents li{display:none;}
+
+#tabs-contents li:first-child{
+    display:block; /* first one content displayed by default */
+}
+
+.infoGroup p {
+    line-height: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+	text-align: justify;
+}
+
+.thirdScreenResults p {
+    line-height: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+	text-align: justify;
+}
+
+.tabs a {
+	color: black;
+    text-decoration: none;
+}
+
+tr{ 
+	vertical-align: middle; 	
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 1px #EEEEEE;
+    color: #666666;
+    text-shadow: 0 1px 1px white;	
+}
+
+td{ 
+	text-align: left; 
+	vertical-align: middle !important; 
+	border: none !important;
+}
+
+
+h1.leader {
+	border-bottom: 1px solid #333;
+	padding: 15px 0 15px 25px;	
+	background-color: #4A5AA0;
+	width: 100%;
+	color: white;
+	margin: 0px !important;
+}
+
+.tabs h4 {
+    line-height: 20px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.ball {
+    float: left;
+    position: relative;
+    width: 22px;
+	padding-bottom: 5px;
+}
+
+.smallBall {
+    float: left;
+    width: 22px;
+}
+
+.legendItemDesc {
+	width:150px;
+	display:inline;
+	float:left;
+}
+.legendItem {
+	float:left
+}
+
+.dropDown {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid #DDDDDD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #FFFFFF;
+    color: #666666;
+    font: bold 20px Sans-Serif;
+    margin-left: 10px;
+    padding: 5px;
+    text-shadow: 0 1px 1px white;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#intro{	
+	width: 750px;
+	z-index: 500;
+	margin:50px 0px 50px 110px;
+}
+
+#getInfoPane {
+    background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/more-info-small2.png");
+    float: left;
+    height: 43px;
+    margin-top: 2px;
+    width: 159px;
+}
+
+#infoPane > h3{
+	text-align: center;
+}
+
+#infoPane > p{
+	padding-top: 10px;
+}
+
+#infoPane {
+    background: none repeat scroll 0 0 white;
+    border-color: #E9E9E9 #E4E4E4 #D8D8D8 #D8D8D8;
+    border-radius: 6px 6px 6px 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 7px 1px #D3D3D3;
+    height: 600px;
+    line-height: 18px;
+    margin-left: 30px;
+    margin-top: -50px;
+    overflow: hidden;
+    padding: 40px;
+    width: 500px;
+    z-index: 15;	
+}
+.lifeCoverNeedsLandingImg {
+	background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/ilfs.icon.life.cover.needs.calculator.png");
+	height: 150px;
+    width: 150px;
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:10px;
+}
+
+.lifeCoverNeedsLandingText {
+    width: 450px;
+	background-repeat:no-repeat;
+	float:left;
+	padding-left:30px;
+}
+.lifeCoverNeedsLandingText h1 {
+border-bottom: 0px solid #EBEBEB !important;
+margin: 10px 0px !important;
+padding-bottom: 10px !important;
+}
+.lifeCoverNeedsLandingText h3{
+margin: 10px 0px !important;
+}
+.lifeCoverNeedsLandingText p{
+margin: 10px 0px !important;
+font-size:13px;
+line-height:15px;
+}
+
+.thankYouBanner {
+    padding-bottom: 35px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#otherContent{
+    font-size: 15px;
+    margin-left: 169px;
+    margin-right: 100px;
+}
+
+#otherContent p{
+	line-height: 20px;
+}
+
+#progressBoxStep5 a {
+	color: #435399;
+    text-decoration: none;
+}
+
+.nextButton{
+	background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/next_button.png");
+    background-repeat: no-repeat;
+    border: 0 solid #CCCCCC;
+    color: #FFFFFF;
+    display: block;
+    height: 47px;
+    margin-bottom: 1px;
+    margin-top: 0;
+    width: 127px;
+}
+
+.quotelifespan, a.quoteBreakdownButton {
+    color: #333333;
+    font-variant: small-caps;
+}
+
+#quoteBreakdownDetails {
+    background: none repeat scroll 0 0 white;
+    border-color: #E9E9E9 #E4E4E4 #D8D8D8 #D8D8D8;
+    border-radius: 6px 6px 6px 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 7px 1px #D3D3D3;
+    float: left;
+    line-height: 18px;
+    margin-left: 273px;
+    margin-top: 11px;
+    overflow: hidden;
+    padding: 30px;
+    position: absolute;
+    z-index: 5;
+}

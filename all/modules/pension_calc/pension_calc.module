@@ -1,0 +1,1301 @@
+<?php
+ob_start();
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+ 
+  /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function pension_calc_permission() {
+  return array(
+    'administer_pension_calc' => array(
+      'title' => t('Administer Pension Calculator'),
+      'description' => t('Perform administration tasks for Pension Calculator.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_block_menu().
+ */
+
+function pension_calc_menu() {
+
+  	$items = array();
+
+  	$items['admin/content/pension_calc'] = array(
+    'title' => 'Pension Calculator',
+    'description' => 'Settings for Pension Calculator',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('pension_calc_admin'),
+	'access arguments' => array('administer_pension_calc'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+   
+   $items['admin/content/pension_calc/irishlife'] = array(
+    'title' => 'Irish Life Call to Action ',
+    'description' => 'Settings for Irish Life Call To Action',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('pension_calc_irishlife_admin'),
+	'access arguments' => array('administer_pension_calc'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+    $items['admin/content/pension_calc/aib'] = array(
+    'title' => 'AIB Call to Action ',
+    'description' => 'Settings for AIB Call To Action',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('pension_calc_aib_admin'),
+	'access arguments' => array('administer_pension_calc'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   $items['admin/content/pension_calc/ub'] = array(
+    'title' => 'Ulster Bank Call to Action ',
+    'description' => 'Settings for Ulster Bank Call To Action',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('pension_calc_ub_admin'),
+	'access arguments' => array('administer_pension_calc'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+
+    $items['pensions/pension-calc/js/aib'] = array(
+    'page callback' => '_pension_calc_app_public_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+  
+   $items['pensions/pension_calc/widget/aib'] = array(
+	    'title' => 'AIB Pension Calculator',
+	    'description' => 'AIB',
+		'page callback' => 'pension_calculator_app_bank_version',			
+		'access arguments' => array('access content'),
+	   );
+
+   
+  return $items;
+  
+}
+function pension_calculator_app_bank_version(){		
+
+
+		$result = pension_calc_contents();
+
+		global $base_url;
+		$site_path = $base_url . base_path();
+
+		$styles[] = 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css';
+		//$styles[] = $site_path .drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css';
+		$styles[] = $site_path .drupal_get_path('module', 'pension_calc') . '/css/pension-calc-app.css';
+		$styles[] = $site_path .drupal_get_path('module', 'pension_calc') . '/deploy/aib.css';
+		//$styles[] = $site_path .drupal_get_path('theme', 'irishlife') . '/css/global.css?oskjte';
+
+		$styles[] = $site_path .drupal_get_path('theme', 'irishlife') . '/css/font-awesome.css';
+
+		//$js[] = $site_path .drupal_get_path('module', 'jquery_update') .'/replace/jquery/1.8/jquery.min.js?v=1.8.2';		
+		
+		$js[] = $site_path .drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js';
+		$js[] = 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js';
+		
+		$js[] = $site_path .drupal_get_path('module', 'pension_calc') .'/js/jquery-ui.slider.min.js';
+
+		$js[] = $site_path .drupal_get_path('module', 'javascript') .'/js/highCharts.min.js';
+		
+		$js[] = 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js';
+		//$js[] = $site_path .drupal_get_path('module', 'pension_calc') .'/js/pension-calc-app.min.js';
+		
+
+		$javascript = '<script type="text/javascript">var amILoggedIn=false;
+		if (!window.console) window.console = {};
+		if (!window.console.log) window.console.log = function () { };</script>';		
+		foreach($js as $file){
+			$javascript = $javascript.'<script type="text/javascript" src="'.$file.'"></script>';
+		}
+
+		$bottomjavascript = '<script type="text/javascript" input src="'.$site_path .drupal_get_path('module', 'pension_calc').'/js/pension-calc-app.min.js"></script>';
+
+		$css = '<style type="text/css" media="all">';
+		foreach($styles as $file){
+			$css = $css.'@import url("'.$file.'");';
+		}
+		$css = $css.'</style>';
+
+		$html = $css.$javascript.$result.$bottomjavascript;
+
+		pension_calculator_app_public_html_output($html);
+		//pension_calculator_app_public_output('<script type="text/javascript">document.write("'.$html.'")');
+	}
+
+function _pension_calc_app_public_js() {
+	global $base_url;
+	$site_path = $base_url . base_path();
+	$snip = str_replace(array("\n", "\t", "\r"), ' ', '<div id="pageTitle"></div>'.pension_calc_contents());
+	$snip = str_replace('\'','&apos;',$snip);
+	$snip = str_replace('  ',' ',$snip);
+	$matches = '$(\'#pensionCalcDiv\').html(\''.$snip.'\');';
+    pension_calculator_app_public_output($matches.''.$css.''.$js);
+}
+  
+function pension_calculator_app_public_output($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'application/javascript');
+
+  if (isset($var)) {
+   // echo drupal_json_encode($var);
+    echo $var;
+  }
+}
+function pension_calculator_app_public_html_output($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'text/html');
+
+  if (isset($var)) {
+   // echo drupal_json_encode($var);
+    echo $var;
+  }
+}
+
+/**
+ * Implementation of hook_block_admin().
+ */
+ 
+ /*IRISH LIFE CALL TO ACTIONS */
+function pension_calc_irishlife_admin()
+{
+$form ['pension_calc_irishlife_splash']=array (
+     '#type' => 'checkbox',
+	 '#title' => t('Show Splash'),
+	 //'#default_value' => variable_get('pension_calc_ub_title_1','Branch Locator'),
+	 '#resizable' => FALSE,
+	 '#resizable' => FALSE,
+	 '#description' => t("Show Splash Screen for Irish Life?"),
+	 '#default_value' => variable_get('pension_calc_irishlife_splash','1'),  
+     
+	 );
+/*FIRST CALL TO ACTION FOR IRISH LIFE */	
+$form['pension_calc_irishlife_title_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('First CTA Title'),
+	'#default_value' => variable_get('pension_calc_irishlife_title_1','<h4>Why Irish Life For Pensions</h4>'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_irishlife_text_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_irishlife_text_1','<p>Learn why more people in Ireland choose us for their Pension than anyone else.</p><span>Find out more <i class="fa fa-chevron-right"></i></span>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("First Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_irishlife_url_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_irishlife_url_1','https://www.irishlife.ie/pensions/why-irish-life-for-pensions'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for First Call To Action"),
+	'#required' => TRUE,	
+	);	
+	
+	
+/* SECOND CALL TO ACTION FOR IRISHLIFE */	
+	$form['pension_calc_irishlife_title_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Second CTA Title'),
+	'#default_value' => variable_get('pension_calc_irishlife_title_2','<h4>Get An Advisor Call Back</h4>'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_irishlife_text_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_irishlife_text_2','<p>Get a callback if you want to discuss your options further with a qualified Financial Advisor</p><span>Find out more <i class="fa fa-chevron-right"></i></span>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_irishlife_url_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_irishlife_url_2','javascript:void(0);'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Second Call To Action"),
+	'#required' => TRUE,	
+	);	
+	
+/* THIRD CALL TO ACTION FOR IRISHLIFE */	
+	$form['pension_calc_irishlife_title_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Third CTA Title'),
+	'#default_value' => variable_get('pension_calc_irishlife_title_3','<h4>Explore Irish Life MAPs</h4>'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Third Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_irishlife_text_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_irishlife_text_3','<p>A range of unit linked funds, available across our pension, investment & savings plans. </p><span>Find out more <i class="fa fa-chevron-right"></i></span>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Third Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_irishlife_url_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_irishlife_url_3','https://www.irishlife.ie/pensions/irish-life-maps/about-irish-life-maps'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Third Call To Action"),
+	'#required' => TRUE,	
+	);	
+	
+	
+	return system_settings_form($form);
+}
+
+/*AIB CALL TO ACTIONS */
+function pension_calc_aib_admin()
+{
+	$form ['pension_calc_aib_splash']=array (
+     '#type' => 'checkbox',
+	 '#title' => t('Show Splash'),
+	 //'#default_value' => variable_get('pension_calc_ub_title_1','Branch Locator'),
+	 '#resizable' => FALSE,
+	 '#resizable' => FALSE,
+	 '#description' => t("Show Splash Screen for AIB?"),
+	 '#default_value' => variable_get('pension_calc_aib_splash','1'), 
+	 );
+/*FIRST CALL TO ACTION FOR AIB */
+$form['pension_calc_aib_title_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('First CTA Title'),
+	'#default_value' => variable_get('pension_calc_aib_title_1',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("First AIB Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_aib_text_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_aib_text_1',''),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("First AIB Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_aib_url_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_aib_url_1',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);	
+	
+/*SECOND CALL TO ACTION FOR AIB */	
+$form['pension_calc_aib_title_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Second CTA Title'),
+	'#default_value' => variable_get('pension_calc_aib_title_2',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second AIB Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_aib_text_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_aib_text_2',''),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second AIB Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_aib_url_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_aib_url_2',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);
+	
+/*THIRD CALL TO ACTION FOR AIB */	
+$form['pension_calc_aib_title_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Third CTA Title'),
+	'#default_value' => variable_get('pension_calc_aib_title_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Third AIB Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_aib_text_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_aib_text_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Third AIB Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_aib_url_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_aib_url_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);
+	
+	
+	return system_settings_form($form);
+}
+
+/* ULSTER BANK CALL TO ACTIONS */
+function pension_calc_ub_admin()
+{
+$form ['pension_calc_ub_splash']=array (
+     '#type' => 'checkbox',
+	 '#title' => t('Show Splash'),
+	 //'#default_value' => variable_get('pension_calc_ub_title_1','Branch Locator'),
+	 '#resizable' => FALSE,
+	 '#resizable' => FALSE,
+	 '#description' => t("Show Splash Screen for Ulster Bank?"),
+	 '#default_value' => variable_get('pension_calc_ub_splash','1'), 
+	 );
+	 
+/*FIRST CALL TO ACTION FOR ULSTER BANK */
+	 
+$form['pension_calc_ub_title_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('First CTA Title'),
+	'#default_value' => variable_get('pension_calc_ub_title_1','Branch Locator'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_ub_text_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_ub_text_1','Find your nearest Ulster Bank branch'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second Ulster Bank Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_ub_url_1']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_ub_url_1','http://locations.ulsterbank.com/ulster/locator/index.php/republic-of-ireland/'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);
+
+/*SECOND CALL TO ACTION FOR ULSTER BANK */
+$form['pension_calc_ub_title_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Second CTA Title'),
+	'#default_value' => variable_get('pension_calc_ub_title_2','Get an Advisor Call Back'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second Ulster Bank Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_ub_text_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_ub_text_2','<p>Get a callback if you want to discuss your options further with a qualified Financial Advisor</p><span>Find out more <i class="fa fa-chevron-right"></i></span>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Second Ulster Bank Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_ub_url_2']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_ub_url_2','http://digital.ulsterbank.ie/'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);	
+
+/*THIRD CALL TO ACTION FOR ULSTER BANK */
+$form['pension_calc_ub_title_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Third CTA Title'),
+	'#default_value' => variable_get('pension_calc_ub_title_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Third Ulster Bank Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_ub_text_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('Text'),
+	'#default_value' => variable_get('pension_calc_ub_text_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Call To Action Text"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_ub_url_3']=array(
+	'#type' => 'textarea',
+	'#title' => t('URL'),
+	'#default_value' => variable_get('pension_calc_ub_url_3',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure URL for Call To Action"),
+	'#required' => TRUE,	
+	);		
+	
+	
+	return system_settings_form($form);
+}
+
+/* INFO BOX FOR PENSION CALCULATOR */
+function pension_calc_admin()
+{
+$form['pension_calc_warnings']=array(
+	'#type' => 'textarea',
+	'#title' => t('Warnings'),
+	'#default_value' => variable_get('pension_calc_warnings','<p>These Figures are estimates only. They are not a reliable guide to the future performance of this investment. The value of your investment may go down as well as up</p>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Configure Warnings for Info Box"),
+	'#required' => TRUE,	
+	);
+	
+	
+$form['pension_calc_tax_relief']=array(
+	'#type' => 'textarea',
+	'#title' => t('Tax Relief'),
+	'#default_value' => variable_get('pension_calc_tax_relief','<li>Did you know, subject to revenue limits, every Euro you pay into a pension may qualify for tax relief meaning you could get almost half your money back if you\'re a top rate tax payer (41%)</li>
+                <li>E.g. if you contribute €100 per week to your pension and you pay tax at the higher rate of 41% the net cost works out to you at around €59 per week</li>
+                <li>Tax relief is not guaranteed. Rates are current as of August 2012</li>
+                <li>To claim Tax relief, you can apply to your inspector of taxes to adjust your tax credits. Contributions deducted from salary will receive immediate tax relief. To be eligible to claim income tax relief, your income must be taxable either Schedule E or schedule D (case l or ll).</li>
+                <li>If you are self-employed, you must include your pension contributions in your self-assessment tax returns in order to obtain income tax relief. Any employer contributions will receive tax relief in the year the contribution is made.</li>
+                <li>Pension income in retirement is subject to income tax at your highest rate on withdrawal, Universal Social Charge, PRSI (if applicable) and any other charges or levies (“tax”) applicable at this time.</li>'),
+	'#resizable' => FALSE,
+	'#rows' => 30,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Configure Tax Relief for Info Box"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_assumptions']=array(
+	'#type' => 'textarea',
+	'#title' => t('Assumptions'),
+	'#default_value' => variable_get('pension_calc_assumptions','<ul>
+                    <li>Regulator contributions go up by 3% each year over the term of your plan. Contributions are invested in a standard PRSA product, which has a fund management charge of 1% per annum and a contribution charge of 5% of each contribution. The government pension levy has not been allowed for.</li>
+                    <li>The projected values assume an investment return before retirement of 6.00% per annum. This rate is for illustrative purposes only and is not guaranteed. Actual investment growth will depend on the performance of the underlying investments and may be more or less than illustrated.</li>
+                    <li>An inflation rate of 3% per annum is used to express future values in today&apos;s terms.</li>
+                    <li>The annuity rate used to calculate the estimated pension is based on a post-retirement interest rate of 4%.</li>
+                    <li>The estimated annuities quoted are payable monthly in advance and guaranteed for 5 years and life thereafter.</li>
+                    <li>Annuity payments increase by 2% per annum.</li>
+                    <li>The annuity rate used is a long term average rate and is not guaranteed. The actual annuity rate available at retirement may differ from the annuity rate used in the illustration. Different annuity rates can be chosen at retirement.</li>
+                    <li>Under the finance Act 2012, the age at which people qualify for the state pension will increase over time – to 66 years of age in 2014, 67 in 2021 and 68 in 2028.</li>
+                    <li>The state pension (Contributory) for a single person remains at €11,976 p.a. as of August 2012</li>
+                    </ul>'),
+	'#resizable' => FALSE,
+	'#rows' => 30,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Configure Assumptions for Info Box"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_questions']=array(
+	'#type' => 'textarea',
+	'#title' => t('Your Questions Answered'),
+	'#default_value' => variable_get('pension_calc_questions','<p>Your Questions Answered goes here</p>'),
+	'#resizable' => FALSE,
+	'#rows' => 30,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Configure Questions Answered for Info Box"),
+	'#required' => TRUE,	
+	);
+	
+$form['pension_calc_privacy']=array(
+	'#type' => 'textarea',
+	'#title' => t('Privacy'),
+	'#default_value' => variable_get('pension_calc_privacy','/customer-service/privacy-policy'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 10,
+	'#resizable' => FALSE,
+	'#description' => t("Configure Privacy URL for Info Box"),
+	'#required' => TRUE,	
+	);	
+	
+	return system_settings_form($form);
+}
+
+/**
+ * Implementation of hook_block_info().
+ */
+function pension_calc_block_info() {
+  $blocks['pension_calc'] = array(
+    'info' => t('Pension Calculator Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function pension_calc_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#pension_calc":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+//Function to get and return the variables for this channel
+function getCallsToAction()
+{
+	$channel = getChannelInUse();
+	$callsToAction = array(array());
+
+	if ($channel == 'ub')
+	{
+	 $callsToAction[0][0] = variable_get('pension_calc_ub_url_1','');
+	 $callsToAction[0][1] = variable_get('pension_calc_ub_title_1','');
+	 $callsToAction[0][2] = variable_get('pension_calc_ub_text_1','');
+
+	 $callsToAction[1][0] = variable_get('pension_calc_ub_url_2','');
+	 $callsToAction[1][1] = variable_get('pension_calc_ub_title_2','');
+	 $callsToAction[1][2] = variable_get('pension_calc_ub_text_2','');
+
+	 $callsToAction[2][0] = variable_get('pension_calc_ub_url_3','');
+	 $callsToAction[2][1] = variable_get('pension_calc_ub_title_3','');
+	 $callsToAction[2][2] = variable_get('pension_calc_ub_text_3','');
+	 
+	 $callsToAction[3][0] = variable_get('pension_calc_ub_splash','');
+	 
+	}
+	else if ($channel == 'aib')
+	{
+     $callsToAction[0][0] = variable_get('pension_calc_aib_url_1','');
+	 $callsToAction[0][1] = variable_get('pension_calc_aib_title_1','');
+	 $callsToAction[0][2] = variable_get('pension_calc_aib_text_1','');
+
+	 $callsToAction[1][0] = variable_get('pension_calc_aib_url_2','');
+	 $callsToAction[1][1] = variable_get('pension_calc_aib_title_2','');
+	 $callsToAction[1][2] = variable_get('pension_calc_aib_text_2','');
+
+	 $callsToAction[2][0] = variable_get('pension_calc_aib_url_3','');
+	 $callsToAction[2][1] = variable_get('pension_calc_aib_title_3','');
+	 $callsToAction[2][2] = variable_get('pension_calc_aib_text_3','');
+	 
+	 $callsToAction[3][0] = variable_get('pension_calc_aib_splash','');
+	}	
+		else if ($channel == 'broker')
+	{
+		/**
+		only one call to action here - dont show splash
+		*/
+		$callsToAction[3][0] = '0';
+		
+	}
+	else
+	{
+	 $callsToAction[0][0] = variable_get('pension_calc_irishlife_url_1','');
+	 $callsToAction[0][1] = variable_get('pension_calc_irishlife_title_1','');
+	 $callsToAction[0][2] =  variable_get('pension_calc_irishlife_text_1','');
+
+	 $callsToAction[1][0] =  variable_get('pension_calc_irishlife_url_2','');
+	 $callsToAction[1][1] =  variable_get('pension_calc_irishlife_title_2','');
+	 $callsToAction[1][2] =  variable_get('pension_calc_irishlife_text_2','');
+
+	 $callsToAction[2][0] =  variable_get('pension_calc_irishlife_url_3','');
+	 $callsToAction[2][1] =  variable_get('pension_calc_irishlife_title_3','');
+	 $callsToAction[2][2] =  variable_get('pension_calc_irishlife_text_3','');
+	 
+	 $callsToAction[3][0] = variable_get('pension_calc_irishlife_splash','');
+	}
+		
+		
+	return $callsToAction;
+
+}
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function pension_calc_contents(){
+	$base_url = $GLOBALS['base_url'];
+	
+	$channel = getChannelInUse();
+	
+	// this function has all the if statements in it
+	$callsToAction = getCallsToAction();	
+	
+	
+	$showSplash = ($callsToAction[3][0] == '0' ? ' style="display:none" ' : ' ');	
+	$showApp = ($callsToAction[3][0] == '0' ? ' ' : ' style="display:none" ');	
+	
+	
+	/*CALL TO ACTIONS */
+	$options = '';
+	if ($channel == 'broker')
+	{
+			$options = '<div class="pc-grid-12">
+          <a class="pc-options-block get-callback-broker" href="javascript:void">
+            <i class="fa fa-mobile fa-3x choice-icon"></i>
+            <h4>Get A Call Back</h4>
+            <p>Get a callback if you want to discuss your options further with us</p>
+			<span>Find out more <i class="fa fa-chevron-right"></i></span>
+          </a>
+        </div>';
+	}
+	else
+	{
+	$options = '<div class="pc-grid-4">
+          '.$callsToAction[0][0].'
+            <i class="fa fa-question-circle fa-3x choice-icon"></i>
+            <h4>'.$callsToAction[0][1].'</h4>
+            '.$callsToAction[0][2].'
+          </a>
+        </div>
+        
+        <div class="pc-grid-4">
+          '.$callsToAction[1][0].'
+            <i class="fa fa-mobile fa-3x choice-icon"></i>
+            <h4>'.$callsToAction[1][1].'</h4>
+            '.$callsToAction[1][2].'
+          </a>
+        </div>
+          
+        <div class="pc-grid-4">
+          '.$callsToAction[2][0].'
+            <i class="fa fa-pie-chart fa-3x choice-icon"></i>
+             <h4>'.$callsToAction[2][1].'</h4>
+             '.$callsToAction[2][2].'
+          </a>
+        </div>';	     
+	}
+	
+	$pensionInputs = '<div class="pc-grid-4">        
+          <h6>Your Pension Inputs</h6>
+          <p style="font-size:0.9em;line-height: 1.4em;font-weight:normal;">Age: <span id="p1Age" class="userValue">?</span><br />
+          Salary: <span id="p1Salary" class="userValue">?</span><br />
+          Your Contributions: <span id="p1EmployeeContribution" class="userValue">?</span> (per month)<br />
+          Employer Contributions: <span id="p1EmployerContribution" class="userValue">?</span> (per month)<br />
+          Pension Target: <span id="p1PensionTarget" class="userValue">?</span><br />
+          Current Gap: <span id="p1PensionGap" class="userValue">?</span><span id="gapPer"> (per year)</span></p>
+          <small>Note: In the interest of customer service we will record and monitor calls. We will only use your personal details for the purpose of dealing with your request. Your privacy is important to us. Callbacks are available Monday-Friday</small>
+
+          
+        </div>';
+	
+	
+  return '
+   <div class="pc-container-12 pc-header-banner" '.$showSplash .'>
+  <div class="pc-grid-6">&nbsp;</div>
+    <div class="pc-grid-6" style="text-align:center;">
+      <a href="javascript:void(0)" class="open pc-btn pc-startBtn" style="display:none;">Start Pension Calculator <i class="fa fa-chevron-right"></i></a>
+    </div>
+  </div>
+  <div class="pc-container-12 pc-panel" id="splashScreen" '.$showSplash .'>
+    <div class="pc-grid-6">
+        <h3>Find out more</h3>
+        <p>The earlier you start a pension, the easier it could be to build up your fund which will allow you enjoy a comfortable retirement. The first step is to estimate what your monthly pension savings should be in order to help secure the future you want.</p>
+        <ul style="LIST-STYLE-POSITION: inside" class="disc hide-for-small">
+        <li><i>Try our <a title="Pensions Journey" href="'.$base_url.'/pensions">Pensions Hub</a> to learn about the various stages of your pension</i></li>
+        <li><i>Have our Qualified Financial Advisors <a class="anyCallbackButton" title="Financial Advisor Callback" href="/financial-advice/financial-planning/arrange-a-financial-advisor-callback" target="_blank">call you back</a> to discuss your pension options</i></li>
+        <li><i>Try our guide to <a title="Planning for your retirement" href="'.$base_url.'/financial-advice/guides/planning-your-retirement">planning for your retirement</a></i></li>
+        </ul>
+    </div>
+    <div class="pc-grid-6">
+      <h3>Am I on track?</h3><p>Our pension calculator has been developed to help you understand what is required in order to provide you with a reasonable living standard when you hit <a title="retirement age" href="'.$base_url.'/financial-advice/faq/pensions-faq">retirement age</a>. Our calculator will also help you understand the sometimes complicated area of pensions in general.</p>
+      <h5>Getting Started</h5>
+      <p> To get started you should try our Pension Calculator.</p> 
+      <p> <a href="javascript:void(0)" class="open pc-btn medium-btn" style="display:none;" >Start Pension Calculator <i class="fa fa-chevron-right"></i></a></p>
+
+
+     </div>
+  </div>
+  
+  
+  
+
+
+<div '.$showApp.' id="pension-app">
+  <div class="pc-pageHeaderInfo">
+      <h5>To help you understand how much you should be saving to help maintain your living standards when you hit retirement age.</h5>
+    
+  </div>
+  
+  <div class="pensionCalcHolder">
+    <div class="pc-container-12">
+     <div class="meter-wrap">
+            <span class="circleholder">
+              <div class="circle circle-1 selected" style="left:1%" ><span class="circleNum">1</span><span class="circleText">Personal Details</span></div>
+              <div class="circle circle-2 hover" style="left:48%" ><span class="circleNum">2</span><span class="circleText">Pension target</span></div>
+              <div class="circle circle-3" style="left:97%"><span class="circleNum">3</span><span class="circleText">Your Results</span></div>
+            </span>                                   
+            <div class="meter-value" style="width:0%;">                                                         
+            <div class="meter-text">                                                 </div>                                   
+            </div>                       
+        </div>            
+    </div> 
+    <div id="screen1" class="pc-container-12" >
+      <div class="pc-grid-6">
+     
+          <h6 class="text-centered">About You</h6>
+       
+            <label>Annual Salary</label>
+            <input id="salaryInput" maxlength="8" type="number" placeholder="40000" step="100" />
+            <small style="DISPLAY: none" id="salaryInputError" class="error">Enter your annual salary</small>
+          
+          <div class="calcSliderHolder">
+            <label>Your Age: <span id="pensionCalcAgeSliderOutput" class="sliderInactive"></span></label>
+            <div class="calcSlider small-12 large-12">
+              <div id="pensionCalcAgeSlider" class="calcSlider"></div>
+            </div>
+            
+            <label style="color:#AAA38E;font-size: 0.8em;">Your retirement age is <span id="pensionCalcRetirementAgeOutput"></span></label>
+          </div>
+
+        <form class="custom">
+          <div id="radioInputs">
+              <h6>Do you qualify for a state pension?</h6>
+                <input type="radio" id="statePensionYes" name="statePension" value="true">
+                <label for="statePensionYes">Yes</label>
+                <input type="radio" id="statePensionNo" name="statePension" value="false">
+                <label for="statePensionNo">No</label>
+              
+          </div>
+        </form>
+  
+  
+      </div>
+      <div class="pc-grid-6">
+        
+      <h6 class="text-centered">Existing Pension</h6>
+  
+  
+      <label>Current Pension Value</label>
+      <input id="currentPensionInput" maxlength="9" type="number" placeholder="0" step="100" />
+   
+   
+   
+      <div class="calcSliderHolder">
+        <label>Your contributions <span class="grey-label">(monthly)</span>: <span id="pensionCalcEmployeeContributionsSliderOutput" class="sliderInactive"></span></label>
+        <div class="calcSlider">
+          <div id="pensionCalcEmployeeContributionsSlider" class="calcSlider"></div>
+        </div>
+
+        
+        <span class="text-right" style="float:left;">
+          <span id="pensionCalcEmployeeContributionsSliderOutputSubA" class="sliderInactive subText"></span>
+        </span>
+
+        <span class="text-right" style="float:right;">
+          <span id="pensionCalcEmployeeContributionsSliderOutputSubB" class="sliderInactive subText"></span>
+        </span>
+        <div class="clearer"></div>
+      </div>
+
+ 
+ 
+      <div class="calcSliderHolder">
+        <label>Employer contributions <span class="grey-label">(monthly)</span>: <span id="pensionCalcEmployerContributionsSliderOutput" class="sliderInactive"></span></label>
+        
+        <div class="calcSlider">
+          <div id="pensionCalcEmployerContributionsSlider" class="calcSlider"></div>
+        </div>
+
+        <span class="text-right" style="float:left;">
+          <span id="pensionCalcEmployerContributionsSliderOutputSubA" class="sliderInactive subText">12% of your salary</span>
+        </span>
+        <span class="text-right" style="float:right;">
+          <span id="pensionCalcEmployerContributionsSliderOutputSubB" class="sliderInactive subText">Annually: € 4,800</span>
+        </span>
+        
+      </div>
+
+
+      </div>
+      </div>
+
+      <div style="DISPLAY: none" id="screen2" >
+     
+      <h6 class="text-centered">Your Target Income at Retirement</h6>
+      
+      <h5 class="text-centered">On retirement, what income would you like? <span class="subText">(Today&apos;s Terms*)</span></h5>
+
+      <div class="calcSliderHolder smaller-container">
+        <div class="calcSlider"><label>Your Pension: <span id="pensionCalcTargetSliderOutput" class="sliderInactive"></span></label></div>
+        
+        <div class="calcSlider">
+          <div id="pensionCalcTargetSlider" class="calcSlider"></div>
+        </div>
+        
+        
+        <span class="text-right" style="float:left;">
+          <span id="pensionCalcTargetSliderOutputSubA" class="subText sliderInactive"></span>
+        </span>
+
+        <span class="text-right" style="float:right;">
+          <span id="pensionCalcTargetSliderOutputSubB" class="subText sliderInactive"></span>
+        </span>
+        <div class="clearer"></div>
+        
+        <div class="subText">*Values are shown in today\&apos;s terms i.e. assuming you are at retirement age today. Calculations aim to account for the effect of inflation on your fund and income.</div>
+      </div>
+
+</div>
+
+
+    <div style="DISPLAY: none" id="screen3" >
+
+      <div class="pc-container-12">
+        <div class="pc-grid-6">
+          <h6 class="text-centered">Adjust Your Details</h6>
+          
+            Target Pension Set: <span id="targetPensionVal" class="pensionCalcTargetSetOutput"></span>
+         
+          
+          <div class="calcSliderHolder">
+            <label>When to start: <span id="pensionCalcDelaySliderOutput" class="sliderInactive"></span></label>
+            <div class="calcSlider">
+              <div id="pensionCalcDelaySlider" class="calcSlider"></div>
+            </div>
+
+              <span id="pensionCalcDelayAgeSliderOutput" class="subText sliderInactive"></span>
+
+            <div class="clearer"></div>
+          </div>
+          
+          <div class="calcSliderHolder">
+            <label>Your Contributions <span class="grey-label">(monthly)</span>: <span id="pensionCalcEmployeeContributionsFinalSliderOutput" class="sliderInactive"></span></label>
+            <div class="calcSlider">
+              <div id="pensionCalcEmployeeContributionsFinalSlider" class="calcSlider"></div>
+            </div>
+            
+                <span class="text-right" style="float:left;">
+                  <span id="pensionCalcEmployeeContributionsFinalSliderOutputSubA" class="subText sliderInactive"></span>
+                </span>
+
+                <span class="text-right" style="float:right;">
+                   <span id="pensionCalcEmployeeContributionsFinalSliderOutputSubB" class="sliderInactive subText"></span>
+                </span>
+                <div class="clearer"></div>
+          </div>
+            
+
+          <div class="calcSliderHolder">
+            <label class="subText">Employers Contributions <span class="grey-label">(monthly)</span>:<span id="pensionCalcEmployeeContribOutputFinal" class="sliderInactive"></span></label>
+          </div>
+
+          <div class="calcSliderHolder">
+            <label>Total Contributions <span class="grey-label">(monthly)</span>:<span id="pensionCalcTotalContribOutputFinal" class="sliderInactive"></span></label>
+          </div>
+        </div>
+        
+        <div class="pc-grid-6" style="position:relative;">
+
+          <div class="chart-result-holder">
+            <h6 class="text-centered">Pension Target Breakdown</h6>
+
+
+            Expected Pension:<span id="pensionCalcExpectedTotalOutputFinal" class="sliderOutput">€</span>
+
+            <div class="bubble">
+              <div id="bubbleContent"><h3>Target Surpassed</h3>
+              <p>You have surpassed your target of <span class="pensionCalcTargetSetOutput">x</span> for retirement. You are paying an extra <span id="surpassedAmount">x</span> per month.<p>
+              <p><small>Estimate based on information provided and calculator assumptions</small></p>
+              
+              <a id="closeBubble" class="button custom supplementary radius small" href="javascript:void(0);">Close</a>
+              </div>
+            </div>
+
+            <div id="chartContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div style="DISPLAY: none" id="screenLoadingPage">
+      <img alt="loading pension calculator" class="center" src="'.$base_url.'/sites/all/modules/css/images/loading.orange.gif" />
+    </div>
+        
+
+
+
+<div  id="screen4" style="display:none;">
+        
+      <div class="pc-container-12">'.$options.
+        '</div>
+  </div>
+      
+      
+
+
+<div style="DISPLAY: none" id="screen5" >
+
+      <div class="pc-container-12">
+        <div class="pc-grid-8">
+         <h6>Financial Advisor Callback</h6>
+        <p style="font-size:0.9em;line-height: 1.4em;">Fill in the required fields below and a Qualified Financial Advisor will call you back and go through your quote and complete the process with you. Your privacy is important to us. We will only use your personal details of the purpose of dealing with your request.</p>
+        
+        
+          <form id="callBackForm" class="custom">
+          
+                <span style="float:left;width:48%;">
+                 <label>Name <input type="text" id="name" placeholder="Enter your name" /></label>
+                <span style="DISPLAY: none" id="nameError" class="pc-error">* Please enter your name</span>
+            
+                 
+                </span>
+
+                <span style="float:right;width:48%;">
+                 
+                 <label>Phone <input id="telephone" placeholder="Enter your phone number" type="number" /></label>
+              <span style="DISPLAY: none" id="phoneError" class="pc-error">* Please enter a phone number</span>
+              
+                </span>
+                <div class="clearer"></div>
+                
+                
+                
+              
+              
+              <label>Email <input type="email" id="email" placeholder="Enter your email" /></label>
+              
+              <label for="callTime">Best time to call</label>
+                <select id="callTime" class="medium"><option selected="selected" value="Now">Now</option>
+                  <option value="Anytime">Anytime</option>
+                  <option value="Morning (Before 12pm)">Morning (Before 12pm)</option>
+                  <option value="Afternoon (12pm to 5pm)">Afternoon (12pm to 5pm)</option>
+                  <option value="Evening (5pm to 8pm)">Evening (5pm to 8pm)</option>
+                </select>
+                <div style="margin-top:1.2em;text-align:right;">
+              <a href="javascript:void(0)" class="pc-btn medium-btn" id="callback">Call Me Back <i class="fa fa-chevron-right"></i></a>
+              </div>
+          </form>
+          </div> '. ($channel == 'broker'? '': $pensionInputs).
+        
+      '</div>
+      </div>
+
+
+
+
+
+
+      
+
+
+
+<div style="MARGIN-bottom: 3%; DISPLAY: none;" id="screen6">
+   
+    <div class="text-centered"><img alt="pensions calculator" src="'.$base_url.'/sites/all/modules/css/images/fatherson.banner.quote.jpg" /></div>
+    <div class="text-centered">
+        <h3>Interested in other things?</h3>
+          <p>Learn about <a title="irish life Income Protection calculator" href="'.$base_url.'/investments/irish-life-maps">irish Life MAPs</a> or get a <a title="Life insurance calculator" href="'.$base_url.'/life-insurance/quotes">Life insurance quote</a> in an instant.</p>
+       
+    </div>
+    <div class="text-centered">
+        <a id="resultsBckBtn" class="pc-btn medium-btn"><i class="fa fa-chevron-left"></i> Back to my results</a>
+        </div>
+     
+  </div>
+
+
+<div style="DISPLAY: none" id="screen5Broker" >
+
+      <div class="pc-container-12">
+        <div class="pc-grid-8">
+         <h6>Financial Broker Callback</h6>
+        <p style="font-size:0.9em;line-height: 1.4em;">Fill in the required fields below and we  
+                                will call you back and go through your quote and complete the process with you. 
+                                Your privacy is important to us. We will only use your personal details of the purpose of dealing with your request.</p>
+        
+        
+          <form id="callBackFormBR" class="custom">
+          
+                <span style="float:left;width:48%;">
+                 <label>Name <input type="text" id="nameBR" placeholder="Enter your name" /></label>
+                <span style="DISPLAY: none" id="nameBRError" class="pc-error">* Please enter your name</span>
+                                                                <label>Email <input type="email" id="emailBR" placeholder="Enter your email" /></label>
+                 
+                </span>
+
+                <span style="float:right;width:48%;">
+                 
+                 <label>Phone <input id="telephoneBR" placeholder="Enter your phone number" type="number" /></label>
+              <span style="DISPLAY: none" id="phoneBRError" class="pc-error">* Please enter a phone number</span>
+               
+                </span>
+                <div class="clearer"></div>
+                                            
+                <div style="margin-top:1.2em;text-align:right;">
+              <a href="javascript:void(0)" class="pc-btn medium-btn" id="callback-broker">Call Me Back <i class="fa fa-chevron-right"></i></a>
+              </div>
+          </form>
+          </div>'.
+                                                ($channel == 'broker'? $pensionInputs : '').
+      '</div>
+      </div>
+
+
+
+
+
+
+      
+
+
+
+<div style="MARGIN-bottom: 3%; DISPLAY: none;" id="screen6Broker">
+   
+    <div class="text-centered"><h2>Thank you for your interest.</div>
+    <div class="text-centered">
+                                <h2>We will be in touch with you shortly.</h2>
+    </div>
+    <div class="text-centered" style="margin-top:30px">
+        <a id="resultsBckBtnBroker" class="pc-btn medium-btn"><i class="fa fa-chevron-left"></i> Start Again</a>
+        </div>
+     
+  </div>
+
+
+
+
+
+
+  </div>
+  
+
+
+  
+  
+  <div class="pc-container-12">
+    <div class="pc-grid-6 pc-grid-small-6">
+
+      <a class="aib-info pc-btn-grey medium-btn info"  data-toggle="modal" data-target="#infoModal"><i class="fa fa-info-circle"></i> Info</a>
+      <a class="irishlife-info pc-btn-grey medium-btn info" href="#infoModal" rel="modal:open"><i class="fa fa-info-circle"></i> Info</a>
+
+    </div>
+    <div class="pc-grid-6 pc-grid-small-6 text-right">
+      <a id="prevBtn" style="display:none;" href="javascript:void(0);"><i class="fa fa-chevron-left"></i> BACK</a>
+      <a id="nextBtn" class="pc-btn medium-btn" href="javascript:void(0);">NEXT <i class="fa fa-chevron-right"></i></a>
+                  
+    </div>
+                <div class="pc-grid-12 pc-grid-small-12 text-right">
+                  <a style="cursor:pointer;display:none;" id="createAccBtn" class="pc-btn medium-btn">Please create an account<i class="fa fa-chevron-right"></i></a>
+    </div>
+  </div>
+  
+   <div id="infoModal" class="modal" tabindex="-1" role="dialog" style="display:none;">
+  
+          <h2>More Information</h2>
+              <a id="ShowWarnings" class="pc-more-info-btn" href="javascript:void(0);">Warnings</a>
+              <div style="DISPLAY: none" id="warningsInfo"><h3>Important Information</h3>
+               '.variable_get('pension_calc_warnings','').'
+              </div>
+              
+              <a id="ShowTaxRelief" class="pc-more-info-btn" href="javascript:void(0);">Tax Relief</a>
+              <div style="DISPLAY: none" id="TaxReliefInfo" ><h3>Tax Relief Information</h3>
+                '.variable_get('pension_calc_tax_relief','').'
+              </div>
+              <a id="ShowAssumptions" class="pc-more-info-btn" href="javascript:void(0);">Assumptions</a>
+                <div style="DISPLAY: none" id="AssumptionsInfo" >
+                <h3>Pension calculator assumptions Information</h3>
+                    '.variable_get('pension_calc_assumptions','').'
+            <!--  <p>Regulator contributions go up by 3% each year over the term of your plan. Contributions are invested in a standard PRSA product, which has a fund management charge of !% per annum and a contribution charge of 5% of each contribution. The government pension levy has not been allowed for.</p>
+                  <p>The projected values assume an investment return before retirement of 6.00% per annum. This rate is for illustrative purposes only and is not guaranteed. Actual investment growth will depend on the performance of the underlying investments and may be more or less than illustrated.</p>
+                 <p>An inflation rate of 3% per annum is used to express future values in today’s terms.</p>
+                 <p>The annuity rate used to calculate the estimated pension is based on a post-retirement interest rate of 4%.</p>
+                 <p>The estimated annuities quoted are payable monthly in advance and guaranteed for 5 years and life thereafter.</p>
+                 <p>Annuity payments increase by 2% per annum.</p>
+                 <p>The annuity rate used is a long term average rate and is not guaranteed. The actual annuity rate available at retirement may differ from the annuity rate used in the illustration. Different annuity rates can be chosen at retirement. </p>
+                  <p>Under the finance Act 2012, the age at which people qualify for the state pension will increase over time – to 66 years of age in 2014, 67 in 2021 and 68 in 2028.</p>
+                  <p>The state pension (Contributory) for a single person remains at €11,976 p.a. as of August 2012</p> -->
+                  </div>
+                  
+                  <a id="ShowQandA" style="'.($channel == 'broker' ? 'display:none':'').'" class="pc-more-info-btn" href="javascript:void(0);">Your questions answered</a>
+                  <div style="DISPLAY: none" id="QandAInfo" >'.variable_get('pension_calc_questions','').'
+                  </div>
+                  <a style="'.($channel == 'broker' ? 'display:none':'').'" class="pc-more-info-btn" href="'.$base_url.variable_get('pension_calc_privacy','').'" target="_blank">Privacy <i class="fa fa-external-link"></i></a>
+            <a class="modalCloseImg simplemodal-close" title="Close"></a>
+          </div>
+    </div>
+
+
+  <!-- ########################### --><!-- End of page content --><!--####################################### -->
+  
+';
+}
+
+function pension_calc_block_view($delta = '') {
+  switch($delta) {
+    case 'pension_calc':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = pension_calc_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      //drupal_add_css(drupal_get_path('module', 'css') . '/css/foundation.min.css', array('group' => CSS_DEFAULT));
+      
+      drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css(drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css(drupal_get_path('module', 'pension_calc') . '/css/pension-calc-app.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/mk-uncompressed.js');
+      //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.min.js');
+		
+      //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.easing.js');
+	  drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highCharts.min.js');
+	  drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js', array('scope' => 'footer'));
+	  drupal_add_js(drupal_get_path('module', 'pension_calc') .'/js/jquery-ui.slider.min.js');
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js', 'external', array('scope' => 'header'));
+      //drupal_add_js(drupal_get_path('module', 'pension_calc') .'/js/simplemodal1.4.3.js', array('scope' => 'footer'));
+	  //drupal_add_js('/myonlineservices/bundles/js?v=QJ6hc9yPFmogsmBycQQffLORBBDyk1SurAiLdyRFyq01', array('type' => 'external', 'scope' => 'footer'));
+	  //drupal_add_js('/myonlineservices/Content/js/dev/dev.js', array('type' => 'external', 'scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'pension_calc') .'/js/pension-calc-app.min.js', array('scope' => 'footer'));
+ 	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', 'external', array('scope' => 'header'));
+
+	
+	  //drupal_add_js(drupal_get_path('module', 'pension_calc') .'/js/savingQuote.js');
+	  //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui-1.10.3.min.js');
+
+
+    }
+    return $block;
+  }
+ }
+ob_end_flush();

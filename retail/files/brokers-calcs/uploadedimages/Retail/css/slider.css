@@ -1,0 +1,56 @@
+/* -----------------------------------------
+   JQUERY SLIDER - Bespoke set up for the 
+   responsive version of the pension calculator
+----------------------------------------- */
+.ui-widget-content {
+    border-left: 1px solid #838383;
+    border-right: 1px solid #838383;
+    border-top: 1px solid #838383;
+    border-bottom: 1px solid #b6b6b6; 
+    background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.inside.orange.png") repeat scroll 0 0 #aaa;
+    
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.ui-widget-header {
+border: 1px solid #B7BAC4;  
+                background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.highlight.orange.png") repeat-x scroll 0 0 transparent; 
+                color: #ffffff; 
+                font-weight: bold; 
+}
+
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 0 transparent; -moz-border-radius: 15px !important; -webkit-border-radius:  15px !important; border-radius:  15px !important; border:0px solid white !important;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 -37px transparent;border:0px solid white !important;}
+.ui-state-hover a, .ui-state-hover a:hover { color: #2b2b2b; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 -74px transparent; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 38px; height: 38px; cursor: pointer;outline-width: 0; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 0/*1*/; font-size: .7em; display: block; border: 0; background-position: 0 0; 
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                -webkit-border-radius: 3px;}
+
+.ui-slider-horizontal { height: 14px; }
+.ui-slider-horizontal .ui-slider-handle { top: -12px; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+
+.ui-menu-item .ui-state-focus{
+    font-weight: bold;
+    background: transparent !important;
+}
+
+
+.ui-slider {
+    margin-bottom: 15px !important;
+}

@@ -1,0 +1,51 @@
+﻿
+<div id="flashcontent">Attempting to load Flash. If the Income Protection Calculator does not load then you do not have the Flash plugin installed, or your browser does not support Javascript (you should enable it).</div><script type="text/javascript" src="http://www.irishlife.ie/uploadedFiles/retail/js/swfobject.js"><!--
+
+
+
+//--></script><script type="text/javascript"><!--
+
+ 
+
+  // <![CDATA[
+
+ 
+
+   var version = deconcept.SWFObjectUtil.getPlayerVersion();
+
+   if (document.getElementById && version["major"] <10) {
+
+    document.getElementById('flashcontent').innerHTML = "You have an old version of Flash player installed: version "+ version['major'] +"."+ version['minor'] +"."+ version['rev'] +". In order to user this calculator please upgrade to the latest version.";
+
+   }
+
+   else
+
+   {
+
+   var so = new SWFObject("/uploadedImages/Retail/body/advice/income-protection.swf?id=108", "mymovie", "596", "400", "8", "#336699");
+
+   so.addParam("quality", "high");
+   so.addParam("wmode", "transparent");
+   so.addParam("salign", "t");
+   
+   so.addVariable("contactUserID", "99");
+   so.addVariable("privacyURL", "http://www.irishlife.ie/website-privacy-policy.html");
+   so.addVariable("hideContact", "false");
+   so.addVariable("parentDomain", "http://www.bline.ie/");
+   so.addVariable("custContactString", "customerservice@irishlife.ie\n+353 (0)1 704 1010\n\n\n\n\nIn the interest of customer service we will record and monitor calls");
+   so.write("flashcontent");
+
+  
+
+   }
+
+ 
+
+  // ]]>
+
+ 
+
+//--></script>
+
+		

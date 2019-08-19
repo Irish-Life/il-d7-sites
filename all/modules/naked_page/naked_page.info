@@ -1,0 +1,5 @@
+; $Id: pension_calc.info,v 1.0.0.0 2014/06/18 10:11:15 Conor Exp $
+name = "Naked Page"
+description = "Block to be included in naked landing pages to hide the navigation menus"
+core = "7.x"
+package = "Irish Life"

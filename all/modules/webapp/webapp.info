@@ -1,0 +1,13 @@
+name = WebApp
+core = 7.x
+package = Mobile
+description = get your drupal site ready for mobile devices.
+scripts[] = js/webapp.js
+configure = admin/config/content/webapp
+
+; Information added by Drupal.org packaging script on 2014-04-24
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "webapp"
+datestamp = "1398330528"
+

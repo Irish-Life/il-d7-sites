@@ -1,0 +1,5 @@
+; $Id: hide_logo.info,v 1.0.0.0 2014/06/18 10:11:15 Ger Exp $
+name = "Hide Logo"
+description = "Block to be included in pages where we want to hide the Irish Life logo, i.e., AIB etc"
+core = "7.x"
+package = "Irish Life"

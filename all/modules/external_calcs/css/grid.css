@@ -1,0 +1,113 @@
+
+/* ==================================================================================================================== */
+/* ! The Grid
+/* ==================================================================================================================== */
+
+#region-calculator-full-width .container {
+padding-left: 20px;
+padding-right: 20px;
+}
+
+#region-calculator-full-width .row {
+width: 100%;
+max-width: 880px;
+margin: 0 auto;
+}
+
+#region-calculator-full-width .onecol,#region-calculator-full-width  .twocol,#region-calculator-full-width  .threecol,
+#region-calculator-full-width  .fourcol,#region-calculator-full-width  .fivecol,#region-calculator-full-width  .sixcol,
+#region-calculator-full-width  .sevencol,#region-calculator-full-width  .eightcol,#region-calculator-full-width  .ninecol,
+#region-calculator-full-width  .tencol,#region-calculator-full-width  .elevencol {
+margin-right: 3.8%;
+float: left;
+min-height: 1px;
+}
+
+#region-calculator-full-width  .row .onecol {
+width: 4.85%;
+}
+
+#region-calculator-full-width  .row .twocol {
+width: 13.45%;
+}
+
+#region-calculator-full-width  .row .threecol {
+width: 22.05%;
+}
+
+#region-calculator-full-width  .row .fourcol {
+width: 30.75%;
+}
+
+#region-calculator-full-width  .row .fivecol {
+width: 39.45%;
+}
+
+#region-calculator-full-width  .row .sixcol {
+width: 48%;
+}
+
+#region-calculator-full-width  .row .sevencol {
+width: 56.75%;
+}
+
+#region-calculator-full-width  .row .eightcol {
+width: 65.4%;
+}
+
+#region-calculator-full-width  .row .ninecol {
+width: 74.05%;
+}
+
+#region-calculator-full-width  .row .tencol {
+width: 82.7%;
+}
+
+#region-calculator-full-width  .row .elevencol {
+width: 91.35%;
+}
+
+#region-calculator-full-width  .row .twelvecol {
+width: 100%;
+float: left;
+}
+
+#region-calculator-full-width  .last {
+margin-right: 0px;
+}
+
+
+/* Smaller screens */
+
+@media only screen and (max-width: 880px) {
+
+
+}
+
+
+/* Mobile */
+
+@media only screen and (max-width: 860px) {
+
+	#region-calculator-full-width .row, body, #region-calculator-full-width  .container {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	
+	#region-calculator-full-width .row .onecol, #region-calculator-full-width .row .twocol,#region-calculator-full-width  .row .threecol,
+	#region-calculator-full-width .row .fourcol,#region-calculator-full-width  .row .fivecol,#region-calculator-full-width  .row .sixcol,
+    #region-calculator-full-width  .row .sevencol, #region-calculator-full-width .row .eightcol, #region-calculator-full-width .row .ninecol,
+	#region-calculator-full-width  .row .tencol, #region-calculator-full-width .row .elevencol, #region-calculator-full-width .row .twelvecol {
+		width: auto;
+		float: none;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+}

@@ -1,0 +1,87 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+.top-bar{
+margin:0px;
+}
+header{
+background-color:#435399;
+padding:22px 0;
+margin: 0 0 40px;
+}
+header#homepage{
+background: url("/uploadedImages/bline/AMP_2013/images/tablets-open.png?1203131632") center bottom no-repeat #435399;
+padding: 22px 0 150px;
+}
+header#pension{
+background-image: url("/uploadedImages/bline/AMP_2013/images/pension-page-open.png?1203131632");
+background-position: center bottom;
+background-repeat:no-repeat;
+padding: 22px 0 150px;
+background-color:#435399;
+}
+header#protection{
+background-image: url("/uploadedImages/bline/AMP_2013/images/protection-page-open.png?1203131632");
+background-position: center bottom;
+background-repeat:no-repeat;
+padding: 22px 0 150px;
+background-color:#435399;
+}
+header#newssupport{
+background-image: url("/uploadedImages/bline/AMP_2013/images/support-help-page-open.png?1203131632");
+background-position: center bottom;
+background-repeat:no-repeat;
+padding: 22px 0 150px;
+background-color:#435399;
+}
+header#newssupport{
+background-image: url("/uploadedImages/bline/AMP_2013/images/support-help-page-open.png?1203131632");
+background-position: center bottom;
+background-repeat:no-repeat;
+padding: 22px 0 150px;
+background-color:#435399;
+}
+header#investmentfunds{
+background-image: url("/uploadedImages/bline/AMP_2013/images/investment-savings-page-open.png?1203131632");
+background-position: center bottom;
+background-repeat:no-repeat;
+padding: 22px 0 150px;
+background-color:#435399;
+}
+header h1,header h2,header h3,header h4{
+color:#fff;
+}
+header h4{
+font-weight:normal;
+font-size:19px;
+}
+#homepageFeatures {
+padding: 10px 0 44px 0;
+}
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+@media only screen and (max-width: 767px) { 
+  /* Small Device Styles here */
+	header#homepage,header#pension { background-size: auto 130px; padding-bottom: 150px; }
+}
+

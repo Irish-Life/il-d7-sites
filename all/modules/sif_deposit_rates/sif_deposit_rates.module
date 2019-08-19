@@ -1,0 +1,1776 @@
+<?php
+/**
+ * @file
+ * A block module that displays the sif deposit rates.
+ */
+
+function sif_deposit_rates_init() {
+  // We don't want caching for this module
+  if (drupal_get_path_alias($_GET['q']) =='bline/pensions/self-invested-fund/sif-deposit-rates') {
+    $GLOBALS['conf']['cache'] = FALSE;
+  }
+}
+/**
+ * Implementation of hook_block_info().permissions
+ */
+ function sif_deposit_rates_permission() {
+  return array(
+    'administer_sif_deposit_rates' => array(
+      'title' => t('Administer Sif Deposit Rates'),
+      'description' => t('Perform administration tasks for Sif Deposit Rates.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_block_info().
+ */
+ 
+ function sif_deposit_rates_block_info() {
+  $blocks['sif_deposit_rates'] = array(
+    'info' => t('Sif Deposit Rates Table'),
+  );
+ 
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_menu().
+ */
+
+function sif_deposit_rates_menu() {
+
+  	$items = array();
+
+  	$items['admin/content/sif_deposit_rates'] = array(
+    'title' => 'Sif Deposit Rates',
+    'description' => 'Settings for Pension Calculator',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+   
+   $items['admin/content/sif_deposit_rates/aib'] = array(
+    'title' => 'AIB',
+    'description' => 'Configure AIB rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_aib_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   $items['admin/content/sif_deposit_rates/boi'] = array(
+    'title' => 'Bank of Ireland',
+    'description' => 'Configure Bank of Ireland rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_boi_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+    $items['admin/content/sif_deposit_rates/investec'] = array(
+    'title' => 'Investec',
+    'description' => 'Configure Investec rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_inv_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+    $items['admin/content/sif_deposit_rates/kbc'] = array(
+    'title' => 'KBC',
+    'description' => 'Configure KBC rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_kbc_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   $items['admin/content/sif_deposit_rates/ptsb'] = array(
+    'title' => 'PTSB',
+    'description' => 'Configure PTSB rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_ptsb_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+    $items['admin/content/sif_deposit_rates/rabo'] = array(
+    'title' => 'Rabo Direct',
+    'description' => 'Configure Rabo Direct rates for Sif Deposit Rates',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('sif_deposit_rates_rabo_admin'),
+	'access arguments' => array('administer_sif_deposit_rates'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+ 
+  return $items;
+  
+}
+
+/* ----------------- CHANGE DATE AND HEADING ----------------------------- */
+
+function getSnapshotLinkList()
+{
+
+$snapshots=explode(';',variable_get('sif_deposit_rates_snapshot_date','20160601;'));
+$snapshotLinks='';
+for ($i=0; $i < sizeof($snapshots); $i++) { 
+if ($snapshots[$i] != '')
+$snapshotLinks.=
+'<a target="_blank" href="/bline/pensions/self-invested-fund/sif-deposit-rates?date='.$snapshots[$i].
+	'">Snapshot on '.$snapshots[$i].'</a><br><br>';
+}
+return $snapshotLinks;
+}
+
+function getLatestSnapShotDate()
+{
+	$snapshots=explode(';',variable_get('sif_deposit_rates_snapshot_date','20160601;'));
+	return max($snapshots);
+}
+
+/*
+get the last one, i.e., one before the max 
+*/
+function getPreviousSnapShotDate()
+{
+	$snapshots=explode(';',variable_get('sif_deposit_rates_snapshot_date','20160601;'));
+	$previousSnapShot = 0;
+	$thisSnapShot = 0;
+	$maxSnapshot = intval(max($snapshots));
+	for ($i=0; $i < sizeof($snapshots); $i++) {
+		$thisSnapShot = intval($snapshots[$i]);
+		if ($thisSnapShot > $previousSnapShot && $thisSnapShot != $maxSnapshot)
+		{
+			$previousSnapShot = $thisSnapShot;
+		}	
+	}
+	return $previousSnapShot;
+}
+
+function getDateToUseOnPage()
+{
+	$snapshots=explode(';',variable_get('sif_deposit_rates_snapshot_date','20160601;'));
+	$maxSnapshot = max($snapshots);
+	
+	$dateSpecified = $_GET["date"];
+
+	return '-'.($dateSpecified != ''? $dateSpecified:$maxSnapshot);
+}
+
+function sif_deposit_rates_admin() {
+
+	$form['sif_deposit_rates_snapshot_date'] = array(
+	'#type' => 'textarea',
+	'#title' => t('The deposit rate snapshot dates YYYYMMDD'),
+	'#default_value' => variable_get('sif_deposit_rates_snapshot_date','20160601;'),
+	'#rows' => 1,
+	'#cols' => 5,
+	'#resizable' => FALSE,
+	'#description' => t("The snapshot dates - delimited by ';'. Enter a new date to add a snapshot"),
+	'#required' => TRUE,	
+	);
+
+	$form['sif_deposit_rates_bank_holidays'] = array(
+	'#type' => 'textarea',
+	'#title' => t('Bank holiday dates YYYYMMDD'),
+	'#default_value' => variable_get('sif_deposit_rates_bank_holidays',''),
+	'#rows' => 1,
+	'#cols' => 5,
+	'#resizable' => FALSE,
+	'#description' => t("Bank holiday dates - delimited by ';'."),
+	'#required' => TRUE,	
+	);
+	
+	$form['sif_deposit_rates_all_snapshot_dates'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<h3>Latest Date is '.date('jS M Y',strtotime(getLatestSnapShotDate())).'. Previous Date is '.date('jS M Y',strtotime(getPreviousSnapshotDate())).'.</h3><h4>If you create a new snapshot date then you need to visit each bank setting to save the new rates.</h4><br><br>'.getSnapshotLinkList(),
+	);
+	
+
+	
+	$form['sif_deposit_rates_date'] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the heading for sif deposit rates'),
+	'#default_value' => variable_get('sif_deposit_rates_date','Euro deposit rates'),
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Enter in the heading for deposit rates."),
+	'#required' => TRUE,	
+	);
+	
+	$form['sif_deposit_rates_dateCred'] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the heading for credit ratings'),
+	'#default_value' => variable_get('sif_deposit_rates_dateCred','Euro deposit rates @ 22 january 2016'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Enter in the heading for credit ratings including the date"),
+	'#required' => FALSE,	
+	);
+	
+	
+	return system_settings_form($form);
+}	
+
+/* ----------------- CONFIG FOR AIB RATES ----------------------------- */
+
+function sif_deposit_rates_aib_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	
+	$form['sif_deposit_rates_date_aib_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_aib_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_date_aib'.$dateForInput,''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_aib'.$dateForInput,variable_get('sif_deposit_rates_row_1_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_3_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_aib'.$dateForInput,variable_get('sif_deposit_rates_row_3_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_aib'.$dateForInput,variable_get('sif_deposit_rates_row_4_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_6_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_aib'.$dateForInput,variable_get('sif_deposit_rates_row_6_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_aib'.$dateForInput,variable_get('sif_deposit_rates_row_8_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	
+	$form['sif_deposit_rates_row_9_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_aib'.$dateForInput,variable_get('sif_deposit_rates_row_9_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_aib'.$dateForInput,variable_get('sif_deposit_rates_row_10_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_aib'.$dateForInput,variable_get('sif_deposit_rates_row_11_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_aib'.$dateForInput,variable_get('sif_deposit_rates_row_12_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the AIB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_aib'.$dateForInput,variable_get('sif_deposit_rates_sandp_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the AIB credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_aib'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for AIB'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_aib'.$dateForInput,variable_get('sif_deposit_rates_moodys_aib'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the AIB credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	
+	return system_settings_form($form);
+}
+
+/* ----------------- CONFIG FOR Bank of IRELAND RATES ----------------------------- */
+
+function sif_deposit_rates_boi_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	
+	$form['sif_deposit_rates_date_boi_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_boi_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_date_boi'.$dateForInput,variable_get('sif_deposit_rates_date_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_boi'.$dateForInput,variable_get('sif_deposit_rates_row_1_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_3_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_boi'.$dateForInput,variable_get('sif_deposit_rates_row_3_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_boi'.$dateForInput,variable_get('sif_deposit_rates_row_4_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_6_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_boi'.$dateForInput,variable_get('sif_deposit_rates_row_6_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_boi'.$dateForInput,variable_get('sif_deposit_rates_row_8_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_9_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_boi'.$dateForInput,variable_get('sif_deposit_rates_row_9_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_boi'.$dateForInput,variable_get('sif_deposit_rates_row_10_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_boi'.$dateForInput,variable_get('sif_deposit_rates_row_11_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_boi'.$dateForInput,variable_get('sif_deposit_rates_row_12_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the Bank of Ireland column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_boi'.$dateForInput,variable_get('sif_deposit_rates_sandp_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Bank of Ireland credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_boi'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for Bank of Ireland'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_boi'.$dateForInput,variable_get('sif_deposit_rates_moodys_boi'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Bank of Ireland credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	return system_settings_form($form);
+}		
+
+/* ----------------- CONFIG FOR INVESTEC RATES ----------------------------- */
+
+function sif_deposit_rates_inv_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	$form['sif_deposit_rates_date_inv_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_inv_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_date_inv'.$dateForInput,variable_get('sif_deposit_rates_date_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_inv'.$dateForInput,variable_get('sif_deposit_rates_row_1_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_3_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_inv'.$dateForInput,variable_get('sif_deposit_rates_row_3_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_inv'.$dateForInput,variable_get('sif_deposit_rates_row_4_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_6_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_inv'.$dateForInput,variable_get('sif_deposit_rates_row_6_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_inv'.$dateForInput,variable_get('sif_deposit_rates_row_8_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the aib column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_9_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_inv'.$dateForInput,variable_get('sif_deposit_rates_row_9_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_inv'.$dateForInput,variable_get('sif_deposit_rates_row_10_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_inv'.$dateForInput,variable_get('sif_deposit_rates_row_11_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_inv'.$dateForInput,variable_get('sif_deposit_rates_row_12_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the Investec column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_inv'.$dateForInput,variable_get('sif_deposit_rates_sandp_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Investec credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_inv'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for Investec'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_inv'.$dateForInput,variable_get('sif_deposit_rates_moodys_inv'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Investec credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+/* ----------------- CONFIG FOR KBC RATES ----------------------------- */
+
+function sif_deposit_rates_kbc_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();	
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	
+	$form['sif_deposit_rates_date_kbc_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_kbc_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_date_kbc'.$dateForInput,variable_get('sif_deposit_rates_date_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_1_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_3_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_3_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_4_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_6_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_6_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_8_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_9_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_9_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_10_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_11_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_kbc'.$dateForInput,variable_get('sif_deposit_rates_row_12_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the KBC column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_kbc'.$dateForInput,variable_get('sif_deposit_rates_sandp_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the KBC credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_kbc'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for KBC'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_kbc'.$dateForInput,variable_get('sif_deposit_rates_moodys_kbc'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the KBC credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+/* ----------------- CONFIG FOR PTSB RATES ----------------------------- */
+
+function sif_deposit_rates_ptsb_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();
+		
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	
+	$form['sif_deposit_rates_date_ptsb_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_ptsb_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_date_ptsb'.$dateForInput,variable_get('sif_deposit_rates_date_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_1_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_3_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_3_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_4_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+
+	
+	$form['sif_deposit_rates_row_6_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_6_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_8_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_9_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_9_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_10_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_11_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_ptsb'.$dateForInput,variable_get('sif_deposit_rates_row_12_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the PTSB column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_ptsb'.$dateForInput,variable_get('sif_deposit_rates_sandp_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the PTSB credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_ptsb'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for PTSB'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_ptsb'.$dateForInput,variable_get('sif_deposit_rates_moodys_ptsb'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the PTSB credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+/* ----------------- CONFIG FOR RABO DIRECT RATES ----------------------------- */
+
+function sif_deposit_rates_rabo_admin() {
+	$dateForInput = '-'.getLatestSnapShotDate();
+	$prevDate = '-'.getPreviousSnapShotDate();	
+	
+	$form['sif_deposit_rates_back_settings'] = array(
+	'#type' => 'item',
+	'#title' => t(''),	
+	'#markup' => '<a href="/admin/content/sif_deposit_rates">Back to Settings</a>',
+	);
+	
+	$form['sif_deposit_rates_date_rabo_include'.$dateForInput] = array(
+		'#type' => 'select',
+       '#title' => t('Include this bank on screen?'),
+       '#options' => array(
+          0 => t('No'),
+         1 => t('Yes'),
+       ),
+       '#default_value' => variable_get('sif_deposit_rates_date_rabo_include'.$dateForInput),
+       '#description' => t('Set this to <em>Yes</em> if you would like this bank to be included on the page.'),
+    );
+	
+	$form['sif_deposit_rates_date_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the valid from date for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_date_rabo'.$dateForInput,variable_get('sif_deposit_rates_date_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The date appears under the bank name"),
+	'#required' => 	FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_1_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the On Demand rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_1_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_1_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_3_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 mth fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_3_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_3_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_4_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 6 mth fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_4_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_4_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The third box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_6_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 12 mth fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_6_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_6_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fourth box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_8_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 18 mth fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_8_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_8_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The fifth box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	
+	$form['sif_deposit_rates_row_9_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 2 year fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_9_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_9_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The sixth box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_10_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 3 year fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_10_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_10_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The seventh box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_11_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 4 year fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_11_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_11_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The eighth box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_row_12_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the 5 year fixed rate for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_row_12_rabo'.$dateForInput,variable_get('sif_deposit_rates_row_12_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ninth box in the Rabo Direct column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_sandp_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the S&P credit rating for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_sandp_rabo'.$dateForInput,variable_get('sif_deposit_rates_sandp_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The first box in the Rabo Direct credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	$form['sif_deposit_rates_moodys_rabo'.$dateForInput] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Moodys credit rating for Rabo Direct'),
+	'#default_value' => variable_get('sif_deposit_rates_moodys_rabo'.$dateForInput,variable_get('sif_deposit_rates_moodys_rabo'.$prevDate,'')),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The second box in the Rabo Direct credit rating column"),
+	'#required' => FALSE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function sif_deposit_rates_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#sif_deposit_rates":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function isWeekend($date) {
+	return (date_format($date,"w") == 6 || date_format($date,"w") == 0);
+}
+
+function sif_deposit_rates_contents(){ 
+
+$heading = '';
+$dateToUse = date_create();
+$bankholidays=variable_get('sif_deposit_rates_bank_holidays','');
+$dateToUseOnPage=getDateToUseOnPage();
+$businessDay = false;
+
+$aibDisplay=(variable_get('sif_deposit_rates_date_aib_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+$boiDisplay=(variable_get('sif_deposit_rates_date_boi_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+$invDisplay=(variable_get('sif_deposit_rates_date_inv_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+$kbcDisplay=(variable_get('sif_deposit_rates_date_kbc_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+$ptsbDisplay=(variable_get('sif_deposit_rates_date_ptsb_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+$raboDisplay=(variable_get('sif_deposit_rates_date_rabo_include'.$dateToUseOnPage) == '1'?'' : 'style=\'display:none\' ');
+
+while ($businessDay == false) {
+	$dateStr = date_format($dateToUse, 'Ymd');
+	if (strpos($bankholidays,$dateStr) > -1)
+	{
+		$dateToUse=date_sub($dateToUse,date_interval_create_from_date_string("1 day"));
+	}
+	else if (isweekend($dateToUse))
+	{
+		$dateToUse=date_sub($dateToUse,date_interval_create_from_date_string("1 day"));
+	}
+	else
+	{
+		$businessDay = true;
+	}
+}
+$heading = variable_get('sif_deposit_rates_date','').' @ '.date_format($dateToUse,"jS M Y");
+if ($_GET["date"] != '')
+{
+	$heading = '****** Snapshot of Deposit rates @ '.$dateToUseOnPage.'************';
+}
+
+return 
+'
+<h2 class="dateHead">'.variable_get('sif_deposit_rates_date','').' @ '.date_format($dateToUse,"jS M Y").'</h2><div id="submitContact2"><a href="javascript:window.print()">Print</a></div>
+<!-- ********************* MOBILE TABLE ********************* -->
+<div class="mobContainer">
+<br/>
+<h3>Select a term to view the rates</h3>
+<!-- ******************* BUTTONS ********************* -->
+<table class="btnTable">
+<tr class="banks">
+<td class="Btn tableLink" rel="onDem">On Demand</td>
+<td class="Btn tableLink" rel="3mth">3 Mth Fixed</td>
+<td class="Btn tableLink" rel="6mth">6 Mth Fixed</td>
+</tr>
+<tr class="banks">
+<td class="Btn tableLink" rel="12mth">12 Mth Fixed</td>
+<td class="Btn tableLink" rel="18mth">18 Mth Fixed</td>
+<td class="Btn tableLink" rel="2yr">2 Year Fixed</td>
+</tr>
+<tr class="banks">
+<td class="Btn tableLink" rel="3yr">3 Year Fixed</td>
+<td class="Btn tableLink" rel="4yr">4 Year Fixed</td>
+<td class="Btn tableLink" rel="5yr">5 Year Fixed</td>
+</tr>
+</table>
+<!-- ******************** ON DEMAND ************************** -->
+<table class="onDem tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>On Demand</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_1_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+ <td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_1_boi'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_1_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_1_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permantent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_1_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_1_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+</table>
+<!-- ******************** 3 MTH FIXED ************************** -->
+<table class="3mth tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>3 Mth Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_3_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_3_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr  '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_3_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_3_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_3_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_3_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+</table>
+<!-- ******************** 6 MTH FIXED ************************** -->
+<table class="6mth tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>6 Mth Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_4_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_4_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr  '.$invDisplay.' class="ratesEven">
+ <td>Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_4_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_4_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_4_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr   '.$raboDisplay.' class="ratesOdd">
+ <td>RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_4_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+</table>
+<!-- ******************** 12 MTH FIXED ************************** -->
+<table class="12mth tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>12 Mth Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_6_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_6_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_6_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland</td><td>'.variable_get('sif_deposit_rates_row_6_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr  '.$ptsbDisplay.' class="ratesEven">
+ <td>Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_6_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_6_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+</table>
+<!-- ******************** 18 MTH FIXED ************************** -->
+<table class="18mth tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>18 Mth Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_8_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr  '.$boiDisplay.' class="ratesOdd">
+<td>Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_8_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_8_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_8_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr  '.$ptsbDisplay.' class="ratesEven">
+ <td>Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_8_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_8_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+</table>
+<!-- ******************** 2 YEAR FIXED  ************************** -->
+<table class="2yr tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>2 Year Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_9_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_9_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_9_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_9_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_9_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_9_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ <!-- ******************** 3 YEAR FIXED  ************************** -->
+<table class="3yr tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>3 Year Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_10_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_10_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_10_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_10_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_10_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_10_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ <!-- ******************** 4 YEAR FIXED  ************************** -->
+<table class="4yr tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>4 Year Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_11_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_11_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_11_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_11_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_11_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_11_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+  <!-- ******************** 5 YEAR FIXED  ************************** -->
+<table class="5yr tableHolder">
+<tr>
+<td colspan="2" style="text-align: center"><h2>5 Year Fixed</h2></td>
+</tr>
+<tr '.$aibDisplay.' class="ratesEven">
+<td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_row_12_aib'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$boiDisplay.' class="ratesOdd">
+<td >Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_row_12_boi'.$dateToUseOnPage,'').'</td>
+</tr>
+<tr '.$invDisplay.' class="ratesEven">
+ <td >Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_row_12_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td >KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_row_12_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td >Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_row_12_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesOdd">
+ <td >RaboDirect</td><td>'.variable_get('sif_deposit_rates_row_12_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ </div>
+ <!-- *********************** DESKTOP ********************* -->
+<table class="sifTable">
+<tr class="banks">
+    <td class="top-left">Term</td>
+	<td '.$aibDisplay.'><strong>Allied Irish Bank<br/>(AIB)</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_aib'.$dateToUseOnPage,'').'</span>
+	<td '.$boiDisplay.'><strong>Bank of Ireland<br/>(BOI)</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_boi'.$dateToUseOnPage,'').'</span></td>
+	<td '.$invDisplay.'><strong>Investec Bank <br/>plc</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_inv'.$dateToUseOnPage,'').'</span></td>
+	<td '.$kbcDisplay.'><strong>KBC Bank Ireland <br/>plc</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_kbc'.$dateToUseOnPage,'').'</span></td>
+	<td '.$ptsbDisplay.'><strong>Permanent tsb <br/>plc</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_ptsb'.$dateToUseOnPage,'').'</span></td>
+	<td class="top-right" '.$raboDisplay.'><strong>RaboDirect</strong><br/><span style="font-size:11px">'.variable_get('sif_deposit_rates_date_rabo'.$dateToUseOnPage,'').'</span></td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>On Demand</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_1_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_1_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_1_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_1_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_1_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_1_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesEven">
+ <td>3 Mth Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_3_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_3_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_3_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_3_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_3_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_3_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>6 Mth Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_4_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_4_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_4_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_4_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_4_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_4_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesEven">
+ <td>12 Mth Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_6_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_6_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_6_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_6_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_6_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_6_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>18 Mth Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_8_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_8_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_8_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_8_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_8_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_8_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesEven">
+ <td>2 Year Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_9_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_9_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_9_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_9_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_9_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_9_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>3 Year Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_10_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_10_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_10_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_10_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_10_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_10_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesEven">
+ <td>4 Year Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_11_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_11_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_11_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_11_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_11_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_11_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>5 Year Fixed</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_row_12_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_row_12_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_row_12_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_row_12_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_row_12_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_row_12_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ <table>
+ <tr>
+ <td style="padding: 30px;width: 25%;">AER = Annual Equivalent Rate</td><td>GR = Gross Return, this refers to the relevant interest rates for each term.</td>
+ </tr>
+ </table>
+ <p><strong>Important Note:</strong> These deposits are not protected by any government or financial institution guarantee scheme, including the Deposit Guarantee Scheme.</p>
+ <h2>'.variable_get('sif_deposit_rates_dateCred','').'</h2>
+ <div class="mobContainer">
+ <br/>
+<h3>Select a rating to view</h3>
+ <!-- ************** CREDIT RATINGS TABLE ******************* -->
+<table class="btnTable">
+<tr class="banks">
+    <td class="Btn tableLinkCred" rel="aibCred">S&P</td><td class="Btn tableLinkCred" rel="boiCred">Moodys</td>
+</tr>
+</table>
+ <!-- ************ S&P CREDIT RATINGS **************** -->
+ <table class="aibCred tableHolderCred">
+ <tr>
+ <td colspan="2" style="text-align: center"><h2>S&P Credit Ratings</h2></td>
+ </tr>
+ <tr '.$aibDisplay.' class="ratesOdd">
+ <td >Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_sandp_aib'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$boiDisplay.' class="ratesEven">
+ <td>Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_sandp_boi'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$invDisplay.' class="ratesOdd">
+ <td>Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_sandp_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td>KBC Bank Ireland</td><td>'.variable_get('sif_deposit_rates_sandp_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td>Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_sandp_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesEven">
+ <td>RaboDirect</td><td>'.variable_get('sif_deposit_rates_sandp_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ <!-- ************ MOODYS CREDIT RATINGS  **************** -->
+ <table class="boiCred tableHolderCred">
+  <tr>
+ <td colspan="2" style="text-align: center"><h2>Moodys Credit Ratings</h2></td>
+ </tr>
+ <tr '.$aibDisplay.' class="ratesOdd">
+ <td Allied Irish Bank (AIB)</td><td>'.variable_get('sif_deposit_rates_moodys_aib'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$boiDisplay.' class="ratesEven">
+ <td>Bank of Ireland (BOI)</td><td>'.variable_get('sif_deposit_rates_moodys_boi'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$invDisplay.' class="ratesOdd">
+ <td>Investec Bank plc</td><td>'.variable_get('sif_deposit_rates_moodys_inv'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$kbcDisplay.' class="ratesOdd">
+ <td>KBC Bank Ireland plc</td><td>'.variable_get('sif_deposit_rates_moodys_kbc'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$ptsbDisplay.' class="ratesEven">
+ <td>Permanent tsb plc</td><td>'.variable_get('sif_deposit_rates_moodys_ptsb'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr '.$raboDisplay.' class="ratesEven">
+ <td>RaboDirect</td><td>'.variable_get('sif_deposit_rates_moodys_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table>
+ </div>
+<table class="sifTable">
+<tr class="banks">
+    <td class="top-left">Credit Ratings</td>
+	<td '.$aibDisplay.'><strong>Allied Irish Bank (AIB)</strong></td>
+	<td '.$boiDisplay.'><strong>Bank of Ireland (BOI)</strong></td>
+	<td '.$invDisplay.'><strong>Investec Bank <br/>plc</strong></td>
+	<td '.$kbcDisplay.'><strong>KBC Bank Ireland plc</strong></td>
+	<td '.$ptsbDisplay.'><strong>Permanent tsb <br/>plc</strong></td>
+	<td '.$raboDisplay.' class="top-right"><strong>RaboDirect</strong></td>
+ </tr>
+ <tr class="ratesOdd">
+ <td>S&amp;P</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_sandp_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_sandp_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_sandp_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_sandp_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_sandp_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_sandp_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ <tr class="ratesEven">
+ <td>Moodys</td>
+ <td '.$aibDisplay.'>'.variable_get('sif_deposit_rates_moodys_aib'.$dateToUseOnPage,'').'</td>
+ <td '.$boiDisplay.'>'.variable_get('sif_deposit_rates_moodys_boi'.$dateToUseOnPage,'').'</td>
+ <td '.$invDisplay.'>'.variable_get('sif_deposit_rates_moodys_inv'.$dateToUseOnPage,'').'</td>
+ <td '.$kbcDisplay.'>'.variable_get('sif_deposit_rates_moodys_kbc'.$dateToUseOnPage,'').'</td>
+ <td '.$ptsbDisplay.'>'.variable_get('sif_deposit_rates_moodys_ptsb'.$dateToUseOnPage,'').'</td>
+ <td '.$raboDisplay.'>'.variable_get('sif_deposit_rates_moodys_rabo'.$dateToUseOnPage,'').'</td>
+ </tr>
+ </table><div style="display:none">Using settings from '.$dateToUseOnPage.'</div>'
+	;
+}
+
+function sif_deposit_rates_block_view($delta = '') {
+  switch($delta) {
+    case 'sif_deposit_rates':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = "".sif_deposit_rates_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	
+
+      drupal_add_css(drupal_get_path('module', 'sif_deposit_rates') . '/css/sif.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css(drupal_get_path('module', 'sif_deposit_rates') . '/css/sif_mobile.css', array('group' => CSS_DEFAULT));
+	  drupal_add_js(drupal_get_path('module', 'sif_deposit_rates') . '/js/mobile.js', array('scope' => 'footer'));
+
+	  return $block;
+	break;
+		
+  }
+ }

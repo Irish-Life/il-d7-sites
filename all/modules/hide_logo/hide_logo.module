@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * A block module that hides the Irish Life logo.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function hide_logo_block_info() {
+  $blocks['hide_logo'] = array(
+    'info' => t('Block to be included where we want to hide the Irish Life logo'),
+  );
+  return $blocks;
+}
+
+
+function hide_logo_contents(){
+  return "";
+}
+
+function hide_logo_block_view($delta = '') {
+  switch($delta) {
+    case 'hide_logo':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+
+      $result = hide_logo_contents();
+      $block['content'] = $result;
+      drupal_add_js(drupal_get_path('module', 'hide_logo') .'/js/hide-logo.js', array('scope' => 'footer'));
+    }
+    return $block;
+  }
+ }
+
+

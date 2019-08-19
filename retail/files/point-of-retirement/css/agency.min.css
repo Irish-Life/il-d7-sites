@@ -1,0 +1,1093 @@
+/*!
+ * Start Bootstrap - Agency v5.0.2 (https://startbootstrap.com/template-overviews/agency)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
+ */
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    background-color: #F6F4F6;
+    font-family: "Lato", sans-serif;
+    text-transform: none !important;
+    overflow: scroll;
+}
+
+li {
+    color: #675c53;
+    font-size: 16px;
+    line-height: 1.75
+    
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.75
+}
+
+
+
+a:hover {
+    color: #202440;
+    text-decoration: none;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+section {
+    padding: 10px 0
+}
+
+section h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px
+}
+
+section h3.section-subheading {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 75px;
+    text-transform: none;
+}
+
+@media (min-width:768px) {
+    section {
+        padding: 0px 0
+    }
+}
+
+.btn {
+    font-weight: 700;
+    background-color: #5261AC;
+}
+
+.btn-xl {
+    font-size: 18px;
+    padding: 20px 40px
+}
+
+/*
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+    background-color: #fff ;
+    border-color: #fff;
+    color: #fff
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    -webkit-box-shadow: 0 0 0 .2rem rgba(254, 209, 55, .5) !important;
+    box-shadow: 0 0 0 .2rem rgba(254, 209, 55, .5) !important
+}
+
+::-moz-selection {
+    background: #fff;
+    text-shadow: none
+}
+
+::selection {
+    background: #fff;
+    text-shadow: none
+}
+
+img::-moz-selection {
+    background: 0 0
+}
+
+
+
+img::selection {
+    background: 0 0
+}
+
+img::-moz-selection {
+    background: 0 0
+}
+*/
+#mainNav {
+    background-color: #212529;
+    position: static;
+    top: 0;
+    width: 100%;
+    margin-top: 0px;
+}
+
+#mainNav .navbar-toggler {
+    font-size: 12px;
+    right: 0;
+    padding: 13px;
+    color: #fff;
+    border: 0;
+    background-color: #5261ac;
+    display: none;
+}
+
+
+
+#mainNav .navbar-brand.active,
+#mainNav .navbar-brand:active,
+#mainNav .navbar-brand:focus,
+#mainNav .navbar-brand:hover {
+    color: #202440;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 90%;
+    font-weight: 400;
+    padding: .75em 0;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active,
+#mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #202440 !important;
+}
+
+@media (min-width:992px) {
+    #mainNav {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        -webkit-transition: padding-top .3s, padding-bottom .3s;
+        transition: padding-top .3s, padding-bottom .3s;
+        border: none;
+        background-color: transparent
+    }
+
+    #mainNav .navbar-brand {
+        font-size: 1.75em;
+        -webkit-transition: all .3s;
+        transition: all .3s
+    }
+
+    #mainNav .navbar-nav .nav-item .nav-link {
+        padding: 1.1em 1em !important
+    }
+
+    #mainNav.navbar-shrink {
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #212529
+    }
+
+    #mainNav.navbar-shrink .navbar-brand {
+        font-size: 1.25em;
+        padding: 12px 0
+    }
+}
+
+header.masthead {
+    text-align: center;
+    color: #fff;
+    background-image: url("https://www.irishlife.ie/sites/retail/files/images/header-image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    margin-top: -133px;
+}
+
+header.masthead .intro-text {
+    padding-top: 150px;
+    padding-bottom: 100px
+}
+
+header.masthead .intro-text .intro-lead-in {
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+    margin-bottom: 25px;
+}
+
+header.masthead .intro-text .intro-heading {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 5px;
+    /* margin-left: 250px;*/
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+
+}
+.intro-heading {
+    text-shadow: 2px 2px 2px #414981; 
+    margin-left: 300px;
+}
+
+@media (min-width:768px) {
+    header.masthead .intro-text {
+        padding-top: 300px;
+        padding-bottom: 200px
+    }
+
+    header.masthead .intro-text .intro-lead-in {
+        font-size: 22px;
+        font-style: italic;
+        line-height: 40px;
+        margin-bottom: 25px;
+        margin-left: 30px;
+    }
+
+    header.masthead .intro-text .intro-heading {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 75px;
+        text-shadow: 5px 10px 18px #888888;
+
+        /*margin-bottom: 50px;*/
+    }
+
+    .navbar-toggler-right {
+        display: none;
+    }
+
+
+}
+
+.service-heading {
+    margin: 15px 0;
+    text-transform: none
+}
+
+.timeline-line {
+    height: 5px;
+    width: 100%;
+    background-image: url(https://www.irishlife.ie/sites/retail/files/point-of-retirement/img/timeline.png);
+    position: relative;
+    top: 135px;
+    z-index: 0;
+}
+
+/* Portfolio Test */
+
+
+
+/*.filter-button
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 50%;
+    text-align: center;
+    color: #42B32F;
+    margin-bottom: 30px;
+
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 50%;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42B32F;
+
+}*/
+.btn-default:active .filter-button:active {
+    background-color: #fff;
+    color: white;
+}
+
+.port-image {
+    width: 100%;
+}
+
+.gallery_product {
+    margin-bottom: 30px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn.btn-circle.btn-xl.filter-button:hover {
+    background-color: #272E56;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.btn-circle.btn-lg:hover {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+    background-color: brown;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+/* STYLES ADDED BY CONOR */
+
+p.card-text-color {
+
+    font-size: 16px;
+    font-weight: regular;
+    color: #fff;
+}
+
+p.card-text-no-color {
+
+    font-size: 16px;
+    font-weight: regular;
+    color: #675c53;
+}
+
+p.card-heading-color {
+
+    font-size: 18px;
+    font-weight: regular;
+    color: #fff;
+}
+
+p.card-heading-no-color {
+
+    font-size: 18px;
+    font-weight: regular;
+    color: #675c53;
+
+}
+
+p.card-heading-bold {
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#card,
+#card-2,
+#card-3,
+#card-4,
+#card-5,
+#card-6,
+#card-7, 
+#card-8,
+#card-9, 
+#card-10, 
+#card-11, 
+#card-12, 
+#card-13,
+#card-14,
+#card-15{
+    
+
+    height: 473px;
+    width: 360px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.card-link {
+
+    color: #50c9b5;
+    font-size: 16px;
+    float: right;
+}
+
+.article {
+    height: 473px;
+    width: 360px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.back {
+    height: 473px;
+    width: 360px;
+    background-color: #5261AC;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.card-text-front {
+
+    color: #000;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 30px;
+    width: 360px;
+    margin-bottom: 20px;
+}
+
+.card-text-back {
+
+    color: #fff;
+    font-size: 16px;
+    margin-top: 150px;
+    padding: 10px;
+}
+
+.btn-success {
+
+    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.container-full-width {
+
+    /* width: 100%;*/
+}
+
+.cant-find-bar-1 {
+
+    background-color: #5261AC;
+    width: 100%;
+    height: 173px;
+    padding: 70px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.cant-find-bar-2 {
+
+    background-color: #414981;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+
+
+
+}
+
+
+
+.cant-find-bar-2-text {
+    height: 100%;
+}
+
+input[type=button] {
+    background-color: #5261AC;
+}
+
+input[type=button]:hover {
+    background-color: #272E56;
+
+}
+
+input[type=button]:active {
+    background-color: #50C9B5;
+
+}
+
+.nav-link:hover {
+    color: #202440;
+}
+
+.list-of-resources-button {
+    width: 300px;
+    background-color: #50c9b5;
+    font-size: 18px;
+    color: #fafaff;
+    text-decoration: none solid rgb(250, 250, 255);
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    padding: 10px 25px 10px 25px;
+    margin-left: 50px
+}
+
+.bottom-image-left {
+    width: 100%;
+    height: 494px;
+    overflow: hidden;
+    background-image: url("https://www.irishlife.ie/sites/retail/files/point-of-retirement/img/Sign-up-for-My-Online-service-image.jpg");
+    margin-bottom: 10px;
+}
+
+.bottom-image-left-text {
+    color: #fff;
+    padding: 10px;
+    margin-top: 230px;
+}
+
+.bottom-image-right-text {
+    color: #fff;
+    padding: 10px;
+    margin-top: 230px;
+}
+
+.bottom-image-right {
+    width: 100%;
+    height: 494px;
+    overflow: hidden;
+    background-image: url("https://www.irishlife.ie/sites/retail/files/point-of-retirement/img/contact-an-advisor.jpg");
+}
+
+.bottom-area-button {
+    width: 152px;
+    height: 51px;
+    background-color: #50c9b5;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fafaff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-shadow: none;
+    padding: 10px;
+
+}
+
+/*#wrap {
+    background-color: #5261AC;
+    padding: 40px; 
+    text-align: center;
+    width: 100%;  
+}*/
+
+#left,
+#right {
+    display: inline-block;
+
+}
+
+#articles-dropdown {
+
+    height: 100%;
+}
+
+#articles {
+
+    padding: 20px;
+    width: 100%;
+}
+
+/*Mobile Device Styles */
+
+@media (max-width: 480px) {
+    .buttons {
+        display: none;
+
+    }
+
+    .timeline-line {
+        display:none;
+    }
+    header.masthead .intro-text .intro-heading {
+        margin-left: 150px;
+    }
+
+    .intro-lead-in {
+
+        padding: 10px;
+    }
+
+    .mobile-dropdown-subtext {
+
+        display: block;
+
+    }
+
+    .dropdown-subtext {
+
+        display: none;
+
+    }
+
+    #articles-container {
+        margin-top: 10px !important;
+    }
+
+    .articles {
+        width: 338px;
+        height: 429px;
+        margin: 0 auto;
+    }
+
+    .list-of-resources-button {
+        float: left;
+        margin-top: 20px;
+    }
+
+    .cant-find-bar-1 {
+        font-size: 20px;
+        padding: 30px;
+    }
+
+
+    .intro-heading {
+    text-shadow: 2px 2px 2px #414981; 
+    margin-left: none;
+}
+
+}
+
+
+
+.dropdown-subtext {
+
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 2px 2px #000
+}
+
+.mobile-dropdown-subtext {
+
+    display: none;
+    font-size: 14px;
+    color: #5261ac;
+}
+
+.horizontal {
+    display: inline-block;
+    width: 100px;
+}
+
+@media (max-width: 480px) {
+    .buttons {
+        display: none;
+
+    }
+
+    header.masthead .intro-text .intro-heading {
+        margin-left: 150px;
+    }
+
+    .intro-lead-in {
+
+        padding: 10px;
+    }
+
+    .mobile-dropdown-subtext {
+
+        display: block;
+
+    }
+
+    .dropdown-subtext {
+
+        display: none;
+
+    }
+
+    #articles-container {
+        margin-top: 10px !important;
+    }
+
+
+}
+
+/* ARTICLE PAGE STYLES */
+
+#article-body {
+
+    background-color: #fff;
+    font-family: "Lato", sans-serif;
+
+}
+
+#mainNav-article-page {
+    background-color: #fff;
+    position: static;
+    top: 0;
+    width: 100%;
+    float: right;
+}
+
+#mainNav-article-page .navbar-toggler {
+    font-size: 12px;
+    right: 0;
+    padding: 13px;
+    color: #fff;
+    border: 0;
+    background-color: #5261ac;
+    float: right;
+}
+
+
+#mainNav-article-page .navbar-brand.active,
+#mainNav-article-page .navbar-brand:active,
+#mainNav-article-page .navbar-brand:focus,
+#mainNav-article-page .navbar-brand:hover {
+    color: #202440;
+}
+
+#mainNav-article-page .navbar-nav .nav-item .nav-link {
+    font-size: 90%;
+    font-weight: 400;
+    padding-right: 20px;
+    letter-spacing: 1px;
+    color: #5668B1;
+    text-transform: none !important;
+}
+
+#mainNav-article-page .navbar-nav .nav-item .nav-link.active,
+#mainNav-article-page .navbar-nav .nav-item .nav-link:hover {
+    color: #fff !important;
+}
+
+.article-heading {
+    font-weight: bold;
+    font-size: 26px;
+
+}
+
+.article-sub-heading {
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.article-inner-image {
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.article-header-block {
+
+    background-color: #5261AC;
+    height: 256px;
+    width: 100%;
+}
+
+.article-header-image {
+
+    margin-top: -80px;
+}
+
+.article-body-left {
+
+    width: 100%;
+}
+
+.article-body-right {
+
+    width: 100%;
+    overflow: hidden;
+}
+
+.article-body-right-button-1 {
+
+    width: 100%;
+    height: 51px;
+    background-color: #50c9b5;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fafaff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-shadow: none;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.article-body-right-button-2 {
+
+    width: 100%;
+    height: 51px;
+    background-color: #2196F3;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fafaff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-shadow: none;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.author-name {
+
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.author-box-intro {
+    margin-top: 15px;
+}
+
+a.author-social-link.small {
+    margin-left: 5px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .center-block {
+        margin: 0 auto;
+    }
+
+    .author-box {
+        text-align: center;
+    }
+
+    .author-social-links {
+        text-align: center;
+        display: block;
+        margin-top: 10.5px;
+        /*  position: absolute;
+    right: 20px;
+    top: -20px;
+*/
+    }
+}
+
+
+
+@media (max-width:767px) {
+
+    .article-header-image {
+
+        margin-top: -30px;
+        width: 100%;
+        height: auto;
+        padding: 5px;
+    }
+
+    .article-header-block {
+
+        background-color: #5261AC;
+        height: 100px;
+        width: 100%;
+    }
+
+    #br-browser {
+        display: none;
+    }
+
+    #br-mobile {
+        display: block;
+    }
+}
+
+@media (min-width:768px) {
+    #br-browser {
+        display: block;
+    }
+
+    #br-mobile {
+        display: none;
+    }
+}
+
+.social-share-box {
+
+
+    float: right;
+    padding: 20px 0px 10px 10px;
+}
+
+/* END OF ARTICLE PAGE STYLES */
+/* ARTICLES LIST PAGE STYLES */
+.list-boxes p {
+
+    margin-bottom: 0px;
+
+}
+
+/* FOOTER STYLES */
+/* Footer */
+
+section {
+    padding: 20px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+}
+
+#footer {
+    background: #675C53 !important;
+}
+
+#footer h2,
+h5 {
+    padding-left: 10px;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+}
+
+#footer ul.social li {
+    padding: 3px 0;
+    float: left;
+}
+
+#footer ul.social li a i {
+    margin-right: 5px;
+    font-size: 25px;
+
+    transition: .5s all ease;
+}
+
+
+
+#footer ul.quick-links li {
+    padding: 3px 0;
+    color: #ffffff;
+
+}
+
+#footer ul.quick-links li a i {
+    margin-right: 5px;
+}
+
+
+@media (max-width:767px) {
+    #footer h5 {
+        padding-left: 0;
+        border-left: transparent;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+.footer-columns {
+
+    border-right: 1px solid #EDEAED;
+    padding: 5px
+}
+
+.quick-links {
+
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Lato", sans-serif;
+}
+
+ul.menu {
+
+    border: none;
+    list-style: none;
+    text-align: left;
+    font-size: 14px;
+}
+
+li.leaf {
+    padding-right: 10px;
+}
+
+.leaf {
+    list-style: none;
+    float: left;
+    border-right: 1px solid #EDEAED;
+    padding-left: 5px
+}
+
+ul {
+    margin: 0;
+    padding: 0px;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    font: inherit;
+}
+
+/*End Footer Styles */
+/*Test Shadow Styles */
+.shadow {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+    float: left;
+    box-sizing: border-box;
+    padding: 30px;
+    font-family: sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+#slow-transition {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 500ms;
+}
+
+#slow-transition:hover {
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+    text-decoration: none !important;
+
+}
+
+#fast-transition {
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+#fast-transition::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+#fast-transition:hover::before {
+    opacity: 1;
+}

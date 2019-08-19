@@ -1,0 +1,99 @@
+.form .labelPadding { float:left; padding:2px 8px 6px 0; width:192px; }
+.form .required { color:#AD9BBF; float:left; font-size:1.4em; padding-top:3px; width:12px; }
+.button { border:0 none; color:#FFFFFF; cursor:pointer; float:left; font-size:1.6em; font-weight:bold; }
+.button { padding:3px 10px; }
+.button .border { border:1px solid #A0A0A0; }
+.button .border.side.left { border-right:1px solid #444444 !important; }
+.button .border.side.center { border-left:1px solid #FFFFFF !important; border-right:1px solid #444444 !important; }
+.button .border.side.right { border-left:1px solid #FFFFFF !important; }
+.button .background.main { background:none repeat scroll 0 0 #EEEEEE; }
+.button .background.top { background:none repeat scroll 0 0 #F3F3F3; }
+.button .background.bottom { background:none repeat scroll 0 0 #E3E3E3; }
+.button .border.hover { border-color:#666666; }
+.button .border.down { border-color:black; }
+.button .background.top.down { background:none repeat scroll 0 0 #E3E3E3; }
+.button .background.bottom.down { background:none repeat scroll 0 0 #F3F3F3; }
+.button.active { color:white; }
+.button .background.main.active { background:none repeat scroll 0 0 #AAAAAA; }
+.button .background.top.active { background:none repeat scroll 0 0 #A1A1A1; }
+.button .background.bottom.active { background:none repeat scroll 0 0 #B2B2B2; }
+.button .border.active { border-color:#222222; }
+.button .border.side.center.active,
+.button .border.side.right.active { border-left:1px solid #CCCCCC !important; }
+.button .dropdown { background:none repeat scroll 0 0 white; border:1px solid #A0A0A0; color:black; list-style:none outside none; padding:4px; }
+.button .dropdown.active li { background:none repeat scroll 0 0 #FFFFFF; color:black; }
+.button .dropdown.active li:hover { background:none repeat scroll 0 0 #EEEEEE; }
+.button2 { border:0 none; color:#FFFFFF; cursor:pointer; font-size:1.6em; }
+.button-Purple { background:url("/uploadedImages/Financial_Advisers/buttonPurple2.png") no-repeat scroll 0 0 transparent; border:0 none; height:40px; padding:4px; width:80px; } a {color:#206CAF;cursor:pointer;text-decoration:none;}
+.bodyInner-top { background-color:#FFFFFF; width:660px; }
+.bodyInner-top-right { float:left; height:150px; position:relative; width:195px; }
+.bioImage { border:0 solid #E0E0E0;}
+.bodyInner-top-left { float:left; height:150px; width:315px; }
+.body-tl-img { float:left; text-align:center; width:155px; }
+.body-tl-info { float:left; width:150px; } 
+.body-tl-clear{float:left; width:131px}
+#map-modal-content { display:none; } 
+#callback-modal{display:block}
+#callback-modal-content { display:none; } 
+#calculator-modal-content { display:none; } 
+#emailMe-modal-content { display:none; } 
+#financialReview-modal{display:block}
+#financialReview-modal-content { display:none; }
+#video-modal-content { display:none; } 
+#financial-review-video-modal-content { display:none; } 
+#simplemodal-overlay { background-color:#000000; cursor:wait; } 
+#simplemodal-container { background-color:#ffffff; border:1px solid #444444; color:#BBBBBB; height:auto; padding:12px; width:auto; } 
+#simplemodal-container code { background:none repeat scroll 0 0 #141414; border-left:3px solid #65B43D; color:#BBBBBB; display:block; margin-bottom:12px; padding:4px 6px 6px; } 
+#simplemodal-container a { color:#DDDDDD; } 
+#simplemodal-container a.modalCloseImg { background:url("/uploadedImages/financial_advisers/x.png") no-repeat scroll 0 0 transparent; cursor:pointer; display:inline; height:29px; position:absolute; right:-16px; top:-15px; width:25px; z-index:3200; } 
+#simplemodal-container 
+#basic-modal-content { padding:8px; }
+.mapframe { } ul.callbackForm { color:#FFFFFF; font-size:1.3em; padding:4px; text-align:center; }
+.body-mid { background-color:#FFFFFF; width:650px; }
+.body-mid-left { float:left; margin-bottom:5px; margin-left:5px; margin-top:0; top:0; width:645px; }
+.body-mid-right { background-color:#FFFFFF; border:0 solid #BFBFBF; display:block; float:right; margin-top:20px; text-align:left; width:225px; }
+.highligher { margin-bottom:0px !important; 
+background-color:#845AA6; 
+display:inline-block; min-width:100%; color:#ffffff !important;padding-left:5px !important}
+.body-bottom { background-color:#FFFFFF; margin-top:10px; width:650px; }
+.body-bottom-left { float:left; margin-bottom:5px; margin-left:5px; margin-top:5px; width:250px; }
+.body-bottom-right { display:block; float:right; margin-bottom:5px; margin-right:5px; margin-top:5px; text-align:center; width:250px; }
+.quoteImageOpen { border:0 solid #E0E0E0; float:left; height:15px; margin-left:4px; margin-right:4px; width:15px; }
+.atImage { border:0 solid #E0E0E0; height:19px; vertical-align:middle; width:19px; }
+.quoteImageClosed { border:0 solid #E0E0E0; height:15px; margin-left:4px; margin-right:4px; width:15px; }
+.bodyHolder { border:0 solid #DDDDDD; margin-top:20px; padding:0; position:relative; width:870px; }
+.bodyHolderLeft { float:left; width:660px; }
+.body-hr-block { background-color:#f9f9f9; font-size:1.2em;
+color:#000000; padding-bottom:10px; padding-left:5px; padding-top:5px; margin-top:10px}
+.newsticker li{background:none}
+.newsticker { list-style-type:none; margin:0; padding:3px; height:90px;min-height:90px }
+.socialIcons { margin-bottom:10px; }
+.searchInput { height:19px; margin:0; padding:0; vertical-align:bottom; width:300px; }
+.emailBody { background:none repeat scroll 0 0 #FFFFFF; border-color:#909090 #D0D0D0 #D0D0D0 #909090; border-style:solid; border-width:1px; font-size:1.4em; height:150px; margin-bottom:2px; padding:1px; width:300px; }
+.fr-middle { color:#404040; float:left; padding:0 5px; text-align:left; width:330px; }
+.fr-middle h2 { color:#845AA6; font-size:1.6em; font-weight:bold; margin-bottom:16px; padding:0; text-align:center; }
+.fr-middle h3 { color:#845AA6; font-size:1.4em; font-weight:bold; margin:0 0 10px; }
+.fr-middle h3.borderBottom { border-bottom:1px solid #EAEAEA; margin-bottom:8px; padding-bottom:4px; }
+.fr-middle p { color:#333333; font-size:1.2em; line-height:1.5em; margin:12px 0; }
+.fr-middle ul { color:#333333; }
+.fr-middle li { line-height:1.5em; margin:0 0 0px; padding-left:10px; }
+.fr-middle li.pdf { background:url("/uploadedImages/financial_advisers/icon/pdf.gif") no-repeat scroll 0 3px transparent; padding-left:23px; }
+.fr-middle a { text-decoration:underline; }
+.fr-middle a:hover { cursor:pointer; text-decoration:none; }
+.fr-middle-wide { min-height:400px; width:540px; }
+.open{font-size:1.2em;text-decoration:underline;}
+.content-right{width:200px !important}
+.markerInfoConsultant{height:100px}
+.floatleft{float:left}
+.findAdviser ul{list-style-type:none;}
+.findAdviser li{background:none; float:left;width:100%}
+.Adviserarea{background:none; margin-left:200px;float:center;}
+.fieldWidth {font-weight:bold;float:left;font-size:12px;width:186px;margin-top:4px;text-align:center;margin:0px;}
+.adviserArea{float:right;width:355px; margin:0px;text-align:left;}
+.areaCovered{float:left;width:355px; margin:0px;text-align:right;}
+.smallFieldWidth {width:100px}
+.findHead{color:#4E2273;font-size:1.3em;font-weight:bold;margin-bottom:10px;width:175px;float:left;border-bottom:3px solid;text-align:center;}
+.findOutMore{margin: 4px 0 0 15px !important;font-size:1em !important}
+.findOutMore a{display:inline; text-decoration: none; margin-left:25px;}
+.dropdown-wide{width:150px;}
+.anchor{cursor:pointer;text-decoration:underline}

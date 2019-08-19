@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<value000 attribute="Help Home">
+	<titles>
+		<title name="Getting Started" sectionId="1"/>
+		<title name="Navigation" sectionId="2"/>
+		<title name="What  the icons mean" sectionId="3"/>
+		<title name="About 3D Issue" sectionId="4"/>
+		<title name="Contact Us" sectionId="5"/>
+	</titles>
+	<Section id="1">
+		<paragraph><![CDATA[Welcome to a <a  href="http://www.3dissue.com" target="_blank">3D Issue</a> digital edition of our publication. The purpose of this solution is to offer you the real-world experience of reading our publication online.<br><br>To start you can simply flip through the pages by clicking and dragging the corners of the pages as you would do with a print publication. When you come to an article that you want to read, simply click anywhere on the page to zoom in. <br><br>We hope that you enjoy reading our digital edition and if you have any questions relating to this digital edition, please feel free to contact us on <a  href="mailto:support@3dissue.com" target="_blank">support@3dissue.com</a><br><br>Kind Regards<br><br>The editor]]></paragraph>
+	</Section>
+	<Section id="2">
+		<paragraph><![CDATA[<b>Navigation</b><br>]]></paragraph>
+		<paragraph><![CDATA[There are multiple ways in which you can navigate through this digital edition:</br>]]></paragraph>
+		<paragraph><![CDATA[<li>You can use the contents menu. This is the first icon on the left hand side panel</li>]]></paragraph>
+		<paragraph><![CDATA[<li> You can click once on the page corner to automatically skip to the next page</li>]]></paragraph>
+		<paragraph><![CDATA[<li> You can click and drag the page you turn the page overleaf. Please ensure that you drag the page more than half way across before releasing.</li>]]></paragraph>
+		<paragraph><![CDATA[<li> You can use the navigation buttons located along the bottom panel, these will allow you to skip between pages.</li> ]]></paragraph>
+		<paragraph><![CDATA[<li> You can jump to a specific page by entering the page number in the dialog and hitting enter.</li> ]]></paragraph>
+		<paragraph><![CDATA[<li> You can use the thumbnail navigation tool to skip to any page within the publication. Simply click on the thumbnail icon and click on the page you wish to jump to.</li>]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Contents</b><br>]]></paragraph>
+		<paragraph><![CDATA[The contents menu allow you to jump to different pages and articles within the publication. Simply click on the contents icon to expand and then click on the category heading to expand the menu. This will then list all article headings. Any listing that has a “>” symbol menus that you can expand this listing future to view more subcategory options. ]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Search</b><br>]]></paragraph>
+		<paragraph><![CDATA[The search tool will allow you to search through all the text of the publication. Simply click on the search icon to expand the feature and then enter your keyword and click search.  You will then be presented with all results that match that keyword.  There will be a link at the end of each result that will allow you to jump automatically to that page.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Thumbnails</b><br>]]></paragraph>
+		<paragraph><![CDATA[As mentioned previously you can use the thumbnail icon to jump to a particular page within a publication. Simply click on the thumbnail icon and click on the page you wish to jump to.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Print</b><br>]]></paragraph>
+		<paragraph><![CDATA[Click on the Print icon to see a thumbnail of every page within the publication. You can choose specific pages to print by clicking on the checkbox beside each page  or you can choose to print the current pages.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Send emails to friend</b><br>]]></paragraph>
+		<paragraph><![CDATA[If you come across an article that you wish to share then you can forward an email to a friend by clicking on the “Send to friend” icon and entering your friend and your own details along with a brief message. An email will then be forwarded to your friend with a link to that specified page.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Archiving</b><br>]]></paragraph>
+		<paragraph><![CDATA[The archiving tool will allow you to jump to different digital editions from within your current edition. Simply click on the archive icon to expand this option and then click the categories until you find the article of interest. Once selected, simply click on the listing to jump to that particular edition.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[<br><b>Download</b><br>]]></paragraph>
+		<paragraph><![CDATA[Here you can download an offline version of the publication. This offline version can either be a PDF of the publication or an offline animated page turning edition. These versions will allow you to view your digital edition at your own pace and in your own time.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Control Panel</b><br>]]></paragraph>
+		<paragraph><![CDATA[This feature allows you to change certain settings in the digital edition.  The options you can change are as follows:<br>]]></paragraph>
+		<paragraph><![CDATA[<li>When zooming in, You can choose to zoom to a double page or zoom to a single page.</li>]]></paragraph>
+		<paragraph><![CDATA[<li>When zoomed in, You can determine how you want to navigate around the page. You can set it so that when the mouse moves the page moves or you can set it so you have to click and drag the page to move around.</li>]]></paragraph>
+		<paragraph><![CDATA[<li> you can change it so that when zooming I, the page zooms into its full size or you can set it so that it zooms to the exact width of your browser. </li>]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[<br><b>Exit</b><br>]]></paragraph>
+		<paragraph><![CDATA[Finally the exit option will allow you to close the digital edition and return to your starting point.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+	</Section>
+	<Section id="3">
+		<paragraph><![CDATA[In this section we will explain all about the different icons that you can see on a page. As the publishers are able to change the graphics of the buttons, it is best that we explain in text rather than graphics. The fastest way to see what the button will do is to roll over the icon and the tooltip will explain]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Hotspots</b><br>]]></paragraph>
+		<paragraph><![CDATA[The hotspot is denoted with a semi-transparent rectangle or square box. The hotspot can se set to link to a variety of different interactive options, the publisher can use a hotspot to:]]></paragraph>
+		<paragraph><![CDATA[<li>Jump to a specific page within the publication</li>]]></paragraph>
+		<paragraph><![CDATA[<li>Link to a website</li>]]></paragraph>
+		<paragraph><![CDATA[<li>Send an email </li>]]></paragraph>
+		<paragraph><![CDATA[<li>Import and play a flash move</li>]]></paragraph>
+		<paragraph><![CDATA[<li>Import and play an audio file</li>]]></paragraph>
+		<paragraph><![CDATA[<li>Import and play a video clip</li>]]></paragraph>
+		<paragraph><![CDATA[The easy way to tell what the hotspot links to, is to roll over the hotspot and a tool tip will appear]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Weblink</b><br>]]></paragraph>
+		<paragraph><![CDATA[This button allows you to link to a specific website]]></paragraph>
+		<paragraph><![CDATA[ <br> <b>Email</b><br>]]></paragraph>
+		<paragraph><![CDATA[Click to send an email address to this specific recipient ]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Video</b><br>]]></paragraph>
+		<paragraph><![CDATA[Click here to play a video clip. This FLV (flash video) clip will appear over the publication. You will also notice that the area behind the clip is tinted. If you click anywhere on this tinted window it will close the clip. Alternatively you can click on the close  icon.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Flash movie</b><br>]]></paragraph>
+		<paragraph><![CDATA[Click here to import and play a flash movie. This could be anything from and animation to a form. Again, You will also notice that the area behind the clip is tinted. If you click anywhere on this tinted window it will close the clip. Alternatively you can click on the close  icon.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Audio File</b><br>]]></paragraph>
+		<paragraph><![CDATA[Clicking this option will play an mp3 file. This clip will be close when it completes or when you leave that page. ]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Comments</b><br>]]></paragraph>
+		<paragraph><![CDATA[The comments tool will allow you to send comments to the author or questions to the admin. Just enter your name and email address with the message and this will be forwarded directly to the associated author or administrator.]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Download</b><br>]]></paragraph>
+		<paragraph><![CDATA[This option allows you to download files from the publisher directly. ]]></paragraph>
+		<paragraph><![CDATA[<br> <b>Jump to page </b></br>]]></paragraph>
+		<paragraph><![CDATA[This option will allow you to skip to a predetermined location within the digital edition. This feature is normally located in the index / table of contents page.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+	</Section>
+	<Section id="4">
+		<paragraph><![CDATA[3D Issue is a leading developer of digital magazine production software for the print publishing industry. The company was started in January 2004 in Letterkenny, Donegal in the Northwest of Ireland. The founders, having worked in publishing for a number of years, identified a need to reduce marketing and administration costs incurred while promoting their print products and managing subscribers.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[As ex-publishers, we understanding that publishers already had the skills in-house, all they needed was a software solution that automated the conversion from press ready PDFs to a page turning interactive digital edition.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[3D Issue was the first company to release a PC and Mac based standalone digital magazine production software solution. The 3D issue software is constantly improving. Since it's launch there have been 3 new versionS packed with customer driven features.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[All of our software is customer driven and our customers figure heavily in our development and in most cases features that are included are based on customer requests and recommendation. This drive helps us to continue to be a leading Pioneer in this field.]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[If you have any comments, feedback or suggestions we would be delighted to hear from you. Please contact support@3dissue.com.]]></paragraph>
+	</Section>
+	<Section id="5">
+		<paragraph><![CDATA[<b>United States</b>]]></paragraph>
+		<paragraph><![CDATA[+1(718) 569 6212]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[<b>United Kingdom</b>]]></paragraph>
+		<paragraph><![CDATA[+44(0)208 099 9739]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[<b>Ireland (HQ)</b>]]></paragraph>
+		<paragraph><![CDATA[+353(0) 74 91 16055 ]]></paragraph>
+		<paragraph><![CDATA[]]></paragraph>
+		<paragraph><![CDATA[<b>Support</b>]]></paragraph>
+		<paragraph><![CDATA[support@3dissue.com]]></paragraph>
+		<paragraph><![CDATA[sales@3dissue.com]]></paragraph>
+	</Section>
+</value000>

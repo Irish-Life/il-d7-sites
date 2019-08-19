@@ -1,0 +1,156 @@
+[
+   {
+      "questions":[
+         {
+            "id":"1",
+            "head":"",
+			"question": "If I had picked an investment with potential for large gains but also the risk of large losses I would feel",
+			"answers":[
+               {
+                  "a":"Very uncomfortable",
+                  "b":"Quite uneasy",
+                  "c":"Accepting of the possible highs and lows",
+                  "d":"Excited by the potential for gain"
+               }
+            ]
+         },
+         {
+            "id":"2",
+            "head":"",
+			"question": "Imagine that six months after making a <u>long term investment</u> the financial markets start to perform badly. In line with this, your own investment goes down by a significant amount. What would your reaction be?",
+			"answers":[
+               {
+                  "a":"Withdraw my money and put it in a bank deposit account to prevent any further losses.",
+                  "b":"Transfer my money to a more secure investment option to reduce the risk of further losses.",
+                  "c":"Monitor the investment and wait to see if it improves before deciding what to do",
+                  "d":"Invest more funds to take advantage of the lower price, expecting future growth",
+                  "e":"Transfer my money to a riskier investment, with possible higher return, to try to recoup my losses. "
+               }
+            ]
+         },
+         {
+            "id":"3",
+            "head":"",
+			"question": "When I make a financial investment I normally feel",
+			"answers":[
+               {
+                  "a":"Very optimistic",
+                  "b":"Generally optimistic",
+                  "c":"Sometimes optimistic and sometimes a bit concerned",
+                  "d":"Generally concerned",
+                  "e":"Very concerned",
+                  "f":"I have never made an investment other than a savings account"
+               }
+            ]
+         },
+         {
+            "id":"4",
+            "head":"",
+			"question": "Which of these statements best applies to you?",
+			"answers":[
+               {
+                  "a":"I have a portfolio of shares that I actively manage. ",
+                  "b":"I own, or owned, a small number of shares and have found it a good financial experience",
+                  "c":"I owned shares in the past but felt uncomfortable with the movement up and down in their value",
+                  "d":" I have never owned shares but would like to if I had spare cash.",
+                  "e":"I have never owned shares and would not want to. "
+               }
+            ]
+         },
+         {
+            "id":"5",
+            "head":"",
+			"question": "How would a close friend describe your attitude to taking financial risks?",
+			"answers":[
+               {
+                  "a":"Daring. ",
+                  "b":"A thoughtful risk taker.",
+                  "c":"Careful.",
+                  "d":"Very cautious and risk averse."
+               }
+            ]
+         },
+         {
+            "id":"6",
+            "head":"",
+			"question": "Investment X has the potential to make a lot of money but also has a higher chance of losing money. If you had money to invest, how much would you be willing to put in an investment like this?",
+			"answers":[
+               {
+                  "a":"All of it. ",
+                  "b":"More than half of it.",
+                  "c":"Half of it.",
+                  "d":"Less than half of it.",
+                  "d":"None of it."
+               }
+            ]
+         },
+         {
+            "id":"7",
+            "head":"",
+			"question": "If you were making an investment, what amount of risk would you be prepared to take with your financial investments in order to see potential gain?",
+			"answers":[
+               {
+                  "a":"A very small amount, if any  ",
+                  "b":"A small amount",
+                  "c":"A medium amount",
+                  "d":"A large amount"
+               }
+            ]
+         },
+         {
+            "id":"8",
+            "head":"",
+			"question": "Which of these statements best applies to you?",
+			"answers":[
+               {
+                  "a":"I own or owned, an investment property that I rent out and found it a good financial experience.",
+                  "b":"I owned investment properties in the past but felt uncomfortable with the risk of rent not being paid or unexpected expenses. ",
+                  "c":"I have never owned an investment property but would like to if I had spare cash. ",
+                  "d":"I have never owned an investment property and would not want to."
+               }
+            ]
+         },
+         {
+            "id":"9",
+            "head":"",
+			"question": "I find it interesting to explore investment opportunities for my money.",
+			"answers":[
+               {
+                  "a":" I <b>strongly agree</b> with this statement.",
+                  "b":"I tend to <b>agree</b> with this statement.",
+                  "c":"I <b>neither agree nor disagree</b> with this statement",
+                  "d":"I tend to <b>disagree</b> with this statement.",
+                  "e":"I <b>strongly disagree</b> with this statement."
+               }
+            ]
+         },
+         {
+            "id":"10",
+            "head":"",
+			"question": "I want my investment money to be safe even if it means lower returns in the long run.",
+			"answers":[
+               {
+                  "a":"I <b>strongly agree</b> with this statement.",
+                  "b":"I tend to <b>agree</b> with this statement",
+                  "c":"I <b>neither agree nor disagree</b> with this statement",
+                  "d":"I tend to <b>disagree</b> with this statement.",
+                  "e":"I <b>strongly disagree</b> with this statement."
+               }
+            ]
+         },
+         {
+            "id":"11",
+            "head":"",
+			"question": "Have you ever invested a sum of money which you needed, for the excitement of seeing how it would perform over time?",
+			"answers":[
+               {
+                  "a":"No, I would not take that kind of risk.",
+                  "b":"No, but I would have if I had the money.",
+                  "c":"Yes, once or twice.",
+                  "d":"Yes, quite often. "
+               }
+            ]
+         }
+      ]
+   }
+]

@@ -1,0 +1,67 @@
+.salePageRight .button{
+display: block;
+background:  #69923A;
+color: #fff !important;
+float: right;
+font-size: 1.2em;
+padding: 10px;
+text-decoration: none !important;
+}
+
+.salePageRight .button:hover{
+background:  #6FA333;
+}
+
+.salePageRight .eligible{
+font-weight: bold;
+margin-top: 10px;
+font-size: 18px;
+}
+
+.salePageRight .eligible:before{	
+font-family: FontAwesome;
+content: "\f046";
+margin: 0px 10px 0px 0px;
+font-size: 1em;
+}
+
+.salePageRight ul,.salePageLeft ul {
+	list-style-position: inside !important;
+	padding-left: 18px;
+}
+
+.salePageLeft li, .salePageRight li{	
+list-style-type: none;
+}
+
+.salePageLeft li:before, .salePageRight li:before{	
+font-family: FontAwesome;
+content: "\f061";
+color: #00aad2;
+margin: 0 5px 0px -18px;
+}
+
+.salePageRight .panel{
+background-color: #e2e2e2;
+border: 1px solid #CACACA;
+border-radius: 4px;
+padding: 17px 18px;
+padding: 12px 12px\9;
+}
+
+.salePageLeft .highlight, .salePageRight .highlight{
+color: #5261AC;
+font-weight: 900;
+}
+
+.salePageRight .offerClosed{
+}
+
+img.leading{
+float: left !important;
+margin: 0px 0px 20px 10px;
+}
+
+#notOpen{
+text-align: center;
+}

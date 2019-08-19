@@ -1,0 +1,30 @@
+        <div data-role="page" class="find" id="search">
+            <div data-role="header" class="header" data-theme="irish">
+               <span class="main_menu"></span>
+               
+               Find Customers <br />
+               
+            </div>
+            <div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+                <div data-role="collapsible" data-iconpos="right">
+                    <h3>By Last Name / First Name</h3>
+                    <div>
+                        <form id="customer_search">
+                            <input type="text" data-role="none"  id="searchLastName" placeholder="Enter Last Name" value=""/>
+                            <input type="text" data-role="none"  id="searchFirstName" placeholder="Enter First Name" value="" />  
+                            <input type="submit" data-role="none" value="Search Customer"  class="orange_btn" />
+                        </form>
+                    </div>
+                </div>
+                <div data-role="collapsible" data-iconpos="right">
+                    <h3>By Plan Number</h3>
+                    <div>
+                        <form id="plan_search">
+                            <input type="text" data-role="none" id="searchPlan" placeholder="Enter 8-digit Plan Number" value="" />  
+                            <input type="submit" data-role="none" value="Search Customer"  class="orange_btn" />
+                        </form>
+                    </div>
+                </div>
+            </div>         
+        </div>
+

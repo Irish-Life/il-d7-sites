@@ -1,0 +1,53 @@
+
+.tabLeft{    border-right: 1px dotted #CCCCCC;
+    float: left;
+    padding-right: 5px;
+    width: 49%;}
+.tabRight{width:49%;float:right;font-weight:bold;}
+.quoteTab button {
+    background: url("/uploadedImages/retail/images/form_quote_button.png") no-repeat scroll left top #FFFFFF;
+    border: medium none;
+    border-radius: 6px 6px 6px 6px;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 23px 58px;
+	margin-top:30px;
+}
+.quoteContent{text-align:left;}
+.quoteContent select {margin-left:2px;}
+#instantQuoteResult{    background-color: #FAFAFA;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+    color: #666666;
+    font-size: 110%;
+    line-height: 100%;
+    padding: 20px 5px 5px;
+    text-align: center;
+    text-shadow: 0 2px 3px #FAFAFA;
+	border:5px solid #435294;
+    width: 410px;
+	position:relative;
+	margin-top:10px;}
+	.instantQuoteCallback{font-size: 12px;font-weight: normal;padding: 10px; text-align: left !important;margin-top:2px !important;}
+	.instantQuoteCallback input{margin-bottom:4px;margin-top:2px; width:360px;background-color: #F7F7F7; border: 1px solid #CCCCCC;padding:4px;}
+	
+.instantQuoteCallback button {
+    background: url("../images/form_send_button.gif") no-repeat scroll left top #FFFFFF;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    padding: 24px 60px;
+}
+.instantQuoteClose{background: url("/uploadedImages/retail/images/savclose.png") no-repeat scroll right top transparent;height: 40px;position: absolute;right: -20px;top:-20px;width: 40px;}
+.savSliderHolder{
+font-size:16px;
+    margin-left: 20px;
+    padding: 0px 15px 15px 21px;
+    text-align: center;
+    width: 370px;
+	
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	}

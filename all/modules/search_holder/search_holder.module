@@ -1,0 +1,69 @@
+<?php
+/**
+* My Google Custom Search Engine
+*
+* This search is set up to work with the two page search option. See: www.google.co.uk/cse/
+*
+*/
+function search_holder_block_info() {
+  // This example comes from node.module.
+  $blocks['google_custom_search'] = array(
+    'info' => t('My Google Custom Search'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+function
+search_holder_block_view($delta = '') {
+  // This example is adapted from node.module.
+  $block['title'] = t('');
+ 
+  $block['content'] = array(
+	//'#markup' => '<gcse:searchbox-only queryParameterName="as_q"></gcse:searchbox-only>', //displays results on blank page
+    '#markup' => '<gcse:searchbox-only queryParameterName="search" resultsUrl="/search-results"></gcse:searchbox-only>', //is meant to display results embedded not working!
+	'#attached' => array(
+        'js' => array(
+          drupal_get_path('module', 'search_holder') . '/search_holder.js',
+      ),
+    ),
+  );
+  return $block;
+    
+}
+
+/**
+ * Implements hook_permission().
+ */
+
+
+/**
+* Implementation of hook_menu()
+*
+*/
+function search_holder_menu() {
+  // Here we set up the page where the results will display:
+  $items['search-results'] = array(  // Change this url to wherever you want the page to be
+    'title' => 'Search ',
+    'description' => 'My Google Custom Search',
+    'page callback' => 'bline_google_cse_searchpage', // The function that will be called to set up the search page
+    'access arguments' => array('use_google_custom_search'), // Those with this permission will be allowed to see the results
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function search_holder_permission() {
+  return array(
+    'use_google_custom_search' => array(
+      'title' => t('Use google custom search'),
+      'description' => t('Who can have access to the google search results page.'),
+    ),
+  );
+}
+
+
+// Here we set up the page:
+
+
+?>

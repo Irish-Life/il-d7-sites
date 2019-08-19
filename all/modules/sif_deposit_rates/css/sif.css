@@ -1,0 +1,118 @@
+@media screen { 
+td {
+	height: 70px;
+	padding: 0px !important;
+}
+
+p { -webkit-margin-before: 0px;
+    padding-left: 30px;}
+	
+/* #container {width:900px;
+            margin: 0 auto;} */
+			
+.dateHead {
+	width:50%;
+	float:left;
+}	
+	
+#submitContact2 {
+    background-color: #50c9b5;
+    text-decoration: none !important;
+	text-align:center;
+	margin-bottom: 30px;
+    color: #fff !important;
+    border: 1px solid #45a293;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.19);
+	padding: 10px;
+	font-size: 18px;
+	width: 15%;
+	float:right;
+ 
+   } 
+   
+#submitContact2 :hover {color: white; text-decoration: underline;}   
+    
+   
+#submitContact2 a {color: white; text-decoration: none;}  
+						
+.sifTable {
+    text-align: center;
+	margin: 0 auto;
+	width:100%;
+	border: 0px;
+    line-height: 25px;
+	table-layout: fixed;
+	border-collapse: collapse;
+}	
+
+.sifTable td {
+	padding: 0px !important;
+	border: 1px solid white;
+	height: 70px;
+    font-size: 14px;
+}	
+
+.banks td {
+	background-color: #5261AC;
+	color: white;
+	border-spacing: 5px;
+	padding: 0 px !important;
+    font-size: 16px;
+	}	
+
+.ratesOdd {
+	background-color:#d9d9da;
+	
+}
+
+.ratesOdd:hover td {
+	background-color: #d9d9da !important;
+}
+
+
+.ratesEven {
+	background-color: #edeaed;
+}
+
+.ratesEven:hover td {
+	background-color: #edeaed !important;
+}
+
+
+.top-left {border-top-left-radius: 10px;}	
+
+.top-right {border-top-right-radius: 10px;}
+
+}
+
+@media print {
+	
+	#section-header {display: none;}
+	
+	.sifTable {
+    text-align: center;
+	margin: 0 auto;
+	width:100%;
+	border: 0px;
+    line-height: 25px;
+	table-layout: fixed;
+	border-collapse: collapse;
+    }	
+	
+	.sifTable td {
+	padding: 5px !important;
+	border: 1px solid black;
+	height: 70px;
+    font-size: 14px;
+    }	
+	
+	#submitContact2 {
+	display: none;
+    }
+	
+	.breadcrumb {
+		display: none;
+	}
+  
+}
+

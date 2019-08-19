@@ -1,0 +1,11 @@
+<!-- remove jquery if already on site -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>  
+<script type="text/javascript" src="pensioncalc.js"></script>
+
+<form id="pensioncalculator" class="pensioncalculator" ><div id="pension_response"></div></form>
+
+<script type="text/javascript">
+	$( window ).load(function() {
+		$('#pensioncalculator').pensioncalculator();
+	});
+</script>

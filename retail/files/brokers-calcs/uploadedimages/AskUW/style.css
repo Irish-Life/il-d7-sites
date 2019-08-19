@@ -1,0 +1,798 @@
+* {margin:0; padding:0;}
+/*{ behavior: url(iepngfix.htc); }*/
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}ul {list-style:none;}caption,th {text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+body{background:#d0d0d0; font-size:62.5%; text-align:center; font-family:Arial, Helvetica, sans-serif; color:#222; } 
+
+}
+body,html{height:100.01%;}
+
+img {border:none;}
+.r {float:right;}
+.l {float:left;}
+.clear {clear: both;}
+ul {list-style: none; list-style-image: none;}
+
+a {
+cursor:pointer;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-decoration:underline;
+}
+
+a {color:#222222;}
+a:hover{text-decoration:underline}
+ul {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+}
+
+ol, ul {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+}
+
+.hidden {display:none}
+
+.inputFieldTextarea {
+height:70px;
+padding:1px;
+width:360px;
+}
+
+.inputFieldText {
+padding:1px;
+width:360px;
+}
+.inputFieldText {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FFFFFF none repeat scroll 0 0;
+border-color:#999999 #DDDDDD #DDDDDD;
+border-style:solid;
+border-width:1px;
+font-size:12px;
+padding:1px 1px 1px 2px;
+}
+
+
+.button-feedback {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/button-feedback.png) no-repeat scroll 0 0;
+width:110px;
+float:left;
+height:27px;
+}
+
+.button-white {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/button.png) no-repeat scroll 0 0;
+float:left;
+height:27px;
+width:170px;
+}
+.button-feedback .text {
+color:#444444;
+float:left;
+font-size:1em;
+font-weight:bold;
+margin:5px 0 0 10px;
+}
+
+input.button
+{-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background-color: #6636CC;
+color:#FFFFFF;
+cursor:pointer;
+font-size:1.1em;
+height:22px;
+margin-left:5px;
+padding:2px;
+float:left;
+}
+
+#wrapper {
+margin:0 auto;
+text-align:left;
+width:980px;
+}
+
+.containerBorder {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/containerBorders.png) repeat-y scroll 0 0;
+float:left;
+padding:0 5px;
+width:975px;
+margin-top:5px;
+}
+
+.containerBorder .top {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:url(/uploadedImages/AskUW/topSubMenu.png) no-repeat scroll 0 0;
+margin-left:-5px;
+}
+
+#top .financialAdvisersOnly{margin-left:10px; color:#6633CC;font-size:12px;font-weight:bold}
+
+#top .title{float:right;margin: 10px 10px 0 0;}
+* html  #top .title{margin-top: -45px}
+*:first-child+html #top .title{margin-top:-45px}
+#top #menu {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+padding:5px 0 20px;
+}
+
+#top #menu ul {
+color:#454141;
+float:right;
+font-weight:bold;
+padding:0 0 0 10px;
+
+}
+
+#top #menu ul li {
+display:inline;
+margin:0 5px 0 0;
+padding-left:12px;
+font-size:14px;
+text-decoration:underline;
+}
+
+#top #menu ul li.noBorder{border:none}
+
+#top #menu  ul li.last
+{
+padding-right:10px;
+}
+
+
+#top #menu ul li a {
+text-decoration:none;
+}
+
+
+#top #menu .directory {
+float:left;
+margin:10px 0 0 0px;
+padding:0;
+width:189px;
+display:none;
+}
+
+#top #menu .search input.search {
+color:#737373;
+background-color:#FFFFFF;
+background-image:url(../img/icons/search.gif);
+background-position:3px 4px;
+background-repeat:no-repeat;
+border:1px solid #B2B1B1;
+float:left;
+font-family:Arial,Helvetica,sans-serif;
+font-weight:normal;
+margin:0px 0px 5px 5px;
+padding:1px 2px 1px 22px;
+width:90px;}
+
+#top #menu .search {
+float:left;
+margin:10px 0 0 0px;
+padding:0;
+width:200px;
+display:none;
+}
+#top #menu .directory select.directory {
+color:#737373;
+border:1px solid #B2B1B1;
+float:left;
+font-family:Arial,Helvetica,sans-serif;
+font-size:1.2em;
+margin:0px 0px 5px 5px;
+padding:0;
+width:130px;
+height:20px;
+}
+
+#top .headerBottom {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/stripe.png) no-repeat scroll 0 0;
+float:left;
+height:8px;
+line-height:8px;
+width:970px;
+}
+* html  #top .headerBottom{margin-top: 3px}
+*:first-child+html #top .headerBottom{margin-top:4px}
+
+
+#left{width:145px;float:left;margin-top:2px}
+
+.content {
+float:left;
+width:100%;
+}
+
+.leftShadow {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/shadow.png) repeat-y scroll 0 0;
+}
+
+*html .leftShadow{margin-top:-9px;}
+*:first-child+html .leftShadow{margin-top:-8px}
+
+#logoRightBottom {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../img/logos/logo_irishlife.png) no-repeat scroll 860px 98%;
+float:right;width:100%;
+}
+
+.noBackGround{background:none !important}
+
+.minHeight {
+float:left;
+min-height:500px;
+width:100%;
+}
+* html .minHeight{height:auto !important; height:500px; } /* IE6 hack */
+
+#menuList{font-size:1.2em;
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+margin:-2px 0 10px;
+padding:0 0 0 0;
+}
+#menuList li{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+border-top:1px solid #B1B1F1;
+font-weight:bold;
+margin:0 0 0;
+padding:7px 0 7px 10px;
+cursor:pointer;
+}
+#menuList li a {
+text-decoration:none;
+cursor:pointer;
+font-size:0.9em;
+}
+
+#menuList li a:hover{text-decoration:underline}
+
+#menuList li.on
+{
+cursor:default;
+border-bottom:1px solid #6633CC;
+border-top:1px solid #6633CC;
+background:transparent url(/uploadedImages/AskUW/current.png) no-repeat scroll 0 50%;
+}
+
+#menuList li.on a{color:#FFFFFF;}
+#menuList li.subon a{color:#222222;text-decoration:underline}
+#menuList li.sub2on a{color:#222222;text-decoration:underline}
+
+#menuList li.sub {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_purple_sm.gif) no-repeat scroll 0 5px;
+border-top:medium none;
+font-weight:normal;
+margin:2px 0 0 5px;
+padding:0 7px 5px 7px;
+}
+
+#menuList li.subon{border:none}
+#menuList li.sub2on{border:none}
+
+#menuList li.sub2 {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_purple_sm.gif) no-repeat scroll 0 5px;
+border-top:medium none;
+font-weight:normal;
+margin:0 0 0 20px;
+padding:0 7px 2px 7px;
+display:none;
+}
+
+
+#middle{width:675px;float:left;margin-left:5px;overflow:hidden;min-height:475px;position:relative;}
+.wideMiddle{width:820px !important}
+
+#middle p.breadcrumbs {
+font-size:10px;
+padding:0;
+}
+
+#middle h1 {
+border-bottom:1px solid #EEE8EE;
+font-family:"Trebuchet MS","Lucida Grande",Arial;
+font-size:1.9em;
+margin:10px 10px 10px 0;
+padding:0;
+}
+#middle h2{
+border-bottom:1px solid #E2E2E2;
+color:#4B7289;
+font-family:"Trebuchet MS","Lucida Grande",Arial;
+font-size:1.4em;
+margin:0 10px 5px 0;
+padding:0;
+}
+
+#middle h3 , h4, h5{
+color:#4B7289;
+font-family:"Trebuchet MS","Lucida Grande",Arial;
+font-size:1.8em;
+margin:0 10px 5px 0;
+padding:0;
+}
+
+
+#middle p {
+font-family:Arial,Helvetica,sans-serif;
+font-size:1.2em;
+margin:0 0 13px 10px;
+padding-top:5px;
+line-height:1.5em;
+}
+
+#middle ul.downloads {
+font-family:Arial,Helvetica,sans-serif;
+margin:0 10px 20px 10px;
+padding:0;
+}
+
+#middle ul.downloads li.pdf {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/pdf.gif) no-repeat scroll 0 0;
+font-size:1.2em;
+margin:0 0 5px 0;
+padding:0 0 0 25px;
+}
+#middle ul.downloads li.result {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../img/icons/find.gif) no-repeat scroll 0 0;
+color:#2B4D62;
+font-size:1.2em;
+margin:10px 0 0 0;
+padding:0 0 0 25px;
+}
+
+#middle ul.downloads li.info {
+color:#9E9D9D;
+font-size:1.2em;
+line-height:1.4em;
+margin:0 0 5px 0;
+padding:0 0 0 25px;
+}
+#middle ul.downloads li a {
+text-decoration:underline;
+}
+
+#middle ul.prevnext li {
+display:inline;
+font-size:1.4em;
+line-height:2em;
+}
+#middle ul.prevnext li a {
+background-color:#F5F5F5;
+border:1px solid #E2E2E2;
+color:#999999;
+padding:4px 8px;
+text-decoration:none;
+}
+#middle ol {
+font-size:1.2em;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:decimal;
+margin-bottom:12px;
+margin-left:23px;
+}
+#middle ol li {
+color:#444444;
+line-height:1.5em;
+margin-bottom:5px;
+margin-left:5px;
+}
+
+* html #middle .fundTabs{margin-right:5px;height:24px;margin-top:7px;padding-top:8px}
+*:first-child+html #middle .fundTabs{margin-right:5px;margin-top:5px;padding-top:8px;padding-bottom:7px;margin-bottom:-7px}
+#middle .fundTabs{float:left;margin-right:5px;
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+font-size:12px;
+padding:0;
+}
+
+#middle .fundTabs li{display:inline;margin-left:5px
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+border:1px solid #B1B1F1;
+margin:2px;
+padding-top:5px;
+padding-bottom:5px;
+padding-left:5px;
+padding-right:5px;
+background:#F4F4FF none repeat scroll 0 0;
+cursor:pointer;
+font-weight:bold;
+}
+
+
+#middle .fundTabs li:hover{background:#6633CC none repeat scroll 0 0;}
+#middle .fundTabs li a:hover{color:#ffffff;}
+
+#middle .fundTabs li.on
+{
+background:#6633CC none repeat scroll 0 0;
+cursor:default;
+}
+
+#middle .fundTabs li.on a
+{
+color:#ffffff;
+}
+
+* html #middle .tabContent{margin-top:-4px;}
+
+#middle .tabContent
+{float:left;border-top:1px solid #B1B1F1;margin-top:5px;width:650px}
+.wideTabContent{width:815px !important}
+
+.categorySelect {
+float:left;
+margin:0px 0 15px 10px;
+padding:0;
+}
+
+.categorySelect select.categorySelect {
+border:1px solid #B2B1B1;
+color:#737373;
+float:left;
+font-family:Arial,Helvetica,sans-serif;
+font-size:1.2em;
+margin:0 0 0 20px;
+padding:0;
+}
+
+#middle table{font-size:1.2em;width:640px;float:left;margin-bottom:10px}
+.wideTable {width:780px !important}
+#middle table tr th {border-bottom:2px solid #BCCEDA;}
+#middle table td {padding:2px}
+#middle table tr.alt td{background:#F4F4F4 none repeat scroll 0 0;border:1px solid #F4F4F4;}
+.fundTable{height:450px;overflow:auto;width:810px}
+
+#news, #faq {min-height:232px;height:232px; width:330px; float:left;margin-top:5px;
+-moz-background-clip:border; overflow:hidden;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/smallBanner.jpg) no-repeat scroll 0 0;
+position:relative;}
+
+#news h2, #faq h2, #right h2{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#6633CC none repeat scroll 0 0;
+color:#FFFFFF;
+font-size:1.6em;
+font-weight:bold;
+margin:0;
+padding:5px 0 7px 7px;
+}
+
+#middle ul.list {
+color:#575656;
+font-family:Arial,Helvetica,sans-serif;
+font-size:1.2em;
+margin:0 10px 15px 0;
+padding:0;
+}
+
+#middle ul.list li a {
+color:#216590;
+text-decoration:underline;
+}
+
+#middle ul.list li {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_black.gif) no-repeat scroll 0 6px;
+line-height:1.5em;
+margin:0 0 5px 10px;
+padding:0 0 0 10px;
+}
+
+#right h2{font-size: 1.4em}
+
+#news h4{
+border-bottom:1px solid #E2E2E2;
+color:#4B7289;
+font-family:"Trebuchet MS","Lucida Grande",Arial;
+font-size:12px;
+margin:5px 5px 5px;
+padding:0;
+}
+
+#news h4 a{color:#4B7289;text-decoration:none}
+#news h4 a:hover{text-decoration:underline}
+
+#news p{margin-left:5px;margin-right:5px;font-size:12px;color:#222222}
+
+#faq{margin-left:8px}
+
+#faq ul.popularList
+{	
+	margin: 5px 0 0 ;
+}
+
+#faq ul.popularList li
+{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_black.gif) no-repeat scroll 0 5px;
+font-size:1.2em;
+margin:0 0 5px 5px;
+padding:0 0 0 10px;
+color:#4B7289;
+}
+
+#news .more
+{
+	float:right;
+	margin-right:10px;
+	font-size:10px;
+}
+
+#bannerImages {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/bannerEmpty.jpg) no-repeat scroll 0 0;
+height:232px;
+position:relative;
+width:660px;
+margin-top:5px;
+text-align:center;
+margin-left:3px;
+}
+
+#bannerLinks {
+display:inline;
+position:absolute;
+right:5px;
+top:5px;
+}
+#bannerLinks li {
+font-size:62.5%;
+display:inline;
+float:left;
+margin-right:3px;
+}
+
+#bannerLinks li.on a {
+border:1px solid #6D72AF;
+}
+
+#bannerLinks li a {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FFFFFF none repeat scroll 0 0;
+border:1px solid #DDDDDD;
+float:left;
+padding:2px 5px;
+}
+#right{width:145px;float:left;}
+
+#right .secure {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/shadowRight.png) repeat-y scroll 0 0;
+border:1px solid #B1B1F1;
+padding:0 0 10px;
+}
+
+#right .secure p.title {
+color:#FFFFFF;
+font-family:"Trebuchet MS","Lucida Grande",Arial;
+font-size:12px;
+font-weight:bold;
+margin:5px 0 0;
+padding:2px;
+background-color:#6633CC;
+
+}
+#right .secure p.orange {
+color:#E87923;
+font-size:12px;
+}
+
+#right .secure p {
+margin:0 10px 5px;
+padding:0;
+}
+
+#right .secure ul.list {
+color:#575656;
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+margin:0 0 10px 10px;
+padding:0;
+}
+#right .secure ul.list li {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_orange.gif) no-repeat scroll 0 5px;
+margin:0 0 5px 0;
+padding:0 0 0 15px;
+}
+
+#right p.title2 {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#E8EDF0 none repeat scroll 0 0;
+border-bottom:1px solid #BCCEDA;
+color:#638EA9;
+font-size:12px;
+font-weight:bold;
+margin:0;
+padding:5px 0 7px 7px;
+text-transform:uppercase;
+}
+
+#right ul.related {
+margin:5px 0 0;
+padding:0;
+}
+#right ul.related li{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/uploadedImages/AskUW/arrow_black.gif) no-repeat scroll 0 5px !important;
+font-size:1.2em;
+margin:0 0 5px 5px;
+padding-left:10px;
+}
+
+#right .login{margin-left:5px}
+
+
+.footer {
+float:left;
+width:100%;
+}
+
+.footer.footerSubMenu .top {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:url(/uploadedImages/AskUW/bottomSubMenu.png) no-repeat scroll 0 0;
+}
+
+.footer p.foot-links {
+color:#454141;
+font-size:9px;
+text-align:center;
+margin-bottom:4px;
+padding-top:0;
+text-transform:uppercase;
+}
+
+.footer p {
+color:#454141;
+text-align:center;
+font-size:10px;
+margin-left:5px;
+padding-left:10px;
+}
+
+.footer p.foot-links a {
+color:#454141;
+text-decoration:none;
+}
+.footer img {
+float:right;
+margin:-65px 5px 5px 0;
+padding:0;
+}
+* html .footer p.foot-links{padding-top:0px;}
+* html .footer p{padding-left:0px;}
+
+
+.vcard{background-color: #F1F4F5; border: 1px solid #E7ECED; padding: 10px; 
+width: 50%; margin-bottom: 15px; margin-top: 15px; line-height:1.5em; font-size:1.2em;}
+
+.organization-name {
+border-bottom:1px solid #E7ECED;
+color:#638EA9;
+font-weight:bold;
+margin-bottom:0.3em;
+padding-bottom:5px;
+}
+
+.adr {
+border-bottom:1px solid #E7ECED;
+margin-bottom:5px;
+margin-top:5px;
+padding-bottom:5px;
+}
+
+.vcard a {
+color:#2B4D62;
+text-decoration:underline;
+}
+
+*html #calculatorContainer .tabContent {margin-top:5px}
+
+.waitText {float:left; margin-top:5px;font-size:1.2em}
+.contentError {float:left; margin-top:5px;font-size:1.2em}
+.fundChoice{width:300px;float:left}
+
+@media print {
+	body{zoom: 100%; }
+	#top, #menuList li{display:none}
+	#left{width:0px}
+	.leftShadow{background:none}
+	.top{background:none}
+	.footer{display:none}
+}
+
+.chartFunds{
+clear:both;
+float:left;
+width:100%;
+margin-bottom:5px;
+}
+
+/*=================================================== Feedback Popup ========================================================== */
+
+/*-------------impromptu---------- */
+.jqifade{ position: absolute; background-color: #000; }
+div.jqi{ width: 400px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; position: absolute; background-color: #ffffff; font-size: 11px; text-align: left; border: solid 1px #eeeeee; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 7px; border: 2px solid #777; }
+div.jqi .jqicontainer{ font-weight: bold; }
+div.jqi .jqiclose{ position: absolute; top: 4px; right: -2px; width: 18px; cursor: default; color: #bbbbbb; font-weight: bold; }
+div.jqi .jqimessage{ padding: 10px; line-height: 20px; color: #444444; }
+div.jqi .jqibuttons{ text-align: right; padding: 5px 0 5px 0; border: solid 1px #eeeeee; background-color: #f4f4f4; }
+div.jqi button{ padding: 3px 10px; margin: 0 10px; background-color: #4F2473; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 12px; }
+div.jqi button:hover{ background-color: #8157AF; }
+.jqiwarning .jqi .jqibuttons{ background-color: #4F2473; }
+.inputError {
+color:#FF5555;
+}

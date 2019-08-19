@@ -1,0 +1,9 @@
+/* Set icon */
+#cmi-dl .cmi-icon {
+  background-image: url(dfm_dl.png);
+  background-position: 0 0;
+}
+/* Hide from context menu of directory content (empty space) */
+.contents-cm #cmi-dl.disabled {
+  display: none;
+}

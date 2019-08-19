@@ -1,0 +1,284 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+	<base href="https://www.irishlife.ie" />
+		<title>Life Insurance Needs Calculator | Life Insurance Quote | Irish Life</title>
+<meta name="Keywords" content="investments, savings, pensions, financial advice, irish life, fund prices, Life insurance, Life, insurance, Life cover, Life assurance, assurance" />
+<meta name="Description" content="Get a life insurance quote from Irish Life using our life insurance calculator" />
+
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"></meta>
+
+<link rel="stylesheet" type="text/css" href="https://www.irishlife.ie/servlet/styles.css?path=iq.master.css;jquery-ui-1.8.15.custom.css&id=3"></link>
+
+<link rel="shortcut icon" href="https://www.irishlife.ie/secureWeb/uploadedImages/Retail/img/favicon.ico?041011"></link>
+        <link rel="stylesheet" type="text/css" href="/secureWeb/uploadedImages/retail/css/ilfs/ilfs.life.needs.css" />
+		<meta property="og:image" content="/secureWeb/uploadedImages/retail/images/logo.irishlife.facebook.og.png?1" />
+<meta property="og:site_name" content="Irish Life for Pension, Investment, Savings, Assurance, Funds" />
+        
+		<style>
+		.legendAndDescription{padding-top:12px !important}
+		.nav{height:324px !important}
+		.nav > li {height:35px !important;padding:5px !important}
+		.firstScreenResults{padding:10px 26px 10px !important}
+		.desciption {padding-top:0px !important}
+		.sliderHolder {height:37px !important}
+		.sliderLeftBox {height:23px !important}
+		.sliderRightBox {height:23px !important}
+		.current_value{padding-top:0px !important}
+		#tabs-contents{height:275px !important;padding-top:10px !important}
+		.loading, #progressBoxStep1, #progressBoxStep2, #progressBoxStep3{height:537px !important}
+		.sliderLeftBox, .sliderRightBox {height:30px !important}
+		.sliderResultBlock{padding:10px 5px 10px}
+		.tabs h4 {padding-top: 0px !important;}
+		.secondScreenResults{padding:10px 25px !important}
+		.left, .right{height:380px !important}
+		.fourthScreenButtons {bottom: 15%; !important}
+		.thirdScreenResults {margin:4% 7% 7%}
+		
+		</style>
+	</head>
+<body>
+<div id='bodyContainer'>
+
+		<div id='mainContent' class='blockContainer'>
+
+				<div id="LCCapp">
+<!--Hello Buddy--><div class="tabs"><div style="DISPLAY: none" id="progressBarHolder" class="progressBarHolder"><div id="lifeInsuranceProgress"><div id="lifeInsuranceComplete" class="s1"><div style="LEFT: 74px" id="LifeInsuranceMarker"></div></div></div><div class="clearer"></div></div><div id="loadingbox" class="loading"><div class="center"><img src="https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/loading.orange.gif" /><br /><br /><h4>Loading, please wait</h4>
+<div id="progressError tabs" class="error"></div></div></div><div style="DISPLAY: none" id="progressBoxStep1"><h4>Consider your dependants. If you died, how much income would they need annually to maintain their standard of living.</h4>
+<div id="sidebar"><ul id="navigation" class="nav">
+<li class="current"><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="householdCostsLink">Household Costs</span></a></div></li>
+<li><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="medicalCostsLink">Medical Costs</span></a></div></li>
+<li><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="transportCostsLink">Transport Costs</span></a></div></li>
+<li><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="educationCostsLink">Education Costs</span></a></div></li>
+<li><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="leisureCostsLink">Leisure Costs</span></a></div></li>
+<li><div class="legendAndDescription"><div class="ball"></div><a href="javascript:void(0);"><span id="otherCostsLink">Other Costs</span></a></div></li>
+</ul>
+<div id="pieChart" class="pieChart"></div></div><div id="container"><ul id="tabs-contents">
+<li><div id="householdCosts" class="content"><!--
+       When creating a slider make sure the output div attribute matches the id of the div you wish 
+       the output to appear. Also the max attribute determines the max value of the slider.
+      --><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Rent</div><div id="householdCosts_slider1" class="slider" outputdiv="householdCosts_current_value1" max="18000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Food</div><div id="householdCosts_slider2" class="slider" outputdiv="householdCosts_current_value2" max="18000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Electricity</div><div id="householdCosts_slider3" class="slider" outputdiv="householdCosts_current_value3" max="6000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Heating</div><div id="householdCosts_slider4" class="slider" outputdiv="householdCosts_current_value4" max="6000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Clothes</div><div id="householdCosts_slider5" class="slider" outputdiv="householdCosts_current_value5" max="6000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value5" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Tv, Phone,<br />
+Internet</div><div id="householdCosts_slider6" class="slider" outputdiv="householdCosts_current_value6" max="4800"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value6" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="householdCosts"><div class="desciption">Other</div><div id="householdCosts_slider7" class="slider" outputdiv="householdCosts_current_value7" max="24000"></div></div><div class="sliderRightBox"><div id="householdCosts_current_value7" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div id="sliderBubble"></div></div></li>
+<li><div id="medicalCosts" class="content"><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="medicalCosts"><div class="desciption">Insurance</div><div id="medicalCosts_slider1" class="slider" outputdiv="medicalCosts_current_value1" max="36000"></div></div><div class="sliderRightBox"><div id="medicalCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="medicalCosts"><div class="desciption">Doctors Bills</div><div id="medicalCosts_slider2" class="slider" outputdiv="medicalCosts_current_value2" max="11940"></div></div><div class="sliderRightBox"><div id="medicalCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="medicalCosts"><div class="desciption">Medicines</div><div id="medicalCosts_slider3" class="slider" outputdiv="medicalCosts_current_value3" max="17940"></div></div><div class="sliderRightBox"><div id="medicalCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="medicalCosts"><div class="desciption">Other</div><div id="medicalCosts_slider4" class="slider" outputdiv="medicalCosts_current_value4" max="24000"></div></div><div class="sliderRightBox"><div id="medicalCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div></div></li>
+<li><div id="transportCosts" class="content"><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="transportCosts"><div class="desciption">Car<br />
+Maintenance</div><div id="transportCosts_slider1" class="slider" outputdiv="transportCosts_current_value1" max="3600"></div></div><div class="sliderRightBox"><div id="transportCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="transportCosts"><div class="desciption">Car Tax/<br />
+Insurance</div><div id="transportCosts_slider2" class="slider" outputdiv="transportCosts_current_value2" max="6000"></div></div><div class="sliderRightBox"><div id="transportCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="transportCosts"><div class="desciption">Fuel</div><div id="transportCosts_slider3" class="slider" outputdiv="transportCosts_current_value3" max="12000"></div></div><div class="sliderRightBox"><div id="transportCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="transportCosts"><div class="desciption">Public<br />
+Transport</div><div id="transportCosts_slider4" class="slider" outputdiv="transportCosts_current_value4" max="3600"></div></div><div class="sliderRightBox"><div id="transportCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="transportCosts"><div class="desciption">Other</div><div id="transportCosts_slider5" class="slider" outputdiv="transportCosts_current_value5" max="3600"></div></div><div class="sliderRightBox"><div id="transportCosts_current_value5" class="current_value">Monthly: €0 Yearly: €0</div></div></div></div></li>
+<li><div id="educationCosts" class="content"><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="educationCosts"><div class="desciption">Fees</div><div id="educationCosts_slider1" class="slider" outputdiv="educationCosts_current_value1" max="18000"></div></div><div class="sliderRightBox"><div id="educationCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="educationCosts"><div class="desciption">Books &amp;<br />
+Equipment</div><div id="educationCosts_slider2" class="slider" outputdiv="educationCosts_current_value2" max="4800"></div></div><div class="sliderRightBox"><div id="educationCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="educationCosts"><div class="desciption">Uniforms</div><div id="educationCosts_slider3" class="slider" outputdiv="educationCosts_current_value3" max="2400"></div></div><div class="sliderRightBox"><div id="educationCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="educationCosts"><div class="desciption">Trips</div><div id="educationCosts_slider4" class="slider" outputdiv="educationCosts_current_value4" max="6000"></div></div><div class="sliderRightBox"><div id="educationCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="educationCosts"><div class="desciption">Other</div><div id="educationCosts_slider5" class="slider" outputdiv="educationCosts_current_value5" max="12000"></div></div><div class="sliderRightBox"><div id="educationCosts_current_value5" class="current_value">Monthly: €0 Yearly: €0</div></div></div></div></li>
+<li><div id="leisureCosts" class="content"><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="leisureCosts"><div class="desciption">Holidays &amp;<br />
+Breaks</div><div id="leisureCosts_slider1" class="slider" outputdiv="leisureCosts_current_value1" max="24000"></div></div><div class="sliderRightBox"><div id="leisureCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="leisureCosts"><div class="desciption">Birthdays &amp;<br />
+Gifts</div><div id="leisureCosts_slider2" class="slider" outputdiv="leisureCosts_current_value2" max="6000"></div></div><div class="sliderRightBox"><div id="leisureCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="leisureCosts"><div class="desciption">Christmas</div><div id="leisureCosts_slider3" class="slider" outputdiv="leisureCosts_current_value3" max="6660"></div></div><div class="sliderRightBox"><div id="leisureCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="leisureCosts"><div class="desciption">Other</div><div id="leisureCosts_slider4" class="slider" outputdiv="leisureCosts_current_value4" max="12000"></div></div><div class="sliderRightBox"><div id="leisureCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div></div></li>
+<li><div id="otherCosts" class="content"><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="otherCosts"><div class="desciption">Child Care</div><div id="otherCosts_slider1" class="slider" outputdiv="otherCosts_current_value1" max="24000"></div></div><div class="sliderRightBox"><div id="otherCosts_current_value1" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="otherCosts"><div class="desciption">Change Car</div><div id="otherCosts_slider2" class="slider" outputdiv="otherCosts_current_value2" max="18000"></div></div><div class="sliderRightBox"><div id="otherCosts_current_value2" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="otherCosts"><div class="desciption">Furniture &amp;<br />
+Fittings</div><div id="otherCosts_slider3" class="slider" outputdiv="otherCosts_current_value3" max="12000"></div></div><div class="sliderRightBox"><div id="otherCosts_current_value3" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="otherCosts"><div class="desciption">Weddings</div><div id="otherCosts_slider4" class="slider" outputdiv="otherCosts_current_value4" max="3600"></div></div><div class="sliderRightBox"><div id="otherCosts_current_value4" class="current_value">Monthly: €0 Yearly: €0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox" pie="true" group="otherCosts"><div class="desciption">Other</div><div id="otherCosts_slider5" class="slider" outputdiv="otherCosts_current_value5" max="12000"></div></div><div class="sliderRightBox"><div id="otherCosts_current_value5" class="current_value">Monthly: €0 Yearly: €0</div></div></div></div></li>
+</ul>
+</div><div class="firstScreenResults"><p style="FLOAT: left">Total outgoings is <span id="total">€0</span></p>
+<p style="DISPLAY: none; FLOAT: right">Recommended Sum Assured is <span class="recommendedSumAssured">€0</span></p>
+</div><div style="DISPLAY: none" id="firstScreenError" class="error">Please enter some values by moving the sliders above</div><div class="legend"><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Household</span></div><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Medical</span></div><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Transport</span></div><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Education</span></div><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Leisure</span></div><div class="legendItem"><div class="smallBall"> </div><span class="legendItemDesc"><span class="percentage">17%</span> Other</span></div></div><div class="firstScreenButtons"><a id="getInfoPane" href="javascript:void(0);"></a><a id="progressStep2" class="progressButtons nextButton righter" href="javascript:void(0);"></a></div><div style="DISPLAY: none" id="infoPane"><h3>What is life insurance?</h3>
+<p>Life insurance provides financial protection to your dependents (Typically your spouse/partner and children) if you die.</p>
+<p>Life insurance plans are usually taken out for a fixed term, e.g. 20 years, and pay out a lump sum (The Sum Assured) to your dependents if you die before the end of term.</p>
+<p>Nothing is paid if you survive till the end of term.</p>
+<br /><h3>what does this calculator do?</h3>
+<p>The purpose of this calculator is to help you decide what level of life insurance you should have and how long you should have insurance for.</p>
+<p><br /></p>
+<h3>How does the calculator work?</h3>
+<p>You enter the income that you think your dependents would need if you died and you also decide how many years the income will be needed for.</p>
+<p>The calculator estimates the lump sum that would be needed today to generate the chosen income for the specified number of years.</p>
+<p>We then add on any once-off expenses that you identify to arrive at an overall life insurance total</p>
+<br /><h3>The scope of this calculator</h3>
+<p>We have tried to get the right balance between complexity and usability. You may need more or less insurance depending on the circumstance in your individual home.</p>
+<p>We have purposely omitted any mention of social welfare payments, pension scheme benefits, existing life insurance, existing assets etc.</p>
+<p>We have also assumed that you have separate Life insurance that will pay off your mortgage(s) in the event of your death.</p>
+<a id="hideInfo" class="progressButtons getStarted righter" href="javascript:void(0);"></a></div></div><div style="DISPLAY: none" id="progressBoxStep2"><div id="personalInformation"><div id="lumpSum" class="sliderGroup"><h4>Cover any costs at death such as funeral expenses, uninsured debt etc.</h4>
+<div class="sliderHolder"><div class="sliderLeftBox"><div class="desciption">Do you have any<br />
+uninsured debt?</div><div id="lump_sum1" class="slider" outputdiv="lump_sum_current_value1" max="50000"></div></div><div class="sliderRightBox"><div id="lump_sum_current_value1" class="sliderResultBlock">€0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox"><div class="desciption">Funeral Costs</div><div id="lump_sum2" class="slider" outputdiv="lump_sum_current_value2" max="20000"></div></div><div class="sliderRightBox"><div id="lump_sum_current_value2" class="sliderResultBlock">€0</div></div></div><div class="sliderHolder"><div class="sliderLeftBox"><div class="desciption">Other once off<br />
+expenses</div><div id="lump_sum3" class="slider" outputdiv="lump_sum_current_value3" max="20000"></div></div><div class="sliderRightBox"><div id="lump_sum_current_value3" class="sliderResultBlock">€0</div></div></div><div class="secondScreenResults"><p style="DISPLAY: none; FLOAT: left">Recommended Sum Assured is <span class="recommendedSumAssured">€0</span></p>
+<p style="FLOAT: left">Total Lump sum is <span id="lumpSumTotal">€0</span></p>
+</div></div><div class="infoGroup"><div class="secondScreenLeft"><h4 style="TEXT-ALIGN: left">Your Details</h4>
+<table align="right">
+<tbody>
+<tr>
+<td><h5>Smoker status</h5>
+</td>
+<td><button id="lifeInsuranceSmokerTrue" class="button" role="button"><img src="https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.button.smoking.png" />Smoker</button></td>
+<td><button id="lifeInsuranceSmokerFalse" class="button selected" role="button"><img src="https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/life.insurance.button.nonsmoking.png" />Non-Smoker</button><span style="DISPLAY: none"><input name="smokingFirst" value="Y" type="radio" /> Smoker <input name="smokingFirst" value="N" checked="checked" type="radio" /> Non-Smoker</span></td>
+</tr>
+<tr>
+<td class="boldspan">Enter your date of<br />
+birth (dd/mm/yy)</td>
+<td colspan="2"><select id="day" class="dropDown" start="1" end="32"></select><select id="month" class="dropDown" start="1" end="13"></select><select id="year" class="dropDown" start="1994" end="1935"></select></td>
+</tr>
+</tbody>
+</table>
+<br /><br /><h4 style="TEXT-ALIGN: left">Your Options</h4>
+<table align="right">
+<tbody>
+<tr>
+<td><h5>Increase with<br />
+inflation</h5>
+</td>
+<td><button id="lifeInsuranceInflationTrue" class="button selected" role="button">Yes</button><input style="DISPLAY: none" name="inflation" value="True" checked="checked" type="radio" /><button id="lifeInsuranceInflationFalse" class="button" role="button">No</button><input style="DISPLAY: none" name="inflation" value="False" type="radio" /></td>
+<td> <a style="COLOR: blue" class="toolTip" href="javascript:void(0);" tooltip="This allows you to increase you cover every year (to keep in line with the cost of living) 
+          without providing evidence of health. This option protects the real value of your cover as time passes. You
+          will have to pay an extra charge for this benefit. This extra charge will depend on your age and term of your
+          plan."> (What's this?)</a></td>
+</tr>
+<tr>
+<td><h5>Guaranteed<br />
+Cover Again</h5>
+</td>
+<td><button id="lifeInsuranceCoverTrue" class="button selected" role="button">Yes</button><input style="DISPLAY: none" name="cover" value="True" checked="checked" type="radio" /><button id="lifeInsuranceCoverFalse" class="button" role="button">No</button><input style="DISPLAY: none" name="cover" value="False" type="radio" /></td>
+<td> <a style="COLOR: blue" class="toolTip" href="javascript:void(0);" tooltip="Guaranteed cover again allows you to convert your cover to another plan at any stage throughout the 
+          term of your plan. And, you do not have to provide any new evidence of health." colspan="1"> (What's this?)</a></td>
+</tr>
+</tbody>
+</table>
+</div><div class="secondScreenRight"><h4 style="TEXT-ALIGN: left">How many years would you like your<br />
+dependants to recieve this income?</h4>
+<div><p class="boldspan">Age of youngest child <select id="childAge" class="dropDown ages" start="1" end="22"><option selected="selected" value="0">no children</option>
+</select></p>
+<p class="boldspan">Recommended term <select id="recommendedTerm" class="dropDown toolTip" start="2" end="41" tooltip="If you have dependent children we recommend a term of at least 25 less the age of your youngest. 
+         Otherwise we recommend a term of 20 years, however, if you are over 60 we recommend cover up until your 80th 
+         birthday."><option selected="selected" value="0">-</option>
+</select></p>
+<p style="FLOAT: left" id="RSA" class="boldspan">Recommended Sum Assured is <span class="recommendedSumAssured">€0</span></p>
+<p> </p>
+<div style="DISPLAY: none" id="SecondScreenError" class="error">Please select a value for the term (we recommend 20)</div></div></div></div><div class="secondScreenButtons"><a style="FLOAT: right" id="progressStep3" class="progressButtons getQuote righter" href="javascript:void(0);"></a><a style="FLOAT: right" id="progressStep1" class="progressButtons changeDetails righter" href="javascript:void(0);"></a></div></div></div><div style="DISPLAY: none" id="progressBoxStep3"><div class="thirdScreenResults"><div class="left"><table>
+<tbody>
+<tr>
+<th colspan="2"><h2>Personal Details</h2>
+</th>
+</tr>
+<tr>
+<td>Type of cover:</td>
+<td class="coverType"></td>
+</tr>
+<tr>
+<td>Date of Birth:</td>
+<td class="dob"></td>
+</tr>
+<tr>
+<td>Smoker:</td>
+<td class="smoker"></td>
+</tr>
+<tr>
+<td>Term:</td>
+<td class="term"></td>
+</tr>
+<tr>
+<td>Inflation protection:</td>
+<td class="inflation"></td>
+</tr>
+<tr>
+<td>Guaranteed Cover Again:</td>
+<td class="cover"></td>
+</tr>
+</tbody>
+</table>
+</div><div class="right"><table>
+<tbody>
+<tr>
+<th colspan="3"><h2>Your Quote</h2>
+</th>
+</tr>
+<tr>
+<td colspan="2"><h3>Life insurance:</h3>
+</td>
+<td class="recommendedSumAssured"> </td>
+</tr>
+<tr>
+<td><h3>Monthly Payment:</h3>
+</td>
+<td class="monthlyPrem"></td>
+<td><a style="COLOR: blue" id="quoteBreakdownButton" class="toolTip" href="javascript:void(0);" tooltip="" colspan="1">(Show Breakdown)</a></td>
+</tr>
+<tr>
+<td colspan="3"><h3>What this means</h3>
+<div id="progressLifeCoverDetails">Life insurance calculator results.</div></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="fourthScreenButtons"><a id="progressStep2backNatural" class="progressButtons changeDetails lefter" href="javascript:void(0);"></a><a id="progressStep4" class="progressButtons completePurchase righter" href="javascript:void(0);"></a></div><div style="MARGIN-TOP: 20px; MARGIN-LEFT: 75px; MARGIN-RIGHT: 80px">Note: This quote is based on Irish Life’s <a href="http://www.irishlife.ie/life-assurance/life-term-cover.html">Term Life Insurance</a> Product. This quote is valid for 7 days or until your next birthday, whichever is sooner. This is subject to no changes to the regulatory or tax rules applying to the product within that period. This quote assumes ordinary rates.<br /><br />
+Note: ’There is no cash value on Term Life Insurance, it can provide a cash sum in the event of death (life cover). You must keep up your payments to stay on cover. For more information please read the product booklet and <a href="http://www.irishlife.ie/uploadedFiles/term-life-insurance-booklet.pdf?ts=1363963181572">terms and conditions</a>.</div><hr />
+<br /><div class="clearer"></div><br /></div><div style="DISPLAY: none" id="progressBoxStep4"><h3>How to buy?</h3>
+
+
+Now that you've completed a quote we can <span class="boldspan">call you back</span> to confirm all your details over the phone. If we cannot reach you by phone we will email you to let you know we tried to contact you. A Qualified Financial Advisor will go through your quote and complete the process with you. Your privacy is important to us. We will only use your personal details of the purpose of dealing with your request.<br /><br /><div class="lifeInsuranceCallbackInputs"><span class="boldspan">Your Name:</span><br /><input id="progressName" name="progressName" /><br /><span class="boldspan">Phone Number:</span><br /><input id="progressPhone" name="progressPhone" /><br /><div style="DISPLAY: none" id="lifeInsurancePhoneError" class="error">Enter a valid phone number</div><span class="boldspan">Email Address:</span><br /><input id="progressEmail" name="progressEmail" /><br /><span class="boldspan">Best Time to call:</span><br /><select id="progressCalltime" name="calltime"><option value="NOW">Now</option>
+<option selected="selected" value="anytime">Anytime</option>
+<option value="morning-before-12pm">Morning (before 12pm)</option>
+<option value="afternoon-12pm-to-5pm">Afternoon (12pm to 5pm)</option>
+<option value="evening-5pm-to-8pm">Evening (5pm to 8pm)</option>
+</select></div><br /><div class="progressSummary"><h4>Quote Summary</h4>
+
+
+Cover amount is: <span class="progressLifeCoverAmount boldspan recommendedSumAssured">000</span><br />
+Premium quoted is:<span class="progressQuote boldspan monthlyPrem">000</span></div><div class="clearer"></div><br /><a id="progressStep4backTo1" class="progressButtons changeDetails lefter" href="javascript:void(0);"></a><a id="progressStep5" class="progressButtons submitDetails righter" href="javascript:void(0);"></a><div class="clearer"></div><br /><div>Note: In the interest of customer service we will record and monitor calls.</div><hr />
+<br /><h3>Just the info, please!</h3>
+<p>If you are looking to just discuss this quote or life insurance in general then remember that there is no obligation to purchase. Our advisors in Dundalk help answer questions for many people every day. It is a service we are proud of. Just submit your details above and we'll call you to discuss your options.</p>
+<br /><br /></div><div style="DISPLAY: none" id="progressBoxStep5"><div class="thankYouBanner"><img src="https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/fatherson.banner.quote.jpg" /></div><div id="otherContent"><h3>Interested in other things?</h3>
+<br /><p>Why not try the latest version of our <a title="irish life pension calculator" href="https://www.irishlife.ie/secureWeb/advice/pension-calculator.html">Pension Calculator</a> and figure out your pension needs or try the latest version of our <a title="Income Protection calculator" href="https://www.irishlife.ie/secureWeb/advice/income-protection-quote-calculator.html">Income Protection Calculator</a> and get an instant quote.</p>
+</div></div><div style="DISPLAY: none" id="intro"><div class="lifeCoverNeedsLandingImg"></div><div class="lifeCoverNeedsLandingText"><h1>Life Insurance Needs Calculator</h1>
+<h3>How much Life Insurance do you need?</h3>
+<p>The purpose of this calculator is to help you decide what level of life insurance you should have and how long you should have insurance for.</p>
+<h3>What is Life insurance?</h3>
+<p>Life insurance provides financial protection to your dependents (Typically your spouse/partner and children) if you die. Life insurance plans are usually taken out for a fixed term, e.g. 20 years, and pay out a lump sum (The Sum Assured) to your dependents if you die before the end of term.<br />
+Nothing is paid if you survive till the end of term.</p>
+<a id="hideIntro" class="progressButtons getStarted" href="javascript:void(0);"></a></div><div class="clearer"></div></div><div class="clearer"></div></div></div>
+
+			
+			<div class='clear'> <!-- Irish Life --> </div>
+		</div>
+
+<div style="DISPLAY: none"><img alt="" src="/secureWeb/uploadedImages/retail/images/x.png" /></div>
+	</div>
+	<p> </p>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16369698-14']);
+  _gaq.push(['_setDomainName', 'irishlife.ie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script type="text/javascript" src="https://www.irishlife.ie/servlet/scripts.js?path=iq.jquery.latest.min.js;iq.jquery.cookie.js;iq.master.compressed.js;logger.js&date=010513"><!--
+//-->
+</script><script src="https://munchkin.marketo.net/munchkin.js" type="text/javascript"><!--
+
+//-->
+</script><script src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/mk.js?290113" type="text/javascript"><!--
+
+//-->
+</script>
+    <p> </p>
+<script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/ilfs/raphael.js"><!--
+
+//--></script><script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/ilfs/g.raphael-min.js"><!--
+
+//--></script><script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/ilfs/g.pie.min.js"><!--
+
+//--></script><script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/jquery-ui.custom.horz.sliders.min.js"><!--
+
+//--></script><script type="text/javascript" src="http://www.irishlife-ebiz.net/ffr/js/lib/jquery.easing.js"><!--
+
+//--></script><script type="text/javascript" src="http://www.irishlife-ebiz.net/ffr/js/jquery.ui.touch-punch.min.js"><!--
+
+//--></script><script type="text/javascript" src="http://www.irishlife-ebiz.net/ffr/js/custom.modernizr.js"><!--
+
+//--></script><script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/ilfs/ilfs.life.calc.needs.main.js"><!--
+
+//--></script><script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedfiles/retail/js/ilfs/ilfs.life.calc.needs.quote.js"><!--
+
+//--></script>
+
+</body>
+</html>

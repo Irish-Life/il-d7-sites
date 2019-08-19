@@ -1,0 +1,147 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function callback_block_info() {
+  $blocks['callback'] = array(
+    'info' => t('Callback Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function callback_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#callback":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function callback_contents(){
+  return '
+<div id="callbackSlider" class="callbackSlider">
+    <div id="callbackTab">
+      <div id="callbackContainer">
+        <div id="callbackTabText"><a style="color:white!important;text-decoration:none!important;" href="#callback-login-modal" rel="modal:open">Advisor&nbsp;Callback&nbsp;</a></div>
+        <i class="fa fa-phone"></i>
+      </div>
+    </div>
+ </div>
+<div id="callback-login-modal" class="modal" style="display:none;z-index: 1002;max-width:653px; ">
+
+<div class="progressBox"><h2>Financial Advisor Callback</h2>
+    <div id="progressBoxPopupContents">
+    <div class="complyNote">
+        To talk to a qualified Irish Life Financial Services Ltd (ILFS) adviser use the call back form. Your personal details will only be used to deal with your request. See the <a href="https://www.irishlife.ie/ilfs-privacy-notice">ILFS Privacy Notice</a> for your rights and how your information is used. 
+	  <br/>
+      ILFS is tied to Irish Life Assurance for life and pensions. 
+	  <br/>
+    </div>
+	<form id="callback">
+      <div class="progressInputs">
+        <span class="boldspan">Your Name:</span><br><input type="text" id="callbackPopupName" name="callbackPopupName" placeholder="Please enter your name..." required=""><br>
+        <span class="boldspan">Phone Number:</span><br><input type="tel" id="callbackPopupPhone" name="callbackPopupPhone" pattern="[0-9A-Z]{|^\s*\(?\s*\d{1,4}\s*\)?\s*[\d\s]{5,10}\s*$|}" placeholder="Please enter a valid phone number..." required=""><br>
+		Optional - enter a valid email eg: john@irishlife.ie
+		<br/>
+        <span class="boldspan">Email Address:</span><br><input style="background-color:white" type="email" id="callbackPopupEmail" name="callbackPopupEmail" placeholder="enter a valid email eg: john@irishlife.ie"><br>
+		We will use it to contact you in case we will be unable to reach you by phone.
+		<br/>
+        <span class="boldspan">Area of interest:</span><br>
+        <select id="callbackAreaInterest" name="callbackAreaInterest">
+          <option selected="selected" value=""></option>
+          <option value="new plan">Looking for financial advice regarding a new plan</option>
+          <option value="existing plan">Looking for advice relating to an existing Irish Life plan</option>
+        </select>
+        <br>
+
+        <span class="boldspan">Best Time to call:</span><br>
+        <select id="callbackPopupCalltime" name="callbackPopupcalltime">
+          <option value="NOW">Now</option>
+          <option value="anytime" selected="selected">Anytime</option>
+          <option value="morning-before-12pm">Morning (before 12pm)</option>
+          <option value="afternoon-12pm-to-5pm">Afternoon (12pm to 5pm)</option>
+          <option value="evening-5pm-to-8pm">Evening (5pm to 8pm)</option>
+        </select>
+      </div>
+      <br>
+
+      <div class="progressSummary">
+        <span id="callbackAdvisorImg"><img alt="Advisor Callback" src="'.$GLOBALS['base_url'].'/sites/all/modules/css/images/advisor.callback-2.jpg"></span>
+      </div>
+
+      <div class="complyNote">*Callbacks are available Monday-Friday</div>
+      <a id="sendAdvisorCallbackPopupForm" class="progressButtons submitDetails " href="javascript:void(0);">Request Callback</a>
+	  </form>
+  </div>
+
+  <div class="clearer"></div><br>
+
+  <div style="DISPLAY: none" id="loadingboxpopup" class="loading"><img alt="Loading" src="'.$GLOBALS['base_url'].'/sites/all/modules/css/images/loading.gif"><h4>Loading, please wait</h4>
+    <br><br><br><br><br></div>
+
+
+  <div style="DISPLAY: none" id="loadingcompletepopup" class="middle">
+    <h4>Your details have been sent and we will contact you soon.</h4>
+    <br>
+  </div>
+
+  <div class="complyNote">
+  In the interest of customer service, calls will be recorded and monitored.
+  </div>
+</div>
+</div>';
+}
+
+function callback_block_view($delta = '') {
+  switch($delta) {
+    case 'callback':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = callback_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+	  drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', 'external', array('scope' => 'header'));
+      drupal_add_css(drupal_get_path('module', 'callback') . '/css/callback.css', array('group' => CSS_DEFAULT,'weight' => 100));
+	  
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/mk.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'callback') .'/js/callback.js',array('scope' => 'footer'));
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js', 'external', array('scope' => 'header'));
+	  
+	  
+
+    }
+    return $block;
+  }
+ }
+

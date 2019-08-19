@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+	<head> 
+		<title>income-protection</title> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<style type="text/css" media="screen"> 
+		html, body { height:100%; background-color: #ffffff;}
+		body { margin:0; padding:0; overflow:hidden; }
+		#flashversion { width:600px; height:100px; border:1px solid #ccc; }
+		</style> 
+	</head> 
+	<body>  
+	<div id="flashcontent"> 
+		Attempting to load Flash. If the Income Protection Calculator does not load then you do not have the Flash plugin installed, or your browser does not support Javascript (you should enable it).
+</div> 
+ 
+		<script type="text/javascript" src="http://www.irishlife.ie/uploadedFiles/retail/js/swfobject.js"></script> 
+		<script type="text/javascript"> 
+		// <![CDATA[
+ 
+			var version = deconcept.SWFObjectUtil.getPlayerVersion();
+			if (document.getElementById && version["major"] <10) {
+				document.getElementById('flashcontent').innerHTML = "You have an old version of Flash player installed: version "+ version['major'] +"."+ version['minor'] +"."+ version['rev'] +". In order to user this calculator please upgrade to the latest version.";
+			}
+			else
+			{
+ 
+			var so = new SWFObject("/uploadedImages/Retail/body/advice/income-protection.swf?id=14", "mymovie", "670", "435", "8", "#336699");
+			so.addParam("quality", "high");
+			so.addParam("wmode", "transparent");
+			so.addParam("salign", "t");
+			so.addVariable("loc", "/servlet/submitLifeCoverCalcQuote.do");
+			so.addVariable("contactUserID", "1");
+			so.addVariable("emailServiceURL", "http://www.irishlife.ie");
+			so.write("flashcontent");
+		
+			}
+ 
+		// ]]>
+	</script> 
+	</body> 
+</html> 

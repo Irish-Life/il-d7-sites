@@ -1,0 +1,2 @@
+[29-May-2012 21:55:02] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in /home/irishlif/public_html/pensionapp/php/proxy.php on line 27
+[29-May-2012 21:55:41] PHP Warning:  file_get_contents(\&quot;http://www.irishlife.ie/servlet/brokerCommissionApp?step=getProducts) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/irishlif/public_html/pensionapp/php/proxy.php on line 27

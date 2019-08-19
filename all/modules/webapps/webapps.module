@@ -1,0 +1,134 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function webapps_block_info() {
+	$blocks['lifecare_webapp_styling'] = array(
+    'info' => t('Lifecare webapp styling'),
+   'status' => 1,
+  );
+
+  $blocks['maps_pin_to_homescreen'] = array(
+    'info' => t('Irish Life MAPS Pin to homescreen'),
+   'status' => 1,
+  );
+  $blocks['general_pin_to_homescreen'] = array(
+    'info' => t('Irish Life general Pin to homescreen'),
+   'status' => 1,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function webapps_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#pin_to_homescreen":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+
+
+function webapps_maps(){
+  return '';
+}
+
+function webapps_general(){
+  return '';
+}
+
+function pin_to_homescreen_maps(){
+
+}
+
+function webapps_block_view($delta = '') {
+	$block=array();
+  switch($delta) {
+
+  case 'lifecare_webapp_styling':
+	drupal_add_css(drupal_get_path('module', 'webapps') . '/css/lifecareapp.css', array('group' => CSS_DEFAULT));
+	break;
+	
+  case 'maps_pin_to_homescreen':
+    $block['subject'] = t('');
+      $result = pin_to_homescreen_maps();
+      // No content in the last week
+      $block['content'] = $result;
+      drupal_add_css(drupal_get_path('module', 'webapps') . '/css/maps-pin-to-homescreen.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'webapps') . '/css/addtohomescreen.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'webapps') .'/js/addtohomescreen.js', array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'webapps') .'/js/maps-pin-to-homescreen.js', array('scope' => 'footer'));
+	break;
+	case 'general_pin_to_homescreen':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  $meta_webapp_capable = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array (
+			'name' => 'apple-mobile-web-app-capable',
+			'content' => 'yes',
+			)
+	  );
+	  drupal_add_html_head($meta_webapp_capable,'meta_webapp_capable');
+
+	  $meta_webapp2_capable = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array (
+			'name' => 'mobile-web-app-capable',
+			'content' => 'yes',
+			)
+	  );
+	  drupal_add_html_head($meta_webapp2_capable,'meta_webapp2_capable');
+	  
+	  $meta_webapp_status_bar = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array (
+			'name' => 'apple-mobile-web-app-status-bar-style',
+			'content' => 'black',
+			)
+	  );
+	  drupal_add_html_head($meta_webapp_status_bar,'meta_webapp_status_bar');
+	  
+	  	  
+	  
+	  
+      drupal_add_js(drupal_get_path('module', 'webapps') .'/js/general-pin-to-homescreen.js', array('scope' => 'footer'));
+	break;
+	}
+    return $block;
+ }

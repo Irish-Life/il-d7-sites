@@ -1,0 +1,5 @@
+; $Id: sif_deposit_rates.info,v 1.0.0.0 2014/06/18 10:11:15 Conor Exp $
+name = "Sif Deposit Rates"
+description = "Sif Deposit Rates"
+core = "7.x"
+package = "Irish Life"

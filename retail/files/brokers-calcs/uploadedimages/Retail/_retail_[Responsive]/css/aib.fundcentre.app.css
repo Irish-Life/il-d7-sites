@@ -1,0 +1,86 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+body {
+background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/aib/images/mainbg.gif") top left repeat-x;
+background-color: #78496A;
+}
+}
+
+a {  
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-ms-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+	
+}
+a:hover { 
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-ms-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear; 
+	color:#000;
+	text-decoration:underline;
+	
+	
+}
+/* Default page holder */
+.pageHolder{
+
+max-width: 83.5em;
+margin: auto auto;
+}
+
+
+.pageContents{
+background: #fff;
+border-width: 1px 1px 1px 1px;
+border-style: solid solid solid solid;
+border-color: #d6d7da #d5d8dd #c7c8ca;
+padding-top:1em;
+position:relative;
+top: 120px;
+border: 3px solid #b494b2;
+-webkit-border-radius: 13px;
+-moz-border-radius: 13px;
+border-radius: 13px;
+}
+
+#fundCategory{
+	padding: 0.2em;
+	font-size: 1.5em;
+	border: 3px solid #78496A;
+	background-color: #DFDFDF;
+	font-weight: bold;
+}
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+
+
+
+/* -----------------------------------------
+   tabletish size
+----------------------------------------- */
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+
+}
+
+
+
+/* -----------------------------------------
+   smaller and phone
+----------------------------------------- */
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+
+	.pageContents{
+		top: 10px;
+	}
+
+	
+}
+
+@media only screen and (max-width: 320px) { 
+
+}

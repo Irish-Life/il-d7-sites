@@ -1,0 +1,159 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"> 
+   <url> 
+     <loc>https://www.irishlife.ie/pensions/im-in-my-30s</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/ZpTjKnfy7-s/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>I'm in my 30s - tell me about Pensions</video:title>
+       <video:description>No matter what age you are, planning for your retirement should be a priority. Pension information for 30 somethings from Irish Life.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=ZpTjKnfy7-s</video:player_loc>
+       <video:publication_date>2015-07-23T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+     <url> 
+     <loc>https://www.irishlife.ie/pensions/im-in-my-40s</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/V0KswkVjs2Y/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>I'm in my 40s - tell me about Pensions</video:title>
+       <video:description>No matter what age you are, planning for your retirement should be a priority. Pension information for 40 somethings from Irish Life.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=V0KswkVjs2Y</video:player_loc>
+       <video:publication_date>2015-07-23T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+    <url> 
+     <loc>https://www.irishlife.ie/pensions/im-in-my-50s</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/Yp9haF9eWeE/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>I'm in my 50s - tell me about Pensions</video:title>
+       <video:description>No matter what age you are, planning for your retirement should be a priority. Pension information for 50 somethings from Irish Life.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=Yp9haF9eWeE</video:player_loc>
+       <video:publication_date>2015-07-23T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+    <url> 
+     <loc>https://www.irishlife.ie/pensions/im-in-my-60s/i-have-a-pension</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/qr4DOBby7-g/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>I'm nearing retirement - what are my Pension options?</video:title>
+       <video:description>No matter what age you are, planning for your retirement should be a priority. Pension information for people in their 60s from Irish Life.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=qr4DOBby7-g</video:player_loc>
+       <video:publication_date>2015-07-23T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+   <url> 
+     <loc>https://www.irishlife.ie/investments</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/iXbVyFQyd6I/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Irish Life MAPS</video:title>
+       <video:description>Irish Life MAPS are a range of investment funds, which are available across our pension, investment and savings plans. There are five MAPS funds.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=iXbVyFQyd6I</video:player_loc>
+       <video:publication_date>2015-09-02T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+    <url> 
+     <loc>https://www.irishlife.ie/life-insurance</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi/Oo08Y3Rtc0Q/mqdefault.jpg</video:thumbnail_loc> 
+       <video:title>Irish Life - "What does €15 a month mean to you?"</video:title>
+       <video:description>Affordable life insurance from €15 per month.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=eUxFs0QR4XM</video:player_loc>
+       <video:publication_date>2015-04-08T19:20:30+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+   <url> 
+     <loc>https://www.irishlife.ie/customer-service/about-irish-life/irish-life-thrilled-support-gaa-healthy-club-initiative</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/akhV-ylowyc/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Healthy Club In Focus: Castleblayney Faughs</video:title>
+       <video:description>All over the world GAA clubs help to keep people healthy and happy. But we can always do more. In light of the new requirement for clubs to appoint a health and wellbeing officer and as we approach another festive period we thought we’d inspire you to look after your health and wellbeing. Here’s how one club is inspiring their community. </video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=akhV-ylowyc</video:player_loc>
+       <video:publication_date>2015-04-08T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+   <url> 
+     <loc>https://www.irishlife.ie/customer-service/claims-hub/meet-claims-team</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi/NGhlj_XqEnE/mqdefault.jpg</video:thumbnail_loc> 
+       <video:title>ILFS Protection Claims Team</video:title>
+       <video:description>We have a team of over 20 claims assessors available to help you with your claim. The team are very experienced with a combined service of 369 years. They will help to make the claim process as easy and straightforward as possible.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+         https://www.youtube.com/watch?v=NGhlj_XqEnE</video:player_loc>
+       <video:publication_date>2014-10-06T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url> 
+   <url> 
+     <loc>https://www.irishlife.ie/investments/new-to-investing/guide-investing</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/i2QTA5njgj8/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Guide to Investing</video:title>
+       <video:description>If you are thinking about investing, then this video is a quick, simple guide to the main investment principles.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+        https://www.youtube.com/watch?v=i2QTA5njgj8</video:player_loc>
+       <video:publication_date>2015-02-18T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url>
+    <url> 
+     <loc>https://www.irishlife.ie/life-insurance/protect-my-family/get-will-wise</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/bd1-4p86t7w/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Get Will Wise with Irish Life</video:title>
+       <video:description>Start a Life Insurance plan with Irish Life and arrange for a basic will to be completed for no additional cost! </video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+        https://www.youtube.com/watch?v=bd1-4p86t7w</video:player_loc>
+       <video:publication_date>2014-09-25T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url>
+   <url> 
+     <loc>https://www.irishlife.ie/life-insurance/nursecare</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/ANJ4sG9Mph8/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Irish Life NurseCare</video:title>
+       <video:description>NurseCare from Irish Life gives you access to two confidential helpline services provided by Intana. Available 24/7 – that’s 24 hours a day, 365 days a year.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+       https://www.youtube.com/watch?v=ANJ4sG9Mph8</video:player_loc>
+       <video:publication_date>2015-04-28T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url>
+    <url> 
+     <loc>https://www.irishlife.ie/life-insurance/medcare-medical-second-opinion</loc>
+     <video:video>
+       <video:thumbnail_loc>https://i.ytimg.com/vi_webp/b4178Ash1nI/mqdefault.webp</video:thumbnail_loc> 
+       <video:title>Irish Life MedCare</video:title>
+       <video:description>Information about MedCare - Medical Second Opinion service from MediGuide. You can have an independent review of your diagnosis and treatment plan from one of a range of leading medical centers around the world.</video:description>
+       <video:player_loc allow_embed="yes" autoplay="ap=1">
+       https://www.youtube.com/watch?v=b4178Ash1nI</video:player_loc>
+       <video:publication_date>2015-04-28T19:20:30+08:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>   
+       <video:live>no</video:live>
+     </video:video> 
+   </url>
+</urlset>

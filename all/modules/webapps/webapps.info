@@ -1,0 +1,5 @@
+; $Id: pin_to_homescreen.info,v 1.0.0.1 2015/01/08 14:20:00 COG Exp $
+name = "Irish Life - Webapps functionality"
+description = "Irish Life Web Apps Functionality"
+core = "7.x"
+package = "Irish Life"

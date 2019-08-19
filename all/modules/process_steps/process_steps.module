@@ -1,0 +1,69 @@
+<?php
+/**
+ * @file
+ * A block module that displays the Income protection calculator.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function process_steps_block_info() {
+  $blocks['process_steps'] = array(
+    'info' => t('Process Steps Block'),
+  );
+  return $blocks;
+}
+
+function process_steps_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#process_steps":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function process_steps_contents(){
+  return '<div class="process-steps">			
+	<span class="step-circleholder"></span>			
+	   <div class="step-meter-value" style="width:0%;"><div class="meter-text"></div>
+	</div>		
+</div>';
+}
+
+function process_steps_block_view($delta = '') {
+  switch($delta) {
+    case 'process_steps':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = process_steps_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'process_steps') . '/css/steps.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'process_steps') .'/js/steps.js', array('scope' => 'footer'));
+	  
+	  drupal_add_js(
+        array(
+              'process_steps' => array(
+              'numSteps' => 3,
+			  'stepNames' => 'Questions:Your Profile:Your Fund',
+              ),
+            ),
+            'setting'
+          );
+	  
+
+    }
+    return $block;
+  }
+ }

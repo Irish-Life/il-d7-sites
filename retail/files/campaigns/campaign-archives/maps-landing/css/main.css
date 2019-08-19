@@ -1,0 +1,519 @@
+/*!
+ * Start Bootstrap - 3 Col Portfolio (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+	font-family: "Lato", "Serif";
+	color:#fff;
+	font-size:15px;
+	background-image: url(https://www.irishlife.ie/sites/retail/files/MAPS%20landing/images/map-background.png);
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+	font-weight: 300;color:#fff;
+}
+h3{color:#fff}
+
+.last .btn {
+	background-color: #50c9b5;
+	border: 0px;
+	border-radius: 0px;
+	padding:10px;
+	height: 82px;
+}
+
+.last {
+	width:100%;
+}
+
+.fa-5x {
+	color: #5160ab;
+	font-size:8em;
+	margin-top: -40px;
+}
+
+.block-bg {
+	margin: 0px 0 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-group h4 {
+	color:white;
+	font-weight: 300;
+}
+
+.block-bg {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.logo {
+    margin: 12px 0 20px 0;
+}
+a {
+	text-decoration:none;
+	color:white;
+}
+
+a:hover {
+	text-decoration: none;
+	color:white;
+}
+
+a:visited {
+	text-decoration: none;
+	color:white;
+}
+
+a:focus {
+	text-decoration:none;
+	color:white;
+}
+
+.intro {
+	color: #fff;
+}
+
+.page-header {
+	font-weight: 300;
+}
+
+.box {
+	border: none;
+	padding: 20px;
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+.navbar-inverse {
+	    background-color: #5261ac;
+    border-color: #EDEAED;
+}
+
+.navbar-header {
+	    float: right;
+}
+
+.steps {
+	margin-top: 20px;
+}
+
+.portfolio-item img {
+	margin-bottom:30px;
+}
+
+.circle {
+    width: 60px;
+	height: 60px;
+    background: #50c9b5;
+	text-align: center;
+	font-size: 18px;
+	line-height: 60px;
+	float: left;
+	border-radius: 50%;
+	behavior: url(PIE.htc);
+	color: white; /* remove if you don't care about IE8 */}
+	
+.arrowTest {
+	 margin-bottom: -22px;
+}	
+	
+.box {
+	height: 170px;
+	text-align: center;
+	margin-bottom: 17px;
+	background-color:#5261ac;
+}
+
+.circleText {
+	margin-left: 76px;
+    width: 76%;
+    
+}
+
+#crumbs {
+	border: 1px solid #d2d2d2;
+    height: 81px;
+}
+
+#crumbs ul li  {
+	display: block;
+	float: left;
+	height: 79px;
+	background: #d2d2d2;
+	text-align: center;
+	padding: 26px 41px 0 70px;
+    margin: 0 51px 0 0;
+	font-size: 20px;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+}
+
+#crumbs ul li:after {
+	content: "";  
+	border-top: 40px solid transparent;
+	border-bottom: 40px solid transparent;
+	border-left: 40px solid #d2d2d2;
+	position: absolute; right: -40px; top: 0;
+}
+
+#crumbs ul li:before {
+	content: "";  
+	border-top: 40px solid transparent;
+	border-bottom: 40px solid transparent;
+	border-left: 40px solid #fff;
+	position: absolute; left: 0; top: 0;
+}
+	
+#letsGo {
+    text-align: center;
+}	
+
+.banner-curve {
+    content: " ";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0;
+    background-image: url(../images/banner.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 100% 100%;
+    z-index: 3;
+    padding-bottom: 11%;
+}
+	
+.fullscreen {
+    width: 100%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+	}
+
+.fullscreen h2 {
+	margin-top: 0px;
+    font-size: 40px;
+    font-weight: 300;
+	color:white;
+}
+
+.info {
+	font-size: 18px;
+	line-height: 38px;
+	color:white;
+}
+
+.editable {
+	text-decoration: underline;
+}
+
+.btn-primary:hover {
+	background-color:#50c9b5;
+}
+
+.btn-default {
+    font-size: 15px;
+    margin: 30px 0 10px;
+    margin-right: 10px;
+    line-height: 20px;
+    padding: 15px 15px;
+    height: 50px;
+    background: transparent;
+    transition: all 0.4s;
+    background-color: #ebebeb;
+    color: #333;
+    float: left;
+    width: 48%;
+    text-align: center;
+	
+}
+
+.signup-header {
+	margin: 79px 0 100px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 4px;
+	padding-left: 20px;
+	padding-right: 20px;	
+}
+.signup-header h3{
+	padding: 20px 0 10px;
+	color: white;
+	font-weight: 300;
+}
+
+.cta {
+	margin: 15px 0 20px;
+    background-color: #50c9b5;
+	font-size: 20px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 20px 50px;
+    height: 65px;
+    border: none;
+    background-color: #50c9b5;
+    transition: all 0.4s;
+    color: white;
+	width: 60%;
+	border-bottom: 3px solid #cccccc;
+}
+
+.textBlock {
+	margin-right:20px;
+}
+
+.landing h1{
+	font-size: 36px;
+	font-weight: 300;
+	color: #fff;
+margin: 40px 0 20px 0;}
+
+.landing p, .landing h2 {
+	color: #fff;
+}
+.landing-text {
+	margin-bottom: 20px;
+}
+.landing-text p {
+	font-size: 17px !important; 
+}
+
+.price-heading h3 {
+	color:black !important;
+}
+
+.price-feature {
+	color: black !important;
+	height: 79px;
+}
+
+.btn-price {
+	margin: 5px 0 15px;
+	font-size: 17px;
+	padding: 7px 35px;
+	height: 40px;
+	background: #50c9b5;
+	transition: all 0.4s;
+	color: white;
+	border-radius: 4px;	
+}
+
+.btn-price:hover {
+	background: #50c9b5;
+	color: white;
+}
+
+.price-box {
+	border: solid 1px #d1d1d1;
+	padding: 10px;
+}
+   
+
+footer {
+	background-color: #675c53;
+}
+#footer {
+    background: #675c53;
+    padding: 50px 0 50px;
+}
+footer img {
+	margin-top:30px;
+}
+
+@-webkit-keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.hvr-push {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+.hvr-push:hover, .hvr-push:focus, .hvr-push:active {
+  -webkit-animation-name: hvr-push;
+  animation-name: hvr-push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+#footer {
+	    min-height: 250px;
+		margin-top: 20px;
+}
+
+#footer .container {
+	text-align: left;
+    font-size: .62em;
+    line-height: 25px;
+}
+
+#showMob {
+	display:none;
+}
+
+
+@media screen and (min-width: 590px) and (max-width: 768px) {
+.container {
+    width: 100%;}
+
+.circle {
+	display: none; }
+	
+.numbers {
+		display:none;
+	}
+
+.circleText {
+	    text-align: center;
+		margin: 0 auto;
+}
+
+.box {
+	height: 197px;
+}
+
+.cta {
+	width:100%;
+}
+
+.textBlock {
+	margin: 0 auto;
+}
+
+.btn-default {
+	    margin-top: 20px;
+		margin-right:13px;
+}
+ 
+}
+
+@media screen and (max-width: 589px) {
+	body {
+		background-image: none;
+	}
+	
+	h1 {
+		font-size:23px;
+	}
+	
+	h3 {
+		font-size: 18px;
+	}
+	
+	.price-box {
+		margin-bottom: 20px;
+	}
+	
+	.form-group h4 {
+		font-size: 16px;
+	}
+	
+	.box {
+		    height: auto;
+		    text-align: left;
+	}
+	
+	.container {
+    width: 100%;}
+
+	.circle {
+		display: none; }
+		
+	.numbers {
+			display:none;
+		}
+
+	.circleText {
+			text-align: center;
+			margin: 0 auto;
+	}
+	
+	#showMob {
+		display:block;
+	}
+	
+	#hideMob {
+		display:none;
+	}
+	
+	.btn-primary {
+		margin:0px !important;
+		font-size: 20px !important;
+	}
+	
+	.btn-default {
+		    width: 100%;
+			height: 67px;
+	}
+	
+	.fa-caret-down {
+		    display:none;
+	}
+
+	.cta {
+		width:100%;
+    }
+	
+	.textBlock {
+		margin:0 auto;
+	}
+	
+	.landing h1 {
+		    font-size: 25px;
+	}
+	
+	.signup-header {
+	margin: 0 auto;
+	
+    }
+	
+	.arrowTest {
+		display:none;
+	}
+
+	.signup-header h3{
+	padding: 20px 0 10px;
+	color: white;
+	font-weight: 300;
+    }
+}

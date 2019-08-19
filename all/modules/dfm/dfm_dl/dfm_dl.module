@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_dfm_register_alter().
+ */
+function dfm_dl_dfm_register_alter($dfm) {
+  // Set load callback
+  $dfm->registerHook('ajax_load', 'dfm_dl_dfm_ajax_load');
+  // Set download callback
+  $include_path = drupal_get_path('module', 'dfm_dl') . '/dfm_dl.inc';
+  $dfm->registerHook('ajax_dl', 'dfm_dl_dfm_ajax_dl', $include_path);
+}
+
+/**
+ * Load callback for DFM.
+ */
+function dfm_dl_dfm_ajax_load($dfm) {
+  // Check if downloading is allowed before loading files
+  if ($dfm->permExists('dlFiles') || $dfm->permExists('dlFolders')) {
+    // Add necessary js and css files
+    $path = drupal_get_path('module', 'dfm_dl');
+    $dfm->addJs(file_create_url($path . '/dfm_dl.js'));
+    $dfm->addCss(file_create_url($path . '/dfm_dl.css'));
+    // Add translation strings for client side.
+    if ($dfm->getConf('drupalStrings')) {
+      $dfm->mergeConf('drupalStrings', array('Download' => t('Download')));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_formID_alter().
+ */
+function dfm_dl_form_dfm_profile_form_alter(&$form, &$form_state) {
+  // Warn about missing zipArchive
+  if (!class_exists('ZipArchive')) {
+    $form['zip_warning'] = array(
+      '#markup' => '<div class="messages warning">' . t('You need to enable <a href="http://php.net/zip">PHP zip support</a> in order to allow users download multiple files in a zip archive.') . '</div>',
+      '#weight' => -100,
+    );
+  }
+}
+
+/**
+ * Implements hook_dfm_perm_info().
+ * Add info about download permissions
+ */
+function dfm_dl_dfm_perm_info_alter(&$perms) {
+  $perms['file']['dlFiles'] = t('Download files');
+  $perms['folder']['dlFolders'] = t('Download folders');
+}

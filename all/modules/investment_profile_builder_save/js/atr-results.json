@@ -1,0 +1,58 @@
+[
+   {
+      "results":[
+         {
+            "id":"1",
+            "title":"Cautious",
+            "text": "Making investment decisions or financial decisions in general, can be quite difficult and may not be something you look forward to doing. You are a very cautious investor and don't like taking any financial risks. As a result, you prefer not to invest in assets that can go up and down in value for example, an investment property or shares, or any funds that invest in them. Safety is your main priority you would feel very uncomfortable with any investment that could cause you losses, even if it offers you a higher potential return. As a result, you will look for options that give you security and some certainty about the level of your return.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/1.png"
+
+         },
+         {
+            "id":"2",
+            "title":"Careful",
+            "text": "You are a very careful person, and you probably do not enjoy making investment decisions. You will tend to focus firstly on ways to limit or, if possible, remove the risks on your investments before you think about the growth opportunities. As a result, you are unlikely to own, or have owned, assets that can go up and down in value for example, an investment property or shares, or any funds that invest in them. If you were making a lump-sum investment, you would look for options that give you protection but you would not need a specific level of return. If there is a way to increase the growth of your investment, you will consider it once your capital is secure. When it comes to making regular savings or funding your pension, you will look for options that give low levels of ups and downs over the long term in return for a better potential return.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/2.png"
+
+         },
+         {
+            "id":"3",
+            "title":"Balanced Conservative",
+            "text": "You tend to lean towards taking a cautious approach. However, when it comes to investments, you are willing to venture a little to get the opportunity for a better reward. You are not intimidated by making investment decisions although it may not be an area that you take a very active interest in. You may have some experience of investing some of your money in assets for example, managed funds that can go up and down in value to a small degree. If you were making a lump-sum investment, you would be willing to accept a low level of ups and downs to improve your chances of getting a better return than deposit accounts tend to give. For example, you may want some of your money invested in a capital secure option, but would be willing to take some risk with the rest to get a higher return. When it comes to making regular savings, or funding your pension, you will look to control the ups and downs over the long term in return for a good potential return.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/3.png"
+
+         },
+         {
+            "id":"4",
+            "title":"Balanced",
+            "text": "You have some interest in exploring investment opportunities and are familiar with how they work in general. In particular, you accept the fact that, to get a good potential return on your money, you can expect to see some movement up and down in the value of your investments from time to time. You may have experience of investing money in assets, such as managed funds, that can go up and down in value. You also understand the benefits of spreading your money across different types of investments. For your lump-sum investments to get a good potential return, you are willing to invest in an option that can give medium levels of ups and downs over time. When it comes to making regular savings or funding your pension, you are looking for good growth potential over the long term and so you are willing to accept quite significant ups and downs along the way.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/4.png"
+
+         },
+         {
+            "id":"5",
+            "title":"Experienced",
+            "text": "You take an active interest in exploring your investment options and are very familiar with how different types of investments work. In particular you accept the fact that investment markets move up and down in value but offer excellent opportunities for growth over the long-term. You have good experience of investing money in assets, such as property and shares - for example, you may have bought them directly or own funds that invest in them. For your lump-sum investments, to get a very good potential return, you are willing to invest in an option that can have significant levels of ups and downs over time. When it comes to making regular savings or funding your pension, you are looking for excellent growth potential over the long term and so you are willing to accept significant ups and downs along the way.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/5.png"
+
+         },
+         {
+            "id":"6",
+            "title":"Adventurous",
+            "text": "You take a very active interest in exploring your investment options and in particular have a detailed understanding of how stock markets work. You probably have good experience of investments in shares and have a portfolio of investments. You may also own, or have owned, investment properties or funds that invest in them. You feel that stock markets offer the highest opportunities for growth. In return, you accept that they can move up and down in value, sometimes by large amounts. You are interested first in the growth potential of investments. As a result, you are looking for options that give the very high potential return and so you are willing to accept very high levels of ups and downs along the way.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/6.png"
+
+         },
+         {
+            "id":"7",
+            "title":"Very Adventurous",
+            "text": "Exploring your investment options is probably part of your daily life, and you have a detailed understanding of how stock markets work. You probably have extensive experience of investments in shares and have a portfolio of investments. You may also own, or have owned, investment properties or funds that invest in them. You feel that stock markets offer the highest opportunities for growth. In return, you accept that they can move up and down in value, sometimes by large amounts. You are interested in the growth potential of investments. As a result, you are looking for options that give you excellent potential return and so you are willing to accept extreme levels of ups and downs along the way.",
+            "chartImg": "http://www.irishlife.ie/uploadedImages/retail/body/guides/risk/7.png"
+
+         }
+      ],
+      "score": [{
+        "id" : "4"
+      }]
+   }
+]

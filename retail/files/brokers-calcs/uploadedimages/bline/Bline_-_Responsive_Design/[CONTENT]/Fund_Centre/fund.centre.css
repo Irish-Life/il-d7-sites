@@ -1,0 +1,399 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+.fundOptionsHeader .has-tip, .pageHeaderInfo .has-tip, .fundOptionsHeaderSmall .has-tip{
+	border-bottom: 0px none #fff;
+
+}
+
+.floatingHeader {
+  position: fixed;
+  top: 0px;
+  visibility: hidden;
+}
+/* */
+table.dataList { 
+	width: 100%; 
+	font-size:1em;
+	border-collapse: collapse;    
+	display: inline-table;
+}
+/* Zebra striping */
+table.dataList tr {
+	background: #eeeeee; 
+}table.dataList tr:nth-of-type(odd) {
+	background: #E7E7E7; 
+}
+table.dataList th { 
+	background: #706f73; 
+	color: #fff; 
+	font-weight:bold;
+	font-size:1.15em;
+}
+table.dataList td, th,table.dataList thead tr th { 
+	padding: 2px 2px 2px 2px; 
+	border: 1px solid #fff; 
+	text-align: center;
+}
+table.dataList td.leftAlign, th,table.dataList thead tr th.leftAlign{ 
+	padding-left: 10px;
+	text-align: left;
+}
+table.dataList thead tr th.visColDrop{width:35px; font-size:22px;background-color:#2E2E2E;}
+table.dataList thead tr th.visColDrop a{color:#fff;}
+table.dataList thead tr th.visColDrop a:hover{color:#ddd;}
+table.dataList .fa-download{font-size:1.5em;color:#727272;}
+.errorText{color:red;}
+.starred-input { clip: rect(0 0 0 0);
+    position: absolute; /* move out of document flow */
+	width:0px; }
+
+.starred label { 
+	
+	display: block;
+	width: 26px; 
+	height: 26px; 
+	background-image: url("http://www.irishlife.ie/uploadedImages/favourite-stars.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin-bottom: 0em;
+	padding-right:0px;
+background-position:0px 0px;
+margin-left:10px;
+}
+
+.starred label:hover { 
+background-position:0px -26px;
+}
+.starred label.starred-on  { 
+background-position:0px -52px; 
+}
+.starred label.starred-on:hover { 
+background-position:0px -78px; 
+}
+
+.starred-header{
+	display: block;
+background-position:3px -106px; 
+	width: 26px; 
+	height: 26px; 
+	background-image: url("http://www.irishlife.ie/uploadedImages/favourite-stars.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin-bottom: 0em;
+}
+
+
+.riskRating{
+	display: block;
+	background-position:5px 0px; 
+	width: 32px; 
+	height: 26px; 
+	background-image: url("http://www.irishlife.ie/uploadedImages/risk-rating.png");
+	background-repeat: no-repeat;
+	margin-bottom: 0em;
+}
+
+.riskRating span{
+display:none;	
+}
+.rated-1 { 
+background-position:5px 0px; 
+}
+.rated-2 { 
+background-position:5px -26px; 
+}
+.rated-3 { 
+background-position:5px -52px; 
+}
+.rated-4 { 
+background-position:5px -78px; 
+}
+.rated-5 { 
+background-position:5px -104px; 
+}
+.rated-6 { 
+background-position:5px -130px; 
+}
+.rated-7 { 
+background-position:5px -156px; 
+}
+
+.riskRate{
+background-color:#efefef;
+font-weight:bold;
+font-size:17px;
+color:#fff;
+text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent));
+background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+
+background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, 
+transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+}
+.risk-1{
+background-color:#929294;
+}
+.risk-2{
+background-color:#ffd100;
+}
+.risk-3{
+background-color:#f6a923;
+}
+.risk-4{
+background-color:#76ac1c;
+}
+.risk-5{
+background-color:#00a0d0;
+}
+.risk-6{
+background-color:#505aa0;
+}
+.risk-7{
+background-color:#db002e;
+}
+
+.charted-input,.prod-charted-input { 
+clip: rect(0 0 0 0);
+    position: absolute; /* move out of document flow */
+	width:0px;
+}
+
+.charted label ,.prod-charted label { 
+	padding-left:11px;
+	display: block;
+	width: 26px; 
+	height: 20px; 
+	background-image: url("http://www.irishlife.ie/uploadedImages/chart-empty.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin-bottom: 0em;
+background-position:3px 0px;
+}
+.drawChartBox{
+min-width:600px;
+}
+
+
+.charted label:hover,.prod-charted label:hover { 
+background-position:3px -20px;
+}
+.charted label.chart-on,.prod-charted label.chart-on  { 
+background-position:3px -40px; 
+}
+.charted label.chart-on:hover,.prod-charted label.chart-on:hover { 
+background-position:3px -60px; 
+}	
+
+#fundsChartBody{
+margin-top:10px;
+background-color:#dddddd;
+}
+
+#fundsChartChart{
+	background-color:#fff;
+}
+.fundsProductsHeader{
+background: #ebedf4 ;
+border: 1px solid #435399 ;
+border-width: 1px 0px 1px 0px;
+padding: 5px 0px 5px 0px;	
+}
+.fundsProductsHeader .row{
+	background: #ebedf4 ;
+} 
+.fundsProductsHeader h5{
+	color:#435399 !important;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+.fundsProductsHeaderContent{
+margin-top:10px;
+}
+.charted-header{
+	display: block;
+	background-position:3px -80px; 
+	width: 26px; 
+	height: 20px; 
+	background-image: url("http://www.irishlife.ie/uploadedImages/chart-empty.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	margin-bottom: 0em;
+}
+
+a.toggle-nav {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url("/uploadedImages/Retail/images/plus-toggle-2.png")0 0 no-repeat;
+	position: absolute;
+	right: 5px;
+	top: 7px;
+	opacity: 0.4;
+	z-index: 1;
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+	-ms-transition: all 500ms ease-in-out;
+}
+a.toggle-nav.open {
+	-moz-transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	-o-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	transform: rotate(135deg);
+	opacity: 1;
+	z-index: 1;
+	-moz-transform-origin: center center;
+}
+.fundOptionsHeader {
+background-color: #fff!important;
+padding: 0px 15px 0px 15px !important;
+color:#333 !important;
+text-align:left !important;
+}
+.fundOptionsHeaderOptions{
+display:none !important;
+}
+.floatingHeader .fundOptionsHeaderOptions{
+display:table-cell !important;
+}
+.fundOptionsHeader li{
+padding-left:5px !important;
+}
+.fundOptionsHeaderSmall{
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.48);
+border-bottom:1px solid #4d4e53;
+}
+.price{
+font-weight:bold;
+}
+.priceup{
+color:#187C18;
+}
+.pricedown{
+color:#8A0B0B;
+}
+.pdf{
+
+	background-image: url("/uploadedImages/Retail/images/ilfs.download.icon.pdf.png");
+	background-repeat: no-repeat;
+	padding-left:20px;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+/* -----------------------------------------
+   tabletish size
+----------------------------------------- */
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+
+.has-tip img{
+	height:32px;
+	width:32px;
+	padding:4px;
+	}
+}
+
+
+
+/* -----------------------------------------
+   smaller and phone
+----------------------------------------- */
+@media only screen and (max-width: 625px) { 
+	/* Force table to not be like tables anymore */
+	table.dataList{
+	border:0px solid #fff;
+	}
+	table.dataList table, thead, tbody, th, td, tr { 
+		display: block;
+	}
+	/* Hide table headers (but not display: none;, for accessibility) */
+	table.dataList thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	table.dataList td, th, table.dataList thead tr th{
+	padding:auto;
+	}
+	
+	table.dataList tr { border: 1px solid #ccc;margin-bottom:15px; }
+	
+	
+	table.dataList td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #FFF; 
+		position: relative;
+		padding-left: 48% !important;
+		text-align:left;
+		font-size:15px;
+		padding:6px;
+		display: block;
+	}
+	
+	table.dataList td:nth-of-type(2){ display:none !important; }
+	table.dataList td:nth-of-type(3){ display:none !important; }
+	table.dataList td:nth-of-type(7){ display:none !important; }
+	table.dataList td:nth-of-type(9){ display:none !important; }
+	table.dataList td:nth-of-type(10){ display:none !important; }
+	table.dataList td:nth-of-type(11){ display:none !important; }
+	table.dataList td:nth-of-type(12){ display:none !important; }
+	table.dataList td:nth-of-type(13){ display:none !important; }
+	table.dataList td:nth-of-type(14){ display:none !important; }
+	table.dataList td:nth-of-type(15){ display:none !important; }
+	table.dataList td:nth-of-type(16){ display:none !important; }
+	table.dataList td:nth-of-type(17){ display:none !important; }
+	table.dataList td:nth-of-type(18){ display:none !important; }
+	table.dataList td:nth-of-type(19){ display:none !important; }
+	table.dataList td:nth-of-type(20){ display:none !important; }
+	table.dataList td:nth-of-type(21){ display:none !important; }
+
+	.id { 
+		display:none !important;
+	}
+	
+	/*
+	table.dataList td.id,
+	table.dataList td.3mth,
+	table.dataList td.6mth,
+	table.dataList td.3yrs ,
+	table.dataList td.5yrs,
+	table.dataList td.10yrs ,
+	table.dataList td.3yrsAnn,
+	table.dataList td.5yrsAnn,
+	table.dataList td.10yrsAnn 
+	*/
+	
+	table.dataList td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 5px;
+		text-align:right;
+		left: 0px;
+		width: 40%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		font-weight:bold;
+		color:#111;
+		
+
+	}
+	
+	/*
+	Label the data
+	*/
+	table.dataList td:nth-of-type(1):before { content: "ID";  }
+	table.dataList td:nth-of-type(4):before { content: "Fund Name"; }
+	table.dataList td:nth-of-type(5):before { content: "Factsheet"; }
+	table.dataList td:nth-of-type(6):before { content: "Price"; }
+	table.dataList td:nth-of-type(8):before { content: "1 Month"; }
+	
+	
+}

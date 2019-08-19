@@ -1,0 +1,255 @@
+html, body, p, form, h1, h2, h3, h4, h5 {
+    font-family: Arial,Helvetica,sans-serif;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #1F2555;
+}
+a img {
+    border: medium none;
+}
+a:hover {
+    text-decoration: underline;
+}
+p {
+    color: #333333;
+    font-weight: normal;
+}
+h1 {
+    color: #1F2555;
+    font-size: 1.375em;
+    margin: 20px 0 15px;
+}
+h2, h3, h4, h5, h2 a, h3 a, h4 a, h5 a {
+    color: #1F2555;
+    font-size: 1.1875em;
+    padding-top: 10px;
+}
+h2 {
+    padding-top: 0;
+}
+h3 {
+    font-size: 1em;
+}
+h4 {
+    font-size: 0.8125em;
+}
+h5 {
+    font-size: 0.75em;
+}
+.aibColumn p.Search {
+    color: #333333;
+    font-size: 0.75em;
+    padding-bottom: 5px;
+}
+.aibColumn p {
+    color: #333333;
+    font-size: 0.75em;
+    padding-bottom: 15px;
+}
+.aibColumn li p {
+    font-size: 100%;
+    padding: 8px 0 12px;
+}
+.aibRow {
+    float: left;
+    z-index: -50;
+}
+.aibRowRight {
+    float: right;
+}
+.aibRowClear {
+    clear: both;
+}
+.hidden {
+    display: none;
+}
+form {
+    display: inline;
+}
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url("../uploadedImages/retail/aib/images/aibmainbordermid.gif") repeat-y scroll center top #78496A !important;
+	text-align:center;
+}
+button {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+img {
+    display: block;
+}
+hr {
+    display: none;
+}
+.containerHeader {
+    background: url("/uploadedImages/retail/aib/images/mainbordertop.gif") no-repeat scroll left bottom transparent;
+    float: left;
+    padding: 20px 17px 32px 20px;
+    width: 923px;
+    *width: 960px;
+}
+.aibHeaderDivlet {
+    float: left;
+    margin: 8px 0 7px 20px;
+}
+.aibHeaderDivlet p {
+    background: url("/uploadedImages/retail/aib/images/welcometoaib.gif") no-repeat scroll left top transparent;
+    color: #48182C;
+    float: left;
+    font-size: 1px;
+    height: 0;
+    margin-top: 34px;
+    overflow: hidden;
+    padding-top: 34px;
+    width: 200px;
+}
+.aibHeaderDivlet a {
+    color: #FFFFFF;
+    float: left;
+    margin-right: 53px;
+}
+.containerFooter {
+    background: url("/uploadedImages/retail/aib/images/mainbordermid.gif") repeat-y scroll center top transparent !important;
+    clear: both;
+    float: left;
+    width: 960px;
+}
+#extPopUp .containerFooter {
+    width: 560px;
+}
+.footerDivlet {
+    background: url("/uploadedImages/retail/aib/images/footerbg.gif") repeat-x scroll left top #FFFFFF;
+    display: inline;
+    float: left;
+    margin: 8px 0 10px 20px;
+    padding: 15px 0 0;
+    width: 920px;
+}
+.footerDivlet p {
+    clear: left;
+    color: #999999;
+    font-size: 0.8em;
+    margin: 3px 0;
+    padding: 0;
+    text-align: center;
+}
+.footerDivlet ul {
+    background: url("/uploadedImages/retail/aib/images/footerbg.gif") repeat-x scroll left bottom #FFFFFF;
+    float: left;
+    margin: 0 0 12px;
+    padding: 0 0 11px;
+    text-align: center;
+    width: 100%;
+}
+.footerDivlet li, #extPopUp .footerDivlet ul li.firstItem {
+    background: url("/uploadedImages/retail/aib/images/footerlibg.gif") no-repeat scroll left top transparent;
+    float: left;
+    font-size: 0.66em;
+    list-style: none outside none;
+    padding: 0;
+}
+.footerDivlet li a {
+    background: url("/uploadedImages/retail/aib/images/linkbg.gif") repeat-x scroll left bottom transparent;
+    color: #6D85C4;
+    font-weight: bold;
+    height: 1px;
+    margin: 0 5px 0 10px;
+    padding: 0 5px 0 0;
+    text-decoration: none;
+}
+.footerDivlet li a:hover {
+    text-decoration: underline;
+}
+.footerDivlet li.firstItem {
+    background: none repeat scroll 0 0 transparent;
+}
+.footerDivlet a {
+    color: #999999;
+    text-decoration: none;
+}
+.footerDivlet a:hover {
+    text-decoration: none;
+}
+.searchLinks p, .searchLinks p a {
+    color: #555555;
+}
+.footerDivlet .searchLinks p a img {
+    display: inline;
+}
+.extLinks img {
+    display: inline !important;
+}
+.containerGlobal {
+    background: url("/uploadedImages/retail/aib/images/mainbg.gif") repeat-x scroll left top #78496A;
+    float: left;
+    min-width: 960px;
+    width: 100%;
+}
+.containerBody {
+margin-left:auto;
+margin-right:auto;
+    
+    padding: 0;
+    width: 960px;
+}
+.containerContent {
+    background: url("/uploadedImages/retail/aib/images/mainbordermid.gif") repeat-y scroll center top #FFFFFF !important;
+    float: left;
+    width: 960px;
+	text-align:center;
+}
+.containerLeftContent {
+    display: inline;
+    float: left;
+    margin: 0 19px 0 0;
+    overflow: hidden;
+    width: 181px;
+}
+.containerLeftContentSearch {
+    display: inline;
+    float: left;
+    margin: 0 19px 0 0;
+    overflow: hidden;
+    width: 80px;
+}
+.containerCentreContent {
+    float: left;
+    width: 750px;
+}
+.containerCentreContent {
+    float: left;
+    overflow: hidden;
+    width: 580px;
+}
+.fund-launch{display:block !important}
+
+iframe {
+	margin:6px;
+}
+#riskIframe{height:960px;}
+
+
+@media only print {
+    .containerGlobal{background:none}
+    .containerHeader{display:none}
+    .clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+
+    #riskProfileResults{
+        page-break-before: always !important;
+    }
+
+    #risk-item6{
+        margin-top: 220px!important;
+    }
+
+    html,body{background:white;font-size:12pt !important;}
+}

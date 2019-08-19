@@ -1,0 +1,628 @@
+name = Retirement Hub Theme
+description = Theme for irishlife.ie based on <a href="http://drupal.org/project/omega">Omega</a>. You should not directly edit this starterkit, but make your own copy. Information on this can be found in the <a href="http://himer.us/omega-docs">Omega Documentation</a>
+core = 7.x
+engine = phptemplate
+screenshot = screenshot.png
+base theme = omega
+
+; Breakpoints for responsive images
+breakpoints[homepage_banner_mobile] = (min-width: 0px)
+breakpoints[homepage_banner_narrow] = (min-width: 740px)
+breakpoints[homepage_banner_normal] = (min-width: 980px)
+breakpoints[homepage_banner_wide] = (min-width: 1220px)
+breakpoints[content_image_mobile] = (min-width: 0px)
+breakpoints[content_image_narrow] = (min-width: 740px)
+breakpoints[content_image_normal] = (min-width: 980px)
+breakpoints[content_image_wide]   = (min-width: 1220px)
+
+; IMPORTANT: DELETE THESE TWO LINES IN YOUR SUBTHEME
+
+;hidden = TRUE
+;starterkit = TRUE
+
+; REQUIRED CORE REGIONS
+
+regions[page_top] = Page Top
+regions[page_bottom] = Page Bottom
+regions[content] = Content
+
+; ADDITIONAL REGIONS
+
+regions[user_first] = User Bar First
+regions[user_second] = User Bar Second
+
+regions[add_this_buttons_header] = Add This Buttons Header
+regions[info_links_header] = Info links Header
+regions[search_bar_header] = Search Bar Header
+regions[online_services_login_header] = Online Services Login Header
+regions[text_resize_header] = Text Resize Header
+
+regions[group_sites_nav_left] = Group Sites Navigation Bar Left Hand Side
+regions[group_sites_nav_right] = Group Sites Navigation Bar Right Hand Side
+regions[branding] = Branding
+regions[menu] = Menu
+regions[home_md_slider] = Home MD Slider
+regions[secondary_menu] = Secondary Menu
+regions[third_menu] = Third Menu
+regions[third_menu_investor_profile] = Third Menu Investor Profile
+
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
+
+regions[front_page_slider] = Front Page Slider
+
+regions[banner_left] = Banner Left
+regions[banner_right] = Banner Right
+
+regions[header_first] = Header First
+regions[header_second] = Header Second
+
+regions[preface_first] = Preface First
+regions[preface_second] = Preface Second
+regions[preface_third] = Preface Third
+
+regions[banner_full_width] = Banner Full Width
+regions[calculator_content] = Calculator content
+regions[calculator_full_width] = Calculator Full Width
+
+regions[front_page_intro] = Front page intro heading
+
+regions[front_page_products_pensions] = Front Page Products Pensions
+regions[front_page_products_Life_Insurance] = Front Page Products Life Insurance
+regions[front_page_products_Investments] = Front Page Products Investments
+regions[front_page_products_Health] = Front Page Products Health
+
+regions[front_page_content_first_item] = Homepage Content First Item
+regions[front_page_content_second_item] = Homepage Content Second Item
+regions[front_page_content_second_item_left] = Homepage Content Second Item Left
+regions[front_page_content_second_item_middle] = Homepage Content Second Item Middle
+regions[front_page_content_second_item_right] = Homepage Content Second Item Right
+regions[front_page_content_third_item] = Homepage Content Third Item
+regions[front_page_content_fourth_item] = Homepage Content Fourth Item
+regions[front_page_content_fifth_item] = Homepage Content Fifth Item
+regions[front_page_content_sixth_item] = Homepage Content Sixth Item
+regions[front_page_content_seventh_item] = Homepage Content Seventh Item
+regions[front_page_content_eighth_item] = Homepage Content Eight Item
+regions[front_page_content_feefo_text] = Homepage Content Feefo Text
+regions[front_page_content_feefo_slider] = Homepage Content Feefo Slider
+regions[front_page_content_feefo_link] = Homepage Content Feefo link
+
+;investments regions for /investments, investments/new-to-investing 
+regions[video_small]= Video Item Small
+regions[video_large]= Video Item Large
+regions[six_col_block_1] = Six Column Content Block 1
+regions[six_col_block_2] = Six Column Content Block 2
+regions[six_col_block_3] = Six Column Content Block 3
+regions[six_col_block_4] = Six Column Content Block 4
+regions[six_col_block_5] = Six Column Content Block 5
+regions[six_col_block_6] = Six Column Content Block 6
+
+
+regions[nine_col_block_1] = Nine Column Content Block 1
+regions[three_col_block_1] = Three Column Content Block 1
+
+regions[investments_choice_first_item] = Investments Choice First Item
+regions[investments_choice_second_item] = Investments Choice Second Item
+regions[investments_choice_third_item] = Investments Choice Third Item
+regions[investments_choice_fourth_item] = Investments Choice Fourth Item
+regions[investments_choice_fifth_item] = Investments Choice Fifth Item
+regions[investments_choice_sixth_item] = Investments Choice Sixth Item
+regions[investments_choice_seventh_item] = Investments Choice Seventh Item
+regions[investments_choice_eighth_item] = Investments Choice Eighth Item
+regions[investments_choice_ninth_item] = Investments Choice Ninth Item
+regions[investments_choice_tenth_item] = Investments Choice Tenth Item
+
+;Investments Hub Regions
+regions[investments_hub_content_top] = Investments hub content top
+regions[investments_hub_content_main] = Investments hub content main
+regions[investments_hub_content_side] = Investments hub content side
+regions[investments_hub_content_bottom] = Investments hub content bottom
+regions[investments_hub_main_first_item] = Investments hub main first item
+regions[investments_hub_main_recent_articles] = Investments hub main recent articles
+regions[investments_hub_main_fourth_item] = Investments hub main fourth item
+regions[investments_hub_main_fifth_item] = Investments hub main fifth item
+regions[investments_hub_main_sixth_item] = Investments hub main sixth item
+regions[investments_hub_main_seventh_item] = Investments hub main seventh item
+regions[investments_hub_main_eighth_item] = Investments hub main eighth item
+regions[investments_hub_main_ninth_item] = Investments hub main ninth item
+regions[investments_hub_main_tenth_item] = Investments hub main tenth item
+regions[investments_hub_main_eleventh_item] = Investments hub main eleventh item
+regions[investments_hub_main_twelfth_item] = Investments hub main twelfth item
+regions[investments_hub_main_thirteenth_item] = Investments hub main thirteenth item
+
+regions[investments_hub_landing_first_item] = Investments Hub Landing First Item
+regions[investments_hub_landing_second_item] = Investments Hub Landing Second Item
+regions[investments_hub_landing_third_item] = Investments Hub Landing Third Item
+regions[investments_hub_landing_fourth_item] = Investments Hub Landing Fourth Item
+regions[investments_hub_landing_fifth_item] = Investments Hub Landing Fifth Item
+regions[investments_hub_landing_sixth_item] = Investments Hub Landing Sixth Item
+regions[investments_hub_landing_seventh_item] = Investments Hub Landing Seventh Item
+regions[investments_hub_landing_eighth_item] = Investments Hub Landing Eighth Item
+regions[investments_hub_landing_ninth_item] = Investments Hub Landing Ninth Item
+regions[investments_hub_landing_tenth_item] = Investments Hub Landing Tenth Item
+
+
+;life insurance regions for life insurance landing page
+regions[life_insurance_landing_content_item] = Life Insurance Landing Content Item
+regions[life_insurance_first_item] = Life Insurance First Item
+regions[life_insurance_second_item] = Life Insurance Second Item
+regions[life_insurance_third_item] = Life Insurance Third Item
+regions[life_insurance_fourth_item] = Life Insurance Fourth Item
+regions[life_insurance_fifth_item] = Life Insurance Fifth Item
+regions[life_insurance_sixth_item] = Life Insurance Sixth Item
+regions[life_insurance_seventh_item] = Life Insurance Seventh Item
+regions[life_insurance_eighth_item] = Life Insurance Eighth Item
+
+
+
+;4 regions at the top of a landing page, i.e., MAPS
+regions[landing_top_first_item] = Landing Page Top First Item
+regions[landing_top_second_item] = Landing Page Top Second Item
+regions[landing_top_third_item] = Landing Page Top Third Item
+regions[landing_top_fourth_item] = Landing Page Top Fourth Item
+regions[landing_top_fifth_item] = Landing Page Top Fifth Item
+regions[landing_top_sixth_item] = Landing Page Top Sixth Item
+regions[landing_top_seventh_item] = Landing Page Top Seventh Item
+regions[landing_top_eighth_item] = Landing Page Top Eighth Item
+regions[landing_top_ninth_item] = Landing Page Top Ninth Item
+regions[landing_top_tenth_item] = Landing Page Top Tenth Item
+regions[landing_top_eleventh_item] = Landing Page Top Eleventh Item
+regions[landing_top_twelfth_item] = Landing Page Top Twelfth Item
+
+;regions to show fund page content
+regions[fund_page_content_top] = Fund Page Content Top
+regions[fund_page_asset_split] = Fund Page Asset Split Chart
+regions[fund_page_alterntives_split] = Fund Page Alternative Managers Split Chart
+regions[fund_page_geographic_split] = Fund Page Geographic Split Chart
+regions[fund_page_content_bottom] = Fund Page Content Bottom
+
+;regions for the free life cover pages
+regions[free_life_cover_left] = Free Life Cover Left
+regions[free_life_cover_right] = Free Life Cover Right
+
+regions[content-title] = Generic Content Title in seperate region
+;generic 3 columns x 4 with full width top and tail
+regions[content-fulltop1] = Full 12 cols content top 1
+regions[content-left1] = Left 4 cols content 1
+regions[content-mid1] = Mid 4 cols content 1
+regions[content-right1] = Right 4 cols content 1
+regions[content-fullbot1] = Full 12 cols content bot 1
+
+regions[content-fulltop2] = Full 12 cols content top 2
+regions[content-left2] = Left 4 cols content 2
+regions[content-mid2] = Mid 4 cols content 2
+regions[content-right2] = Right 4 cols content 2
+regions[content-fullbot2] = Full 12 cols content bot 2
+
+regions[content-fulltop3] = Full 12 cols content top 3
+regions[content-left3] = Left 4 cols content 3
+regions[content-mid3] = Mid 4 cols content 3
+regions[content-right3] = Right 4 cols content 3
+regions[content-fullbot3] = Full 12 cols content bot 3
+
+regions[content-fulltop4] = Full 12 cols content top 4
+regions[content-left5] = Left 5 cols content 5
+regions[content-left4] = Left 4 cols content 5
+regions[content-mid4] = Mid 4 cols content 4
+regions[content-right4] = Right 4 cols content 4
+regions[content-fullbot4] = Full 12 cols content bot 4
+regions[content-right7] = Right 7 cols content 7
+
+regions[landing_first_item] = Landing Page First Item
+regions[landing_second_item] = Landing Page Second Item
+regions[landing_third_item] = Landing Page Third Item
+regions[landing_fourth_item] = Landing Page Fourth Item
+regions[landing_fifth_item] = Landing Page Fifth Item
+regions[landing_sixth_item] = Landing Page Sixth Item
+regions[landing_seventh_item] = Landing Page Seventh Item
+regions[landing_eighth_item] =Landing Page Eighth Item
+regions[pensions_hub_landing_page_top_item] = Pensions Hub Landing Page top Item
+regions[pensions_hub_landing_page_first_item] = Pensions Hub Landing Page First Item
+regions[pensions_hub_landing_page_second_item] = Pensions Hub Landing Page Second Item
+regions[pensions_hub_landing_page_third_item] = Pensions Hub Landing Page Third Item
+regions[pensions_hub_landing_page_fourth_item] = Pensions Hub Landing Page Fourth Item
+regions[pensions_hub_landing_page_fifth_item] = Pensions Hub Landing Page Fifth Item
+regions[pensions_hub_landing_page_sixth_item] = Pensions Hub Landing Page Sixth Item
+regions[pensions_hub_landing_page_seventh_item] = Pensions Hub Landing Page Seventh Item
+regions[pensions_hub_landing_page_eighth_item] = Pensions Hub Landing Page Eighth Item
+regions[pensions_hub_landing_page_ninth_item] = Pensions Hub Landing Page Ninth Item
+regions[pensions_personal_landing_page_top_item] = Pensions Personal Landing Page top Item
+regions[pensions_personal_landing_page_first_item] = Pensions Personal Landing Page First Item
+regions[pensions_personal_landing_page_second_item] = Pensions Personal Landing Page Second Item
+regions[pensions_personal_landing_page_third_item] = Pensions Personal Landing Page Third Item
+regions[pensions_personal_landing_page_fourth_item] = Pensions Personal Landing Page Fourth Item
+regions[pensions_personal_landing_page_fifth_item] = Pensions Personal Landing Page Fifth Item
+regions[pensions_personal_landing_page_sixth_item] = Pensions Personal Landing Page Sixth Item
+regions[pensions_personal_landing_page_seventh_item] = Pensions Personal Landing Page Seventh Item
+regions[pensions_personal_landing_page_eighth_item] = Pensions Personal Landing Page Eighth Item
+regions[pensions_personal_landing_page_ninth_item] = Pensions Personal Landing Page Ninth Item
+regions[pensions_personal_landing_page_tenth_item] = Pensions Personal Landing Page Tenth Item
+regions[pensions_personal_landing_page_eleventh_item] = Pensions Personal Landing Page Eleventh Item
+regions[pensions_personal_landing_page_twelfth_item] = Pensions Personal Landing Page Twelfth Item
+
+regions[pensions_binary_choice_first_item] = Pensions Binary Choice First Item
+regions[pensions_binary_choice_second_item] = Pensions Binary Choice Second Item
+regions[pensions_binary_choice_third_item] = Pensions Binary Choice Third Item
+regions[pensions_binary_choice_image] = Pensions Binary Choice Image
+
+regions[product_page_content] = Product Page Content
+regions[product_page_menu] = Product Page Menu
+
+regions[footer_first] = Footer First
+regions[footer_second] = Footer Second
+regions[footer_third] = Footer Third
+regions[footer_fourth] = Footer Fourth
+regions[footer_full_width] = Footer Full Width
+
+regions[callback] = Callback
+
+regions[invest-journey-top] = Three Step Invest Journey Top
+regions[invest-journey-left] = Three Step Invest Journey Left
+regions[invest-journey-middle] = Three Step Invest Journey Middle
+regions[invest-journey-right] = Three Step Invest Journey Right
+regions[invest-journey-bottom] = Three Step Invest Journey Bottom
+regions[invest-journey-twelve-col] = Three Step invest Journey Warnings
+
+; ZONES
+
+zones[group_site_navigation] = Group Site Navigation
+zones[user] = User
+zones[branding] = Branding
+zones[menu] = Menu
+zones[header] = Header
+zones[preface] = Preface
+zones[content] = Content
+zones[intro] = Intro
+
+zones[homepage-products] = Homepage Products
+zones[homepage-content-first-item] = Homepage Content First Item
+zones[homepage-content-second-item] = Homepage Content Second Item
+zones[homepage-content-third-item] = Homepage Content Third Item
+zones[homepage-content-fourth-item] = Homepage Content Fourth Item
+zones[homepage-content-fifth-item] = Homepage Content Fifth Item
+zones[homepage-content-sixth-item] = Homepage Content Sixth Item
+zones[homepage-content-seventh-item] = Homepage Content Seventh Item
+zones[homepage-content-eighth-item] = Homepage Content Eighth Item
+zones[homepage-content-feefo] = Homepage Content Feefo
+
+zones[free_life_cover] = Free Life Cover 
+zones[pensions_content] = Pensions Content 
+zones[investments_content] = Investments Content 
+zones[why_irish_life_pensions] = Why Irish Life Pensions
+zones[postscript] = Postscript
+zones[footer] = Footer zones
+zones[trailing_footer] = Trailing Footer
+zones[callback] = Callback
+
+zones[invest-three-steps] = Three Step Investments Journey
+
+;OPTIONAL STYLESHEETS
+
+css[global.css][name] = Your custom global styles
+css[global.css][description] = This file holds all the globally active custom CSS of your theme.
+css[global.css][options][weight] = 10
+
+stylesheets[all][] = css/font-awesome.css
+stylesheets[all][] = css/font-awesome-ie7.min.css
+
+; THEME SETTINGS (DEFAULTS)
+
+settings[alpha_grid] = 'alpha_default'
+settings[alpha_primary_alpha_default] = 'normal'
+settings[alpha_responsive] = '1'
+settings[alpha_layouts_alpha_fluid_primary] = 'normal'
+settings[alpha_layouts_alpha_fluid_normal_responsive] = '0'
+settings[alpha_layouts_alpha_fluid_normal_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_primary] = 'normal'
+settings[alpha_layouts_alpha_default_fluid_responsive] = '0'
+settings[alpha_layouts_alpha_default_fluid_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_fluid_weight] = '0'
+settings[alpha_layouts_alpha_default_narrow_responsive] = '1'
+settings[alpha_layouts_alpha_default_narrow_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_narrow_weight] = '1'
+settings[alpha_layouts_alpha_default_normal_responsive] = '1'
+settings[alpha_layouts_alpha_default_normal_media] = 'all and (min-width: 980px) and (min-device-width: 980px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_normal_weight] = '2'
+settings[alpha_layouts_alpha_default_wide_responsive] = '1'
+settings[alpha_layouts_alpha_default_wide_media] = 'all and (min-width: 1220px)'
+settings[alpha_layouts_alpha_default_wide_weight] = '3'
+settings[alpha_viewport] = '1'
+settings[alpha_viewport_initial_scale] = '1'
+settings[alpha_viewport_min_scale] = '1'
+settings[alpha_viewport_max_scale] = '1'
+settings[alpha_viewport_user_scaleable] = ''
+settings[alpha_libraries][omega_formalize] = 'omega_formalize'
+settings[alpha_libraries][omega_equalheights] = ''
+settings[alpha_libraries][omega_mediaqueries] = 'omega_mediaqueries'
+settings[alpha_css][alpha-reset.css] = 'alpha-reset.css'
+settings[alpha_css][alpha-mobile.css] = 'alpha-mobile.css'
+settings[alpha_css][alpha-alpha.css] = 'alpha-alpha.css'
+settings[alpha_css][omega-text.css] = 'omega-text.css'
+settings[alpha_css][omega-branding.css] = 'omega-branding.css'
+settings[alpha_css][omega-menu.css] = 'omega-menu.css'
+settings[alpha_css][omega-forms.css] = 'omega-forms.css'
+settings[alpha_css][omega-visuals.css] = 'omega-visuals.css'
+settings[alpha_css][global.css] = 'global.css'
+settings[alpha_debug_block_toggle] = '1'
+settings[alpha_debug_block_active] = '1'
+settings[alpha_debug_grid_toggle] = '1'
+settings[alpha_debug_grid_active] = '1'
+settings[alpha_debug_grid_roles][1] = '1'
+settings[alpha_debug_grid_roles][2] = '2'
+settings[alpha_debug_grid_roles][3] = '3'
+settings[alpha_toggle_messages] = '1'
+settings[alpha_toggle_action_links] = '1'
+settings[alpha_toggle_tabs] = '1'
+settings[alpha_toggle_breadcrumb] = '1'
+settings[alpha_toggle_page_title] = '1'
+settings[alpha_toggle_feed_icons] = '1'
+settings[alpha_hidden_title] = ''
+settings[alpha_hidden_site_name] = ''
+settings[alpha_hidden_site_slogan] = ''
+settings[alpha_zone_user_equal_height_container] = ''
+settings[alpha_zone_user_wrapper] = '1'
+settings[alpha_zone_user_force] = ''
+settings[alpha_zone_user_section] = 'header'
+settings[alpha_zone_user_weight] = '1'
+settings[alpha_zone_user_columns] = '12'
+settings[alpha_zone_user_primary] = ''
+settings[alpha_zone_user_css] = ''
+settings[alpha_zone_user_wrapper_css] = ''
+settings[alpha_zone_branding_equal_height_container] = ''
+settings[alpha_zone_branding_wrapper] = '1'
+settings[alpha_zone_branding_force] = ''
+settings[alpha_zone_branding_section] = 'header'
+settings[alpha_zone_branding_weight] = '2'
+settings[alpha_zone_branding_columns] = '12'
+settings[alpha_zone_branding_primary] = ''
+settings[alpha_zone_branding_css] = ''
+settings[alpha_zone_branding_wrapper_css] = ''
+settings[alpha_zone_menu_equal_height_container] = ''
+settings[alpha_zone_menu_wrapper] = '1'
+settings[alpha_zone_menu_force] = ''
+settings[alpha_zone_menu_section] = 'header'
+settings[alpha_zone_menu_weight] = '3'
+settings[alpha_zone_menu_columns] = '12'
+settings[alpha_zone_menu_primary] = ''
+settings[alpha_zone_menu_css] = ''
+settings[alpha_zone_menu_wrapper_css] = ''
+settings[alpha_zone_header_equal_height_container] = ''
+settings[alpha_zone_header_wrapper] = '1'
+settings[alpha_zone_header_force] = ''
+settings[alpha_zone_header_section] = 'header'
+settings[alpha_zone_header_weight] = '4'
+settings[alpha_zone_header_columns] = '12'
+settings[alpha_zone_header_primary] = ''
+settings[alpha_zone_header_css] = ''
+settings[alpha_zone_header_wrapper_css] = ''
+settings[alpha_zone_preface_equal_height_container] = ''
+settings[alpha_zone_preface_wrapper] = '1'
+settings[alpha_zone_preface_force] = ''
+settings[alpha_zone_preface_section] = 'content'
+settings[alpha_zone_preface_weight] = '1'
+settings[alpha_zone_preface_columns] = '12'
+settings[alpha_zone_preface_primary] = ''
+settings[alpha_zone_preface_css] = ''
+settings[alpha_zone_preface_wrapper_css] = ''
+settings[alpha_zone_content_equal_height_container] = ''
+settings[alpha_zone_content_wrapper] = '1'
+settings[alpha_zone_content_force] = '1'
+settings[alpha_zone_content_section] = 'content'
+settings[alpha_zone_content_weight] = '2'
+settings[alpha_zone_content_columns] = '12'
+settings[alpha_zone_content_primary] = 'content'
+settings[alpha_zone_content_css] = ''
+settings[alpha_zone_content_wrapper_css] = ''
+settings[alpha_zone_postscript_equal_height_container] = ''
+settings[alpha_zone_postscript_wrapper] = '1'
+settings[alpha_zone_postscript_force] = ''
+settings[alpha_zone_postscript_section] = 'content'
+settings[alpha_zone_postscript_weight] = '3'
+settings[alpha_zone_postscript_columns] = '12'
+settings[alpha_zone_postscript_primary] = ''
+settings[alpha_zone_postscript_css] = ''
+settings[alpha_zone_postscript_wrapper_css] = ''
+settings[alpha_zone_footer_equal_height_container] = ''
+settings[alpha_zone_footer_wrapper] = '1'
+settings[alpha_zone_footer_force] = ''
+settings[alpha_zone_footer_section] = 'footer'
+settings[alpha_zone_footer_weight] = '1'
+settings[alpha_zone_footer_columns] = '12'
+settings[alpha_zone_footer_primary] = ''
+settings[alpha_zone_footer_css] = ''
+settings[alpha_zone_footer_wrapper_css] = ''
+settings[alpha_region_dashboard_sidebar_equal_height_container] = ''
+settings[alpha_region_dashboard_sidebar_equal_height_element] = ''
+settings[alpha_region_dashboard_sidebar_force] = ''
+settings[alpha_region_dashboard_sidebar_zone] = ''
+settings[alpha_region_dashboard_sidebar_prefix] = ''
+settings[alpha_region_dashboard_sidebar_columns] = '1'
+settings[alpha_region_dashboard_sidebar_suffix] = ''
+settings[alpha_region_dashboard_sidebar_weight] = '-50'
+settings[alpha_region_dashboard_sidebar_css] = ''
+settings[alpha_region_dashboard_inactive_equal_height_container] = ''
+settings[alpha_region_dashboard_inactive_equal_height_element] = ''
+settings[alpha_region_dashboard_inactive_force] = ''
+settings[alpha_region_dashboard_inactive_zone] = ''
+settings[alpha_region_dashboard_inactive_prefix] = ''
+settings[alpha_region_dashboard_inactive_columns] = '1'
+settings[alpha_region_dashboard_inactive_suffix] = ''
+settings[alpha_region_dashboard_inactive_weight] = '-50'
+settings[alpha_region_dashboard_inactive_css] = ''
+settings[alpha_region_dashboard_main_equal_height_container] = ''
+settings[alpha_region_dashboard_main_equal_height_element] = ''
+settings[alpha_region_dashboard_main_force] = ''
+settings[alpha_region_dashboard_main_zone] = ''
+settings[alpha_region_dashboard_main_prefix] = ''
+settings[alpha_region_dashboard_main_columns] = '1'
+settings[alpha_region_dashboard_main_suffix] = ''
+settings[alpha_region_dashboard_main_weight] = '-50'
+settings[alpha_region_dashboard_main_css] = ''
+settings[alpha_region_user_first_equal_height_container] = ''
+settings[alpha_region_user_first_equal_height_element] = ''
+settings[alpha_region_user_first_force] = ''
+settings[alpha_region_user_first_zone] = 'user'
+settings[alpha_region_user_first_prefix] = ''
+settings[alpha_region_user_first_columns] = '8'
+settings[alpha_region_user_first_suffix] = ''
+settings[alpha_region_user_first_weight] = '1'
+settings[alpha_region_user_first_css] = ''
+settings[alpha_region_user_second_equal_height_container] = ''
+settings[alpha_region_user_second_equal_height_element] = ''
+settings[alpha_region_user_second_force] = ''
+settings[alpha_region_user_second_zone] = 'user'
+settings[alpha_region_user_second_prefix] = ''
+settings[alpha_region_user_second_columns] = '4'
+settings[alpha_region_user_second_suffix] = ''
+settings[alpha_region_user_second_weight] = '2'
+settings[alpha_region_user_second_css] = ''
+settings[alpha_region_branding_equal_height_container] = ''
+settings[alpha_region_branding_equal_height_element] = ''
+settings[alpha_region_branding_force] = '1'
+settings[alpha_region_branding_zone] = 'branding'
+settings[alpha_region_branding_prefix] = ''
+settings[alpha_region_branding_columns] = '12'
+settings[alpha_region_branding_suffix] = ''
+settings[alpha_region_branding_weight] = '1'
+settings[alpha_region_branding_css] = ''
+settings[alpha_region_menu_equal_height_container] = ''
+settings[alpha_region_menu_equal_height_element] = ''
+settings[alpha_region_menu_force] = '1'
+settings[alpha_region_menu_zone] = 'menu'
+settings[alpha_region_menu_prefix] = ''
+settings[alpha_region_menu_columns] = '12'
+settings[alpha_region_menu_suffix] = ''
+settings[alpha_region_menu_weight] = '1'
+settings[alpha_region_menu_css] = ''
+settings[alpha_region_header_first_equal_height_container] = ''
+settings[alpha_region_header_first_equal_height_element] = ''
+settings[alpha_region_header_first_force] = ''
+settings[alpha_region_header_first_zone] = 'header'
+settings[alpha_region_header_first_prefix] = ''
+settings[alpha_region_header_first_columns] = '6'
+settings[alpha_region_header_first_suffix] = ''
+settings[alpha_region_header_first_weight] = '1'
+settings[alpha_region_header_first_css] = ''
+settings[alpha_region_header_second_equal_height_container] = ''
+settings[alpha_region_header_second_equal_height_element] = ''
+settings[alpha_region_header_second_force] = ''
+settings[alpha_region_header_second_zone] = 'header'
+settings[alpha_region_header_second_prefix] = ''
+settings[alpha_region_header_second_columns] = '6'
+settings[alpha_region_header_second_suffix] = ''
+settings[alpha_region_header_second_weight] = '2'
+settings[alpha_region_header_second_css] = ''
+settings[alpha_region_preface_first_equal_height_container] = ''
+settings[alpha_region_preface_first_equal_height_element] = ''
+settings[alpha_region_preface_first_force] = ''
+settings[alpha_region_preface_first_zone] = 'preface'
+settings[alpha_region_preface_first_prefix] = ''
+settings[alpha_region_preface_first_columns] = '4'
+settings[alpha_region_preface_first_suffix] = ''
+settings[alpha_region_preface_first_weight] = '1'
+settings[alpha_region_preface_first_css] = ''
+settings[alpha_region_preface_second_equal_height_container] = ''
+settings[alpha_region_preface_second_equal_height_element] = ''
+settings[alpha_region_preface_second_force] = ''
+settings[alpha_region_preface_second_zone] = 'preface'
+settings[alpha_region_preface_second_prefix] = ''
+settings[alpha_region_preface_second_columns] = '4'
+settings[alpha_region_preface_second_suffix] = ''
+settings[alpha_region_preface_second_weight] = '2'
+settings[alpha_region_preface_second_css] = ''
+settings[alpha_region_preface_third_equal_height_container] = ''
+settings[alpha_region_preface_third_equal_height_element] = ''
+settings[alpha_region_preface_third_force] = ''
+settings[alpha_region_preface_third_zone] = 'preface'
+settings[alpha_region_preface_third_prefix] = ''
+settings[alpha_region_preface_third_columns] = '4'
+settings[alpha_region_preface_third_suffix] = ''
+settings[alpha_region_preface_third_weight] = '3'
+settings[alpha_region_preface_third_css] = ''
+settings[alpha_region_content_equal_height_container] = ''
+settings[alpha_region_content_equal_height_element] = ''
+settings[alpha_region_content_force] = ''
+settings[alpha_region_content_zone] = 'content'
+settings[alpha_region_content_prefix] = ''
+settings[alpha_region_content_columns] = '6'
+settings[alpha_region_content_suffix] = ''
+settings[alpha_region_content_weight] = '2'
+settings[alpha_region_content_css] = ''
+settings[alpha_region_sidebar_first_equal_height_container] = ''
+settings[alpha_region_sidebar_first_equal_height_element] = ''
+settings[alpha_region_sidebar_first_force] = ''
+settings[alpha_region_sidebar_first_zone] = 'content'
+settings[alpha_region_sidebar_first_prefix] = ''
+settings[alpha_region_sidebar_first_columns] = '3'
+settings[alpha_region_sidebar_first_suffix] = ''
+settings[alpha_region_sidebar_first_weight] = '1'
+settings[alpha_region_sidebar_first_css] = ''
+settings[alpha_region_sidebar_second_equal_height_container] = ''
+settings[alpha_region_sidebar_second_equal_height_element] = ''
+settings[alpha_region_sidebar_second_force] = ''
+settings[alpha_region_sidebar_second_zone] = 'content'
+settings[alpha_region_sidebar_second_prefix] = ''
+settings[alpha_region_sidebar_second_columns] = '3'
+settings[alpha_region_sidebar_second_suffix] = ''
+settings[alpha_region_sidebar_second_weight] = '3'
+settings[alpha_region_sidebar_second_css] = ''
+settings[alpha_region_postscript_first_equal_height_container] = ''
+settings[alpha_region_postscript_first_equal_height_element] = ''
+settings[alpha_region_postscript_first_force] = ''
+settings[alpha_region_postscript_first_zone] = 'postscript'
+settings[alpha_region_postscript_first_prefix] = ''
+settings[alpha_region_postscript_first_columns] = '3'
+settings[alpha_region_postscript_first_suffix] = ''
+settings[alpha_region_postscript_first_weight] = '1'
+settings[alpha_region_postscript_first_css] = ''
+settings[alpha_region_postscript_second_equal_height_container] = ''
+settings[alpha_region_postscript_second_equal_height_element] = ''
+settings[alpha_region_postscript_second_force] = ''
+settings[alpha_region_postscript_second_zone] = 'postscript'
+settings[alpha_region_postscript_second_prefix] = ''
+settings[alpha_region_postscript_second_columns] = '3'
+settings[alpha_region_postscript_second_suffix] = ''
+settings[alpha_region_postscript_second_weight] = '2'
+settings[alpha_region_postscript_second_css] = ''
+settings[alpha_region_postscript_third_equal_height_container] = ''
+settings[alpha_region_postscript_third_equal_height_element] = ''
+settings[alpha_region_postscript_third_force] = ''
+settings[alpha_region_postscript_third_zone] = 'postscript'
+settings[alpha_region_postscript_third_prefix] = ''
+settings[alpha_region_postscript_third_columns] = '3'
+settings[alpha_region_postscript_third_suffix] = ''
+settings[alpha_region_postscript_third_weight] = '3'
+settings[alpha_region_postscript_third_css] = ''
+settings[alpha_region_postscript_fourth_equal_height_container] = ''
+settings[alpha_region_postscript_fourth_equal_height_element] = ''
+settings[alpha_region_postscript_fourth_force] = ''
+settings[alpha_region_postscript_fourth_zone] = 'postscript'
+settings[alpha_region_postscript_fourth_prefix] = ''
+settings[alpha_region_postscript_fourth_columns] = '3'
+settings[alpha_region_postscript_fourth_suffix] = ''
+settings[alpha_region_postscript_fourth_weight] = '4'
+settings[alpha_region_postscript_fourth_css] = ''
+settings[alpha_region_footer_first_equal_height_container] = ''
+settings[alpha_region_footer_first_equal_height_element] = ''
+settings[alpha_region_footer_first_force] = ''
+settings[alpha_region_footer_first_zone] = 'footer'
+settings[alpha_region_footer_first_prefix] = ''
+settings[alpha_region_footer_first_columns] = '12'
+settings[alpha_region_footer_first_suffix] = ''
+settings[alpha_region_footer_first_weight] = '1'
+settings[alpha_region_footer_first_css] = ''
+settings[alpha_region_footer_second_equal_height_container] = ''
+settings[alpha_region_footer_second_equal_height_element] = ''
+settings[alpha_region_footer_second_force] = ''
+settings[alpha_region_footer_second_zone] = 'footer'
+settings[alpha_region_footer_second_prefix] = ''
+settings[alpha_region_footer_second_columns] = '12'
+settings[alpha_region_footer_second_suffix] = ''
+settings[alpha_region_footer_second_weight] = '2'
+settings[alpha_region_footer_second_css] = ''
+; Information added by drupal.org packaging script on 2012-02-19
+version = "7.x-3.1"
+core = "7.x"
+project = "omega"
+datestamp = "1329681647"
+

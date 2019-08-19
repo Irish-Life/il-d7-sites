@@ -1,0 +1,1927 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Capital Acquisitions Tax Calculator</title>
+<link rel="stylesheet" type="text/css" href="/sites/retail/files/cat/css/jquery-ui.structure.min.css" />
+<link rel="stylesheet" type="text/css" href="/sites/retail/files/cat/css/jquery-ui.theme.min.css" />
+<link rel="stylesheet" type="text/css" href="/sites/retail/files/cat/css/jquery-ui.min.css" />
+<link href="/sites/retail/files/cat/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/sites/retail/files/cat/css/style.css?111" />
+<link rel="stylesheet" type="text/css" media="print" href="/sites/retail/files/cat/css/print.css?111" />
+<script type="text/javascript" src="/sites/retail/files/cat/js/w3data.js"></script>
+<script type="text/javascript" src="/sites/retail/files/cat/js/jquery.js"></script>
+<script type="text/javascript" src="/sites/retail/files/cat/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/sites/retail/files/cat/js/console.js"></script>
+<script type="text/javascript" src="/sites/retail/files/cat/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/application.js?11112"></script>
+</head>
+<body   style="width: 960px;margin: auto;cursor: auto;">
+<div class="container" id="login" style="display:none">
+<form class="form-signin" action="javascript:loginClicked()">
+        <label for="userIDInput" class="sr-only">Irish Life Bline ID</label>
+        <input type="text" id="userIDInput" class="form-control" placeholder="User ID" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+</div>
+<div class="container-fluid" style="display:block" id="startHeading">
+		<div class="centeredHeading">
+        <h1><span id="screenTitle" class="pageHeadings">Capital Acquisitions Tax Report</span></h1>
+		<h2 class="pageHeadings">Estate Planning Report</h2>
+		<button style="display:block;margin:auto" id="showPrint" onclick="showPrint();">Show Print Report</button>
+		<button id="showInputs" style="display:none" onclick="showInputs()">Show Inputs</button>
+        <p></p>
+        <!--<p><button id="showFamilyHomeRelief" class="btn btn-primary btn-lg" role="button">Show Family Home Relief &raquo;</button></p>
+		<p><a class="btn btn-primary btn-lg" href="#" role="button">Show Business Relief &raquo;</a></p> -->
+		</div>
+
+
+		  </div>
+
+<div class="container-fluid" id="doCalc" style="display:block">
+<div class="row">
+<div class="col-md-12 .col-sm-12">
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-0">Introduction</a></li>
+    <li><a href="#tabs-1">1. Calculate Estate Value</a></li>	
+    <li><a href="#tabs-2">2. Add Beneficiaries</span></a></li>
+    <li><a href="#tabs-3">3. Print Report</a></li>
+  </ul>
+  <div id="tabs-0">
+<div w3-include-html="/sites/retail/files/cat/components/instructions.html"></div>   
+  </div>
+  <div id="tabs-1">
+<form id="theCATForm">
+<fieldset>
+
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="name1" class="control-label">Client 1 Name</label>
+  
+    <input type="text" class="form-control" id="name1" placeholder="" required="">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="dob1" class="control-label">Age</label>
+  
+    <input type="number" class="form-control" id="dob1" required="">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="name2" class="control-label">Client 2 Name</label>
+  
+    <input type="text" class="form-control secondPerson" id="name2" placeholder="">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="dob2" class="control-label">Age</label>
+  
+    <input type="number" class="form-control secondPerson" id="dob2" placeholder="">
+    <!-- p class="help-block"></p -->
+  
+</div>
+<div class="form-group" id="marriedStatus" style="display:none">
+      <label for="radios-inline" class="control-label">Are the clients married?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs marriedQ" name="marriedQ" type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs marriedQ" name="marriedQ" type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="familyHome" class="control-label">Family Home/Main Residence</label>
+  
+    <input type="number" class="form-control estate Home" id="familyHome" placeholder="0" required="">
+	<input type="hidden" id="familyHomeBefore" placeholder="0">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="residences" class="control-label">Total Other Properties &amp; Residences</label>
+  
+    <input type="number" class="form-control estate OtherProperty" id="residences" placeholder="0">
+	<input type="hidden" id="residencesBefore" placeholder="0">
+    <p class="help-block">Asset values should be total values less uncovered loans</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="investments" class="control-label">Total Savings and Investments</label>
+  
+    <input type="number" class="form-control estate Investments" id="investments" placeholder="0">
+	<input type="hidden" id="investmentsBefore">
+    <p class="help-block">Bank/Post Office/Investment Bonds/Shares</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="personalProperty" class="control-label">Total Personal Property</label>
+  
+    <input type="number" class="form-control estate PersonalProperty" id="personalProperty" placeholder="0">
+	<input type="hidden" id="personalPropertyBefore">
+    <p class="help-block">Paintings/Jewellery/Antiques/Valuables</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="lifeInsurance" class="control-label">Personal Life Insurance</label>
+  
+    <input type="number" class="form-control estate LifeInsurance" id="lifeInsurance" placeholder="0">
+	<input type="hidden" id="lifeInsuranceBefore">
+    <p class="help-block">Only give details of personal plans to be paid to the estate on death. (not keyperson / shareholder protection plans)<br>Do not include life cover that is assigned or in trust.</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="perRetirementDeath" class="control-label">Pre-Retirement - Total Payment on Death</label>
+  
+    <input type="number" class="form-control estate PreRetirePen" id="perRetirementDeath" placeholder="0">
+	<input type="hidden" id="perRetirementDeathBefore">
+    <p class="help-block">Pre-Retirement: max of 4 times salary payable from company pension</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="postRetirementDeath" class="control-label">Post-Retirement - AMRF, ARF, Vested PRSA</label>
+  
+    <input type="number" class="form-control estate PostRetirePen" id="postRetirementDeath" placeholder="0">
+	<input type="hidden" id="postRetirementDeathBefore">
+    <p class="help-block">Post-Retirement: Only give details of the amount payable to the estate on death, less any deduction of income tax by the QFM.</p>
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="businessAssetsTotal" class="control-label">Total Value of Business Assets</label>
+  
+    <input type="number" class="form-control estate BusinessAssets" id="businessAssetsTotal" placeholder="0">
+	<input type="hidden" id="businessAssetsTotalBefore">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="farmAssetsTotal" class="control-label">Total Value of Farm Assets</label>
+  
+    <input type="number" class="form-control estate FarmAssets" id="farmAssetsTotal" placeholder="0">
+	<input type="hidden" id="farmAssetsTotalBefore">
+    
+  
+</div>
+<!-- Text input http://getbootstrap.com/css/#forms -->
+<div class="form-group">
+  <label for="totalAssetsValue" class="control-label">Total Assets Value</label>
+  
+    <input type="text" class="form-control" id="totalAssetsValue" placeholder="" readonly="">
+    <p class="help-block">This is the total taxable value of the estate</p>
+  
+</div>
+
+</fieldset>
+</form>
+		  <div class="row >
+		  <div class="col-md-12">
+		  <button class="btn btn-lg btn-primary btn-block" onclick="step1Valid();">Onto Step 2 - add Beneficiaries</button>
+		  </div>
+<script type="text/javascript">
+var validToProceed = true;
+var availableForHome = 0;
+$( document ).ready(function() {
+
+/*
+$( "#homeInherit" ).change(function() {
+	var availableForThis = Number(availableForHome - $(this).val());
+	//Number($('#familyHome').val()
+	if (availableForThis >= 0)
+	{ 	
+		$('#inheritOne .reportFamilyHome').html(numberWithCommas(availableForThis));
+		validToProceed= true;
+	}
+	else
+	{
+		alert("You have entered more than is available");
+		$( "#familyHome" ).focus();
+		validToProceed = false;
+	}
+});
+*/
+
+$('.secondPerson').change(function() {
+if  ($('#name2').val() != '' && $('#dob2').val() != '')
+{
+	$('#marriedStatus').css('display','block');
+}
+else
+{
+	$('#marriedStatus').css('display','none');
+}
+
+});
+
+
+var totalEstate=0, beneficiaryAssets=0, totalBeingInherited=0;
+
+$( ".estate" ).change(function() {
+	var changedElement = $( this ).attr('id');
+	var beforeValue = $('#'+changedElement+'Before').val();
+	var newValue = $(this).val();
+	
+	//value has been reduced
+	if (newValue < beforeValue)
+	{	
+		//do any beneficiaries have this
+		//remove if they do 
+		//reset calc if they do
+		var classes = $(this).attr('class').split(' ');
+			for (i=1;i<=4;i++) {
+				var isInherited = false;			
+				for(var j=0; j<classes.length && !isInherited; j++){
+					if (classes[j] == 'form-control' || classes[j] == 'estate')
+					{
+					
+					}
+					else
+					if ($('#Beneficiary-'+i+' .inher'+classes[j]).html() != undefined && $('#Beneficiary-'+i+' .inher'+classes[j]).html() != '') {
+						$('#Beneficiary-'+i+' .inher'+classes[j]).html('');
+						isInherited = true;
+					}
+				}
+				if (isInherited) {
+					$('#Beneficiary-'+i+' .inheritanceVal').html('Edit to re-calc');
+					$('#Beneficiary-'+i+' .taxableInheritance').html('~');
+					$('#Beneficiary-'+i+' .taxLiability').html('~');
+					$('#totalTaxLiability').html('~');
+				}
+			}
+	}
+	$('#'+changedElement+'Before').val(newValue);
+	totalEstate=0;
+	$( ".estate" ).each(function( index ) {
+		if (isNaN($( this ).val()))
+		{	
+			$('#validation-message-text').html("Enter numbers only, no currencies or commas");
+			$( this ).focus();
+		}
+		else
+		{
+			totalEstate = totalEstate + Number($( this ).val());
+			$('#totalAssetsValue').val('€'+numberWithCommas(totalEstate));
+			$('#totalEstateVal').html('€'+numberWithCommas(totalEstate));		
+		}	
+	});
+});
+
+$( ".beneficiaryAssetsInput" ).change(function() {
+	beneficiaryAssets=0;
+	$( ".beneficiaryAssetsInput" ).each(function( index ) {
+		beneficiaryAssets = beneficiaryAssets + Number($( this ).val());
+		$('#beneficiaryAssetsTotal').val('€'+numberWithCommas(beneficiaryAssets));
+	});
+});
+ $( ".assetsBeingInherited" ).change(function() {
+	totalBeingInherited=0;
+	$( ".assetsBeingInherited" ).each(function( index ) {
+		totalBeingInherited = totalBeingInherited + Number($( this ).val());
+		$('#totalInherit').val('€'+numberWithCommas(totalBeingInherited));
+	});
+});
+$( ".fhrQ" ).change(function() {
+	$('#radioFamilyHomeRelief').val(isFamilyHomeRelief($("input:radio[name=fhr1]:checked").val(),$("input:radio[name=fhr2]:checked").val(),$("input:radio[name=fhr3]:checked").val(),$("input:radio[name=fhr4]:checked").val(),$("input:radio[name=fhr5]:checked").val(),$("input:radio[name=fhr6]:checked").val(),
+	(Number($('#beneficiaryProperty').val()) + Number($('#otherInherit').val()))
+	));
+	$('.calculateBeneficiaryTax').trigger('click');
+});
+$( "#beneficiaryProperty" ).change(function() {
+	$('#radioFamilyHomeRelief').val(isFamilyHomeRelief($("input:radio[name=fhr1]:checked").val(),$("input:radio[name=fhr2]:checked").val(),$("input:radio[name=fhr3]:checked").val(),$("input:radio[name=fhr4]:checked").val(),$("input:radio[name=fhr5]:checked").val(),
+	$("input:radio[name=fhr6]:checked").val(),
+	(Number($('#beneficiaryProperty').val()) + Number($('#otherInherit').val()))
+	));
+	$('.calculateBeneficiaryTax').trigger('click');
+});
+$( "#otherInherit" ).change(function() {
+	$('#radioFamilyHomeRelief').val(isFamilyHomeRelief($("input:radio[name=fhr1]:checked").val(),$("input:radio[name=fhr2]:checked").val(),$("input:radio[name=fhr3]:checked").val(),$("input:radio[name=fhr4]:checked").val(),$("input:radio[name=fhr5]:checked").val(),
+	$("input:radio[name=fhr6]:checked").val(),
+	(Number($('#beneficiaryProperty').val()) + Number($('#otherInherit').val()))
+	));
+	$('.calculateBeneficiaryTax').trigger('click');
+});
+
+$( ".burQ" ).change(function() {
+	$('#radioBusinessRelief').val(isBusinessRelief($("input:radio[name=bur1]:checked").val(),$("input:radio[name=bur2]:checked").val(),$("input:radio[name=bur3]:checked").val(),$("input:radio[name=bur4]:checked").val(),$("input:radio[name=bur5]:checked").val()));
+	$('.calculateBeneficiaryTax').trigger('click');
+});
+$( ".farQ" ).change(function() {
+updateFarmRelief();
+$('.calculateBeneficiaryTax').trigger('click');
+});
+
+$( ".impactFarmReliefInput" ).change(function() {
+updateFarmRelief();
+$('.calculateBeneficiaryTax').trigger('click');
+});
+
+
+function updateFarmRelief() {
+var totalBeingInherited = 0;
+	$( ".assetsBeingInherited" ).each(function( index ) {
+		totalBeingInherited = totalBeingInherited + Number($( this ).val());		
+	});
+	$('#radioAgriRelief').val(isFarmRelief($("input:radio[name=far1]:checked").val(),$("input:radio[name=far2]:checked").val(),$("input:radio[name=far3]:checked").val(),$("input:radio[name=far4]:checked").val(),$("input:radio[name=far5]:checked").val(),	
+			totalBeingInherited + Number($("#beneficiaryProperty").val()) +
+			Number($("#beneficiaryBusiness").val()) +
+			Number($("#beneficiaryFarm").val()),
+			Number($('#farmAssetsInherit').val())+Number($('#beneficiaryFarm').val())
+	));
+}
+
+$( "#beneficiaryRelationship" ).change(function() {
+	$('#whatThreshold').val($("#beneficiaryRelationship").val());
+	
+	if (Number($('#postRetirementDeath').val()) > 0)
+	{
+		$('#inheritSeven').show();
+	}
+	else
+	{
+		$('#inheritSeven').hide();
+	}
+	
+});
+
+$( ".prevGifts" ).change(function() {
+	$('#radioWillFullThreshold').val(
+	willFullThresholdApply($('#whatThreshold').val(),
+	$('#prevGiftsOne').val(),
+	$('#prevGiftsTwo').val(), 
+	$('#prevGiftsThree').val()));
+});
+
+$(".impactsBeneficiaryTaxCal").change(function() {
+$('.calculateBeneficiaryTax').trigger('click');
+});
+ 
+ 
+ //$( ".updateTaxableInheritance" ).change(function() {
+ $( ".calculateBeneficiaryTax" ).click(function() {
+	var totalAssets = Number($('#beneficiaryProperty').val()) + Number($('#beneficiaryBusiness').val()) + Number($('#beneficiaryFarm').val());
+	var totalBeingInherited=0;
+	$( ".assetsBeingInherited" ).each(function( index ) {
+		totalBeingInherited = totalBeingInherited + Number($( this ).val());		
+	});
+	var thresholdAppliesValue = getGroupThreshold($('#whatThreshold').val());
+	$('#taxableInheritance').val(calculateTaxableInheritance(
+		$('#beneficiaryAge').val(),//1
+		totalBeingInherited,//2
+		$('#radioFamilyHomeRelief').val(),//3
+		$('#homeInherit').val(),//4
+		$('#radioBusinessRelief').val(),//5
+		$('#businessAssetsInherit').val(),//6
+		$('#radioAgriRelief').val(),//7
+		$('#farmAssetsInherit').val(),//8
+		$('#radioWillFullThreshold').val(),//9
+		$('#whatThreshold').val(),//10
+		thresholdAppliesValue,//11
+		$('#pensionPostInherit').val(),//12
+		$('#prevGiftsOne').val(),//13
+		$('#prevGiftsTwo').val(),//14
+		$('#prevGiftsThree').val()//15
+	));
+	$('#taxLiability').val(
+	calculateTaxLiability(
+    $('#beneficiaryAge').val(),
+    $('#taxableInheritance').val(),
+    $('#pensionPostInherit').val(),
+	$('#whatThreshold').val() == 'Group 1'
+	));
+	
+});
+
+
+
+
+
+});
+</script>
+  </div>
+  <div id="tabs-2">
+  <div class="row beneficiaries-table-div">
+<div id="beneficiaries-contain" class="ui-widget">
+	<h3>Total Value of Estate: <span id="totalEstateVal">~</span></h3>
+	<h4>Total tax liability: <span id="totalTaxLiability">~</span></h4>
+  <table id="beneficiaries" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>Name</th>
+        <th class="hidden-xs">Age</th>
+		<th class="hidden"></th><!-- family home relief --> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th><!-- business relief --> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th><!-- agri relief --> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden-xs">Reliefs</th>		
+		<th class="hidden"></th><!-- current assets --> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>		
+		<th class="hidden-xs">Current Assets</th>
+		<th class="hidden"></th><!-- previous gifts --> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>				
+		<th class="hidden-xs hidden">Previous Gifts</th>
+		<th class="hidden"></th><!-- assets being inherited--> 
+		<th class="hidden"></th>
+		<th class="hidden"></th>		
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>
+		<th class="hidden"></th>		
+		<th class="hidden-xs">Full threshold applies?</th>		
+		<th class="hidden-xs">Assets being inherited</th>		
+		<th class="hidden-xs">Taxable value of Inheritance</th>
+		<th>Tax liability</th>
+		<th class="hidden">Tax liability for calcs</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>		
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<button id="create-user">Add beneficiary</button>
+<br><br>
+<p class="help-block">Note - when you are dividing out the estate to each beneficiary the total amount being received over all the 
+beneficiaries must be equal to the total value calculated in the 'Calculation of Estate' value.</p>
+</div>
+
+		  <div class="row >
+		  <div class="col-md-12">
+		  <button class="btn btn-lg btn-primary btn-block" onclick="step2Valid();">Onto Step 3 - Print the Report</button>
+		  </div>
+<div id="dialog-form" title="Beneficiary Details">
+<p>Expand each accordion to fill in details for each beneficiary</p>
+<form class="form-vertical">
+<fieldset>
+<div id="beneficiaryAccordian">
+<!-- Text input-->
+
+<h3>Name and Relationship <span id="whichPersonEdit">~</span></h3>
+<div>
+<div class="form-group">
+  <label control-label" for="beneficiaryName">First Name</label>  
+  <div >
+  <input id="beneficiaryName" name="beneficiaryName" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="control-label" for="beneficiaryAge">Age</label>  
+  <div class="">
+  <input id="beneficiaryAge" name="beneficiaryAge" type="number" placeholder="" class="form-control input-md updateTaxableInheritance" required="">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="control-label" for="beneficiaryRelationship">Relationship to Client(s)</label>
+  <div class="">
+    <select id="beneficiaryRelationship" name="beneficiaryRelationship" class="form-control updateTaxableInheritance impactsBeneficiaryTaxCal">
+	<option value="">Select ...</option>
+      <option value="Group 1">Child</option>
+      <option value="Group 2">Descendant or ancestor</option>
+      <option value="Group 3">Other</option>
+    </select>
+  </div>
+</div>
+
+</div>
+<h3>Previous Gifts/Inheritances received since 5th December 1991</h3>
+<div>
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="prevGiftsOne">Total Threshold 1 Value</label>  
+  <div class="">
+  <input id="prevGiftsOne" name="prevGiftsOne" type="number" placeholder="0" class="form-control input-md prevGifts updateTaxableInheritance impactsBeneficiaryTaxCal" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="prevGiftsTwo">Total Threshold 2 Value</label>  
+  <div class="">
+  <input id="prevGiftsTwo" name="prevGiftsTwo" type="number" placeholder="0" class="form-control input-md prevGifts updateTaxableInheritance impactsBeneficiaryTaxCal">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="prevGiftsThree">Total Threshold 3 Value</label>  
+  <div class="">
+  <input id="prevGiftsThree" name="prevGiftsThree" type="number" placeholder="0" class="form-control input-md prevGifts updateTaxableInheritance impactsBeneficiaryTaxCal" >
+    
+  </div>
+</div>
+</div>
+
+<h3>Current Beneficiary Assets</h3>
+<div>
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="beneficiaryProperty">Property</label>  
+  <div class="">
+  <input id="beneficiaryProperty" name="beneficiaryProperty" type="number" placeholder="0" class="form-control input-md beneficiaryAssetsInput impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="beneficiaryBusiness">Business</label>  
+  <div class="">
+  <input id="beneficiaryBusiness" name="beneficiaryBusiness" type="number" placeholder="0" class="form-control input-md beneficiaryAssetsInput impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="beneficiaryFarm">Farm</label>  
+  <div class="">
+  <input id="beneficiaryFarm" name="beneficiaryFarm" type="number" placeholder="0" class="form-control input-md beneficiaryAssetsInput impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="beneficiaryAssetsTotal">Total</label>  
+  <div class="">
+  <input id="beneficiaryAssetsTotal" name="beneficiaryAssetsTotal" type="text" placeholder="" class="form-control input-md" readonly>
+    
+  </div>
+</div>
+</div>
+<h3>Estate Details - assets being inherited</h3>
+<div>
+<!-- Text input-->
+<div class="form-group" id="inheritOne">
+  <label class=" control-label" for="homeInherit">Family Home/Main Residence (€<span class="reportFamilyHome"></span> available)</label>  
+  <div class="">
+  <input id="homeInherit" name="homeInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited updateTaxableInheritance impactsBeneficiaryTaxCal impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group"  id="inheritTwo">
+  <label class=" control-label" for="otherInherit">Total Other Properties/Residences(€<span class="reportOtherProperty"></span> available)</label>  
+  <div class="">
+  <input id="otherInherit" name="otherInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited updateTaxableInheritance impactsBeneficiaryTaxCal impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritThree">
+  <label class=" control-label" for="savingsInherit">Total Savings and Investments (€<span class="reportInvestments"></span> available)</label>  
+  <div class="">
+  <input id="savingsInherit" name="savingsInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited updateTaxableInheritance impactsBeneficiaryTaxCal impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritFour">
+  <label class=" control-label" for="personalPropInherit">Total Personal Property (€<span class="reportPersonal"></span> available)</label>  
+  <div class="">
+  <input id="personalPropInherit" name="personalPropInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritFive">
+  <label class=" control-label" for="lifeInherit">Total Personal Life Assurance (€<span class="reportLifeInsurance"></span> available)</label>  
+  <div class="">
+  <input id="lifeInherit" name="lifeInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited updateTaxableInheritance impactsBeneficiaryTaxCal impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritSix">
+  <label class=" control-label" for="pensionPreInherit">Pension Benefits - Pre-Retirement (€<span class="reportPensionsPre"></span> available)</label>  
+  <div class="">
+  <input id="pensionPreInherit" name="pensionPreInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritSeven">
+  <label class=" control-label" for="pensionPostInherit">Pension Benefits - Post-Retirement (AMRF, ARF, Vested PRSA) (€<span class="reportPensionsPost"></span> available)</label>  
+  <div class="">
+  <input id="pensionPostInherit" name="pensionPostInherit" type="number" placeholder="0" class="form-control input-md assetsBeingInherited impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    <p class="help-block">If the beneficiary of the proceeds of the ARF/AMRF/Vested PRSA is a child of the disponer enter the Gross amount. Otherwise, enter the amount less any deduction of income tax by the QFM.</p>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group" id="inheritEight">
+  <label class=" control-label" for="businessAssetsInherit">Total Value of Business Assets (€<span class="reportBusiness"></span> available)</label>  
+  <div class="">
+  <input id="businessAssetsInherit" name="businessAssetsInherit" type="text" placeholder="0" class="form-control input-md assetsBeingInherited impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group"  id="inheritNine">
+  <label class=" control-label" for="farmAssetsInherit">Total Value of Farm Assets (€<span class="reportFarm"></span> available)</label>  
+  <div class="">
+  <input id="farmAssetsInherit" name="farmAssetsInherit" type="text" placeholder="0" class="form-control input-md assetsBeingInherited impactsBeneficiaryTaxCal updateTaxableInheritance impactFarmReliefInput" >
+    
+  </div>
+</div>
+
+</div>
+<h3 class="homeReliefApplies">Family Home Relief</h3>
+<div class="homeReliefApplies">
+<div id="familyHomeHelp" class="helpButton">Show Help</div>
+
+<p class="help-block">Calculator only assumes relief will apply on family home/main residence.</p>
+<label for="radios-inline" class="control-label">Was the disponer living in the property at the time of their death?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr1" type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr1" type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+<label for="radios-inline" class="control-label">Is this beneficiary inheriting the family home?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr2" type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr2" type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Is this the only property this beneficiary is to inherit?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr3"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr3"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Does this beneficiary live in this property?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr4"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr4"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Does this beneficiary have an interest in any other property?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr5"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr5"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Does the beneficiary intend to continue to live in the 'family home' for the next 6 years?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs fhrQ" name="fhr6"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs fhrQ" name="fhr6"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+
+</div>
+
+<h3 class="businessReliefApplies">Business Relief</h3>
+<div class="businessReliefApplies">
+<div id="businessReliefHelp" class="helpButton">Show Help</div>
+<label for="radios-inline" class="control-label">Is this beneficiary to inherit 'business' assets?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs burQ" name="bur1"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs burQ" name="bur1"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will the nature of the business assets qualify for business relief?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs burQ" name="bur2"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs burQ" name="bur2"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Did the disponer own the business assets for two years?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs burQ" name="bur3"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs burQ" name="bur3"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will the beneficiary meet one of the three 'control' questions?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs burQ" name="bur4"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs burQ" name="bur4"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will THIS beneficiary retain the business as a going concern for the required period?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs burQ" name="bur5"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs burQ" name="bur5"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+</div>
+
+<h3 class="farmReliefApplies">Agricultural Relief</h3>
+<div class="farmReliefApplies">
+<div id="farmReliefHelp" class="helpButton">Show Help</div>
+<label for="radios-inline" class="control-label">Is this beneficiary to inherit agricultural property/farm assets?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs farQ" name="far1"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs farQ" name="far1"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will the nature of the agricultural property/farm assets qualify for agricultural relief?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs farQ" name="far2"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs farQ" name="far2"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will the beneficiary meet the 80% assets rule?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs farQ" name="far3"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs farQ" name="far3"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will THIS beneficiary qualify as a 'farmer' for the purpose of this relief?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs farQ" name="far4"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs farQ" name="far4"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+  <label for="radios-inline" class="control-label">Will THIS beneficiary continue to qualify as a farmer and will the assets continue to qualify for the relief?</label>
+
+  <div class="radio required ">
+      <label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-0">
+        <input class="radio-qs farQ" name="far5"  type="radio" value="Y"> <span class="radio-label">Yes</span>
+      </label><label class="radio-custom radio-inline" data-initialize="radio" id="radios-inline-1">
+        <input class="radio-qs farQ" name="far5"  type="radio" value="N" checked=checked> <span class="radio-label">No</span>
+      </label>
+    
+  </div>
+
+</div>
+<h3>Calculate totals and Inheritance liability for this beneficiary</h3>
+<div>
+<div class="calcHolder">
+<div class="calculateBeneficiaryTaxBtn calculateBeneficiaryTax">Calculate Beneficiary Tax Liability</div></div>
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="totalInherit">Total Value of Assets being inherited by this beneficiary</label>  
+  <div class="">
+  <input id="totalInherit" name="totalInherit" type="text" placeholder="" class="form-control input-md" readonly>
+    
+  </div>
+</div>
+
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group homeReliefApplies">
+  <label class=" control-label" for="radioFamilyHomeRelief">Does Family Home Relief Apply</label>
+  <div class=""> 
+  <input id="radioFamilyHomeRelief" name="radioFamilyHomeRelief" type="text" placeholder="" class="form-control input-md" readonly value="No">
+
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group businessReliefApplies">
+  <label class=" control-label" for="radioBusinessRelief">Does Business Relief Apply</label>
+  <div class=""> 
+    <input id="radioBusinessRelief" name="radioBusinessRelief" type="text" placeholder="" class="form-control input-md" readonly value="No">
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group farmReliefApplies">
+  <label class=" control-label" for="radioAgriRelief">Does Agricultural Relief Apply</label>
+  <div class=""> 
+       <input id="radioAgriRelief" name="radioAgriRelief" type="text" placeholder="" class="form-control input-md" readonly value="No">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="whatThreshold">What threshold applies</label>  
+  <div class="">
+  <input id="whatThreshold" name="whatThreshold" type="text" placeholder="Choose relationship to client" class="form-control input-md" readonly>
+    
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class=" control-label" for="radioWillFullThreshold">Will full threshold apply?</label>
+  <div class=""> 
+    <input id="radioWillFullThreshold" name="radioWillFullThreshold" type="text" placeholder="" class="form-control input-md" readonly value="Yes">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="taxableInheritance">Taxable Value of Beneficiary Inheritance</label>  
+  <div class="">
+  <input id="taxableInheritance" name="taxableInheritance" type="number" placeholder="" class="form-control input-md" readonly>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class=" control-label" for="taxLiability">Tax Liability</label>  
+  <div class="">
+  <input id="taxLiability" name="taxLiability" type="number" placeholder="" class="form-control input-md" readonly>
+    
+  </div>
+</div>
+
+</div>
+</div>
+</fieldset>
+</form>
+
+</div>
+<div id="dialog-confirm-delete" title="Delete this beneficiary?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Are you sure you want to remove this beneficiary?</p>
+</div>
+<script type="text/javascript">
+</script>
+  </div>
+  <div id="tabs-3">
+  <div class="row print-report-inputs">
+  additional inputs go here 
+  </div>
+  
+  
+<div class="row >
+		  <div class="col-md-12">
+		  <button class="btn btn-lg btn-primary btn-block print-button" onclick="populateReport();window.print();">Print the Report</button>
+		  </div>
+  </div>
+</div>
+
+</div>
+</div></div>
+
+
+
+  <div class="row print-report" id="the-print-report">
+
+  
+<div>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 129.6pt 187.2pt 244.8pt 302.4pt 360.0pt 374.4pt 403.2pt'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:20.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Estate Planning Report <o:p></o:p></span></b></p>
+<p ><!-- pagebreak --></p> 
+<p  style=''><span style='font-size:12.0pt;font-family:"Arial","sans-serif"'>For <span   class="reportNames">Mr and Mrs ABC</span> based on the details in the <span class=SpellE>factfind</span> dated <span   id="today">12 June 2015</span><o:p></o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 129.6pt 187.2pt 244.8pt 302.4pt 360.0pt 374.4pt 403.2pt'><b style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:20.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Contents<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%'><b style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>1.<span style='mso-tab-count:1'>        </span>Personal Details and Existing Cover <o:p></o:p></span></b></p>
+
+
+<p  style='margin-left:36.0pt;text-indent:-36.0pt;line-height:150%;mso-list:l2 level1 lfo4;tab-stops:list 36.0pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%; font-family:"Arial","sans-serif"'>Capital Acquisitions Tax (CAT) <o:p></o:p></span></b></p>
+
+<p  style='margin-left:36.0pt;text-indent:-36.0pt;line-height:150%;mso-list:l2 level1 lfo4;tab-stops:list 36.0pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>Estimated Liability <o:p></o:p></span></b></p>
+
+<p  style=''><i style='mso-bidi-font-style:normal'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Arial","sans-serif"'>Appendix I<span style='mso-tab-count:1'>       </span>Succession Act<o:p></o:p></span></i></p>
+
+<p class="homeReliefApplies" style=''><i style='mso-bidi-font-style:normal'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Arial","sans-serif"'>Appendix <span class="familyHomeReliefAppendixNo">II</span><span style='mso-tab-count:1'>      </span>Family Home Relief<o:p></o:p></span></i></p>
+
+ <p  class="businessReliefApplies" style=''><i style='mso-bidi-font-style:normal'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Arial","sans-serif"'>Appendix <span class="businessReliefAppendixNo">III</span><span style='mso-tab-count:1'>      </span>Business Relief<o:p></o:p></span></i></p>
+
+ <p  class="farmReliefApplies" style=''><i style='mso-bidi-font-style:normal'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Arial","sans-serif"'>Appendix <span class="agriReliefAppendixNo">IV</span><span style='mso-tab-count:1'>      </span>Agri Relief/Farm Relief<o:p></o:p></span></i></p>
+
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 122.4pt 208.8pt 288.0pt'><i style='mso-bidi-font-style:
+normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'></span>This recommendation is based on the information you have given us <span style='mso-bidi-font-style:italic'>and on our understanding of current legislation and Revenue practice</span>. It is important that you provide all your financial details as information not included cannot be taken into account in providing advice .We have assumed that where your financial details have been omitted from this financial review it is because you have chosen not to disclose this information to us.<o:p></o:p></span></i></p>
+
+<p ><!-- pagebreak --></p> 
+
+<p  style='line-height:150%'><b style='mso-bidi-font-weight:normal'><span  style='font-size:20.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>1. <span style='mso-tab-count:1'>    </span>Personal Details and Existing Cover<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%;tab-stops:72.0pt 280.8pt'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='margin-left:36.0pt;text-indent:-36.0pt;line-height:150%;mso-list:l0 level2 lfo3;tab-stops:list 36.0pt left 72.0pt 280.8pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>The
+following sets out the relevant details relating to <span class="reportNames"  >ABC</span>. It provides the background to, and, along with Sections 2 and 3, the 'reasons why' we propose the recommended actions.<o:p></o:p></span></p>
+
+<p  style='margin-left:36.0pt;text-indent:-36.0pt;line-height:150%;mso-list:l0 level2 lfo3;tab-stops:list 36.0pt left 72.0pt 280.8pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>We
+understand that the combined estate of <span class="reportNames" >ABC </span> is valued at approximately <span class="reportEstateTotal"  >5,460,000</span>. The assets
+are as set out below.</span><span  style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
+
+<table style="width:400px;margin-left:10%;">
+<tbody>
+<tr><td>Family Home</td><td><span class="reportFamilyHome"></span></td></tr>
+<tr><td>Other Property</td><td><span class="reportOtherProperty"></span></td></tr>
+<tr><td>Savings and Investments</td><td><span class="reportInvestments"></span></td></tr>
+<tr><td>Personal Property</td><td><span class="reportPersonal"></span></td></tr>
+<tr><td>Life Insurance</td><td><span class="reportLifeInsurance"></span></td></tr>
+<tr><td>Pensions - pre-retirement</td><td><span class="reportPensionsPre"></span></td></tr>
+<tr><td>Pensions - post-retirement</td><td><span class="reportPensionsPost"></span></td></tr>
+<tr><td>Business Assets</td><td><span class="reportBusiness"></span></td></tr>
+<tr><td>Farm Assets</td><td><span class="reportFarm"></span></td></tr>
+<tr><td colspan="2" style="border-bottom:1px solid #000"></td></tr>
+<tr><td>Total</td><td><span class="reportEstateTotal"></span></td></tr>
+</tbody></table>
+
+<p  style='margin-left:36.0pt;text-indent:-36.0pt;line-height:150%;mso-list:l0 level2 lfo3;tab-stops:list 36.0pt left 72.0pt 280.8pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>We have based our Report on the following assumptions : <o:p></o:p></span></p>
+<p  style='margin-left:50.2pt;text-indent:-14.2pt;line-height:
+150%;mso-list:l7 level1 lfo2;tab-stops:36.0pt list 49.65pt left 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:
+Arial'><span style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>
+<span class="reportNames1">ABC</span> is aged <span class="reportAgeNB1">xx</span> next birthday <span class="reportLife2">while&nbsp;<span class="reportNames2">ABC</span> is aged <span class="reportAgeNB2">xx</span> next birthday</span>.<o:p></o:p></span></p>
+
+<p  style='display:none; margin-left:49.65pt;text-indent:-14.2pt;line-height:150%;mso-list:l7 level1 lfo2;tab-stops:36.0pt list 49.65pt left 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:
+Arial'><span style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>We
+know that <span class="reportNames">ABC </span> has made a Will, and
+we understand that they intend leaving their estate to each other on death. On the death of the survivor, it
+is intended that their entire estate will be divided equally between identified beneficiaries in this report. <span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p  style='margin-left:49.65pt;text-indent:-13.65pt;line-height:150%;mso-list:l7 level1 lfo2;tab-stops:36.0pt list 49.65pt left 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:
+Arial'><span style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class="reportGifts"  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";'>
+</span></p>
+
+
+<p class="reportReliefDiv" style='margin-left:49.65pt;text-indent:-13.65pt;line-height:150%;mso-list:l7 level1 lfo2;tab-stops:36.0pt list 49.65pt left 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:
+Arial'><span style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  class="reportFamilyHomeRelief" style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'></span></p>
+
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p  align=center style='text-align:center;line-height:150%;border:none;mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:
+1.0pt 4.0pt 1.0pt 4.0pt'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>A valid Will,
+reflecting your current wishes, is a vital part of the estate planning process.<span style='mso-spacerun:yes'>  </span>If the provisions of your Will
+are not in line with the intentions outlined in the information given, this report may not be appropriate. If you die without leaving a Will your estate will be divided in accordance with the Succession Act <i style='mso-bidi-font-style:normal'>(see Appendix I).</i><o:p></o:p></span></p>
+
+<p  align=center style='text-align:center;line-height:150%;border:none;mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:
+1.0pt 4.0pt 1.0pt 4.0pt'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>You should talk to a solicitor if you do not have a valid Will or if your Will needs to be updated.<o:p></o:p></span></p>
+<p  align=center style='text-align:center;line-height:150%;border:none;mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:
+1.0pt 4.0pt 1.0pt 4.0pt'><span  style='font-size:11.0pt;mso-bidi-font-size:
+10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>While our recommendation is based on our understanding of current legislation and Revenue
+practice we recommend you seek professional legal and tax advice to ensure that any arrangement you decide to put in place is appropriate to your individual
+circumstances.<o:p></o:p></span></p>
+
+</div>
+<p ><!-- pagebreak --></p> 
+<p  style='line-height:150%'><b style='mso-bidi-font-weight:normal'><span  style='font-size:20.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>2. <span style='mso-tab-count:1'>    </span>Capital Acquisitions Tax (CAT)<o:p></o:p></span></b></p>
+
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'></span></b></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>2.1<span
+style='mso-tab-count:1'>      </span>CAT</span></b><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'><o:p></o:p></span></p>
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span  style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'></span></span><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>Capital Acquisitions Tax (CAT) is a tax levied on the receipt of gifts and inheritances. CAT comprises two separate taxes - a Gift
+Tax payable on lifetime gifts and an Inheritance Tax payable on inheritances received on death. It is the person receiving the gift or inheritance who is
+liable to CAT and not the person or estate providing the benefit.</span></p>
+<p  style='margin-left:35.25pt;text-indent:-35.25pt;line-height:
+150%;mso-list:l6 level2 lfo5;tab-stops:list 35.25pt left 72.0pt 280.8pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span
+ style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>Basis of Charge<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>With effect from 1<sup>st</sup> December
+1999, a charge to CAT will arise where <u>either </u>the <span class=SpellE>disponer</span> or the beneficiary is resident or ordinarily resident in the State at the date of the Gift or Inheritance.<span style='mso-spacerun:yes'>  </span>Where both the <span class=SpellE>disponer</span> and the beneficiary are not resident or ordinarily resident in Ireland, a charge to tax would only arise in relation to Irish property.<o:p></o:p></span></p>
+
+<p  style='margin-left:35.25pt;text-indent:-35.25pt;line-height:
+150%;mso-list:l6 level2 lfo5;tab-stops:list 35.25pt left 72.0pt 280.8pt'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span
+ style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>CAT Rates<o:p></o:p></span></b></p>
+
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'></span>For new gifts and inheritances
+received on or after 5<sup>th</sup> December 2001 tax is calculated according to the total of all gifts and inheritances received from all sources since 5<sup>th</sup>
+December, 1991. The following CAT Tax Table currently applies:<b style='mso-bidi-font-weight:normal'><span style='mso-tab-count:1'> </span><o:p></o:p></b></span></p>
+
+<p  style='margin-left:35.45pt;text-indent:-35.45pt;line-height: 150%;tab-stops:36.0pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:4'>                                                                                           </span>Tax
+Rate</span></b><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></b></p>
+
+
+<table Table border=1 cellspacing=0 cellpadding=0 style='margin-left:40.85pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>  <td width=132 valign=top style='width:99.25pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b
+  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'>Group Threshold<o:p></o:p></span></b></p></td>
+  <td width=444 valign=top style='width:333.1pt;border:solid windowtext 1.0pt; border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'><p  style='line-height:150%;tab-stops:280.8pt'><span
+   style='font-family:"Arial","sans-serif"'>NIL</p></td></tr> <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=132 valign=top style='width:99.25pt;border:solid windowtext 1.0pt;  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'>Balance<o:p></o:p></span></b></p></td>
+  <td width=444 valign=top style='width:333.1pt;border:solid windowtext 1.0pt;  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%;tab-stops:280.8pt'><span  style='font-family:"Arial","sans-serif"'>33%</p></td></tr></table>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span style='font-size:8.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'></span>The Group threshold amounts vary depending on the relationship between the beneficiary and the disponer, i.e. the person providing the gift or inheritance.</span></p>
+
+<table Table border=1 cellspacing=0 cellpadding=0 style='margin-left:40.85pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh: .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>  <td width=132 valign=top style='width:99.25pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b
+  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'>Group 1 €310,000<o:p></o:p></span></b></p>
+  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'><span
+  style='mso-tab-count:2'>                                </span></span></b><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
+  </td>
+  <td width=444 valign=top style='width:333.1pt;border:solid windowtext 1.0pt;  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%;tab-stops:280.8pt'><span   style='font-family:"Arial","sans-serif"'>Where the person
+  receiving the property is a child of the <span class=SpellE>disponer</span>  or of the civil partner of the <span class=SpellE>disponer</span>, or a minor
+  child of a deceased child of the <span class=SpellE>disponer</span> or of the  civil partner of the <span class=SpellE>disponer</span>, or a minor child of
+  the civil partner of a deceased child of the <span class=SpellE>disponer</span>,  or of the civil partner of the <span class=SpellE>disponer</span>.<o:p></o:p></span></p></td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>  <td width=132 valign=top style='width:99.25pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'>Group
+  2 €32,500 <o:p></o:p></span></b></p>  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b
+  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'><span  style='mso-tab-count:1'>                </span></span></b><span  
+  style='font-family:"Arial","sans-serif"'><o:p></o:p></span></p>  </td>
+  <td width=444 valign=top style='width:333.1pt;border-top:none;border-left:  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span   style='font-family:"Arial","sans-serif"'>Where the person receiving the property is a lineal ancestor, descendant, a brother/sister, or  child of a brother/sister or the child of a civil partner of a brother or
+  sister of the <span class=SpellE>disponer</span>.<o:p></o:p></span></p></td> </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>  <td width=132 valign=top style='width:99.25pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p  style='tab-stops:36.0pt 72.0pt 280.8pt'><b  style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif"'>Group
+  3 €16,250</span></b><span  style='font-family:"Arial","sans-serif"'><o:p></o:p></span></p>  </td>
+  <td width=444 valign=top style='width:333.1pt;border-top:none;border-left:  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><span style='font-family:"Arial","sans-serif"'>All other cases<o:p></o:p></span></p></td></tr>
+</table>
+
+<p  style='margin-left:36.0pt;line-height:150%;tab-stops:36.0pt 72.0pt 153.1pt 280.8pt'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>The threshold amounts are those applying with effect from midnight on 11<sup>th</sup> October 2016. <o:p></o:p></span></p>
+
+<p  style='margin-left:134.7pt;text-indent:-134.7pt;line-height:150%;tab-stops:36.0pt 72.0pt 78.0pt 177.2pt 280.8pt'><b style='mso-bidi-font-weight:
+normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+2'>                                </span></span></b><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'><o:p></o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>2.4<span style='mso-tab-count:1'>      </span>Aggregation<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'></span>Under the current aggregation rules all benefits from Group 1 will be added together
+with an overall threshold of <b style='mso-bidi-font-weight:normal'>€310,000</b>. Benefits from Group 2 members (brother, sister, grandparent etc) will be added
+together for the purpose of the <b style='mso-bidi-font-weight:normal'>€32,500 </b>threshold, and benefits from Group 3 members (strangers) for the purpose of the <b
+style='mso-bidi-font-weight:normal'>€16,250</b> threshold. <o:p></o:p></span></p>
+
+<p  style='line-height:150%'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>So in effect a beneficiary can potentially receive up to <b style='mso-bidi-font-weight:normal'>€358,750</b> tax-free if the benefits come through different &quot;groups&quot;.<o:p></o:p></span></p>
+
+<p  style='margin-left:27.0pt;line-height:150%'><span  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:35.45pt 72.0pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>2.5<span style='mso-tab-count:1'>      </span>Relief’s and Exemptions<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%;tab-stops:35.45pt 72.0pt 172.8pt 280.8pt'><b style='mso-bidi-font-weight:
+normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'></span></span></b><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>Certain reliefs and exemptions apply to certain types of assets. These have been introduced over the years primarily to encourage private enterprise and to avoid the forced sale of a family farm, business or the family home in certain circumstances. </span></p>
+
+<p  style='text-indent:-35.45pt;line-height:150%;tab-stops:35.45pt 72.0pt 172.8pt 280.8pt'><span  
+style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                </span>The main relief’s and exemptions are</span><span  style='font-family:"Arial","sans-serif"'>:<o:p></o:p></span></p>
+
+<p  style='margin-bottom:0cm;margin-left:49.65pt;text-indent:-14.2pt;line-height:150%;tab-stops:35.45pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-spacerun:yes'>    </span>Spouse / Civil Partner </span></b><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>– gifts or inheritances received by one spouse / civil partner from the other are totally exempt from CAT.<b
+style='mso-bidi-font-weight:normal'></b></span></p>
+<br>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:49.65pt;margin-bottom:.0001pt;line-height:150%;tab-stops:49.65pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Agricultural
+Relief</span></b><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'> –the value of
+farmland, buildings and stock can be reduced by 90% where the beneficiary is a qualifying farmer and holds the property for a minimum of 6 years.<o:p></o:p></span></p>
+<br>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:49.65pt;margin-bottom:.0001pt;line-height:150%;tab-stops:49.65pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Business
+Relief</span></b><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'> –provides a
+similar reduction of 90% in the value of certain businesses or private companies, where both the business and the beneficiary meet the qualifying
+conditions.<o:p></o:p></span></p>
+<br>
+<p  style='margin-top:0cm;margin-right:-21.5pt;margin-bottom:0cm;margin-left:49.65pt;margin-bottom:.0001pt;line-height:150%;tab-stops:49.5pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Family
+Home </span></b><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>- exemption from
+Gift and Inheritance Tax may be available on the value of certain <i>dwellings</i> where both the donor and beneficiary satisfy certain conditions. The donor has to be living in the property at the date of his or her death and the beneficiaries must meet all of the following conditions: <br> </span></p>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:63.8pt;margin-bottom:.0001pt;text-indent:-14.15pt;line-height:
+150%;mso-list:l9 level1 lfo6;tab-stops:49.5pt 63.8pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Have occupied the house as his sole or main dwelling for three years prior to the date of the gift or inheritance,<o:p></o:p></span></p>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:63.8pt;margin-bottom:.0001pt;text-indent:-14.15pt;line-height:
+150%;mso-list:l9 level1 lfo6;tab-stops:49.5pt 63.8pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>At the date of the gift or inheritance does not hold an interest in any other dwelling house either in Ireland or outside of the state,<o:p></o:p></span></p>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:63.8pt;margin-bottom:.0001pt;text-indent:-14.15pt;line-height:
+150%;mso-list:l9 level1 lfo6;tab-stops:49.5pt 63.8pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>	Continue to occupy the house as his sole or main residence for 6 years after the date of the gift of inheritance.<o:p></o:p></span></p>
+<br>
+
+
+<br>
+<p  style='margin-top:0cm;margin-right:-36.0pt;margin-bottom:0cm;margin-left:35.45pt;margin-bottom:.0001pt;line-height:150%;tab-stops:35.45pt 108.0pt 180.0pt 252.0pt 324.0pt 396.0pt 468.0pt'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Life
+Assurance Relief</span></b><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'> – the proceeds of
+life assurance policies, where the plan was<span style='mso-spacerun:yes'>   </span><span class=GramE>effected</span> specifically for the payment of
+Inheritance Tax or the tax payable on the value of an ARF inherited by a child over the age of 21, will not be subject to Inheritance Tax – provided the money
+is actually used to pay the relevant tax bills.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-left:35.45pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>All reliefs are highly qualified; details of the conditions that apply in relation to reliefs are contained in the Appendices.<o:p></o:p></span></b></p>
+<p ><!-- pagebreak --></p> 
+
+<p  style='line-height:150%'><b style='mso-bidi-font-weight:normal'><span  style='font-size:20.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>3. <span style='mso-tab-count:1'>    </span>Estimated Liability<o:p></o:p></span></b></p>
+
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>On the <span class="twoLives">second</span> death of <span   class="reportNames">Mr and Mrs ABC</span> the
+liability to Inheritance Tax is estimated at <span   class="reportTotalTaxLiability">€1,579,050</span>,
+based on current asset values.<o:p></o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>3.1<span style='mso-spacerun:yes'>    </span>Calculations <o:p></o:p></span></b></p>
+
+<p  style='text-indent:-42.55pt;line-height:150%;tab-stops:3.0cm 127.6pt 6.0cm 212.65pt 269.35pt 375.65pt'><span
+ style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>              </span><b
+style='mso-bidi-font-weight:normal'>Tax Liability<span style='mso-tab-count:1'>        </span><o:p></o:p></b></span></p>
+
+<p  style='text-indent:-36.0pt;line-height:150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+ style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>            </span></span><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";'>The total value of the estate is <span class="reportEstateTotal">€5,460,000</span>. The inheritance is split as follows<o:p></o:p></span></p>
+
+<table id="reportBeneficiariesTable" style="margin-left:100px">
+<thead><tr><th colspan="5">Inheritance Tax - list of beneficiaries</th></tr>
+<tr><th style="width:120px">Name</th><th style="width:120px">Group</th><th style="width:120px">Inheritance</th>
+<th style="width:120px">Taxable Amount</th><th style="width:120px">Tax liability</th></thead>
+<tbody>
+
+</tbody>
+</table>
+
+<p  style='line-height:150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><i style='mso-bidi-font-style:normal'><sup><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                             </span>*</span></sup></i><i
+style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>
+Group thresholds available from 11<sup>th</sup> October 2016</span></i><b style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p></o:p></span></b></p>
+
+<p  style='margin-left:42.55pt;text-indent:-42.55pt;line-height:
+150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'></span>Each beneficiary's estimated Tax Liability is shown above, <b
+style='mso-bidi-font-weight:normal'>giving a total Tax liability
+of <span   class="reportTotalTaxLiability">€1,579,050</span>.<o:p></o:p></b></span></p>
+
+
+<div class="reportARFs">
+</div>
+<p class="reportArfsTotal" style='display:none;margin-left:42.55pt;text-indent:-42.55pt;line-height:150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><b
+style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'></span>So the total Tax liability which can be covered by the Section 72 plan amounts to <span class="reportTotalTaxLiability">465,612</span>.<o:p></o:p></span></b></p>
+
+<p  style='margin-left:42.55pt;text-indent:-42.55pt;line-height:150%;tab-stops:42.55pt 3.0cm 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>3.2 <span style='mso-tab-count:1'></span>The Options<o:p></o:p></span></b></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><span  
+style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                </span><span
+  class="reportNames">Mr and Mrs</span> can take one of two options in dealing with the <span  >beneficiaries</span> anticipated inheritance tax liability:<o:p></o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'></span></span></b><b style='mso-bidi-font-weight:
+normal'><span  style='font-size:12.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Do nothing -</span></b><b style='mso-bidi-font-weight:
+normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'> </span></b><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Inheritance tax is due and payable on the
+valuation date of the inheritance, which will normally be very shortly after death. Unpaid tax attracts interest which is not tax deductible. <o:p></o:p></span></p>
+
+<p  style='line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Therefore if <span class="reportNames"  >Mr and
+Mrs</span> make<span class="oneLife">s</span> no advance provision for the beneficiaries inheritance tax liability the beneficiaries will have to either:<o:p></o:p></span></p>
+
+<p  style='margin-left:53.45pt;text-indent:-18.0pt;line-height:150%;mso-list:l9 level1 lfo6;tab-stops:list 53.45pt left 172.8pt 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Sell
+part of their inheritance, or<o:p></o:p></span></p>
+
+<p  style='margin-left:53.45pt;text-indent:-18.0pt;line-height:150%;mso-list:l9 level1 lfo6;tab-stops:list 53.45pt left 72.0pt 172.8pt 280.8pt'><![if !supportLists]><span
+ style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Borrow
+money to pay inheritance tax. <o:p></o:p></span></p>
+
+<p  style='margin-left:35.45pt;line-height:150%;tab-stops:36.0pt 72.0pt 172.8pt 280.8pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p><p class=MsoBodyTextIndent style='line-height:150%'><b style='mso-bidi-font-weight:
+normal'><span  style='font-size:12.0pt;line-height:150%;font-family:"Arial","sans-serif";font-style:normal'>Make advance provision -</span></b><b
+style='mso-bidi-font-weight:normal'><span  style='font-family:"Arial","sans-serif";font-style:normal'> </span></b><span  style='font-family:"Arial","sans-serif";
+font-style:normal'>The solution lies in <span class="reportNames">Mr and Mrs</span></span><span  style='font-family:
+"Arial","sans-serif"'> </span><span  style='font-family:"Arial","sans-serif";font-style:normal'>effecting a Section 72 Life Insurance Plan for a sum of <span  class="reportTotalTaxLiability">€1,579,050</span> for the benefit of their <span  >beneficiaries</span>. <o:p></o:p></span></p>
+
+<i style='mso-bidi-font-style:normal'><span  style='font-size:14.0pt;mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always'></span></i>
+<p ><!-- pagebreak --></p> 
+<p  align=center style='text-align:center;line-height:150%;tab-stops:4.0cm 361.5pt'><b style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Appendix
+I <span class=GramE>- <span style='mso-spacerun:yes'> </span>Succession</span> Act<o:p></o:p></span></b></p>
+
+<p  align=center style='text-align:center;line-height:150%;tab-stops:4.0cm 361.5pt'><span  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>When a person dies all their property devolves to their <b style='mso-bidi-font-weight:normal'>“personal representatives&quot; </b>to transfer to the individual’s successors.<span style='mso-spacerun:yes'>  </span>The way property is transferred will depend on whether or not the deceased had made a <b style='mso-bidi-font-weight:normal'>Will</b>.<span style='mso-spacerun:yes'> </span>If there is a valid Will the personal representatives <b style='mso-bidi-font-weight:normal'>&quot;the executors&quot; </b>distribute the assets in accordance with the terms of the Will.<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>If there is no Will the individual is said to have died <b style='mso-bidi-font-weight:normal'>“intestate”</b> and the property is distributed by the personal representatives <b style='mso-bidi-font-weight:normal'>“administrators”</b> in accordance with the provisions of the <b style='mso-bidi-font-weight:normal'>Succession Act 1965</b>.<o:p></o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>The Succession Act provides a legal <span class=GramE>spouse,</span> a registered civil partner and children will certain minimum legal entitlements as follows: <o:p></o:p></span></p>
+
+<p ><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<table Table border=0 cellspacing=0 cellpadding=0 style='margin-left:5.4pt;border-collapse:collapse;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'> <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;page-break-inside:avoid'>  <td width=548 colspan=2 valign=top style='width:411.1pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%'><b style='mso-bidi-font-weight:  normal'><u><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;  line-height:150%;font-family:"Arial","sans-serif"'>NO Will</span></u></b><b  style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;  mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span  style='mso-spacerun:yes'>  </span>- </span></b><span    style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;  font-family:"Arial","sans-serif"'>w<i style='mso-bidi-font-style:normal'>here a person dies &quot;intestate&quot; </i><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:34.0pt'>  <td width=227 valign=top style='width:6.0cm;border-top:solid windowtext 1.0pt;  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:34.0pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner<span  style='mso-spacerun:yes'>  </span>and no children :<o:p></o:p></span></p>
+  </td>
+  <td width=321 valign=top style='width:241.0pt;border-top:solid windowtext 1.0pt;  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:34.0pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner entitled  to full estate.<o:p></o:p></span></p>  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>  <td width=227 valign=top style='width:6.0cm;border:none;border-left:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner and  children :<o:p></o:p></span></p>  </td>
+  <td width=321 valign=top style='width:241.0pt;border:none;border-right:solid windowtext 1.0pt;  mso-border-right-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner gets  2/3rds<o:p></o:p></span></p>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Civil partners entitlement is
+  subject to the<span style='mso-spacerun:yes'>  </span>financial needs of any  children being met <o:p></o:p></span></p>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>1/3 equally between children.<o:p></o:p></span></p>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:34.0pt'>  <td width=227 valign=top style='width:6.0cm;border:none;border-left:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;  height:34.0pt'>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>No spouse or civil partner but
+  children:<o:p></o:p></span></p>  </td>
+  <td width=321 valign=top style='width:241.0pt;border:none;border-right:solid windowtext 1.0pt;  mso-border-right-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:34.0pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Estate is divided equally between
+  children.<o:p></o:p></span></p>  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:34.0pt'>  <td width=227 valign=top style='width:6.0cm;border-top:none;border-left:solid windowtext 1.0pt;  border-bottom:solid windowtext 1.0pt;border-right:none;mso-border-left-alt:  solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:  0cm 5.4pt 0cm 5.4pt;height:34.0pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>No spouse or civil partner and no  children:<o:p></o:p></span></p>  </td>
+  <td width=321 valign=top style='width:241.0pt;border-top:none;border-left:  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:34.0pt'>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Parent(s) if living, otherwise
+  brothers/sisters<o:p></o:p></span></p>  </td>
+ </tr>
+</table>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Where an individual dies &quot;intestate&quot; leaving neither spouse, civil partner nor children, his assets will pass to parents, if his parents are deceased to
+his brothers and sisters, otherwise to wider family - the Act provides a hierarchical list.<i style='mso-bidi-font-style:normal'><o:p></o:p></i></span></p>
+
+<table Table border=1 cellspacing=0 cellpadding=0  style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .75pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh: .75pt solid windowtext;mso-border-insidev:.75pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;page-break-inside:avoid'>  <td width=548 colspan=2 valign=top style='width:411.1pt;border:none;
+  padding:0cm 5.4pt 0cm 5.4pt'>  <p  style='line-height:150%'><b style='mso-bidi-font-weight:  normal'><u><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+  line-height:150%;font-family:"Arial","sans-serif"'>Will</span></u></b><i  style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;
+  mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>  -a &quot;testate&quot; death (Entitlement regardless of provisions of will)<o:p></o:p></span></i></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:34.0pt'>  <td width=227 valign=top style='width:6.0cm;border-top:solid windowtext 1.0pt;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:34.0pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner and no  children:<o:p></o:p></span></p>  </td>
+  <td width=321 valign=top style='width:241.0pt;border-top:solid windowtext 1.0pt;  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:34.0pt'>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner entitled
+  to 1/2 of estate.<o:p></o:p></span></p>  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes;height:68.05pt'>  <td width=227 valign=top style='width:6.0cm;border-top:none;border-left:solid windowtext 1.0pt;
+  border-bottom:solid windowtext 1.0pt;border-right:none;mso-border-left-alt:  solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:68.05pt'>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner and  children:<o:p></o:p></span></p>  </td>
+  <td width=321 valign=top style='width:241.0pt;border-top:none;border-left:  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:68.05pt'>
+  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:  10.0pt;font-family:"Arial","sans-serif"'>Spouse or civil partner entitled
+  to 1/3 of estate.<o:p></o:p></span></p>  <p ><span  style='font-size:11.0pt;mso-bidi-font-size:
+  10.0pt;font-family:"Arial","sans-serif"'>Civil partners entitlement is  subject to the<span style='mso-spacerun:yes'>  </span>financial needs of any
+  children being met as directed by the courts <o:p></o:p></span></p>  </td>
+ </tr>
+</table>
+
+<p ><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>An
+individual can make a Will any way he wants, but Sections 111 and 111A of theSuccession Act give a surviving spouse or civil partner certain legal rights
+regardless of what the Will provides. <o:p></o:p></span></p>
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Children
+do not have a right to a particular share of the estate under a Will. However, Section 117 of the Act gives a child the right to apply to the Court for a
+share of the estate under a Will if in the Court’s opinion “<i style='mso-bidi-font-style:normal'>the testator has failed in his moral duty to
+make proper provision for the child in accordance with his means.” <o:p></o:p></i></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>It
+is worth mentioning that while this right of the child to apply to the Courts will not <span class=GramE>effect</span> the portion of the estate to which a
+legal spouse has a statutory right, it could impact of the amount of the estate to which a registered civil partner is entitled.<span
+style='mso-spacerun:yes'>   </span><o:p></o:p></span></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'><span
+ style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></i></b></p>
+<p ><!-- pagebreak --></p> 
+<div class="homeReliefApplies">
+<p  align=center style='margin-bottom:6.0pt;text-align:center;
+line-height:150%'><b style='mso-bidi-font-weight:normal'><span  style='font-size:14.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Appendix
+<span class="familyHomeAppendixNo">II</span><i style='mso-bidi-font-style:normal'> - </i>Family Home<i style='mso-bidi-font-style:normal'><o:p></o:p></i></span></b></p>
+<p  style='margin-bottom:6.0pt;line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>The value of a "dwelling house" taken on or after 1<sup>st</sup> December 1999 may be exempt from Inheritance Tax, in the hands of the beneficiary provided certain qualifying conditions are met.<o:p></o:p></span></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><b style='mso-bidi-font-weight:normal'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>"Dwelling House"</span></b><span  style='font-size:11.0pt;mso-bidi-font-size:
+10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>, for the purpose of this exemption, means a building or part of a building with up to one acre of land that was used or was suitable for use as a dwelling.<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>To obtain the exemption from inheritance tax <b>the disponer</b> and <b style='mso-bidi-font-weight:normal'>the beneficiary</b> must meet certain conditions.<br><br>The <b>disponer</b> must have occupied the "relevant dwelling house" as his or her only main residence at the date of his or her death, subject to limited exceptions as outlined below.<br><br>The <b>beneficiary</b> must satisfy all of the following conditions:<o:p></o:p></span></p>
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:53.85pt;text-indent:-18.0pt;line-height:150%;mso-list:l5 level1 lfo9;
+tab-stops:list 53.85pt'><![if !supportLists]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>a)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>He or she must have occupied the “relevant dwelling house” as his or her only or main residence continuously throughout the 3 year period immediately prior to the date of the inheritance,<o:p></o:p></span></p>
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:53.85pt;text-indent:-18.0pt;line-height:150%;mso-list:l5 level1 lfo9;
+tab-stops:list 53.85pt'><![if !supportLists]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif";
+mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>b)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>He or she must not be beneficially entitled to any interest in any other dwelling house at the date of the inheritance,  this includes the inheritance of a second property from the disponer,<o:p></o:p></span></p>
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:53.85pt;text-indent:-18.0pt;line-height:150%;mso-list:l5 level1 lfo9;
+tab-stops:list 53.85pt'><![if !supportLists]><span  style='font-size:11.0pt;line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>c)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+ style='font-size:11.0pt;line-height:150%;font-family:"Arial","sans-serif"; mso-bidi-font-family:Arial'>He or she must continue to both own and occupy the dwelling house as his or her only or main residence throughout the period of 6 years following the date of the inheritance*.<o:p></o:p></span></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>
+Where the dwelling house directly or indirectly replaced other property owned by the disponer, the 3 year period in condition a) will be satisfied if the beneficiary occupied both properties for a total of 3 of the 4 years prior to the date of the inheritance. 
+<br><br>
+
+In the case of <b>both the disponer and the beneficiary</b> if either party ceased to occupy the dwelling house as a result of his or her mental or physical infirmity, this period will be taken into account for the purposes of the 3 / 6 year rule.  <br><br><br>
+
+<i style='mso-bidi-font-style:
+normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>* <span class=GramE>the</span>
+exemption will not be withdrawn where condition c) above is breached in the following circumstances where the beneficiary:<o:p></o:p></span></i></p>
+
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:14.2pt;text-indent:-14.2pt;line-height:150%;mso-list:l1 level1 lfo8;
+tab-stops:list 14.2pt 36.0pt'><![if !supportLists]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>i.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></i><![endif]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Does not occupy the house as a result of his or her mental or physical infirmity. This infirmity must be certified   by a registered medical practitioner, or<o:p></o:p></span></i></p>
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:14.2pt;text-indent:-14.2pt;line-height:150%;mso-list:l1 level1 lfo8;
+tab-stops:list 14.2pt 36.0pt'><![if !supportLists]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>ii.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></i><![endif]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>does not occupy the house as a result of working abroad by consequence of any condition imposed by his or her employer  requiring the beneficiary to work abroad to carry out the duties of his or her employment, or<o:p></o:p></span></i></p>
+
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:14.2pt;text-indent:-14.2pt;line-height:150%;mso-list:l1 level1 lfo8;
+tab-stops:list 14.2pt 36.0pt'><![if !supportLists]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>iii.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span></i><![endif]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>was aged 65 at the date of the inheritance, or<o:p></o:p></span></i></p>
+
+<p  style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt; margin-left:14.2pt;text-indent:-14.2pt;line-height:150%;mso-list:l1 level1 lfo8;
+tab-stops:list 14.2pt 36.0pt'><![if !supportLists]><i style='mso-bidi-font-style:normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif";mso-fareast-font-family:Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>iv.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span></i><![endif]><span class=GramE><i style='mso-bidi-font-style:normal'><span  
+style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'></span></i></span><i style='mso-bidi-font-style:
+normal'><span  style='font-size:11.0pt;mso-bidi-font-size:10.0pt; line-height:150%;font-family:"Arial","sans-serif"'>replaces the house and reinvests the proceeds in another dwelling house, and occupies both properties for at least 6 years of the 7 years from the date of the inheritance.<o:p></o:p></span></i></p><br><br>
+<p class=MsoBodyText3 style='margin-bottom:6.0pt;line-height:150%'><b style='mso-bidi-font-weight:normal'><u><span  style='font-family:
+"Arial","sans-serif"'>PLEASE NOTE<o:p></o:p></span></u></b></p>
+
+<p  style='margin-bottom:6.0pt;line-height:150%'><span style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span
+ style='font-family:"Arial","sans-serif"'>As this report is dealing with your beneficiaries liability to Inheritance Tax, the information above only deals with the conditions for relief from inheritance tax. The conditions to avail of Dwelling House Exemption in respect of gifts are very different. They can be obtained from your Adviser.<o:p></o:p></span></p>
+</div>
+<div class="businessReliefApplies">
+<p class=MsoNormal align=center style='text-align:center;line-height:150%;
+tab-stops:4.0cm 361.5pt'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-GB style='font-size:14.0pt;line-height:150%;font-family:"Arial","sans-serif"'>Appendix
+<span class="businessReliefAppendixNo">III</span> - Business Relief<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:150%'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>For
+gifts and inheritances taken on or after 23rd January 1997 the taxable value of
+“relevant business” property is reduced by 90%.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:150%'><b style='mso-bidi-font-weight:
+normal'><u><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><o:p><span
+ style='text-decoration:none'>&nbsp;</span></o:p></span></u></b></p>
+
+<p class=MsoNormal style='line-height:150%'><b style='mso-bidi-font-weight:
+normal'><u><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'>Company Shares</span></u></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>:<u><o:p></o:p></u></span></b></p>
+
+<p class=MsoNormal style='line-height:150%'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>The
+definition of “relevant business property” includes unquoted shares and
+securities of Irish incorporated companies subject to certain conditions.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:150%'><span lang=EN-GB style='font-size:
+8.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:150%'><b style='mso-bidi-font-weight:
+normal'><i style='mso-bidi-font-style:normal'><span lang=EN-GB
+style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'><span style='mso-tab-count:1'>                </span>The
+company<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;line-height:150%'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                </span>The
+company’s business must not consist wholly or mainly of any of the following
+excluded activities - <i style='mso-bidi-font-style:normal'>dealing in
+currencies, securities, stocks or shares, land or buildings, or making or
+holding of investments</i>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>The beneficiary<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>For the relief to apply the beneficiary must meet one
+of the following ownership/control tests:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:106.35pt;text-indent:-106.35pt;
+line-height:150%;tab-stops:42.55pt 63.8pt 99.25pt 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+lang=EN-GB style='font-size:12.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>              </span></span><span
+class=SpellE><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'>i</span></span><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>)<span style='mso-tab-count:1'>       </span>The
+shares themselves or together with other shares in the company held in the
+absolute beneficial ownership of the beneficiary, give the beneficiary control
+of 25% of the voting power over all matters relating to the company,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:150%;tab-stops:42.55pt 70.9pt 3.0cm 99.25pt 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                   </span><span
+class=GramE><b style='mso-bidi-font-weight:normal'>or</b></span><b
+style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:106.35pt;text-indent:-106.35pt;
+line-height:150%;tab-stops:42.55pt 63.8pt 99.25pt 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                   </span>ii)<span
+style='mso-tab-count:1'>      </span><span class=GramE>the</span> beneficiary
+controls the company or the company is controlled by the beneficiary and his
+relatives*, <o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:150%;tab-stops:42.55pt 70.9pt 3.0cm 99.25pt 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'>                   </span><span class=GramE>or</span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:106.35pt;text-indent:-106.35pt;
+line-height:150%;tab-stops:42.55pt 63.8pt 99.25pt 127.6pt 6.0cm 212.65pt 9.0cm 14.0cm'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><span style='mso-tab-count:1'>                   </span>iii)<span
+style='mso-tab-count:1'>     </span><span class=GramE>the</span> beneficiary
+holds at least 10% of the issued capital of the company and has worked full
+time in the company for 5 years prior to the gift/inheritance.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                        </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><i style='mso-bidi-font-style:normal'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'>                </span>* Relatives of a person include
+his spouse, civil partner, children, mother, father, aunt, uncle and any
+children, grandchildren of any the forgoing. In addition all spouses of
+relatives are included for the purposes of determining control. <o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><i style='mso-bidi-font-style:normal'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'>                </span>Control includes - having over
+50% of the voting power, or owning more than 50% of the shares or being in a
+position to control the board of directors.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='line-height:150%'><i style='mso-bidi-font-style:normal'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span class=GramE><b style='mso-bidi-font-weight:normal'><u><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>Business Relief - unincorporated business.</span></u></b></span><b
+style='mso-bidi-font-weight:normal'><u><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>Relevant business property also includes property
+consisting of a business (Sole trader) or an interest in a business (share in a
+partnership). A business which is wholly or mainly concerned with <i
+style='mso-bidi-font-style:normal'>dealing in land, shares, securities or
+currencies or the making or holding of investments is excluded</i>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>The relief will apply where<b style='mso-bidi-font-weight:
+normal'> <i style='mso-bidi-font-style:normal'>the business or part of the
+business is transferred</i></b> and not simply where an asset that had been
+part of the business is subject to CAT.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><b style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><b style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:
+11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'><span
+style='mso-tab-count:1'>                </span><u>General<o:p></o:p></u></span></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>So far we have concentrated on the conditions that
+apply to the business and the beneficiary in order to qualify for Business
+Relief. There are some other general conditions worth noting:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span><span class=SpellE>Disponer</span><o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>The property must have been owned by the <span
+class=SpellE>disponer</span> for a period of 5 years prior to a gift or 2 years
+in the case of an inheritance.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span><span class=SpellE>Clawback</span> of Relief<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt;line-height:
+150%'><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'><span style='mso-tab-count:
+1'>                </span>If within 6 years of the gift or the inheritance of
+business property:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:54.0pt;text-indent:-18.0pt;line-height:
+150%;mso-list:l2 level1 lfo1;tab-stops:list 54.0pt 114.75pt'><![if !supportLists]><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%'><span
+style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>the
+business ceases to qualify, or<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:54.0pt;text-indent:-18.0pt;line-height:
+150%;mso-list:l2 level1 lfo1;tab-stops:list 54.0pt 114.75pt'><![if !supportLists]><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%'><span
+style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>the
+property is sold or compulsorily acquired and not replaced within one year with
+other business property <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:36.0pt;line-height:150%'><span
+class=GramE><span lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;
+line-height:150%;font-family:"Arial","sans-serif"'>the</span></span><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'> entire relief will be clawed back.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-GB><o:p>&nbsp;</o:p></span></p>
+</div>
+<div class="farmReliefApplies">
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-GB style='font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Arial","sans-serif"'>Appendix <span class="agriReliefAppendixNo">IV</span> - Agricultural Relief<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><span
+lang=EN-GB style='font-size:8.0pt;line-height:150%;font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>This is a special relief given in respect
+of certain agricultural property taken by a &quot;farmer&quot;. The relief is
+given by reducing the market value of the agricultural property by 90% for
+gifts and inheritances taken on or after 23rd January 1997.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>The market value of the agricultural
+property as so reduced is then termed &quot;agricultural value&quot; in the Act
+and is substituted for market value in the calculation of tax.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>There are certain conditions attaching to
+this relief:<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+     line-height:150%;mso-list:l1 level1 lfo2'><span lang=EN-GB
+     style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+     font-family:"Arial","sans-serif"'>The relief only applies to <b
+     style='mso-bidi-font-weight:normal'>&quot;agricultural property&quot;</b>
+     which is defined as &quot;agricultural land, pasture and woodlands
+     situated within a Member State and crops, trees and underwood growing on
+     such land and also includes such farm buildings, farm houses and mansion
+     houses (together with lands occupied therewith) as are of a character
+     appropriate to the property.&quot;<span style='mso-spacerun:yes'> 
+     </span>The relief also applies to stock and farm machinery.<o:p></o:p></span></li>
+ <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+     line-height:150%;mso-list:l1 level1 lfo2'><span lang=EN-GB
+     style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+     font-family:"Arial","sans-serif"'>Any milk quota attaching to lands will
+     also qualify for reduction as part of the market value of the lands.<o:p></o:p></span></li>
+ <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+     line-height:150%;mso-list:l1 level1 lfo2'><span lang=EN-GB
+     style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+     font-family:"Arial","sans-serif"'>The relief only applies to
+     agricultural property acquired by an individual, who after taking the
+     agricultural gift or inheritance not less than 80% of his gross assets are
+     represented by the value of agricultural property, including livestock,
+     bloodstock and farm machinery.<span style='mso-spacerun:yes'>  </span>For
+     gifts or inheritances taken on or after 1<sup>st</sup> February 2007 a <span
+     class=SpellE>donee</span> is allowed to offset borrowings for the
+     purchase, repair or improvement of on an off farm principal private
+     residence against the value of the property for the purpose of the 80%
+     test.<o:p></o:p></span></li>
+</ul>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+     line-height:150%;mso-list:l0 level1 lfo3'><span lang=EN-GB
+     style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+     font-family:"Arial","sans-serif"'>For gifts or inheritances received
+     after 1<sup>st</sup> January 2015 the beneficiary must have <o:p></o:p></span></li>
+ <ol style='margin-top:0cm' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+      line-height:150%;mso-list:l0 level2 lfo3'><span lang=EN-GB
+      style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+      font-family:"Arial","sans-serif"'>a relevant agricultural qualification
+      or attain such a qualification within four years of the date of the gift
+      or inheritance, and must farm the agricultural property for a period of
+      not less than six years on a commercial basis with a view to realising a
+      profit, or<o:p></o:p></span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:6.0pt;mso-add-space:auto;
+      line-height:150%;mso-list:l0 level2 lfo3'><span class=GramE><span
+      lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:
+      150%;font-family:"Arial","sans-serif"'>the</span></span><span
+      lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:
+      150%;font-family:"Arial","sans-serif"'> beneficiary must spend not less
+      than 50% of their normal working time farming the agricultural property
+      for a period of not less than six years on a commercial basis with a view
+      to realising a profit . Normal working time approximates to 40 hours per
+      week. <o:p></o:p></span></li>
+ </ol>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'>Where the beneficiary leases the
+agricultural property the individual to whom the property is leased must satisfy
+either condition a. or b. above.<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;line-height:150%'><b
+style='mso-bidi-font-weight:normal'><u><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>The
+relief is withdrawn in certain <span class=GramE>circumstances :</span><o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:17.3pt;line-height:150%'><span class=GramE><span lang=EN-GB
+style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;font-family:
+"Arial","sans-serif"'>If, within 6 years of the ‘valuation date’, the
+beneficiary ceases to qualify as a farmer as outlined, and does not lease the
+land to a lessee who will farm the land for the remainder of the 6 year period.</span></span><span
+lang=EN-GB style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:150%;
+font-family:"Arial","sans-serif"'> Or if within six years after the date of
+the gift or the inheritance lands are sold or compulsorily acquired in the
+lifetime of the <span class=SpellE>donee</span> or successor, and the
+agricultural property is not replaced within a year following a sale, or within
+6 years following a compulsory acquisition where the land was compulsorily
+acquired on or after 25th March 2002.<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:17.3pt;line-height:150%'><span lang=EN-GB style='font-size:11.0pt;
+mso-bidi-font-size:10.0pt;line-height:150%;font-family:"Arial","sans-serif"'>If
+the gift or inheritance consists of development land and is disposed of in the
+period commencing 6 years after the date of the gift / inheritance and ending
+10 years after the date there will be a partial claw back of the relief. </span></p>
+</div>
+
+</div>
+  
+
+  
+</div>
+<!--div w3-include-html="components/info.html"></div --> 
+<div id="validation-message" title="Estate Planning Input">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+    <span id="validation-message-text">~</span>
+  </p>  
+</div>
+
+<div id="showHelpMessage" title="Help">
+<p>
+    <span id="help-message-text">~</span>
+</p>
+</div>
+
+<script>
+w3IncludeHTML();
+</script>
+</body>
+</html>

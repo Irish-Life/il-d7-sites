@@ -1,0 +1,5 @@
+; $Id: vwo.info,v 1.0.0.0 2014/06/18 10:11:15 Conor Exp $
+name = "VWO"
+description = "VWO block for irishlife.ie and bline.ie"
+core = "7.x"
+package = "Irish Life"

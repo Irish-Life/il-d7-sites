@@ -1,0 +1,72 @@
+#homepageSliderContainer {
+    height: 235px;
+}
+#homepageSlider {
+    border-radius: 6px 6px 6px 6px;
+    height: 237px;
+    position: relative;
+    width: 665px;
+}
+#homepageSlider a {
+    text-decoration: none;
+}
+#homepageSlider a img {
+    border: 0 none;
+    text-decoration: none;
+}
+.scrollable {
+    float: left;
+    height: 237px;
+    overflow: hidden;
+    position: relative;
+    width: 659px;
+}
+.scrollable .items {
+    position: absolute;
+    width: 20000em;
+}
+.items div {
+    float: left;
+}
+a.browse {
+    cursor: pointer;
+    display: block;
+    font-size: 1px;
+    height: 50px;
+    visibility: hidden;
+    width: 25px;
+}
+a.right {
+    background: url("/uploadedImages/bline/Home/sliderRight.gif") no-repeat scroll right top transparent;
+    position: absolute;
+    right: 0;
+    top: 40%;
+}
+a.left {
+    background: url("/uploadedImages/bline/Home/sliderLeft.gif") no-repeat scroll left top transparent;
+    left: 0;
+    position: absolute;
+    top: 40%;
+}
+a.show {
+    visibility: visible !important;
+}
+.navi {
+    height: 20px;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+.navi a {
+    /*background: url("/uploadedImages/bline/Home/sliderNav.gif") no-repeat scroll right top transparent;*/
+	background:none;
+    display: block;
+    float: left;
+    font-size: 1px;
+    height: 10px;
+    margin: 3px;
+    width: 12px;
+}
+.navi a.active, .navi a:hover {
+    background-position: 2px top;
+}

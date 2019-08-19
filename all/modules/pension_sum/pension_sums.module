@@ -1,0 +1,1296 @@
+<?php
+
+/**
+ * Implementation of hook_block_info().
+ */
+function pension_sums_block_info() {
+  $blocks['pension_sums_rev_max_block'] = array(
+    'info' => t('Revenue Max for Annual and Single Premiums'),
+   'status' => 1,
+  );
+  $blocks['pension_sums_tax_limits_block'] = array(
+    'info' => t('Income Tax Relief for relevant year'),
+   'status' => 1,
+  );
+  $blocks['pension_sums_max_lump_sum_block'] = array(
+    'info' => t('Max Retirement Lump Sum based on Salary and Service'),
+   'status' => 1,
+  );
+  $blocks['pension_sums_income_gap_block'] = array(
+    'info' => t('Target pension within income tax exemption limits on retirement'),
+   'status' => 1,
+  );
+  $blocks['pension_sums_commission_block'] = array(
+    'info' => t('Pension Commission profiles'),
+   'status' => 1,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function pension_sums_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#pension_sums":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+ 
+// http://localhost/retail-websites/bline/pensions/pension-sums/income-tax-relief
+// http://localhost/retail-websites/bline/pensions/pension-sums/revenue-max-calculator
+// http://localhost/retail-websites/bline/pensions/pension-sums/max-lump-sum-calculator
+// http://localhost/retail-websites/bline/pensions/pension-sums/income-gap-content
+
+function commission_content(){
+
+  $tHTML =  ' 
+          <div class="ps-rev-loading">
+          Loading. Please wait.
+          </div>
+          
+          <div id="ps-top" class="ps-choice" style="display:none;">
+            <div class="ps-slider-holder" style="padding-top:2.5em;">
+              <div class="ps-slider-heading">
+                <div class="radioInputs">
+                  <div class="ps-slider-label">Select Payment Frequency</div>
+                  <select id="paymentfrequency">
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div id="ps-top" class="ps-ap-com-calc" style="display:none;">
+          
+          <div class="ps-slider-holder" >
+            <div class="ps-slider-heading">
+              <div class="radioInputs">
+                <div class="ps-slider-label">Select AP Product</div>
+                <select id="product-ap">
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Enter Single Premium or Transfer Value Amount</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderSPorTVResult pensionCTSliderEditable" name="pensionCTSliderSPorTV" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderSPorTV ps-slider"></div>
+          </div>
+          
+          
+          </div>
+          
+          
+          <div id="ps-top" class="ps-rev-calc" style="display:none;">
+          
+          
+          
+          <div class="ps-slider-holder" >
+            <div class="ps-slider-heading">
+              <div class="radioInputs">
+                <div class="ps-slider-label">Select Product</div>
+                <select id="product">
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Enter Single Premium or Transfer Value Amount</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderSPorTVResult pensionCTSliderEditable" name="pensionCTSliderSPorTV" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderSPorTV ps-slider"></div>
+          </div>
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Client Age Next Birthday</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderAgeResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderAge ps-slider"></div>
+          </div>
+           
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Normal Retirement Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderNRAResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderNRA ps-slider"></div>
+          </div>
+          
+          
+          <div class=" hideA" style="display:none;">
+            
+            <div class="ps-slider-holder">
+              <div class="ps-slider-heading">
+                <div class="radioInputs">
+                  <div class="ps-slider-label">What AMC/Trail structure do you want?</div>
+                  <select id="structure">
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+           
+           
+          <div class="ps-radio-holder" style="display:none;">
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Premium Band</h6>
+                <center>
+                  
+                  <span class="pensionCTPremiumResult" name="pensionCTPremium" type="number" ></span>
+                 </center>
+              </div>
+            </div>
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Profile code you want to use</h6>
+                <center>
+                  
+              <span class="pensionCTProfileCodeResult" name="pensionCTProfileCode" type="number" ></span>
+                 </center>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <!--<div class="ps-radio-holder hideB"  id="commission-choice-cash" style="display:none;">
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Enter Euro amount advice fee taken</h6>
+                 
+                  <center>
+                  <div class="ps-slider-text" style="float:none !important;">
+                    <input class="pensionCTEuroAmountFeeResult" name="pensionCTEuroAmountFee" type="number" max="99999">
+                  </div>
+                 </center>
+              </div>
+            </div>
+          </div>
+          -->
+          
+          <div id="commission-choice-percent" class="ps-slider-holder hideB" style="display:none;">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Initial commission broker wants to take</div>
+              <div class="ps-slider-text"><span><div style="float:left;text-align:right;width: 40%;" class="pensionCTPercentAmountFeeResult" ></div><div style="float:right;text-align:left;width: 60%;" class="pensionCTMoneyAmountFeeResult" ></div><div class="clearer"></div></span></div>
+            </div>
+            <div  class="pensionCTPercentAmountFee ps-slider"></div>
+          </div>
+           
+          <div class="ps-radio-holder" style="display:none;">
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Minimum Term</h6>
+                <center>
+                  
+                  <span class="pensionCTMinTermResult" name="pensionCTMinTerm" type="number" ></span>
+                 </center>
+              </div>
+            </div>
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Take Up</h6>
+                <center>
+                  
+              <span class="pensionCTTakeupResult" name="pensionCTTakeup" type="number" ></span>
+                 </center>
+              </div>
+            </div>
+          </div>
+          
+          <div class="termError" style="display:none;color:red;font-weight:bold;" >you\'ve an error</div>
+          <a href="javascript:void(0)" style="display:none;" class="ps-right ps-btn calcCommission  hideB">Calculate</a>
+       
+          <div class="clearer"></div>
+
+          </div>
+          
+          
+          <div class="ps-rev-results" style="display:none;">
+          <a href="javascript:void(0)" class="ps-left ps-btn  ps-btn-small close-results"><i class="fa fa-chevron-circle-left"></i> Return</a>
+          <a href="javascript:void(0)" class="ps-right ps-btn ps-btn-small printpage "><i class="fa fa-print"></i> Print</a>
+            <div class="resultHolder">
+            <table class="inputsTableHolder">
+              <thead>
+                <tr>
+                <th colspan="2">Inputs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="60%">Product Selected</td>
+                  <td class="outputTableDiv"><span class="productResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>SP / TV Value Amount</td>
+                  <td class="outputTableDiv"><span class="pensionCTSliderSPorTVOutput"><span class="smallSpinner"></span></span></td>
+                </tr>
+                <tr>
+                  <td>Age at 31st December in relevant tax year</td>
+                  <td class="outputTableDiv" ><span class="pensionCTSliderAgeResult"></span></td>
+                </tr>
+                <tr>
+                  <td>Normal Retirement Age</td>
+                  <td class="outputTableDiv"><div class="pensionCTSliderNRAResult"></div></td>
+                </tr>
+                <!--<tr>
+                  <td>Premium Band</td>
+                  <td class="outputTableDiv"><span class="pensionCTPremiumResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                -->
+                <tr>
+                  <td>What AMC/Trail structure do you want?</td>
+                  <td class="outputTableDiv"><span class="pensionCTAmcTrailResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Enter Euro amount advice fee taken</td>
+                  <td class="outputTableDiv"><span class="pensionCTEuroAmountFeeResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                 <!--<tr>
+                  <td>Minimum Term</td>
+                  <td class="outputTableDiv"><span class="pensionCTMinTermResult"><span class="smallSpinner"> </span></span></td>
+                </tr>-->
+                 <!--<tr>
+                  <td>Take Up</td>
+                  <td class="outputTableDiv"><span class="pensionCTTakeupResult"><span class="smallSpinner"> </span></span></td>
+                </tr>-->
+              </tbody>
+              </table>
+              <table class="inputsTableHolder">
+                <thead>
+                  <tr>
+                    <th colspan="2">Profile codes for Pension New Business</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="60%">New Business SP Bond profile code</td>
+                    <td class="outputTableDiv"><span class="pensionCTnbProfileCode"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>SP add profile code</td>
+                    <td class="outputTableDiv"><span class="pensionCTspProfileCode"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Transfer Value Profile code</td>
+                    <td class="outputTableDiv"><span class="pensionCTtvProfileCode"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                </tbody>
+                </table>
+                <div class="clearer"></div>
+                <table class="inputsTableHolder">
+                <thead>
+                  <tr>
+                    <th colspan="2">Broker commission & Charging details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="60%">Max initial commission payable on profile</td>
+                    <td class="outputTableDiv"><span class="pensionCTinitialMax"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Initial commission broker is taking</td>
+                    <td class="outputTableDiv"><span class="pensionCTfundComm"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Initial Commission paid</td>
+                    <td class="outputTableDiv"><span class="pensionCTinitialPaid"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Trail commission payable</td>
+                    <td class="outputTableDiv"><span class="pensionCTTrail"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Annual Management Charge (Consensus)</td>
+                    <td class="outputTableDiv"><span class="pensionCTallManagementCharge"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Customer allocation rate</td>
+                    <td class="outputTableDiv"><span class="pensionCTallocationRates"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Profile rule</td>
+                    <td class="outputTableDiv"><span class="pensionCTRules"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Surrender Penalty</td>
+                    <td class="outputTableDiv"><span class="pensionCTSurrender"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                </tbody>
+                </table>
+                
+          </div>
+          </div>
+          
+          
+          <div class="calcsNotice">
+          
+            <div class="noticePanel"><p>These figures are based on a typical customer and your client should seek professional tax advice as the information given is a guideline only and does not take into account your personal circumstances.</p>
+            <p>If your client pays income tax under self-assessment, they are typically required to file a return and pay the balance of tax outstanding for the relevant tax year at the same time as they are required to pay premliminary tax for the following year. By reducing their tax liability for the relevant tax year your client may also be able to reduce their preliminary income tax for the following tax year by up to the same amount. This could reduce their preliminary income tax and defer this tax payment until their final income tax return for the following tax year.</p>
+            <p>Limits are for tax relief on contributions to PRSAs, RACs and Employee contributions to Occupational Pension Schemes (including AVCs). An earnings cap applies for tax relief purposes to aggregate contributions to PRSAs, RACs, and employee / AVC contributions to occupational pension schemes. For occupational pension schemes the total contribution (employer and employee) must be within overall Revenue maximum contribution levels.</p>
+            <p>Under current legislation the maximum pension fund allowed for tax purposes is €2,000,000. The relevant maximum will apply to the aggregate value of all pension provision held by an individual. Any fund in excess of this amount will be liable to a once-off income tax charge at the 40% rate on retirement.</p>
+            <p>Your client is not guaranteed income tax relief. They will generally get income tax relief up to the limits outlined, but this will depend on their own personal circumstances. If your client is an employee and their personal contributions are taken from their bank account, they can apply to their local Inspector of Taxes to have their tax credits adjusted to reflect their pension contributions. If they are self employed they must include their pension contributions in their self assessment tax returns in order to get income tax relief.</p>
+            <p>This quotation is valid until your client\'s circumstances change.</p>
+            <p>Pension income in retirement is subject to income tax at your highest rate on withdrawal, Universal Social Charge (USC), PRSI (if applicable) and any other charges or levies (tax) applicable at that time.</p>
+            <p>Information is correct as at May 2016.</p>
+            </div>
+            <div class="complybox ">Warning: These figures are estimates only. They are not a reliable guide to the future performance of your investment.</div>
+          </div>
+          ';
+  return $tHTML;
+}
+function rev_max_content(){
+  $tHTML =  '
+  <h3 id="ps-top">Revenue Max for Annual and Single Premiums</h3>
+  
+          <div class="ps-rev-loading">
+          Loading. Please wait.
+          </div>
+          <div class="ps-rev-calc" style="display:none;">
+          <p>The aim of this calculator is to work out the maximum total company pension contributions that can be made by an employer and employee. This is based on the Revenue maximum uplifted scale, which allows a pension of 2/3rds salary with 10 years service in that employment up to NRA.</p>
+          <p>This calculator does not target the SFT of €2m. A minimum 2 year term to NRA applies.</p>
+
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderAgeResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderAge ps-slider"></div>
+          </div>
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Normal Retirement Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderNRAResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderNRA ps-slider"></div>
+          </div>
+          
+          <div class="ps-radio-holder">
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Gender</h6>
+                  <input type="radio" id="ps-gender-male" name="ps-gender" value="0" checked="">
+                  <label for="ps-gender-male">Male</label>
+                  <input type="radio" id="ps-gender-female" name="ps-gender" value="2">
+                  <label for="ps-gender-female">Female</label>
+              </div>
+            </div>
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Marital Status</h6>
+                  <input type="radio" id="ps-marital-married" name="ps-marital" value="1" checked="">
+                  <label for="ps-marital-married">Married</label>
+                  <input type="radio" id="ps-marital-single" name="ps-marital" value="0">
+                  <label for="ps-marital-single">Single</label>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Income from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderNetRelevantResult" name="pensionCTSliderNetRelevant" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderNetRelevant ps-slider"></div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Years with current employer</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderYearsCurrentEmployerResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderYearsCurrentEmployer ps-slider"></div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current employment - Current value of pension plans from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderCurrentValueResult" name="pensionCTSliderCurrentValue" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderCurrentValue ps-slider"></div>
+          </div>
+          
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Previous employment - Current value of pension plans from past employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderCurrentValuePrevJobsResult" name="pensionCTSliderCurrentValuePrevJobs" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderCurrentValuePrevJobs ps-slider"></div>
+          </div>
+          
+          <a href="javascript:void(0)" class="ps-right ps-btn calcRev">Calculate</a>
+          
+          </div>
+          
+          
+          <div class="ps-rev-results" style="display:none;">
+          <a href="javascript:void(0)" class="ps-left ps-btn  ps-btn-small close-results"><i class="fa fa-chevron-circle-left"></i> Return</a>
+          <a href="javascript:void(0)" class="ps-right ps-btn ps-btn-small printpage"><i class="fa fa-print"></i> Print</a>
+            <table class="inputsTableHolder">
+              <thead>
+                <tr>
+                <th colspan="2">Inputs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Current Age</td>
+                  <td class="outputTableDiv" ><span class="pensionCTSliderAgeResult">40</span></td>
+                </tr>
+                <tr>
+                  <td>Normal Retirement Age</td>
+                  <td class="outputTableDiv"><div class="pensionCTSliderNRAResult">64</div></td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td class="outputTableDiv"><span class="genderResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Marital Status</td>
+                  <td class="outputTableDiv"><span class="maritalResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Current Income from this employment</td>
+                  <td class="outputTableDiv"><span class="pensionCTSliderNetRelevantResultprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Years with current employer</td>
+                  <td class="outputTableDiv"><span class="pensionCTSliderYearsCurrentEmployerResult"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Current employment - Current value of pension plans from this employment</td>
+                  <td class="outputTableDiv"><span class="pensionCTSliderCurrentValueprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                  <td>Previous employment - Current value of pension plans from past employment</td>
+                  <td class="outputTableDiv"><span class="pensionCTSliderCurrentValuePrevJobsprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+              </tbody>
+              </table>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Max Annual Contribution</th>
+                </tr>
+              </thead>
+            <tbody>
+              <tr>
+                <td>Max Contribution</td>
+                <td class="outputTableDiv" ><div id="maxContC1" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>or Max as % of Salary</td>
+                <td class="outputTableDiv"><div id="maxContPct1" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Projected Value</td>
+                <td class="outputTableDiv"><div id="projectedValueC1" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Projected Value in Todays Terms</td>
+                <td class="outputTableDiv"><div id="projectedValueC1T" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr id="fundExceededC1" class="resultMessage">
+                <td colspan="2">Max pension fund allowed for tax purposes is €2.3million.</td>
+              </tr>
+            </tbody>
+            </table>
+            
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Max Employer Single Premium to buy back service</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Max Single Premium</td>
+                  <td class="outputTableDiv" ><div id="maxSPC" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>and, Employer Regular Annual Premium</td>
+                  <td class="outputTableDiv"><div id="maxEmpAPCC" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>Projected Value</td>
+                  <td class="outputTableDiv"><div id="projectedValueC2" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>Projected Value in Todays Terms</td>
+                  <td class="outputTableDiv"><div id="projectedValueC2T" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">Matching Employer SP and AP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Single Premium</td>
+                  <td class="outputTableDiv" ><div id="maxEmpSPC3" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>Max Annual Premium</td>
+                  <td class="outputTableDiv"><div id="maxPensionC" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>Projected Value</td>
+                  <td class="outputTableDiv"><div id="projectedValueC3" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr>
+                  <td>Projected Value in Todays Terms</td>
+                  <td class="outputTableDiv"><div id="projectedValueC3T" class="results"><span class="smallSpinner"> </span></div></td>
+                </tr>
+                <tr id="fundExceededC3" class="resultMessage">
+                  <td colspan="2">Max pension fund allowed for tax purposes is €2.3million.</td>
+                </tr>
+              </tbody>
+            </table>
+            <strong>*These figures include your current contributions.</strong><br/>
+            <strong>*You need to do a detailed quote if this is not the plan you wish to sell.</strong>
+          </div>
+          
+          
+          
+          <div class="clearer"></div>
+          <div class="calcsNotice">
+            <div class="noticePanel"><p>These figures are based on a typical customer and your client should seek professional tax advice as the information given is a guideline only and does not take into account your personal circumstances.</p>
+            <p>This quote is based on the Complete Solutions 1 product with 96% net client allocation, 0.75% base AMC + 0.25% plan charge.</p>
+            <p>Gross fund growth of 4.3% per annum before charges; Premiums increasing by 2.5% per annum; Inflation rate of 2.5% per annum; These charges may change depending on the products and options chosen. The annuity rate used is a long term average rate and is not guaranteed.</p>
+            <p>This quote does not include the pension levy and exit penalties may apply on exit. You need to do a detailed quote if this is not the plan you wish to sell.</p>
+            <p>Under current legislation, the maximum pension fund allowed for tax purposes is €2,000,000. The relevant maximum will apply to the aggregate value of all pension provision held by an individual. Any fund in excess of this amount will be liable to a once-off income tax charge at the 40% rate on retirement.</p>
+            <p>This quote is produced on a Revenue maximum basis, which means that the assumptions used are those which result in the maximum contribution level acceptable to Revenue. This calculator does not include the strict 60th scale, and so for some clients with a large pension fund from previous employment and short potential service in their current employment may have further scope for pension contributions. It is particularly important that you review your client\'s pension plan on a regular basis to ensure that overfunding does not occur.</p>
+            <p><strong>Employer Annual Premium</strong><br>
+            Tax relief is claimed in the company financial tax year in which contribution is made There is no option to backdate a contribution to a previous financial tax year.</p>
+            <p><strong>Employer Single Premium</strong><br>
+            Tax relief equal to Employer total regular (annual) premium can be claimed in year contribution is made. Any excess is spread forward up to 5 years. There is no option to backdate a contribution to a previous financial tax year Spreading of Relief for Single Premium is calculated by dividing total employer single premium by total employer annual premium (i.e. total single and total annual for all employees).</p>
+            <p>If Annual Premium is increased to match Single Premium, the employer must intend paying this Annual Premium in future years (minimum of 3 AP\'s to be paid).</p>
+            <p>This quotation is valid until your client\'s circumstances change.</p>
+            <p>Information is correct as at May 2016.</p>
+            </div>
+            <div class="complybox">Warning: These figures are estimates only. They are not a reliable guide to the future performance of your investment.</div>
+            <div class="complybox">Warning: If you invest in this product you may lose some or all of the money you invest.</div>
+            <div class="complybox">Warning: If you invest in this product you will not have access to your money until age 60 and/or you retire.</div>
+            <div class="complybox">Warning: The value of your investment may go down as well as up.</div>
+          </div>
+          
+          
+          ';
+  return $tHTML;
+}
+
+ // http://localhost/retail-websites/bline/pensions/pension-sums/max-lump-sum-calculator
+function max_lump_sum_content(){
+
+  $tHTML =  '
+  <h3 id="ps-top">Max Retirement Lump Sum based on salary and service</h3>
+ 
+  
+          <div class="ps-rev-loading">
+          Loading. Please wait.
+          </div>
+          <div class="ps-rev-calc" style="display:none;">
+           <p>The aim of this calculator is to work out the future maximum retirement lump sum that a member can receive from a company pension at retirement based on the salary and service rules and limits. It also estimates the regular pension contribution required to aim for such a retirement lump sum. A minimum 2 year term applies.</p>
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderAgeResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderAge ps-slider"></div>
+          </div>
+          
+           
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Normal Retirement Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderNRAResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderNRA ps-slider"></div>
+          
+          </div>
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Income from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderNetRelevantResult" name="pensionCTSliderNetRelevant" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderNetRelevant ps-slider"></div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Years with current employer</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderYearsCurrentEmployerResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderYearsCurrentEmployer ps-slider"></div>
+          </div>
+          
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current employment - Current value of pension plans from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderCurrentValueResult" name="pensionCTSliderCurrentValue" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderCurrentValue ps-slider"></div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Previous employment - How much retirement lump sum are you projected to receive from any pensions in previous jobs</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderLumpSumPrevResult" name="pensionCTSliderLumpSumPrev" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderLumpSumPrev ps-slider"></div>
+          </div>
+          
+          <a href="javascript:void(0)" class="ps-right ps-btn calcMaxLump">Calculate</a>
+          <div class="clearer"></div>
+
+          </div>
+          
+          
+          <div class="ps-rev-results" style="display:none;">
+          <a href="javascript:void(0)" class="ps-left ps-btn  ps-btn-small close-results"><i class="fa fa-chevron-circle-left"></i> Return</a>
+          <a href="javascript:void(0)" class="ps-right ps-btn ps-btn-small printpage"><i class="fa fa-print"></i> Print</a>
+            <div class="resultHolder">
+              <table class="inputsTableHolder">
+            <thead>
+                <tr>
+                    <th colspan="2">Inputs</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Current Age</td>
+
+                    <td class="outputTableDiv"><span class="pensionCTSliderAgeprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+
+                <tr>
+                    <td>Normal Retirement Age</td>
+
+                    <td class="outputTableDiv">
+                        <div class="pensionCTSliderNRAResultprint"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Current Income from this employment</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderNetRelevantResultprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                    <td>Years with current employer</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderYearsCurrentEmployerResultprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                    <td>Current employment - Current value of pension plans from this employment</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderCurrentValueprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+                <tr>
+                    <td>Previous employment - How much retirement lump sum are you projected to receive from any pensions in previous jobs</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderLumpSumPrevResultprint"><span class="smallSpinner"> </span></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">Uplifted Scale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="emphasise">
+              <td>Max Retirement Lump Sum</td>
+              <td class="outputTableDiv"><div id="maxLSUpliftB" class="results">€121,513</div></td>
+            </tr>
+            <tr class="emphasise">
+              <td>Annual Premium for this Lump Sum</td>
+              <td class="outputTableDiv"><div id="maxLSUpliftPrem" class="results">€1,507.3</div></td>
+            </tr>
+              <tr class="divider">
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>Max Retirement Lump Sum in today\'s terms</td>
+              <td class="outputTableDiv"><div id="maxLSUpliftBT" class="results">€65,332</div></td>
+            </tr>
+            <tr>
+              <td>Tax Free limit on Retirement Lump Sum Jan 2012</td>
+              <td class="outputTableDiv"><div class="results taxFreeLimitB"><span class="smallSpinner"> </span></div></td>
+            </tr>
+            <tr>
+              <td>Tax on Retirement Lump for this employment</td>
+              <td class="outputTableDiv"><div id="taxLSUpliftB" class="results"><span class="smallSpinner"> </span></div></td>
+            </tr>
+            <tr>
+            <td>Net Max Retirement Lump in today\'s terms</td>
+            <td class="outputTableDiv"><div id="netMaxLSUpliftB" class="results"><span class="smallSpinner"> </span></div></td>
+            </tr>
+          </tbody>
+          </table>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">3/80ths per year service scale</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="emphasise">
+                    <td>Max Retirement Lump Sum</td>
+
+                    <td class="outputTableDiv">
+                        <div class="results" id="maxLSScaleB"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+
+                <tr class="emphasise">
+                    <td>Annual Premium for this Lump Sum</td>
+
+                    <td class="outputTableDiv">
+                        <div class="results" id="maxLSScalePrem"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+
+                <tr class="divider">
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>Max Retirement Lump Sum in today\'s terms</td>
+
+                    <td class="outputTableDiv">
+                        <div class="results" id="maxLSScaleBT"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tax Free limit on Retirement Lump Sum Jan 2012</td>
+                    <td class="outputTableDiv">
+                        <div class="results taxFreeLimitB"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tax on Retirement Lump for this employment</td>
+
+                    <td class="outputTableDiv">
+                        <div class="results" id="taxLSScaleB"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Net Max Retirement Lump in today\'s terms</td>
+
+                    <td class="outputTableDiv">
+                        <div class="results" id="netMaxLSScaleB"><span class="smallSpinner"> </span></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+            <strong>*These figures include your current contributions.</strong><br/>
+            <strong>*You need to do a detailed quote if this is not the plan you wish to sell.</strong>
+          </div>
+          </div>
+                    
+          <div class="calcsNotice">
+            <div class="noticePanel"><p>These figures are based on a typical customer and your client should seek professional tax advice as the information given is a guideline only and does not take into account your personal circumstances.</p>
+            <p>This quote is based on the Complete Solutions 1 product with 96% net client allocation, 0.75% base AMC + 0.25% plan charge.</p>
+            <p>Gross fund growth of 4.3% per annum before charges; Premiums increasing by 2.5% per annum; Inflation rate of 2.5% per annum; These charges may change depending on the products and options chosen.</p>
+            <p>This quote does not include the pension levy and exit penalties may apply on exit. You need to do a detailed quote if this is not the plan you wish to sell.</p>
+            <p>Under current legislation, the maximum pension fund allowed for tax purposes is €2,000,000. The relevant maximum will apply to the aggregate value of all pension provision held by an individual. Any fund in excess of this amount will be liable to a once-off income tax charge at the 40% rate on retirement.</p>
+            <p>Under current legislation (January 2012), the maximum tax free retirement lump sum is €200,000. This includes all retirement lump sums received since 7 December 2005. For amounts above €200,000, the next €300,000 is taxed at 20% income tax. Any further balance is subject to marginal rate income tax, plus PRSI and USC. For the purpose of this spreadsheet the assumptions are income tax at 40%, PRSI at 4% and USC at 8%.</p>
+            <p><strong>Uplifted Scale and Retained benefits</strong><br>
+            The total of lump sum benefits from this employment calculated using the uplifted scale, plus any retained benefit lump sum pension benefits from any other employment or self-employment cannot exceed 150% of final salary. The above figures do not include retained benefits.</p>
+            <p>The inflation rate over the term to go to normal retirement age is assumed to be 2.5% per year. These lump sum calculations are a guide only. The actual retirement lump sum available to your client will depend on their own personal circumstances. The maximum retirement lump sum will be calculated in accordance with the scheme rules of their company pension scheme.</p>
+            <p>This quotation is valid until your client\'s circumstances change.</p>
+            <p>Information is correct as at May 2016.</p>
+            </div>
+            <div class="complybox printhide">Warning: These figures are estimates only. They are not a reliable guide to the future performance of your investment.</div>
+            <div class="complybox printhide">Warning: If you invest in this product you may lose some or all of the money you invest.</div>
+            <div class="complybox printhide">Warning: If you invest in this product you will not have access to your money until age 60 and/or you retire.</div>
+            <div class="complybox printhide">Warning: The value of your investment may go down as well as up.</div>
+          </div>
+          ';
+  return $tHTML;
+}
+//http://localhost/retail-websites/bline/pensions/pension-sums/income-gap-content
+function income_gap_content(){
+
+  $tHTML =  '
+    <h3 id="ps-top">Target pension within income tax exemption limits on retirement</h3>
+          <div class="ps-rev-loading">
+          Loading. Please wait.
+          </div>
+          <div class="ps-rev-calc" style="display:none;">
+           <p>The aim of this calculator is to work out the maximum pension that a customer can receive tax free in retirement based on current income tax rules and limits. It also estimates the pension contribution required to aim for such a pension income in retirement.</p>
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderAgeResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderAge ps-slider"></div>
+          </div>
+          
+           
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Normal Retirement Age</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderNRAResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderNRA ps-slider"></div>
+          
+          </div>
+           <div class="ps-radio-holder">
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Gender</h6>
+                  <input type="radio" id="ps-gender-male" name="ps-gender" value="0" checked="">
+                  <label for="ps-gender-male">Male</label>
+                  <input type="radio" id="ps-gender-female" name="ps-gender" value="2">
+                  <label for="ps-gender-female">Female</label>
+              </div>
+            </div>
+            <div class="ps-radio-half">
+              <div class="radioInputs">
+                <h6>Marital Status</h6>
+                  <input type="radio" id="ps-marital-married" name="ps-marital" value="1" checked="">
+                  <label for="ps-marital-married">Married</label>
+                  <input type="radio" id="ps-marital-single" name="ps-marital" value="0">
+                  <label for="ps-marital-single">Single</label>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current Income from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderNetRelevantResult" name="pensionCTSliderNetRelevant" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderNetRelevant ps-slider"></div>
+          </div>
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Current employment - Current value of pension plans from this employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderCurrentValueResult" name="pensionCTSliderCurrentValue" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderCurrentValue ps-slider"></div>
+          </div>
+          
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Previous employment - Current value of pension plans from past employment</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderCurrentValuePrevJobsResult" name="pensionCTSliderCurrentValuePrevJobs" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderCurrentValuePrevJobs ps-slider"></div>
+          </div>
+          
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">In addition, do you want to fund for a spouse\'s pension in retirement (%)</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderSpouseResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderSpouse ps-slider"></div>
+          
+          </div>
+          
+          <a href="javascript:void(0)" class="ps-right ps-btn incomeGapCalc">Calculate</a>
+          <div class="clearer"></div>
+          
+            
+          </div>
+          
+          
+          <div class="ps-rev-results" style="display:none;">
+          <a href="javascript:void(0)" class="ps-left ps-btn  ps-btn-small close-results"><i class="fa fa-chevron-circle-left"></i> Return</a>
+          <a href="javascript:void(0)" class="ps-right ps-btn ps-btn-small printpage"><i class="fa fa-print"></i> Print</a>
+            <div class="resultHolder">
+            <table class="inputsTableHolder">
+            <thead>
+              <tr>
+                <th colspan="2">Inputs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Current Age</td>
+                <td class="outputTableDiv"><span class="pensionCTSliderAgeprint"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>Normal Retirement Age</td>
+                <td class="outputTableDiv"><div class="pensionCTSliderNRAResultprint"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Gender</td>
+                <td class="outputTableDiv"><span class="genderResult"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>Marital Status</td>
+                <td class="outputTableDiv"><span class="maritalResult"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>Income from this employment</td>
+                <td class="outputTableDiv"><span class="pensionCTSliderNetRelevantResultprint"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>Current employment - Current value of pension plans from this employment</td>
+                <td class="outputTableDiv"><span class="pensionCTSliderCurrentValueprint"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>Previous employment - Current value of pension plans from past employment</td>
+                <td class="outputTableDiv"><span class="pensionCTSliderCurrentValuePrevJobsprint"><span class="smallSpinner"> </span></span></td>
+              </tr>
+              <tr>
+                <td>In addition, do you want to fund for a spouse\'s pension in retirement (%)</td>
+                <td class="outputTableDiv"><span class="pensionCTSliderSpouseResult"><span class="smallSpinner"> </span></span></td>
+              </tr>
+            </tbody>
+            </table>
+            <table>
+            <thead>
+              <tr>
+                <th colspan="2">Results</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Income Tax Exemption Threshold (Jan 2016)</td>
+                <td class="outputTableDiv"><div id="taxThreshold" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>State Pension (Contributory)</td>
+                <td class="outputTableDiv"><div id="statePension" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Pension in today\'s terms based on current value of your pension plans</td>
+                <td class="outputTableDiv"><div id="currentPensionA" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Income Gap in today\'s terms</td>
+                <td class="outputTableDiv"><div id="incomeGap" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Annual Premium to Fund Income Gap</td>
+                <td class="outputTableDiv"><div id="fundIncomeGap" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Retirement lump sum payable in today\'s terms in addition to income shortfall</td>
+                <td class="outputTableDiv"><div id="fundIncomeGapLS" class="results"><span class="smallSpinner"> </span></div></td>
+              </tr>
+              <tr>
+                <td>Cash Fund at Retirement</td>
+                <td class="outputTableDiv"><div id="retirementFundA" class="results">€893,303</div></td>
+              </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+          <div class="calcsNotice">
+            <div class="noticePanel printShow"><p>These figures are based on a typical customer and you should seek professional tax advice as the information given is a guideline only and does not take into account your personal circumstances.</p>
+            <p>This quote is based on the Complete Solutions 1 product with 96% net client allocation, 0.75% base AMC + 0.25% plan charge.</p>
+            <p>Gross fund growth of 4.3% per annum before charges; Premiums increasing by 2.5% per annum; Inflation rate of 2.5% per annum; These charges may change depending on the products and options chosen. The annuity rate used is a long term average rate and is not guaranteed.</p>
+            <p>This quote does not include the pension levy and exit penalties may apply on exit. You need to do a detailed quote if this is not the plan you wish to sell.</p>
+            <p>Under current legislation, the maximum pension fund allowed for tax purposes is €2,000,000. The relevant maximum will apply to the aggregate value of all pension provision held by an individual. Any fund in excess of this amount will be liable to a once-off income tax charge at the 40% rate on retirement.</p>
+            <p><strong>Current State Pension (Contributory)</strong><br>
+            The state pension (contributory) is always included in this calculation. This is included even if it will not actually commence until after the selected normal retirement age.<br>
+            State Pension (Contributory) is based on full rates for a single person or for married is based on full rate for a person plus an adult dependant (over 66). Actual state pension will depend on your client\'s own particular circumstances including the number of PRSI contributions made by you and your spouse or adult dependant.<br>
+            It is assumed that your client will receive no other income in retirement.</p>
+            <p>Depending on your client\'s age the State Pension (Contributory) will commence: at age 66 for those born between 1949 and 1954, at age 67 for those born between 1955 and 1960 and at age 68 for those born in 1961 or later.</p>
+            <p><strong>Individual Income Tax relief Limit</strong><br>
+            Income tax relief is available on payments up to a certain percentage of your net relevant earnings, subject to an earnings limit of €115,000 per year. The percentage changes depending on your age. You can only claim income tax relief within this limit. Entitlement to income tax relief is not guaranteed.</p>
+            <p><strong>Company Pension Annual Contribution</strong><br>
+            It is important that you review your client\'s pension plan on a regular basis to ensure that overfunding does not occur.</p>
+            <p><strong>Employer Annual Premium</strong><br>
+            Tax relief is claimed in the company financial tax year in which contribution is made. There is no option to backdate a contribution to a previous financial tax year.</p>
+            <p><strong>Inflation</strong><br>
+            The inflation rate over the term of your client\'s pension plan is assumed to be 2.5% per year. The estimated values when your client retires have been discounted by this rate to give values in today\'s terms.</p>
+            <p><strong>Current income tax thresholds</strong><br>
+            Income tax threshold aiming for no income tax applying is based on income tax exemption limits for single people over age 65 or a married couple where either spouse is over age 65. Income tax thershold aiming for standard rate income tax applying is based on the single income tax standard rate cut off point or the married one income standard rate cut off point or, where higher, based on the income tax exemption limits for single or married over age 65.</p>
+            <p>USC and PRSI may still apply to income that is below the income tax threshold.</p>
+            <p><strong>Income in retirement</strong><br>
+            Income tax and other tax will be due on any pension income your client receives when they retire. Pensions are long term savings plans that your client can only take when they retire.</p>
+            <p><strong>Maximum retirement lump sum</strong><br>
+            <p>Retirement lump sum based on 25% of pension fund value.</p>
+            The maximum tax free retirement lump sum you can receive is €200,000. Retirement lump sums between €200,000 and €500,000 will be subject to standard rate income tax. Both the €200,000 and €500,000 limits include all retirement lump sums your client has received since 7 December 2005.</p>
+            <p>This quotation is valid until your client\'s circumstances change.</p>
+            <p>Information is correct as at May 2016.</p>
+            </div>
+            
+
+          <div class="complybox printhide">Warning: These figures are estimates only. They are not a reliable guide to the future performance of your investment.</div>
+          <div class="complybox printhide">Warning: If you invest in this product you may lose some or all of the money you invest.</div>
+          <div class="complybox printhide">Warning: If you invest in this product you will not have access to your money until age 60 and/or you retire.</div>
+          <div class="complybox printhide">Warning: The value of your investment may go down as well as up.</div>
+            </div>
+          ';
+  return $tHTML;
+}
+//http://localhost/retail-websites/bline/pensions/pension-sums/income-tax-relief
+function tax_limits_content(){
+ 
+  $tHTML =  '
+  <h3 id="ps-top"></h3>
+  
+          <div class="ps-rev-loading">
+          Loading. Please wait.
+          </div>
+          <div class="ps-rev-calc" style="display:none;">
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Age at 31st December in relevant tax year</div>
+              <div class="ps-slider-text"><span class="pensionCTSliderAgeResult" ></span></div>
+            </div>
+            <div  class="pensionCTSliderAge ps-slider"></div>
+          </div>
+          
+           
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Net relevant earnings</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderNetRelevantResult" name="pensionCTSliderNetRelevant" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderNetRelevant ps-slider"></div>
+          </div>
+          
+           
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Personal contributions already made this year</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderEmployeeConResult" name="pensionCTSliderEmployeeCon" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderEmployeeCon ps-slider"></div>
+          </div>
+          
+          
+          <div class="ps-slider-holder">
+            <div class="ps-slider-heading">
+              <div class="ps-slider-label">Employer PRSA contributions, if any?</div>
+              <div class="ps-slider-text"><input class="pensionCTSliderEmployerConResult" name="pensionCTSliderEmployerCon" type="number" ></div>
+            </div>
+            <div  class="pensionCTSliderEmployerCon ps-slider"></div>
+          </div>
+          
+          <div class="ps-radio-holder">
+            <div class="ps-radio-half">
+              <div class="radioInputs" style="text-align:left;">
+                <h6>Marginal income tax rate</h6>
+                <span style="margin-left:1em;">
+                  <input type="radio" id="ps-tax-rate-a" name="ps-tax-rate" value="20" checked="">
+                  <label for="ps-tax-rate-a">20%</label>
+                  <input type="radio" id="ps-tax-rate-b" name="ps-tax-rate" value="40">
+                  <label for="ps-tax-rate-b">40%</label>
+                  </span>
+              </div>
+            </div>
+            <div class="ps-radio-half">
+            </div>
+          </div>
+          
+          <a href="javascript:void(0)" class="ps-right ps-btn calcTaxLimit">Calculate</a>
+       
+          <div class="clearer"></div>
+
+          </div>
+          
+          
+          <div class="ps-rev-results" style="display:none;">
+          <a href="javascript:void(0)" class="ps-left ps-btn  ps-btn-small close-results"><i class="fa fa-chevron-circle-left"></i> Return</a>
+          <a href="javascript:void(0)" class="ps-right ps-btn ps-btn-small printpage "><i class="fa fa-print"></i> Print</a>
+            <div class="resultHolder">
+              <table class="inputsTableHolder">
+                <thead>
+                  <tr>
+                    <th colspan="2">Inputs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Age at 31st December in relevant tax year</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderAgeprint"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Personal contributions already made this year</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderEmployeeConResultprint"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Employer PRSA contributions, if any?</td>
+                    <td class="outputTableDiv"><span class="pensionCTSliderEmployerConResultprint"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                  <tr>
+                    <td>Marginal income tax rate</td>
+                    <td class="outputTableDiv"><span class="taxRatePrint"><span class="smallSpinner"> </span></span></td>
+                  </tr>
+                </tbody>
+                </table>
+                <div class="clearer"></div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="2">Results</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <tr class="emphasise">
+                    <td>Max contribution allowed within tax relief limit</td>
+                    <td class="outputTableDiv"><div class="maxContsA results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr class="divider">
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                    <td>Percentage of earnings limit based on age</td>
+                    <td class="outputTableDiv"><div class="results percentlimits"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Max contribution allowed within tax relief limit</td>
+                    <td class="outputTableDiv"><div class="maxContsA results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Max contribution allowed less existing contributions</td>
+                    <td class="outputTableDiv"><div class="maxContsLessExisting results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Existing contributions already made this year</td>
+                    <td class="outputTableDiv"><div id="existingContsA" class="results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Tax relief based on marginal income tax rate</td>
+                    <td class="outputTableDiv"><div id="taxReliefAmt" class="results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Net current cost of contribution</td>
+                    <td class="outputTableDiv"><div id="netCurrentCost" class="results"><span class="smallSpinner"> </span></div></td>
+                  </tr>
+                </tbody>
+                </table>
+                
+          </div>
+          </div>
+          
+          
+          <div class="calcsNotice">
+          
+            <div class="noticePanel"><p>These figures are based on a typical customer and your client should seek professional tax advice as the information given is a guideline only and does not take into account your personal circumstances.</p>
+            <p>If your client pays income tax under self-assessment, they are typically required to file a return and pay the balance of tax outstanding for the relevant tax year at the same time as they are required to pay premliminary tax for the following year. By reducing their tax liability for the relevant tax year your client may also be able to reduce their preliminary income tax for the following tax year by up to the same amount. This could reduce their preliminary income tax and defer this tax payment until their final income tax return for the following tax year.</p>
+            <p>Limits are for tax relief on contributions to PRSAs, RACs and Employee contributions to Occupational Pension Schemes (including AVCs). An earnings cap applies for tax relief purposes to aggregate contributions to PRSAs, RACs, and employee / AVC contributions to occupational pension schemes. For occupational pension schemes the total contribution (employer and employee) must be within overall Revenue maximum contribution levels.</p>
+            <p>Under current legislation the maximum pension fund allowed for tax purposes is €2,000,000. The relevant maximum will apply to the aggregate value of all pension provision held by an individual. Any fund in excess of this amount will be liable to a once-off income tax charge at the 40% rate on retirement.</p>
+            <p>Your client is not guaranteed income tax relief. They will generally get income tax relief up to the limits outlined, but this will depend on their own personal circumstances. If your client is an employee and their personal contributions are taken from their bank account, they can apply to their local Inspector of Taxes to have their tax credits adjusted to reflect their pension contributions. If they are self employed they must include their pension contributions in their self assessment tax returns in order to get income tax relief.</p>
+            <p>This quotation is valid until your client\'s circumstances change.</p>
+            <p>Pension income in retirement is subject to income tax at your highest rate on withdrawal, Universal Social Charge (USC), PRSI (if applicable) and any other charges or levies (tax) applicable at that time.</p>
+            <p>Information is correct as at May 2016.</p>
+            </div>
+            <div class="complybox ">Warning: These figures are estimates only. They are not a reliable guide to the future performance of your investment.</div>
+          </div>
+          ';
+  return $tHTML;
+}
+
+
+function pension_sums_block_view($delta = '') {
+  $block=array(); 
+  switch($delta) {      
+    case 'pension_sums_commission_block':
+    $block['subject'] = t('');
+      $result = commission_content();
+      drupal_add_css(drupal_get_path('module', 'pension_sums') . '/css/pension-sums.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/jquery-ui.slider.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/pension-sums-commission.js');
+      // No content in the last week
+      $block['content'] = $result;
+  break;     
+    case 'pension_sums_rev_max_block':
+    $block['subject'] = t('');
+      $result = rev_max_content();
+      drupal_add_css(drupal_get_path('module', 'pension_sums') . '/css/pension-sums.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/jquery-ui.slider.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/pension-sums.js');
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+    case 'pension_sums_tax_limits_block':
+   $block['subject'] = t('');
+      $result = tax_limits_content();
+      drupal_add_css(drupal_get_path('module', 'pension_sums') . '/css/pension-sums.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/jquery-ui.slider.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/pension-sums.js');
+      // No content in the last week
+      $block['content'] = $result;
+	break;
+  case 'pension_sums_max_lump_sum_block':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = max_lump_sum_content();
+      drupal_add_css(drupal_get_path('module', 'pension_sums') . '/css/pension-sums.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/jquery-ui.slider.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/pension-sums.js');
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'pension_sums_income_gap_block':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = income_gap_content(); drupal_add_css(drupal_get_path('module', 'pension_sums') . '/css/pension-sums.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/jquery-ui.slider.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'pension_sums') .'/js/pension-sums.js');
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  }
+  
+    return $block;
+
+ }

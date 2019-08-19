@@ -1,0 +1,129 @@
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+ul, li{list-style-type: none;}
+#RiskProfileQuestionsResponses h1{
+	border-bottom: 0 !important;
+	padding-bottom:0 !important;}
+#RiskProfileQuestionsResponses{
+	border: 1px solid #E6E6E6;	
+	margin-top: 25px;
+	padding: 20px;
+	min-height:480px;
+
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+
+	background-color: #F4F4F4; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #ececec 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ececec)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#ececec 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#ececec 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#ececec 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#ECECEC',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #ffffff 0%,#ececec 100%); /* W3C */	
+
+    margin-top: 25px !important;
+    padding: 20px;
+}
+p.button {
+    background: url("/uploadedImages/retail/images/button_pointer.gif?150911") no-repeat scroll left top transparent;
+    height: 47px;
+    margin-top: 10px;
+    padding-top: 0;
+	*margin-left: 0px;
+}	
+.callMeBack { 
+	background-position: 0 -188px;
+}
+
+#importantInformation input{	
+    background: url("/uploadedImages/retail/images/button_expander.gif?150911") no-repeat scroll right top transparent;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 1.13em;
+    font-weight: bold;
+    margin-left: 31px;
+	*margin-left: 15px;
+    padding: 14px 14px 17px 0;
+	border:0px;
+	height:47px;}
+#importantInformation input{	
+    cursor: pointer;
+}
+.RiskAttitudeButton{
+	margin:5px;
+    background: url("/uploadedImages/retail/images/form_button_small.gif") no-repeat scroll right top transparent;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 1.13em;
+    font-weight: bold;
+    padding: 0px 0px 5px 0px;
+	border:0px;
+	height:32px;
+	width:104px;}
+.RiskAttitudeButton {
+    cursor: pointer;
+}
+#RiskCallbackButton{
+	margin:5px;
+    background: url("/uploadedImages/retail/images/form_button_callback.gif") no-repeat scroll right top transparent;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 1.13em;
+    font-weight: bold;
+	border:0px;
+	height:32px;
+	width:140px;}
+#risk-profile-questions{
+
+}
+#riskProfileResults{}
+.risk-question-prefix{font-weight:bold;}
+.risk-question-text{margin: 10px;font-weight:bold; font-size:1.1em; color: #000000 !important;}
+.risk-question-alternatives{
+	padding-top:0px;
+	height: 165px;
+	font-size:0.9em}
+.risk-questions{
+	background:	#ffffff;
+	padding: 5px;
+	border: 1px solid #e6e6e6;
+    border-radius: 6px;
+	moz-border-radius: 6px;
+	webkit-border-radius: 6px;}
+.riskDescription{
+	background:	#ffffff;
+	padding: 5px;
+	border: 1px solid #e6e6e6;
+    border-radius: 6px;
+	moz-border-radius: 6px;
+	webkit-border-radius: 6px;}
+.riskImage{float:right; display:inline;}
+.riskTitle{float:left; display:inline; padding-top:30px; padding-bottom:10px; font-weight:bold; font-size:2.2em;}
+.firstRiskblock{width:49%; float:left;}
+.secondRiskblock{width:49%; float:left; padding-top:10px;}
+.secondRiskblock p{margin-right:30px;}
+.riskFooterText{font-size:1em; clear:both; width:98%; padding:10px; }
+.hidden{display:none}
+
+@media print
+{
+body{background-color:#ffffff !important}
+#breadcrumbs{display:none !important}
+.share-this{display:none}
+#headerMainNav{display:none !important}
+#headerSecondNav{display:none !important}
+#callbackSlider{display:none}
+#liveChatNow{display:none}
+#bodyFooter{display:none}
+.breadcrumbs{display:none !important}
+.risk-questions{display:block; padding:none; }
+#risk-profile-questions{display:block}
+.risk-item{display:block}
+.RiskAttitudeButton{display:none !important}
+#RiskProfileQuestionsResponses{background:none !important;background-color:#ffffff !important}
+#riskProfileResults{page-break-before:always}
+}

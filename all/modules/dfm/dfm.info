@@ -1,0 +1,5 @@
+name = "Drupella File Manager"
+description = "Ajax based file manager with drag drop user interface."
+core = "7.x"
+version = "7.x-2.1"
+package = "File manager"

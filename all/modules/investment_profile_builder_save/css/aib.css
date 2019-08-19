@@ -1,0 +1,23 @@
+a.moveBtn {background-color:#00856a;border:1px solid #00856a}
+a.backBtn{    background-color: #fff !important;
+    float: left;
+    border: none !important;
+    padding: 0 !important;
+    margin-left: 3%;
+    color: #333 !important;
+    text-align: left !important;}
+.ilfs-answers-holder label {background-color:#00856a;border-bottom:none}
+a.ilfs-btn {background-color:#00856a;border: 1px solid #00856a;}
+.ilfs-meter-value{    background: -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.0980392) 33%, rgba(0, 0, 0, 0.0980392) 66%, transparent 66%) 0% 0% / 25px 14px, -webkit-linear-gradient(top, rgba(255, 255, 255, 0.247059), rgba(0, 0, 0, 0.2)) 0% 0% / 100% 100%, -webkit-linear-gradient(left, rgb(127, 43, 123), rgb(0, 133, 106)) 0% 0% / 100% 100%;
+	color:#00856a;
+}
+
+
+@media screen 
+  and (max-device-width:667px) {
+  
+  #ilfs-ipb{height:910px;margin-left:-10px}
+  .ilfs-disclaimer-btn {margin:0px;width:88% !important}
+  .ilfs-answers-holder label {width:86%}
+
+}

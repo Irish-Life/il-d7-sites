@@ -1,0 +1,30 @@
+        <div data-role="page" class="welcome" id="welcome">
+            <div data-role="header" class="header" data-theme="irish">
+               <span class="main_menu"></span>
+               
+               Welcome
+            </div>
+            <div class="message">
+                Welcome to  the Irish Life Online <br/> Services app. It allows you to keep up
+                to date with your Irish Life plans while on the move. You need your Online Services ID and password to login for the first time.
+                These are the same access details as the ones you use for the Irish Online Services website.
+            </div>
+            <form id="go_to_login" action="javascript:app.changePageAlt('login.html');">
+                <input type="submit" data-role="none" value="Continue"  class="blue_btn" />
+            </form>
+			 <form id="pinToStart" style="display:none" action="javascript:javascript:app.toggleTileOverlay();">
+                <input type="submit" data-role="none" value="Pin this page to your start screen"  class="blue_btn" />
+            </form>
+			
+        </div>
+		<div id="TileOverlay" onclick="javascript:javascript:app.toggleTileOverlay();" style='background-color: #435399; height: 100%; width: 100%; top: 0px; left: 0px; position: fixed; color: black; visibility: hidden; z-index:2' > 
+                <img src="/secureWeb/uploadedImages/bline/mybiz/img/window.png" width="320" height="320" /> 
+                <div style='margin-top: 40px; color:white'>       
+                    <div style = "margin-left:10%; float:left; width:60%; margin-bottom: 0;">
+                        <p style = "float:right;">Tap here...
+                        Then select <b>'pin to start'<b></p>
+                    </div>
+                    <img style = "float:right; margin-top:15px;" src="/secureWeb/uploadedImages/bline/mybiz/img/white-curved-arrow-md.png" width="80" height="90" /> 
+                </div> 
+		</div>
+

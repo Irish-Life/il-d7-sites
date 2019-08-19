@@ -1,0 +1,136 @@
+@font-face{font-family:'fs_albert_web_extraboldRg';src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot');src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot?#iefix') format('embedded-opentype'),url('https://www.irishlife.ie/sites/all/modules/pension_calc/testing/aspira-heavy.woff') format('woff'),url('fonts/FSAlbertWebExtraBold/aspira-heavy.svg#fs_albert_web_extraboldRg') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webregular';src:url('fonts/FSAlbertWebRegular/aspira-regular.eot');src:url('fonts/FSAlbertWebRegular/aspira-regular.eot?#iefix') format('embedded-opentype'),url('https://www.irishlife.ie/sites/all/modules/pension_calc/testing/aspira-regular.woff') format('woff'),url('fonts/FSAlbertWebRegular/aspira-regular.svg#fs_albert_webregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_web_lightregular';src:url('fonts/FSAlbertWebLight/aspira-light.eot');src:url('fonts/FSAlbertWebLight/aspira-light.eot?#iefix') format('embedded-opentype'),url('https://www.irishlife.ie/sites/all/modules/pension_calc/testing/aspira-light.woff') format('woff'),url('fonts/FSAlbertWebLight/aspira-light.svg#fs_albert_web_lightregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webbold';src:url('fonts/FSAlbertWebBold/aspira-bold.eot');src:url('fonts/FSAlbertWebBold/aspira-bold.eot?#iefix') format('embedded-opentype'),url('https://www.irishlife.ie/sites/all/modules/pension_calc/testing/aspira-bold.woff') format('woff'),url('fonts/FSAlbertWebBold/aspira-bold.svg#fs_albert_webbold') format('svg');font-weight:normal;font-style:normal}
+
+#pensionCalcDiv .irishlife-info {
+
+	display: none !important;
+}
+
+#pensionCalcDiv .aib-info {
+
+	display:inline-block !important;
+}
+#pensionCalcDiv .field-name-field-basic-web-page-warning, #pensionCalcDiv  .field-name-field-financial-ad-warning {
+    margin-top: 1.5em;
+    border: 0.1em solid #000;
+}
+
+#pensionCalcDiv .field-name-field-basic-web-page-warning .field-items {
+    display: block;
+}
+
+#pensionCalcDiv .field-name-field-basic-web-page-warning .field-item, #pensionCalcDiv .field-name-field-financial-ad-warning .field-item {
+    margin: 0;
+    padding: 0.714em;
+    font-family: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: bold;
+    background: none;
+}
+
+#pensionCalcDiv .field-name-field-ilfs-regulatory-line, #pensionCalcDiv .field-name-field-basic-web-page-warning .field-item, 
+#pensionCalcDiv .field-name-field-financial-ad-warning .field-item, 
+#pensionCalcDiv .view-cs-landing-page-breakdown-of-charges li, #pensionCalcDiv .view-fa-landing-page-guides li {
+    line-height: 2em;
+    font-size: 1.1em;
+}
+
+#pensionCalcDiv .pc-pageHeaderInfo h5 {color:#ffffff !important;font-weight:bold;margin-left:5px}
+#pensionCalcDiv .pc-pageHeaderInfo {background-color:#7f2b7b; color:#ffffff !important}
+#pensionCalcDiv .pc-pageHeaderInfo:after {border-color:#7f2b7b transparent}
+
+#pensionCalcDiv .meter-wrap {
+    background-color: rgb(207, 203, 202)  !important;
+}
+
+#pensionCalcDiv .meter-value {
+    background: rgb(6, 130, 106) !important;
+    color: rgb(6, 130, 106) !important;
+}
+
+#pensionCalcDiv .meter-wrap .selected .circleText {
+    color: rgb(6, 130, 106) !important;
+}
+
+#pensionCalcDiv .meter-wrap .circle.selected {
+    background-color: rgb(6, 130, 106) !important;
+    border: 1px solid rgb(6, 130, 106) !important;
+	color:#fff !important;
+}
+
+#pensionCalcDiv .meter-wrap .circle .circleText {
+
+    color: rgb(6, 130, 106) !important;
+}
+
+#pensionCalcDiv .meter-wrap .circle {
+    background-color: rgb(240, 240, 240);
+    border: 1px solid rgb(6, 130, 106);
+}
+#pensionCalcDiv .meter-wrap .circle.selected .circleNum {
+    color: #ffffff !important;
+}
+#pensionCalcDiv .meter-wrap .circle .circleNum {
+    color: rgb(6, 130, 106);
+}
+#pensionCalcDiv .pc-btn {
+    background-color: rgb(6, 130, 106) !important;
+}
+#pensionCalcDiv .pensionCalcHolder input[type=radio]:checked + label {
+    background-color: rgb(6, 130, 106) !important;
+	color:#fff !important;
+}
+
+#pensionCalcDiv .ui-widget-header {
+    border: 1px solid #B7BAC4;
+    background: rgb(6, 130, 106) !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+#pensionCalcDiv .ui-widget-content {
+    background: linear-gradient(to bottom, #d9d7d1 1%,#f4f2f2 100%);
+}
+#pensionCalcDiv .ui-state-default, #pensionCalcDiv .ui-widget-content .ui-state-default, #pensionCalcDiv .ui-widget-header .ui-state-default {
+    background: rgb(6, 130, 106) !important;
+    border: 1px solid rgb(6, 130, 106) !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	font-size:16px !important;
+}
+#pensionCalcDiv .pensionCalcHolder .subText {
+    font-size: 16px !important;
+    color: #333 !important;
+}
+
+#pensionCalcDiv  .pensionCalcHolder input {height:1em !important}
+
+#pensionCalcDiv #pension-app .userValue, #pensionCalcDiv #surpassedAmount, #pensionCalcDiv .pensionCalcTargetSetOutput, #pensionCalcDiv #pensionCalcExpectedTotalOutputFinal {
+    color: rgb(6, 130, 106) !important;
+}
+#pensionCalcDiv .sliderActive{
+color:rgb(6, 130, 106) !important;
+border:1px solid #50C9B5;
+}
+#pensionCalcDiv .pensionCalcHolder label, #pensionCalcDiv .pensionCalcHolder .custom.dropdown label {
+    font-size: 16px !important;
+}
+#pensionCalcDiv h6, #pensionCalcDiv .pc-grid-6 {
+    font-size: 16px !important;
+}
+
+#pensionCalcDiv .pc-options-block  {font-size:16px !important}
+#pensionCalcDiv #infoModal h2{margin:0 10px 10px !important}
+#pensionCalcDiv .pc-options-block i , #pensionCalcDiv .pc-options-block span{color: rgb(6, 130, 106) !important;}
+
+#pensionCalcDiv .pc-btn.medium-btn {
+    padding: 10px 10px !important;
+    font-size: 16px !important;
+}
+
+#pensionCalcDiv .pc-btn-grey {
+    padding: 10px 10px !important;
+    font-size: 16px !important;
+}
+#pensionCalcDiv .pc-options-block h4 {margin:1em !important;font-size:16px !important}

@@ -1,0 +1,1903 @@
+<?php
+function investment_profile_builder_save_permission() {
+  return array(
+    'administer_investment_profile_builder_save' => array(
+      'title' => t('Administer Investor Profiler'),
+      'description' => t('Perform administration tasks for Investor Profiler.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * @file
+ * A block module that displays the Attitude To Risk calculator Results for PDF printing and saving.
+ */
+
+function investment_profile_builder_save_admin()
+{
+ 
+  
+$form['investment_profile_builder_save_intro']=array(
+	'#type' => 'textarea',
+	'#title' => t('Intro text'),
+	'#default_value' => variable_get('investment_profile_builder_save_intro',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+      <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+      <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+      <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+      <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+      <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+      <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+     </ul>'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 8,
+	'#cols' => 60,
+	'#description' => t("Add compliance reqts here for the start of the screen"),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_disclaimer']=array(
+	'#type' => 'textarea',
+	'#title' => t('Results disclaimer text'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_disclaimer',
+    '<h4>Important to note</h4>
+      <ul>
+      <li>The risk result is not a specific recommendation for you and is not advice only guidance on an investment option </li>
+      <li>This risk result can be no more than a useful general guide to which asset classes might be suitable for you (as part of an overall portfolio approach to investment).</li>
+      <li>The asset class mixes are based on an investor with a time horizon  7- 10 years for making a once-off investment</li>
+      <li>Irish Life provides a wide range of funds, offering access to a variety of asset classes, for all types of investor risk profile</li>
+      <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+      <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options</li>
+      </ul>'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 8,
+	'#cols' => 60,
+	'#description' => t("Add compliance reqts here for the results page"),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_1']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 1'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_1',
+    'investments/new-to-investing/1-safety-first-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 1."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_2']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 2'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_2',
+    'investments/new-to-investing/2-careful-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 2."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_3']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 3'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_3',
+    'investments/new-to-investing/3-conservative-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 3."),
+	'#required' => TRUE,	
+	);
+  
+  
+$form['investment_profile_builder_save_result_rating_url_4']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 4'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_4',
+    'investments/new-to-investing/4-balanced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 4."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_5']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 5'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_5',
+    'investments/new-to-investing/5-experienced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 5."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_6']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 6'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_6',
+    'investments/new-to-investing/6-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 6."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_7']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 7'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_7',
+    'investments/new-to-investing/7-very-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 60,
+	'#size' => 60,
+	'#description' => t("Add the results url here for result 7."),
+	'#required' => TRUE,	
+	);
+  
+  
+$form['investment_profile_builder_save_result_maps_url_2']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAPS URL 2'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_maps_url_2',
+    'investments/irish-life-maps/funds/multi-asset-portfolio-fund-2'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 80,
+	'#size' => 60,
+	'#description' => t("Add the MAPS url here for MAPS 2."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_maps_url_3']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAPS URL 3'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_maps_url_3',
+    'investments/irish-life-maps/funds/multi-asset-portfolio-fund-3'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 80,
+	'#size' => 60,
+	'#description' => t("Add the MAPS url here for MAPS 3."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_maps_url_4']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAPS URL 4'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_maps_url_4',
+    'investments/irish-life-maps/funds/multi-asset-portfolio-fund-4'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 80,
+	'#size' => 60,
+	'#description' => t("Add the MAPS url here for MAPS 4."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_maps_url_5']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAPS URL 5'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_maps_url_5',
+    'investments/irish-life-maps/funds/multi-asset-portfolio-fund-5'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 80,
+	'#size' => 60,
+	'#description' => t("Add the MAPS url here for MAPS 3."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_maps_url_6']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAPS URL 6'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_maps_url_6',
+    'investments/irish-life-maps/funds/multi-asset-portfolio-fund-6'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 80,
+	'#size' => 60,
+	'#description' => t("Add the MAPS url here for MAPS 6."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_pdf_footer']=array(
+	'#type' => 'textarea',
+	'#title' => t('Footer text for pdf'),
+	'#default_value' => variable_get('investment_profile_builder_save_pdf_footer',
+    'Irish Life Financial Services ltd. is regulated by the Central Bank of Ireland. Irish Life Assurance plc. is regulated by the Central Bank of Ireland.<br/>
+Irish Life Financial Services ltd and Irish Life Assurance plc Registered Office - Lower Abbey Street, PO Box 129, Freepost, Dublin 1. <br/>
+Irish Life Financial Services Registered Number 489221. Irish Life Assurance plc Registered Number 152576.'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 5,
+	'#cols' => 30,
+	'#description' => t("Footer text for pdf"),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_pdf_img']=array(
+	'#type' => 'textfield',
+	'#title' => t('PDF Logo Image'),
+	'#default_value' => variable_get('investment_profile_builder_save_pdf_img',
+    '/sites/retail/files/75-logo-illustrator.png'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 30,
+	'#description' => t("PDF Logo Image"),
+	'#required' => TRUE,	
+	);
+  
+		return system_settings_form($form);
+  }
+
+function getChannelInUse()
+{
+	$currentPage =  $_GET['q'];
+	$currentPage = drupal_get_path_alias($currentPage);
+	$channel = '';
+	if (strpos($currentPage,'/aib') !== false)
+	{
+		$channel = 'aib';
+	}
+	else if (strpos($currentPage,'/kbc') !== false)
+	{
+		$channel = 'kbc';
+	}
+	else if (strpos($currentPage,'/ptsb') !== false)
+	{
+		$channel = 'ptsb';
+	}
+	else if (strpos($currentPage,'/canada-life') !== false)
+	{
+		$channel = 'canada';
+	}
+	else if (strpos($currentPage,'/ub') !== false)
+	{
+		$channel = 'ub';
+	}
+	else if (strpos($currentPage,'bline') !== false)
+	{
+		$channel = 'bline';
+	}
+	else if (strpos($currentPage,'/maps') !== false)
+	{
+		$channel = 'maps';
+	}
+	else if (strpos($currentPage,'/broker') !== false)
+	{
+		$channel = 'broker';
+	}
+	return $channel;
+}
+  
+  
+function getResultURL()
+{
+
+	return variable_get('investor_profile_'.getChannelInUse().'_result_url');
+
+}
+
+function getMidPointText()
+{
+
+	return variable_get('investor_profile_'.getChannelInUse().'_midpoint');
+
+}
+
+
+
+function getIntroText()
+{
+	return variable_get('investor_profile_'.getChannelInUse().'_intro');
+}
+  
+ function getBaseURL() {
+
+  // Get the base url
+  
+  $base_url = strtolower($GLOBALS['base_url']);
+  $base_host = '';
+  $hostname = strtolower($_SERVER['SERVER_NAME']);
+  $port = strtolower($_SERVER['SERVER_PORT']);  
+  
+	$base_host_p = explode(':', gethostname() );//parse_url($base_url);  
+  $base_host_url = str_replace("http://",'',$base_url);
+  $base_host_url = str_replace("https://",'',$base_host_url);
+	$base_host_url = explode('/', $base_host_url );
+  
+  //**localhost **
+  // $base_url = http://localhost/retail-websites
+  // $hostname = localhost
+  // gethostname() = DHX32835
+  // $base_host_url[0] = localhost 
+  
+  
+  //**serv5098:8080 **
+  // $base_url = http://serv5098:8080
+  // $hostname =  serv5098
+  // gethostname() = SERV5098
+  // $base_host_url[0] = serv5098:8080
+  
+  //**irishlife.ie **
+  // $base_url = https://www.irishlife.ie
+  // $hostname = serv3422
+  // gethostname() = serv3422
+  // $base_host_url[0] = ???www.irishlife.ie
+  
+   
+  $base_host = str_replace('https://', 'http://', $base_url);
+  
+  $base_host = str_replace($base_host_url[0], strtolower(gethostname()).':'.$port, $base_host);
+  
+  
+  return $base_host;
+  
+  
+ }
+ function questionsURL(){
+  
+  $url = 'http://192.168.3.22:7005/servlet/getRiskQuestionnaire.do?json=Y';
+  
+  $data = array();
+  $full_url = url($url, array('query' => $data));
+  // call URL and get data
+  $tempQ = drupal_http_request($full_url);
+  // get the JSON
+  $tempQ =  $tempQ->data;
+  // clean the JSON
+  $tempQ = trim(preg_replace('/\s+/', ' ', $tempQ));
+  $tempQ = preg_replace('~[\r\n]+~', '', $tempQ);
+  // Questions sorted
+  $questionData = json_encode($tempQ);
+  
+  
+  return $questionData;
+  }
+function _investor_profile_app_public_js() {
+
+  $qURL = questionsURL();
+  // get the questions from the admin screen variables and clean them up
+  // then add them to the js being created
+  $base_url = $GLOBALS['base_url'];
+  
+  
+  // get the result urls from the admin screen variables and clean them up
+  // then add them to the js being created
+  $temp = trim(preg_replace('/\s+/', ' ', getResultURL()));
+  $temp = preg_replace('~[\r\n]+~', '', $temp);
+  $temp = json_encode($temp);
+  $resultURLs = $temp;
+  
+  
+
+	//########################################
+	// html object to hold layout
+  // Add the default CSS file 
+  
+  $css = "var stylesheet = document.createElement('link');";
+	$css .= "stylesheet.href = '".$base_url."/sites/all/modules/investment_profile_builder_save/css/investment-profile-external.css';";
+	$css .= "stylesheet.rel = 'stylesheet';";
+	$css .= "stylesheet.type = 'text/css';";
+	$css .= "document.getElementsByTagName('head')[0].appendChild(stylesheet);";
+  
+  // clean up the variable data to remove newlines
+  $temp = trim(preg_replace('/\s+/', ' ', getIntroText()));
+  $temp = preg_replace('~[\r\n]+~', '', $temp);
+  $disclaimerTXT = preg_replace('~[\r\n]+~', '', $temp);
+  
+	$js = 'var questionJson = '.$qURL.';';
+	$js .= 'var resultURLJson = '.$resultURLs.';';
+  $js .= "var js = document.createElement('script');";
+	$js .= "js.type = 'text/javascript';";
+	$js .= "js.src = '".$base_url."/sites/all/modules/investment_profile_builder_save/js/life-ipb.js';";
+	$js .= "document.getElementById('ilfs-js-add').appendChild(js);";
+  
+  
+  $progressindicator = '<div class=\"ilfs-meter-wrap\" ><span class=\"ilfs-circleholder\"></span><div class=\"ilfs-meter-value\" style=\"width: 0%;\"><div class=\"ilfs-meter-text\"></div></div></div>';
+  $middleHTML = getMidPointText();
+  $middleNextBtn = "<a href='javascript:void(0);' class='ilfs-middle-btn ilfs-btn'>Continue</a>";
+    
+  $question = "<div class='ilfs-question-holder'></div>";
+  $answers = "<div class='ilfs-answers-holder'></div>";
+  $error = "<div class='ilfs-answers-error' style='display:none;'>Please answer the question to progress</div>";
+  $nextBtn = "<a href='javascript:void(0);' class='ilfs-next-btn ilfs-btn'>Next</a>";
+  
+  
+  $tHTML =  '<div id=\"ilfs-bg-holder\" style=\"display:none;\">';
+  $tHTML .= '<div class=\"ilfs-bg-words\" style=\"display:none;\" >';
+  $tHTML .= '<div class=\"ilfs-investment-profile-holder\"  >';
+  $tHTML .=   '<div class=\"ilfs-speech-bubble-1 tossing\" style=\"display:none;\"><img src=\"https://www.irishlife.ie/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble.png\"></div> ';
+  $tHTML .=   '<div class=\"ilfs-speech-bubble-2 tossing\" style=\"display:none;\"><img src=\"https://www.irishlife.ie/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-2.png\"></div> ';
+  $tHTML .=   '<div class=\"ilfs-speech-bubble-3 tossing\" style=\"display:none;\"><img src=\"https://www.irishlife.ie/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-3.png\"></div> ';
+  $tHTML .=   '<div class=\"ilfs-speech-bubble-4 tossing\" style=\"display:none;\"><img src=\"https://www.irishlife.ie/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-4.png\"></div> ';
+  $tHTML .=   '<a href=\"javascript:void(0);\" class=\"ilfs-btn ilfs-start-btn\" >Get Started</a>';
+  $tHTML .=   '<div class=\"ilfs-disclaimer-holder\" style=\"display:none;\">'.$disclaimerTXT.'';
+  $tHTML .=   '<a href=\"javascript:void(0);\" class=\"ilfs-btn ilfs-disclaimer-btn\" >OK</a></div>';
+  $tHTML .=   '<div class=\"ilfs-questions-holder\" style=\"display:none;\">'.$progressindicator.''.$question.''.$answers.''.$error.''.$nextBtn.'</div>';
+  $tHTML .=   '<div class=\"ilfs-middle-holder\" style=\"display:none;\"><div class=\"ilfs-middle-text\">'.$middleHTML.''.$middleNextBtn.'</div></div>';
+  $tHTML .=   '<div class=\"ilfs-middle-spinner\" style=\"display:none;\"><div class=\'ilfs-answers-loading\' >Please wait while we quickly load results.</div></div>';
+  $tHTML .=   '<div class=\"clearer\"></div>';
+  $tHTML .= '</div></div></div>';
+  $tHTML .=  '<div id=\"ilfs-js-add\"></div>';
+  
+   
+  // add matches to $matches  
+  $matches ='$("#ilfs-ipb").html("'.$tHTML.'");';
+ 
+  // return for JS
+  //drupal_json_output($matches);
+  investor_profile_app_public_output($matches.''.$css.''.$js);
+  //investor_profile_app_public_output($questionData);
+}
+  
+function investor_profile_app_public_output($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'application/javascript');
+
+  if (isset($var)) {
+   // echo drupal_json_encode($var);
+    echo $var;
+  }
+}
+
+function investment_profile_bline_admin()
+{
+
+$form['investment_profile_builder_save_result_rating_url_1_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 1'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_1_bline',
+    'bline/investments/new-to-investing/1-safety-first-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 1."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_2_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 2'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_2_bline',
+    'bline/investments/new-to-investing/2-careful-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 2."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_3_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 3'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_3_bline',
+    'bline/investments/new-to-investing/3-conservative-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 3."),
+	'#required' => TRUE,	
+	);
+  
+  
+$form['investment_profile_builder_save_result_rating_url_4_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 4'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_4_bline',
+    'bline/investments/new-to-investing/4-balanced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 4."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_5_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 5'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_5_bline',
+    'bline/investments/new-to-investing/5-experienced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 5."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_6_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 6'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_6_bline',
+    'bline/investments/new-to-investing/6-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 6."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_7_bline']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 7'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_7_bline',
+    'bline/investments/new-to-investing/7-very-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 7."),
+	'#required' => TRUE,	
+	);
+  
+  $form['investment_profile_builder_save_intro_bline']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investment_profile_builder_save_intro_bline',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>The attached tool is made available to you as a broker, as one suggested set of questions which may help in profiling a risk-attitude.</li>
+    <li>There is no single perfect method for this and it can never substitute for a detailed individual comprehensive fact-find which would review and assess all aspects of a prospective client\'s financial situation and needs.</li>
+    <li>It should not be relied on as the main basis (or the only basis) for any investment or retirement planning advice which you give to a client. </li>
+    <li>The general results offered by the tool are not intended to constitute investment advice or recommendations regarding investment or retirement planning.</li>
+    <li>They assist with assessing attitude to risk, which is only one aspect of overall financial advice. This tool is general in nature and is not intended to represent financial advice.</li>   
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_bline_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_bline_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+$form['investment_profile_builder_save_result_disclaimer_bline']=array(
+	'#type' => 'textarea',
+	'#title' => t('Results disclaimer text'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_disclaimer_bline',
+    '<h4>Important to note</h4>
+      <ul>
+      <li>The risk result is not a specific recommendation for you and is not advice only guidance on an investment option </li>
+      <li>This risk result can be no more than a useful general guide to which asset classes might be suitable for you (as part of an overall portfolio approach to investment).</li>
+      <li>The asset class mixes are based on an investor with a time horizon  7- 10 years for making a once-off investment</li>
+      <li>Irish Life provides a wide range of funds, offering access to a variety of asset classes, for all types of investor risk profile</li>
+      <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+      <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options</li>
+      </ul>'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 8,
+	'#cols' => 60,
+	'#description' => t("Add compliance reqts here for the results page"),
+	'#required' => TRUE,	
+	);
+  
+		return system_settings_form($form);
+}
+
+
+  
+function investment_profile_kbc_admin()
+{
+
+ $form['investor_profile_kbc_url']=array(
+    '#type' => 'textfield',
+    '#title' => t('Application URL'),
+    '#default_value' => variable_get('investor_profile_kbc_url',
+    'investments/js-investor-profile-public/kbc'
+    ),
+    '#resizable' => FALSE,
+    '#size' => 100,
+    '#description' => t("Specify the url to be used - this is the javascript url"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_kbc_result_url']=array(
+    '#type' => 'textarea',
+    '#title' => t('All Result URLs in JSON'),
+    '#default_value' => variable_get('investor_profile_kbc_result_url',
+    ' 
+    [
+         {
+            "urls":[
+               {
+                  "id":"1",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/1-safety-first-investor"
+               },
+               {
+                  "id":"2",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/2-careful-investor"
+               },
+               {
+                  "id":"3",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/3-conservative-investor"
+               },
+               {
+                  "id":"4",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/4-balanced-investor"
+               },
+               {
+                  "id":"5",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/5-experienced-investor"
+               },
+               {
+                  "id":"6",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/6-adventurous-investor"
+               },
+               {
+                  "id":"7",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/7-very-adventurous-investor"
+               }
+            ]
+         }
+      ]
+
+    '
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 5,
+    '#cols' => 60,
+    '#description' => t("All Result URLs in JSON - forward users to these addresses"),
+    '#required' => TRUE,	
+  );
+
+
+  $form['investor_profile_kbc_intro']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investor_profile_kbc_intro',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+    <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+    <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+    <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+    <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+    <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+    <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_kbc_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_kbc_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+
+  
+		return system_settings_form($form);
+  }
+  
+  function investment_profile_ptsb_admin()
+{
+
+ $form['investor_profile_ptsb_url']=array(
+    '#type' => 'textfield',
+    '#title' => t('Application URL'),
+    '#default_value' => variable_get('investor_profile_ptsb_url',
+    'investments/js-investor-profile-public/ptsb'
+    ),
+    '#resizable' => FALSE,
+    '#size' => 100,
+    '#description' => t("Specify the url to be used - this is the javascript url"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_ptsb_result_url']=array(
+    '#type' => 'textarea',
+    '#title' => t('All Result URLs in JSON'),
+    '#default_value' => variable_get('investor_profile_ptsb_result_url',
+    ' 
+    [
+         {
+            "urls":[
+               {
+                  "id":"1",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/1-safety-first-investor"
+               },
+               {
+                  "id":"2",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/2-careful-investor"
+               },
+               {
+                  "id":"3",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/3-conservative-investor"
+               },
+               {
+                  "id":"4",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/4-balanced-investor"
+               },
+               {
+                  "id":"5",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/5-experienced-investor"
+               },
+               {
+                  "id":"6",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/6-adventurous-investor"
+               },
+               {
+                  "id":"7",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/7-very-adventurous-investor"
+               }
+            ]
+         }
+      ]
+
+    '
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 5,
+    '#cols' => 60,
+    '#description' => t("All Result URLs in JSON - forward users to these addresses"),
+    '#required' => TRUE,	
+  );
+
+
+  $form['investor_profile_ptsb_intro']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investor_profile_ptsb_intro',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+    <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+    <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+    <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+    <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+    <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+    <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_ptsb_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_ptsb_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+
+  
+		return system_settings_form($form);
+  }
+
+ /*
+  Added for UB
+  */
+function investment_profile_ub_admin()
+{
+
+  $form['investment_profile_builder_save_result_rating_url_1_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 1'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_1_ub',
+    'bline/investments/new-to-investing/1-safety-first-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 1."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_2_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 2'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_2_ub',
+    'bline/investments/new-to-investing/2-careful-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 2."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_3_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 3'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_3_ub',
+    'bline/investments/new-to-investing/3-conservative-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 3."),
+	'#required' => TRUE,	
+	);
+  
+  
+$form['investment_profile_builder_save_result_rating_url_4_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 4'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_4_ub',
+    'bline/investments/new-to-investing/4-balanced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 4."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_5_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 5'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_5_ub',
+    'bline/investments/new-to-investing/5-experienced-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 5."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_6_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 6'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_6_ub',
+    'bline/investments/new-to-investing/6-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 6."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_7_ub']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 7'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_7_ub',
+    'bline/investments/new-to-investing/7-very-adventurous-investor'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 80,
+	'#description' => t("Add the results url here for result 7."),
+	'#required' => TRUE,	
+	);
+
+
+  $form['investment_profile_builder_save_intro_ub']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investment_profile_builder_save_intro_ub',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+    <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+    <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+    <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+    <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+    <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+    <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_ub_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_ub_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+
+  
+		return system_settings_form($form);
+}
+
+/*
+  Added for AIB
+  */
+function investment_profile_aib_admin()
+{
+
+  $form['investment_profile_builder_save_result_rating_url_1_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 1'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_1_aib',
+    'investments/new-to-investing/1-safety-first-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 1."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_2_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 2'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_2_aib',
+    'investments/new-to-investing/2-careful-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 2."),
+	'#required' => TRUE,	
+	);
+  
+$form['investment_profile_builder_save_result_rating_url_3_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 3'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_3_aib',
+    'investments/new-to-investing/3-conservative-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 3."),
+	'#required' => TRUE,	
+	);
+  
+  
+$form['investment_profile_builder_save_result_rating_url_4_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 4'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_4_aib',
+    'investments/new-to-investing/4-balanced-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 4."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_5_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 5'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_5_aib',
+    'investments/new-to-investing/5-experienced-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 5."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_6_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 6'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_6_aib',
+    'investments/new-to-investing/6-adventurous-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 6."),
+	'#required' => TRUE,	
+	);
+$form['investment_profile_builder_save_result_rating_url_7_aib']=array(
+	'#type' => 'textfield',
+	'#title' => t('Results Rating URL 7'),
+	'#default_value' => variable_get('investment_profile_builder_save_result_rating_url_7_aib',
+    'investments/new-to-investing/7-very-adventurous-investor/aib'
+  ),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 100,
+	'#description' => t("Add the results url here for result 7."),
+	'#required' => TRUE,	
+	);
+
+
+  $form['investment_profile_builder_save_intro_aib']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investment_profile_builder_save_intro_aib',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+    <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+    <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+    <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+    <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+    <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+    <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_aib_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_aib_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+
+  
+		return system_settings_form($form);
+  }
+
+function investment_profile_aib_admin_js()
+{
+ $form['investor_profile_aib_url']=array(
+    '#type' => 'textfield',
+    '#title' => t('Application URL'),
+    '#default_value' => variable_get('investor_profile_aib_url',
+    'investments/js-investor-profile-public/aib'
+    ),
+    '#resizable' => FALSE,
+    '#size' => 100,
+    '#description' => t("Specify the url to be used - this is the javascript url"),
+    '#required' => TRUE,	
+  );
+  
+  $form['investor_profile_aib_result_url']=array(
+    '#type' => 'textarea',
+    '#title' => t('All Result URLs in JSON'),
+    '#default_value' => variable_get('investor_profile_aib_result_url',
+    ' 
+    [
+         {
+            "urls":[
+               {
+                  "id":"1",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/1-safety-first-investor"
+               },
+               {
+                  "id":"2",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/2-careful-investor"
+               },
+               {
+                  "id":"3",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/3-conservative-investor"
+               },
+               {
+                  "id":"4",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/4-balanced-investor"
+               },
+               {
+                  "id":"5",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/5-experienced-investor"
+               },
+               {
+                  "id":"6",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/6-adventurous-investor"
+               },
+               {
+                  "id":"7",
+                  "url": "https://www.irishlife.ie/investments/new-to-investing/7-very-adventurous-investor"
+               }
+            ]
+         }
+      ]
+
+    '
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 5,
+    '#cols' => 60,
+    '#description' => t("All Result URLs in JSON - forward users to these addresses"),
+    '#required' => TRUE,	
+  );
+
+
+  $form['investor_profile_aib_intro']=array(
+    '#type' => 'textarea',
+    '#title' => t('Intro text'),
+    '#default_value' => variable_get('investor_profile_aib_intro',
+    '<strong>Please read this important information before you answer the questions</strong><ul><li>It may help you decide the level of risk you are willing to accept before investing, saving or taking out a pension</li>
+    <li>Everyone can have a different attitude to risking their money at different times in their lives.</li>
+    <li>This questionnaire only measures your willingness to take risk; it does not take your ability to take risk into account. </li>
+    <li>The general results offered by the application are designed for an investor of any time horizon however Irish Life will recommend investing in a product for a period of more than 5 years</li>
+    <li>The result does not constitute investment advice or recommendations regarding investment or retirement planning for you</li>
+    <li>Before you invest you should meet a Financial Advisor who will do a detailed fact-find which would look at all aspects of your financial situation and needs.</li>
+    <li>Please contact your Financial Advisor if you wish to get more information on your financial planning options.</li>
+    </ul>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 8,
+    '#cols' => 60,
+    '#description' => t("Add compliance reqts here for the start of the screen"),
+    '#required' => TRUE,	
+  );
+
+  $form['investor_profile_aib_midpoint']=array(
+    '#type' => 'textarea',
+    '#title' => t('Midpoint text'),
+    '#default_value' => variable_get('investor_profile_aib_midpoint',
+    '<h2>Keep Going</h2><p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section</p>'
+    ),
+    '#resizable' => FALSE,
+    '#rows' => 3,
+    '#cols' => 60,
+    '#description' => t("Text for the middle point of the questions"),
+    '#required' => TRUE,	
+  );
+
+  
+		return system_settings_form($form);
+}
+ 
+  
+function investment_profile_builder_save_menu() {
+  $items = array();
+ // Add a new URL 
+ // This is for channels and the result will output a JS file that 
+ // they can import and will display the questionnaire on their 
+ // site.
+
+ $items[variable_get('investor_profile_kbc_url','investments/js-investor-profile-public/kbc')] = array(
+    'page callback' => '_investor_profile_app_public_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
+  $items[variable_get('investor_profile_ptsb_url','investments/js-investor-profile-public/ptsb')] = array(
+    'page callback' => '_investor_profile_app_public_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+  $items[variable_get('investor_profile_aib_url','investments/js-investor-profile-public/aib')] = array(
+    'page callback' => '_investor_profile_app_public_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+  
+   $items['admin/content/investor-profile-builder/questions'] = array(
+    'title' => 'Investor Profile',
+    'description' => 'Questions and answers for the Investor Profile Builder',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_builder_save_admin'),    
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+   $items['admin/content/investor-profile-builder/questions/kbc'] = array(
+    'title' => 'KBC',
+    'description' => 'KBC Version of the Investor profile',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_kbc_admin'),
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK
+     );
+   $items['admin/content/investor-profile-builder/questions/ptsb'] = array(
+    'title' => 'PTSB',
+    'description' => 'PTSB Version of the Investor profile',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_ptsb_admin'),
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK
+     );
+
+   //ub menu
+	$items['admin/content/investor-profile-builder/questions/ub'] = array(
+    'title' => 'Ulster Bank',
+    'description' => 'Ulster Bank Version of the Investor profile',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_ub_admin'),
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK
+     );
+	 	 
+   $items['admin/content/investor-profile-builder/questions/aib'] = array(
+    'title' => 'AIB',
+    'description' => 'AIB Version of the Investor profile',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_aib_admin'),
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK
+     );
+
+   $items['admin/content/investor-profile-builder/questions/bline'] = array(
+    'title' => 'bline',
+    'description' => 'bline Version of the Investor profile',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('investment_profile_bline_admin'),
+	'access arguments' => array('administer_investment_profile_builder_save'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK
+     );
+
+   
+  $items['investments/investor-profile-builder/pdf'] = array(
+    'title' => 'Generate PDF for Investment Profile Builder',
+    'page callback' => 'investment_profile_builder_save_page',
+     'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+function investment_profile_builder_save_page() { 
+	$base_url = $GLOBALS['base_url'];
+  $q1 =  $_GET['z'];
+  $q2 =  $_GET['x'];
+  $q3 =  $_GET['c'];
+  $q4 =  $_GET['v'];
+  $q5 =  $_GET['b'];
+  $q6 =  $_GET['n'];
+  $q7 =  $_GET['m'];
+  $q8 =  $_GET['a'];
+  $q9 =  $_GET['s'];
+  $q10 =  $_GET['d'];
+  $q11 =  $_GET['f'];
+  $q12 =  $_GET['g'];
+  $q13 =  $_GET['h'];
+  $q14 =  $_GET['j'];
+  $q15 =  $_GET['k'];
+  $uriData =  array($q1,$q2,$q3,$q4,$q5,$q6,$q7,$q8,$q9,$q10,$q11,$q12,$q13,$q14,$q15);
+  
+  
+  $questions = array();
+  //GC - get the questions from the variable!!!!
+  
+  $jsQuestions = questionsURL();
+  
+  $tempjsQ  = $jsQuestions;
+  $tempjsQ  = stripslashes( $tempjsQ );
+  
+  
+  //$questions = variable_get('investment_profile_builder_save_question_all',''); // old data
+  $questions = trim($tempjsQ,'"');
+  
+  $questionsb  = json_decode($questions);
+   
+  
+  $core = $questionsb[0]->questions;
+  
+  
+  $answers = $questionsb[0]->questions[0]->answers[0]->a;
+  
+ 
+			$questionList = array();
+				
+				//questionsArr[index] = questionList;
+        
+        
+   $len = count($core);
+  //print $len;
+      $htmlQuestions .=  $header."<div class='result-question-holder'>";  
+   for($i=0; $i< $len; $i++){
+				$questionList['id'] = $core[$i]->id;
+				$questionList['question'] = $core[$i]->question;
+				$questionList['answers'] = $core[$i]->answers;
+        
+        $htmlQuestions .= "<p><strong>Q".$core[$i]->id.'</strong>. '.$core[$i]->question.'</p>';
+      $htmlQuestions .= "<ul>";  
+        
+     
+        
+        if($uriData[$i] == '1'){
+          $htmlQuestions .= "<li class='selected'> <strong>a) ".$core[$i]->answers[0]->a.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{        
+          $htmlQuestions .= "<li>a) ".$core[$i]->answers[0]->a.'</li>';
+        }
+        
+        if($uriData[$i] == '2'){
+          $htmlQuestions .= "<li class='selected'><strong>b) ".$core[$i]->answers[0]->b.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{        
+          $htmlQuestions .= "<li>b) ".$core[$i]->answers[0]->b.'</li>';
+        }
+        
+        
+        if($uriData[$i] == '3'){
+          $htmlQuestions .= "<li class='selected'><strong>c) ".$core[$i]->answers[0]->c.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{        
+          $htmlQuestions .= "<li>c) ".$core[$i]->answers[0]->c.'</li>';
+        }
+        
+        
+        if($uriData[$i] == '4'){
+          $htmlQuestions .= "<li class='selected'><strong>d) ".$core[$i]->answers[0]->d.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{        
+		if(count($core[$i]->answers[0]->d) && strlen($core[$i]->answers[0]->d) > 0){
+          $htmlQuestions .= "<li>d) ".$core[$i]->answers[0]->d.'</li>';
+		  }
+        }
+        
+        
+        if($uriData[$i] == '5' && count($core[$i]->answers[0]->e)){
+          $htmlQuestions .= "<li class='selected'><strong>e) ".$core[$i]->answers[0]->e.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{    
+          if(count($core[$i]->answers[0]->e)){
+            $htmlQuestions .= "<li>e) ".$core[$i]->answers[0]->e.'</li>';
+          }
+        }
+		
+		if($uriData[$i] == '6' && count($core[$i]->answers[0]->f)){
+          $htmlQuestions .= "<li class='selected'><strong>f) ".$core[$i]->answers[0]->f.'</strong>&nbsp;&#x2713;</li>';
+        }
+        else{    
+          if(count($core[$i]->answers[0]->f)){
+            $htmlQuestions .= "<li>f) ".$core[$i]->answers[0]->f.'</li>';
+          }
+        }
+		
+          $htmlQuestions .= '</ul><hr/>';
+        
+  }
+ 
+
+          $htmlQuestions .= '</div>';
+  // get the node number of the current page
+  $time = date("dmy_his", time());
+
+  $htmlPre = "<div style='border:1px solid #ddd;background-color:#efefef;padding:0px 10px;radius:3px;'><h3>Answers</h3><p>These are the questions and answers you supplied.</p></div>";
+  //  $htmlPre = "<div style='border:1px solid #ddd;background-color:#efefef;padding:0px 10px;radius:3px;'><h3>Answers</h3><p>These are the questions and answers you supplied.</p></div>";
+  
+  $htmlPost = variable_get('investment_profile_builder_save_result_disclaimer');
+  
+  
+  $html = $htmlPre.''.$htmlQuestions.$htmlPost;
+  
+  
+  $html = utf8_encode($html);
+
+  //echo  $htmlQuestions;
+
+  pdf_using_mpdf_api($html, 'your-investment-profile-'.$time);
+  $mpdf->WriteHTML($questions);
+  
+  
+}
+
+/**
+* PDF STUFF
+**/
+ 
+function pdf_using_mpdf_library_exist() {
+  $tools = array();
+
+  // Search for mpdf tool first.
+  $pattern = '/^mpdf.php$/';
+
+  // Libraries module to detect mPDF library in case of multisite installation.
+  $tools = array_keys(file_scan_directory(libraries_get_path('mpdf'), $pattern));
+
+  // mPDF library looked for in the module directory itself.
+  $tools = array_merge($tools, array_keys(file_scan_directory(drupal_get_path('module', 'pdf_using_mpdf'), $pattern)));
+
+  if (isset($tools[0])) {
+    require_once $tools[0];
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function pdf_using_mpdf_api($html, $pdf_using_mpdf_pdf_filename = NULL) {
+
+  if (pdf_using_mpdf_library_exist() == TRUE) {
+    if ($pdf_using_mpdf_pdf_filename === NULL) {
+      $filename = explode(variable_get('pdf_using_mpdf_pdf_filename'), '[site:name]');
+      $pdf_using_mpdf_pdf_filename = token_replace($filename[0]);
+    }
+    _pdf_using_mpdf_generator($html, $pdf_using_mpdf_pdf_filename);
+  }
+  else {
+    drupal_set_message(t('No mPDF Library Found in "sites/all/libraries" or "!default_module_path". Please download PHP mPDF PDF generation tool from <a href="http://www.mpdf1.com/">mPDF1.com</a>', array(
+          '!default_module_path' => drupal_get_path('module', 'investment_profile_builder_save'),
+        )), 'warning');
+  }
+}
+
+
+function _pdf_using_mpdf_generator($html, $filename = NULL) {
+  //$base_host = $hostname.':'.$port;
+  $stylesheet = 'investment-profile-results.css'; // use this stylesheet for the page
+  
+  // The settings for the PDF
+  $creator = "Irish Life Financial Services ltd";
+  $author ="Irish Life Financial Services ltd";
+  $title = "Print PDF of your Answers";
+  $subject = "Irish Life - Investment Profile Builder" ;
+  
+  /**
+  * The HTML starts here. Add a Header and a Footer
+  **/
+  
+  // Enabling header option if available.
+  $header = '<img src="'.getBaseURL().'/'.variable_get('investment_profile_builder_save_pdf_img').'" height="60"/>';
+  // Enabling Footer option if available.
+  $footer = "<div class='footer'>".variable_get('investment_profile_builder_save_pdf_footer')."</div>";
+  
+  
+  ini_set('Display_errors', 'On');
+  error_reporting(E_ALL);
+
+  //$root_path = drupal_get_path('module', 'pdf_using_mpdf');
+  $module_path = drupal_get_path('module', 'investment_profile_builder_save');
+  global $theme_path;
+
+  $page = 'A4';
+  $font_size = '10';
+
+  // DEFAULT PDF margin Values.
+  $margin_top = 30;
+  $margin_right = 15;
+  $margin_bottom = 16;
+  $margin_left = 15;
+  $margin_header = 10;
+  $margin_footer = 9;
+  
+  //*****************************************
+  //*****************************************
+  //*****************************************
+  //*****************************************
+  // Creating Instance of mPDF Class Library.
+  $mpdf = new mPDF(
+    '',
+    array(210, 297), //size
+    $font_size,
+    $font_style,
+    $margin_left,
+    $margin_right,
+    $margin_top,
+    $margin_bottom,
+    $margin_header,
+    $margin_footer
+  );
+  
+  $mpdf->setAutoTopMargin = 'stretch';
+  $mpdf->setAutoBottomMargin = 'stretch';
+  $mpdf->showImageErrors = true;
+  $mpdf->ignore_invalid_utf8 = true;
+  // set document DPI
+  $mpdf->dpi = (int) variable_get('pdf_using_mpdf_dpi', 96);
+
+  // Set image DPI
+  $mpdf->img_dpi = (int) variable_get('pdf_using_mpdf_img_dpi', 96);
+  $mpdf->SetTitle($title);
+  $mpdf->SetAuthor($author);
+  $mpdf->SetSubject($subject);
+  $mpdf->SetCreator($creator);
+  
+  // Setting CSS stylesheet to PDF.
+  //$stylesheet = variable_get('css/investment-profile-results.css');
+  $stylesheet_content = NULL;
+  if (isset($stylesheet) && $stylesheet != NULL) {
+    $css_file_module = file_scan_directory($module_path, '/.*\.css$/');
+    // Check module directory
+    if (isset($css_file_module[$module_path . '/css/' . $stylesheet])) {
+      $stylesheet_content = file_get_contents($module_path . '/css/' . $stylesheet);
+      $mpdf->WriteHTML($stylesheet_content, 1);
+    }
+  }
+  
+  $mpdf->SetHTMLHeader($header);
+  
+  
+  $mpdf->SetHTMLFooter($footer);
+
+
+
+  
+  
+  
+  
+  $htmlPre = "<pagebreak /><div style='border:1px solid #ddd;background-color:#efefef;padding:0px 10px;radius:3px;'><h3>Results</h3><p>Based on the answers you supplied here is the result.</p></div>";
+  
+  // get the webpage with the results text and add it to the pdf
+  // use the result number as the variable in the 
+
+    // the result passed in via url
+    $score =  $_GET['re'];
+
+	$htmlFromPage = getExtraInfo($score);
+  // Writing html content for pdf buffer.
+  $htmlFromPage = preg_replace("/<\\/?a(\\s+.*?>|>)/", "", $htmlFromPage);
+  $mpdf->WriteHTML("<div class='mPDF-ilfs'>".$html.$htmlPre.$htmlFromPage.'</div>');
+  
+  // Generating PDF File.
+  switch(variable_get('pdf_using_mpdf_pdf_save_option')) {
+    case 1:
+      // Dialog box for Download as PDF.
+      $mpdf->Output($filename . '.pdf', 'D');
+      exit;
+      break;
+    case 2:
+      $folder = pdf_using_mpdf_get_folder();
+      if (is_dir(drupal_realpath($folder)) ) {
+        if (!pdf_using_mpdf_is_writable(drupal_realpath($folder))) { die('not writtable');
+          if (drupal_rmdir($folder)) {
+            drupal_mkdir($folder);
+            drupal_chmod($folder, 0777);
+          }
+          else {
+            drupal_set_message(t("Please ensure that public folder is writable."));
+            exit;
+          }
+        }
+      } else {
+        if (pdf_using_mpdf_is_writable(drupal_realpath(file_build_uri('public://')))) {
+          drupal_mkdir($folder);
+          drupal_chmod($folder, 0777);
+        }
+        else {
+          drupal_set_message(t("Please ensure that public folder is writable."));
+          exit;
+        }
+      }
+      // Save to server 'Public file system path'.
+      $path = $folder . '/' . $filename . '.pdf';
+      $mpdf->Output($path , 'F');
+      drupal_goto($_SERVER['HTTP_REFERER']);
+      exit;
+      break;
+    case 0:
+    default:
+      // Open in same browser.
+      $mpdf->Output($filename . '.pdf', 'I'); 
+      exit;
+      break;
+  }
+  
+  return TRUE;
+}
+
+/*
+
+Get the appropriate pages for a specific investor profile type
+ - investor profile page
+ - map fund page
+
+*/
+function getNodes($score)
+{
+	$nodes =  array(2);
+	$investorTypePage;
+	$investorTypePagePath;
+	$mapFundPage;
+	$mapFundPagePath;
+	
+if($score == '1'){      
+    
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_1');
+    //drupal_get_normal_path('investments/new-to-investing/1-safety-first-investor');	
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_2');
+    }
+    if($score == '2'){      
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_2');
+		//$investorTypePage= drupal_get_normal_path('investments/new-to-investing/2-careful-investor');
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_2');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-2');
+    }
+    else  if($score == '3'){      
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_3');
+		//$investorTypePage = drupal_get_normal_path('investments/new-to-investing/3-conservative-investor');
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_3');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-3');
+    }
+    else  if($score == '4'){      
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_4');
+		//$investorTypePage = drupal_get_normal_path('investments/new-to-investing/4-balanced-investor');
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_4');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-4');
+    }
+    else  if($score == '5'){     
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_5'); 
+		//$investorTypePage = drupal_get_normal_path('investments/new-to-investing/5-experienced-investor');
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_5');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-5');
+    }
+    else  if($score == '6'){    
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_6');  
+		//$investorTypePage = drupal_get_normal_path('investments/new-to-investing/6-adventurous-investor');
+		$mapFundPage= variable_get('investment_profile_builder_save_result_maps_url_6');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-6');
+    }
+    
+    else  if($score == '7'){      
+		$investorTypePage = variable_get('investment_profile_builder_save_result_rating_url_7');
+		//$investorTypePage = drupal_get_normal_path('investments/new-to-investing/7-very-adventurous-investor');
+		$mapFundPage = variable_get('investment_profile_builder_save_result_maps_url_6');
+		//$mapFundPage = drupal_get_normal_path('investments/irish-life-maps/funds/multi-asset-portfolio-fund-6');
+    }
+	
+		$investorTypePagePath = drupal_get_normal_path($investorTypePage);
+		$mapFundPagePath = drupal_get_normal_path($mapFundPage);
+    return array($investorTypePagePath,$mapFundPagePath);
+}
+
+/*
+Get the html content once we have the node id
+*/
+function getHTMLContent($nodeAlias)
+{
+	$htmlFromPage = '';
+	$idCheck = explode('/', $nodeAlias);
+    $nid = (int)$idCheck[1];
+    if (is_nan($nid) ){
+      
+        $htmlFromPage = $errorText;
+    }
+    else 
+    { 
+      if ($nid > 10){
+        $node = node_load($nid );
+        $node_view = node_view($node);
+        $node_view['links']['#access'] = FALSE;
+        $rendered_node = drupal_render($node_view);
+        $htmlFromPage = $rendered_node;
+        }
+        else{
+          $htmlFromPage = $errorText;
+        }
+    }
+	
+	return $htmlFromPage;
+}
+
+
+function getExtraInfo($score)
+{	
+
+	$base_url = strtolower($GLOBALS['base_url']);
+  $base_host = '';
+  $hostname = strtolower($_SERVER['SERVER_NAME']);
+  $port = strtolower($_SERVER['SERVER_PORT']);    
+	$base_host_p = explode(':', gethostname() );//parse_url($base_url);  
+  $base_host_url = str_replace("http://",'',$base_url);
+  $base_host_url = str_replace("https://",'',$base_host_url);
+	$base_host_url = explode('/', $base_host_url );
+  $base_host = str_replace('https://', 'http://', $base_url);
+  $base_host = str_replace($base_host_url[0], strtolower(gethostname()).':'.$port, $base_host);
+  
+  
+	//get the nodes
+	$nodes = getNodes($score);
+	//get the html content
+	//append
+	//return
+	$errorText = "<center><h2>**Sorry there is an issue outputting your results**</h2></center>";
+	$htmlFromPage = $htmlFromPage.getHTMLContent($nodes[0]);
+	
+	if (($nodes) > 1)
+	{
+		$htmlFromPage = $htmlFromPage.getHTMLContent($nodes[1]);
+	}
+	$htmlFromPage = str_replace($GLOBALS['base_url'], "", $htmlFromPage);
+	$htmlFromPage = str_replace("/sites/retail/files", $base_host."/sites/retail/files", $htmlFromPage);
+  //$htmlFromPage = preg_replace("/<img[^>]+\>/i", "", $htmlFromPage); 
+	return $htmlFromPage;
+}
+
+
+/**
+ *  ##Hook##Hook##Hook##Hook##Hook##Hook##Hook##Hook##
+	Implementation of hook_block_info().
+	Change the word Hook to the name of your module
+ 
+ */
+ 
+function investment_profile_builder_save_block_info() {
+  $blocks['investment_profile_builder_save'] = array(
+    'info' => t('Investment Profile Builder Block'),
+  );
+ $blocks['investment_profile_results'] = array(
+   'info' => t('Investment Profile Builder Results'),
+   'status' => 1,
+ );
+  return $blocks;
+}
+
+function investment_profile_builder_save_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#investment_profile_builder_save":
+      return '<p>' . t("Displays the investment profile builder.") . '</p>';
+      break;
+    case "admin/help#investment_profile_results":
+      return '<p>' . t("Displays the investment profile builder.") . '</p>';
+      break;
+  }
+}
+
+function investment_profile_builder_results_contents(){
+  
+$channel = getChannelInUse();
+if ($channel != '')
+{
+	$channel  = '_'.$channel;
+}
+  
+  $base_url = $GLOBALS['base_url'];
+	$tHTML .= '<div class="irishlife-atrc-results-holder">';
+	$tHTML .= '<span class="downloadPDF" style="display:none;"><h2>Download Your Results</h2><p>Thanks for completing the questions on the Investment Profile page. To get a full list of the questions and your answers you can download and save the PDF for future reference.</p></span>';
+  $tHTML .= '<div class="field-name-field-product-landing-link" >';
+  $tHTML .= '<a href="javascript:void(0)" class="downloadPDF" style="display:none;"><i class="fa fa-download"></i>&nbsp;Download PDF</a>';
+  $tHTML .= '</div><a href="javascript:void(0);" class="goBackPage">or Start Again</a>';
+  $tHTML .= '<span class="findOutHolder" style="display:none;"><h2>What Type Of Investor Are You?</h2><p>Understand what type of investor you are with our Investment Profile Builder. <a href="javascript:void(0)" class="findOutBtn" ><i class="fa fa-line-chart"></i>&nbsp;Find Out</a></p></span>';
+  $tHTML .= '<div class="clearer"></div></div>';
+  $tHTML .= variable_get('investment_profile_builder_save_result_disclaimer'.$channel);
+  
+	return $tHTML;
+}
+
+
+
+function investment_profile_builder_save_contents(){
+
+$channel = getChannelInUse();
+if ($channel != '')
+{
+	$channel  = '_'.$channel;
+}
+
+$base_url = $GLOBALS['base_url'];
+	$tHTML =  '<div id="irishlife-atrc-holder">';
+	$tHTML .= '  <div class="bulb-brain bulb-brain-img-full" style="display:none;">';
+	$tHTML .= '    <div id="irishlife-atrc-questions"></div>';
+	$tHTML .= '    <div id="irishlife-atrc-disclaimer" style="display:none;"><span class="irishlife-atrc-disclaimer-txt">'.variable_get('investment_profile_builder_save_intro'.$channel).'</span><div class="close"><a href="javascript:void(0);" class="getStartedOK">OK</a></div></div>';
+	$tHTML .= '    <div class=\'brain-words\' style="display:none;" >';
+	$tHTML .= '  </div>';
+	$tHTML .= '    <div class=\'speech-bubble-1\'  style="display:none;" ><img src="'.$base_url.'/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-2.png"/></div>';
+	$tHTML .= '    <div class=\'speech-bubble-2\' style="display:none;"  ><img src="'.$base_url.'/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble.png"/></div>';
+	$tHTML .= '    <div class=\'speech-bubble-3\'  style="display:none;" ><img src="'.$base_url.'/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-4.png"/></div>';
+	$tHTML .= '    <div class=\'speech-bubble-4\'  style="display:none;" ><img src="'.$base_url.'/sites/all/modules/investment_profile_builder_save/img/brain-speech-bubble-3.png"/></div>';
+	$tHTML .= '    <div class=\'brain-btn-start\' style="display:none;"  >';
+	$tHTML .= '      <a href="javascript:void(0);" class="moveBtn getStarted">Get Started</a>';
+	$tHTML .= '    </div>';
+	$tHTML .= '  <div class="clearer"></div>';
+	$tHTML .= '  <div class="container-12 middle-results" style="display:none;"><div class="grid-6" style="margin-top:368px;">	<h2>Keep Going</h2>	<p>Good work, you\'ve completed more than 50% of the Investor Profile Builder. To get the results complete the remaining section.</p></div><div class="grid-6 div-middleNextBtn">	<p><a href="javascript:void(0)" style="margin-left:50px;margin-right:50px;" class="middleNextBtn moveBtn">Complete <i class="fa fa-arrow-circle-o-right"></i></a></p></div></div>';
+	$tHTML .= '</div>';
+  
+	return $tHTML;
+}
+
+/**
+ *  Implementation of hook_block_view().
+	Change the word Hook to the name of your module
+	When this is called the value $delta is 
+ 
+ */
+function investment_profile_builder_save_block_view($delta = '') {
+
+  $block = array();
+  
+$base_url = $GLOBALS['base_url'];
+  switch($delta) {
+    case 'investment_profile_builder_save':
+    $block['subject'] = t('');
+    
+
+    if (user_access('access content')) {
+    
+  
+  
+      // Use our custom function to retrieve data
+      $result = investment_profile_builder_save_contents();
+      //## renderable array
+      $block['content'] = $result;
+
+      $js = questionsURL();
+      
+      
+      drupal_add_css(drupal_get_path('module', 'investment_profile_builder_save') . '/css/investment-profile-builder.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'investment_profile_builder_save') .'/js/investment-profile-builder.js');
+	  $channel=getChannelInUse();
+	  if ($channel != '')
+	  {
+		$channel = '_'.$channel;
+	  }
+	  drupal_add_js(
+    array(
+          'investment_profile_builder_save' => array(
+          'baseurl' => $base_url,
+          'ratingurl_1' => variable_get('investment_profile_builder_save_result_rating_url_1'.$channel),
+          'ratingurl_2' => variable_get('investment_profile_builder_save_result_rating_url_2'.$channel),
+          'ratingurl_3' => variable_get('investment_profile_builder_save_result_rating_url_3'.$channel),
+          'ratingurl_4' => variable_get('investment_profile_builder_save_result_rating_url_4'.$channel),
+          'ratingurl_5' => variable_get('investment_profile_builder_save_result_rating_url_5'.$channel),
+          'ratingurl_6' => variable_get('investment_profile_builder_save_result_rating_url_6'.$channel),
+          'ratingurl_7' => variable_get('investment_profile_builder_save_result_rating_url_7'.$channel),
+          'question_data' => $js
+          
+          //'question_data' => variable_get('investment_profile_builder_save_question_all')       
+          ),
+        ),
+        'setting'
+      );
+      
+
+    }
+    break;
+    case 'investment_profile_results':
+      
+      $block['subject'] = t('');
+      
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      //## renderable array
+      $source =  $_GET['source'];
+      
+      // Check that the user has been directed from the end of the questionaire
+      // by checking if the source is in the URL
+      
+      if ($source=="ipb"){
+      // we now know that the user has come from the questionaire. 
+      // Double check that they have completed the questionaire
+        $result = investment_profile_builder_results_contents();
+        $block['content'] = $result;
+
+        
+        drupal_add_css(drupal_get_path('module', 'investment_profile_builder_save') . '/css/investment-profile-results.css', array('group' => CSS_DEFAULT));
+        drupal_add_js(drupal_get_path('module', 'investment_profile_builder_save') .'/js/investment-profile-results.js');
+      
+        drupal_add_js(
+        array(
+              'investment_profile_results' => array(
+              'baseurl' => $base_url
+              ),
+            ),
+            'setting'
+          );
+	  
+      }else{
+      
+        $block['content'] = "";
+      }
+	  
+
+    }
+    
+      break;
+      
+      
+  }
+    return $block;
+ }

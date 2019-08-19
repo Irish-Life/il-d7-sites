@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>Iframe</title>
+<style>
+
+.embed-container { position: relative; height: 0; max-width: 100%; -webkit-overflow-scrolling:touch;overflow:auto;} 
+.embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+@media only screen and (max-width: 775px) {
+.embed-container {padding-bottom: 2200px; }
+}
+
+@media only screen and (max-width: 325px) {
+.embed-container {padding-bottom: 2280px; }
+}
+
+@media only screen and (min-width: 776px) {
+.embed-container {padding-bottom: 1400px; }
+}
+
+</style>
+</head>
+<body>
+<div class='embed-container'><iframe frameborder=0 scrolling=no src='https://www.irishlife.ie/pensions/pension-calculator/ub'>your browser doesn't support iframes</iframe></div>
+</body>
+</html>

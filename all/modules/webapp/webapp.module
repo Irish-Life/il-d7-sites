@@ -1,0 +1,360 @@
+<?php
+/**
+ * @file
+ * takes care of meta tag and passes configuration to javascript
+ */
+
+/**
+ * Implements hook_html_head_alter().
+ */
+function webapp_html_head_alter(&$head_elements) {
+  global $base_url;
+  $cache_token = webapp_get_cache_token();
+  $device_name = getDevice();
+  if (variable_get('webapp_amwac')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'apple-mobile-web-app-capable',
+        'content' => 'yes',
+      ),
+    );
+  }
+  if (variable_get('webapp_amwac')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'mobile-web-app-capable',
+        'content' => 'yes',
+      ),
+    );
+  }
+
+  if (variable_get('webapp_viewport') && variable_get('webapp_viewport_content')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'viewport',
+        'content' => variable_get('webapp_viewport_content'),
+      ),
+    );
+  }
+
+  if (variable_get('webapp_status_bar_style_content')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'apple-mobile-web-app-status-bar-style',
+        'content' => variable_get('webapp_status_bar_style_content'),
+      ),
+    );
+  }
+
+  if (variable_get('webapp_tel')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'format-detection',
+        'content' => 'telephone=no',
+      ),
+    );
+  }
+  if (variable_get('webapp_title') && variable_get('webapp_title_content')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'apple-mobile-web-app-title',
+        'content' => token_replace(variable_get('webapp_title_content')),
+      ),
+    );
+  }
+  if (variable_get('webapp_icon')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon',
+        'href' => $base_url . '/' . variable_get('webapp_icon_content', 'sites/default/files/webapp/') . 'AppIcon60x60.png' . '?' . $cache_token,
+      ),
+    );
+  }
+  if (variable_get('webapp_icon')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon',
+        'sizes' => '76x76',
+        'href' => $base_url . '/' . variable_get('webapp_icon_content', 'sites/default/files/webapp/') . 'AppIcon76x76.png' . '?' . $cache_token,
+      ),
+    );
+  }
+  if (variable_get('webapp_icon')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon',
+        'sizes' => '120x120',
+        'href' => $base_url . '/' . variable_get('webapp_icon_content', 'sites/default/files/webapp/') . 'AppIcon60x60@2x.png' . '?' . $cache_token,
+      ),
+    );
+  }
+  if (variable_get('webapp_icon')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon',
+        'sizes' => '152x152',
+        'href' => $base_url . '/' . variable_get('webapp_icon_content', 'sites/default/files/webapp/') . 'AppIcon76x76@2x.png' . '?' . $cache_token,
+      ),
+    );
+  }
+  if (variable_get('webapp_icon')) {
+    $head_elements[] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'shortcut icon',
+        'sizes' => '196x196',
+        'href' => $base_url . '/' . variable_get('webapp_icon_content', 'sites/default/files/webapp/') . 'AndroidChromeApplication196x196.png' . '?' . $cache_token,
+      ),
+    );
+  }
+  if (variable_get('webapp_startup')) {
+
+    $webapp_js_options = array(
+      'startup_root' => variable_get('webapp_startup_content'),
+      'cache_token' => webapp_get_cache_token(),
+	  'device_name' => getDevice()
+    );
+
+    drupal_add_js('WEBAPP_STARTUP = ' . json_encode($webapp_js_options) . ';', array(
+        'type' => 'inline',
+        'group' => JS_LIBRARY,
+        'every_page' => TRUE,
+        'weight' => -26,
+      ));
+
+    drupal_add_js($base_url . '/' . drupal_get_path('module', 'webapp') . '/js/startup_image.js', array(
+          'file' => TRUE,
+          'group' => JS_LIBRARY,
+          'every_page' => TRUE,
+          'weight' => -25,
+        ));
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function webapp_menu() {
+  $items = array();
+  // Dont use t() in title or description!
+  $items['admin/config/content/webapp'] = array(
+    'title' => 'WebApp',
+    'description' => 'Configuration for webapp module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('webapp_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Generates an cache token which to append it to the asset urls (e.g. AndroidChromeApplication196x196.png?1234).
+ * @return int
+ *   Returns the caching token (current timestamp).
+ */
+function webapp_get_cache_token() {
+  $webapp_cache = cache_get('webapp:cache_token');
+
+  if ($webapp_cache) {
+    $cache_token = $webapp_cache->data;
+  } else {
+    $cache_token = time();
+    cache_set('webapp:cache_token', $cache_token);
+  }
+
+  return $cache_token;
+}
+
+/**
+ * Configuration form of the webapp module.
+ * @see webapp_menu
+ */
+function webapp_form($form, &$form_state) {
+  $form['webapp_remotes'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Prevent <b>external</b> links in standalone web apps opening Mobile Safari'),
+    '#description' => t('External means different Domain - internal links will always be catched.'),
+    '#default_value' => variable_get('webapp_remotes'),
+  );
+
+  $form['webapp_amwac'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Add <b>apple-mobile-web-app-capable</b> meta tag'),
+    '#description' => t('Inserts <b>@tag</b> into <b>@head</b><br />Runs web application in full-screen mode when enabled (iOS 2.1+) Setting is also required for iOS Startup Screens and Android Chrome Homescreen App', array('@tag' => '<meta name="apple-mobile-web-app-capable" content="yes">', '@head' => '<head>')),
+    '#default_value' => variable_get('webapp_amwac'),
+  );
+  $form['webapp_viewport'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Add viewport meta tag'),
+    '#description' => t('Inserts <b>&lt;meta name="viewport" content="[up-to-you]"&gt;</b> into <b>&lt;head&gt;</b><br/>Can be customized when enabled'),
+    '#default_value' => variable_get('webapp_viewport'),
+  );
+
+  if (variable_get('webapp_viewport')) {
+    $form['webapp_viewport_content'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Viewport meta tag content'),
+      '#description' => t('Example: <b>width=device-width, initial-scale=1.0, user-scalable=no</b><br/><a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html" target="_blank">Documentation</a>'),
+      '#default_value' => variable_get('webapp_viewport_content'),
+    );
+  }
+
+  $form['webapp_status_bar_style_content'] = array(
+    '#type' => 'select',
+    '#options' => array(
+      'default' => t('Default'),
+      'black' => t('Black'),
+      'black-translucent' => t('Black translucent'),
+    ),
+    '#title' => t('Select a status bar style.'),
+    '#description' => t('If set to default or black, the web content is displayed below the status bar. If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar.'),
+    '#default_value' => variable_get('webapp_status_bar_style_content', 'default'),
+  );
+
+  $add2home_descr = t('Requires <a href="http://cubiq.org/add-to-home-screen" target="_blank">this library</a> to be installed in <i>sites/all/libraries/add-to-homescreen</i>');
+
+  if (variable_get('webapp_add2home')) {
+    $warning = array();
+    foreach (array('sites/all/libraries/add-to-homescreen/src/add2home.js', 'sites/all/libraries/add-to-homescreen/style/add2home.css') as $fn) {
+      if (!file_exists($fn)) {
+        $warning[] = t('<b>@fn</b> was not found', array('@fn' => $fn));
+      }
+    }
+    if (!variable_get('webapp_amwac')) {
+      $warning[] = t('It is recommended to enable the <b>@tag</b> meta tag (see library documentation).', array('@tag' => 'apple-mobile-web-app-capable'));
+    }
+    if (!empty($warning)) {
+      $add2home_descr .= '<div class="messages warning">' . implode('<br />', $warning) . '</div>';
+    }
+  }
+
+  $form['webapp_add2home'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display "Add to Home screen" box'),
+    '#description' => $add2home_descr,
+    '#default_value' => variable_get('webapp_add2home'),
+  );
+
+  $form['webapp_tel'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable phone number detection'),
+    '#description' => t('Inserts <b>@tag</b> into <b>@head</b><br />Detection is on by default (iOS 1.0+)', array('@tag' => '<meta name="format-detection" content="telephone=no">', '@head' => '<head>')),
+    '#default_value' => variable_get('webapp_tel'),
+  );
+
+  $form['webapp_tap'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable tap highlighting'),
+    '#description' => t('sets <b>tap-highlight-color</b> to transparent (iOS 1.1.1+)'),
+    '#default_value' => variable_get('webapp_tap'),
+  );
+
+  $form['webapp_title'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Homescreen app title'),
+    '#description' => t('Application names on the home screen are limited to a maximum of 12 characters.<br/>Title of the app can be customized when enabled (works only for iOS version >6.0'),
+    '#default_value' => variable_get('webapp_title'),
+  );
+  if (variable_get('webapp_title')) {
+    $form['webapp_title_content'] = array(
+      '#type' => 'textfield',
+      '#size' => 12,
+      '#title' => t('Title of the application'),
+      '#description' => t('This field supports tokens.'),
+      '#default_value' => variable_get('webapp_title_content'),
+    );
+  }
+
+  $form['webapp_icon'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Deliver App Icons'),
+    '#description' => t('you may use this <a href="http://www.pixelresort.com/blog/new-app-icon-template/" target="_blank">template</a> to get the needed sizes<br />files have to be under /sites/default/files/webapp/<br /><em>AppIcon60x60.png - 60x60 px</em><br /><em>AppIcon76x76.png - 76x76 px</em><br /><em>AppIcon60x60@2x.png - 120x120 px</em><br /><em>AppIcon76x76@2x.png - 152x152 px</em><br /><em>AndroidChromeApplication196x196.png - 196x196 px</em>'),
+    '#default_value' => variable_get('webapp_icon'),
+  );
+  if (variable_get('webapp_icon')) {
+    $form['webapp_icon_content'] = array(
+      '#type' => 'textfield',
+      '#title' => t('URL of the Files'),
+      '#default_value' => variable_get('webapp_icon_content', '/sites/default/files/webapp/'),
+    );
+  }
+
+  $form['webapp_startup'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Dispay Startup Images'),
+    '#description' => t('put the files from the modules/webapp/demoimages folder under /sites/default/files/webapp/ or define your custom path!<br /><br /><em>startup-iphone-portrait.png - 320x460 px</em><br /><em>startup-iphone-portrait@2x.png - 640x920 px</em><br /><em>startup-iphone5-portrait@2x.png - 640x1096 px</em><br /><em>startup-ipad-landscape.png - 1024x748 px</em><br /><em>startup-ipad-landscape@2x.png - 2048x1496 px</em><br /><em>startup-ipad-portrait.png - 768x1004 px</em><br /><em>startup-ipad-portrait@2x.png - 1536x2008 px</em>'),
+    '#default_value' => variable_get('webapp_startup'),
+  );
+
+  if (variable_get('webapp_startup')) {
+    $form['webapp_startup_content'] = array(
+      '#type' => 'textfield',
+      '#title' => t('URL of the Files'),
+      '#default_value' => $base_url.'/sites/default/files/webapp/',
+    );
+  }
+
+  return system_settings_form($form);
+}
+
+function getDevice()
+{
+	//Detect special conditions devices
+$iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+$iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+$webOS   = stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+
+//do something with this information
+if( $iPod || $iPhone){
+    return 'iphone';
+}else if ($iPad){
+    return 'ipad';
+}
+else
+{
+    return $_SERVER['HTTP_USER_AGENT'];
+}
+}
+
+/**
+ * Implements hook_init().
+ */
+function webapp_init() {
+  $js = array(
+    'webapp' => array(
+      'remotes' => (bool) variable_get('webapp_remotes', FALSE),
+    ),
+  );
+  drupal_add_js($js, 'setting');
+  if (variable_get('webapp_add2home')) {
+    drupal_add_js('sites/all/libraries/add-to-homescreen/src/add2home.js', 'file');
+    drupal_add_css('sites/all/libraries/add-to-homescreen/style/add2home.css', 'file');
+  }
+  if (variable_get('webapp_tap')) {
+    drupal_add_css('* {-webkit-tap-highlight-color: rgba(0,0,0,0);}', 'inline');
+  }
+}

@@ -1,0 +1,4 @@
+name = "Process Steps Widget"
+description = "Widget to implement process steps for pages and calculators"
+core = "7.x"
+package = "Irish Life"

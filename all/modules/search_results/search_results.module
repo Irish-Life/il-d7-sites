@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * A block module that displays the search results.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function search_results_block_info() {
+  $blocks['search_results'] = array(
+    'info' => t('Search Results Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function search_results_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#search_results":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function search_results_contents(){
+  return '<div style="WIDTH: 100%" id="cse">Searching ...</div><script src="https://www.google.com/jsapi" type="text/javascript"><!--
+
+//--></script><!--
+
+//--><script type="text/javascript" src="sites/all/modules/search_results/search_results.js"><!--
+//--></script>';
+}
+
+
+/*<script>
+(function ($) {
+  $(document).foundation();
+})(jQuery);
+
+</script>*/
+function search_results_block_view($delta = '') {
+  switch($delta) {
+    case 'search_results':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = search_results_contents();
+      // No content in the last week
+      $block['content'] = $result;
+    }
+    return $block;
+  }
+ }

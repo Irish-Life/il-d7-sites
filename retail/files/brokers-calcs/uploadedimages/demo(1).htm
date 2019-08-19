@@ -1,0 +1,49 @@
+<html>
+
+<head>
+
+	<title>Paperless demo</title>
+
+	<script type="text/javascript">
+		
+		function load()
+		{
+			obj=document.getElementsByTagName('object');
+			for (var i=0; i<obj.length; ++i)
+				obj[i].outerHTML=obj[i].outerHTML;
+		}
+	</script>
+
+	<style type="text/css">
+		
+		body{font-family: arial; text-align: center;}
+		h3{color: #aaa; }
+		#object{text-align: center; border: 1px solid #999;  }
+	</style>
+	
+
+</head>
+
+
+<body onload="load();" >
+
+	<div id="objectDiv">
+		<span id="objectSpan" >
+			<OBJECT id="object" CLASSID="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+				WIDTH="950" HEIGHT="566" CODEBASE="http://active.macromedia.com/flash5/cabs/swflash.cab#version=7,0,0,0">
+				<PARAM NAME=movie VALUE="demo.swf">
+				<PARAM NAME=play VALUE=true>
+				<PARAM NAME=loop VALUE=false>
+				<PARAM NAME=wmode VALUE=transparent>
+				<PARAM NAME=quality VALUE=high>
+				<EMBED id="eobject" SRC="demo.swf" WIDTH=950 HEIGHT=566 quality=high loop=false wmode=transparent TYPE="application/x-shockwave-flash" 
+				PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+				</EMBED>
+			</OBJECT>
+		</span>
+	</div>
+
+
+</body>
+
+</html>

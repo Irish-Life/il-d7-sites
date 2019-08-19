@@ -1,0 +1,568 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+/* ==========================================================================
+GLOBAL STUFF
+========================================================================== */
+
+body {
+  	font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #555;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+    color: #675C53;
+}
+
+h1 {
+	font-size: 35px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	color: #675C53;
+	font-family: 'Lato', sans-serif;
+}
+
+
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #867e7e;
+    padding: 0;
+}
+
+
+a {
+    color: #1abc9c;
+    word-wrap: break-word;
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+label {display: block;
+     margin-top: 20px;}
+
+input { width: 80%;
+    padding: 10px;
+	    background-color: #f2f2f2;
+    border: 1px solid rgba(80, 201, 181, 0.75);}
+	
+	
+	
+/* ==========================================================================
+HEADER STUFF
+========================================================================== */
+
+.header-top {
+  display: block;
+  overflow: hidden;
+  padding: 25px;
+  
+}
+
+
+/*
+  — Nav Stuff —
+*/
+
+.navbar-left {
+    float: left !important;
+    border-bottom: 2px dashed white;
+    width: 50%;
+}
+
+.main-nav {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+.main-nav 
+.container {
+  width: 100%
+}
+
+.navbar-brand {
+  margin-bottom: 20px;
+  position: relative;
+  width: 297px;
+}
+
+.navbar-brand img {
+  position: absolute;
+  margin-left: 65px;
+}
+
+.navbar-right {
+  /* background-color: #aacae6; */
+  /* padding:0 95px 0 0; */
+  /* padding:0 95px 0 0; */
+  opacity: .9
+}
+
+.navbar-right li a {
+  padding: 35px 21px;
+  font-size: 22px;
+  color: #5659a0;
+  text-transform: uppercase;
+  font-family: 'Lato', 'sans-serif';
+  font-weight: 300;
+}
+
+.navbar-right li a:hover, 
+.navbar-right li a:focus,  
+.navbar-right .active a {
+  background-color: #fff;
+  color: #50c9b5;
+}
+
+.navbar-inverse {
+    background-color: #aacae6;
+	height:20px;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	    font-size: 19px;
+    padding-right: 50px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	text-decoration: underline;
+}
+
+.articleNav  li a {
+    padding: 35px 18px;
+    font-size: 15px;
+    color: #5659a0;
+    text-transform: uppercase;
+    font-family: 'Lato', 'sans-serif';
+    font-weight: 300;
+	float: right;
+}
+
+#zone-menu {width: 100%;
+            text-align: center;
+            margin: 0 auto;
+			z-index: 999;}
+
+.navigation {background-color: #5261ac;
+             margin-left: 0;
+             width: 100%; }
+			 
+.navigation ul {
+	margin-bottom: -1px;
+}			 
+
+.navigation li:first-child a {
+    display: inline-block;
+    text-indent: -2999px;
+    border-left: 0;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+  background-image:    url("https://www.irishlife.ie/sites/all/themes/irishlife/home.png");
+}
+
+.links li {
+           display: inline;
+           padding-left: 0;
+           color: white;
+          }
+
+.navigation a { display: inline-block;
+                color: #fff;
+                font-size: 15px;
+                text-decoration: none;
+                padding: 11px 2.143em;
+                border-left: 0;
+                }
+
+.navigation a:hover {
+  background-color: #50c9b5;
+text-decoration: none;}
+
+#button {
+    background-color: rgb(80, 201, 181);
+    color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.188235) 2px 2px 3px;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(69, 162, 147) !important;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 10px;
+    /* margin: 10px 7px; */
+    float: right;
+    margin-top: 32px;}
+
+/* Header */
+.header {
+  background: white;
+}
+
+.header-inner {
+  display: table;
+  height: 90px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 980px;
+}
+
+.logo, .user-nav {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.logo img {
+  max-height: 60px;
+}
+
+
+/*
+  — Menu Stuff —
+*/
+
+.fixed-menu {
+  background-color: #1B7B98;
+  position: fixed;
+  top: 0;
+}
+
+.fixed-menu .navbar-right {
+  padding: 0;
+}
+
+
+.fixed-menu .navbar-right li a {
+  font-size: 18px;
+  padding: 20px 25px;
+  text-shadow:inherit;
+}
+
+.fixed-menu .navbar-brand {
+  height: 60px;
+  margin-top: 0;
+  padding: 0;
+  margin-bottom: 0;
+  width: 125px;
+}
+
+.fixed-menu .navbar-brand img {
+  height:60px;
+  top: 0;
+}
+
+.fixed-menu .header-top {
+  display: none;
+}
+
+/*
+  — Slider Area —
+*/
+
+.ww {
+	padding-top: 70px;
+	padding-bottom: 25px;
+	background-image: url("images/cliffs.jpg");
+	background-size: cover;
+}
+
+#slideText {
+	margin-top: -10px;
+	background-color: rgba(255, 255, 255, 0.82);
+    border-radius: 2em 0;
+}
+
+/* ==========================================================================
+SECTION DIVIDERS
+========================================================================== */
+
+.grey {
+	padding-top: 60px;
+	background-color: #f2f2f2;
+}
+
+.white {
+	padding-top: 60px;
+	background-color: #ffffff;
+}
+
+.white-first {
+	background-color: #ffffff;
+}
+
+
+
+/* ==========================================================================
+POST LIST ON THE HOME PAGE - LEFT SIDEBAR
+========================================================================== */
+.posts {
+	border-right: 2px solid #aacae6;
+    margin-bottom: 20px;
+}
+
+.postImg {
+	width: 500px;
+    float: right;
+    padding: 10px;
+    border-radius: 2em;
+}
+
+
+.front-post {
+	width: 100%;
+    border-bottom: 1px #aacae6 solid;
+    margin-bottom: 50px;
+}
+
+.featured {
+	    margin-top: 50px;
+		width: 257px;
+        height: 175px;
+		border-radius: 2em;
+		border-radius: 2em 0;
+}
+
+/* ==========================================================================
+CATEGORIES ETC ON HOME PAGE - RIGHT SIDEBAR
+========================================================================== */
+
+.read li {
+	padding: 10px;
+    font-size: 17px;
+	list-style-type: none;
+}
+
+.read li:before {
+	font-family: 'FontAwesome';
+	content: '\f18e';
+	margin-right: 15px;
+}
+
+.writer li {
+	padding: 10px;
+    font-size: 17px;
+	list-style-type: none;
+}
+
+.writer li:before {
+	font-family: 'FontAwesome';
+	content: '\f18e';
+	margin-right: 15px;
+}
+
+#submitContact {
+
+	background-color: #50C9B5;
+    text-decoration: none !important;
+    text-align: center;
+    margin-top: 15px; 
+    color: #fff !important;
+    border: 1px solid #45a293;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.19);
+    padding: 8px;
+    font-size: 13px;
+    width: 59%;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+ARTICLE RELATED STUFF
+========================================================================== */
+
+.article-header {
+	background-image: url('images/bannmember.jpg');
+	height: 300px;
+    background-size: cover;
+	padding-top: 65px;
+}
+
+.article-title {
+	padding: 10px;
+    background: rgba(255, 255, 255, 0.86);
+	border-radius: 2em;
+    border-radius: 2em 0;
+
+}
+
+.article-box {
+	padding-top:45px;
+	padding-bottom: 60px;
+}
+
+
+.col-centered{
+	float: none;
+	margin: 0 auto;
+}
+
+.col-centered p {
+	font-size: 19px;
+    line-height: 34px;
+}
+
+/* ==========================================================================
+BUTTONS
+========================================================================== */
+
+.read-more {
+	background-color: #50C9B5;
+    text-decoration: none !important;
+    text-align: center;
+    color: #fff !important;
+    border: 1px solid #45a293;
+	margin: 0.5em 0 1em;
+    display: inline-block;
+    margin: 1em 0 0.5em;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    color: #fff !important;
+    text-transform: uppercase;
+	width: 30%;
+	font-size:18px;
+	cursor: pointer;
+	
+}
+
+.products .read-more {
+	background-color: #50C9B5;
+    text-decoration: none !important;
+    text-align: center;
+    color: #fff !important;
+    border: 1px solid #45a293;
+	margin: 0.5em 0 1em;
+    display: inline-block;
+    margin: 1em 0 0.5em;
+    padding: 0.6em 1em;
+    text-decoration: none;
+    color: #fff !important;
+    text-transform: uppercase;
+	width: 80%;
+	
+}
+
+
+/* ==========================================================================
+EXTRAS
+========================================================================== */
+
+/* Blog Date*/
+bd {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #5161ac;
+	font-weight: 700;
+}
+
+/* Blog Author*/
+ba {
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+/* Blog Quote */
+.bq {
+	font-size: 22px;
+	padding-top: 30px;
+}
+
+/* Blog Tags */
+bt {
+	font-size: 12px;
+}
+
+.social-icons a {
+  font-size: 18px;
+  color: #fff;
+  padding-left:20px;  
+}
+
+.social-icons .fa-facebook:hover {
+  color: #3B5997
+}
+
+.social-icons .fa-twitter:hover {
+  color:#29C5F6
+}
+
+.social-icons .fa-google-plus:hover {
+  color:#D13D2F
+}
+
+.social-icons .fa-youtube:hover{
+  color: #ec5538
+}
+
+
+#social {
+	margin-right: 0px;
+    margin-top: 20px;
+}
+
+.article-box {
+	padding-top:45px;
+	padding-bottom: 60px;
+}
+
+#progressbar {
+    position: fixed;
+    left: 0;
+    z-index: 9999999;
+    width: 100%;
+    height: 10px;
+	top: 482px;
+}
+
+/* ==========================================================================
+FOOTER STUFF
+========================================================================== */
+
+#footer {
+	background: #675C53;
+	padding-top: 50px;
+	padding-bottom: 50px; 
+}
+
+#footer p {
+	color: white;
+}
+
+#footer h4 {
+	color: white;
+	text-transform: uppercase;
+	padding-bottom: 20px;
+	
+}

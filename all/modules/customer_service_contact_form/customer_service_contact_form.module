@@ -1,0 +1,421 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+
+/**
+ * Implementation of hook_block_info().permissions
+ */
+ function customer_service_contact_form_permission() {
+  return array(
+    'administer_customer_service_contact_form' => array(
+      'title' => t('Administer Customer Service Contact Form'),
+      'description' => t('Perform administration tasks for Customer Service Contact Form.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_block_info().
+ */
+function customer_service_contact_form_block_info() {
+  $blocks['customer_service_contact_form'] = array(
+    'info' => t('Contact Form Block'),
+  );
+    $blocks['customer_service_contact_details'] = array(
+    'info' => t('Contact Details Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_menu().
+ */
+
+function customer_service_contact_form_menu() {
+
+  	$items = array();
+	
+    $items['admin/content/customer_service_contact_form'] = array(
+    'title' => 'Customer Service Contact Form ',
+    'description' => 'Settings for Customer Service Contact Form',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('customer_service_contact_form_admin'),
+	'access arguments' => array('administer_customer_service_contact_form'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM
+   );
+
+   
+   return $items;
+}
+
+function customer_service_contact_form_admin() {
+	
+	$form['customer_service_contact_form_user'] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the User ID'),
+	'#default_value' => variable_get('customer_service_contact_form_user','100'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ID for the message receiver"),
+	'#required' => TRUE,	
+	);
+	
+	$form['customer_service_contact_form_user_alt'] = array(
+	'#type' => 'textarea',
+	'#title' => t('Enter the Alternate User ID'),
+	'#default_value' => variable_get('customer_service_contact_form_user_alt',''),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("The ID for the alternate message receiver"),
+	'#required' => FALSE,	
+	);
+	
+	 $form['customer_service_contact_form_details']=array(
+	'#type' => 'textarea',
+	'#title' => t('Contact Details'),
+	'#default_value' => variable_get('customer_service_contact_form_details','<h2>Our Customer Service Team</h2>
+		   <p>Phone: +353 (0)1 704 1010<br />Fax: +353 (0)1 704 1900</p>
+		 <h3>Normal Opening Hours</h3>
+		   <p>08:00 to 20:00 (Monday - Thursday)<br />10:00 to 18:00 (Friday)<br />09:00 to 13:00 (Saturday)</p>
+		 <h3>Call In</h3>
+		   <p>Irish Life Visitor Centre, Lower Abbey Street, Dublin 1, Ireland</p>
+		 <h2>Switch Board</h2>
+		   <p>Phone: +353 (0)1 704 2000</p>'),
+	'#resizable' => FALSE,
+	'#rows' => 20,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Enter Customer Service Contact Details"),
+	'#required' => TRUE,	
+	);
+	
+	 $form['customer_service_contact_form_options']=array(
+	'#type' => 'textarea',
+	'#title' => t('Contact Reasons'),
+	'#default_value' => variable_get('customer_service_contact_form_options','<option value="empty">--&nbsp;Please Select</option>
+                  <option value="benefit">Benefit/Value Summary</option>
+                  <option value="billing">Billing/Payments</option>
+                  <option value="claims">Claims &amp; Encashments</option>
+                  <option value="calteration">Contact Alterations</option>
+				  <option value="onlineserv">Online Services</option>
+				  <option value="palteration">Plan Alterations</option>'),
+	'#resizable' => FALSE,
+	'#rows' => 20,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Enter in dropdown options that will be the subject line of the email"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}	
+
+
+ 
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function customer_service_contact_form_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#customer_service_contact_form":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function customer_service_contact_form_contents(){ return 
+'
+<div class="wrapper">
+        <div id="main">
+            <form id="contact-form">
+                <h3>Get in touch</h3>
+                <h4>Fill in the form below, and we&#39;ll get back to you
+                as soon as possible.</h4>
+                
+				
+                <!-- Customer Name -->
+				<div>
+				<label>Full Name: <span class="required">(required)</span></label>
+				<span id="nameError" style="color:red;display:none;"><em>Please provide first and last name</em><br/></span>
+					<input name="fname" tabindex="1" placeholder="First" type="text" id="customerContactFirstName" value="" required/>
+
+                <!-- Last Name -->	
+                <span id="surError" style="color:red;display:none;"><em>This field cannot be left blank</em><br/></span>				
+					<input name="fsname" tabindex="2" placeholder="Last" type="text" id="customerContactLastName" value="" required/>
+				</div>
+				
+				<!-- Email -->
+                <div>
+                    <label>Email: <span class="required">(required)</span></label>
+					<span id="emailError" style="color:red;display:none;"><em>This field cannot be left blank</em></span>
+					<span id="emailError2" style="color:red;display:none;"><em>Please enter a valid email</em></span>
+					<input name="femail" id="customerContactEmail" placeholder="Please enter your email" value="" required="" tabindex="3" type="email" required>
+                </div>
+                
+				<!-- Question -->
+				<div>
+				    <label>Are you an existing Irish Life customer?</label>
+				    <input tabindex="5" type="radio" name="question" id="customerYes"/><p style="font-size:20px;float: left;">Yes</p>
+					<input tabindex="6" type="radio" name="question" id="customerNo"/><p style="font-size:20px;">No</p>
+				</div>
+				
+				<!-- Hide This -->
+				<div id="fields" class="customerDetails1">
+				
+	                <span id="dobMsg" style="color:#50C9B5"><em>The following information helps us to easily locate your plan when dealing with your inquiry</em><br/></span>			
+				    
+					<!-- Plan Number-->
+				    <div>
+                    <label>Plan No: <span class="required">(required)</span></label>
+                    <span id="planError" style="color:red;display:none;"><em>This field cannot be left blank</em></span>					
+					<input name="fplan" id="customerContactPlan" placeholder="Please enter your plan no." value="" tabindex="4"
+                    type="tel" required>
+                    </div>
+								
+				    <label>Date of Birth: <span class="required">(required)</span></label> 
+					<span id="dobError" style="color:red;display:none;"><em>Please enter a date of birth</em><br/></span>	
+					
+					<select name="DOBDay" id="customerContactDay" required>
+						<option value="" disabled selected > - Day - </option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+					</select>
+					
+					<select id="customerContactMonth" name="DOBMonth" required>
+						<option value="" disabled selected> - Month - </option>
+	                    <option value="January">January</option>
+	                    <option value="February">Febuary</option>
+	                    <option value="March">March</option>
+	                    <option value="April">April</option>
+	                    <option value="May">May</option>
+	                    <option value="June">June</option>
+	                    <option value="July">July</option>
+	                    <option value="August">August</option>
+	                    <option value="September">September</option>
+	                    <option value="October">October</option>
+	                    <option value="November">November</option>
+	                    <option value="December">December</option>
+                     </select>
+
+					<select name="DOBYear" id="customerContactYear" required>
+					</select>
+				
+	
+				<label style="margin-top: 25px;">Contact Reason: <span class="required">(required)</span></span></label>
+				<select id="contactReasons" class="customerContactQueryType" required="yes">
+				  '.variable_get('customer_service_contact_form_options','').'
+                </select>
+				
+				<div class="container"> 
+				    <div class="pensions">
+				        <select class="sub">
+				          <option selected>Work related pension query</option>
+					    </select>
+					</div>
+					<div class="benefit">
+						<select class="sub">
+						    <option disabled selected>--Please Select</option>
+							<option>Summary of my benefits</option>
+							<option>Whats the current value of my plan</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="billing">
+						<select class="sub">
+							<option disabled selected >--Please Select</option>
+							<option>Direct Debit/Payment Query</option>
+							<option>I want to reduce my premium</option>
+							<option>I want to take a payment holiday</option>
+							<option>I would like to increase my premium</option>
+							<option>I need a history of payments into my plan.</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="claims">
+						<select class="sub">
+							<option disabled selected>--Please Select</option>
+							<option>Claim/Withdrawal Forms</option>
+							<option>AML Requirements</option>
+							<option>Claim/Withdrawal Status (Progress) Update</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="quote">
+						<select class="sub">
+							<option disabled selected>--Please Select</option>
+							<option>How do I get a quote for life insurance</option>
+							<option>I would like to start a pension</option>
+							<option>I want to make an investment</option>
+							<option>Can I take out Income Protection</option>
+							<option>Other</option>
+						</select>
+					</div>
+				    <div class="onlineserv">
+						<select class="sub">
+							<option disabled selected>--Please Select</option>
+							<option>I would like to register</option>
+							<option>I have Forgotton My Password</option>
+							<option>Help I cant get Logged on</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="plan">
+						<select class="sub">
+							<option disabled selected>--Please Select</option>
+							<option>I want to cancel my plan</option>
+							<option>I want to change my address</option>
+							<option>Other</option>
+						</select>
+					</div>
+				</div>
+			</div>	
+				
+				
+            <div id="submessage" class="message" style="margin-top: 29px">
+					
+					<div id="subject">
+                    <label>Subject: <span class="required">(required)</span></label> 
+					<input placeholder="Enter a Subject" style="height:40px" class="customerContactQueryType"  id="subjectField" value="" required="yes"
+                    type="text">
+                    </div>
+					
+					<label>Message: <span class="required">(required)</span></label>
+                    <textarea id="customerContactMessage" value="" placeholder="Include all the details you can"
+                    required="yes" tabindex="5"></textarea>
+					
+    				
+                    <div id="submitContact">Send</div>
+					<span id="submitError" style="color:red;display:none;"><em>Please correct errors</em></span>
+			</div>
+				
+           </form>
+	   </div>	
+</div>
+	
+	<div id="form-submit" style="display:none;padding-top: 30px;">
+				<h3>Thank you for contacting Irish Life.</h3>
+				<br/>
+                <p>Your query will be received by our customer service team and we will respond to you as soon as possible</p>
+                <p>Until then, please make sure to check out our Help Centre at <a href="http://help.irishlife.ie" target="_blank">help.irishlife.ie</a></p>
+           
+    </div>		
+	<div id="form-send" style="display:none">
+		<p>Please wait .. submitting.</p>
+	</div>
+	<div id="form-submit-no" style="display:none">
+			<p>Unfortunately we have encountered an error and your email failed to submit.<br/>Please try again.</p>
+    </div>
+	';
+}
+
+function customer_service_contact_details_contents(){ return 
+'
+<div class="contact-info">
+		 '.variable_get('customer_service_contact_form_details','').'
+		</div>
+	';
+}
+
+function customer_service_contact_form_block_view($delta = '') {
+  switch($delta) {
+    case 'customer_service_contact_details':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = customer_service_contact_details_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  drupal_add_js(
+    array(
+	'customer_service_contact_form' => array(
+	'contactId' => variable_get('customer_service_contact_form_user','100')
+	
+
+	)),
+	'setting'
+	);
+
+      drupal_add_css(drupal_get_path('module', 'customer_service_contact_form') . '/css/contact-form.css', array('group' => CSS_DEFAULT));
+
+      drupal_add_js(drupal_get_path('module', 'customer_service_contact_form') .'/js/contact_form.js',array('scope' => 'footer'));
+    
+    }
+    return $block;
+	break;
+	case 'customer_service_contact_form':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = customer_service_contact_form_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  drupal_add_js(
+    array(
+	'customer_service_contact_form' => array(
+	'contactId' => variable_get('customer_service_contact_form_user','100'),
+	'contactIdAlt' => variable_get('customer_service_contact_form_user_alt','') 
+ 
+	)),
+	'setting'
+	);
+
+      drupal_add_css(drupal_get_path('module', 'customer_service_contact_form') . '/css/contact-form.css', array('group' => CSS_DEFAULT));
+
+      drupal_add_js(drupal_get_path('module', 'customer_service_contact_form') .'/js/contact_form.js',array('scope' => 'footer'));
+    
+    }
+    return $block;
+	break;
+	
+	
+	
+  }
+ }

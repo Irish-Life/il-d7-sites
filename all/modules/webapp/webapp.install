@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the webapp module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function webapp_uninstall() {
+  variable_del('webapp_viewport');
+  variable_del('webapp_viewport_content');
+  variable_del('webapp_amwac');
+  variable_del('webapp_status_bar_style_content');
+  variable_del('webapp_tel');
+  variable_del('webapp_title_content');
+  variable_del('webapp_title');
+  variable_del('webapp_icon');
+  variable_del('webapp_icon_content');
+  variable_del('webapp_remotes');
+  variable_del('webapp_add2home');
+  variable_del('webapp_tap');
+  variable_del('webapp_startup');
+  variable_del('webapp_startup_content');
+}

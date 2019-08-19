@@ -1,0 +1,1166 @@
+/*Hide all elements not in use at the start*/
+#quote-saved-bar, #save-bar, #need-login-bar {
+display:none!important;
+z-index: 1;}
+
+.mean-container .mean-bar {
+z-index:1!important}
+
+#login-area {
+display:none;}
+
+#login-mobile, #signup-mobile {
+display:none;}
+
+/* QUOTE SAVE STUFF */
+.full-width-container {
+    margin: 0 auto;
+	background-color: #5261ac;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    left: 0;
+    text-align: center;
+}
+
+#save-go {
+    text-decoration: none!important;
+    cursor: pointer;
+    width: 385px;
+    padding: 4px;
+    text-align: center;
+    line-height: 2em;
+    color: white!important;
+    font-size: 21px;
+    background-color: #50c9b5;
+    margin: 0 auto;
+
+}
+
+#login-modal {
+     left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    height: 100vh;
+    margin: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+	top:0;
+	position:absolute;
+	z-index:99999999999;
+	}
+	
+.modal-overlay {
+    position: fixed;
+    z-index: 999;
+    top: -100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 125%;
+    width: 100%;
+    background: #000;
+    display: none;
+    will-change: opacity;
+    }	
+	
+#quote-saved-container {
+    background-color: #5261ac;
+	position: relative;
+	bottom: 0;
+    width: 940px;
+    z-index: 999;
+	margin: 0 auto;
+}
+
+#need-login-container {
+    background-color: #5261ac;
+	position: relative;
+	bottom: 0;
+    width: 940px;
+    z-index: 999;
+	margin: 0 auto;
+}
+
+#quote-is-saved {
+	float: left;
+    color: white;
+    font-size: 22px;
+    padding: 32px;
+	background-color: #475496;
+}
+
+#save-btn-container {
+    background-color: #5261ac;
+    position: relative;
+    bottom: 0;
+    z-index: 999;
+    margin: 0 auto;
+    padding: 23px;
+    text-align: center;
+}
+
+#want-to-save {
+	float: left;
+    color: white;
+    font-size: 22px;
+    padding: 19px;
+}
+
+#need-login {
+	float: left;
+    color: white;
+    font-size: 22px;
+    padding: 32px;
+	background-color: #475496;
+}
+
+
+#email-to-me {
+	color: white;
+    font-size: 21px;
+    padding: 12px;
+    background-color: #50c9b5;
+    margin-right: 26px;
+    margin-top: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    float: right;
+}
+
+.mos-go, .mos-go-saved  {
+	float: right;
+    color: white!important;
+    font-size: 21px;
+    background-color: #50c9b5;
+    margin-right: 26px;
+    margin-top: 15px;
+	text-decoration: none!important;
+	cursor: pointer;
+	width: 300px;
+	padding: 4px;
+    text-align: center;
+	line-height: 2em;
+}
+
+.sign-go {
+      float: right;
+    color: white!important;
+    font-size: 21px;
+    background-color: #00add0;
+    margin-right: 26px;
+    margin-top: 15px;
+	text-decoration: none!important;
+	cursor: pointer;
+	width: 300px;
+	padding: 4px;
+    text-align: center;
+	line-height: 2em;
+
+}
+
+
+
+h3{
+	color: #5261AC;
+}
+
+#progress-bar, #quote-screen-2, #quote-screen-3, #quote-screen-4, #quote-screen-5{
+	display: none;
+}
+
+#block-term-life-insurance-quote-term-life-insurance-quote{
+	margin-top: -1.6em;
+}
+
+.life-quote-title{
+		 display: none;
+		background-color: #5261AC;
+		color: #ffffff;
+		font-size: 1.2em!important;
+		padding: 5px 0px 5px 8.5%;
+	}
+	
+	.life-quote-outer-block{
+		 margin: 20px 0px 20px 0px;
+		border: solid 1px #cccccc;
+		padding: 0px 0px 20px 0px;
+	}
+	
+	.life-quote-outer-block-narrow{
+		 margin: 10px 8.5% 0px 8.6%;
+		border: solid 1px #cccccc;
+		padding: 0px 0px 20px 0px;
+	}
+	
+	.life-quote-outer-block-narrow-last{
+		 margin-bottom: 20px;
+	}
+	
+	.life-quote-block-header{
+		background-color: #f7f7f5;
+		border-bottom: solid 1px #cccccc;
+		padding: 5px 0px 5px 2%;
+		color: #5261AC;
+	}
+	.life-quote-block-header p{
+		font-size: 1.1em!important;
+		line-height: 1.4em!important;
+	}
+	
+	.life-quote-block-header h2{
+		color: #5261AC;
+	}
+	
+	.life-quote-block-intro{
+		margin: 10px 5% 0 6.6%;
+	}
+	
+	.term-header{
+		margin-left: 71%;
+	}
+	
+	.life-quote-block-header-narrow{
+		background-color: #f7f7f5;
+		border-bottom: solid 1px #cccccc;
+		padding: 20px 0px 0px 2%;
+	}
+	
+	.life-quote-block-header-narrow h3{
+		color: #5261AC;
+	}
+	
+	.life-quote-outer-block-privacy{
+		border: solid 1px #cccccc;
+		padding: 0px 0px 20px 0px;
+		float: left;
+		width: 50%;
+		margin: 100px 10px 0px 20px;
+	}
+	
+	.life-quote-block-header-privacy{
+		background-color: #f7f7f5;
+		border-bottom: solid 1px #cccccc;
+		padding: 0px 0px 0px 2%;
+		font-weight: bold;
+	}
+	
+	.life-quote-block-main-privacy{
+			padding: 10px 0px 0px 2%;
+		    line-height: 1.4em;
+			font-size: 0.9em;
+	}	
+	
+	.quote-fa{
+			font-size: 2.6em !important;
+			float: right;
+			margin-right: 25%;
+			color: #aacae6;
+	}
+	
+	.life-quote-block-main{
+		padding: 20px 0px 0px 8.5%;
+	}
+
+	.life-quote-block-main-narrow{
+		padding: 20px 0px 0px 2%;
+	}	
+	
+	.life-quote-block-main-narrow  ul li {
+		line-height: 1.6em;
+	}
+	
+	/*Rounded LIst*/
+
+			.rounded-list-2{
+				list-style-type: none;
+				counter-reset: li;
+				 margin: 2% 8.4% 2% 8.6%;
+			}
+			
+			.rounded-list-2 li{
+				position: relative;
+				float: left;
+				width: 33.3%;
+				background-color: #aacae6;
+			}
+			
+			.rounded-list-2 li a {
+				font-size: 1.1em;
+				font-weight: bold;
+				color: #606060;
+				background-color: #cee1f5;
+				display: block;
+				text-align: center;
+				padding: 30px 0px 1px 0px;
+				text-decoration: none;
+			}
+
+			.rounded-list-2 .active {
+				    background-color: #DADDF5;
+					color: #5261AC;
+			}
+			
+			.rounded-list-2 li a:not(.active) {
+				background-color: #ECEEFA;
+				color: #5261AC;
+			}
+			
+			.rounded-list-2 li:before:not(.active){
+				background-color: #C8DDEF;
+				color: #A3B2CD;
+			}
+
+			.rounded-list-2 li:before{
+				    content: counter(li);
+					counter-increment: li;
+					position: absolute;
+					color: #ffffff;
+					left: 45%;
+					top: 40%;
+					margin-top: -1.3em;
+					height: 2em;
+					width: 2em;
+					line-height: 2em;
+					text-align: center;
+					font-weight: bold;
+					background-color: #5261AC;
+					border-radius: 2em;
+			}
+			
+			/*Buttons*/
+			button{
+				cursor:pointer;
+			}
+			
+			.ui-button {
+				padding: .4em 1em;
+				display: inline-block;
+				position: relative;
+				line-height: normal;
+				margin-right: .1em;
+				cursor: pointer;
+				vertical-align: middle;
+				text-align: center;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				overflow: visible;
+				border-radius: 3px;
+			}
+			
+			#term-start-button, #add-person, #remove-person, #two-people, #just-you, #get-quote-button, #quote-button-1, #quote-button-2, #quote-button-3{
+				color: #fff;
+				display: block;
+				text-align: center;
+				text-decoration: none;
+				font-size: 1.4em;
+				margin-top: 10px;
+				padding: 6px 0px 6px 0px;
+				border: none;
+				border-radius: 0px;
+				font-weight: normal;
+				text-shadow: none;
+			}
+			
+			.term-start-button{
+				width: 26%;
+				height: 40px;
+			}
+			
+			.choose-people{
+				width: 23.4%; 
+				margin-left: 8.6%; 
+				float: left;
+			}
+			
+			#add-person, #remove-person{
+				width: 23.4%; 
+				float: left;
+				margin-left: 20px;
+				height: 40px;
+			}
+			
+			#two-people, #just-you{
+				background-color: #5261AC !important;
+			}
+			
+			#new-user, #close-user{
+			    float: right;
+				margin-right: 10px;
+				cursor:pointer;
+				color: #50C9B5;
+				}
+			
+			#get-quote-button{
+				width: 28.2%;
+				height: 40px;
+			}
+			
+			#quote-button-1, #quote-button-2, #quote-button-3{
+				width: 80%;
+				height: 40px;
+			}
+			
+
+/*Range Slider*/			
+			#range-slider{
+				width: 57%;
+				height: 75px;
+				float: left;    
+				/*margin-top: 30px;*/
+			}
+			
+			#range-slider:before{
+				content: "€1,000";
+				font-weight: bold;
+				font-size: 1.2em;
+				position: relative;
+				top: 0px;
+				color: #5261AC !important;
+			}
+			
+			#range-slider:after{
+				content: "€500,000";
+				font-weight: bold;
+				font-size: 1.2em;
+				position: relative;
+				top: -76px;
+				right: -83%;
+				color: #5261AC !important;
+			}
+			
+			.rangeslider__fill{
+				background: #5261AC !important;
+			}
+			
+			#cover-required-output{
+				font-size: 1.4em !important;
+				font-weight: bold !important;
+				color: #5261AC !important;
+				width: 20%;
+				display: block;
+			}
+			
+			#cover-required-output:before{
+				content: "€";
+				font-weight: bold;
+				color: #5261AC !important;
+			}
+			
+			#quote-1-amount:before, #quote-2-amount:before, #quote-3-amount:before{
+				content: "€";
+				font-weight: bold;
+				color: #5261AC !important;
+			}
+
+/*Slider*/
+
+			#slider{
+				width: 57%;
+				background-color: #00add0;
+				border: none !important;
+				border-radius: 0px !important;
+				float: left;    
+				margin-top: 5%;
+			}
+			
+			#slider:before{
+				content: "€1,000";
+				font-weight: bold;
+				font-size: 1.2em;
+				position: absolute;
+				top: 60%;
+			}
+			
+			#slider:after{
+				content: "€500,000";
+				font-weight: bold;
+				font-size: 1.2em;
+				position: absolute;
+				top: 60%;
+				right: 0%;
+			}
+			
+			.ui-widget-header{
+				background: none !important;
+			}
+			
+			.ui-state-default, .ui-widget-content .ui-state-default .ui-state-hover .ui-state-active{
+					border: none !important;
+					background: none !important;
+					color: #002664 !important;
+					
+			}
+			
+			.term-input{
+				float: left;
+				font-size: 1.6em;
+				margin-left: 14.3%;
+				margin-top: 15px;
+			}
+			
+			.ui-selectmenu-button.ui-button{
+				    width: 69% !important;
+			}
+			
+			.ui-menu-item{
+				font-size:	1.6em;
+			}
+			
+			input.age-input{
+				border: 1px solid #cccccc !important;
+				font-size: 1.6em !important;
+				width: 44% !important;
+				padding: 0.26em 0.5em 0.26em 0.4em;
+			}
+			
+			.label-text{
+				font-size: 1.4em;
+			}
+			
+			.age-field{
+				float: left;
+				width: 29.3%;
+			}
+			
+			.smoker{
+				float: left;
+			}
+			
+			.smoker-no{
+				margin-left: 14px;
+			}
+			
+			.smoker-button{
+				background: none;
+				background-color: #ffffff !important;
+				border: 1px solid #cccccc;
+				padding: 0.26em 1.4em 0.26em 1.4em;
+				font-size: 1.6em;
+				border-radius: 0px;
+				font-weight: normal;
+				text-shadow: none;
+			}
+			
+			.age-1-warning, .age-2-warning, .smoker-1-warning, .smoker-2-warning, .contact-warning, .term-length-warning-1, .term-length-warning-2{
+				color: #FF3333;
+			}
+			
+			.hidden{
+				display: none;
+			}
+			
+			#breakdown-1, #breakdown-2, #breakdown-3{
+				color: #002664;
+			}
+			
+			.quote-breakdown li{
+				font-weight: bold;
+				font-size: 1.2em;
+				color: #5261AC;
+			}
+			
+			.get-quote-button{
+				width: 23.4%;
+				float: left;
+			}
+			
+			.quote-warning{
+				line-height: 1.6em;
+			}
+			
+			#edit-quote{
+				float: right;
+				color: #50C9B5 !important;
+				cursor: pointer;
+			}
+			
+			.call-time-button{
+				width: 31%;
+				margin-right: 5px;
+				padding: 10px 0px 10px 0px;
+				font-weight: bold;
+				background: none;
+				background-color: #ffffff !important;
+				border: 1px solid #cccccc;
+				border-radius: 0px;
+				text-shadow: none;
+			}
+			
+			.call-time-output{
+				width: 31%;
+				margin-right: 8px;
+				padding: 10px 0px 10px 0px;
+				font-weight: bold;
+				background: none;
+				background-color: #ffffff !important;
+				border: 1px solid #50c9b5;
+				border-radius: 0px;
+				text-shadow: none;
+				float: left;
+			}
+			
+			.total-cost-output{
+				display: block;
+				height: 1em;
+			}
+			
+			.monthly-cost-output{
+				font-size: 0.8em;
+				font-weight: lighter;
+				display: block;
+			}
+			
+			/*#quote-1-premium-person-2:empty{
+				display: none;
+			}*/
+			
+			 #request-callback-button{
+					background-color: #50c9b5;
+				    width: 50%;
+					float: left;
+					color: #fff;
+					display: block;
+					text-align: center;
+					text-decoration: none;
+					font-size: 1.1em;
+					margin-top: 0.714em;
+					padding: 0.76em 0.357em 0.76em 0.357em;
+					border-radius: 0px;
+					text-shadow: none;
+					font-weight: normal;
+					box-shadow: none;
+					border: none;
+			 }
+			
+			button:focus{
+				box-shadow: none !important;
+			}
+			
+			.green-button{
+				background-color: #50c9b5 !important;
+				color: #ffffff;
+			}
+			
+			.fa-check{
+				color: #50c9b5;
+			}
+			
+			.fa-times{
+				color: #50c9b5;
+			}
+			
+			.your-quote-outer-block{
+				min-height: 271px;
+				width: 40.3%;
+				float: left;
+				border: solid 1px #cccccc;
+				margin-top: 10px;
+			}
+			
+			.your-quote-left{
+				min-height: 271px;
+				margin: 10px 2% 0px 8.6%;
+			}
+			
+			.contact-details{
+				float: left;
+			}
+			
+			.contact-input{
+				width: 98%;
+				border: solid 1px #cccccc !important;
+				padding: 0.26em 0.5em 0.26em 0.4em;
+				font-size: 1.4em !important;
+			}	
+			
+			.call-time-output{
+				padding: 0px;
+				margin-top: 0.714em;
+				text-align: center;
+				margin-left: 13px;
+			}
+			
+			/*
+			.logoImg {
+				width: 18%;
+				float: left !important;
+				margin-right: 20px;
+			}
+			*/
+			.advisor-image, .logoImg{
+				float: left;
+				width: 63px;
+				height: 61px;
+				margin: 0px 10px 60px 0px;
+			}
+			
+			.life-quote-block-header-privacy{
+				font-weight: bold;
+				color: #5261AC;
+			}
+			
+			.life-quote-block-main-privacy{
+				line-height: 1.4em;
+				font-size: 0.9em;
+			}
+			
+		#thank-you-bullets{
+			float: right; width: 75%;
+		}
+		
+		.thank-you-bullets ul{
+			padding-left: 20px;
+		}
+
+/*Breakpoint for mobile screens above 960px*/
+@media only screen and (min-width: 959px) {	
+
+		
+		.get-quote{
+			margin: 20px 8.5% 20px 8.6%;
+		}
+		
+		.contact-details{
+				width: 45%; 
+			}
+			
+		.life-quote-outer-block-privacy{
+				float: left;
+				width: 50%;
+				margin: 53px 10px 0px 20px;
+		}
+		
+		.use-life-planner{
+			float: left;
+			width: 35%;
+			height: 180px;
+		}
+		
+		.compare-benefits{
+		    float: left;
+			width: 21%;
+			margin-left: 4.8%;
+		}
+		
+		.simple-life-insurance{
+		    float: left;
+			width: 21%;
+			margin-left: 4.8%;
+		}
+		
+		
+		.button-life-planner{
+			    background-color: #50c9b5;
+				position: relative;
+				top: 30px;
+		}
+		
+		.button-benefits{
+			    background-color: #50c9b5;
+				position: relative;
+				top: 6px;
+				width: 130px;
+		}
+		
+		.button-find-out-more{
+			    background-color: #50c9b5;
+				position: relative;
+				top: -16px;
+				width: 130px;
+		}
+		
+		#quote-screen-3 ul{
+			margin-bottom: 10px;
+		}
+		
+}
+
+/*Breakpoint for mobile screens below 960px*/
+@media only screen and (max-width: 959px) {	
+
+         #need-login-container {
+		width:100%;
+		}
+		
+		.sign-go, .mos-go {
+		width:30%}
+		
+		.life-quote-outer-block-privacy{
+			width: 97%;
+			margin: 20px 10px 0px 0px;
+		}
+		
+		.use-life-planner, .compare-benefits, .simple-life-insurance{
+			margin: 0px 10px 20px 0px;
+		}
+		
+		.contact-details{
+			width: 97%;
+		}
+		
+		.quote-fa{
+			display: none !important;
+		}
+		
+		.life-quote-block-intro {
+			margin-left: 6.6%;
+			margin-right: 6.6%;
+			margin-top: 10px;
+		}
+		
+}
+@media only screen and (min-width: 960px) and (max-width: 1024px) {	
+#quote-saved-container {
+width:100%;
+display:none!important;}
+
+#need-login-bar {
+		display:none!important;}
+
+}
+
+/*Breakpoint for mobile screens above 740px and below 960px*/
+@media only screen and (min-width: 741px) and (max-width: 959px) {	
+
+        #need-login-bar {
+		display:none!important;}
+
+           #need-login-container {
+		width:100%;
+		}
+		
+		.sign-go, .mos-go {
+		width:30%}
+		
+		.contact-details{
+				width: 100%; 
+			}
+		
+		.contact-input{
+			width: 97.3% !important;
+		}
+			
+		.call-time-output{
+			width: 43%;
+		}
+		
+		.get-quote{
+			margin: 20px 8.5% 20px 8.6%;
+		}
+		
+		#quote-screen-3 ul{
+			margin-bottom: 12px;
+		}
+
+}
+	
+/*Breakpoint for mobile screens below 740px*/
+@media only screen and (max-width: 740px) {
+	/*Rounded List*/
+	.rounded-list-2{
+		margin: 0 0 20px 0;
+	}
+	
+	/*Buttons*/
+			.term-start-button{
+				width: 90%
+			}
+			
+		.views-field-field-basic-web-page-url-label a{
+			padding: .157em;
+		}	
+			
+			.choose-people{
+				width: 44%; 
+				padding: 0.157em;
+				margin-left: 0%;
+			}
+			
+			.choose-people-add{
+				margin-left: 8.5%;
+			}
+		
+		#quote-button-1{
+			margin-bottom: 10px;
+		}
+	
+	/*Blocks*/
+	.life-quote-outer-block-narrow{
+		 margin: 10px 0 0px 0;
+		border: solid 1px #cccccc;
+		padding: 0px 0px 20px 0px;
+	}
+	
+	#two-people, #just-you{
+		width: 100%;
+	}
+	
+	#add-person, #remove-person{
+		width: 100%;
+		margin: 10px 0px 0px 0px;
+	}
+	
+	/*form*/
+	.term-input{
+		float: right;
+		font-size: 1em;
+		margin-right: 13%;
+		margin-left: 0%;
+		margin-top: 20px;
+	}
+	
+	.your-quote-left{
+		margin: 0;
+	}
+	
+	.your-quote-outer-block {
+		width: 100%;
+		margin-top: 10px;
+	}
+	
+	.contact-details{
+				width: 98%; 
+			}
+			
+	.contact-input{
+		width: 98%;
+		border: solid 1px #cccccc !important;
+	}		
+	
+	.call-time-output{
+		width: 43%;
+	}
+	
+		
+	.thank-you-bullets{
+		float: none; width: 75%;
+	}
+	
+	.thank-you-bullets ul{
+		margin-left: 15px;
+	}
+	
+}
+
+/*Breakpoint for mobile screens below 740px and above 470px*/
+@media only screen and (max-width: 740px) and (min-width: 471px) {
+    
+	#need-login-container {
+	width:100%;
+	}
+	
+#login-area {
+    position: fixed;
+    top: 11px;
+    width: 100%;
+    background: white;
+    height: 100%;
+    z-index: 9999999;
+    margin: -11px;}
+
+.close-login {
+    color: #9E9E9E;
+    position: relative;
+    float: right;
+    font-size: 20px;
+}
+
+#login-mobile, #signup-mobile {
+display:block;
+}	
+
+#login-register {
+display:none;}
+	
+	.sign-go, .mos-go {
+		width:30%}
+ 
+	#range-slider{
+			margin-top: 0px;
+	}
+	
+	.term-input {
+			font-size: 1.4em;
+			margin-right: 5px;
+			width: 32%;
+	}
+	
+	#get-quote-button {
+			width: 100%;
+	}
+	
+}
+
+/*Breakpoint for mobile screens below 470px*/
+@media only screen and (max-width: 470px) {
+
+#login-area {
+    position: fixed;
+    top: 11px;
+    width: 100%;
+    background: white;
+    height: 100%;
+    z-index: 9999999;
+    margin: -11px;}
+
+.close-login {
+    color: #9E9E9E;
+    position: relative;
+    float: right;
+    font-size: 20px;
+}
+
+#login-mobile, #signup-mobile {
+display:block;
+}	
+
+#login-register, #sign-up {
+display:none;}
+
+    #save-btn-container, #need-login-container, #quote-saved-container {
+	width:100%;
+	padding:0px;
+	padding-bottom: 10px;
+	}
+	
+	
+#want-to-save, #quote-is-saved, #need-login {
+	width: 25%;
+    float: left;
+    color: white;
+    font-size: inherit;
+    padding: 19px;
+    line-height: 21px;
+    height: 57px;
+	}
+	 
+	.sign-go {
+    color: white!important;
+    margin-top: 8px;
+    text-decoration: none!important;
+    cursor: pointer;
+	font-size:inherit;
+    text-align: center;
+	width: 50%;}
+	
+	#save-go { 
+	color: white!important;
+    margin-top: 20px;
+    text-decoration: none!important;
+    cursor: pointer;
+	margin-top: 20px;
+    text-align: center;
+	width: 90%;}
+	
+	.mos-go {
+	color: white!important;
+    margin-top: 8px;
+    text-decoration: none!important;
+    cursor: pointer;
+	font-size:inherit;
+    text-align: center;
+    width: 50%;
+	}
+	
+	.mos-go-saved {
+	color: white!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    text-align: center;
+    width: 42%;
+    background-color: #50c9b5;
+    font-size: 18px;
+    display: inline-block;
+	line-height: inherit;
+    padding: 8px;
+	}
+	
+	body p{
+		line-height: 1.6em !important;
+	}
+	
+	.rounded-list-2 li:before{
+		left: 40% !important;
+	}
+	
+	.rounded-list li {
+		padding: 0em 0em 1em 2em !important;
+		line-height: 1.6em;
+	}
+			
+	
+	#range-slider{
+		margin-top: 0px;
+		margin-right: 10px;
+		width: auto;
+		float: none;
+	}
+	
+	#range-slider:after{
+		right: -75%;
+	}
+	
+	.term-input{
+		width: 90%;
+		margin-left: 0%;
+		float: none;
+	}
+
+	input.age-input{
+		border: 1px solid #cccccc;
+		font-size: 1.6em;
+		width: 80% !important;
+	}
+	
+	.ui-selectmenu-button.ui-button {
+		width: 93% !important;
+		font-size: 1.4em;
+	}
+	
+	.smoker{
+		padding: 0em 0.5em 0em 0.4em;
+		float: right;
+		margin-right: 2%;
+		width: 55%;
+	}
+	
+	.smoker-button{
+		padding: 0.26em 0.5em 0.26em 0.4em;
+		width: 44%;
+	}
+	
+	#get-quote-button{
+		    width: 100%;
+			margin: auto;
+			float: none;
+			margin-top: 10px;
+	}
+	
+	#quote-screen-3{
+		li {
+			padding: 0px 10px 10px 0px;
+			line-height: 1.6em;
+			}
+	}
+	
+	.contact-input {
+    width: 93%;
+    border: solid 1px #cccccc !important;
+}
+	
+	.call-time-button{
+		width: 30%;
+	}
+	
+	.call-time-output{
+		width: 40%;
+	}
+	
+}

@@ -1,0 +1,2577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+
+
+<head>
+	<!-- Version = 10 -->
+
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+	<link rel="stylesheet" href="/uploadedImages/bline/Pension_demo/selfservice/css/base.css" type="text/css" />
+	<link rel="stylesheet" href="/uploadedImages/bline/Pension_demo/selfservice/css/test.css" type="text/css" />
+	
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/jquery.metadata.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/form.js" ></script>		
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/logger.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/base.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/ajax.js"></script>
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/pay-as-you-go.js"></script>
+	
+	
+	<script type="text/javascript">
+
+	var requiredMajorVersion = 8;
+	var requiredMinorVersion = 0;
+	var requiredRevision = 0;
+		contextPath = '/selfservice';
+		isEposUser = 'true';
+		$(document).ready(function() 
+		{
+			// Flash
+			//ajaxManager = $.manageAjax.create('queue',{queue: true});			
+			
+			//$('#planId').focus();
+			//enterFunction = planEnquirySearch;
+			
+					
+		
+			$(".sortableTable").tablesorter(
+			{
+				sortList: [[0,0]]
+			});
+		
+		
+		});
+
+		
+		
+	</script>
+	
+	<script type="text/javascript" src="/uploadedFiles/bline/Pension_demo/selfservice/js/test.js"></script>
+	
+	<title>MyBiz</title>
+	
+</head>
+
+<body>
+	
+	<div id="wrapper">
+	
+		<div id="header">
+		
+			<div class="mybizItems" >
+				<img class="mybizLogo" src="/uploadedImages/bline/Pension_demo/selfservice/images/mybizBroker.png" />
+			</div>
+			
+			<ul class="rightItems" >
+				<li class="" >
+					<a href="javascript:window.print(); " >Print</a>
+				</li>				
+				<li>
+					<a href="javascript:alert('Demo Version\n\nThis button will exit the application');">Exit</a>
+				</li>				
+			</ul>
+			
+		</div>
+	
+		<div id="body">
+			
+			<div id="barTabs" class="tabs tabsMainMenu" >
+				
+				<ul>
+					
+					<li id="headerTabMainMenu" class="mainMenuTab first on" onclick="headerTabChange('MainMenu'); " >
+						<a href="javascript: void(0);">
+							Main Menu
+						</a>
+					</li>
+					
+					
+					<li id="headerTabPlanEnquiry" class="mainMenuTab hidden" onclick="headerTabChange('PlanEnquiry'); " >
+						<a href="javascript: void(0);">
+							Plan Enquiry
+						</a>
+					</li>					
+					
+					
+				</ul>
+				
+			</div>
+			
+			
+			<div id="headerTabContentMainMenu" class="tabContent">
+				
+				<div class="bar" id="planMenuBar">
+					
+					<div class="barLeft">
+						<div class="barLeftInner">
+							
+						</div>						
+					</div>
+					
+					<div class="barRight">
+						<div class="barRightInner">
+							Demo Company - Scheme 0011112
+						</div>
+					</div>
+					
+					<span class="mybizName">
+						Joan Murphy
+					</span>
+									
+				</div>
+				
+				<div class="subBar"><div class="subBarLeft" ></div></div>
+				
+							
+						<div class="innerTabContent">
+							<div id="mainMenuContentWrapper" class="contentWrapper">
+							
+								<div class="leftMenu">
+									<div class="innerLeftMenu" >
+										<ul>
+											<li class="top"><a></a></li>
+												
+												<li id="mainMenuButtonPlanEnquiry" class="on" >
+													<a href="javascript:void(0)" onclick="mainMenuChange('PlanEnquiry'); " >Scheme Summary</a>
+												</li>
+												
+												<li id="mainMenuButtonViewSchemeCases" class="" >
+													<a href="javascript:void(0)" onclick="mainMenuChange('ViewSchemeCases'); " >View Scheme Cases</a>
+												</li>
+												
+												<li id="mainMenuButtonPaySchemeCases" class="" >
+													<a href="javascript:void(0)" onclick="mainMenuChange('PaySchemeCases'); " >Pay Scheme Cases</a>
+												</li>												
+												
+												<li id="mainMenuButtonViewPayments" class="" >
+													<a href="javascript:void(0)" onclick="mainMenuChange('ViewPayments'); " >View Payments</a>													
+												</li>																
+												
+											<li class="bottom"><a></a></li>
+										</ul>
+									</div>
+								</div>
+								
+								
+								
+								
+								
+								
+								
+								
+								<div id="mainMenuContentPlanEnquiry" class="content" >
+									
+										<h1 class="sectionHeading">Scheme Summary</h1>
+										
+										<div class="contentSection">
+										
+											<h2>Scheme Details</h2>
+											
+											<div class="innerContentSection">
+												
+												<table class="baseTable stripeyTable contentTable sortableTable">
+													<tbody>
+														<tr>
+															<td class="heading">Name</td>
+															<td><span id="tooltip1" class="tooltip" >Demo Company</span></td>	
+															<td class="heading">Phone Number</td>
+															<td>01 1111555</td>
+														</tr>
+														<tr class="stripe">
+															<td class="heading">Company Reg No</td>
+															<td>1234567</td>
+															<td class="heading">Fax Number</td>
+															<td>01 1112223</td>
+														</tr>
+														<tr>
+															<td class="heading">Employers Tax No</td>
+															<td>Mrs Karen Burn</td>
+															<td class="heading">Contact Name</td>
+															<td>01 25855125</td>
+														</tr>
+														
+														<tr class="stripe">
+															<td class="heading">Employers Tax District</td>
+															<td>Dublin</td>
+															<td class="heading">Contact Number</td>
+															<td>01 12555852</td>
+														</tr>
+														<tr>
+															<td class="heading">Designation Start</td>
+															<td>20-Mar-2001</td>
+															<td class="heading">Email</td>
+															<td>email@domain.ie</td>
+														</tr>
+														<tr class="stripe">
+															<td class="heading">Designation End</td>
+															<td>N/A</td>
+															<td class="heading">PRSA Facility</td>
+															<td>02111121</td>
+														</tr>
+														<tr>
+															<td class="heading">Designation Seller</td>
+															<td>0001</td>
+															<td class="heading">Billing For Employees Allowed</td>
+															<td>Yes</td>
+														</tr>
+													
+													</tbody>
+												</table>												
+												
+											</div>
+										</div>
+										
+										<div class="contentSection">
+										
+											<h2>Address 1 Detail</h2>
+											
+											<div class="innerContentSection">
+												
+												<table class="baseTable stripeyTable contentTable">
+													<tbody>
+														
+														<tr>
+															<td class="heading">Addressee</td>
+															<td>Demo Company</td>
+														</tr>
+														<tr class="stripe">
+															<td class="heading">Address Line 1</td>
+															<td>Demo Company</td>
+														</tr>
+														<tr>
+															<td class="heading">Address Line 2</td>
+															<td>123 Abbey Street</td>
+														</tr>
+														<tr class="stripe">
+															<td class="heading">Address Line 3</td>
+															<td>Dublin</td>
+														</tr>
+														<tr>
+															<td class="heading">Address Line 4</td>
+															<td></td>
+														</tr>
+														<tr class="stripe">
+															<td class="heading">Geo Directory Code</td>
+															<td></td>
+														</tr>
+														<tr>
+															<td class="heading">Registered Address</td>
+															<td>No</td>
+														</tr>										
+														<tr>
+															<td class="heading">Delivery Preference</td>
+															<td>Ordinary Mail</td>
+														</tr>
+														<tr>
+															<td class="heading">Hold Reason</td>
+															<td>N/A</td>
+														</tr>													
+																							
+													</tbody>
+												</table>												
+												
+											</div>
+										</div>
+										
+									</div>								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								<div class="content hidden" id="mainMenuContentViewSchemeCases">    
+
+ 
+ 
+
+	
+
+	
+	
+	
+	<h1 class="sectionHeading">View Scheme Cases</h1>
+	
+	
+	
+	
+	
+		<div class="contentSection">
+			<div class="contentSection" id="scheme-plan-details">
+		 		<h2>PRSA Scheme Payment Details</h2>			
+				<div class="innerContentSection">
+					<table class="baseTable stripeyTable sortableTable" id="schemeNominalPaymentsTable">
+						<thead>
+							<tr>
+								<th class="column1 header">PPSN</th>
+								<th class="column2 header headerSortDown">First Name</th>
+								<th class="column3 header headerSortDown">Surname</th>
+								<th class="column4 header">Employee Payment</th>
+								<th class="column5 header">Employer Payment</th>
+								<th class="column6 header">Total</th>													
+							</tr>
+						</thead>
+						<tbody>
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+								
+							
+						<tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor">2255576D</span></td>		
+									<td>Adrienne</td>
+									<td>Murphy</td>
+									<td>&euro;62.91</td>
+									<td>&euro;62.91</td>	
+									<td>&euro;125.82</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 1155579H</span></td>		
+									<td>Jennifer</td>
+									<td>Cummins</td>
+									<td>&euro;158.34</td>
+									<td>&euro;98.96</td>	
+									<td>&euro;257.30</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5544580O</span></td>		
+									<td>Eoghan</td>
+									<td>Connolly</td>
+									<td>&euro;83.33</td>
+									<td>&euro;83.33</td>	
+									<td>&euro;166.66</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor">255576R</span></td>		
+									<td>Declan</td>
+									<td>Foley</td>
+									<td>&euro;250.00</td>
+									<td>&euro;125.00</td>	
+									<td>&euro;375.00</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 4455517I</span></td>		
+									<td>Ciara</td>
+									<td>Goggin</td>
+									<td>&euro;101.26</td>
+									<td>&euro;84.38</td>	
+									<td>&euro;185.64</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 0055518P</span></td>		
+									<td>Richard</td>
+									<td>Foley</td>
+									<td>&euro;468.75</td>
+									<td>&euro;312.50</td>	
+									<td>&euro;781.25</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5995557V</span></td>		
+									<td>Karl</td>
+									<td>Goggin</td>
+									<td>&euro;168.75</td>
+									<td>&euro;84.38</td>	
+									<td>&euro;253.13</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5544592L</span></td>		
+									<td>Daragh</td>
+									<td>Hull</td>
+									<td>&euro;158.33</td>
+									<td>&euro;79.17</td>	
+									<td>&euro;237.50</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 2255537T</span></td>		
+									<td>Richard</td>
+									<td>Jones</td>
+									<td>&euro;118.75</td>
+									<td>&euro;59.38</td>	
+									<td>&euro;178.13</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 3355567L</span></td>		
+									<td>John</td>
+									<td>Kelly</td>
+									<td>&euro;103.12</td>
+									<td>&euro;103.12</td>	
+									<td>&euro;206.24</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5445594O</span></td>		
+									<td>Conor</td>
+									<td>McMahon</td>
+									<td>&euro;168.75</td>
+									<td>&euro;84.37</td>	
+									<td>&euro;253.12</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7755545K</span></td>		
+									<td>Dermot</td>
+									<td>McMahon</td>
+									<td>&euro;262.50</td>
+									<td>&euro;131.25</td>	
+									<td>&euro;393.75</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 8855580V</span></td>		
+									<td>Brian</td>
+									<td>Moran</td>
+									<td>&euro;350.00</td>
+									<td>&euro;125.00</td>	
+									<td>&euro;475.00</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 1155592V</span></td>		
+									<td>Rebecca</td>
+									<td>Moore</td>
+									<td>&euro;166.66</td>
+									<td>&euro;83.33</td>	
+									<td>&euro;249.99</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5335535I</span></td>		
+									<td>Steven</td>
+									<td>Murphy</td>
+									<td>&euro;253.12</td>
+									<td>&euro;84.38</td>	
+									<td>&euro;337.50</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor">5445541D</span></td>		
+									<td>Michael</td>
+									<td>Moran</td>
+									<td>&euro;79.83</td>
+									<td>&euro;39.83</td>	
+									<td>&euro;119.66</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7755558C</span></td>		
+									<td>Paul</td>
+									<td>O Reilly</td>
+									<td>&euro;158.33</td>
+									<td>&euro;79.17</td>	
+									<td>&euro;237.50</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 355535D</span></td>		
+									<td>John</td>
+									<td>Kelly</td>
+									<td>&euro;36.67</td>
+									<td>&euro;91.67</td>	
+									<td>&euro;128.34</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5335546O</span></td>		
+									<td>Bob</td>
+									<td>Seery</td>
+									<td>&euro;73.33</td>
+									<td>&euro;91.67</td>	
+									<td>&euro;165.00</td>		
+								</tr><tr>			
+									<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 8855564R</span></td>		
+									<td>John</td>
+									<td>Horan</td>
+									<td>&euro;120.00</td>
+									<td>&euro;75.00</td>	
+									<td>&euro;195.00</td>		
+								</tr></tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+				
+	</div>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								<div id="mainMenuContentPaySchemeCases" class="content hidden" >
+																
+									<div id="paySchemeCases0" class="" >
+									
+										
+										
+											
+											
+														
+				<div>	
+
+				 
+				 
+
+					
+
+					
+					
+					
+					
+					
+					
+					<div class="paySchemeCasesHeadingContainer">
+					
+						<h1 class="sectionHeading paySchemeCasesHeading">Pay Scheme Cases</h1>
+						
+						
+						<div class="paySchemeCasesSaved">
+							
+						</div>
+						
+					
+					</div>
+					
+					
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+							<div class="topProgressBar">									
+								<ul class="progressBar">
+									<li class="current">
+										<span class="progressItemText">1. Payment Amounts</span>
+									</li>
+									<li class="disabled">
+										<span class="progressItemText">2. Payment Details</span>
+									</li>
+									<li class="disabled">
+										<span class="progressItemText">3. Confirm Details</span>
+									</li>
+									<li class="disabled">
+										<span class="progressItemText">4. Complete</span>
+									</li>
+								</ul>						
+							</div>
+						
+					
+							<div class="contentSection" id="pay-scheme-cases1">
+							
+								<h2>Input Payments to Scheme 041555</h2>
+								
+								<div class="innerContentSection">
+						
+									<table class="baseTable stripeyTable sortableTable tableFixed2" id="schemePaymentsToApplyTable">
+									<thead>
+										<tr>
+											<th class="column1 header">PPSN</th>
+											<th class="column2 header headerSortDown">First Name</th>
+											<th class="column3 header headerSortDown">Surname</th>
+											<th class="column4 header"><span id="employeeNominalPayment">Employee<br>Nominal<br>Payment</span></th>
+											<th class="column5 noUnderline"><span id="employeeActualPayment">Employee<br>Actual<br>Payment</span></th>
+											<th class="column6 header"><span id="employerNominalPayment">Employer<br>Nominal<br>Payment</span></th>	
+											<th class="column7 noUnderline"><span id="employerActualPayment">Employer<br>Actual<br>Payment</span></th>
+											<th class="column8 header">Total</th>					
+										</tr>
+									</thead>
+									
+									<tbody>
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+											
+										
+										
+									<tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555076D</span></td>	
+												<td>Adrienne</td>
+												<td>Black</td>
+												<td>&euro;62.91</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('111a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-111a" id="employeeInputPremium-111a">
+													<div class="inputError" id="error-employeeInputPremium-111a">
+													</div>	
+												</td>	
+												<td>&euro;62.91</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('111a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-111a" id="employerInputPremium-111a">
+													<div class="inputError" id="error-employerInputPremium-111a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="111atotalPremium" id="111atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555779H</span></td>	
+												<td>John</td>
+												<td>Byrne</td>
+												<td>&euro;158.34</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('222a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-222a" id="employeeInputPremium-222a">
+													<div class="inputError" id="error-employeeInputPremium-222a">
+													</div>	
+												</td>	
+												<td>&euro;98.96</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('222a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-222a" id="employerInputPremium-222a">
+													<div class="inputError" id="error-employerInputPremium-222a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="222atotalPremium" id="222atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555880O</span></td>	
+												<td>Eoghan</td>
+												<td>Murray</td>
+												<td>&euro;83.33</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('333a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-333a" id="employeeInputPremium-333a">
+													<div class="inputError" id="error-employeeInputPremium-333a">
+													</div>	
+												</td>	
+												<td>&euro;83.33</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('333a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-333a" id="employerInputPremium-333a">
+													<div class="inputError" id="error-employerInputPremium-333a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="333atotalPremium" id="333atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555076R</span></td>	
+												<td>Fiona</td>
+												<td>Corry</td>
+												<td>&euro;250.00</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('444a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-444a" id="employeeInputPremium-444a">
+													<div class="inputError" id="error-employeeInputPremium-444a">
+													</div>	
+												</td>	
+												<td>&euro;125.00</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('444a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-444a" id="employerInputPremium-444a">
+													<div class="inputError" id="error-employerInputPremium-444a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="444atotalPremium" id="444atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555317I</span></td>	
+												<td>Brian</td>
+												<td>Cummins</td>
+												<td>&euro;101.26</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('555a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-555a" id="employeeInputPremium-555a">
+													<div class="inputError" id="error-employeeInputPremium-555a">
+													</div>	
+												</td>	
+												<td>&euro;84.38</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('555a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-555a" id="employerInputPremium-555a">
+													<div class="inputError" id="error-employerInputPremium-555a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="555atotalPremium" id="555atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555018P</span></td>	
+												<td>Steven</td>
+												<td>Foley</td>
+												<td>&euro;468.75</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('666a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-666a" id="employeeInputPremium-666a">
+													<div class="inputError" id="error-employeeInputPremium-666a">
+													</div>	
+												</td>	
+												<td>&euro;312.50</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('666a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-666a" id="employerInputPremium-666a">
+													<div class="inputError" id="error-employerInputPremium-666a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="666atotalPremium" id="666atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555957V</span></td>	
+												<td>Homer</td>
+												<td>Goggin</td>
+												<td>&euro;168.75</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('777a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-777a" id="employeeInputPremium-777a">
+													<div class="inputError" id="error-employeeInputPremium-777a">
+													</div>	
+												</td>	
+												<td>&euro;84.38</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('777a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-777a" id="employerInputPremium-777a">
+													<div class="inputError" id="error-employerInputPremium-777a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="777atotalPremium" id="777atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555092L</span></td>	
+												<td>Lenny</td>
+												<td>Hull</td>
+												<td>&euro;158.33</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('888a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-888a" id="employeeInputPremium-888a">
+													<div class="inputError" id="error-employeeInputPremium-888a">
+													</div>	
+												</td>	
+												<td>&euro;79.17</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('888a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-888a" id="employerInputPremium-888a">
+													<div class="inputError" id="error-employerInputPremium-888a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="888atotalPremium" id="888atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555637T</span></td>	
+												<td>Carl</td>
+												<td>Jones</td>
+												<td>&euro;118.75</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('999a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-999a" id="employeeInputPremium-999a">
+													<div class="inputError" id="error-employeeInputPremium-999a">
+													</div>	
+												</td>	
+												<td>&euro;59.38</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('999a',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-999a" id="employerInputPremium-999a">
+													<div class="inputError" id="error-employerInputPremium-999a">
+													</div>
+												</td>	
+												<td class="totalPayment" name="999atotalPremium" id="999atotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7265557L</span></td>	
+												<td>Marge</td>
+												<td>Kelly</td>
+												<td>&euro;103.12</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('111b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-111b" id="employeeInputPremium-111b">
+													<div class="inputError" id="error-employeeInputPremium-111b">
+													</div>	
+												</td>	
+												<td>&euro;103.12</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('111b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-111b" id="employerInputPremium-111b">
+													<div class="inputError" id="error-employerInputPremium-111b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="111btotalPremium" id="111btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555794O</span></td>	
+												<td>Bart</td>
+												<td>McMahon</td>
+												<td>&euro;168.75</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('222b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-222b" id="employeeInputPremium-222b">
+													<div class="inputError" id="error-employeeInputPremium-222b">
+													</div>	
+												</td>	
+												<td>&euro;84.37</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('222b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-222b" id="employerInputPremium-222b">
+													<div class="inputError" id="error-employerInputPremium-222b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="222btotalPremium" id="222btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6955545K</span></td>	
+												<td>Lisa</td>
+												<td>Moore</td>
+												<td>&euro;262.50</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('333b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-333b" id="employeeInputPremium-333b">
+													<div class="inputError" id="error-employeeInputPremium-333b">
+													</div>	
+												</td>	
+												<td>&euro;131.25</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('333b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-333b" id="employerInputPremium-333b">
+													<div class="inputError" id="error-employerInputPremium-333b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="333btotalPremium" id="333btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('444b');" name="planId" id="planId" class="anchor"> 6555780V</span></td>	
+												<td>Moe</td>
+												<td>Moran</td>
+												<td>&euro;350.00</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('444b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-444b" id="employeeInputPremium-444b">
+													<div class="inputError" id="error-employeeInputPremium-">
+													</div>	
+												</td>	
+												<td>&euro;125.00</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('444b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-444b" id="employerInputPremium-444b">
+													<div class="inputError" id="error-employerInputPremium-">
+													</div>
+												</td>	
+												<td class="totalPayment" name="444btotalPremium" id="444btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555492V</span></td>	
+												<td>Bob</td>
+												<td>Mosurski</td>
+												<td>&euro;166.66</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('555b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-555b" id="employeeInputPremium-555b">
+													<div class="inputError" id="error-employeeInputPremium-">
+													</div>	
+												</td>	
+												<td>&euro;83.33</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('555b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-555b" id="employerInputPremium-555b">
+													<div class="inputError" id="error-employerInputPremium-555b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="555btotalPremium" id="555btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555535I</span></td>	
+												<td>Garry</td>
+												<td>Murphy</td>
+												<td>&euro;253.12</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('666b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-666b" id="employeeInputPremium-666b">
+													<div class="inputError" id="error-employeeInputPremium-666b">
+													</div>	
+												</td>	
+												<td>&euro;84.38</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('666b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-666b" id="employerInputPremium-666b">
+													<div class="inputError" id="error-employerInputPremium-666b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="666btotalPremium" id="666btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 4555541D</span></td>	
+												<td>Michael</td>
+												<td>Murphy</td>
+												<td>&euro;79.83</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('777b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-777b" id="employeeInputPremium-777b">
+													<div class="inputError" id="error-employeeInputPremium-777b">
+													</div>	
+												</td>	
+												<td>&euro;39.83</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('777b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-777b" id="employerInputPremium-777b">
+													<div class="inputError" id="error-employerInputPremium-777b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="777btotalPremium" id="777btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555458C</span></td>	
+												<td>Declan</td>
+												<td>O Reilly</td>
+												<td>&euro;158.33</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('888b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-888b" id="employeeInputPremium-888b">
+													<div class="inputError" id="error-employeeInputPremium-888b">
+													</div>	
+												</td>	
+												<td>&euro;79.17</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('888b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-888b" id="employerInputPremium-888b">
+													<div class="inputError" id="error-employerInputPremium-888b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="888btotalPremium" id="888btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="=planId" id="=planId" class="anchor"> 7555235D</span></td>	
+												<td>John</td>
+												<td>Patton</td>
+												<td>&euro;36.67</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('999b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-999b" id="employeeInputPremium-999b">
+													<div class="inputError" id="error-employeeInputPremium-=">
+													</div>	
+												</td>	
+												<td>&euro;91.67</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('999b',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-999b" id="employerInputPremium-999b">
+													<div class="inputError" id="error-employerInputPremium-999b">
+													</div>
+												</td>	
+												<td class="totalPayment" name="999btotalPremium" id="999btotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555246O</span></td>	
+												<td>Robert</td>
+												<td>Seery</td>
+												<td>&euro;73.33</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('111c',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-111c" id="employeeInputPremium-111c">
+													<div class="inputError" id="error-employeeInputPremium-">
+													</div>	
+												</td>	
+												<td>&euro;91.67</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('111c',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-111c" id="employerInputPremium-111c">
+													<div class="inputError" id="error-employerInputPremium-111c">
+													</div>
+												</td>	
+												<td class="totalPayment" name="111ctotalPremium" id="111ctotalPremium"></td>
+											</tr><tr>			
+												<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7255564R</span></td>	
+												<td>John</td>
+												<td>Twamley</td>
+												<td>&euro;120.00</td>	
+												<td>
+													<input type="text" value="" onblur="updateTotal('222c',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employeeInputPremium-222c" id="employeeInputPremium-222c">
+													<div class="inputError" id="error-employeeInputPremium-">
+													</div>	
+												</td>	
+												<td>&euro;75.00</td>
+												<td>
+													<input type="text" value="" onblur="updateTotal('222c',this)" class="inputField inputFieldTextSmall2 {mandatory: false, validation: 14}" name="employerInputPremium-222c" id="employerInputPremium-222c">
+													<div class="inputError" id="error-employerInputPremium-">
+													</div>
+												</td>	
+												<td class="totalPayment" name="222ctotalPremium" id="222ctotalPremium"></td>
+											</tr></tbody>
+									
+									</table>
+									
+								</div>			
+							</div>
+							
+							
+							<div class="contentSection">
+								<div class="contentSection" id="pay-scheme-dtls">
+									<h2>Payment Details</h2>
+									
+									<div class="innerContentSection">
+										<table class="baseTable  stripeyTable contentTable">
+										<tbody>
+											<tr>
+												<td class="heading">Payment Month</td>
+												<td>June</td>
+												<td class="heading">Actual Payment Total</td>
+												<td id="schemeTotalPayment">&euro;0.00</td>
+											</tr>
+										</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="buttonsBottomLeft">						
+								<button onclick="paySchemeCasesReset()" class="" title="Delete all saved pending payments">Reset</button>
+								
+								<button onclick="alert('Demo version\n\nThis button will retrieve all saved amounts from the database. This button is similar to an undo button.')" class="" title="Retrieve saved amounts from the database">Retrieve Saved Amounts</button>
+								
+							</div>
+							<div class="buttonsBottomRight">
+								<button onclick="paySchemeCasesSave()" class="" title="Save data entered on the screen">Save</button>
+								
+								
+								<button onclick="testPaySchemeCase('1')" class="submit" title="Proceed to Enter Payment Details Screen">Next</button>
+							</div>
+						
+						
+					
+					
+					
+						
+				</div>										
+														
+														
+											
+											
+										
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>	
+										
+									<div id="paySchemeCases1" class="hidden" >
+													
+
+
+
+<div>	
+
+ 
+ 
+
+	
+
+	
+		
+	
+	
+	
+	<h1 class="sectionHeading">Pay Scheme Cases</h1>
+	
+	<div id="paySchemeCasesMessages">
+		
+		
+	</div>
+	
+	
+	<div class="topProgressBar">									
+		<ul class="progressBar">
+			<li class="complete">
+				<span onclick="testPaySchemeCase('0')" class="progressItemText">1. Payment Amounts</span>
+			</li>
+			<li class="current">
+				<span class="progressItemText">2. Payment Details</span>
+			</li>
+			<li class="disabled">
+				<span class="progressItemText">3. Confirm Details</span>
+			</li>
+			<li class="disabled">
+				<span class="progressItemText">4. Complete</span>
+			</li>
+		</ul>						
+	</div>
+	
+	
+	<div class="contentSection" id="pay-scheme-cases2">
+ 		<h2>Payment Details</h2>	
+ 		<div class="innerContentSection">
+			
+			<table class="baseTable formTable contentTable2Column" id="">
+				<tbody>
+					<tr class="noBorder">							
+						<td class="labelColumn">
+							<span class="labelText">Payment Type</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+						
+						
+							<select onchange="paySchemeCasesPaymentTypeChange(); " class="inputField inputFieldSelect inputField inputFieldSelectWide {mandatory: true, validation: 30}" name="paySchemeCasesPaymentType" id="paySchemeCasesPaymentType">
+								<option value="" selected="selected"></option>
+								<option value="C">Cheque</option>
+								
+								
+								
+								
+									<option value="D">Manual Direct Debit</option>																		
+									<option value="V">Visa</option>
+									<option value="M">Mastercard</option>																		
+									<option value="L">Laser</option>
+									
+								
+																
+							</select>
+							
+							<div class="inputError2" id="error-paySchemeCasesPaymentType" style="display: none;"></div>
+							
+						</td>
+						
+					</tr>
+					
+				</tbody>
+			</table>
+			
+		</div>	
+	</div>
+	
+	
+	<div style="display: none;" class="contentSection schemePaymentDetailsType" id="schemePaymentDetailsC">
+	
+ 			<h2>Cheque Payment Details</h2>
+   		
+		<div class="innerContentSection" id="paymentDetails">
+			
+			<p class="margin-bottom">Please print this screen, attach the cheque to it and send to Irish Life PLC, Premium Collections Team, Lower Abbey Street, Dublin 1.</p>
+			
+			<table class="baseTable contentTable contentTable2Column stripeyTable">
+				<tbody>
+					<tr>
+						<td class="heading">Scheme Name</td>
+						<td>Demo Company Ltd.</td>
+					</tr>
+					<tr>
+						<td class="heading">Scheme Reference Number</td>
+						<td>033355</td>
+					</tr>
+					<tr>
+						<td class="heading">Addressee</td>
+						<td>123 Abbey Street</td>
+					</tr>	
+					<tr>
+						<td class="heading">Address Line 1</td>
+						<td>Abbey Street</td>
+					</tr>
+					<tr>
+						<td class="heading">Address Line 2</td>
+						<td>Abbey Street</td>
+					</tr>
+					<tr>
+						<td class="heading">Address Line 3</td>
+						<td>Dublin 1</td>
+					</tr>
+					<tr>
+						<td class="heading">Address Line 4</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="heading">Cheque Payment Amount</td>
+						<td>&euro;1252.45</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	
+	</div>
+	
+	
+	<div style="display: none;" class="contentSection schemePaymentDetailsType" id="schemePaymentDetailsD">
+	
+  			<h2>Manual Direct Debit Payment Details</h2>
+  			
+		<div class="innerContentSection">
+			
+			
+			<table class="baseTable formTable">
+				<tbody>
+				
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Bank account name</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 2}" maxlength="50" value="" name="ddBankAccountName" id="ddBankAccountName">
+								
+							<div class="inputError2" id="error-ddBankAccountName"></div>
+							
+						</td>
+						
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Bank Sort Code</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+						
+							<input type="text" class="inputField inputFieldText inputFieldTextSize1 {mandatory: true, validation: 3}" maxlength="6" value="" name="schemePaymentDetailsSortCode" id="schemePaymentDetailsSortCode">
+							
+							<div class="inputError2" id="error-schemePaymentDetailsSortCode"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Bank Account Number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldTextSize2 {mandatory: true, validation: 3}" maxlength="8" value="" name="ddBankAccountNumber" id="ddBankAccountNumber">
+							
+							<div class="inputError2" id="error-ddBankAccountNumber"></div>
+							
+						</td>
+					</tr>
+					
+					<tr class="noBorder">
+					
+						<td class="labelColumn">
+							<span class="labelText">Save payment details for next time</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<div class="inputRadioVertical">
+								<input type="radio" class="inputField {mandatory: true, validation: 30}" value="true" name="paySchemeCasesPaymentTypeDDSave" id="paySchemeCasesPaymentTypeDDSaveYes">
+								<label for="paySchemeCasesPaymentTypeDDSaveYes">Yes</label>
+							</div>
+							
+							<div class="inputRadioVertical2">
+								<input type="radio" value="false" name="paySchemeCasesPaymentTypeDDSave" id="paySchemeCasesPaymentTypeDDSaveNo">
+								<label for="paySchemeCasesPaymentTypeDDSaveNo">No</label>
+							</div>
+							
+							<div class="inputError2" id="error-paySchemeCasesPaymentTypeDDSave"></div>
+							
+						</td>
+						
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	
+	<div style="display: none;" class="contentSection schemePaymentDetailsType" id="schemePaymentDetailsV">
+	
+  			<h2>Visa Card Payment Details</h2>
+  			
+		<div class="innerContentSection">
+							
+			<table class="baseTable formTable">
+				<tbody>
+				
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card holder name</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 50}" maxlength="50" value="" name="cardholderNameVisa" id="cardholderNameVisa">
+								
+							<div class="inputError2" id="error-cardholderNameVisa"></div>
+							
+						</td>							
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							
+							
+								
+								
+									
+									<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 3}" maxlength="16" value="" name="cardNumberVisa" id="cardNumberVisa">
+										
+									<div class="inputError2" id="error-cardNumberVisa"></div>
+									
+								
+							
+							
+							
+						</td>							
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Expiry Date</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<select class="inputField inputFieldSelect inputFieldSmall3 {mandatory: true, validation: 30}" name="expiryDateVisaMonth" id="expiryDateVisaMonth">									
+								<option selected="selected"></option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>									
+							</select>
+							
+							<select class="inputField inputFieldSelect inputFieldSmall4 {mandatory: true, validation: 30}" name="expiryDateVisaYear" id="expiryDateVisaYear">									
+								<option selected="selected" value=""></option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option>
+							</select>
+							
+							<div class="inputError2" id="error-expiryDateVisaMonth"></div>
+							<div class="inputError2" id="error-expiryDateVisaYear"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">CVV number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldSmall3 {mandatory: true, validation: 51}" maxlength="3" value="" name="cvvVisa" id="cvvVisa">
+								
+							<div class="inputError2" id="error-cvvVisa"></div>
+							
+						</td>							
+					</tr>
+					
+					<tr class="noBorder">
+					
+						<td class="labelColumn">
+							<span class="labelText">Save payment details for next time</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<div class="inputRadioVertical">
+								<input type="radio" class="inputField {mandatory: true, validation: 30}" value="true" name="paySchemeCasesPaymentTypeVisaSave" id="paySchemeCasesPaymentTypeVisaSaveYes">
+								<label for="paySchemeCasesPaymentTypeVisaSaveYes">Yes</label>
+							</div>
+							
+							<div class="inputRadioVertical2">
+								<input type="radio" value="false" name="paySchemeCasesPaymentTypeVisaSave" id="paySchemeCasesPaymentTypeVisaSaveNo">
+								<label for="paySchemeCasesPaymentTypeVisaSaveNo">No</label>
+							</div>
+							
+							<div class="inputError2" id="error-paySchemeCasesPaymentTypeVisaSave"></div>
+							
+						</td>
+						
+					</tr>
+				
+				</tbody>
+			</table>
+			
+		</div>
+		
+	</div>
+	
+	
+	<div style="display: none;" class="contentSection schemePaymentDetailsType" id="schemePaymentDetailsL">
+	
+  		<h2>Laser Card Payment Details</h2>
+  		
+		<div class="innerContentSection">
+							
+			<table class="baseTable formTable">
+				<tbody>
+				
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card holder name</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 50}" maxlength="50" value="" name="cardholderNameLaser" id="cardholderNameLaser">
+								
+							<div class="inputError2" id="error-cardholderNameLaser"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							
+							
+								
+								
+									
+									<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 3}" maxlength="19" value="" name="cardNumberLaser" id="cardNumberLaser">
+										
+									<div class="inputError2" id="error-cardNumberLaser"></div>
+									
+								
+							
+							
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Expiry Date</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<select class="inputField inputFieldSelect inputFieldSmall3 {mandatory: true, validation: 30}" name="expiryDateLaserMonth" id="expiryDateLaserMonth">									
+								<option selected="selected"></option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+							</select>
+							
+							<select class="inputField inputFieldSelect inputFieldSmall4 {mandatory: true, validation: 30}" name="expiryDateLaserYear" id="expiryDateLaserYear">									
+								<option selected="selected" value=""></option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option>
+							</select>
+							
+							<div class="inputError2" id="error-expiryDateLaserMonth"></div>
+							<div class="inputError2" id="error-expiryDateLaserYear"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">CVV number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldSmall3 {mandatory: true, validation: 51}" maxlength="3" value="" name="cvvLaser" id="cvvLaser">
+								
+							<div class="inputError2" id="error-cvvLaser"></div>
+							
+						</td>
+					</tr>
+					
+					<tr class="noBorder">
+					
+						<td class="labelColumn">
+							<span class="labelText">Save payment details for next time</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<div class="inputRadioVertical">
+								<input type="radio" class="inputField {mandatory: true, validation: 30}" value="true" name="paySchemeCasesPaymentTypeLaserSave" id="paySchemeCasesPaymentTypeLaserSaveYes">
+								<label for="paySchemeCasesPaymentTypeLaserSaveYes">Yes</label>
+							</div>
+							
+							<div class="inputRadioVertical2">
+								<input type="radio" value="false" name="paySchemeCasesPaymentTypeLaserSave" id="paySchemeCasesPaymentTypeLaserSaveNo">
+								<label for="paySchemeCasesPaymentTypeLaserSaveNo">No</label>
+							</div>
+							
+							<div class="inputError2" id="error-paySchemeCasesPaymentTypeLaserSave"></div>
+							
+						</td>
+						
+					</tr>					
+				
+				</tbody>
+			</table>
+			
+		</div>
+		
+	</div>		
+	
+	
+	<div style="display: block;" class="contentSection schemePaymentDetailsType" id="schemePaymentDetailsM">
+	
+  			<h2>Mastercard Payment Details</h2>
+  			
+		<div class="innerContentSection">
+			
+			<table class="baseTable formTable">
+				<tbody>
+				
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card holder name</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 50}" maxlength="50" value="John Murphy" name="cardholderNameMastercard" id="cardholderNameMastercard">
+								
+							<div class="inputError2" id="error-cardholderNameMastercard"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Card number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+														
+							
+								
+									
+									
+									<div id="schemePaymentInputMastercard">
+										
+										<div class="schemePaymentInputEdit hidden">
+											<div class="schemePaymentInput1">
+											
+												<input type="text" class="inputField inputFieldText inputFieldTextSize3 {mandatory: true, validation: 3}" maxlength="19" value="" name="cardNumberMastercard" id="cardNumberMastercard">
+												
+												<input type="hidden" value="false" name="cardNumberMastercardInput" id="cardNumberMastercardInput">
+														
+												<div class="inputError2" id="error-cardNumberMastercard"></div>
+												
+												
+											</div>
+											<div class="schemePaymentInput2">
+												<a onclick="schemePaymentInputCancelEdit('Mastercard'); " href="javascript: void(0); ">Cancel Edit</a>
+											</div>
+										</div>
+										
+										<div class="schemePaymentInputNoEdit">
+											<div class="schemePaymentInput3">
+												550000******0004
+											</div>
+											<div class="schemePaymentInput4">
+												<a onclick="schemePaymentInputEdit('Mastercard'); " href="javascript: void(0); ">Edit card number</a>									
+											</div>
+										</div>
+										
+									</div>
+
+
+								
+								
+														
+														
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">Expiry Date</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<select class="inputField inputFieldSelect inputFieldSmall3 {mandatory: true, validation: 30}" name="expiryDateMastercardMonth" id="expiryDateMastercardMonth">									
+								<option></option><option value="01">01</option><option value="02" selected="selected">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+							</select>
+							
+							<select class="inputField inputFieldSelect inputFieldSmall4 {mandatory: true, validation: 30}" name="expiryDateMastercardYear" id="expiryDateMastercardYear">
+								<option value=""></option><option value="2011">2011</option><option value="2012">2012</option><option value="2013" selected="selected">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option>
+							</select>
+							
+							<div class="inputError2" id="error-expiryDateMastercardMonth"></div>
+							<div class="inputError2" id="error-expiryDateMastercardYear"></div>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="labelColumn">
+							<span class="labelText">CVV number</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<input type="text" class="inputField inputFieldText inputFieldSmall3 {mandatory: true, validation: 51}" maxlength="3" value="" name="cvvMastercard" id="cvvMastercard">
+								
+							<div class="inputError2" id="error-cvvMastercard"></div>
+							
+						</td>
+					</tr>
+					
+					<tr class="noBorder">
+					
+						<td class="labelColumn">
+							<span class="labelText">Save payment details for next time</span>
+						</td>
+						<td class="mandatoryColumn">
+							<span class="mandatoryText">*</span>
+						</td>
+						<td class="fieldColumn">
+							
+							<div class="inputRadioVertical">
+								<input type="radio" checked="checked" class="inputField {mandatory: true, validation: 30}" value="true" name="paySchemeCasesPaymentTypeMastercardSave" id="paySchemeCasesPaymentTypeMastercardSaveYes">
+								<label for="paySchemeCasesPaymentTypeMastercardSaveYes">Yes</label>
+							</div>
+							
+							<div class="inputRadioVertical2">
+								<input type="radio" value="false" name="paySchemeCasesPaymentTypeMastercardSave" id="paySchemeCasesPaymentTypeMastercardSaveNo">
+								<label for="paySchemeCasesPaymentTypeMastercardSaveNo">No</label>
+							</div>
+							
+							<div class="inputError2" id="error-paySchemeCasesPaymentTypeMastercardSave"></div>
+							
+						</td>
+						
+					</tr>					
+				
+				</tbody>
+			</table>
+			
+		</div>
+		
+	</div>		
+	
+	
+	<div class="buttonsBottomRight">
+		<button onclick="testPaySchemeCase('0')" class="first" title="Back to Enter Payment Amounts">Back</button>
+		<button onclick="testPaySchemeCase('2')" title="Proceed to Confirm Payment Detailsxxx">Next</button>
+	</div>
+		</div>
+													
+										
+									</div>
+									
+									<div id="paySchemeCases2" class="hidden" >
+										
+										
+										
+										
+										
+										
+<div>	
+
+ 
+ 
+
+	
+
+	
+
+	<h1 class="sectionHeading">Pay Scheme Cases</h1>
+
+	<div id="paySchemeCasesMessages">
+		
+		
+	</div>
+	
+	
+	<div class="topProgressBar">
+		<ul class="progressBar">
+			
+			
+				
+				
+					
+					<li class="complete">
+						<span onclick="testPaySchemeCase('0')" class="progressItemText">1. Payment Amounts</span>
+					</li>
+					<li class="complete">
+						<span onclick="testPaySchemeCase('1')" class="progressItemText">2. Payment Details</span>
+					</li>			
+					<li class="current">
+						<span class="progressItemText">3. Confirm Details</span>
+					</li>
+					<li class="disabled">
+						<span class="progressItemText">4. Complete</span>
+					</li>					
+					
+				
+			
+			
+		</ul>
+	</div>
+	
+	<div class="contentSection">
+		
+		<div class="contentSection" id="pay-scheme-cases3">
+	 	<h2>Payments to Scheme 041555</h2>	
+			<div class="innerContentSection">
+				<table class="baseTable stripeyTable sortableTable" id="schemePaymentsToConfirmTable">
+					<thead>			
+						<tr>
+							<th class="column1 header">PPSN</th>
+							<th class="column2 header headerSortDown">First Name</th>
+							<th class="column3 header headerSortDown">Surname</th>
+							<th class="column4 header"><span id="employeeActualPayment">Employee<br>Actual Payment</span></th>
+							<th class="column5 header"><span id="employerActualPayment">Employer<br>Actual Payment</span></th>
+							<th class="column6 header">Total</th>																	
+						</tr>
+					</thead>
+				
+					<tbody>					
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+							
+						
+					<tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555076D</span></td>	
+								<td>Adrienne</td>
+								<td>Brown</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555479H</span></td>	
+								<td>Jennifer</td>
+								<td>Byrne</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 4555580O</span></td>	
+								<td>Eoghan</td>
+								<td>Connolly</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 33555076R</span></td>	
+								<td>Declan</td>
+								<td>Corry</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 2555317I</span></td>	
+								<td>Ciara</td>
+								<td>Cummins</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 9555618P</span></td>	
+								<td>Richard</td>
+								<td>Foley</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5333957V</span></td>	
+								<td>Karl</td>
+								<td>Goggin</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555092L</span></td>	
+								<td>Daragh</td>
+								<td>Hull</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 75555637T</span></td>	
+								<td>Lisa</td>
+								<td>Jones</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 75555367L</span></td>	
+								<td>John</td>
+								<td>Kelly</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555794O</span></td>	
+								<td>Conor</td>
+								<td>McMahon</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555545K</span></td>	
+								<td>Dermot</td>
+								<td>Moore</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 6555780V</span></td>	
+								<td>Philip</td>
+								<td>Moran</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555492V</span></td>	
+								<td>Rebecca</td>
+								<td>Mosurski</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555735I</span></td>	
+								<td>Edward</td>
+								<td>Murphy</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 4555541D</span></td>	
+								<td>Michael</td>
+								<td>Nhema</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555458C</span></td>	
+								<td>Declan</td>
+								<td>O Reilly</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="=planId" id="=planId" class="anchor"> 7555235D</span></td>	
+								<td>John</td>
+								<td>Patton</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 5555246O</span></td>	
+								<td>Robert</td>
+								<td>Seery</td>
+								<td>&euro;100.00</td>
+								<td>&euro;100.00</td>	
+								<td>&euro;200.00</td>
+							</tr><tr>			
+								<td><span onclick="testOpenPlan('');" name="planId" id="planId" class="anchor"> 7555264R</span></td>	
+								<td>John</td>
+								<td>Twamley</td>
+								<td>&euro;112.00</td>
+								<td>&euro;224.00</td>	
+								<td>&euro;336.00</td>	
+							</tr></tbody>
+				</table>
+			</div>
+		</div>	
+	
+		<div class="contentSection">
+			<div class="contentSection" id="pay-scheme-dtls">
+	 		<h2>Payment Details Confirmation</h2>
+				<div class="innerContentSection">
+					
+					<table class="baseTable contentTable contentTable2Column stripeyTable">
+						<tbody>
+							<tr>
+								<td class="heading">Payment Month</td>
+								<td>June</td>
+							</tr>
+							<tr>									
+								<td class="heading">Total Payment Amount</td>
+								<td>&euro;2.00</td>
+							</tr>
+							
+						</tbody>
+					</table>
+					
+					<table class="baseTable contentTable contentTable2Column stripeyTable">
+						<tbody>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+								
+								<tr>
+									<td class="heading">Payment Type</td>
+									<td>Mastercard</td>
+								</tr>
+								<tr>
+									<td class="heading">Card holder name</td>
+									<td>Joan Murphy</td>
+								</tr>
+								<tr>
+									<td class="heading">Card number</td>
+									<td>
+										550000******0004										
+									</td>
+								</tr>
+								<tr>
+									<td class="heading">Expiry Date</td>
+									<td>01/02/2013</td>
+								</tr>
+								<tr>
+									<td class="heading">CVV</td>
+									<td>***</td>
+								</tr>
+								<tr>
+									<td class="heading">Save payment details for next time</td>
+									<td>
+										
+											
+												Yes
+											
+											
+																					
+									</td>
+								</tr>								
+								
+							
+							
+														
+							
+							
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+
+		<div class="buttonsBottomRight">		
+			<button onclick="testPaySchemeCase('1')" class="" title="Back to Enter Payment Details">Back</button>					
+			<button onclick="testPaySchemeCase('3')" class="submit" title="Submit Payment Details">Confirm</button>		
+		</div>
+	</div>
+	</div>										
+										
+										
+										
+										
+									
+									</div>
+									
+									<div id="paySchemeCases3" class="hidden" >
+
+									
+									
+									
+									
+									
+									
+									
+<div>	
+
+ 
+ 
+
+	
+
+	
+
+	<h1 class="sectionHeading">Pay Scheme Cases</h1>
+	
+	<div id="paySchemeCasesMessages">
+		
+		
+	</div>		
+	
+	
+				
+		 
+			
+
+		<div class="topProgressBar">	
+			<ul class="progressBar">
+		
+			
+				
+				
+										
+					<li class="">
+						<span class="progressItemText">1. Payment Amounts</span>
+					</li>
+					<li class="">
+						<span class="progressItemText">2. Payment Details</span>
+					</li>
+					<li class="">
+						<span class="progressItemText">3. Confirm Details</span>
+					</li>
+					<li class="current">
+						<span class="progressItemText">4. Complete</span>
+					</li>
+					
+				
+			
+			
+			</ul>
+		</div>
+	
+		<div class="contentSection">
+
+			<div class="contentSection" id="pay-scheme-cases4">
+		 		<h2>Complete</h2>
+				
+				<div class="innerContentSection">
+					
+						
+						 
+							<p>Thank you. Your payment is complete.</p>
+						
+					
+	
+					
+					<p>You can contact us about your payment by emailing us: <a href="mailto:payg@irishlife.ie?Subject=Pay%20as%20you%20go%20payment%20enquiry%20-%20Scheme%20041555%20-%20Payment%20Month%20:%20June%20-%20Payment%20Effective%20Date%20:%2003/06/2011">payg@irishlife.ie</a> </p>
+					<p>You can also view or print your reconciliation by clicking the 'View Payments' button on the left </p>
+				
+				</div>
+			</div>	
+			
+		</div>	
+
+		<div class="buttonsBottomRight">
+			<button onclick="testPaySchemeCase('0')" class="">Exit</button>										
+		</div>
+		
+		
+			
+</div>									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									</div>
+									
+								</div>
+
+								<div id="mainMenuContentViewPayments" class="content hidden" >
+								
+									<h1 class="sectionHeading">View Payments</h1>
+									
+									<div class="contentSection">
+										
+										<h2>Payment Dates for Scheme 001123</h2>
+										
+										<div class="innerContentSection">
+										
+											<table class="baseTable" id="">	
+											
+												<tbody>
+													<tr>
+														<td class="heading" >Payment Month</td>
+														<td>
+								
+															
+															<select class="inputFieldSelect" onchange="$('#testPaymentDates').removeClass('hidden')" >
+															<option selected="" value=""></option>
+															<option value="October / 09-Sep-2010">October / 09-Sep-2010</option>
+															<option value="August / 06-Aug-2010">August / 06-Aug-2010</option>
+															</select>															
+															
+															
+														</td>
+													</tr>
+												</tbody>
+											
+											</table>
+										
+										</div>
+									</div>
+									
+									<div class="contentSection hidden" id="testPaymentDates" >
+										
+										<div class="contentSection" >
+											
+											<h2>Payment Details for 02/01/2010</h2>
+											
+											<div class="innerContentSection">
+											
+																							
+												<table class="baseTable stripeyTable highlightTable searchResults" id="documentsSearchResultsTable">
+													<thead>
+													<tr>
+														<th class="column1">Plan Number</th>
+														<th class="column2">Customer Name</th>
+														<th class="column3">Employee Payment</th>
+														<th class="column4">Employer Payment</th>
+														<th class="column5">Total</th>
+													</tr>
+													</thead>
+													<tbody>
+														
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11555501</span></td>
+															<td>Liam Fitzgerald</td>
+															<td>€150.00</td>
+															<td>€150.00</td>
+															<td>€300.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11555520</span></td>
+															<td>John Murphy</td>
+															<td>€400.00</td>
+															<td>€0.00</td>
+															<td>€400.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11355555</span></td>
+															<td>Claire Brennan</td>
+															<td>€250.00</td>
+															<td>€50.00</td>
+															<td>€300.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >15555012</span></td>
+															<td>Cillian Long</td>
+															<td>€250.00</td>
+															<td>€250.00</td>
+															<td>€500.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >15555011</span></td>
+															<td>Paul Suilivan</td>
+															<td>€250.00</td>
+															<td>€150.00</td>
+															<td>€400.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11355558</span></td>
+															<td>Ruth O'Connell</td>
+															<td>€350.00</td>
+															<td>€350.00</td>
+															<td>€700.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >55550005</span></td>
+															<td>John Murphy</td>
+															<td>€100.00</td>
+															<td>€0.00</td>
+															<td>€100.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >1155550</span></td>
+															<td>Edward Dolan</td>
+															<td>€200.00</td>
+															<td>€200.00</td>
+															<td>€400.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >15555012</span></td>
+															<td>Anne Parnell</td>
+															<td>€500.00</td>
+															<td>€100.00</td>
+															<td>€600.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11365555</span></td>
+															<td>Ashley Gill</td>
+															<td>€350.00</td>
+															<td>€50.00</td>
+															<td>€400.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >15555522</span></td>
+															<td>John Murray</td>
+															<td>€300.00</td>
+															<td>€300.00</td>
+															<td>€600.00</td>
+														</tr>
+														<tr>
+															<td><span class="anchor" onclick="testOpenPlan(); " >11555553</span></td>
+															<td>Steve Murphy</td>
+															<td>€100.00</td>
+															<td>€100.00</td>
+															<td>€200.00</td>
+														</tr>
+														
+													</tbody>
+												</table>
+											
+												
+												
+											</div>
+										</div>
+										
+
+										<div id="" class="contentSection">
+										
+											<h2>Payment Details</h2>
+											
+											<div class="innerContentSection" id="">
+											
+												<table class="baseTable" id="">	
+												
+													<tbody>
+														<tr>
+															<td class="heading" >Payment Date</td>
+															<td>02/01/2010</td>
+															<td class="heading" >Actual Payment Total</td>
+															<td>€18,900</td>
+														</tr>
+													</tbody>
+												
+												</table>
+												
+											</div>
+											
+										</div>
+																			
+									</div>
+								</div>								
+								
+							</div>
+						</div>
+			</div>
+
+			
+	
+				
+				
+							
+			<div class="tabContent hidden" id="headerTabContentPlanEnquiry">
+					
+						<div class="bar" id="planMenuBar">
+												
+								
+								
+													
+								
+								
+								<div class="barLeft">
+									<div class="barLeftInner">
+										
+									
+										<div id="menuButton">
+											<div class="menuButtonInner">
+											
+											</div>	
+										</div>	
+
+										
+										
+										<div class="menuDrop" id="planMenuDrop">
+											<span class="innerMenuDrop">
+																					
+												
+											</span>
+
+										</div>
+										
+										
+										
+									</div>
+									
+								</div>
+								
+								
+								<div class="barRight">
+									<div class="barRightInner">
+										 Mr John Murphy - 12555557 - PRSA Performance (PRSAAAA) 						
+									</div>
+								</div>
+								
+								<span class="mybizName">
+									Joan Murphy
+								</span>
+								
+							
+						</div>
+						<div class="subBar"><div class="subBarLeft"></div></div>
+						
+						<div class="innerTabContent">
+							<div class="contentWrapper" id="planMenuContentWrapper">
+											
+								<div class="leftMenu" id="planMenu">
+										
+
+									
+									<div class="innerLeftMenu">
+										<ul>
+											<li class="top"><a>&nbsp;</a></li>
+
+											<li id="planMenuButtonPremium" class="on" ><a class="oneLine" href="javascript:void(0)" onclick="planMenuChange('Premium', '/selfservice/premium.do');">Premium Details</a></li>
+											
+											<li class="bottom"><a>&nbsp;</a></li>
+										
+										</ul>
+									</div>
+
+								</div>
+								
+								<div id="planMenuContentPremium" class="" >
+								
+<div class="content" id="planMenuContent">	
+
+ 
+ 
+
+	
+
+	
+	
+	
+	
+
+	<h1>Premium Details</h1>
+	
+	<div class="tabs">
+		<ul>
+			<li class="first on" id="premiumSection-tab-link0"><a onclick="changeTab('premiumSection', 0);" href="javascript: void(0); ">Details</a></li>
+			<li id="premiumSection-tab-link1" class=""><a onclick="changeTab('premiumSection', 1);" href="javascript: void(0); ">History</a></li>
+		</ul>
+	</div>
+	
+	<div id="premiumSection-tab-content0" class="">
+	
+		<div class="contentSection">				
+			<div class="innerContentSection">
+											
+<table class="baseTable stripeyTable contentTable">
+					
+					
+					
+					 
+				  	
+					
+					
+						<tbody><tr>
+							<td class="heading">Premium</td>
+							<td>&euro;413.83</td>	
+							<td class="heading">Method</td>
+							<td>Pay as you go</td>
+						</tr>
+						<tr class="stripe">
+							<td class="heading">Total Premiums Paid</td>
+							<td>&euro;42,313.83</td>	
+							<td class="heading">Frequency</td>
+							<td>Monthly</td>
+						</tr>
+											
+					
+					
+					
+					
+				</tbody></table>
+				
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="contentSection">						
+			<h2>Premium Breakdown</h2>												
+			<div class="innerContentSection">
+			
+				<table class="baseTable stripeyTable contentTable">
+				
+					
+						
+						<tbody><tr>
+					 		<td class="heading">Employer Regular Prem</td>
+							<td>€272.85</td>	
+					 		<td class="heading">Employee Regular Prem</td>
+							<td>€248.14</td>								
+						</tr>
+						
+					 
+					
+				</tbody></table>
+			</div>
+		</div>
+		
+
+		
+		
+		
+	
+		
+	
+	
+	</div>
+
+
+	<div class="hidden" id="premiumSection-tab-content1">
+	
+		<div class="contentSection">											
+			<div class="innerContentSection">
+			
+			 
+			  	
+				
+				<table class="baseTable stripeyTable">
+						<thead>
+							<tr>
+								<th class="left_heading">Payment Date</th>
+								<th>Amount</th>
+								<th class="right_heading">Details</th>
+							</tr>
+						</thead>
+						<tbody>
+									
+								<tr class="stripe">
+									<td class="col1">12/05/2009</td>
+									<td>€230.84</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr>
+									<td class="col1">12/05/2009</td>
+									<td>€195.29</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr class="stripe">
+									<td class="col1">06/02/2009</td>
+									<td>€288.55</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr>
+									<td class="col1">15/01/2009</td>
+									<td>€230.84</td>
+									<td>NEW BUS CASH RECD</td>
+								</tr>
+									
+								<tr class="stripe">
+									<td class="col1">08/12/2008</td>
+									<td>€230.84</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr>
+									<td class="col1">10/11/2008</td>
+									<td>€288.55</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr class="stripe">
+									<td class="col1">08/10/2008</td>
+									<td>€230.84</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+									
+								<tr>
+									<td class="col1">08/09/2008</td>
+									<td>€288.55</td>
+									<td>CASH RECEIVED</td>
+								</tr>
+							
+						</tbody>
+					</table>	
+
+				
+				
+			 
+			
+			</div>
+		</div>
+		
+	</div>
+	</div>								
+								
+								</div>
+								
+								
+							</div>
+						</div>
+						
+					</div>
+				
+		
+		
+			<div id="tempDiv" style="display: none; " ></div>
+			
+	</div>
+	
+	
+</body>
+
+</html>

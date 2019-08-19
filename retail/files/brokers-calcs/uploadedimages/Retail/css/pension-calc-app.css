@@ -1,0 +1,451 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+#header{
+padding:1em 0em 1em 0em;
+margin-bottom:1em;
+}
+#menuBlock ul{
+float:right;
+}
+
+.pageHeaderInfo{
+background-color:#435399;
+color:#fff;
+padding: 1em 0em 1em 0em;
+position:relative;
+}
+
+.pageHeaderInfo:after{
+content: "";
+position: relative;
+bottom: -15px;
+left: 30px;
+border-width: 16px 20px 0px 0px;
+border-style: solid;
+border-color: #435399 transparent;
+display: block;
+width: 0;
+z-index: 11;
+}
+
+.flush{
+padding-left:0px !important;
+padding-right:0px !important;
+}
+
+.pageHeaderInfo .has-tip{
+border-bottom: 0px none #fff;
+}
+
+.pageHeaderInfo h1,.pageHeaderInfo h2,.pageHeaderInfo h3,.pageHeaderInfo h4,.pageHeaderInfo h5,.pageHeaderInfo h6{
+color:#fff;
+margin: 0em 0em 0em 0em;
+}
+.pageBreadcrumbsHolder{
+position:relative;
+}
+.pageContentHolder{
+padding:3em 0 6em 0;
+}
+.orange{
+background-color:#f19c2b;
+}
+.white{
+background-color:#fff;
+}
+
+.subFooter{
+color:#efefef;
+padding:2em 0em 2em 0em;
+margin-top:0em;
+background-color:#435399;
+}
+.subFooter .row{
+background-color:#435399;
+}
+.subFooterText .row p{
+font-size:0.7em;
+color:#333;
+margin:.5em 0em .1em 0em;
+}
+.subFooterText{
+padding:.5em 0 .5em 0;
+background-color:#fff;
+}
+
+.subFooterText p {	
+background-color: white;
+}
+.subFooter h1,.subFooter h2,.subFooter h3,.subFooter h4,.subFooter h5,.subFooter h6{
+color:#eee;
+}
+#footer{
+padding:1em 0em 1em 0em;
+margin-top:0em;
+background-color:#efefef;
+}
+#footer p ,#footer li{
+font-size: 13px;
+line-height: 21px;
+margin-bottom: 2px;
+color: #333;
+list-style-type:none;
+}
+#footer a{
+color:#435399;
+}
+#footer a:hover{
+color:#f19c2b;
+text-decoration:underline;
+}
+
+
+.pensionCalcHolder{
+border:1px solid #ccc;
+margin-left: 0em !important;
+margin-right: 0em !important;
+padding-top: 0em;
+margin-bottom: 0.5em !important;
+font-size:1.35em;
+-moz-border-radius: 3px;
+-webkit-border-radius:  3px;
+border-radius: 3px;
+background:url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/pension-calc-background.png") repeat scroll 0 -28px transparent;
+}
+
+
+.pensionCalcHolder h6, .pensionCalcHolder .custom.dropdown h6{
+	color:#cacaca;
+}
+.pensionCalcHolder label, .pensionCalcHolder .custom.dropdown label{
+	color:#4d4e53;
+}
+.pensionCalcHolder input, .pensionCalcHolder .custom.dropdown{
+	color:#f19c2b;
+}
+.text-centered{
+text-align:center;
+}
+.text-right{
+text-align:right;
+}
+
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+.calcSliderHolder{
+	margin-bottom:20px !important;
+}
+
+.calcSlider{
+	margin-bottom:6px;
+	margin-top: 10px !important;
+}
+
+.pensionCalcHolder input, .pensionCalcHolder .custom.dropdown{
+	background: #fff !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+  -moz-box-shadow: 2px 2px 3px #ddd inset !important;
+  -webkit-box-shadow: 2px 2px 3px #ddd inset !important;
+  box-shadow: 2px 2px 3px #ddd inset !important;
+  font-weight:bold !important;
+}
+.pensionCalcHolder .subText{
+font-size:0.8em;
+color:#999;
+}
+.switch.small {
+height: 33px !important;
+}
+.gender.switch > span {
+
+-webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px rgba(255, 192, 203, 0.4), -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px rgba(114, 197, 247, 0.3) !important;
+box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px rgba(255, 192, 203, 0.4), -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px rgba(114, 197, 247, 0.3) !important;
+}
+.switch > span {
+
+-webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px rgba(92, 193, 81, 0.2), -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px rgba(255, 0, 0, 0.2) !important;
+box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px rgba(92, 193, 81, 0.2), -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px rgba(255, 0, 0, 0.2) !important;
+}
+
+.switch > label{
+color:#444 !important;
+text-shadow: 0px 0px 0px #666;
+}
+
+.error small, small.error {
+
+text-shadow: 0px 0px 0px #fff;
+}
+.screenHolder{
+	min-height: 360px;
+display:block;
+}
+.sliderInactive{
+
+padding:3px;
+
+}
+.sliderActive{
+color:#5cc151 !important;
+background-color:#fff;
+padding:2px;
+border:1px solid #5cc151;
+
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+#radioInputs label {
+display: inline-block !important;
+margin-left: 5px;
+}
+
+
+/* -----------------------------------------
+   JQUERY SLIDER - Bespoke set up for the 
+   responsive version of the pension calculator
+----------------------------------------- */
+.ui-widget-content {
+	border-left: 1px solid #838383;
+	border-right: 1px solid #838383;
+	border-top: 1px solid #838383;
+	border-bottom: 1px solid #b6b6b6; 
+	background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.inside.orange.png") repeat scroll 0 0 #aaa;
+	
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.ui-widget-header {
+border: 1px solid #B7BAC4;  
+	background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.highlight.orange.png") repeat-x scroll 0 0 transparent; 
+	color: #ffffff; 
+	font-weight: bold; 
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 0 transparent; -moz-border-radius: 15px !important; -webkit-border-radius:  15px !important; border-radius:  15px !important; border:0px solid white !important;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 -37px transparent;border:0px solid white !important;}
+.ui-state-hover a, .ui-state-hover a:hover { color: #2b2b2b; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.orange.png") repeat scroll 0 -74px transparent; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 38px; height: 38px; cursor: pointer;outline-width: 0; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 0/*1*/; font-size: .7em; display: block; border: 0; background-position: 0 0; 
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;}
+
+.ui-slider-horizontal { height: 14px; }
+.ui-slider-horizontal .ui-slider-handle { top: -12px; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+a {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+	
+}
+a:hover { 
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important; 
+	color:#000;
+	text-decoration:underline;
+	
+	
+}
+
+.foundation-scope .button.supplementary {
+background-color: #f19c2b;
+color: #FFF;
+border-color: #db830e;
+}
+
+/* -----------------------------------------
+   tabletish size
+----------------------------------------- */
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+}
+
+
+/* -----------------------------------------
+   smaller and phone
+----------------------------------------- */
+@media only screen and (max-width: 767px) { 
+	#header{
+	padding:0.8em 0em 0em 0em;
+	margin-bottom:0.5em;
+	}
+	#footer p ,#footer li{
+	font-size: 16px;
+	line-height: 21px;
+	margin-bottom: 8px;
+	color: #333;
+	list-style-type:none;
+	}
+	
+	/* Force table to not be like tables anymore */
+	table.dataList table, thead, tbody, th, td, tr { 
+		display: block !important;
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	table.dataList thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	table.dataList tr { border: 1px solid #ccc; }
+	
+		
+		table.dataList td { 
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee; 
+			position: relative;
+			padding-left: 48% !important;
+			text-align:left;
+		}
+		
+		table.dataList td.id { 
+		display:none !important;
+		}
+		table.dataList td:before { 
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 10px;
+			text-align:right;
+			left: 10px;
+			width: 40%; 
+			padding-right: 10px; 
+			white-space: nowrap;
+			font-weight:bold;
+
+		}
+		
+		/*
+		Label the data
+		*/
+		table.dataList td:nth-of-type(1):before { content: "ID"; }
+		table.dataList td:nth-of-type(2):before { content: "Favourite"; }
+		table.dataList td:nth-of-type(3):before { content: "Add to Chart"; }
+		table.dataList td:nth-of-type(4):before { content: "Risk Rating"; }
+		table.dataList td:nth-of-type(5):before { content: "Fund Name"; }
+		table.dataList td:nth-of-type(6):before { content: "Fund Mgt Charge"; }
+		table.dataList td:nth-of-type(7):before { content: "1 Month"; }
+		table.dataList td:nth-of-type(8):before { content: "3 Months"; }
+		table.dataList td:nth-of-type(9):before { content: "6 Months"; }
+		table.dataList td:nth-of-type(10):before { content: "12 Months"; }
+		table.dataList td:nth-of-type(11):before { content: "3 Years"; }
+		table.dataList td:nth-of-type(12):before { content: "5 Years"; }
+		table.dataList td:nth-of-type(13):before { content: "10 Years"; }
+		table.dataList td:nth-of-type(14):before { content: "From Launch"; }
+}
+
+.foundation-scope form.custom .custom.dropdown{
+	height: 1.8em;
+}
+
+.foundation-scope form.custom p, .foundation-scope form.custom .custom.dropdown a{
+	font-size: 0.89em;
+}
+
+form label {
+text-align: justify!important;
+width: auto!important;
+float: none;
+margin-bottom: 0 !important;
+}
+
+.subText {
+	margin-top: 20px;
+}
+
+#screenLoadingPage {
+	text-align: center;
+}
+
+#screenLoadingPage img{
+margin-right: 15px;
+}
+
+.userValue, #surpassedAmount,.pensionCalcTargetSetOutput{
+color: #f19c2b;
+}
+
+
+
+
+.bubble {
+	background:rgba(000,000,000,0.9);
+	border:#666 solid thin;
+	display: none;
+	opacity: 0.95;
+	margin-top: 0px;
+	position: absolute;
+	-moz-border-radius: 350px;
+	-webkit-border-radius: 350px;
+	border-radius: 350px;
+	z-index: 2;
+	padding: 35px 35px 35px 35px;
+	right: 15%;
+	width: 325px;
+	height: 325px;
+}
+
+.bubble{
+    background:rgba(000,000,000);
+    background: transparent\9;
+    background:rgba(000,000,000,0.9);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4c000000,endColorstr=#4c000000);
+    zoom: 1;
+}
+.bubble:nth-child(n) {
+    filter: none;
+}
+
+.foundation-scope .panel{
+background: #fff;
+}
+
+#bubbleContent{
+padding: 45px;
+text-align: center;
+}
+
+#bubbleContent p{
+font-size: 0.87em;
+color: #ffffff;
+}
+#bubbleContent h3{
+color: #ffffff;
+}
+
+.pageHeaderInfo #socialbuttons{
+padding: 15px;
+}
+
+.pageHeaderInfo h5{
+	padding: 20px;
+}
+
+.screenHolder{
+	height: 455px;
+}

@@ -1,0 +1,57 @@
+body {
+  background: #fff;
+  color: #333333;
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  position: relative; }
+  
+
+hr {
+  border: solid #dddddd;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0; }
+
+#results{
+margin: 0;
+}
+
+
+/* Tables */
+table, th, td
+{
+  border-collapse:collapse;
+  border: 1px solid black;
+  width:100%;
+  text-align:right;
+  padding: 3px;
+  margin-bottom: 30px;
+}
+
+th
+{
+	font-weight: bold;
+}
+  
+#header {
+	display: none;
+}
+  
+#commissionProjectionForm {
+	visibility: hidden;
+	display: none;
+}
+
+#print-button {
+	display: none;
+	visibility: hidden;
+}
+
+#footer {
+	display: none;
+	visibility: hidden;
+}

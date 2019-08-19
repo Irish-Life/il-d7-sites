@@ -1,0 +1,119 @@
+body {
+    font-family: arial,sans-serif !important;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+	min-height:600px;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #50c9b5;
+    background: #50c9b5 !important;
+    font-weight: normal;
+    color: #fff;
+}
+.helpButton{cursor: pointer;
+    text-decoration: underline;
+    float: right;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;}
+	
+.introHead{height:60px}
+#beneficiaryAccordian {margin-bottom:20px}
+#beneficiaryAccordian .ui-state-default, #beneficiaryAccordian .ui-widget-content .ui-state-default {background:#ddd}
+.calculateBeneficiaryTax{background: #50c9b5;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    width: 280px;
+    text-align: center;
+    margin: auto;
+	cursor:pointer;
+	}
+.ui-tabs .ui-tabs-panel {
+    display: block;
+    border-width: 0;
+    padding: 1em 1.4em;
+    background: none;
+}
+#theCATForm{    overflow-y: scroll;
+    padding: 10px;}
+#theCATForm, .startCalc, .beneficiaries-table-div, .print-report-inputs{height:415px;margin-bottom:10px}
+.ui-tabs{width:100%;height:540px;}
+.ui-tabs .ui-tabs-nav li {width:24%}
+.ui-tabs .ui-tabs-nav li a{width:100%}
+#the-print-report{display:none}
+#consoleDiv{ background-color: #eaedea;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    border-top: 3px solid #000;
+    height: 120px;
+    overflow: scroll;
+    font-size: 0.8em;
+}
+@media screen and (max-width:768px) {
+#consoleDiv{display:none}
+}
+.heading{padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+
+}
+.form-group {
+    margin-bottom: 10px;
+}
+.form-control {
+    height: 30px;
+}
+.centeredHeading{margin: auto;text-align: center;}
+.form-control{border-radius:0px;margin-bottom:2px}
+.btn-primary{background-color:#50c9b5;border-radius:0px;border:none}
+
+.btn-primary:hover,.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, 
+.btn-primary:active:hover
+{        border: solid 1px #CCC;
+    -moz-box-shadow: 1px 1px 5px #999;
+    -webkit-box-shadow: 1px 1px 5px #999;
+        box-shadow: 1px 1px 5px #999;
+background-color:#50c9b5;border:none}
+.showRunningTotal{background-color:#ffffff;color:#5261ac;border:1px solid #50c95b5;height:100px;padding:10px}
+
+.fullLabel{display:block}
+
+div#beneficiaries-contain { margin: 20px 0; }
+div#beneficiaries-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#beneficiaries-contain table td, div#beneficiaries-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; font-size:14px;font-weight:normal}
+.ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+
+.ui-draggable .ui-dialog-titlebar {
+    cursor: move;
+    background-color: #5261ac;
+    color: #fff;
+}
+
+@media screen and (max-width: 500px) {
+.fullLabel{display:none}
+.ui-tabs .ui-tabs-nav li {width:100%}
+}
+
+@media screen and (min-width: 768px) {
+.showRunningTotal{position:fixed;}
+.heading {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+}
+.form-signin {
+    padding: 15px;
+    margin: 0 auto;
+	position: fixed;
+  top: 30%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

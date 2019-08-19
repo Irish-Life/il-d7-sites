@@ -1,0 +1,184 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>PORTUS Header</title>
+  <meta name="description" content="PORTUS Header">
+  <meta name="author" content="Stephen Hayden">
+</head>
+<style>
+/*body{
+	margin:0px;
+	padding:0px;
+	background-color:#5261AC;
+	background-image: url("platform-background.jpg");
+	overflow:hidden;
+    background-repeat: no-repeat;
+    background-position: top right; 
+}*/
+body{
+	margin:0px;
+	padding:0px;
+	background-color:#3b41a1;
+	background-image: url("platform-background-pattern.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center; 
+	height:100%;
+    font-family: 'Lato', sans-serif;
+}
+table{
+	width:100%;
+	height:100%;
+}
+#platform-img{
+	display: block;
+    height: 166px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: white;
+    font-size: 30px;
+    margin: 0px;
+	background-image: url("platform-background-clear.png");
+	overflow:hidden;
+    background-repeat: no-repeat;
+    background-position: top right;
+	border:0px;	
+}
+
+#platform-img span{
+margin:25px 0 0 20px;
+display:block;
+}
+ul.grid{
+	width:100%;
+	list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+ul.grid li.grid_item{
+	width:20%;
+	float:left;
+	display:block;
+	
+    padding: 0px;
+    margin: 0px;
+	list-style-type: none;
+}
+ul.grid li.grid_item a{
+	margin:10px;
+	border:1px solid rgba(255, 255, 255, 0.2);
+	display:block;
+	height:130px;
+	color:white;
+	text-decoration:none;
+	text-align:center;
+	background:rgba(0,0,0,0.3);
+}
+ul.grid li.grid_item a:hover{
+	border:1px solid white;
+
+	background-color:#50C9B5;
+}
+ul.grid li.grid_item a .logo{
+	display:block;
+	height:80px;
+}
+ul.grid li.grid_item a .logo img{
+	height:60px;
+	padding:10px;
+}
+#list-search input{
+margin:2%;
+width:96%;
+margin:auto 0;
+font-size:20px;
+text-align:left;
+padding:1%;
+}
+#list-search {
+text-align:center;
+}
+</style>
+
+<body >
+	<script src="jquery.min.js"></script>
+	<script src="list.min.js"></script>
+	<div id="platform-img"><span>Platform CRM Launcher</span></div>
+	<div id="list-search">
+
+	<input type="text" class="fuzzy-search" placeholder="Search"/>
+	<ul class="grid list">
+	
+<!--
+http://retailcrm:5200/CRM/workplace/home_dashboards.aspx?dashboardId=3c4b3130-98aa-e611-b8ef-005056a1382e&dashboardType=0&pagemode=iframe
+http://retailcrm:5200/CRM/dashboards/dashboard.aspx?dashboardId=[DashboardGUID]&dashboardType=1030&pagemode=iframe”
+-->
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=97783992-4C06-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/acumen.png"></span><span class="title">Acumen & Trust Limited</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=6C733728-21AC-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/aon.png"></span><span class="title">AON</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=AAA97D83-2C45-E711-8CE0-005056A13827" target="_new"><span class="logo"><img src="logos/becketts.png"></span><span class="title">Becketts (Cork)</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=62611CEA-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/blackhallfinance.png"></span><span class="title">Blackhall</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=2C90D7F2-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/capitaloptions.png"></span><span class="title">Capital Options</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=8C9606FC-289D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/cch.png"></span><span class="title">CCH</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=49F965CE-33A8-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/city-life.png"></span><span class="title">City Life Financial Services</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=079C0CAE-33A8-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/city-life-galway.png"></span><span class="title">City Life Limited</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=C8A78902-2A9D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/clearview.png"></span><span class="title">Clearview</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=3A0D99EB-5906-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/doyles.png"></span><span class="title">Doyle Pens & Ins Management</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=3C696D7F-289D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/fdc.png"></span><span class="title">FDC Financial Services Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=3BF0D8D3-289D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/fitzgerald-life.png"></span><span class="title">Fitzgerald Life & Pensions</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=A1F7E1B3-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/dng-flanagan-ford.png"></span><span class="title">Flanagan Ford Fiancial Advisers</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=C98B665A-B4E8-E611-86BC-005056A13829" target="_new"><span class="logo"><img src="logos/future.png"></span><span class="title">Future</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=6494B3AF-279D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/gateway.png"></span><span class="title">Gateway Insurance & Investments</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=FC0482C1-279D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/growth-investments-logo.png"></span><span class="title">Growth Investments</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=117D1D3C-24AC-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/hc.png"></span><span class="title">HC Financial Advisers Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=5ADA3CBB-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/insight.png"></span><span class="title">Insight Private Clients Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=60695BDC-5306-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/inverdea.png"></span><span class="title">Inverdea Financial Services Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=730B58A6-2EA8-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/invesco.png"></span><span class="title">Invesco (Cork)</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=90012BD6-18A8-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/invesco.png"></span><span class="title">Invesco (Dublin)</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=80561344-A69B-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/invesco.png"></span><span class="title">Invesco (TOP)</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=8D7E0527-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">JLT Financial Services Ltd.</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=B9551E7B-5206-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Joe McGuinness & Co. Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=FC9463AA-269D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Kirwan Insurance Services Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=21A017D4-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Life Goals Limited</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=3D691909-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Mason Financial Services Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=17CC4DC7-289D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Melvin Financial Services</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=2E90D7F2-299D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">MGM Financial Services Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=EFE241E8-289D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Money Wise Financial Planning Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=267EC1FF-4F06-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Oakwood Financial Advisors Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=E0FE599C-279D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">PCS Financial Services Kerry Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=69DCAC54-5D06-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">PFP Financial Services Ltd.</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=7FF664B0-16AC-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">RITE Financial Solutions</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=757FD109-2A9D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Rose Private Clients Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=B0D9735B-5106-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Towers Watson (Ireland) Ltd.</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=C4A78902-2A9D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Veterinary Ireland Financial Services Ltd.</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=CF46EE12-2A9D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Walfrid Private Ltd</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=F690259F-BAE8-E611-86BC-005056A13829" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Wallace Financial Consultants</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=FC042529-2A9D-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Wealth Alliance</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=5E648F86-5106-E711-8057-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Willis Human Capital & Benefits Ireland Limited</span></a></li>
+	<li class="grid_item"><a href="http://retailcrm:5200/CRM/main.aspx?etc=1&pagetype=entityrecord&id=A7A13B9F-29AC-E611-B8EF-005056A1382E" target="_new"><span class="logo"><img src="logos/"></span><span class="title">Willis Towers Watson</span></a></li>
+</ul>
+</div>
+
+	
+	
+	
+	
+	
+<script>
+var monkeyList = new List('list-search', { 
+  valueNames: ['title']
+});
+</script>
+
+<script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/84289/script.js');
+</script>
+	</div>
+</body>
+</html>
+
+
+

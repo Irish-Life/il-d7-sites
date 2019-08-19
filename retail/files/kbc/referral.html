@@ -1,0 +1,1275 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/iq.jquery.latest.min.js?180912"></script>
+    <script type="text/javascript" src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/gup.js?180912"></script>
+    <style type="text/css">
+        div.boxSpan {
+            overflow: hidden;
+        }
+
+        span.lpContentsItem.richTextSpan {
+            display: block;
+        }
+
+        span.lpContentsItem p:first-child {
+            margin-top: 0px;
+        }
+
+        a.lpImageLink img {
+            border: none;
+        }
+
+        form.lpeRegForm {
+            margin: 0px;
+            padding: 0px;
+        }
+
+            form.lpeRegForm ul {
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+            }
+
+            form.lpeRegForm li {
+                margin: 0px;
+                padding: 1px 10px 3px 10px;
+                list-style: none;
+                clear: both;
+            }
+
+            form.lpeRegForm label {
+                padding-right: 20px;
+                float: left;
+                text-align: left;
+            }
+
+            form.lpeRegForm li.mktLblRight label {
+                float: none;
+            }
+
+            form.lpeRegForm li.mktLblRight input[type='checkbox'] {
+                position: relative;
+                left: -4px;
+            }
+
+            form.lpeRegForm ul.mktLblCenter label {
+                text-align: right;
+            }
+
+            form.lpeRegForm ul.mktLblAbove span.mktInput {
+                clear: both;
+            }
+
+            form.lpeRegForm ul.mktLblAbove label {
+                padding-left: 10px;
+            }
+
+            form.lpeRegForm ul.mktLblAbove li.mktFormReq label {
+                background: url(https://www.irishlife.ie/secureWeb/uploadedImages/backRequiredGray.gif) no-repeat -5px 0px;
+            }
+
+            form.lpeRegForm ul.mktLblAbove li#mktFrmButtons label {
+                display: none;
+            }
+
+            form.lpeRegForm li.mktFormReq label {
+                font-weight: bold;
+                background: url(https://www.irishlife.ie/secureWeb/uploadedImages/backRequiredGray.gif) no-repeat right 0px;
+            }
+
+        span.mktError {
+            text-align: left;
+            position: relative;
+        }
+
+            span.mktError input {
+                background: #ECEFFF;
+            }
+
+            span.mktError span.mktFormMsg {
+                display: inline;
+                position: absolute;
+                top: 2px;
+                left: 4px;
+                xcolor: #8C8FFF;
+                color: red;
+                font-size: small;
+                width: 200px;
+            }
+
+        .mkiLpeIcon16 a {
+            background-position: 0 !important;
+        }
+
+        .mkiLpeFormBlueEdit a {
+            background-image: url(/images/icons16/form_blue_edit.png) !important;
+            float: none !important;
+        }
+
+        .mkiLpeHandGrab2 a {
+            background-image: url(/images/icons16/hand_grab2.png) !important;
+            float: none !important;
+        }
+
+        .mkiLpeHardDrive a {
+            background-image: url(/images/icons16/hard_drive.png) !important;
+            float: none !important;
+        }
+
+        .mkiLpeDocumentUp a {
+            background-image: url(/images/icons16/document_up.png) !important;
+            float: none !important;
+        }
+
+        .mktIpad span.mktInput input,
+        .mktIpod span.mktInput input,
+        .mktIphone span.mktInput input {
+            margin-bottom: 1px;
+            padding: 1px 0;
+        }
+
+
+
+        #bodyId {
+            background: #EFEFEF;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div#outerWrapDiv {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        div#innerWrapDiv {
+            position: relative;
+            background: transparent;
+            padding: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            text-align: left;
+        }
+
+
+
+        div#innerWrapDiv {
+            width: 960px;
+        }
+
+        img {
+            border: none;
+        }
+
+
+        div#mktHeader {
+            background: #ffffff;
+            border-radius: 0 0 6px 6px;
+            height: 150px;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .logo {
+            border: 0px;
+            left: 40px;
+            position: absolute;
+            top: 25px;
+        }
+
+        div#mktContent {
+            background: #ffffff;
+            border-radius: 6px;
+            height: 550px;
+            position: relative;
+        }
+
+        div#mktcolumns {
+            border: #E6E6E6 1px solid;
+            height: 425px;
+            position: absolute;
+            right: 50px;
+            top: 25px;
+            width: 250px;
+        }
+
+
+        div#mktFooter {
+            background: transparent;
+            color: #777777;
+            font-size: 10px;
+            height: 78px;
+            position: relative;
+        }
+
+        .copyright {
+            left: 20px;
+            position: absolute;
+            top: 14px;
+        }
+
+
+        .footerlinks {
+            left: 20px;
+            position: absolute;
+            top: 14px;
+        }
+
+            .footerlinks a {
+                color: #435399;
+                text-decoration: none;
+            }
+
+                .footerlinks a:hover {
+                    color: #435399;
+                    text-decoration: underline;
+                }
+
+        div.buttonSubmit {
+            float: left;
+            position: relative;
+        }
+
+            div.buttonSubmit input, div.buttonSubmit span {
+                background-image: url(https://www.irishlife.ie/secureWeb/uploadedImages/button-submit10.gif);
+                background-position: right 0px;
+                background-repeat: no-repeat;
+                border: 0px none;
+                color: #FFFFFF;
+                cursor: pointer;
+                float: left;
+                font-weight: bold;
+                height: 36px;
+                margin: 0px;
+                padding: 0px 15px 2px;
+                position: relative;
+                z-index: 5;
+            }
+
+            div.buttonSubmit span {
+                background-position: left -36px;
+                left: -4px;
+                padding: 0px;
+                position: absolute;
+                top: 0px;
+                width: 4px;
+                z-index: 10;
+            }
+
+            div.buttonSubmit input {
+                width: auto;
+                padding-left: 6px !important;
+                padding-right: 10px !important;
+            }
+
+        #mktFrmSubmit {
+            background-color: transparent;
+            color: #FFFFFF !important;
+            font-size: 13px;
+        }
+
+        div.buttonSubmit:hover input {
+            background-position: right -72px;
+        }
+
+        div.buttonSubmit:hover span {
+            background-position: left -108px;
+        }
+    </style>
+
+    <!-- END TEMPLATE CSS -->
+    <!-- SYSTEM JAVASCRIPT - DO NOT EDIT -->
+    <script type="text/javascript">
+        function isKBCEmail(emailAddressIn) {
+            if (emailAddressIn.indexOf("@kbc.ie") > -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function fieldValidate(field) {
+            return true;
+        }
+        function getRequiredFieldMessage(domElement, label) {
+            return "This field is required";
+        }
+        function getTelephoneInvalidMessage(domElement, label) {
+            return "Please enter a valid telephone number";
+        }
+        function getEmailInvalidMessage(domElement, label) {
+            return "Please enter a valid email address";
+        }
+    </script>
+
+    <!-- Jquery for fancy things!-->
+    <script>
+        $(document).ready(function () {
+
+            $('input[id=mktFrmSubmit]').wrap("<div class='buttonSubmit'></div>");
+            $(".buttonSubmit").prepend("<span></span>");
+
+        });
+    </script>
+
+    <link rel="shortcut icon" href="https://www.irishlife.ie/secureWeb/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://www.irishlife.ie/secureWeb/favicon.ico" type="image/x-icon" />
+    <style type="text/css">
+        DIV#mktContent {
+            height: 650px;
+            z-index: auto;
+        }
+
+        DIV#mktHeader {
+            height: 165px;
+        }
+    </style>
+    <title>KBC Referral</title>
+    <meta name="description" content="early stage insurance information sign up page" />
+    <meta name="keywords" content="early stage insurance information sign up page information for those starting out with insurance" />
+    <meta name="robots" content="index, nofollow" />
+    <style type="text/css">
+        div#lpeCDiv_10951 {
+            position: absolute;
+            left: 31px;
+            top: 209px;
+            min-width: 50px;
+            z-index: 15;
+            min-height: 50px;
+        }
+
+            div#lpeCDiv_10951 div.lpContentsItem {
+            }
+    </style>
+    <style type="text/css">
+        .marketoContent {
+            position: relative;
+        }
+    </style>
+
+    <link rel="shortcut icon" href="https://www.irishlife.ie/secureWeb/uploadedImages/Retail/img/favicon.ico?041011" />
+</head>
+<body id="bodyId" class="mktEditable" align="center">
+    <div id="outerWrapDiv">
+        <div id="innerWrapDiv" class="mktEditable">
+            <div id='lpeCDiv_10951' class='lpeCElement HTML_1'>
+                <div class='lpContentsItem rawHtmlSpan'>
+                    <style type='text/css'>
+                        form.lpeRegForm ul {
+                            font-size: 12px;
+                            color: black;
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+
+                            form.lpeRegForm ul input {
+                                font-size: 12px;
+                                color: black;
+                                font-family: Arial, Helvetica, sans-serif;
+                            }
+
+                                form.lpeRegForm ul input[type='text'] {
+                                    font-size: 12px;
+                                    color: black;
+                                    font-family: Arial, Helvetica, sans-serif;
+                                }
+
+                            form.lpeRegForm ul textarea {
+                                font-size: 12px;
+                                color: black;
+                                font-family: Arial, Helvetica, sans-serif;
+                            }
+
+                            form.lpeRegForm ul select {
+                                font-size: 12px;
+                                color: black;
+                                font-family: Arial, Helvetica, sans-serif;
+                            }
+
+                        form.lpeRegForm li {
+                            margin-bottom: 10px;
+                        }
+
+                        form.lpeRegForm .mktInput {
+                            padding-left: 0px;
+                        }
+
+                        form.lpeRegForm label {
+                            width: 150px;
+                        }
+
+                        form.lpeRegForm input.mktFormText {
+                            width: 225px;
+                        }
+
+                        form.lpeRegForm textarea {
+                            width: 225px;
+                        }
+
+                        form.lpeRegForm select {
+                            width: 229px;
+                        }
+                    </style>
+                    <!--[if IE]>
+                    <style type='text/css'>form.lpeRegForm li {margin-bottom: 8px; }
+                    form.lpeRegForm select {width: 231px; } </style><![endif]-->
+                    <script type="text/javascript">
+                        var profiling = {
+                            isEnabled: false,
+                            numberOfProfilingFields: 4,
+                            alwaysShowFields: ['mktDummyEntry']
+                        };
+                    </script>
+                    <form class="lpeRegForm formNotEmpty">
+
+                        <ul class='mktLblLeft'>
+
+                            <!--Changed from 'Email Address' to 'Customer Email Address' to avoid confusion-->
+                            <li class='mktFormReq mktField'>
+                                <label>Customer Email Address:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFormEmail
+mktFReq' name="Email" id="Email" type='text' value="" maxlength='255' tabindex='1' /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <li class='mktFormReq mktField'>
+                                <label>Customer First Name:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFReq'
+                                           name="FirstName" id="FirstName" type='text' value="" maxlength='255' tabindex='2' />
+                                    <span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <li class='mktFormReq mktField'>
+                                <label>Customer Last Name:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFReq'
+                                           name="LastName" id="LastName" type='text' value="" maxlength='255' tabindex='3' /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <li class='mktField'>
+                                <label>Customer Phone:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFReq' name="MobilePhone"
+                                           id="MobilePhone" type='text' value="" maxlength='255' tabindex='4' /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <li class='mktFormReq mktField'>
+                                <div style="width:430px;"><label>Customer Consented to Referral:</label><span class='mktInput'>
+                                    <input class='mktFormCheckbox' name="Permissions-Email" id="Permissions-Email" type='checkbox' tabindex='5' /><span class='mktFormMsg'></span>
+                                </span><span style="width:55%;float:right;margin-bottom: 10px;">Your Personal Data will be used in accordance with KBCI’s Data Protection Notice, which is available on the Data Protection Section of our website <a href="https://www.kbc.ie/data-protection">https://www.kbc.ie/data-protection</a>. KBC will process your personal data for the purpose of contacting you to facilitate a Protection Review only and will share your personal data with Irish Life Assurance plc in order to provide you with this Review. </span></div>
+                            </li>
+                            <li class='mktFormReq mktField'>
+                                <label>Lead Source:</label>
+                                <span class='mktInput'>
+                                    <select class='mktFormSelect mktFReq' name="KBCLeadSource" id="KBCLeadSource" size='1' tabindex='6'>
+                                        <option value='' selected='selected'>Select...</option>
+                                        <option value='Direct Sales'>Direct Sales</option>
+                                        <option value='Direct Service'>Direct Service</option>
+                                        <option value='Baggot St'>Baggot St. - Dublin</option>
+                                        <option value='College Green'>College Green - Dublin</option>
+                                        <option value='Dundrum - Dublin'>Dundrum - Dublin</option>
+                                        <option value='Grand Canal - Dublin'>Grand Canal - Dublin</option>
+                                        <option value='Swords'>Swords - Dublin</option>
+                                        <option value='Stillorgan'>Stillorgan - Dublin</option>
+                                        <option value='SandwithSt'>Sandwith St. - Dublin</option>
+										<option value='Greystones'>Greystones - Wicklow</option>
+                                        <option value='Cork'>Cork</option>
+                                        <option value='Wilton'>Wilton - Cork</option>
+                                        <option value='Galway'>Galway</option>
+                                        <option value='Kilkenny'>Kilkenny</option>
+                                        <option value='Limerick'>Limerick</option>
+                                        <option value='Maynooth'>Maynooth</option>
+                                        <option value='Naas'>Naas</option>
+                                        <option value='Waterford'>Waterford</option>
+                                        <option value='Agile'>Agile</option>
+                                    </select>
+                                    <div class='mktFormMsg'></div>
+                                </span>
+                            </li>
+
+                            <!-- Field for KBCAreaofInterest does not exist yet....could we use the generic 'Area of Interest'? -->
+                            <li class='mktFormReq mktField' id="areaOfInterestLine">
+                                <label>Area of Interest:</label>
+                                <span class='mktInput'>
+                                    <select class='mktFormSelect mktFReq' name="KBCAreaofInterest" id="KBCAreaofInterest" size='1' tabindex='7'>
+                                        "
+                                        <option value='' selected='selected'>Select...</option>
+                                        <option value='Mortgage Life Insurance'>
+                                            Mortgage Life Insurance
+                                        </option>
+                                        <option value='Term Life Insurance'>Term Life Insurance</option>
+                                        <option value='Life Long Insurance'>Life Long Insurance</option>
+                                        <option value='Income Insurance'>Income Insurance</option>
+                                    </select><div class='mktFormMsg'></div>
+                                </span>
+                            </li>
+                            <li class='mktFormReq mktField' id="followUpRatingLine">
+                                <label>Follow up rating:</label>
+                                <span class='mktInput'>
+                                    <select class='mktFormSelect mktFReq' name="LastDirectSalesAgentRating" id="LastDirectSalesAgentRating" size='1' tabindex='7'>
+                                        <option value='3' selected='selected'>3</option>
+                                        <option value='2'>2</option>
+                                        <option value='1'>1</option>
+                                    </select><div class='mktFormMsg'></div>
+                                </span>
+                            </li>
+
+                            <li class='mktFormReq mktField' id="BestTimeToContactLine">
+                                <label>Best Time to Contact:</label>
+                                <span class='mktInput'>
+                                    <select class='mktFormSelect mktFReq' name="PerferredTimeToContact" id="PerferredTimeToContact" size='1' tabindex='8'>
+                                        <option value='' selected='selected'>Select...</option>
+                                        <option value='Now'>Now</option>
+                                        <option value='Anytime'
+                                                selected='selected'>
+                                            Anytime
+                                        </option>
+                                        <option value='Morning (before 12pm)'>
+                                            Morning
+                                            (before 12pm)
+                                        </option>
+                                        <option value='Afternoon (12pm to 5pm)'>Afternoon (12pm to 5pm)</option>
+                                        <option value='Evening (5pm to 8pm)'>
+                                            Evening
+                                            (5pm to 8pm)
+                                        </option>
+                                    </select><div class='mktFormMsg'></div>
+                                </span>
+                            </li>
+
+                            <!-- Inputted as mktInput rather then checkbox -->
+                            <li class='mktFormReq mktField'>
+                                <label>KBC Exisitng Customer:</label>
+                                <span class='mktInput'>
+                                    <select class='mktFormSelect mktFReq' name="KBCExistingCustomer" id="KBCExistingCustomer" size='1' tabindex='9'>
+                                        <option value='' selected='selected'>Select...</option>
+                                        <option value='Yes'>Yes</option>
+                                        <option value='No'>No</option>
+                                    </select><div class='mktFormMsg'></div>
+                                </span>
+                            </li>
+
+                            <li class='mktFormReq mktField'>
+                                <label>KBC Staff ID:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFReq' name="KBCStaffID"
+                                           id="KBCStaffID" type='text' value="" maxlength='255' tabindex='10' /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <li class='mktFormReq mktField'>
+                                <label>KBC Staff Name:</label><span class='mktInput'>
+                                    <input class='mktFormText mktFReq'
+                                           name="KBCStaffName" id="KBCStaffName" type='text' value="" maxlength='255' tabindex='11' /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <!--Not too sure about all the remaining code-->
+                            <li class='mktField' style="display: none;">
+                                <label>Lead Source Detail:</label><span class='mktInput'>
+                                    <input class='mktFormHidden'
+                                           name="LeadSourceDetail" id="LeadSourceDetail" type='hidden' value="BNA Referral" /><span class='mktFormMsg'></span>
+                                </span>
+                            </li>
+                            <!-- Not too sure if I can just put in KBC Staff Name as this will only be populated after staff go onto landing page??
+                            <li  class='mktField' style="display: none;"><label>Last KBC Staff Name:</label><span class='mktInput'><input class='mktFormHidden'
+                            name="KBCStaffName" id="KBCStaffName" type='hidden' value="KBC Customer Service" /><span class='mktFormMsg'></span></span></li>
+                            -->
+                            <li id='mktFrmButtons'>
+                                <label>&nbsp;</label><input id='mktFrmSubmit' type='button' style="width: auto; overflow: visible; padding-left:.25em; padding-right: .25em;" value='Submit' name='submitButton' onclick='formSubmit("theForm"); return
+false;' />&nbsp;<input style='display: none;' id='mktFrmReset' type='reset'
+                       value='Clear' name='resetButton' />
+                            </li>
+                        </ul>
+                        <span style="display:none;"><input type="text" name="_marketo_comments" value="" /></span>
+                    </form>
+                    <script type="text/javascript">
+                        var Mkto = {
+                            kv: [],
+                            kvUrl: null,
+                            kvReferrer: null,
+                            pageSubmitted: false,
+                            defaultMessages: {
+                                English: {
+                                    required: "This field is required",
+                                    selectRequired: "Please select a value for this field",
+                                    emailInvalid: "Please enter a valid email address",
+                                    telephoneInvalid: "Please enter a valid telephone number",
+                                    pleaseWait: "Please wait"
+                                }
+                            }
+                        };
+
+                        Mkto.parseUrlParams = function (url) {
+                            var query;
+                            var q = url.indexOf('?');
+                            if (q > -1) {
+                                query = url.substr(q + 1);
+                                var pairs = query.split("&");
+                                for (var i = 0; i < pairs.length; i++) {
+                                    var kvArray = pairs[i].split("=");
+                                    Mkto.kv[kvArray[0]] = kvArray[1];
+                                }
+                            }
+                            return Mkto.kv;
+                        }
+                        Mkto.getValue = function (key, kv) {
+                            if (typeof Mkto.kv[key] == 'string') {
+                                return decodeURIComponent(Mkto.kv[key].replace(/\+/g, ' '));
+                            } else {
+                                return "not found";
+                            }
+                        }
+                        Mkto.getReferrerParam = function (key) {
+                            return Mkto.getValue(key, Mkto.kvReferrer);
+                        }
+                        Mkto.getUrlParam = function (key) {
+                            return Mkto.getValue(key, Mkto.kvUrl);
+                        }
+
+                        Mkto.fomSubmit = function (elt) {
+                            for (var i = 0; i < elt.elements.length; i++) {
+                                Mkto.clearError(elt.elements[i]);
+                            }
+                            var submitButton = null;
+                            var allowSubmit = true;
+                            try {
+                                Mkto.recomputeMessages();
+                            } catch (e) { }
+                            for (var i = 0; i < elt.elements.length; i++) {
+                                var fld = elt.elements[i];
+                                if (!Mkto.validateField(fld)) {
+                                    allowSubmit = false;
+                                }
+                                if (fld.name == "cr") {
+                                    fld.value = Mkto.getUrlParam("cr");
+                                }
+                                if (fld.name == "kw") {
+                                    fld.value = Mkto.getUrlParam("kw");
+                                }
+                                if (fld.name == "searchstr") {
+                                    fld.value = Mkto.getReferrerParam("q");
+                                }
+                                if (fld.name == "submitButton") {
+                                    submitButton = fld;
+                                }
+                                if (fld.name == '_marketo_comments') {
+                                    Mkto.addField(elt, 'hidden', '_comments_marketo', fld.value);
+                                }
+                                if (fld.type == 'checkbox') {
+                                    var hidden = null;
+
+                                    var related = document.getElementsByName(fld.name);
+                                    for (var j = 0; j < related.length; j++) {
+                                        if (related[j].type == 'hidden') {
+                                            hidden = related[j];
+                                            break;
+                                        }
+                                    }
+
+                                    if (fld.checked) {
+                                        if (hidden) {
+                                            hidden.parentNode.removeChild(hidden);
+                                        }
+                                    }
+                                    else if (!hidden) {
+                                        try {
+                                            hidden = document.createElement("<input type='hidden' name='" + fld.name + "' value='0'>");
+                                        }
+                                        catch (e) {
+                                            hidden = document.createElement("input");
+                                            hidden.setAttribute('type', 'hidden');
+                                            hidden.setAttribute('name', fld.name);
+                                            hidden.setAttribute('value', 0);
+                                        }
+                                        elt.appendChild(hidden);
+                                    }
+                                }
+                            }
+                            Mkto.addField(elt, 'hidden', '_mkto_version', '2.4.7');
+
+                            var syndicationId = Mkto.captureSyndicationId('__cdrop');
+                            if (syndicationId !== null) {
+                                Mkto.addField(elt, 'hidden', 'MarketoSocialSyndicationId', syndicationId);
+                            }
+                            if (allowSubmit) {
+                                if (!Mkto.pageSubmitted) {
+                                    Mkto.pageSubmitted = true;
+
+                                    try {
+                                        if ((typeof Munchkin != 'undefined') && (typeof Munchkin.createTrackingCookie == 'function')) {
+                                            Munchkin.createTrackingCookie(true);
+                                        }
+                                    }
+                                    catch (e) {
+
+                                    }
+
+                                    elt.submit();
+                                    if (submitButton != null) {
+                                        var lang = typeof mktFormLanguage !== 'undefined' ? mktFormLanguage : 'English';
+                                        submitButton.disabled = true;
+                                        if (submitButton.value != 'Descargar') {
+                                            var msg = Mkto.messages[lang]['pleaseWait'];
+                                            if (lang === 'English' && msg == Mkto.defaultMessages[lang]['pleaseWait']) {
+                                                try {
+                                                    msg = getPleaseWaitMessage(submitButton, lang);
+                                                } catch (e) { }
+                                            }
+                                            submitButton.value = msg;
+                                        }
+                                    }
+                                } else {
+                                    allowSubmit = false;
+                                }
+                            }
+                            if (allowSubmit) {
+                                var domain = Mkto.getLPDomain(document.location.hostname);
+                                Mkto.clearLPCookie('_mkto_purl', '/', domain);
+
+                            }
+                            return allowSubmit;
+                        }
+
+                        Mkto.captureSyndicationId = function (name) {
+                            var cookie = document.cookie;
+                            var start = cookie.indexOf(name + '=');
+                            if (start == -1) {
+                                return null;
+                            }
+                            var len = start + name.length + 1;
+                            var end = cookie.indexOf(";", len);
+                            if (end == -1) {
+                                end = cookie.length;
+                            }
+                            var cookieval = cookie.substring(len, end);
+                            var cookieparts = cookieval.split(".");
+                            if (cookieparts.length == 3) {
+                                return cookieparts[2];
+                            }
+                            return null;
+                        }
+
+                        Mkto.addField = function (mform, type, name, value) {
+                            try {
+                                fld = document.createElement("<input type='" + type + "' name='" + name + "' value='" + value + "'>");
+                            }
+                            catch (e) {
+                                fld = document.createElement("input");
+                                fld.setAttribute('type', type);
+                                fld.setAttribute('name', name);
+                                fld.setAttribute('value', value);
+                            }
+                            mform.appendChild(fld);
+                        }
+                        Mkto.recomputeMessages = function () {
+                            function applyIf(reciever, defaults) {
+                                if (defaults) {
+                                    for (var property in defaults) {
+                                        if (defaults.hasOwnProperty(property)) {
+                                            if (reciever[property] === undefined) {
+                                                reciever[property] = defaults[property];
+                                            } else {
+                                                applyIf(reciever[property], defaults[property])
+                                            }
+                                        }
+                                    }
+                                }
+                                return reciever;
+                            }
+                            if (!Mkto.messages) {
+                                Mkto.messages = {};
+                            }
+                            applyIf(Mkto.messages, Mkto.defaultMessages);
+                        }
+                        Mkto.validateField = function (fld) {
+                            var valid = true;
+                            var msg = null;
+                            var lang = typeof mktFormLanguage !== 'undefined' ? mktFormLanguage : 'English';
+                            var required = (fld.className.indexOf('mktFReq') != -1);
+                            if (typeof fieldValidate == 'function') {
+                                valid = fieldValidate(fld);
+                            }
+                            if (valid == 'skip') {
+                                valid = true;
+                            } else {
+                                var label = null;
+                                try {
+                                    label = fld.parentNode.parentNode.getElementsByTagName('label')[0].innerHTML;
+                                } catch (e) { }
+                                if (valid === true) {
+                                    if (required) {
+                                        if ((fld.tagName.toUpperCase() == 'INPUT') || (fld.tagName.toUpperCase() == 'TEXTAREA')) {
+                                            if (fld.value.replace(/^\s+/g, "").length == 0) {
+                                                msg = Mkto.messages[lang]['required'];
+                                                if (lang === 'English' && msg == Mkto.defaultMessages[lang]['required']) {
+                                                    try {
+                                                        msg = getRequiredFieldMessage(fld, label, lang);
+                                                    } catch (e) { }
+                                                }
+                                                Mkto.setError(fld, msg);
+                                                valid = false;
+                                            }
+                                        } else if (fld.tagName.toUpperCase() == 'SELECT') {
+                                            if (fld.selectedIndex <= 0) {
+                                                msg = Mkto.messages[lang]['selectRequired'];
+                                                if (lang === 'English' && msg == Mkto.defaultMessages[lang]['selectRequired']) {
+                                                    try {
+                                                        msg = getRequiredFieldMessage(fld, label, lang);
+                                                    } catch (e) { }
+                                                }
+                                                Mkto.setError(fld, msg);
+                                                valid = false;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (valid && required && (fld.className.indexOf('mktFormEmail') != -1)) {
+                                    var emailValid = /^[a-zA-Z0-9_!&=`~#%'\/\$\^\|\+\?\{\}-]+(\.[a-zA-Z0-9_!&=`~#%'\/\$\^\|\+\?\{\}-]+)*@[a-zA-Z0-9]([a-zA-Z0-9_-])*(\.[a-zA-Z0-9][a-zA-Z0-9_-]*)+$/;
+                                    if (!emailValid.test(fld.value)) {
+                                        msg = Mkto.messages[lang]['emailInvalid'];
+                                        if (lang === 'English' && msg == Mkto.defaultMessages[lang]['emailInvalid']) {
+                                            try {
+                                                msg = getEmailInvalidMessage(fld, label, lang);
+                                            } catch (e) { }
+                                        }
+                                        Mkto.setError(fld, msg);
+                                        valid = false;
+                                    }
+                                }
+                                if (valid && required && (fld.className.indexOf('mktFormPhone') != -1)) {
+                                    var phoneValidChars = /^[0-9()+. \t-]+$/;
+
+                                    var digCount = 0;
+                                    var digits = "0123456789";
+                                    for (var ix = 0; ix < fld.value.length; ix++) {
+                                        if (digits.indexOf(fld.value.charAt(ix)) != -1) {
+                                            digCount++;
+                                        }
+                                    }
+
+                                    if (!phoneValidChars.test(fld.value) || (digCount < 8) || (digCount > 15)) {
+                                        msg = Mkto.messages[lang]['telephoneInvalid'];
+                                        if (lang === 'English' && msg == Mkto.defaultMessages[lang]['telephoneInvalid']) {
+                                            try {
+                                                msg = getTelephoneInvalidMessage(fld, label, lang);
+                                            } catch (e) { }
+                                        }
+                                        Mkto.setError(fld, msg);
+                                        valid = false;
+                                    }
+                                }
+                            }
+                            return valid;
+                        }
+
+                        Mkto.getMessage = function (fld) {
+                            var msgContainer = fld.nextSibling;
+                            while (msgContainer && msgContainer.nodeType != 1) {
+                                msgContainer = msgContainer.nextSibling;
+                            }
+                            return msgContainer;
+                        }
+
+                        Mkto.addListener = function (elt, eventName, handler) {
+                            if (window.addEventListener) {
+                                elt.addEventListener(eventName, handler, false);
+                            } else if (window.attachEvent) {
+                                elt.attachEvent("on" + eventName, handler);
+                            }
+                        }
+
+                        Mkto.clearError = function (fld) {
+                            var loc = fld.parentNode.className.indexOf(" mktError");
+                            if (loc != -1) {
+                                fld.parentNode.className = fld.parentNode.className.substr(0, loc);
+                                fld.parentNode.parentNode.title = "";
+                                var msgContainer = Mkto.getMessage(fld);
+                                msgContainer.innerHTML = "";
+                            }
+                        }
+
+                        Mkto.clearOnClick = function (e) {
+                            var fld = this;
+                            if (fld == window) {
+                                fld = e.srcElement;
+                            }
+                            Mkto.clearError(fld);
+                        }
+
+                        Mkto.getLPDomain = function (hostname) {
+                            var hostRegex = /([^.]+\.[^.]{3,})$/i;
+                            var foundDomain = hostRegex.exec(hostname);
+
+                            if (foundDomain != null) {
+                                return foundDomain[1];
+                            }
+                            else {
+                                var countryHostRegex = /([^.]+\.[^.]+\.[^.]{2})$/i;
+                                foundDomain = countryHostRegex.exec(hostname);
+
+                                if (foundDomain != null) {
+                                    return foundDomain[1];
+                                }
+                                else {
+                                    return hostname;
+                                }
+                            }
+                        }
+
+                        Mkto.setError = function (fld, message) {
+                            fld.parentNode.className += " mktError";
+                            fld.parentNode.parentNode.title = message;
+                            var msgContainer = Mkto.getMessage(fld);
+                            msgContainer.innerHTML = message;
+                            msgContainer.style.left = (fld.parentNode.offsetWidth + 10) + "px";
+                            Mkto.addListener(fld, 'focus', Mkto.clearOnClick);
+                        }
+
+                        Mkto.formReset = function (elt) {
+                            for (var i = 0; i < elt.elements.length; i++) {
+                                Mkto.clearError(elt.elements[i]);
+                            }
+                            elt.reset();
+                            return true;
+                        }
+
+                        Mkto.doesOptionMatchValue = function (optionValue, leadValue) {
+                            var match = false;
+                            if (leadValue === false) {
+                                if ((optionValue.toLowerCase() == "no") || (optionValue == "0") || (optionValue.toLowerCase() == "false")) {
+                                    match = true;
+                                }
+                            } else if (leadValue === true) {
+                                if ((optionValue.toLowerCase() == "yes") || (optionValue == "1") || (optionValue.toLowerCase() == "true")) {
+                                    match = true;
+                                }
+                            } else if (optionValue == leadValue) {
+                                match = true;
+                            }
+                            return match;
+                        }
+
+                        Mkto.preFillForm = function () {
+                            var theForm = mktoGetForm();
+                            if ((theForm) && (typeof mktoPreFillFields != 'undefined') && (mktoPreFillFields)) {
+                                for (var fld in mktoPreFillFields) {
+                                    if ((mktoPreFillFields[fld] !== null) && theForm[fld] && typeof theForm[fld] == 'object') {
+                                        var ff = theForm[fld];
+                                        if (ff.mktoX) {
+                                            ff.mktoX.prefilled = true;
+                                        }
+                                        if ((ff.type == 'text') || (ff.type == 'textarea')) {
+                                            if (!ff.value) {
+                                                ff.value = mktoPreFillFields[fld];
+                                            }
+                                        } else if (ff.type == 'select-one') {
+                                            ff.mktoX.prefilled = false;
+                                            var required = (ff.className.indexOf('mktFReq') != -1);
+                                            if ((ff.selectedIndex == 0) && (!ff.multiple)) {
+                                                for (var ix = 0; ix < ff.options.length; ix++) {
+                                                    if (Mkto.doesOptionMatchValue(ff.options[ix].value, mktoPreFillFields[fld])) {
+                                                        ff.selectedIndex = ix;
+                                                        if (ff.mktoX) {
+                                                            if ((ix != 0) || (!required)) {
+                                                                ff.mktoX.prefilled = true;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                }
+
+                                                if (ff.mktoX.prefilled == false) {
+                                                    var option = document.createElement("option");
+                                                    option.value = option.text = mktoPreFillFields[fld];
+                                                    ff.options.add(option);
+                                                    ff.selectedIndex = ff.options.length * 1 - 1;
+                                                    if (ff.mktoX) {
+                                                        ff.mktoX.prefilled = true;
+                                                    }
+                                                }
+
+                                            }
+                                        } else if (ff.type == 'checkbox') {
+                                            if (mktoPreFillFields[fld]) {
+                                                ff.setAttribute("checked", "checked");
+                                            } else {
+                                                ff.removeAttribute("checked");
+                                            }
+                                        } else if (!ff.type && ff.length) {
+                                            var ff = theForm[fld];
+                                            var radioFilled = false;
+                                            for (var ix = 0; ix < ff.length; ix++) {
+                                                ff[ix].mktoX.prefilled = false;
+                                            }
+                                            for (var ix = 0; ix < ff.length; ix++) {
+                                                var preValue = mktoPreFillFields[fld];
+                                                if (preValue === true) {
+                                                    preValue = 'Yes';
+                                                } else if (preValue === false) {
+                                                    preValue = "No";
+                                                }
+                                                if (ff[ix].value == preValue) {
+                                                    ff[ix].setAttribute("checked", "checked");
+                                                    radioFilled = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (radioFilled) {
+                                                for (var ix = 0; ix < ff.length; ix++) {
+                                                    ff[ix].mktoX.prefilled = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        Mkto.initForm = function () {
+                            var theForm = mktoGetForm();
+
+                            for (var ix = 0; ix < theForm.length; ix++) {
+                                if (theForm[ix].name == "submitButton") {
+                                    break;
+                                }
+                                theForm[ix].mktoX = { prefilled: false };
+                            }
+                        }
+                        Mkto.processProfiling = function () {
+                            var theForm = mktoGetForm();
+                            if (profiling.isEnabled) {
+                                var maxShownFields = profiling.numberOfProfilingFields;
+                                var shownFields = 0;
+                                var fieldsToRemove = [];
+                                var lastFieldName = "";
+                                for (var ix = 0; ix < theForm.length; ix++) {
+                                    var ff = theForm[ix];
+                                    if (ff.type == "hidden") {
+                                        continue;
+                                    }
+                                    if (ff.type == "radio" && ff.name == lastFieldName) {
+                                        continue;
+                                    }
+                                    if (ff.name == "submitButton") {
+                                        break;
+                                    }
+                                    if (ff.name == "resetButton") {
+                                        break;
+                                    }
+                                    var required = (ff.className.indexOf('mktFReq') != -1);
+                                    var fieldNameWithoutDeco = Mkto.getFieldNameWithoutDeco(ff);
+                                    if (profiling.alwaysShowFields.indexOf(fieldNameWithoutDeco) == -1) {
+                                        if (ff.mktoX && ff.mktoX.prefilled) {
+                                            Mkto.hideField(ff);
+                                            fieldsToRemove.push(ff);
+                                        } else if (shownFields < maxShownFields) {
+                                            shownFields++;
+                                        } else {
+                                            Mkto.hideField(ff);
+                                            fieldsToRemove.push(ff);
+                                        }
+                                    }
+                                    lastFieldName = ff.name;
+                                }
+                                for (var ix = fieldsToRemove.length; ix > 0; ix--) {
+                                    var field = fieldsToRemove[ix - 1];
+                                    field.parentNode.removeChild(field);
+                                }
+                            }
+                        }
+                        Mkto.getFieldNameWithoutDeco = function (ff) {
+                            var retVal = ff.name;
+                            if (ff.type && (ff.type == 'select-multiple')) {
+                                if (ff.name.indexOf('[]') != -1) {
+                                    retVal = ff.name.slice(0, ff.name.indexOf('[]'));
+                                }
+                            }
+                            return retVal;
+                        };
+
+                        Mkto.hideField = function (field) {
+                            var elt = field;
+                            while (elt.parentNode && elt.tagName.toLowerCase() != "li") {
+                                elt = elt.parentNode;
+                            }
+                            if (elt.tagName.toLowerCase() == "li") {
+                                elt.style.display = "none";
+                            }
+                        }
+
+                    </script>
+                    <script type="text/javascript">
+
+                        function isEmail(email) {
+                            return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test(email);
+                        }
+
+                        function validateForm() {
+                            valid = true;
+                            if (!isEmail(document.getElementById('Email').value)) {
+                                alert('A valid Email Address is required');
+                                valid = false;
+                            }
+                            if (valid && isKBCEmail(document.getElementById('Email').value.toLowerCase())) {
+                                alert('You cannot use KBC email addresses here');
+                                valid = false;
+                            }
+
+
+                            if (valid && document.getElementById('FirstName').value == '') {
+                                alert('First Name is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('LastName').value == '') {
+                                alert('Last Name is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('KBCLeadSource').value == '') {
+                                alert('Lead Source is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('KBCAreaofInterest').value == '') {
+                                alert('An Area of Interest is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('PerferredTimeToContact').value == '') {
+                                alert('Best Time to Contact is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('KBCExistingCustomer').value == '') {
+                                alert('KBC Existing Customer is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('KBCStaffID').value == '') {
+                                alert('KBC Staff ID is required');
+                                valid = false;
+                            }
+
+                            if (valid && document.getElementById('KBCStaffName').value == '') {
+                                alert('KBC Staff Name is required');
+                                valid = false;
+                            }
+
+                            return valid;
+                        }
+
+                        function formSubmit(elt) {
+                            var validForm = validateForm();
+                            if (validForm) {
+
+                                mkAssociateLeadKBC(
+                                document.getElementById('Email').value,
+                                document.getElementById('FirstName').value,
+                                document.getElementById('LastName').value,
+                                document.getElementById('MobilePhone').value,
+                                document.getElementById('Permissions-Email').checked,
+                                document.getElementById('KBCAreaofInterest').value,
+                                document.getElementById('LastDirectSalesAgentRating').value,
+                                document.getElementById('PerferredTimeToContact').value,
+                                document.getElementById('KBCLeadSource').value,
+                                document.getElementById('KBCExistingCustomer').value,
+                                document.getElementById('KBCStaffID').value,
+                                document.getElementById('KBCStaffName').value);
+
+                                alert('Details submitted');
+
+                                document.getElementById('Email').value = '';
+                                document.getElementById('FirstName').value = '';
+                                document.getElementById('LastName').value = '';
+                                document.getElementById('MobilePhone').value = '';
+                                document.getElementById('Permissions-Email').checked = false;
+                                document.getElementById('KBCAreaofInterest').value = '';
+                                document.getElementById('PerferredTimeToContact').value = '';
+                                document.getElementById('KBCLeadSource').value = '';
+                                document.getElementById('KBCExistingCustomer').value = '';
+                                document.getElementById('LastDirectSalesAgentRating').value = '3';
+
+
+                            }
+                        }
+
+                    </script>
+                    <script type="text/javascript">
+                        document.getElementById('Email').value = gup('emailAddress');
+                        document.getElementById('FirstName').value = gup('CustomerFirstName');
+                        document.getElementById('LastName').value = gup('CustomerLastName');
+                        document.getElementById('MobilePhone').value = gup('CustomerPhone').replace("%20", "");
+                        document.getElementById('KBCStaffID').value = gup('KBCStaffID').replace("%20", " ");
+                        document.getElementById('LeadSourceDetail').value = gup('BNAReferralArea');
+
+
+                    </script>
+                </div>
+            </div>
+
+
+
+            <div id="mktHeader" class="mktEditable">
+                <!-- Logo and Header -->
+                <div class="logo"><a href="http://www.kbc.ie"><img src="https://www.irishlife.ie/secureWeb/uploadedImages/KBC_image.jpg" /></a></div>
+            </div>
+
+
+            <div id="mktContent" class="mktEditable">
+                <!-- Base of Landing Page Content -->
+
+
+            </div>
+
+            <div id="mktFooter" class="mktEditable">
+
+                <div class="copyright">
+
+                </div>
+                <div class="footerlinks">
+                    <small>
+                        KBC Bank Ireland plc is regulated by the Central Bank of Ireland
+                        Registered in the Republic of Ireland. Number 40537
+                        Registered Office: Sandwith Street, Dublin 2, Ireland. Phone <strong>1800 93 92 44</strong>, <a href="http://www.kbc.ie/contactus"
+                                                                                                                        title="Contact Us">Contact KBC</a>.<br /><br />
+                        Irish Life Financial Services ltd. is regulated by the Central Bank of Ireland. Irish Life Assurance plc. is regulated by the Central Bank of
+                        Ireland.<br />
+                        Irish Life Financial Services ltd and Irish Life Assurance plc Registered Office - Lower Abbey Street, PO Box 129, Freepost, Dublin 1. Phone:
+                        <strong>01 704 2000</strong><br />
+                        Irish Life Financial Services Registered Number 489221. Irish Life Assurance plc Registered Number 152576.
+                    </small>
+                </div>
+
+            </div>
+            <!-- END TEMPLATE HTML -->
+            <!-- SYSTEM FOOTER - DO NOT EDIT -->
+        </div>
+    </div>
+    <script src="https://munchkin.marketo.net/munchkin.js" type="text/javascript"></script>
+    <script src="https://www.irishlife.ie/secureWeb/uploadedFiles/retail/js/mk.js?270314" type="text/javascript"></script>
+	<script type="text/javascript">
+(function() {
+window.fireflyAPI = {};
+fireflyAPI.ready=function(x){if(typeof x=="function")x=[x];fireflyAPI.onLoaded=fireflyAPI.onLoaded||[];for(var i=0;i<x.length;i++){if(fireflyAPI.isLoaded){x[i]();}else{fireflyAPI.onLoaded.push(x[i]);}}};
+fireflyAPI.token = "5859664660a231a96ee71cf6";
+fireflyAPI.assetHostUrl = "https://firefly-eu-prod.s3.amazonaws.com";
+fireflyAPI.serverHostUrl = "https://eu.usefirefly.com:443";
+fireflyAPI.publishSettingsToS3 = true;
+fireflyAPI.publishStaticContentToS3 = true;
+fireflyAPI.s3HostUrl = "https://firefly-eu-prod.s3.amazonaws.com";
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "https://firefly-eu-prod.s3.amazonaws.com/scripts/loaders/loader.js";
+script.async = true;
+var firstScript = document.getElementsByTagName("script")[0];
+firstScript.parentNode.insertBefore(script, firstScript);
+})();
+</script>
+</body>
+</html>

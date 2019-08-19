@@ -1,0 +1,53 @@
+<html>
+
+<head manifest="offline.appcache"><title>Free Parent Life Insurance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="msapplication-TileImage" content="/secureWeb/uploadedImages/Retail/icon.png"/>
+  <meta name="msapplication-TileColor" content="#435399"/>
+  <link rel="apple-touch-icon" href="/secureWeb/uploadedImages/Retail/icon.png"/>
+<script type="text/javascript" src="offline.js?2"></script>
+
+<script type="text/javascript">
+
+function changeSeller()
+{
+	localStorage['currentSeller']=document.getElementById('currentSeller').value;
+	document.getElementById('linkToStart').style.display='block';
+}
+
+function openSyncPage()
+{
+	window.open('https://www.irishlife.ie/secureWeb/life-assurance/get-25000-free-life-insurance.html?npa2014=Y&refer='+localStorage.currentSeller,'_blank');
+}
+
+</script>
+
+</head>
+
+<body style="text-align:center">
+<img src="/secureWeb/uploadedImages/retail/images/75-logo-illustrator.gif "/>
+<br />
+<h1>
+Your seller code: <input type="text" id="currentSeller" name="currentSeller" />
+<button onclick="changeSeller()">Update</button>
+
+<div id="linkToStart" style="display:none">
+
+<h2>Free Parent Life Insurance Entry</h2>
+
+<a style="font-size:30px" href="https://www.irishlife.ie/secureWeb/uploadedFiles/Retail/offline-free-life.html" target="_blank">Start</a>
+
+</div>
+<br/><br/>
+<div>
+<hr>
+<h2>Sync</h2>
+
+<span style="cursor:pointer;font-size:30px;text-decoration:underline" onclick="openSyncPage()">Go online</span>
+
+</div>
+
+
+</body>
+
+</html>

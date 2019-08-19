@@ -1,0 +1,299 @@
+@font-face {
+    font-family: Lato-Regular;
+    src: url(fonts/Lato-Regular.ttf);
+}
+
+body {
+	font-family: 'Lato-Regular';
+}
+
+#middle {
+	min-height: 375px !important;
+	margin-left: 0px!important;
+	float: none!important;
+}
+
+#middle h2 {
+	color: #5c5ca6!important;
+}
+
+.banner {
+	background-image: url('ask-uw-header.jpg');
+	background-repeat: no-repeat;
+	height: 318px;
+	overflow: auto;
+}
+
+.banner div {
+	color: white;
+    font-size: 20px;
+    width: 663px;
+    background-color: rgba(0, 0, 0, 0.46);
+	margin-top: 147px;
+	padding:10px;
+
+}
+	
+.new-heading2 {
+	color: #333333;
+    font-size: 1.5em;
+	margin: 0 auto;
+    padding: 0;
+}	
+	
+.box-wrapper {
+	margin-top:20px;
+	margin-bottom:50px;
+}	
+	
+.box-row {
+	width:100%;
+	text-align:center;
+	margin-bottom:10px;
+}	
+
+.box {
+	height: 346px;
+    width: 32%;
+    display: inline-block;
+	border: 1px solid #5261ac;
+	vertical-align: top; 
+	margin-right: 6px;
+
+}
+
+.box-long {
+	height:480px;
+    width: 32%;
+    display: inline-block;
+	border: 1px solid #5261ac;
+	vertical-align: top; 
+	margin-right: 6px;
+}
+
+.box-2 {
+	height: 280px;
+    background-color: white;
+    width: 40%;
+    display: inline-block;
+	border: 1px solid #5261ac;
+	vertical-align: top; 
+	margin-right: 6px;
+	margin-top: 20px;
+
+}
+
+.box h2, .box-long h2, .claims h2 {
+	color: #5261ac !important;
+	margin-top: 0px !important;
+	font-size: 1.5em;
+}
+
+.box .fa, .box-long .fa {
+	padding: 22px;
+	color: #5261ac;
+}
+
+.box ul, .box-long ul {
+	text-align: left;
+    display: inline-block;
+	margin-top:10px;
+	width: 84%;
+}
+
+.box ul li, .box-long ul li  {
+	margin-bottom: 20px;
+	list-style-position: outside;
+}
+
+.box ul li:before, .box-long ul li:before {
+    font-family: FontAwesome;
+    content: "\f061";
+    color: #002664;
+    margin: 0 5px 0 0px;
+    vertical-align: top;
+}
+
+.box-2 ul {
+	text-align: left;
+    display: inline-block;
+	margin-top:10px;
+	width: 84%;
+}
+
+.box-2 ul li {
+	margin-bottom: 20px;
+	list-style-position: outside;
+}
+
+.box-2 ul li:before {
+    font-family: FontAwesome;
+    content: "\f061";
+    color: #002664;
+    margin: 0 5px 0 0px;
+    vertical-align: top;
+}
+
+.claims {
+	height: 353px;
+}
+
+.claims img {
+	float: right;
+    width: 32%;
+    padding: 10px;
+}
+
+.claims h2 {
+	font-size: 29px;
+	margin-top: 63px!important;
+}
+
+.claims p {
+	margin-top: 20px;
+    font-size: 15px;
+
+}
+
+.guide {
+	height: 400px;
+}
+
+.guide img {
+	float: right;
+    width: 32%;
+    padding: 10px;
+}
+
+.guide h2 {
+	font-size: 29px;
+    color: #5261ac !important;
+	margin-top: 45px;
+}
+
+.guide p {
+	margin-top: 20px;
+    font-size: 15px;
+
+}
+
+.mobile h2 {
+	font-size: 29px;
+    color: #5261ac !important;
+}
+
+.mobile p {
+	margin-top: 20px;
+    font-size: 15px;
+
+}
+
+
+.breadcrumbs {
+	padding: 10px 0px 0px 0px;
+}
+
+.breadcrumbs ul li {
+	display: inline-block;
+}
+
+
+@media screen and (min-width:473px) and (max-width:1024px) { /* ********************* IPAD ****************************** */
+
+   .box {
+		width:30%;
+		height: 315px;
+	}
+	
+	.box-long {
+		height: 414px;
+	}
+	
+	.banner  {
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.banner div p {
+		width: 100%;
+		font-size:13px!important;
+	}
+	
+	.box .fa, .box-long .fa {
+	padding: 22px;
+	color: #5261ac;
+	font-size:32px;
+    }   
+	
+}
+
+@media screen and (min-width:473px) and (max-width:767px) {
+	
+	.box, .box-long, .box-2 {
+		width:100%;
+		
+	}
+	
+	.box {
+		height: 315px;
+	}
+	
+	.banner  {
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.banner div {
+		width: 100%;
+	}
+	
+	.banner div p {
+		width: 100%;
+		font-size:13px;
+	}
+	
+	#middle h1 {
+		    font-size: 22px;
+	}
+	
+	
+}
+
+
+
+@media screen and (max-width:472px) { /* ********************** MOBILE **************************** */
+
+    .box, .box-long, .box-2 {
+		width:100%
+	}
+	
+	
+    .banner  {
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.banner div {
+		width: 100%;
+	}
+	
+	.banner div p {
+		width: 100%;
+		font-size:13px !important;
+	}
+
+    #middle h1 {
+		    font-size: 22px;
+	}
+	
+	.box ul li, .box-long ul li  {
+	font-size:13px;
+    }
+	
+	.box .fa, .box-long .fa {
+	font-size:45px;
+    }
+	
+
+
+}	

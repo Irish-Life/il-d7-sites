@@ -1,0 +1,111 @@
+<?php
+/**
+* My Google Custom Search Engine
+*
+* This search is set up to work with the two page search option. See: www.google.co.uk/cse/
+*
+*/
+function persistent_login_block_info() {
+  // This example comes from node.module.
+  $blocks['persistent_login'] = array(
+    'info' => t('Persistent Login')
+  );
+  return $blocks;
+}
+
+function persistent_login_block_view($delta = '') {
+  switch($delta) {
+    case 'persistent_login':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = persistent_login_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  drupal_add_css(drupal_get_path('module', 'persistent_login') . '/css/persistent_login.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css(drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', 'external', array('scope' => 'header'));
+	  
+	  drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js', array('scope' => 'footer'));
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js', 'external', array('scope' => 'footer'));
+	  //drupal_add_js(drupal_get_path('module', 'persistent_login') . '/js/persistent_login.js', array('group' => CSS_DEFAULT));
+	  
+    }
+    return $block;
+  }
+}
+
+function amILoggedIn()
+{
+	$loggedIn = "false";
+	$cookieName = '_ASPXFORMSAUTH_OnlineServices'; //name if the cookie
+	if(isset($_COOKIE[$cookieName])) {
+		$loggedIn = "true";
+	} 
+	return $loggedIn;
+}
+
+function persistent_login_contents() {
+
+	//look for specific cookie
+	//if cookie exists then use name inside the cookie
+	$cookieName = 'OlsPersist';
+	$cookieName2 = '_ASPXFORMSAUTH_OnlineServices'; //name if the cookie
+	$logIn = $_GET['login'];	
+
+	//check ASPX cookie 
+	//If it exists then we are logged in
+	//else not logged in
+	//see if the persistent cookie exists
+	$detail = $_COOKIE[$cookieName];
+	
+	
+	if ($logIn == 'N')
+	{
+		//delete cookies
+		//redirect page
+		setcookie($cookieName, "", time()-(3600*60),'/');
+		setcookie($cookieName2, "", time()-(3600*60),'/');
+		unset($_COOKIE[$cookieName]); 
+		unset($_COOKIE[$cookieName2]); 
+		$url = (isset($_SERVER['HTTPS']) ? "https" : "http")."://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+		$paramPosition = strPos($url , "?");
+		$urlToLoad = $url;
+		if ($paramPosition > -1)
+		{
+				$urlToLoad = substr($url,0,$paramPosition);
+		}
+		header("Location:".$urlToLoad); /* Redirect browser */
+		exit();
+		
+	}
+	else if (amILoggedIn() == "false") //we are logged out
+	{
+			$htmltoreturn= '<!-- JQuery Modal for Online Services Login -->
+		<style>
+		.banner-curve {z-index:1}
+		</style>
+		<div id="persistent-login-modal" class="modal" style="margin:0 auto;display:none;border: none;background: none; box-shadow: none; ">
+			<div id="login-modal-content" class="modal-content" style="padding: 0; max-height: none; background: none; ">
+			<iframe src="/myonlineservices/account/login1modal" style="height: 600px; width: 100%; border: none; " allowtransparency="true" ></iframe>
+			 <!-- ************* THIS IS WHERE THE MODAL IS INSERTED ********************************************** -->  
+			</div>
+		</div>
+	
+		<div class="loginSignup"><a class="login-to-mos" href="#persistent-login-modal" rel="modal:open">Login</a>&nbsp&nbsp; <span style="color:#efefef;font-size:20px">|</span> &nbsp&nbsp;<a target="_blank" href="/myonlineservices/AccountRegister/Register1">Sign Up</a><br></div>';
+	}
+	else { //only if we are logged in
+			$pieces = explode("&", $detail);
+			$firstPart=$pieces[1];
+			$secondPart=$pieces[2];
+			$name = explode("=", $firstPart);
+			$htmltoreturn= '
+			<style>#region-search-bar-header{margin:1.1em 0.00em 0.00em 0em}</style>	
+			<div style="color:#5261ac;float:right;font-size:1.2em">Welcome back, '.$name[1].'!<br><a onClick="location.reload();" id="logout-of-site" style="color:#50c9b5;font-size:0.8em;text-decoration:none" href="'.$_SERVER['PATH_INFO'].'?login=N">Not you?</a>
+			';
+	}
+	return $htmltoreturn;
+}
+?>

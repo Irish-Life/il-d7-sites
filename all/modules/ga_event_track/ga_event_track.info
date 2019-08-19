@@ -1,0 +1,5 @@
+; $Id: ga_event_track.info,v 1.0.0.0 2015/09/02 10:11:15 Ger Exp $
+name = "GA Event Tracking"
+description = "GA Event Tracking Block"
+core = "7.x"
+package = "Irish Life"

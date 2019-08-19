@@ -1,0 +1,18 @@
+<style type="text/css">body{margin:0px;padding:0px;}</style><div id="flashcontent">Attempting to load Flash. If the pension calculator does not load then you do not have the Flash plugin installed, or your browser does not support Javascript (you should enable it).</div><script type="text/javascript" src="http://www.bline.ie/uploadedFiles/retail/js/swfobject.js"><!--//--></script><script type="text/javascript"><!--
+var version = deconcept.SWFObjectUtil.getPlayerVersion();
+if (document.getElementById && version["major"] <10) {
+document.getElementById('flashcontent').innerHTML = "You have an old version of Flash player installed: version "+ version['major'] +"."+ version['minor'] +"."+ version['rev'] +". In order to user this calculator please upgrade to the latest version.";
+}else{
+var so = new SWFObject("http://www.bline.ie/uploadedImages/Retail/body/advice/pensionCalc2.5.swf", "mymovie", "596", "400", "8", "#336699");
+ 
+so.addParam("quality", "high");
+so.addParam("wmode", "transparent");
+so.addParam("salign", "t"); 
+so.addVariable("contactUserID", "217"); 
+so.addVariable("broker", "true");
+so.addVariable("privacyURL", "");
+so.addVariable("hideContact", "false");
+so.addVariable("parentDomain", "../index.html");
+so.write("flashcontent");
+}
+//--></script>

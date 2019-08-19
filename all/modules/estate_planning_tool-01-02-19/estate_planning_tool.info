@@ -1,0 +1,5 @@
+; $Id: estate_planning.info,v 1.0.0.1 2018/01/02 10:11:15 Ross M Exp $
+name = "Irish Life - Estate Planning Tool"
+description = "Estate Planning Tool"
+core = "7.x"
+package = "Irish Life"

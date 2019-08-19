@@ -1,0 +1,12 @@
+p {font-size:13px;margin-bottom:5px}
+h3 {
+    color: #002E63;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    margin: 20px 0 5px;
+    padding: 0;
+}
+ul {list-style-type:none !important;font-size:13px !important}
+#risk-profile-questions p{display:none}
+.riskFooterText{display:none}

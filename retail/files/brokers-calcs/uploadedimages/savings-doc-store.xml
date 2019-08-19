@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>Bline </title>
+  <link>http://www.bline.ie</link>
+  <description>Saving document store</description>
+  
+  <item>
+    <title>Pinnacle Booklet</title>
+    <link>http://www.bline.ie</link>
+    <description>Booklets</description>
+  </item>
+  
+  <item>
+    <title>Pinnacle application form</title>
+    <link>http://www.bline.ie</link>
+    <description>Application forms</description>
+  </item>
+  
+  <item>
+    <title>Deed of assignment - Pinnacle savings plan</title>
+    <link>http://www.bline.ie</link>
+    <description>Application forms</description>
+  </item>
+  
+    <item>
+    <title>Pinnacle key features</title>
+    <link>http://www.bline.ie</link>
+    <description>Sales Aids</description>
+  </item>
+  
+  <item>
+    <title>Savings and the cost of education</title>
+    <link>http://www.bline.ie</link>
+    <description>Sales Aids</description>
+  </item>
+  
+   <item>
+    <title>Savings flyer for pension clients who have hit their SFT</title>
+    <link>http://www.bline.ie</link>
+    <description>Sales Aids</description>
+  </item>
+  
+   <item>
+    <title>Small gifts exemption</title>
+    <link>http://www.bline.ie</link>
+    <description>Sales Aids</description>
+  </item>
+  
+  <item>
+    <title>Using life assurance to fund for gift and inheritance tax</title>
+    <link>http://www.bline.ie</link>
+    <description>Sales Aids</description>
+  </item>
+  
+   <item>
+    <title>Pinnacle terms and conditions</title>
+    <link>http://www.bline.ie</link>
+    <description>Terms and conditions</description>
+  </item> 
+  
+</channel>
+
+</rss>

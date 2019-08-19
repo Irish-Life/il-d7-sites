@@ -1,0 +1,41 @@
+.heading-breadcrumb{color:#5261ac !important; font-weight: 300; font-size: 22px !important; margin-right: 15px; }
+
+#lifeRewardsMenu.nav-item {
+    display: none;
+}
+
+#launcher, .zEWidget-launcher.zEWidget-launcher--active{display:none!important}
+
+
+#MyFinancialReviewMenu {
+	display:none;
+}
+
+.performance-text-group2 {display:none}
+.performance-text-group1 .performance-text-row2{display:none}
+
+#performance-value1-12315790 {display:none;}
+#performance-value2-12315790 {display:none;}
+#performance-info-12315790 {display:none;}
+
+#performance-value1-3657381 {display:none;}
+#performance-value2-3657381 {display:none;}
+#performance-info-3657381 {display:none;}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+#slide-out {transform:translateX(0%) !important;}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) { 
+#slide-out {transform:translateX(0%) !important;}
+}
+
+@media only screen and (max-width: 600px) {
+.modal.modal-fixed-footer { height: 97% !important;}
+.iframe-size {height: 90% !important; width: 100% !important;}
+#launcher, .zEWidget-launcher.zEWidget-launcher--active{display:none!important}
+/* .zopim .meshim_widget_components_mobileChatButton_Button {display:none!important}
+.zopim {display:none!important;}
+*/
+}
+

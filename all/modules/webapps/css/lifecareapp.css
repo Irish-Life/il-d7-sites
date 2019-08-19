@@ -1,0 +1,114 @@
+#page{background-color:#5261ac}
+.node-type-webapp-page .region-inner .cta a {
+  background-color: #f9a533;
+  box-shadow: .071em .071em .143em 0 #b3b3b3;
+  color: #fff;
+  display: block;
+  font-size: 1.4em;
+  height: 3em;
+  padding-top: 25px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1em;
+  margin-bottom:1.5em;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 13px 8px;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: 80px 80px;
+}
+.node-type-webapp-page #region-content-left1 .region-inner{background-color:#5582AB;padding:5px;height:280px;text-align:center;margin-bottom:20px;}
+.node-type-webapp-page #region-content-mid1 .region-inner{background-color:#00ADD0;padding:5px;height:280px;text-align:center;margin-bottom:20px;}
+.node-type-webapp-page #region-content-right1 .region-inner{background-color:#A49382;padding:5px;height:280px;text-align:center;margin-bottom:20px;}
+.region-content-left1 p,.region-content-mid1 p,.region-content-right1 p{color:#fff}
+.region-content-left1 h2,.region-content-mid1 h2,.region-content-right1 h2{color:#fff}
+
+
+
+.region-content-left1 h2:before{
+font-family: FontAwesome;
+  content: "\f0fa";
+  color: #ffffff;
+  margin: 30px 0px 40px 0px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+.region-content-mid1 h2:before{
+font-family: FontAwesome;
+  content: "\f0f0";
+  color: #ffffff;
+  margin: 30px 0px 40px 0px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+.region-content-right1 h2:before{
+font-family: FontAwesome;
+  content: "\f007";
+  color: #ffffff;
+  margin: 30px 0px 40px 0px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+.node-type-webapp-page #zone-content .fa {
+  color: #fff;
+  display: inline-block;
+  font-size: 5em;
+  margin-top: 10px;}
+ .node-type-webapp-page #zone-content ul li:before {
+  font-family: FontAwesome;
+  content: "\f061";
+  color: #ffffff;
+  margin: 0 5px 0 20px;
+  vertical-align: top;
+}
+.node-type-webapp-page #region-content-fullbot1 .region-inner{margin-top:15px;background-color:#EDEAED;padding:20px}
+.node-type-webapp-page h2.block-title{color:#ffffff;text-align:center}
+.node-type-webapp-page h4{color:#ffffff;}
+.node-type-webapp-page #region-content-fulltop2 .region-inner{background-color:#5582AB;color:#ffffff;margin-top:20px;padding:20px}
+.node-type-webapp-page #region-content-fullbot2 .region-inner{background-color:#00ADD0;color:#ffffff;margin-top:20px;padding:20px}
+.node-type-webapp-page #region-content-fulltop3 .region-inner{background-color:#A49382;color:#ffffff;margin-top:20px;padding:20px}
+.node-type-webapp-page ul{font-size:1.1em}
+.node-type-webapp-page ul li {
+  list-style-type: none;
+}
+.node-type-webapp-page #region-content-fulltop2 h2:before{
+  font-family: FontAwesome;
+  content: "\f0fa";
+  color: #ffffff;
+  margin: 30px 0px 40px 20px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+
+.node-type-webapp-page #region-content-fullbot2 h2:before{
+  font-family: FontAwesome;
+  content: "\f0f0";
+  color: #ffffff;
+  margin: 30px 0px 40px 20px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+
+.node-type-webapp-page #region-content-fulltop3 h2:before{
+  font-family: FontAwesome;
+  content: "\f007";
+  color: #ffffff;
+  margin: 30px 0px 40px 20px;
+  vertical-align: top;
+  font-size:5em;
+  display:block;
+  text-align:center;
+}
+.node-type-webapp-page .mean-bar{display:none}
+#block-social-find-us-social-find-us{display:none}

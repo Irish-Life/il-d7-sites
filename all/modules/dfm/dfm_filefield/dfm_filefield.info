@@ -1,0 +1,7 @@
+name = "Drupella FM for File Field"
+description = "Allows users to select files from Drupella File Manager for file fields."
+dependencies[] = "file"
+dependencies[] = "dfm"
+core = "7.x"
+version = "7.x-2.0"
+package = "File manager"

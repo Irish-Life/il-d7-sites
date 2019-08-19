@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+
+}
+
+label {
+  padding: 6px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+#coverVal {
+  background-color: #efefef;
+  height: 2rem;
+  width: 20rem;
+}
+
+#result {
+  background-color: #efefef;
+  height: 2rem;
+  max-width: 20rem;
+  word-wrap: break-word;
+}
+
+fieldset {
+  border: none;
+}
+
+input[type="submit"] {
+  margin-top: 12px;
+}

@@ -1,0 +1,4 @@
+name = "Bline - Document Smart Filter"
+description = "Bline Document Smart Filter"
+core = "7.x"
+package = "Irish Life"

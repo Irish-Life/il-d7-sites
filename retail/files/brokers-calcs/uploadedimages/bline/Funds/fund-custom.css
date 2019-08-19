@@ -1,0 +1,48 @@
+caption {display:none}
+.fundTable table {font-size: 100%;}
+.wideTable th{padding-top:0px; font-weight:bold; font-size:0.9em; }
+.ui-button {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.1em;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+}
+.ui-corner-all {
+    border-radius: 3px 3px 3px 3px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("/uploadedimages/retail/css/images/ui-bg_highlight-hard_75_5160ac_1x100.png") repeat-x scroll 50% 50% #6633CC;
+    border: 1px solid #5160AC;
+    color: #FFFFFF;
+    font-weight: normal;
+}
+.ui-widget {
+    font-family: Arial,sans-serif;
+    font-size: 14px;}
+.fund-price{}
+.fund-launch{display:none}
+.fund-perf-10{display:none}
+.fund-perf-month-to-date{display:none}
+.fund-perf-3month{display:none}
+.fund-perf-6month{display:none}
+/*.fund-perf-3{display:none}
+.fund-perf-5{display:none}*/
+.fund-perf-launch{display:none}
+.fund-perf-ytd{display:none}
+.fund-fmc{display:none}
+.fundTable{height:2155px !important;}
+.hidden-important {
+    display: none !important;
+}
+.fundTable h2{Padding:25px 0px 5px !important; font-size:2em !important;}
+.fund-col-headExplore2{display:none}
+.fund-col-headExplore3{display:none}
+.drawChartExplore{visibility:hidden}
+.drawChartExplore2{visibility:hidden}
+.drawChartCore{display:none}
+h2.fund-col-headCore {background: url("/uploadedimages/core.png") no-repeat !important;}
+h2.fund-col-headExplore {background: url("/uploadedimages/explore.png") no-repeat !important; clear:both;}

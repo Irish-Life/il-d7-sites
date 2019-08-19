@@ -1,0 +1,40 @@
+.clear {
+	height: 0px;
+	zoom: 1; 	
+}
+.blockContainer, #headerNameplate {
+	zoom: 1;
+}
+.callbackSlider{_display:none !important}
+.liveChatNow{_display:none !important}
+#headerSecondNav ul {
+	margin-top: 20px;
+}
+#menuPopupContainer {
+	margin-bottom: 10px;
+}
+
+.chartPanel ol li {
+	padding-left: 0px;
+}
+.chartPanel ol li span.down, .chartPanel ol li span.up {
+	display: none;
+}
+.panel p.button a {
+	margin-left: 15px;
+}
+#bodyHeader {
+	z-index: 2200;
+}
+.tab_container{height:2500px}
+
+.fundChoice{width:400px;}
+
+.saleLeft{float:left;width:400px;margin-right:25px;}
+.saleRight{float:left;width:400px;margin-left:10px}
+#saleContent{height:400px}
+/*.advisorMapAddress{right:-260px}*/
+#progress{margin-top:25px}
+.saletag{left:-90px}
+#importantInformation input{margin-left:6px !important;}
+#breadcrumbs{margin-top:10px}

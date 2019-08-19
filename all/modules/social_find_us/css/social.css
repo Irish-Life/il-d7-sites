@@ -1,0 +1,49 @@
+.bodyFooterSocial {
+    color: #111;
+    padding: 0.4em 0.4em 0.4em 0;
+	float: left;
+}
+.bodyFooterSocial .socialBlock {
+    float: left;
+}
+
+.socialBlock .fa {font-size:2em}
+
+.bodyFooterSocial .socialBlockImg {
+    background-position: left center;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 1em;
+	color:#ffffff;
+}
+
+.bodyFooterSocial .socialBlockShare {
+    display: block;
+    float: left;
+    height: 1em;
+    margin-left:0.5em;
+	margin-right:1em;
+    width: auto;
+}
+
+.pluginCountButton{color:#fff;margin-left:12px;background:none;}
+
+
+@media only screen and (max-width: 768px) {
+	
+	.bodyFooterSocial .socialBlockShare {
+		padding-right:0em;
+		padding-left:0.1em;
+	}
+	.bodyFooterSocial .socialBlock{
+		width:335px;
+	}
+}
+
+@media only screen and (max-width: 568px) {
+	.bodyFooterSocial .socialBlock{
+		width:240px;
+	}
+}
+

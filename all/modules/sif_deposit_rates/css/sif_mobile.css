@@ -1,0 +1,130 @@
+td {
+	height: 70px;
+	padding: 0px !important;
+}
+
+p { -webkit-margin-before: 0px;
+    padding-left: 30px;}
+
+	
+/* Sif Rates Table */					
+.aib, .boi, .inv, .kbc, .ptsb, .rabo {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	table-layout: fixed;
+	display:none;
+}	
+
+/* Sif Rates Table */					
+.onDem, .3mth, .6mth, .12mth, .18mth, .2yr, .3yr, .4yr, .5yr  {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	table-layout: fixed;
+	display:none;
+}	
+
+/*Credit Ratings Table */
+.aibCred, .boiCred, .invCred, .kbcCred, .ptsbCred, .raboCred {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	table-layout: fixed;
+	display:none;
+}	
+/* Buttons Table */
+
+.Btn {cursor: pointer;}	
+
+.btnTable {
+    text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	table-layout: fixed;
+	border: 0px;
+}	
+
+.btnTable td {
+	padding: 0px !important;
+	border: 1px solid white;
+	width:30%;
+}
+	
+
+.mobContainer {
+	display: none;
+}
+
+/*
+
+.mobContainer .banks:hover {
+	background-color: #675c53 !important;
+}
+
+*/
+
+
+.tableHolder .ratesOdd td {
+	background-color:#d9d9da !important;
+	
+}
+
+/*
+
+.tableHolder .ratesOdd:hover td {
+	background-color: #d9d9da !important;
+}
+
+*/
+
+.tableHolder .ratesEven td {
+	background-color: #edeaed;
+}
+
+/*
+.tableHolder .ratesEven:hover td {
+	background-color: #edeaed !important;
+}
+
+*/
+
+.term {
+	width:100px;
+	background-color: #675c53;
+}
+
+.banks:hover td {
+       background-color: #4D549F; }
+
+.bgCol {background:#fbd6a1 !important; }
+	 
+
+@media only screen and (max-width: 980px) {
+	#submitContact2 {
+		    width: 22%;
+	}
+}
+	 
+
+@media only screen and (max-width: 730px) {
+	.sifTable {
+         display: none;
+         overflow-x: auto;
+    }	
+    .mobContainer {
+		width: 100%;
+		display: block;
+		border: 0px;
+	}
+	
+	#submitContact2 {display:none;}
+	
+	.tableHolder {display: none;}
+	
+	.dateHead {float: none;
+	           width: 100%;
+	}
+	
+
+}

@@ -1,0 +1,5 @@
+; $Id: familyProtection.info,v 1.0.0.0 2017/01/24 10:11:15 Ross M Exp $
+name = "familyProtection"
+description = "Family Protection Planner Block"
+core = "7.x"
+package = "Irish Life"

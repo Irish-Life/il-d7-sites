@@ -1,0 +1,615 @@
+
+*{margin: 0px; padding: 0px;}
+
+body {background-color:#ffffff;
+font-family:Arial,Helvetica,sans-serif; text-align:center; margin:0pt;color:#333333;
+padding:0pt; padding-top:4px; }
+
+img {border: none; }
+
+
+#wrapper-wide {background:transparent url(https://www.irishlife.ie/myonlineservices/public/images/bg_container.jpg) repeat-y scroll 0% 0%; margin-left:auto;
+margin-right:auto; padding-bottom:4px; text-align:left; width:980px; }
+
+#topnav{background:transparent url(https://www.irishlife.ie/myonlineservices/public/images/bg_top.jpg) no-repeat scroll 0% 0%; padding:10px 20px 0px 19px; }
+
+#header{height:90px; margin: 6px 15px 0px 15px; position: relative;
+background:none; }
+
+#blurb {background:transparent url(https://www.irishlife.ie/myonlineservices/public/images/bg_bottom.jpg) no-repeat scroll 0px 0px;
+margin-left:auto; margin-right:auto; padding-top:15px; width:980px; }
+#blurb p {color:#BAB9B9; font-size:9px; line-height:1.4em; padding:0px 10px 5px; }
+
+
+/*#headerBar{position: relative; height: 15px; background: #D63A21; border-top: 1px solid #fff; margin: 0px 15px; }*/
+
+/* This is an important css concept.
+   By placing a width and 'overflow auto' on the container div
+    the floated divs within will have a height that will grow the container 
+
+#t529#  
+Removing the overflow for Chrome. It adds a scrollbar
+Adding class called 'Clearer' which will clear after the bottom of the left-wide
+div. 
+
+*/
+#left-wide {margin: 10px 15px 45px 15px; padding:0pt; width: 948px; }
+
+
+
+a.topon{font-weight:bold; text-decoration: underline; color: #F2EDF7;}
+
+#footer{margin: 20px 20px 2px 20px; padding:6px 0px; width:940px; font-size:62.5%; }
+#footer p{text-align: center; font-size:1.1em; color:#c3c3c2; padding:2px 8px; margin:0px;  } 
+#footer p.address{font-size:9px; }
+#footer a{color:#9d9d9c; text-decoration:none;} 
+#footer a:hover{color:#333;}
+
+#leftcontentwide {padding-bottom:5px; min-height: 425px; height: auto !important; height: 425px; margin-top:20px; }
+#leftcontentwide p{padding-left: 10px; padding-right: 10px; color: #636363; padding-bottom:5px; padding-top:5px; font-size:14px; }
+#leftcontentwide img{margin-left: 10px;}
+/*#leftcontentwide h2{font-size: 22px; margin-top: 10px; margin-bottom: 7px;border-bottom:1px solid #EBEBEB;}
+#leftcontentwide h2{font-size: 20px; margin-top: 10px; border-bottom:1px solid #EBEBEB;}*/
+h2{color:#648C1B;font-size:20px;margin-top:10px;margin-bottom:7px}
+#leftcontentwide h3{    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    background-color: #435399;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    float:left;
+    width:773px;
+    padding: 7px; }
+   
+#leftcontentwide h3.wider{width: 870px; }       
+#leftcontentwide h4{font-size: 14px; font-weight: bold; color:#636363; margin-top: 15px;
+margin-bottom: 0px;margin-left:10px;margin-right:20px;border-bottom:1px solid #435399;}
+#leftcontentwide h5{font-size: 12px; font-weight: bold; color: #65328F; margin-top: 12px; margin-bottom: 7px;}
+#leftcontentwide h6{font-size: 13px; font-weight: bold; color: #65328F; margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
+
+#mainContentNoMenu{margin:0px 0px 0px 20px; background-color:#FFFFFF; width:900px; float:left;}
+#mainContentNoMenu ul{margin-left: 12px; list-style: none; color: #636363;}
+#mainContentNoMenu ul li{ margin-bottom: 5px; background-image: url(https://www.irishlife.ie/myonlineservices/public/images/green_arrow.gif); background-position: 0px 6px;
+	background-repeat: no-repeat; padding-left: 16px; }
+#mainContentNoMenu ul.normal li{font-size: 14px; }
+#mainContentNoMenu ul.bulletless li{font-size: 14px; background-image: none; }
+	
+#mainContentNoMenu .messageBox p{font-size: 16px; color: #D63A21; margin-top: 15px; margin-bottom: 7px;margin-left:2px;}
+#mainContentNoMenu .securityMessageBox {font-size: 14px; color: #333; font-weight: bold;margin: 15px 8px 7px 8px; }
+
+.loginInput{font-size:16px; width:140px; }
+
+.pinInput{font-size:16px; width:25px; }
+
+#mainContent{float: left; }
+
+#mainContent ul{margin-left: 12px; list-style: none; color: #636363;}
+#mainContent ol{margin-left: 25px; color: #636363;}
+#mainContent ul li{ margin-bottom: 2px; background-image: url(https://www.irishlife.ie/myonlineservices/public/images/green_arrow.gif); background-position: 0px 6px;
+	background-repeat: no-repeat; padding-left: 12px; }
+#mainContent ul li.sub{ margin-left:15px;margin-bottom: 2px; background-image: url(https://www.irishlife.ie/myonlineservices/public/images/green_arrow.gif); background-position: 0px 6px;
+	background-repeat: no-repeat; padding-left: 12px; }
+#mainContent ul li.subsub{ margin-left:25px;margin-bottom: 2px; background-image: url(https://www.irishlife.ie/myonlineservices/public/images/green_arrow.gif); background-position: 0px 6px;
+	background-repeat: no-repeat; padding-left: 12px; }
+#mainContent ul li.on{font-weight: bold;}
+#mainContent ul li a{color: #3D3D3D; text-decoration: none;}
+#mainContent ul li a.red{color: #D63A21; }
+#mainContent ul li a:hover{color: #65328F; text-decoration: underline;}
+.label{float:left;font-weight: bold;width:12em; font-size:13px; color: #636363;
+margin-left:10px;padding-top:3px;}
+.value{float:left;width:12em; font-size:14px; color: #636363;padding-top:3px;}
+.longValue{width:40em;}
+.labelOneLine{width:25em;}
+.valueOneLine{width:25em;}
+
+/* 
+#t529# 
+#mainContent{float:left; width:790px; }
+*/ 
+
+#mainContent{float:left; width:785px; }
+#mainContent .normalList a{color:#636363;}
+#mainContent input.gobtn {background: none repeat scroll 0 0 #D17A07;
+font-weight: bold; color: white;
+border: none; font-size: 13px; padding: 5px 8px;
+padding-left: 1px; padding-right: 1px;}
+
+
+.advertisingSection {background-color:#FFFFFF;width:785px;margin:0px;padding:0px;height:165px;
+float:left;line-height:1em;border:none}
+
+.contentSection {background-color:#F1F0F1;width:785px;margin-bottom:8px;
+float:left;line-height:1em;border:1px solid #E6E6E6}
+.contentSection div {background-color:#F1F0F1 !important}
+.contentSection h3{margin-top:0px !important}
+.bcrumbs-wide {position: relative; }
+.topMenu{position: absolute; right: 10px; height: 20px; }
+.topMenu ul{list-style: none; }
+.topMenu ul li{display: inline;}
+.topMenu ul li a{float: left; text-decoration: none; color:white; margin-left:10px;
+padding: 5px 8px; 
+	font-size:13px; font-weight: bold; }
+.topMenu ul li a:hover{text-decoration: underline;}
+
+.warningbox { font-weight:bold; border:1px solid #e6e6e6;-moz-border-radius:6px;
+background-color:#FCF7F1; width:97%; padding: 4px;margin-left: 5px;margin-bottom:5px;}
+.warningbox p { margin:7px auto 7px auto;}
+
+.wideinside-title{height:10px;}
+.wideinside-title h1{display:none;font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif; background-color: #D73526; color: #D73526; font-weight: normal; letter-spacing: 0px; font-size: 1.6em; padding-top: 9px; padding-bottom: 13px; padding-left: 10px;}
+
+
+.menu .button{
+ display:block; height:2.25em; width:9em; padding-top:0.25em; border:1px solid; margin-top:0.4em;
+ border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight; outline: none;font-size:12px;
+ text-decoration:none; text-align:center; color:#65328F; background-color:#f6f2f9;margin-bottom:0.2em;}
+
+#left-inner {width: 145px; float: left; margin-top: 10px; }
+#left-inner p{padding-left: 10px; padding-right: 10px; color: #636363; padding-bottom:5px; padding-top:5px;}
+#left-inner-nav{float: left; margin-left: 6px; margin-right: 5px; margin-top: 20px; font-size: 12px; margin-bottom: 25px;}
+#left-inner-nav ul{list-style: none; background-color:#ffffff}
+#left-inner-nav li{border-bottom:1px solid white; cursor: pointer; background-color:#A6AFD5}
+
+#left-inner-nav li a{ /* Sized for IE box model*/
+ height:2em; width:116px; padding-top:0.6em;
+ border: none;
+ text-decoration:none; text-align:left; padding-left:5px;
+ display:block;
+ color:#ffffff;font-weight:bold;width:116px}
+#left-inner-nav .oneLine{padding-top:0.65em; height:1.75em;}
+#left-inner-nav li a:hover{text-decoration: underline; }
+#left-inner-nav li a.on{border:1px solid #A6AFD5;
+color:#A6AFD5;background-color:#ffffff;cursor: default;}
+#left-inner-nav li a.on:hover{}
+
+#left-inner-nav .bottomButtons{margin-top:1.5em;} 
+#left-inner-nav .bottomButtonsBig{margin-top:1em;}
+#left-inner-nav .bottomButtonsBig a{height:40px;} 
+#left-inner-nav .gap {height:50px;background-color:#ffffff}
+br {clear:both;}
+
+table{margin-left:10px; border-collapse:collapse; font-size:85%;
+color: #636363;width:98%; border: 1px solid #E6E6E6;background: #fff; } /*font sized for IE*/
+table th, td{border:1px solid #ccc; padding:0.25em 0.5em;}
+table td.col1{text-align:left; width: 14em;}
+table td.largeCol{width:20em;}
+table.details{text-align:left; cursor: pointer; background: #fff; }
+table.details td{}
+table.details th{ text-align: center;}
+table.details th.left_heading{text-align: left; color:#435399; text-transform:uppercase; font-size:0.9em;}
+table.details th.right_heading{text-align: right; color:#435399; text-transform:uppercase; font-size:0.9em;}
+table.details tr.alt_row {background-color: #FCF7F1;}
+table.details td.left_column{text-align:left;}
+table.details td.right_column{text-align:right;}
+table.details td.no_border{border:none;}
+.bigColumn{width:270px;}
+.bigColumn2{width:130px;}
+.smallColumn{width:63px;}
+.nopointer {cursor:default !important;}
+table.smallerFont{font-size:10px;}
+table.smallFont{font-size:12px !important}
+table.noborder{border:none !important}
+table td img{margin-left:0px !important} 
+
+table.details td{cursor:pointer; border:1px solid #CCCCCC;font-weight:normal;cursor:pointer;}
+table.details th{cursor:text; border:1px solid #CCCCCC;font-weight:bold;cursor:text;}
+
+
+
+
+#instructions{ width:94%; margin-left: auto; margin-right: auto; }
+div.title {font-weight: bold; color: #46569D; cursor:pointer; border:0px solid #CCCCCC;
+margin-top:0.3em; padding:0.5em; }
+div.box {color: #636363; padding-left: 0.5em; margin-bottom: 0.5em; background-color:##F6F2F9; padding-top:0.5em; padding-bottom: 1em; border:0px solid #C0C0C0; border-top-width:0;}
+div.box ol li{margin-left:35px}
+div.heading {color: #46569D; font-weight:bold;}
+img.image{margin: 2px 2px -4px}
+
+.projectedValueContent input{width:1.6em;}
+.projectedValueContent input#projYY{width:3em;}
+.projectedValueContent #projectedValueSubmit{width:6em;margin-left:2em;}
+.projectedValueContent ol{margin-top:0;}
+.projectedValueContent h3{margin-left:1em;}
+
+
+.buttons a, .printPage a {BORDER-RIGHT: buttonshadow 1px solid;
+BORDER-TOP: buttonhighlight 1px solid;  
+FONT-WEIGHT: bold; MARGIN: 0px; VERTICAL-ALIGN: middle;
+ BORDER-LEFT: buttonhighlight 1px solid; WIDTH: 8em; COLOR: #FFFFFF; 
+padding-top: 0.25em; padding-bottom:0.25em;padding-left:0.5em;
+padding-right:0.5em;BORDER-BOTTOM: buttonshadow 1px solid; HEIGHT: 2em; 
+BACKGROUND-COLOR: #D17A07; TEXT-ALIGN: center; TEXT-DECORATION: none;}
+
+.buttons a:hover{}
+
+.registerButton{margin-top:20px;line-height:2em}
+.registerButton a{border-width:3px;padding:1em 2em ;height:5em;}
+
+.printPage{position: absolute; right: 10px; }
+.printPage a{color:white; height:auto; margin-right:5px;VERTICAL-ALIGN: middle; width:6em; background:#435399; font-size:12px; }
+
+.fundPerfList {}
+
+
+#mainContent .messageBox p{font-size: 16px; color: #D63A21; margin-top: 15px; margin-bottom: 7px;margin-left:2px;}
+input{margin-left:10px;}
+
+fieldset {border: none;}
+#fundTracker{margin-left:1.5em;margin-top:1em;margin-bottom:1em}
+
+@media print {
+	#leftcontentwide h2, #leftcontentwide h3, #leftcontentwide h4 {color: #000000;}
+	#left-inner, #footer, #blurb, #topnav, #header, .wideinside-title, .bcrumbs-wide, .printPage, #custServiceFormsDropDown{display:none;}	
+	.investmentHistoryDetail, .investmentHistoryTable{visibility: visible;}
+    #mainContent {float:none;}
+    #leftcontentwide {min-height: none;}
+    #left-wide{overflow: visible;}
+    .fundPerfList{overflow: visible;height: auto;}
+}
+
+#allFunds{display:none;}
+.contentSectionFunds {float:left; width:780px;}
+.contentSectionFunds h3{POSITION: relative; TOP: -15px} 
+.contentSectionFunds ul{margin:0.5em;}
+.contentSectionFunds li{float:left; width:17.2em; margin:0.25em;}
+
+#toggleText{width:18em; margin:0.5em; cursor: pointer;}
+
+
+
+/* select ie6 hack */
+* html .menu .buttons {padding-bottom: 3px; }
+
+/* select ie7 hack */
+*:first-child+html .menu .button {padding-bottom: 5px; }
+table.menu th, td{border:none;}
+.menu .button:hover{position:relative; top:1px; left:1px;text-decoration:none;}
+.menu .selectedButton{border:1px solid; border-color:ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow; color:silver; cursor: default;}
+.menu .buttonPressed{border:1px solid; border-color:ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow; color:silver; cursor: default;}
+.dropBox{position:absolute; top: 168px; left: 42px; background-color:#fff;
+z-index: 10; display: none; border: 2px outset #ccc; border-top: 1px outset #ccc;}
+.dropBox h4{font-size: 13px; font-weight: bold; color: #65328F; margin-top: 5px; margin-bottom: 0px;padding-left:10px;}
+
+/* ie 6 hack */
+*html .dropBox{left:55px;}
+
+.middleButton a{margin:0 0 0 12.6em; }
+.myPlansButton{margin-left: 5px; }
+
+
+.planListTitle{font-size: 15px; font-weight: bold; color: #65328F; margin-bottom: 2px; }
+
+.planListTable {width: 100%; font-family:arial;
+background-color: #fff; font-size: 1.1em;
+text-align: left;
+border-collapse: collapse; margin:5px 0; }
+.planListTable thead tr th, .planListTable tfoot tr th {background: #fff;
+border: 1px solid #ddd; 
+font-size: 0.9em; padding: 4px 2px 2px 6px; text-transform: uppercase; color: #435399; }
+.planListTable tbody tr {background: #fff; cursor: pointer; }
+.planListTable tbody tr td{font-size: 1.3em; color: #636363; padding: 6px 4px 5px 8px; vertical-align: top; border: 1px solid #ddd; 
+border-bottom: 1px solid #ddd;}
+
+.planListTable td.col1{width:20%; font-weight:bold; }
+.planListTable td.col2{width:60%; }
+.planListTable td.col3{width:20%; }
+.planListTable tr.selected {font-weight:bold;background-color:#FCF7F1;cursor:default;}
+.planListTable tr.alt_row {background-color: #FCF7F1;}
+
+
+
+.investmentHistoryHead th{border:1px solid #CCCCCC;font-weight:bold}
+.investmentHistoryHead .col1{width:100px;}
+.investmentHistoryHead .col2{width:200px;}
+.investmentHistoryHead .col3{width:200px;}
+
+.investmentHistorySubHead th{cursor:pointer; border:1px solid #CCCCCC;font-weight:normal}
+.investmentHistorySubHead .col1{width:100px;}
+.investmentHistorySubHead .col2{width:200px;text-decoration:underline;}
+.investmentHistorySubHead .col3{width:200px;}
+
+.investmentHistoryTable {width:610px;margin-left:172px;margin-bottom:10px;border:1px solid #cccccc;}
+.investmentHistoryTable th{font-size:12px;border:none;}
+.investmentHistoryTable tr, th, td{border:none;}
+.investmentHistoryTable .col1{width:50px;}
+.investmentHistoryTable .col2{width:50px;}
+.investmentHistoryTable .col3{width:100px;}
+
+.planValuesHead {width:765px;}
+.planValuesHead th{border:1px solid #CCCCCC;font-weight:bold}
+.planValuesHead .col1a{width:270px;}
+.planValuesHead .col1b{width:160px;}
+.planValuesHead .col2{width:110px;}
+.planValuesHead .col3{width:110px;}
+.planValuesHead .col4{width:110px;}
+.planValuesHead .col5{width:110px;}
+
+.planValuesSubHead {width:780px;}
+.planValuesSubHead td{cursor:pointer; border:1px solid #CCCCCC;font-weight:normal;cursor:pointer;}
+.planValuesSubHead .col1a{text-align:left; width:270px; text-decoration:underline;}
+.planValuesSubHead .col1b{text-align:left; width:160px; text-decoration:underline;}
+.planValuesSubHead .col2{width:110px;}
+.planValuesSubHead .col3{width:110px;}
+.planValuesSubHead .col4{width:110px;}
+.planValuesSubHead .col5{width:110px; text-align:right;}
+
+.planValuesFoot .col5{text-align:right; width:150px; border: none;}
+
+.planValuesTable {width:781px;margin-bottom:10px;border:1px solid #cccccc;}
+.planValuesTable th,td,tr{border:none;}
+.planValuesTable .price {width:200px;}
+
+.quotationHistoryTable {width:450px;cursor:default;}
+.quotationHistoryTable th, td{text-align:left}
+.quotationHistoryTable .col1{width:160px}
+.quotationHistoryTable .col2{width:120px}
+
+
+
+/* Base menu */
+.menu{float: left; text-align:center;}
+.innerMenu{float: left; width:120px}
+.menuLabel{margin: 6px 8px 0px 4px; float: left; font-weight: bold; text-transform: uppercase; font-size: 0.78em; }
+.menuButton{margin-left: 10px; display:block; cursor: pointer; color:#ddd; font-size: 14px;   }
+.innerMenuButton{}
+.menuDrop{position: absolute; cursor: default; z-index: 100; padding:10px 8px; clear: left; 
+border: 1px solid #ccc; font-size: 12px; background: #fff; color: #000; display: none; }
+.innerMenuDrop{}
+.menuDropItem{padding: 3px 12px 3px 8px; border-top: 1px solid #eee; background: #fff; display:block; cursor: pointer; color: #000; }
+.menuDropItem.first{border-top: 0px; }
+.mouseOverMenuDropItem{background: #333; color: #fff;}
+
+
+/* Channel menu */
+.channelMenu{text-align: left; margin-top: 1px; }
+.mouseOverChannelButton .menuButtonText{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/buttonLight.gif);}
+.mouseOverChannelButton .menuButtonArrow{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/arrowLight.gif);}
+
+.selectedButton2 .menuButtonText{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/buttonLight.gif);}
+.selectedButton2 .menuButtonArrow{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/arrowLight.gif);}
+
+.channelMenuButton{margin: 0px; height: 28px; }
+* html .channelMenuButton{float: left;}
+.menuButtonText{width:97px;height: 28px; float: left; background: url(https://www.irishlife.ie/myonlineservices/public/images/button/buttonDark.gif);}
+.innerMenuButtonText{padding: 3px 8px 3px 12px; font-weight: bold; font-size: 1.15em; float: left; color: #fff; }
+.menuButtonArrow{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/arrowDark.gif); width: 23px; height: 28px; float: left;  }
+
+.channelMenuDrop{margin: -2px 0pt 0pt 0pt; width: 500px; 
+background:#FFFFFF;
+border-top: 1px solid #999;
+border-right: 2px solid #999; 
+border-bottom: 2px solid #999; 
+border-left: 1px solid #999;  }
+
+.smallMargin{margin:10px 0px; }
+.margin{margin: 10px; }
+
+.red{color: #D63A21; }
+
+.register-button{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/registerButton.jpg) no-repeat scroll 0px 0px;
+width: 190px; height: 38px; border: none; color: #E9E0EF; 
+text-align: left; padding-left: 40px; font-size: 20px; }
+
+.prominent{font-weight:bold}
+
+.cardListItems ul li{display: inline;background-image: none !important;}
+
+.tabs {
+background-color:#FFFFFF;
+display:inline;
+height:auto !important;
+margin:0;
+}
+.tabs ul {
+border-bottom:3px solid #435399;
+float:left;
+list-style-type:none;
+margin:0;
+padding:0;
+width:787px;
+}
+
+.tabs ul{margin-left:0px !important}
+
+.tabs ul li.first {margin-left:0px;}
+
+.tabs ul li {display:inline;float:left;margin-left:8px; background-image: none !important;
+margin-bottom: 0px !important;padding-left:0px !important}
+
+.tabs ul li.on a {
+background:#435399 none repeat scroll 0 0;
+border-color:#435399;
+border-style:solid;
+border-width:1px;
+color:#FFFFFF !important;
+}
+
+.tabs ul li a {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+-moz-border-radius-topleft:6px;
+-moz-border-radius-topright:6px;
+-webkit-border-radius-topleft:6px;
+-webkit-border-radius-topright:6px;
+border-top-left-radius:6px;
+border-top-right-radius:6px;
+background:#ffffff none repeat scroll 0 0;
+color:#636363 !important;
+cursor:pointer;
+float:left;
+font-weight:bold;
+font-size:14px;
+margin:0;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+padding:5px;
+text-align:center;
+text-decoration:none !important;
+border-top:1px solid #e6e6e6;
+border-left:1px solid #e6e6e6;
+border-right:1px solid #e6e6e6;
+}
+
+.hidden{display:none}
+
+.sifButton{width:150px}
+
+ul.downloads {margin:0 10px 20px;padding:0;}
+
+ul.downloads li.pdf {
+-moz-background-inline-policy:continuous;
+background:url("/myonlineservices/public/images/pdfIcon.gif") no-repeat scroll 0 0 transparent !important;
+margin-top:10px !important;
+margin-bottom: 0px !important;
+padding:0 0 0 25px !important;}
+
+#leadershipFactor {
+border: 1px solid #e6e6e6;
+background-color:#FCF7F1;
+margin-bottom:15px;padding:10px;
+float:left;width:765px;
+}
+#izone{
+border: 1px solid #E6E6E6;
+background-color:#F6F2F9;
+margin-bottom:15px;padding:10px;
+margin-left:5px;
+width:250px;float:left;
+}
+
+.fullWidth{width:100% !important}
+
+#leadershipFactor button, #withdraw button, #edocs button, #alerts button {
+background-color:#D17A07;
+border-color:buttonhighlight buttonshadow buttonshadow buttonhighlight;
+border-style:solid;
+border-width:1px;
+color:#ffffff;
+font-weight:bold;
+margin-top:1em;
+outline:medium none;
+text-align:center;
+text-decoration:underline;
+width:15em;
+height:30px;
+cursor:pointer;
+}
+#edocs button, #alerts button {
+	width: 5em !important;
+}
+
+#leadershipFactor button:hover{
+text-decoration: underline; cursor: pointer;}	
+	
+#survey-options{text-align: center;}
+.smallText{font-size: 10px;font-style: italic;}
+
+/*
+ ##t529## 
+ All new div classes
+ */
+ 
+.smallTextPlain{font-size: 12px;margin-left:5px;}
+.clearer {clear:both;height:1px;font-size:0.1%;border:none;margin:0;padding:0;background:transparent;}
+#newsContainer{border-top:1px dotted #435399;border-bottom:1px dotted #435399;background-color:#F6F2F9; margin-bottom:25px;margin-top:20px;padding-left:5px;padding-right:5px;}
+#newsContainer table {background-color:#F9F2F9;}
+#newsContainer input:hover{cursor:pointer;}
+.dashboardTable{margin-top:10px}
+.addPlan {position:relative;}
+.dashboardAddPlanButton{background: url(https://www.irishlife.ie/myonlineservices/public/images/button/addPlanButton.jpg) no-repeat scroll 0px 0px;
+width: 77px;*width:100px; height: 20px; border: none; color: #E9E0EF; 
+text-align: left; padding-left: 23px; font-size: 12px;font-weight:bold;padding-top:2px;cursor:pointer; }
+.userSettings{float:right;margin-right:10px; color:#636363;}
+.userSettings a,.userSettingsHome a{text-decoration:underline;color:#636363;}
+.userSettings a:hover,.userSettingsHome a:hover{text-decoration:none;}
+.updateInformationTable td{height:35px;cursor:default;}
+.ajaxReturnRow td{height:auto;border:0px !important;}
+
+.settingsSaveButton{background-color:#435399;color:#fff;font-size:135%;padding:4px 10px 4px 10px;border:1px solid #ccc;cursor:pointer}
+
+.settingsSaveButton{background-color:#435399;color:#fff;font-size:135%;padding:4px 10px 4px 10px;border:1px solid #ccc;}
+
+.information{width:250px;font-size:14px;padding:2px;}
+.informationPin{width:80px;font-size:14px;padding:2px;margin:5px;}
+.informationInput{padding:10px;padding-left:15px;padding-right:15px;font-weight:bold;font-size:14px;}
+.pdf {
+-moz-background-inline-policy:continuous;
+background:url("https://www.irishlife.ie/myonlineservices/public/images/pdfIcon.gif") no-repeat scroll 10px 4px transparent !important;
+margin-top:10px !important;
+margin-bottom: 0px !important;
+}
+
+.logindetailsname{ background:url("https://www.irishlife.ie/myonlineservices/public/images/cog.png") no-repeat scroll 0px 3px transparent !important;padding-left:13px;Color:#ccc;}
+.logindetailsname a{color:#767676;}
+#basic-modal-content {display:none;}
+/* Overlay */
+#simplemodal-overlay {background-color:#eee; cursor:wait;}
+/* Container */
+#simplemodal-container {height:360px; width:600px; color:#636363;background-color: #fcfcfc; border: 4px solid #435399; padding:12px;}
+#simplemodal-container .simplemodal-data {padding:8px;}
+#simplemodal-container code {background:#ccc; border-left:3px solid #435399; color:#000; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container a {color:#ddd;}
+#simplemodal-container a.modalCloseImg {background:url(https://www.irishlife.ie/myonlineservices/public/images/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container h3 {color:#435399;}
+#simplemodal-container p{text-align:left;}
+.submitfeedback{width:482px; height:70px;max-width:482px;max-height:85px; font-family:Arial,Helvetica,sans-serif;}
+.feedbackInput{margin-left:395px;*margin-left:380px; margin-top:5px;padding:5px;padding-left:15px;padding-right:15px;font-weight:bold;font-size:14px;}
+
+.counter{
+	position:relative;
+	right:0;
+	top:0;
+	font-size:12px;
+	font-weight:bold;
+	color:#ccc;
+	display:block;
+	width:300px;
+	}
+.warning{color:#683591;}	
+.exceeded{color:#683591;}
+
+.anchor{text-decoration: underline;}
+.caption{-moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    background: -moz-linear-gradient(center top , #323E80 0%, #46569D 2%, #2A3877 100%) repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;}
+    
+.noBg{none repeat scroll 0 0 transparent !important;}
+.menutabs{margin-top:20px;float:left;}
+
+.baseTable{font-size: 13px; margin-bottom: 10px;}
+.baseTable thead th{font-weight: bold; padding:4px 1px 4px 3px; margin: 0; text-align: left; vertical-align: top; border:none;}
+.baseTable tbody td{padding:4px 1px 2px 3px; margin: 0; text-align: left; vertical-align: top; cursor: default; }
+.baseTable thead th.right{text-align:right}
+.baseTable tbody td.right{text-align:right}
+.baseTable tbody td.center{text-align:center; }
+table th.right{text-align:right}
+
+.documentSearchResultsTable{width: 740px; table-layout: fixed;}
+.documentSearchResultsTable tbody td{padding: 4px 0 2px 0; }
+
+.inputField{}
+.inputFieldText{background: #fff; font-size: 14px; padding: 1px; }
+.inputFieldTextSmall{width: 26px; font-size: 12px; }
+.inputFieldTextNormal{width: 180px; font-size: 13px; }
+.inputFieldTextWide{width: 262px; font-size: 13px; }
+
+.inputError{color: #f44; margin: 4px 0 2px 0; float: left; font-size: 13px; display: none; }
+.inputError2{color: #f44; margin: 4px 0 2px 0; font-size: 13px; display: none; }
+.inputErrorText{cursor: pointer;  }
+
+.server-message{padding: 20px 20px 0; color: #FF4444;}
+
+.edocumentsTable{background-color:#F1F0F1; border: none; table-layout: fixed;}
+.edocumentsTable .column1{width: 100px}
+.edocumentsTable .column2{width: 320px}
+.edocumentsTable .column3{width: 300px}
+
+.edocumentsTermsConditionsTable{background-color:#F1F0F1; border: none;}

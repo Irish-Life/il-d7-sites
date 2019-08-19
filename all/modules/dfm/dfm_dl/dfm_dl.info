@@ -1,0 +1,6 @@
+name = "Drupella FM Download"
+description = "Allows downloading of DFM files and folders in a zip archive."
+core = "7.x"
+version = "7.x-2.0"
+package = "File manager"
+dependencies[] = dfm

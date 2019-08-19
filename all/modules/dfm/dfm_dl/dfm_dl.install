@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_install()
+ */
+function dfm_dl_install() {
+  // Set permissions for administration profile
+  module_load_include('inc', 'dfm', 'dfm.install');
+  dfm_update_profile_dir_perms(1, '.', array('dlFiles' => 1, 'dlFolders' => 1));
+}

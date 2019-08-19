@@ -1,0 +1,35 @@
+h1,h2,h3, p{text-align:left; font-family: Arial,Helvetica,sans-serif; font-size: 10pt;}
+#RiskProfileQuestionsResponse{
+	background-color: #d6dbde;
+	color: #000000;
+	height:650px;}
+#RiskProfileQuestionsResponse h1{
+	font-size:16px;
+	text-transform: uppercase;
+    background: url("/uploadedImages/bline/Resources_and_Tools/Third_Party_Tools/HMP_Finance/head_bg.gif") no-repeat scroll 0 0 transparent;
+    height: 33px;
+    margin: 0;
+    overflow: hidden;
+    padding: 8px 4px 4px 8px;
+    width: 732px;}
+#importantInformation{
+    margin: 0 0 8px 2px;
+    overflow: auto;
+    padding: 10;
+    text-align: left;
+    width: 721px;}
+#importantInformation hr{color:#d6dbde !important;}
+#importantInformation h3{font-size: 11pt;}
+#risk-profile-questions h3{font-size: 11pt;}
+#risk-profile-questions { 
+	background-color: #d6dbde !important;
+    line-height: 1.7em;
+    margin-bottom: 1em;
+    padding: 0 15px;
+	clear:both;}
+.risk-questions{float:left;clear:both; list-style-type:none; padding-left:10px; font-size:10pt !important;}
+.risk-question-alternatives{list-style-type:none; padding:10px; text-align:left !important;}
+#riskProfileResults h3{font-size: 11pt;}
+#riskProfileResults {background-color: #d6dbde !important;}
+.RiskAttitudeButton{float:left;}
+.risk-question-text{text-align:left;}

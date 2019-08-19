@@ -1,0 +1,383 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+
+/*
+#######################################
+###### ALWAYS USE THESE BRAND COLOURS
+
+// Core
+#435399 - BLUE
+#f19c2b - ORANGE
+#333333 - BLACK
+#4d4e53 - GREY (dark)
+
+
+// Secondary Colours
+#005a8c - BLUE
+#5cc151 - GREEN
+#502d7f - PURPLE
+#f4aa00 - ORANGE
+#00aad2 - LIGHT BLUE
+#cc092f - RED
+
+// other
+#ffffff - white
+
+#######################################
+*/
+.top-menu, .top-menu .columns{
+background-color: #435399; 
+color: #fff;
+}
+.top-menu .columns {
+font-size:1em;
+padding: 0.3em;
+}
+.searchBtn{
+	font-size:1em;
+	color:#fff;
+}
+.searchBtn:hover{
+text-decoration:none;
+	color:#f19c2b;
+}
+.searchContainer{
+border-bottom:1px solid #e4e4e4;
+}
+.searchContainer,.searchContainer .row{
+padding:0.2em;
+background-color:#efefef;
+}
+.searchContainer input,.searchContainer a{
+margin:0em;
+}
+.button.buttonTopMenu:hover, .button.buttonTopMenu:focus {
+background-color: #ffffff;
+color:#4d4e53;
+}
+.button.buttonTopMenu {
+-webkit-box-shadow: 0 0px 0 rgba(255, 255, 255, 0) inset;
+box-shadow: 0 0px 0 rgba(255, 255, 255, 0) inset;
+border-style: solid;
+border-width: 0px;
+cursor: pointer;
+font-family: inherit;
+font-weight: bold;
+line-height: 1;
+position: relative;
+text-decoration: none;
+text-align: center;
+background-color: #435399;
+border-color: #435399;
+color: #ffffff;
+margin:0 5px 0 0;
+}
+/* Main Menu Buttons */
+.button.buttonMainMenu:hover, .button.buttonMainMenu:focus, .button.buttonMainMenu.selected, .button.buttonMainMenu.mobile {
+
+background-color: #435399;
+border-color: #435399;
+color: #ffffff;
+opacity:1;
+-webkit-box-shadow:0 0px 10px 1px rgba(0, 0, 0, 0.16) inset;
+box-shadow:0 0px 10px 1px rgba(0, 0, 0, 0.16) inset;
+}
+.button.buttonMainMenu:hover .toggle-nav,.button.buttonMainMenu.selected .toggle-nav{
+opacity:1;
+}
+.button.buttonMainMenu {
+-webkit-box-shadow: 0 0px 0 rgba(255, 255, 255, 0) inset;
+box-shadow: 0 0px 0 rgba(255, 255, 255, 0) inset;
+border-style: solid;
+border-width: 1px;
+border-color:#efefef;
+cursor: pointer;
+font-family: inherit;
+font-weight: bold;
+line-height: 1;
+position: relative;
+text-decoration: none;
+text-align: center;
+margin:0 0 0 1em;
+background-color: #fafafa;
+color:#435399;
+padding-left:26px;
+font-size:0.9em;
+padding:0.6em;
+}
+.button.buttonSplitTopMenu{
+background-color:#fff;
+color: #4d4e53;
+}
+.button.buttonTopMenuSocial:hover{
+
+background-color:transparent;
+color:#f19c2b;
+}
+.button.buttonTopMenuSocial{
+padding-left:0px;
+padding-right:0px;
+padding-bottom:0px;
+padding-top:0px;
+font-size:1.2em;
+}
+.mainLogo{
+text-align:center;
+}
+.mainMenu{
+	position:relative;
+	top:27px;
+	font-weight:bold;
+}
+.custServButtonMainMenu{
+	position:relative;
+top:8px;
+font-weight:bold;
+font-size:1em;
+color:#4d4e53;
+text-align:center;
+}
+.custServButtonMainMenu .mainMenuBtnlabel{
+color:#BBB;
+font-size:1.25em;
+font-weight:normal;
+}
+.f-dropdown.menuTop{
+max-width:260px;
+}
+
+
+
+
+
+#header{
+background-color:#fff;
+padding:1em 0em 1em 0em;
+border-bottom:1px solid #E4E4E4;
+}
+.navMenuBlock{
+
+padding:2em 0 2em 0;
+-webkit-box-shadow:0 3px 10px -6px rgba(0, 0, 0, 0.5) inset;
+box-shadow:0 3px 10px -6px rgba(0, 0, 0, 0.5) inset;
+border-bottom:2px solid #435399;
+background-color:#fff;
+}
+.navMenuBlock,.navMenuBlock div{
+background-color:transparent;
+}
+.menuImage{
+border-right:1px solid #ccc;
+}
+.navMenuBlock h6 a{
+color:#4d4e53;
+font-weight:normal;
+}
+.navMenuBlock h6 a:hover{
+text-decoration:none;
+color:#f19c2b;
+border-bottom:1px dotted #f19c2b;
+}
+#menuBlock ul{
+	float:right;
+}
+/*### header section of page */
+.headerShare{
+margin-top:30px;
+margin-bottom:0em;
+vertical-align:bottom;
+}
+.headerShare i{
+	font-size:1.5em;
+}
+.headerShare span{
+	display:inline
+}
+.headerShare a:hover{text-decoration:none;
+}
+.headerShare .has-tip{
+	border-bottom:0px solid #fff;
+}
+.headerText h1{
+margin-top:0.2em;
+margin-bottom:0em;
+}
+.headerText h6{
+color:#4d4e53;
+}
+.pageShareHolder{
+padding:5px 0 3px 0;
+}
+
+.socialBtn i{
+font-size:1em;
+}
+.largeShare{
+font-size:5em;
+}
+a.largeShare:hover  {
+text-decoration:none;
+border:none;
+}
+
+
+.pageBreadcrumbsHolder{
+position:relative;
+}
+
+
+.pageHeadingHolder{
+
+padding-bottom: 0.9375em;
+padding-top: 0.9375em;
+border-top:1px solid #efefef;
+border-bottom:1px solid #efefef;
+min-height:100px;
+background-color:#efefef;
+}
+.pageHeadingHolder .row{
+
+
+background-color:#efefef;
+}
+.pageContentHolder{
+
+padding-bottom: 0.9375em;
+padding-top: 0.9375em;
+border-top:1px solid #E4E4E4;
+border-bottom:1px solid #E4E4E4;
+min-height:100px;
+}
+
+.panel ul{list-style-type:none;
+}
+
+
+
+.orange{
+background-color:#f19c2b;
+}
+.white{
+background-color:#fff;
+}
+
+.subFooter{
+color:#efefef;
+padding:2em 0em 2em 0em;
+margin-top:0em;
+background-color:#435399;
+}
+.subFooter .row{
+background-color:#435399;
+}
+.subFooterText .row p{
+font-size:0.7em;
+color:#333;
+margin:.5em 0em .1em 0em;
+}
+.subFooterText{
+padding:.5em 0 .5em 0;
+background-color:#fff;
+}
+.subFooter h1,.subFooter h2,.subFooter h3,.subFooter h4,.subFooter h5,.subFooter h6{
+color:#eee;
+}
+#footer{
+padding:1em 0em 1em 0em;
+margin-top:0em;
+}
+#footer p ,#footer li{
+font-size: .8em;
+line-height: 21px;
+margin-bottom: 2px;
+color: #333;
+list-style-type:none;
+}
+
+
+
+/* -----------------------------------------
+   tabletish size
+----------------------------------------- */
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+
+
+	.button.buttonMainMenu {
+	font-size:0.7em;
+	}
+	.mainMenu{
+	top:29px;
+	}
+	.custServButtonMainMenu{
+	font-size:0.9em;
+	}
+	.custServButtonMainMenu .mainMenuBtnlabel{
+	font-size:1em;
+	}
+	
+	.menuImage{
+	border-right:0px solid #ccc;
+	}
+}
+
+
+
+/* -----------------------------------------
+   smaller and phone
+----------------------------------------- */
+@media only screen and (max-width: 767px) { 
+
+	#header{
+	padding:0.8em 0em 0em 0em;
+	margin-bottom:0.5em;
+	border-bottom:0px solid white;
+	}
+	#footer p ,#footer li{
+	font-size: 16px;
+	line-height: 21px;
+	margin-bottom: 8px;
+	color: #333;
+	list-style-type:none;
+	}
+		
+	.headerShare{
+	margin-top:20px;
+	}
+	
+	.button.buttonMainMenu {
+	margin:0 0 0.5em 0;
+	background-color: #fafafa;
+	color:#435399;
+	font-size:1em;
+	padding:0.6em;
+text-align: left;
+	}
+	.custServButtonMainMenu{
+	font-size:0.7em;
+	}
+	.menuImage{
+	border-right:0px solid #ccc;
+	}
+}
+
+
+
+/* -----------------------------------------
+   micro
+----------------------------------------- */
+@media only screen and (max-width: 400px) { 
+
+
+	.button.buttonMainMenu {
+	margin:0 0 0.5em 0;
+	background-color: #fafafa;
+	color:#435399;
+	font-size:0.8em;
+	padding:1em;
+	}
+	.custServButtonMainMenu{
+	font-size:0.7em;
+	}
+}

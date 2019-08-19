@@ -1,0 +1,361 @@
+<?php
+/**
+ * Implementation of hook_block_info().
+ */
+function business_protection_filter_block_info() {
+  $blocks['business_protection_filter'] = array(
+    'info' => t('Business Protection Filter'),
+  );
+  return $blocks;
+}
+
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function business_protection_filter_permission() {
+  return array(
+    'business_protection_filter' => array(
+      'title' => t('Administer Document Smart Filter'),
+      'description' => t('Perform administration tasks for Business Protection Filter.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+
+function business_protection_filter_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#business_protection_filter":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function business_protection_filter_menu() {
+  
+ $items['admin/content/business_protection_filter'] = array(
+    'title' => 'Business Protection Filter',
+    'description' => 'Settings for Bline Business Protection Filter',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('business_protection_filter_admin'),
+    'access arguments' => array('business_protection_filter'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   ); 
+   
+  return $items;
+}
+
+function business_protection_filter_admin(){
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', 'bline_document')
+                  ->execute();   
+
+  $entity_type = 'node';
+  $result = $query->execute();
+
+  if (!empty($result[$entity_type])) {
+    $entities = entity_load($entity_type, array_keys($result[$entity_type]));
+  }
+
+  $nodes = entity_load('node', array_keys($result['node']));
+
+
+  $stack = array();
+  foreach ($nodes as $node) {
+
+    if (!empty($node->field_bline_file_uploaded[und][0][uri]) || strlen($node->field_bline_file_uploaded[und][0][uri])>=5) {
+
+      $uriIn = $node->field_bline_file_uploaded[und][0][uri];
+      $dir_uri = file_stream_wrapper_get_instance_by_uri($uriIn);
+      $result = $dir_uri->getExternalUrl();
+      $stack[t($result)] = t($node->title);
+
+    }
+  }
+
+  asort($stack);
+
+  $form['business_protection_filter_protection_application_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Protection Application Form - CAB and Data Capture'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_protection_application_form'),
+  '#description' => t('global Protection Application Form - For all pages'),
+  );  
+
+  $form['business_protection_filter_how_to_complete_the_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('How To Complete The Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_how_to_complete_the_trust_form'),
+  '#description' => t('global How To Complete The Trust Form - for all pages with trust form'),
+  );   
+
+  //global docs
+
+  $form['business_protection_filter_partnership_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnership : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_underwriting_questionnaire'),
+  '#description' => t('Partnership : Underwriting Questionnaire - slides 5,6'),
+  );  
+
+  $form['business_protection_filter_partnership_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Legal Agreement Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_legal_agreement'),
+  '#description' => t('Partnerhip : Legal Agreement Form - slides 3,5,6'),
+  );    
+
+  $form['business_protection_filter_partnership_insurance_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Partnership Insurance Adviser Guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_insurance_adviser_guide'),
+  '#description' => t('Partnership Insurance Adviser Guide - slides 5,6'),
+  ); 
+
+  $form['business_protection_filter_partnership_own_life_in_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Own Life in Trust - Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_own_life_in_trust_form'),
+  '#description' => t('Partnerhip : Own Life in Trust - Trust Form - slide 6'),
+  );
+
+  $form['business_protection_filter_partnership_life_of_another_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Life Of Another How is the arrangement taxed?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_life_of_another_arrangement_taxed'),
+  '#description' => t('Partnerhip : Life Of Another How is the arrangement taxed? - slide 5'),
+  );  
+
+  $form['business_protection_filter_partnership_own_life_in_trust_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Own Life in Trust How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_own_life_in_trust_arrangement_taxed'),
+  '#description' => t('Partnerhip : Own Life in Trust How is the arrangement_taxed? - slide 6'),
+  );     
+
+
+  $form['business_protection_filter_partnership_how_to_complete_the_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnership: How To Complete The Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_partnership_how_to_complete_the_trust_form'),
+  '#description' => t('Partnership : How To Complete The Trust Form - for all pages with trust form'),
+  );   
+
+  //key person
+
+  $form['business_protection_filter_key_person_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_key_person_underwriting_questionnaire'),
+  '#description' => t('Key Person : Underwriting Questionnaire - slides 16,18'),
+  );    
+
+  $form['business_protection_filter_key_person_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Keyperson cover – an advisers guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_key_person_adviser_guide'),
+  '#description' => t('Key Person : Keyperson cover – an advisers guide - slides 16,18'),
+  ); 
+
+  $form['business_protection_filter_key_person_you_and_your_business_brochure'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : You and your business brochure'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_key_person_you_and_your_business_brochure'),
+  '#description' => t('ey Person : You and your business brochure - slides 16,18'),
+  ); 
+
+  $form['business_protection_filter_key_person_loan_cover_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Loan Cover How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_key_person_loan_cover_arrangement_taxed'),
+  '#description' => t('Key Person : Loan Cover How is the arrangement taxed? - slide 16'),
+  );  
+
+  $form['business_protection_filter_key_person_loss_of_profits_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Loss of Profits / Replacement Costs How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_key_person_loss_of_profits_arrangement_taxed'),
+  '#description' => t('Key Person : Loss of Profits / Replacement Costs How is the arrangement taxed? - slide 18'),
+  );     
+
+  //Personal Shareholder Protection
+
+  $form['business_protection_filter_personal_shareholder_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Shareholders Legal Agreement'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_personal_shareholder_legal_agreement'),
+  '#description' => t('Personal Shareholder : Shareholders Legal Agreement - slides 26,29,31'),
+  );  
+
+  $form['business_protection_filter_shareholder_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_shareholder_underwriting_questionnaire'),
+  '#description' => t('shareholder : Underwriting Questionnaire - slides 29,31,38'),
+  ); 
+
+  $form['business_protection_filter_personal_shareholder_buy_back'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : What happens after the buy back?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_personal_shareholder_buy_back'),
+  '#description' => t('Personal : What happens after the buy back? - slide 36'),
+  ); 
+
+  $form['business_protection_filter_shareholder_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Shareholder Protection – an advisers guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_shareholder_adviser_guide'),
+  '#description' => t('Shareholder : Shareholder Protection – an advisers guide - slides 29,31,38'),
+  ); 
+
+  $form['business_protection_filter_shareholder_you_and_your_business_brochure'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : You and your business brochure'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_shareholder_you_and_your_business_brochure'),
+  '#description' => t('Shareholder : You and your business brochure - slides 29,38'),
+  ); 
+
+  $form['business_protection_filter_personal_shareholder_life_of_another_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Life of Another How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_personal_shareholder_life_of_another_arrangement_taxed'),
+  '#description' => t('Personal Shareholder : Life of Another How is the arrangement taxed? - slide 29'),
+  );
+
+  $form['business_protection_filter_shareholder_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_shareholder_trust_form'),
+  '#description' => t('Shareholder : Trust Form - slide 31'),
+  );
+
+  $form['business_protection_filter_personal_shareholder_own_life_in_trust_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Own Life in Trust How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_personal_shareholder_own_life_in_trust_arrangement_taxed'),
+  '#description' => t('Personal Shareholder : Own Life in Trust How is the arrangement taxed? - slide 31'),
+  );
+
+  //Corporate Shareholder Protection
+  $form['business_protection_filter_corporate_shareholder_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : Shareholders Legal Agreement'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_corporate_shareholder_legal_agreement'),
+  '#description' => t('Corporate Shareholder : Shareholders Legal Agreement - slides 36,38'),
+  );  
+
+
+  $form['business_protection_filter_corporate_shareholder_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_corporate_shareholder_arrangement_taxed'),
+  '#description' => t('Corporate Shareholder : How is the arrangement taxed?- slide 38'),
+  );
+
+  $form['business_protection_filter_corporate_shareholder_buy_back'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : What happens after the buy back?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_corporate_shareholder_buy_back'),
+  '#description' => t('Corporate Shareholder : What happens after the buy back? - slide 36'),
+  ); 
+
+
+  $form['business_protection_filter_sole_trader_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Sole Trader : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('business_protection_filter_sole_trader_underwriting_questionnaire'),
+  '#description' => t('Sole Trader : Underwriting Questionnaire - slides 44,46'),
+  ); 
+
+
+  return system_settings_form($form);
+}
+
+
+function business_protection_filter_theme(){
+
+    return array(
+        'business_protection_filter' => array(
+        'template' => 'business_protection_filter',
+      )
+    );
+
+}
+
+
+function business_protection_filter_contents(){
+
+  return theme('business_protection_filter');
+
+}
+
+
+function business_protection_filter_block_view($delta = '') {  
+
+  switch($delta) {
+
+    case 'business_protection_filter':
+
+    $block['subject'] = t('');
+
+    if (user_access('access content')) {
+
+    // Use our custom function to retrieve data
+
+    drupal_add_js('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', 'external', array('scope' => 'header'));
+
+    drupal_add_css(drupal_get_path('module', 'business_protection_filter') . '/css/bootstrap.css', array('group' => CSS_DEFAULT));
+    drupal_add_js(drupal_get_path('module', 'business_protection_filter') .'/js/bootstrap.js');
+
+    drupal_add_css(drupal_get_path('module', 'business_protection_filter') . '/css/business_protection.css', array('group' => CSS_DEFAULT));
+
+    drupal_add_js(drupal_get_path('module', 'business_protection_filter') .'/js/business_protection.js', array('scope' => 'footer'));
+
+    $result = business_protection_filter_contents();        
+
+    // No content in the last week
+
+    $block['content'] = $result;
+
+
+
+  }
+
+  return $block;
+
+  }
+
+}

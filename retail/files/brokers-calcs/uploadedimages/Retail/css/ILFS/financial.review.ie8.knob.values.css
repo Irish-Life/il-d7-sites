@@ -1,0 +1,57 @@
+.yourInfo .knob{
+  top:0px;  
+  margin-left:35px !important;
+}
+
+.family .knob{
+  top:0px;  
+  margin-left:35px !important;
+}
+
+.yourJob .knob{
+  top:0px;  
+  margin-left:70px !important;
+}
+
+.yourInfo .knobTick{
+  top:0px;  
+  margin-left:35px !important;
+}
+
+.family .knobTick{
+  top:0px;  
+  margin-left:35px !important;
+}
+
+.yourJob .knobTick{
+  top:0px;  
+  margin-left:70px !important;
+}
+
+.ie8Hide {
+  display:none !important;
+}
+
+input{
+  color: black !important;
+}
+
+.custom *{
+  font-size:12px !important;
+}
+
+.sliderOutput{
+  margin-top: -1px !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.occupation{
+  font-size: 14px !important;
+  color: #555555!important;
+}
+
+.dropdown .current, #p1Name, #p2Name{
+  color: #555555!important;
+}
+

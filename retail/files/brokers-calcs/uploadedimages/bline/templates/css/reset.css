@@ -1,0 +1,73 @@
+	/**********************************************************************
+
+	Reset style sheet
+		This file provide all CSS instructions for reset all HTML elements
+
+	@Package:		Silverfox CSS Framework
+	@Link: 			http://www.internotredici.com
+	@Author: 		Fabrizio Menghini Calderón <fabrizio@internotredici.com>
+	@Copyright:		Copyright (c) 2007 Fabrizio Menghini Calderón
+	@Change Log:
+
+		[R001] ~ 2007-10-26: Creation
+
+	**********************************************************************/
+
+
+
+
+
+	* 
+	{ 
+		margin: 0; 
+		padding: 0; 
+		text-decoration: none; 
+		outline: none; 
+		vertical-align: baseline;
+	}
+
+	/* Show scroll bar to avoid page skips */
+	html 
+	{
+		height: 100%; 
+		margin-bottom: 1px; 
+	}
+
+	code, kbd, samp, pre, tt, var, textarea, input, select, isindex  { font: inherit; }
+	dfn, i, cite, var, address, em { font-style: normal; }
+	th, h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+	a, img, a img, iframe, form, fieldset, abbr, acronym, object, applet { border: none; }
+
+	table 
+	{ 
+		border-collapse: collapse; 
+		border-spacing: 0; 
+	}
+
+	caption, th, td, center 
+	{ 
+		text-align: left; 
+		vertical-align: top; 
+	}
+
+	body 
+	{ 
+		/*line-height: 1; */
+		background-color: #fff; 
+		color: #000; 
+	}
+
+	q { quotes: "" ""; }
+	ul, ol, dir, menu { list-style: none; }
+	a 
+	{
+		color: inherit; 
+		cursor: pointer;
+	}
+	
+	font 
+	{ 
+		color: inherit !important; 
+		font: inherit !important; 
+		color: inherit !important; 
+	}

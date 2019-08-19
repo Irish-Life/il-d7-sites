@@ -1,0 +1,86 @@
+<html>
+<head><title></title>
+
+<base href="https://www.irishlife.ie"/>
+<link href="/eBusinessApps/Zip/Style?Path=base.css%7Cdirect.css%7Cjquery-ui-1.8.1.custom.css%7Cext.css&Version=Prod%20Web%20(0.5)" type="text/css" rel="stylesheet" /><link href="/eBusinessApps/Zip/Default/ChannelStyle?Path=Channel.css&Version=Prod%20Web%20(0.5)" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/eBusinessApps/Zip/Script?Path=jquery-1.4.2.min.js%7Cext.js%7Clogger.js%7Cjquery.bgiframe.js%7Cjquery.metadata.js%7Cjquery-ui-1.8.2.custom.min.js%7CoccupationData.js%7CcountyData.js%7Cjquery.blockUI.js%7Cjquery.tooltip.js%7Cjquery.datenormalizer.js%7Cjquery.formatCurrency-1.4.0.min.js%7Cjquery.formatCurrency.irish.js%7Cjquery.cookie.js%7CfusionCharts.js%7Cdate.js%7CvalidationFormat.js%7Cajax.js%7Cpopup.js%7Cbase.js%7Cdirect.js&Version=Prod%20Web%20(0.5)"></script>
+
+<script type="text/javascript">
+
+function getRecommendedLifeCover()
+{
+	var valid = true;
+	$('#life1OnDeathRecommendedLifeCoverAmt').html('&euro;0');
+	var requiredAmount = $('#life1ReplacementIncomeRequiredOnDeathAmt').val();
+	var youngestDependentAgeElement = $('#youngestDependentAge').val();
+	
+	if (requiredAmount < 1)
+	{
+		alert('Enter monthly after tax replacement income amount');
+		valid = false;
+	}
+	if (valid && youngestDependentAgeElement== '')
+	{
+		alert('Enter age of youngest child');
+		valid = false;		
+	}
+	
+	if (valid)
+	{
+	var term = Math.max(10,25 - youngestDependentAgeElement);	
+	var annuityRate = (1 - Math.pow(1.03, - term)) / Math.log(1.03);	
+	log('annuity rate ' + annuityRate);
+	var annuityConversionFactor = annuityRate * 12;
+    var shortfallMonthly = Math.round(requiredAmount);
+	log('shortfall monthly ' + shortfallMonthly);
+    var shortfallLumpsum = Math.round(shortfallMonthly * annuityConversionFactor);
+	log('shortfall lumpsum ' + shortfallLumpsum);
+    var recommendedLifeCoverAmount = Math.round(shortfallLumpsum/1000,0);
+	
+    $('#life1OnDeathRecommendedLifeCoverAmt').html('&euro;'+recommendedLifeCoverAmount*1000);
+	}
+}
+</script>
+
+
+
+</head>
+
+<body style="text-align:left !important;background-color:#ffffff" class="direct browserFF  ext-gecko ext-gecko3">
+
+<div style="margin-left:0px;width:600px;">
+<div class="subHeadingTextDefault subHeadingBar row"><span class="text">A quick evaluation of your protection needs</span></div>
+<div class="sentence subHeading2 row"><span class="text">Before you start, its important to understand how much life cover you might need. Please complete this simple calculator to find out.</span></div>
+<div class="formThreeColumnFullWidth formTwoColumnFullWidthSubLabel formTwoColumn formRow" style="width:600px">
+
+<div class="labelColumn" style="width:400px"><div class="label">Age of youngest child</div></div>
+<div class="fieldColumn" style="width:120px"><div class="cellItem"><div class="field" style="width:120px"><div><select tabindex="1" name="youngestDependentAge" id="youngestDependentAge" class="inputFieldSelect width100 "><option value=""></option>
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+</select></div><div></div></div></div></div></div>
+<div class="formThreeColumnFullWidth formTwoColumnFullWidthSubLabel formTwoColumn formRow" style="width:600px">
+
+<div class="labelColumn"  style="width:400px"><div class="label">Monthly after-tax replacement income amount</div><div class="subLabel">If you were to die tomorrow, how much after-tax income would your family need each month (assuming your mortgage was cleared)?</div></div>
+
+<div class="fieldColumn" style="width:120px"><div class="cellItem"><div class="field" style="width:120px"><div><input type="text" value="" tabindex="1" name="life1ReplacementIncomeRequiredOnDeathAmt" maxlength="5" id="life1ReplacementIncomeRequiredOnDeathAmt" class=" inputFieldText width94"></div><div><div id="life1ReplacementIncomeRequiredOnDeathAmtError" class="errorValidation"></div></div></div></div></div></div>
+<div tabindex=2 style="margin-left:10px;margin-top:10px;float:left">
+<button onclick="javascript:getRecommendedLifeCover();">Calculate Recommended Life Cover</button>
+</div>
+<div id="recommendedBox" class="recommendedBox row" style="width:580px;margin:20px 0 20px 0px;"><div id="recommendedTable_Div" class="grid"><table id="recommendedTable" class="recommendedTable tableBase" style="width:560px;font-size:1em;"><tbody><tr><td width="350"><span class="label1" style="font-size:1.3em">Your recommended life cover amount</span></td><td width="450"><div class="displayOutputField"><div id="life1OnDeathRecommendedLifeCoverAmt" class="recommendedOutput displayOutput" style="font-size:2em">&euro;0</div></div></td></tr><tr><td colspan="2" class="width800"><span id="lifeCoverTermValue" class="label3">Based on your estimated replacement income and the age of your youngest child, this is the amount of life cover we think you need. Your family can use this amount to provide a regular income until your youngest child reaches 25 years.</span></td></tr></tbody></table></div></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+.data{width:100% !important}
+/* Overlay */
+#simplemodal-overlay {background-color:#dedede; cursor:wait;}
+#simplemodal-container {height:480px; width:695px; color:#333; background-color:#fff; border:1px solid #fefefe; padding:12px;
+	-moz-border-radius: 2px; 
+	-webkit-border-radius:2px; 
+	border-radius:2px;
+	
+	-moz-box-shadow: 2px 2px 5px 2px #888888;
+	-webkit-box-shadow: 2px 2px 5px 2px #888888;
+	box-shadow: 2px 2px 5px 2px #888888;
+	text-align:left;
+	}
+#simplemodal-container .simplemodal-data {padding:8px;}
+#simplemodal-container a.modalCloseImg {background:url("/uploadedImages/retail/images/x.png") no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+
+#medicalInfoText {margin-left:5px}
+#medicalInfoText h1{font-size:22px;font-weight:bold;margin-bottom:5px;border-bottom:1px solid #EEE8EE;color:#4B7289}
+#medicalInfoText p{font-size:12px;margin-bottom:7px;margin-bottom:20px}
+#medicalInfoText h2{font-size:16px;font-weight:bold;margin-top:0px;color:#4B7289}
+#medicalInfoText table{margin-bottom:20px;border:1px solid #EEE8EE;font-size:12px}
+#medicalInfoText td{padding:5px;border:1px solid #EEE8EE}
+#medicalInfoText th{padding:5px;font-weight:bold}
+#medicalInfoText ol{font-size:12px;margin-top:0px;margin-bottom:20px;}
+#medicalInfoText li{margin-left:25px;list-style:circle}
+
+
+#calculatorContainer {margin-top:7px}

@@ -1,0 +1,34 @@
+<html>
+
+<head><title></title>
+<script type="text/javascript" src="FusionCharts.js"></script>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="highcharts.js"></script>
+</head>
+<body>
+<h1>Chart here</h1>
+<div style="border:1px solid #000" id="chartContainer">FusionCharts will load here</div>
+ 
+                            <script type="text/javascript"><!--
+ 
+						//FusionCharts.setCurrentRenderer('JavaScript');
+                                var myChart = new FusionCharts("/uploadedImages/retail/chart/ZoomLine.swf", "myChartId", "800", "400", "0", "1");
+								
+
+      myChart.setJSONData( '{  "chart":{ "labelDisplay":"NONE","formatNumberScale":"0","forceYAxisValueDecimals":"1",'+
+	  '"yAxisValueDecimals ":"3","dynamicAxis":"1","showLegend":"0", "chartLeftMargin":"0","chartTopMargin":"0",'+
+	  '"chartRightMargin":"0","chartBottomMargin":"0",   "drawAnchors":"0",  "canvasBgAlpha":"100",'+
+	  '"showValues":"0",'+
+	  '"canvasbgColor":"ffffff",  "caption":"",    "compactdatamode":"1",    "dataseparator":"|"  }, '+
+	  '"categories":[{      "category":[ "20090820|20090917|20091015|20091113|20091211|20100118|20100215|20100315|20100415|20100514|20100614|20100712|20100810|20100907|20101005|20101103|20101201|20110106|20110203|20110303|20110401|20110504|20110601|20110630" ]    }  ],  "dataset":[{      "seriesname":"series1",      "data":[ "1.038|1.108|1.112|1.097|1.103|1.164|1.117|1.187|1.265|1.223|1.213|1.189|1.211|1.215|1.203|1.225|1.271|1.346|1.342|1.328|1.314|1.291|1.303|1.286" ]    }  ] }');
+ 
+                                myChart.render("chartContainer");
+ 
+                                // -->
+                            </script>
+                        </center>
+ 
+                    </div>
+
+</body>
+</html>

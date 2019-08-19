@@ -1,0 +1,49 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background:#fff;
+}
+
+.ireland-map-island{
+	float:left;
+	width:400px;
+}
+.ireland-map-island-loading{
+	width:400px;
+    display: block;
+	font-weight:bold;
+	font-size:20px;
+    text-align: center;
+    margin-top: 250px;
+	color:#5261AC;
+}
+.ireland-map-county-info{
+	float:left;
+	width:400px;
+	margin-top:100px;
+}
+.ireland-map-county-info h1{
+margin:0px 0 5px 0;
+}
+.ireland-map-county-info h3{
+margin:0px 0 5px 0;
+}
+.ireland-map-county-info p{
+margin:0px 0 15px 0;
+}
+.county{
+	cursor:pointer;
+	border:44px solid blue;
+}
+.ireland-map-banner-start{
+	display:relative;
+	float:left;
+	width:400px;
+	text-align:center;
+}
+.ireland-map-banner-start img{
+	width:50%;
+	margin-top:30px;
+}
+.ireland-map-banner-start p{
+	font-style:italic;
+}

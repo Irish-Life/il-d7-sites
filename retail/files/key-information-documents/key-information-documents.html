@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/sites/retail/files/key-information-documents/css/kids-style.css">
+  
+</head>
+<body>
+
+
+
+  
+<div id="example2" class="container col-sm-12 text-left">  
+	
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#search-docs">Search Documents</a></li>
+  <!--<li><a data-toggle="tab" href="#menu1" class="help-tab">Help</a></li>-->
+  <div class="nav-grey">&nbsp;</div>
+</ul>
+
+<div class="tab-content">
+	
+  <div id="search-docs" class="tab-pane fade in active">
+	
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+			<h4>What type of product is it?</h4>
+			<select class="step1 form-control" name="PremiumTypeDesc">
+				<option value="">Select Product Type</option>
+			</select>
+		</div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="form-group">
+			<h4>Product Name</h4>
+			<select class="step2 form-control" name="PublicProductName">
+				<option value="">Product Name</option>
+			</select>
+		</div>    
+    </div>
+    <div class="col-sm-4">
+		<div class="form-group">
+			<h4>Who is your Advisor</h4>
+			<select class="step3 form-control" name="SellerName">
+				<option value="">Select Advisor</option>
+			</select>
+		</div>
+    </div>
+  </div>
+		
+  </div>
+  
+  <div id="menu1" class="tab-pane fade">
+    <h3>Help</h3>
+    
+  </div>
+  
+  <div id="search-results text-center">
+  <div class="loading" data-bind="visible: loading">Loading....<br />&#8230;</div>
+				<ul id="results-list-id" class="results-list" data-bind="foreach: PublicFundNames, visible: PublicFundNames().length > 0">
+					<li class="results-list-item">
+						<i class="pdf-grey fa fa-file-pdf-o">&nbsp;</i><span data-bind="text: PublicFundName"></span>
+									
+							<button type="button" class="view-pdf-button" data-bind="value:[PremiumType,SellerCode,ProductCode,Fund] " >View PDF</button>
+						
+						<!--<span data-bind="text: model"></span>-->
+					</li>
+				</ul>
+		<p data-bind="visible: PublicFundNames().length == 0">Please enter your search criteria to find the correct documents.</p>
+  </div>
+  
+</div>
+
+
+
+</div><br>
+
+
+
+
+<!-- Scripts here -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.1/jquery.mockjax.min.js"></script>
+		<script type="text/javascript" src="/sites/retail/files/key-information-documents/js/res/ajax-mocks.js"></script>
+		<script type="text/javascript" src="/sites/retail/files/key-information-documents/js/dist/jquery.cascadingdropdown.min.js"></script>
+		<script type="text/javascript" src="/sites/retail/files/key-information-documents/js/kids.js"></script>
+		
+		
+
+</body>
+</html>

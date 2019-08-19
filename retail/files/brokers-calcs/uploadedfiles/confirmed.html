@@ -1,0 +1,240 @@
+<html>
+<head id="ctl00_Head1"><meta http-equiv="X-UA-Compatible" content="IE=8"><title>
+	
+	Irish Life
+
+</title>
+<link href="https://www.irishlife.ie/eBusinessApps/Zip/Style?Path=base.css%7Cdirect.css%7Cjquery-ui-1.8.1.custom.css%7Cext.css&amp;Version=UAT%20Web%20%280.5%29" type="text/css" rel="stylesheet"><link href="https://www.irishlife.ie/eBusinessApps/Zip/Default/ChannelStyle?Path=Channel.css&amp;Version=UAT%20Web%20%280.5%29" type="text/css" rel="stylesheet"><script src="https://ssl.google-analytics.com/ga.js" async="" type="text/javascript"></script>
+
+<style>
+#callback-statusOn{background:url("http://www.irishlife.ie/uploadedImages/retail/images/status_online.png") no-repeat scroll 0 0 transparent;padding-left:35px;display:block;height:35px}
+#callback-statusOff{background:url("http://www.irishlife.ie/uploadedImages/retail/images/status_offline.png") no-repeat scroll 0 0 transparent;padding-left:35px;display:block;height:35px}
+.boldspan{font-weight:bold}
+.hidden{display:none !important}
+
+.highlightQuote{font-size:18px;font-weight:bold}
+.body-background{background-color:#F9FFF9 !important;background:#F9FFF9 !important}
+.FRMessage{padding:25px;text-align:center;font-size:1em}
+.loading{
+    clear: both;
+    height: 150px;
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+</style>
+
+</head>
+
+<body id="ext-gen12" class="direct browserFF  ext-gecko ext-gecko3 body-background">
+
+    <div id="jsEnabled" style="display: block;">
+        <div class="Affinity pageFullWidth">
+        
+            <div id="main"> 
+
+        <div class="">
+            
+            <div class="content ">
+
+                <div class="">
+        		    
+        		    
+        		    
+                    
+                    <div class="">
+                    		
+                        <div class="">
+
+                           
+                           <div id="updateContent">
+                                
+    <form>
+	
+	
+	<div class="><div class="messageColumn"><div class="message">
+
+<div id="confirmCallbackRow" class="row" style="margin-bottom:0px !important">
+	
+<div class="returnLink hidden">
+
+<button onclick="window.location='http://www.irishlife.ie'">Return to www.irishlife.ie</button>
+
+</div>
+
+	
+<div class="gotQuote hidden">
+
+<div class="sentence marginBottom5 row">
+<span class="marginBottom20 serverMessageHeading bold sentence">Check out your Life Insurance Quote for 
+<span class="lifeCover">&nbsp;</span>. </span>
+<span class="text">Life insurance is more affordable than you might think.  You could get 
+<span class="lifeCover highlightQuote" >&nbsp;</span> cover for as little as <span class="premium highlightQuote">&nbsp;</span> a month. Interested? Then have us call you back and we’ll set it up. <br /><br />
+</span></div>
+
+<div class="notice sentence marginBottom5 row" style="width:277px;float:left">
+<div id="callbackButton">
+<div class="marginBottom5 marginTop5 row"><a class="confirmCallbackButton button" id="confirmCallbackButtonId" onclick="confirmCallback();" tabindex="3"><span class="background">&nbsp;</span></a></div>
+<div class="text" id="callback-statusOn" style="float:left">Linda and Michael are <span class="boldspan">online now</span>.</div><div id="callback-statusOff" class="text hidden"  style="float:left">Michael and Linda are away at the moment but will get back to you if you leave a time to call.</div>
+</div>
+<div id="callbackResponse" class="sentence marginBottom15 bold row"><span class="text"></span></div>
+<div style="float:left;font-style:italic"><br /><br />This quote is based on our Life Term Cover product and is a quote for a <span class="term">&nbsp;</span> year term where the <span id="singleLife" class="hidden">life assured is a non-smoker</span><span id="dualLife" class="hidden">lives assured are both non-smokers.</span></div>
+
+</div>
+<div class="form-advisors" style="width:285px;float:left"><img id="advisor-pic0" src="http://www.irishlife.ie/uploadedImages/retail/images/advisor-linda2.jpg"><br><br><img id="advisor-pic1" class="" src="http://www.irishlife.ie/uploadedImages/retail/images/advisor-michael2.jpg"> </div>
+</div>	
+	
+
+
+
+
+<div class="sentence marginBottom15 row" id="policyNumberRow"><span class="text"></span></div></div></div></div></div><span class="hidden"></span></form>
+
+       
+                                <div class="clearFix"></div>	   												
+                           </div>
+                    	        
+                        </div>         					
+                    		
+                    </div>
+
+                </div> 
+
+            </div>
+            
+        </div></div>
+
+        </div>
+		   <div id="quoteResponse" class="hidden">
+		   <div id="name"></div><div id="phone"></div><div id="email"></div></div>
+    </div>
+    
+   
+ 
+
+<script type="text/javascript" src="/uploadedFiles/retail/js/iq.jquery-1.6.1.min.js?150911">
+</script>
+    <script type="text/javascript" src="/uploadedFiles/retail/js/iq.jquery.cookie.js?150911"></script>
+
+<script type="text/javascript">
+
+	$.get("/servlet/confirmedQuote.jsp", function(data){
+	var partsArray = data.split('-');
+	$('#planId').html($.trim(partsArray[0]));
+	$('#name').html($.trim(partsArray[4]));
+	$('#email').html($.trim(partsArray[5]));
+	$('#phone').html($.trim(partsArray[6]));
+	$('.lifeCover').html($.trim(partsArray[2]));
+	$('.term').html($.trim(partsArray[3] + ' years'));
+	$('.premium').html($.trim(partsArray[1]));
+	if ($.trim(partsArray[1]) != '')	
+	{
+		$('.gotQuote').removeClass('hidden');
+	}
+	else
+	{
+		$('.returnLink').removeClass('hidden');
+	}
+	if ($('#name').html().indexOf('&') > 1)	
+	{
+		$('#dualLife').removeClass('hidden');
+	}
+	else
+	{
+		$('#singleLife').removeClass('hidden');
+	}	
+	});
+	
+
+		
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-16369698-6']);
+        
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+		
+var callbackBool = new Boolean();
+$(document).ready(function(){
+//1
+$.get("/servlet/callbackAvailable.do", function(data){
+	str = jQuery.trim(data);	
+	
+		if (str == 'onlineNow=Y') 
+		{			
+			var callbackBool = true;
+			
+			$("#callback-statusOn").removeClass("hidden");
+			$("#callback-imgstatusOn").removeClass("hidden");
+			$("#callback-statusOff").addClass("hidden");
+		}
+		else
+		{
+			var callbackBool = false;
+			$("#callback-statusOff").removeClass("hidden");
+			$("#callback-imgstatusOff").removeClass("hidden");
+			$("#callback-statusOn").addClass("hidden");
+		}
+		
+});
+
+});
+        
+function confirmCallback()
+{
+
+var parms = 'name='+ $.trim($('#name').html())+'&phone=' + 
+$.trim($("#phone").html()) + 
+'&question='+
+"Completed Free Cover application. Interested in Life Cover - saw a quote for " + $.trim($('.lifeCover').html()) + 
+				" over " + $.trim($('.term').html()) + ". Premium is " + $.trim($('.premium').html()) +
+				'&contacttime=ASAP\nEmail: '+$.trim($('#email').html());
+
+				$.ajax({
+							type: 'POST',
+							url: '/servlet/submitCallback.do',
+							async: true,
+							data: parms,
+							beforeSend: beforeFRAjax,
+							success: successFAAjax,
+							error: errorFRAjax,
+							timeout: 200000
+						});
+						if(_gaq){
+						_gaq.push(['_trackEvent','Click to callback','Advisor callback']);
+						_gaq.push(['_trackPageview','/advice/callback-requested.html']); 
+						}
+}	
+
+function beforeFRAjax(response)
+{
+	hideCallback();
+			$('#callbackResponse').html('<div class="loading"><img height="50" src="/uploadedImages/retail/img/loading.gif" width="49" /><br />Sending your details...</div>');
+			
+}
+
+function successFAAjax(response)
+{
+	hideCallback();
+		$('#callbackResponse').html('<div class="FRMessage">Your details have been sent to our online Financial Advisors. They will be in touch shortly.<br/><br/> Thank you.</div><button onclick="parent.redirectTo(\'http://www.irishlife.ie\');">Return to www.irishlife.ie</button>');
+}
+
+function errorFRAjax()
+{
+	hideCallback();
+	$('#callbackResponse').html('<div class="FRMessage">There is an error with your submission. Please contact us directly at <b>customerservice@irishlife.ie</b>.</div><button onclick="window.location=\'http://www.irishlife.ie\';">Return to www.irishlife.ie</button>');			
+}
+
+function hideCallback()
+{
+$('#callbackButton').addClass('hidden');
+}
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+name = "Bline - Fund Table Filter"
+description = "Bline Fund Table Filter"
+core = "7.x"
+package = "Irish Life"

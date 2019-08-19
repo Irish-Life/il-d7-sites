@@ -1,0 +1,98 @@
+
+
+
+.topProgressBar{margin: 8px 0 18px 0; }
+
+
+.progressBar{}
+
+.progressBar li{display: inline; margin-right: 30px; font-size: 14px; font-weight: bold; color: #a0a0a0; }
+.progressBar li.complete .progressItemText{color: #2C2EEF; text-decoration: underline; cursor: pointer; }
+.progressBar li.current .progressItemText{color: #000; }
+
+.progressItemText{}
+
+
+.inputFieldText2{font-size: 12px; padding: 0 0 0 1px; }
+.inputFieldTextSmall2{font-size: 12px; padding: 0 0 0 1px; width: 80px; }
+.inputFieldSelect2{background: #fff; width: 120px; }
+.inputFieldTextArea{float: left; background: #fff; width: 750px; height: 200px;  margin-bottom: 8px; }
+.width50{width: 50px; }
+.width80{width: 80px; }
+.width120{width: 120px; }
+.width200{width: 200px; }
+.width300{width: 300px; }
+
+.buttonsBottomRight{float: right; margin: 5px 0 30px 0; }
+.buttonsBottomRight button{margin-right: 10px; }
+
+
+
+#paySchemeCasesTable{}
+
+.paySchemeCasesTableHeading th{border-bottom: 0px; }
+.paySchemeCasesTableHeading2 td{ }
+
+#paySchemeCasesTable .column1{width: 100px; }
+#paySchemeCasesTable .column2{width: 25px; }
+#paySchemeCasesTable .column3{width: 80px; }
+#paySchemeCasesTable .column4{width: 120px; }
+#paySchemeCasesTable .column5{width: 80px; }
+#paySchemeCasesTable .column6{width: 100px; }
+#paySchemeCasesTable .column7{width: 80px; }
+#paySchemeCasesTable .column8{width: 100px; }
+#paySchemeCasesTable .column9{width: 80px; }
+
+
+#prsaSchemeTable .column1{width: 100px; }
+#prsaSchemeTable .column2{width: 25px; }
+#prsaSchemeTable .column3{width: 80px; }
+#prsaSchemeTable .column4{width: 120px; }
+#prsaSchemeTable .column5{width: 80px; }
+#prsaSchemeTable .column6{width: 100px; }
+#prsaSchemeTable .column7{width: 80px; }
+#prsaSchemeTable .column8{width: 50px; }
+#prsaSchemeTable .column9{width: 80px; }
+
+
+
+
+
+.qtip-content{font-weight: bold; border: 1px solid #d0d0d0; font-size: 12px; }
+
+
+.tooltipCloseButton{float: right; font-size: 11px; color: #000; }
+.phase{color: #f00; }
+
+
+
+
+
+
+
+
+.jquery-checkbox       {display: inline; font-size: 20px; line-height: 20px; cursor: pointer; cursor: hand;}
+.jquery-checkbox .mark {display: inline;}
+
+.jquery-checkbox img {vertical-align: middle; width: 60px; height: 20px;}
+.jquery-checkbox img{background: transparent url(../images/checkbox.png) no-repeat;}
+
+.jquery-checkbox img{
+	background-position: 0px 0px;
+}
+.jquery-checkbox-hover img{
+	background-position: 0px -20px;
+}
+.jquery-checkbox-checked img{
+	background-position: 0px -40px;
+}
+.jquery-checkbox-checked .jquery-checkbox-hover img {
+	background-position: 0px -60px;
+}
+
+.jquery-checkbox-disabled img{
+	background-position: 0px -80px;
+}
+.jquery-checkbox-checked .jquery-checkbox-disabled img{
+	background-position: 0px -100px;
+}

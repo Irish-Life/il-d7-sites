@@ -1,0 +1,17 @@
+#RiskProfileQuestionsResponse{
+	padding:14px 20px 10px;
+	color: #3A3C3C;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+	overflow:auto;
+	background-color:#ffffff}
+#RiskProfileQuestionsResponse h1{font-size:small}
+#importantInformation{padding:14px}
+#risk-profile-questions { 
+	font-size: 1.1em;
+    padding: 0 15px;
+	clear:both;
+	text-align:left;}
+.risk-questions{float:left;clear:both; list-style-type:none; padding:0px 15px 15px;}
+.risk-question-alternatives{list-style-type:none; margin:10px; Padding:0px;}
+.RiskAttitudeButton{margin:0px 0px 20px;}
+#riskProfileResults{padding:14px}

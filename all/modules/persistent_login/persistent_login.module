@@ -1,0 +1,56 @@
+<?php
+/**
+* My Google Custom Search Engine
+*
+* This search is set up to work with the two page search option. See: www.google.co.uk/cse/
+*
+*/
+function persistent_login_block_info() {
+  // This example comes from node.module.
+  $blocks['persistent_login'] = array(
+    'info' => t('Persistent Login'),
+	'cache' => DRUPAL_NO_CACHE
+  );
+  return $blocks;
+}
+
+function persistent_login_block_view($delta = '') {
+  switch($delta) {
+    case 'persistent_login':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = persistent_login_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  drupal_add_css(drupal_get_path('module', 'persistent_login') . '/css/persistent_login.css', array('group' => CSS_DEFAULT));
+	  //drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  //drupal_add_css(drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+	  //drupal_add_css('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', 'external', array('scope' => 'header'));
+	  
+	  drupal_add_js('/sites/all/modules/persistent_login/amILoggedIn.php', 'external', array('scope' => 'footer'));
+	  //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js', array('scope' => 'footer'));
+	  //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js', 'external', array('scope' => 'footer'));
+	  drupal_add_js(drupal_get_path('module', 'persistent_login') . '/js/persistent_login.js', array('scope' => 'footer'));
+	  	  
+    }
+    return $block;
+  }
+}
+
+function persistent_login_contents() {
+
+	return '<!-- JQuery Modal for Online Services Login -->
+	<script type="text/javascript">
+	if (amILoggedIn) {
+			document.write(\'<div id="welcome-back" style="color:#5261ac;float:right;font-size:1.2em">Welcome back, \'+welcomeBackName+\' !</div><form class="searchbox"><gcse:searchbox-only queryParameterName="search" resultsUrl="/search-results"></gcse:searchbox-only><span class="searchbox-icon"><i class="fa fa-search" aria-hidden="true"></i></span></form>\');	
+	}
+	else {
+		document.write(\'<style>.banner-curve {z-index:1}		</style>		<!-- <div id="persistent-login-modal" class="modal" style="margin:0 auto;display:none;border: none;background: none; box-shadow: none; ">			<div id="login-modal-content" class="modal-content" style="padding: 0; max-height: none; background: none; ">			<iframe src="/myonlineservices/account/login1modal" style="height: 600px; width: 100%; border: none; " allowtransparency="true" ></iframe>************* THIS IS WHERE THE MODAL IS INSERTED **********************************************   			</div>		</div><form class="searchbox"><gcse:searchbox-only queryParameterName="search" resultsUrl="/search-results"></gcse:searchbox-only><span class="searchbox-icon"><i class="fa fa-search" aria-hidden="true"></i></span></form>-->\');
+		
+	}
+	
+	</script>';
+}
+?>

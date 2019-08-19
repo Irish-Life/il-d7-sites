@@ -1,0 +1,15 @@
+Version 7.x-1.3
+  Issue -NA- by thePanz: fixed makefile for admin_icons and mimetypes icons
+  Issue -NA- by thePanz: Added JQuery Update icon
+  Issue -NA- by thePanz: fixed default value for "Override file-type icons directory", default to FALSE
+  Issue #1688040 by shiff2kl: fixed wrong  "hook_perm" function (should be hook_permission)
+  Issue -NA- by thePanz: Fixed translate.drupal.org warning messages
+  Issue -NA- by thePanz: Added GoogleAnalytics support
+  Issue -NA- by thePanz: Added Views support
+  Issue -NA- by thePanz: Added CustomBreadcrumbs support
+
+Version 7.x-1.2
+  Issue #1286234 by thePanz: Provide "Settings" link in module listing table
+  Issue #1205384 by thePanz: fixed issues with Drupal CSS compressor
+  Issue -NA- by thePanz: fixes "Site Information" admin icons, documentation added
+  Issue -NA- by thePanz: fixed admin icons for Seven, Bartik and Garland 7.x themes

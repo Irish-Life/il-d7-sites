@@ -1,0 +1,19 @@
+#newdealHolder{
+background-image:url('/uploadedImages/bline/Pensions/newdeal_background.png');
+background-repeat:no-repeat;
+background-position:120px 120px;
+}
+#newlookpensionsHolder{
+background-image:url('/uploadedImages/bline/Pensions/new-look-protection_background.jpg');
+background-repeat:no-repeat;
+background-position:100px 50px;
+min-height:550px;
+_height:550px;
+}
+#ilabHolder{
+background-image:url('/uploadedImages/bline/Pensions/ilab_background.png');
+background-repeat:no-repeat;
+background-position:100px 50px;
+min-height:600px;
+_height:600px;
+}

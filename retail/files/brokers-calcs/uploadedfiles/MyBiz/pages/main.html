@@ -1,0 +1,29 @@
+        <div data-role="page" class="main panel" id="main" data-dom-cache="true">
+            <div class="wrap">
+                <form id="pipe" action="javascript:app.changePageAlt('pipeline.html');">
+                    <input type="submit" data-role="none" value="Pipeline"  class="blue_btn  pipe" />
+                    <span class="loading">0</span>
+                </form>
+                <form id="alert" action="javascript:app.changePageAlt('customer_alerts.html');">
+                    <input type="submit" data-role="none" value="Customer Alerts"  class="blue_btn  alert" />
+                    <span class="loading">1</span>
+                </form>
+                <form id="search" action="javascript:app.changePageAlt('find_customers.html');">
+                    <input type="submit" data-role="none" value="Find Customers"  class="blue_btn  customer" />
+                </form>
+                <form action="javascript:app.changePageAlt('contact_us.html');">
+                    <input type="submit" data-role="none" value="Contact Irish Life"  class="blue_btn  contact" />
+                </form>
+                <form action="javascript:app.changePageAlt('about_us.html');">
+                    <input type="submit" data-role="none" value="About App"  class="blue_btn  about" />
+                </form>
+                <form action="javascript:app.changePageAlt('returning_login.html');">
+                    <input type="submit" data-role="none" value="Logout"  class="blue_btn  welcome" />
+                </form>
+                <div id="myBiz"></div><!-- /*latest*/ -->
+            </div>
+            <div data-role="footer" class="footer" data-theme="irish">
+                <div class="main_handle"></div>
+            </div>
+        </div>
+

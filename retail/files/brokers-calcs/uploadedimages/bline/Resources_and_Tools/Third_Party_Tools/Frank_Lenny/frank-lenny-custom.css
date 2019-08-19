@@ -1,0 +1,65 @@
+h1,h2,h3, p{text-align:left;}
+#RiskProfileQuestionsResponse{
+    background-color: #f2f0ec;
+	height:550px;}
+
+#RiskProfileQuestionsResponse h1
+{   color: #9E3304;
+    font-size: 24px;
+    letter-spacing: -0.07em;
+    padding: 20px 15px 15px;
+}
+
+#RiskProfileQuestionsResponse h3
+{   color: #BBB09F;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+
+#RiskProfileQuestionsResponse p {
+    font-size: 12px;
+    line-height: 1.7em;
+    margin-bottom: 1em;
+    padding: 0 15px;
+	clear:both;
+}
+
+.riskDescription{float:left;margin-top:5px}
+
+.riskTitle{float:left;
+    color: #9E3304;
+    font-size: 1.2em;
+    font-style: italic;
+    padding: 12px 0;
+}
+
+.riskFooterText{
+    float: left;
+    font-size: 0.75em;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+#importantInformation{float:left;clear:both}
+#importantInformation h3{color: #BBB09F;
+    font-size: 16px;
+    letter-spacing: -1px;
+    padding: 0 15px 15px;
+}
+.risk-questions{float:left;clear:both; background-color: #f2f0ec; list-style-type:none;}
+#risk-profile-questions { 
+	background-color: #f2f0ec !important;
+	font-size: 12px;
+    line-height: 1.7em;
+    margin-bottom: 1em;
+    padding: 0 15px;
+	clear:both;
+	text-align:left;}
+#risk-profile-questions h3{   
+	color: #BBB09F;
+    font-size: 16px;
+    letter-spacing: -1px;}
+
+.risk-question-prefix {
+     font-weight: bold;}
+.risk-question-alternatives{list-style-type:none; margin:10px 20px 10px;}

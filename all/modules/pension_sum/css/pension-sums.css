@@ -1,0 +1,323 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+
+
+@media print
+{    
+    .ps-btn, #section-header
+    {
+        display: none !important;
+    }
+    .noticePanel p {
+    line-height: 1em  !important;
+  }
+}
+
+.smallSpinner{
+  background-image: url("../images/spinner.gif");
+  background-repeat: no-repeat;
+  height:24px;
+  width:24px;
+  display:block;
+}
+.ps-slider{
+margin:0 1em;
+}
+.ps-slider-heading:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+  .ps-slider-heading{
+  margin-bottom:1em;
+  }
+  .ps-slider-label{
+  width:80%;
+  float:left;
+  font-weight:bold;
+  font-size:1.3em;
+  }
+  .ps-slider-text{ 
+  width:20%;
+  float:left;
+  }
+  .ps-slider-text span{ 
+    color: #A49382 !important;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #EFEFEF;
+    display: block;
+    padding: 0.1em 0.3em;
+  }
+
+  .ps-radio-holder,.ps-slider-holder{
+   
+    padding-bottom: 3.5em;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 2.5em;
+  }
+  .ps-radio-holder:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+  .ps-radio-half{
+    float:left;
+    width:50%;
+    text-align:center;
+  }
+  .ps-slider-text input{
+    border:1px solid #AAA38E !important;
+    border-width:0px 0px 2px 2px !important;
+    background-color:#EDEAED !important;
+    width:100%;
+    font-weight:bold;
+    font-size:1.2em !important;
+    color:#50C9B5 !important;
+  }
+ .radioInputs input[type=radio] {
+		display:none !important;
+	}
+
+.radioInputs input[type=radio] + label {
+  border: 1px solid #ccc !important;
+  background-color: #F3F3F3;
+		display:inline-block;
+		margin:-2px;
+		padding: 5px 14px;
+		margin-bottom: 0;
+		font-size: 1.2em;
+    font-weight:normal;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	 .radioInputs input[type=radio]:checked + label{
+   
+    background-color: #50C9B5 !important;
+    border: 1px solid #53A295 !important;
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    background-color:#e0e0e0;
+	}
+  
+  .radioInputs select {
+    padding: 5px 14px;
+    margin-bottom: 0;
+    font-size: 1.2em;
+    font-weight:normal;
+    line-height: 20px;
+    color: #333;
+    border: 1px solid #ccc !important;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+   }
+  .ps-radio-holder{
+    text-align:right
+  }
+  .ps-radio-holder:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+  .ps-btn{
+    padding: 0.8em 2em;
+    font-size: 1.25em;
+    font-weight:bold;
+    background-color: #50C9B5;
+    text-decoration: none  !important;
+    color:#fff !important;
+    border:1px solid #45A293;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.19);
+    
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}.ps-btn:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+
+a:hover.ps-btn{
+    background-color: #45A293;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+  
+.clearer {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    clear: both;
+    font-size: 0;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+}
+ .noticePanel{
+ background-color:#EDEAED;
+ border:1px solid #AAA38E;
+ padding:1em;
+ margin-top:1em;
+ } .complybox {
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #000000;
+    float: left;
+    font-size: 13px;
+    margin: 3px;
+    padding: 10px;
+    width: 95%;
+    font-weight: bold;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+  .ps-btn-small{
+    padding: 0.2em 1em;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+.ps-rev-results table tbody tr{
+  border-top:1px solid #EDEAED;
+
+}
+.ps-rev-results table tr.emphasise td {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.ps-right{
+  float:right;
+}
+.ps-left{
+  float:left;
+}
+@media (max-width:960px){
+ 
+}
+
+@media (min-width:740px) and (max-width:960px){
+ 
+}
+@media (max-width:740px){
+ 
+}
+
+
+
+/* -----------------------------------------
+   JQUERY SLIDER - Bespoke set up for the 
+   responsive version of the pension calculator
+----------------------------------------- */
+.ui-widget-content {
+  margin:0 1.4em;
+	border-left: 1px solid #B3B2B3;
+	border-right: 1px solid #CAC6CA;
+	border-top: 1px solid #CAC6CA;
+	border-bottom: 1px solid #CAC6CA; 
+	
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d9d7d1+1,f4f2f2+100 */
+  background: #d9d7d1; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2Q5ZDdkMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNGYyZjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #d9d7d1 1%, #f4f2f2 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#d9d7d1), color-stop(100%,#f4f2f2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #d9d7d1 1%,#f4f2f2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #d9d7d1 1%,#f4f2f2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #d9d7d1 1%,#f4f2f2 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #d9d7d1 1%,#f4f2f2 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d7d1', endColorstr='#f4f2f2',GradientType=0 ); /* IE6-8 */
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.ui-widget-header {
+  border: 1px solid #B7BAC4;  
+  background: #05c6a6; /* Old browsers */
+  background: -moz-linear-gradient(top,  #05c6a6 2%, #9adcc6 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#05c6a6), color-stop(100%,#9adcc6)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #05c6a6 2%,#9adcc6 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #05c6a6 2%,#9adcc6 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #05c6a6 2%,#9adcc6 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #05c6a6 2%,#9adcc6 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05c6a6', endColorstr='#9adcc6',GradientType=0 ); /* IE6-9 */
+
+	color: #ffffff; 
+	font-weight: bold; 
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+background-color:#50C9B5;
+-moz-border-radius: 999px !important; 
+-webkit-border-radius: 999px !important; 
+border-radius: 999px !important; 
+border:1px solid #53A295 !important;
+box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; }
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { 
+background-color:#53A295;
+-moz-border-radius: 999px !important; 
+-webkit-border-radius: 999px !important; 
+border-radius: 999px !important; 
+border:1px solid #53A295 !important;
+box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+.ui-state-hover a, .ui-state-hover a:hover { color: #2b2b2b; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { 
+
+  background-color:#9ADCC6;
+  -moz-border-radius: 999px !important; 
+  -webkit-border-radius: 999px !important; 
+  border-radius: 999px !important; 
+  border:1px solid #53A295 !important;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 38px; height: 38px; cursor: pointer;outline-width: 0; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 0/*1*/; font-size: .7em; display: block; border: 0; background-position: 0 0; 
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;}
+
+.ui-slider-horizontal { height: 14px; }
+.ui-slider-horizontal .ui-slider-handle { top: -12px; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+

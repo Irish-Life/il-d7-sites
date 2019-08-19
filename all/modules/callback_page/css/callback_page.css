@@ -1,0 +1,121 @@
+/* ------------------------ CALLBACK TAB ----- */
+.callback-h2{
+	background-color: #5261AC; 
+	padding: 19px 15px 19px 15px; 
+	color: #FFFFFF;
+}
+
+#progressBoxPopupContentsText h1{margin-bottom:10px;font-size: 18px}
+
+#progressBoxPopupContents .submitDetails{margin-right:42px}
+.progressButtons{color:#ffffff;
+background-color:#50C9B5;
+display: block;height: 47px;width: 220px;margin-top:0px;margin-bottom:1px;border: 0 solid #CCCCCC;}
+.progressButtons:hover{margin-top:1px;margin-bottom:0px;}
+.progressInputs{width:270px; float:left;}
+.progressSummary{width:220px; float:right;
+    background-color: #fff;
+	border: 1px solid #5261AC;
+    padding: 10px;padding-right:0px;margin-right:30px;    font-size: 1.2em;
+    line-height: 1.6em;}
+.progressInputs input{width:210px;background-color: #fefefe;border: 1px solid #CCCCCC;font-size: 115%;padding: 4px;font-family:arial,helvetica,sans-serif;}
+.progressInputs select{width:220px;background-color: #fefefe;padding: 4px;}
+
+.submitDetailsButton{background-position: 0 -94px;}
+.submitDetails{background-position: 0 -188px;}
+.complyNote{font-size: 90%;}
+
+.progressBox{
+     background-color: #fafafa;
+	border: 1px solid #5261AC;
+	width:540px;
+    margin-bottom: 10px;
+    min-height: 0;
+    padding: 25px 25px 30px;
+	float:left;
+	position:relative;
+}
+
+.progressBoxCompliance {
+    background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    float: right;
+    margin: 10px 0px 10px 3px;;
+    min-height: 0;
+    padding: 0;
+    width: 265px;
+	padding:12px;}
+
+.progressBoxCompliance h3{
+    background-image: url("/uploadedImages/retail/images/info_orange.png");
+	*background-image: url("/uploadedImages/retail/images/info_orange.gif");
+    background-repeat: no-repeat;
+    height: 35px;
+	top: -4px;
+    padding-left: 25px;}
+
+.progressBoxCompliance p{
+	padding-top:30px;}
+
+.progressBoxSummary{
+    background-color: #fafafa;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width:287px;
+    margin-bottom: 10px;
+    min-height: 0;
+	padding:0px;
+	float:right;
+}
+.progressBoxSummary .selected{
+color:red;
+}
+.progressBoxSummary .notselected{
+color:blue;
+}
+
+.progressBoxSummaryNums{color:#ffffff;
+background-image: url("/uploadedImages/retail/images/markersSmallIL.png");
+background-repeat: no-repeat;
+display: block;height: 20px;width:20px;float:left;position:relative;top:-1px; margin-right:3px;}
+
+
+#progressBoxPopupContents .submitDetails{margin-right:42px}
+.progressBoxSummaryNotHighlight{color:#ccc;}
+.progressBoxSummaryNotHighlight:hover{color:#aaa;}
+.progressBoxSummaryContainer{padding:20px;border-bottom:1px dashed #ccc;}
+.progressBoxSummaryContainerNoBG{background-color:#f3f3f3;}
+
+.progressBox select {
+	border: 1px solid #aaa;
+	color: #333;
+	margin-right:3px;
+	font-size:110%;
+}
+
+.righter{float:right;}
+.hidden{display:none;}
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+.boldspan{font-weight:bold}
+
+.middle {
+text-align: center;
+}
+
+.middle h4{
+	font-weight: bold !important;
+}
+
+#callbackAdvisorImg img{
+	box-shadow: none!important;
+	float: none!important;
+}
+
+@media only screen and (max-width: 740px) {
+	#callbackSlider{
+		display: none;
+	}
+}

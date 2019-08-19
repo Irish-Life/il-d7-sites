@@ -1,0 +1,252 @@
+
+.wrapper {
+	float:right;
+	border: 1px solid #50C9B5;
+    border-radius: 4px;
+	margin-bottom: 25px;
+	margin-top:10px;
+	width: 500px;
+}
+
+.contact-info {
+		    margin-top: 12px;
+            width: 365px;
+            float: left;
+	}
+	
+.sub {
+	width: 60% !important;
+}	
+
+
+
+
+#contactReasons {
+	width:51% !important;
+}
+
+
+#customerYes, #customerNo {
+	width: 47px;
+    height: 24px;
+	float: left;
+	    margin-top: 10px;
+
+}
+	
+.customerDetails1 {
+	margin-top:29px;
+}	
+#customerContactFirstName {
+	    width: 47%;
+		padding: 5px;
+}	
+
+#customerContactLastName {
+	    width: 50%;
+		padding: 5px;
+		margin-left: 9px;
+}
+
+.customerName label { width: 45%; float: left; margin: 0 20px 0 0; }
+.customerName span { display: block; margin: 0 0 3px; }
+	
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea,
+
+#contact-form {
+	text-shadow:0 1px 0 #FFF;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	background:#F9F9F9;
+	padding:25px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	
+}
+
+#submitContact {
+	
+	background-color: #50C9B5;
+    text-decoration: none !important;
+    text-align: center;
+    /* margin-top: 0px; */
+    color: #fff !important;
+    border: 1px solid #45a293;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.19);
+    padding: 10px;
+    font-size: 27px;
+    width: 95%;
+    cursor: pointer;
+}
+
+#contact-form h3 {
+	color:black;
+	display:block;
+	font-size:28px;
+}
+#contact-form h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+#contact-form label {
+	color:#5261AC;
+	display:block;
+	margin:5px 0;
+	font-size: 20px;
+    
+}
+
+#contact-form select {
+	width: 30%;
+	height: 40px;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+	font-size:16px;
+	
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form input[type="select"],
+#contact-form textarea {
+	height: 60px;
+	margin-bottom: 40px;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form input[type="text"]:hover,
+#contact-form input[type="email"]:hover,
+#contact-form input[type="tel"]:hover,
+#contact-form input[type="url"]:hover,
+#contact-form textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+#contact-form textarea {
+	height:160px;
+	max-width:100%;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+
+.container {
+	padding-left: 30px;
+}
+::-webkit-input-placeholder {
+    color:#888;
+	font-size:16px;
+}
+:-moz-placeholder {
+    color:#888;
+}
+::-moz-placeholder {
+    color:#888;
+}
+:-ms-input-placeholder {
+    color:#888;
+}
+
+@media only screen and (max-width: 513px) {
+	.wrapper {
+		    width:100%;
+	        
+	        border: 1px solid #50C9B5;
+            border-radius: 4px;
+    }
+
+    .contact-info {
+		    margin-top: 12px;
+            width: 100%;
+            
+	}
+	
+	#customerContactFirstName, #customerContactLastName {
+		width: 100%;
+		margin-left:0px;
+	}
+	
+	.sub {
+		width: 100% !important;
+	}
+	
+	#contact-form select {
+     font-size: 12px;
+ 
+    }
+	
+	#contactReasons {
+		width: 80% !important;
+	}
+}
+
+@media only screen and (min-width: 514px) and (max-width: 740px) {
+	
+	.wrapper {
+		    width: 100%;
+			float:right;
+	        border: 1px solid #50C9B5;
+            border-radius: 4px;
+    }
+
+    .contact-info {
+		    margin-top: 12px;
+            width: 100%;
+            float: left;
+            
+	}
+	
+	#contact-form select {
+    width: 31%;
+    margin: 0 5px 5px;
+ 
+    }
+	
+}
+
+@media only screen and (min-width: 741px) and (max-width: 960px) {
+	
+	.wrapper {
+		    width: 100%;
+			float:right;
+	        border: 1px solid #50C9B5;
+            border-radius: 4px;
+    }
+
+    .contact-info {
+		    margin-top: 12px;
+            width: 100%;
+            float: left;
+            
+	}
+	
+	#customerContactFirstName, #customerContactLastName {
+		width: 100%;
+		margin-left:0px;
+	}
+	
+}

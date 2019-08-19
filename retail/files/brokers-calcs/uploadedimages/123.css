@@ -1,0 +1,48 @@
+.logo123{float:left;background:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/123-sprite-over50s.png?150911) no-repeat scroll -308px -150px #FFFFFF;height:50px;width:158px;}
+
+ul.steps-nav-wide{margin-left:0px;float:left;margin-bottom:0px;padding-left:0px;
+background-image:url(https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/123-sprite-over50s.png?150911);
+background-repeat:no-repeat;background-size:805px;
+background-color:#FFFFFF;height:47px;width:806px !important;}
+
+.step1{background-position:1px 0px}
+.step2{background-position:1px -46px}
+.step3{background-position:1px -93px}
+
+ul.steps-nav-wide li{background:none !important;padding-top:9px !important;font-size:16px !important;}
+
+.oneStep{margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 35px;
+    padding-top: 7px;
+    text-align: center;
+    text-transform: uppercase;color: #4859A1 !important;
+    }
+#Step1{padding-left:0px !important;margin-left:30px !important;width:170px !important; }
+#Step2{width: 205px !important; margin-left:32px;}
+#Step3{width: 200px !important; margin-left:43px !important;padding-left:0px !important}
+#form_container{width:820px;border:none !important;margin:0px}
+#quoteInput{width:635px}
+#quoteOutput{width:650px}
+#rightHelp{width:170px !important}
+form.appnitro {margin-left:5px}
+#instructions{background-color: rgb(72, 89, 161); float: left; border-radius: 6px; padding: 5px; margin: 0px;color:#ffffff;width:800px;}
+#instructions p{color:#ffffff;margin-top:2px}
+body{background-color:#ffffff !important;margin:0px !important}
+#cookieNotice{border:1px solid #000;border-radius:6px;margin-left:0px;float:left;height:150px;text-align:left}
+#cookieNotice p{margin-left:5px}
+a.buttonred{height:60px;width:216px}
+a.getquote{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/buttons.png") no-repeat scroll left 0px;}
+a.buynow{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/buttons.png") no-repeat scroll left -127px;}
+a.next{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/buttons.png") no-repeat scroll left -185px;float:right}
+a.submit{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/buttons.png") no-repeat scroll left -66px;float:right}
+a.cookie{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/buttons.png") no-repeat scroll left -245px; 
+    left: 560px;
+    position: absolute;
+    top: 93px;}
+.quoteResultTable{width:100%}
+.fullWidthLi{width:97% !important}
+#footer{text-align:left;margin-left:15px;padding:0px;width:95%}
+#footer p{color:#19529F;margin:2px;font-size:80%}
+.guidelines{display:none !important}
+.footerText{float:left;width:595px}

@@ -1,0 +1,1164 @@
+<?php
+/**
+* My Google Custom Search Engine
+*
+* This search is set up to work with the two page search option. See: www.google.co.uk/cse/
+*
+*/
+function estate_planning_tool_block_info() {
+  // This example comes from node.module.
+  $blocks['estate_planning_tool'] = array(
+    'info' => t('Estate Planning Tool'),
+	'cache' => DRUPAL_NO_CACHE
+  );
+  return $blocks;
+}
+
+function estate_planning_tool_block_view($delta = ' ') {
+  switch($delta) {
+    case 'estate_planning_tool':
+    $block['subject'] = t(' ');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = estate_planning_tool_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+	  //drupal_add_css(drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+	  //drupal_add_css('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', 'external', array('scope' => 'header'));
+	  //drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css(' https://fonts.googleapis.com/css?family=Lato:300,400,700', 'external', array('scope' => 'header'));
+
+		drupal_add_css(drupal_get_path('module', 'estate_planning_tool') . '/css/bootstrap.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css(drupal_get_path('module', 'estate_planning_tool') . '/css/main.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css(drupal_get_path('module', 'estate_planning_tool') . 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', array('group' => CSS_DEFAULT));
+
+	  drupal_add_js('https://code.jquery.com/jquery-1.12.4.js', 'external', array('scope' => 'footer'));
+	  //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js', array('scope' => 'footer'));
+	  drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js', 'external', array('scope' => 'footer'));
+	  //drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js', 'external', array('scope' => 'footer'));
+	  drupal_add_js(drupal_get_path('module', 'estate_planning_tool') . '/js/main.js', array('scope' => 'footer'));
+
+    }
+    return $block;
+  }
+}
+
+function estate_planning_tool_contents() {
+
+	return '
+
+
+
+	<div class="container-fluid" id="estate-planner" style="background-color:white">
+		<!--================================ START SCREEN SECTION =============================-->
+
+
+
+		<div id="start-screen" style="margin-bottom:20px">
+			<div class="row mt">
+				<div class="intro col-lg-12 col-sm-12 col-xs-12 centered">
+					<h2>Create an Estate Planning Report<br>in <span class="intro-light">three easy steps</span>!</h2>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="sub-intro col-lg-12 col-sm-12 col-xs-12 centered">
+					<p>Create a report that summarises your information and the relevant Capital Acquisitions Tax (CAT) <br/> liabilities for each of the beneficiaries in the estate.</p>
+				</div>
+			</div>
+			<div class="row mt centered" style="margin-bottom: 0px;">
+				<div class="col-lg-4 col-sm-4 col-xs-12 box">
+					<div class="box-inner">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<p>Step 1</p>
+					</div>
+					<div class="box-bottom-inner">
+						<p><span class="box-title">Personal Details</span><br>
+						Add your name</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-4 col-xs-12 box">
+					<div class="box-inner">
+						<i class="fa fa-university" aria-hidden="true"></i>
+						<p>Step 2</p>
+					</div>
+					<div class="box-bottom-inner">
+						<p><span class="box-title">Estate Value</span><br>
+						Enter the value of your assets</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-4 col-xs-12 box">
+					<div class="box-inner">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						<p>Step 3</p>
+					</div>
+					<div class="box-bottom-inner">
+						<p><span class="box-title">Beneficiaries</span><br>
+						Add up to four beneficiaries</p>
+					</div>
+				</div>
+			</div><!-- /row -->
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 col-xs-12 centered">
+					<div id="get-started">
+						Get Started Now
+					</div>
+				</div>
+			</div>
+		</div><!-- /start-screen -->
+		<!--=================================== PERSONAL INFORMATION SECTION ==========================================-->
+		<div id="personal-info">
+			<div class="row mt centered">
+				<div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+					<div class="progressBar">
+						<div class="row">
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-1" style="color:#5261ac">Personal Info</p>
+								<div class="progress-circ-1" style="border:1px solid #5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-2">Estate Value</p>
+								<div class="progress-circ-2" style="border: 1px solid #dddfee;"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-3">Beneficiaries</p>
+								<div class="progress-circ-3" style="border: 1px solid #dddfee;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="form col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+					<p><strong>Client 1</strong></p>
+					<div class="form-group">
+						<label for="name">Name</label> <input class="form-control" id="name" type="text">
+						<p id="name-error" style="color:red;">! Please enter a name</p>
+					</div>
+
+					<!-- <div class="form-group">
+						<label for="age">Age</label> <input class="form-control" id="age" type="number">
+						<p id="age-error" style="color:red;">! Please enter an age</p>
+					</div>-->
+					<br>
+					<p><strong>Client 2</strong> (optional)</p>
+					<div class="form-group">
+						<label for="name2">Name</label> <input class="form-control" id="name-2" type="text">
+					</div>
+					<!-- <div class="form-group">
+						<label for="age2">Age</label> <input class="form-control" id="age-2" type="number">
+						<p id="age-2-error" style="color:red;">! Please enter an age</p>
+					</div> -->
+					<br>
+					<div id="married-section">
+					<p><strong>Are the clients married?</strong></p>
+					<p id="married-error" style="color:red;">! If you are adding 2 clients, they must be married</p>
+					<div class="form-group centered">
+						<input checked="checked" id="married-yes" name="radio-married" type="radio" value="Y">
+						<label for="married-yes">Yes</label>
+						<input id="married-no" name="radio-married" type="radio" value="N">
+						<label for="married-no">No</label>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+					<div class="">
+					    <div class="col-lg-6 col-lg-push-6 col-sm-6 col-sm-push-6 col-xs-12">
+						<div class="nextButton" id="info-next">
+							Next
+						</div>
+						</div>
+						<div class="col-lg-6 col-lg-pull-6 col-sm-6 col-sm-pull-6 col-xs-12">
+						<div class="backButton" id="info-back">
+							<i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /personal-info -->
+		<!--====================================== ESTATE VALUE SECTION ===============================================-->
+		<div id="estate-value">
+			<div class="row mt centered">
+				<div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+					<div class="progressBar">
+						<div class="row">
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-1" style="color:#5261ac">Personal Info</p>
+								<div class="progress-circ-1-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-2" style="color:#5261ac">Estate Value</p>
+								<div class="progress-circ-2" style="border:1px solid #5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-3">Beneficiaries</p>
+								<div class="progress-circ-3" style="border: 1px solid #dddfee;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+					Please enter the <strong>total value</strong> for each of the following assets
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="form col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+				<div class="assets-browser">
+					<div class="form-group" id="left">
+					<div class="form-group">
+						<label for="family-home">Family Home/Main Residence</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Asset values should be total values less uncovered loans. Do not input the value of the family home if it forms part of your farm assets and will be taken into account as a farm asset for the purpose of farm relief.</span></div> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="family-home" type="number" >
+						<input type="hidden" id="family-homeBefore">
+					</div>
+					<div class="form-group">
+						<label for="other-prop">Other Properties &amp; Residences</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Asset values should be total values less uncovered loans. Do not input the value of the family home if it forms part of your farm assets and will be taken into account as a farm asset for the purpose of farm relief.</span></div><input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="other-prop" type="number">
+						<input type="hidden" id="other-propBefore">
+					</div>
+					<div class="form-group">
+						<label for="savings-investments">Savings and Investments</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Bank/Post Office/Investment Bonds/Shares</span></div> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="savings-investments" type="number" >
+						<input type="hidden" id="savings-investmentsBefore">
+					</div>
+					<div class="form-group">
+						<label for="personal-prop">Value of Personal Property</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Paintings/Jewellery/Antiques/Valuables</span></div>  <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="personal-prop" type="number">
+						<input type="hidden" id="personal-propBefore">
+					</div>
+					<div class="form-group">
+						<label for="personal-life">Personal Life Insurance</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Only give details of personal plans to be paid to the estate on death. (not keyperson / shareholder protection plans)
+						   <br/>
+                           Do not include life cover that is assigned or in trust.</span></div>   <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="personal-life" type="number">
+						<input type="hidden" id="personal-lifeBefore">
+					</div>
+					</div>
+					<div class="form-group" id="right">
+					<div class="form-group">
+						<label for="pre-retire">Pre-Retirement</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Max of 4 times salary payable from company pension</span></div>   <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="pre-retire" type="number">
+						<input type="hidden" id="pre-retireBefore">
+					</div>
+					<div class="form-group">
+						<label for="post-retire">Post-Retirement (ARF)</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">The value entered here must be the total of any Gross Amount being inherited by a child + any Net Amount being inherited by a person other than a child. Example – Value of ARF €600,000
+
+					Child under 21 inheriting €200,000 (Gross Amount)
+					Child 21 and over inheriting €200,000 (Gross Amount)
+					Other person inheriting €200,000 (QFM will deduct income tax at marginal rate so the Net Amount should be used)
+
+					Actual Value of ARF to be keyed = €200,000 + €200,000 + (€200,000 – QFM deduction)
+					</span></div>
+					<input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="post-retire" type="number">
+						<input type="hidden" id="post-retireBefore">
+					</div>
+					<div class="form-group">
+						<label for="business-assets">Business Assets</label> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="business-assets" type="number">
+						<input type="hidden" id="business-assetsBefore">
+					</div>
+					<div class="form-group">
+						<label for="farm-assets">Farm Assets</label> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="farm-assets" type="number">
+						<input type="hidden" id="farm-assetsBefore">
+					</div>
+				</div>
+
+				</div>
+				<div class="assets-mobile">
+				<div class="form-group">
+						<label for="family-home">Family Home/Main Residence</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Asset values should be total values less uncovered loans. Do not input the value of the family home if it forms part of your farm assets and will be taken into account as a farm asset for the purpose of farm relief.</span></div> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="family-home" type="number" >
+						<input type="hidden" id="family-homeBefore">
+					</div>
+					<div class="form-group">
+						<label for="other-prop">Other Properties &amp; Residences</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Asset values should be total values less uncovered loans. Do not input the value of the family home if it forms part of your farm assets and will be taken into account as a farm asset for the purpose of farm relief.</span></div><input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="other-prop" type="number">
+						<input type="hidden" id="other-propBefore">
+					</div>
+					<div class="form-group">
+						<label for="savings-investments">Savings and Investments</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Bank/Post Office/Investment Bonds/Shares</span></div> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="savings-investments" type="number" >
+						<input type="hidden" id="savings-investmentsBefore">
+					</div>
+					<div class="form-group">
+						<label for="personal-prop">Value of Personal Property</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Paintings/Jewellery/Antiques/Valuables</span></div>  <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="personal-prop" type="number">
+						<input type="hidden" id="personal-propBefore">
+					</div>
+					<div class="form-group">
+						<label for="personal-life">Personal Life Insurance</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Only give details of personal plans to be paid to the estate on death. (not keyperson / shareholder protection plans)
+						   <br/>
+                           Do not include life cover that is assigned or in trust.</span></div>   <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="personal-life" type="number">
+						<input type="hidden" id="personal-lifeBefore">
+					</div>
+					<div class="form-group">
+					<div class="form-group">
+						<label for="pre-retire">Pre-Retirement</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">Max of 4 times salary payable from company pension</span></div>   <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="pre-retire" type="number">
+						<input type="hidden" id="pre-retireBefore">
+					</div>
+					<div class="form-group">
+						<label for="post-retire">Post-Retirement (ARF)</label>&nbsp;&nbsp;<div class="tooltip"><i class="fa fa-info-circle tooltip" aria-hidden="true"></i><span class="tooltiptext">The value entered here must be the total of any Gross Amount being inherited by a child + any Net Amount being inherited by a person other than a child. Example – Value of ARF €600,000
+
+					Child under 21 inheriting €200,000 (Gross Amount)
+					Child 21 and over inheriting €200,000 (Gross Amount)
+					Other person inheriting €200,000 (QFM will deduct income tax at marginal rate so the Net Amount should be used)
+
+					Actual Value of ARF to be keyed = €200,000 + €200,000 + (€200,000 – QFM deduction) </span></div>    <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="post-retire" type="number">
+						<input type="hidden" id="post-retireBefore">
+					</div>
+					<div class="form-group">
+						<label for="business-assets">Business Assets</label> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="business-assets" type="number">
+						<input type="hidden" id="business-assetsBefore">
+					</div>
+					<div class="form-group">
+						<label for="farm-assets">Farm Assets</label> <input placeholder="0" class="form-control estateQ updateTaxableInheritance impactsBeneficiaryTaxCal" id="farm-assets" type="number">
+						<input type="hidden" id="farm-assetsBefore">
+					</div>
+				</div>
+				</div>
+
+
+				<div class="col-lg-12 col-sm-12 col-xs-12" id="total-assets">
+					<div class="col-lg-8 col-sm-8 col-xs-8">
+						<strong>Total Estate Value</strong><br>
+						<span style="font-size:14px"><em>This is the total taxable value of the estate</em></span>
+					</div>
+					<div class="col-lg-4 col-sm-4 col-xs-4" style="text-align:center"><strong><span id="totalAssetsValue">€0</span></strong></div>
+				</div>
+
+			</div>
+			<div class="row mt">
+				<div class="col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+				    <p id="assets-error" style="color:red">! You need to enter some assets</p>
+					<div class="">
+					    <div class="col-lg-6 col-lg-push-6 col-sm-6 col-sm-push-6 col-xs-12">
+						<div class="nextButton" id="estate-next">
+							Next
+						</div>
+						</div>
+						<div class="col-lg-6 col-lg-pull-6 col-sm-6 col-sm-pull-6 col-xs-12">
+						<div class="backButton" id="estate-back">
+							<i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back
+						</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		</div><!-- /estate-value -->
+		<!--================================================ BENEFICIARIES SECTION ======================================================-->
+		<div id="beneficiaries">
+			<div class="row mt centered">
+				<div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+					<div class="progressBar">
+						<div class="row">
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-1" style="color:#5261ac">Personal Info</p>
+								<div class="progress-circ-1-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-2" style="color:#5261ac">Estate Value</p>
+								<div class="progress-circ-2-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-3" style="color:#5261ac">Beneficiaries</p>
+								<div class="progress-circ-3-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="estate-value-liability-box">
+			<div class="row mt">
+			<h1>The Estate Value and Tax Liability</h1>
+
+				<div class="col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3" id="total-values" style="border: 1px solid #5261ac; width:485">
+					<div class="row">
+						<p>
+							The total value of the estate is <strong><span id="totalEstateVal">0</span></strong> based on current asset values.
+						</p>
+					</div>
+					<br/>
+					<div class="row">
+						<p>
+							The total Tax liability &euro;<strong><span id="totalTaxLiability">0</span></strong>.
+						</p>
+					</div>
+					<br/>
+					<div class="row">
+						<p>
+							This can be covered by a Section 72 plan.
+						</p>
+					</div>
+					<div class="row">
+						<p>
+							Each beneficiarys individual Tax liability is shown below.
+						</p>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row" id="add-beneficiary-section">
+			<div class="col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
+			<div class="row">
+				<div class="col-lg-6 col-sm-6 col-xs-12 ">
+					<div id="add-beneficiary">
+						Add Beneficiary
+					</div>
+				</div>
+				<div class="col-lg-6 col-sm-6 col-xs-12 ">
+					<div id="clear-beneficiaries">
+						Clear Beneficiaries
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+			<div class="row mt" id="accordion-after">
+				<div class="row" id="beneficiary-heading">
+					<div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+						<p class="beneficiaries" style="margin-top:0px">Beneficiaries
+						<br/>
+						<small style="color:black">You have the option to add up to four beneficiaries in this section</small>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="the-accordion">
+			<!--=============== beneficiaries accordion inserted here with JS ======-->
+			</div>
+
+			<div class="row mt">
+					  <div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+					  <div id="showPrint" disabled>
+					  GET THE REPORT
+					  </div>
+						<div class="backButton" id="beneficiaries-back">
+							<i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back
+						</div>
+
+					</div>
+			</div>
+			<br/>
+			<p id="ben-error" style=";color:red">! You need to have at least one beneficiary before proceeding</p>
+		</div><!-- /beneficiaries -->
+
+		<!-- ////////////////////////////////////////////// REPORT HTML /////////////////////////////////////// -->
+		<div id="the-print-report" >
+		<div class="row mt centered hideOnPrint">
+				<div class="col-lg-8 col-sm-8 col-xs-12 col-lg-offset-2 col-sm-offset-2">
+					<div class="progressBar">
+						<div class="row">
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-1" style="color:#5261ac">Personal Info</p>
+								<div class="progress-circ-1-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-2" style="color:#5261ac">Estate Value</p>
+								<div class="progress-circ-2-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+							<div class="col-lg-4 col-sm-4 col-xs-4">
+								<p class="progress-title-3" style="color:#5261ac">Beneficiaries</p>
+								<div class="progress-circ-3-active" style="border: 1px solid #dddfee;background-color:#5261ac"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt hideOnPrint">
+			<div class="col-lg-4 col-sm-4 col-xs-4">
+			<div id=\'report-back\' style="margin:auto" class="backButton"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back</div>
+			</div>
+			<div class="col-lg-8 col-sm-8 col-xs-8">
+			<div class="report-options" style="float:right">
+			<!--
+			<i class="fa fa-download download" aria-hidden="true" style="cursor:pointer"></i>
+			<i class="fa fa-print print" aria-hidden="true" style="cursor:pointer"></i>
+			<i class="fa fa-envelope email" aria-hidden="true" style="cursor:pointer"></i>
+			-->
+			</div>
+			</div>
+			</div>
+		<div class="row mt">
+			<div id="report" class="col-lg-12 col-sm-8 col-xs-8 col-lg-offset-0 col-sm-offset-2 col-xs-offset-2">
+			<div class="printButton" onclick="window.print();">Click here to Print Report</div>
+			<div class="printButtonText">
+				<i class="small-text">
+
+				<li>Click the Print Report Button.</li>
+				<li>Press Change to change the document type you would like to save the report as </li>
+				<li>Under Print Destinations, choose Save as PDF</li>
+				<li>Click the blue Save Button</li>
+				<li>Save the PDF to your preferred folder</li>
+				</i>
+
+			</div>
+
+
+			<div class="pagebreak"> </div>
+	<!-- Page 1 -->
+		<div class="cover-page">
+
+			<h1 class="report-title">Estate Planning Report</h1>
+
+			<img src="https://www.qairishlife.ie/sites/retail/files/estate-planner/images/estate-planner-cover-page.PNG" class="cover-page-img" style="width:100%; margin: 20px 0px 20px 0px;"/>
+			<p class="report-subtitle">For <br /><span class="reportNames" ></span></p>
+			<p class="report-subtitle">On <br /><span id="today">12 June 2015</span></p>
+			<br>
+			<p class="report-title__desc">
+			This report shows the amount of tax that would have to be paid by the people who will inherit your estate when you die. It can help you plan your estate in the most tax efficient way possible. It is important that you have given us all your financial details for the report to be as accurate as possible.
+			</p>
+		</div>
+
+			</div>
+		</div>
+
+			<div class="pagebreak"> </div>
+
+	<!-- Page 2 -->
+		<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				SUMMARY OF YOUR INFORMATION
+			</div>
+		</div>
+
+		<div id="totals">
+		<div style="display:flex;">
+
+		<div class="stat-box">
+		<span class="reportEstateTotal">€0</span>
+		</div>
+		<p class="small-text">is the total value of your estate.</p>
+		</div>
+
+		<div style="display:flex; margin-top: 5px;">
+
+		<div class="stat-box">
+		€<span class="reportTotalTaxLiability">0</span>
+		</div>
+		<p class="small-text">is the estimated inheritance tax (and income tax if applicable) to be paid by your beneficiaries.</p>
+		</div>
+		</div>
+
+		<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				HOW YOUR ESTATE WILL BE SPLIT AND <br> WHAT TAX WILL HAVE TO BE PAID
+			</div>
+		</div>
+			<table id="reportBeneficiariesTable" class="report-table" style="margin-left:0px">
+				<thead>
+					<tr>
+						<th style="width:120px">Name of Beneficiaries</th>
+						<th style="width:120px">Group*</th>
+						<th style="width:120px">Inheritance</th>
+						<th style="width:120px">Taxable Amount</th>
+						<th style="width:120px">Tax liability**</th>
+					</tr>
+				</thead>
+						<td> <span class="name">name</span></td>
+						<td> <span class="relation">relation</span></td>
+						<td> <span class="taxableInheritance">taxableInheritance</span></td>
+						<td> <span class="reportTotalTaxLiability">taxLiability</span></td>
+			</table>
+			<div class="info-box">
+			<p class="small-text">*Group thresholds available from 10th October 2018</p>
+			<p class="small-text">**Where a child (aged 21 and over) inherits the clients ARF / AMRF this amount will be subject to income tax at a rate of 30%. This amount is included in the childs tax liability as noted above.</p>
+			</div>
+
+
+			<div class="row taxLiabilityBox">
+			  <div class="col-sm-6"><p class="small-text">Each beneficiary\'s estimated Tax Liability is shown above, giving a total Tax Liability of </div>
+			  <div class="col-sm-3 stat-box stat-box__liability" style="float:right;">€<span class="reportTotalTaxLiability"></span></div>
+			</div>
+
+		<div class="header-bg" style="margin-top:0px;">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				OPTIONS FOR MANAGING THE TAX <br> LIABILITY FOR YOUR ESTATE
+			</div>
+		</div>
+
+		<div class="row">
+			<p class="small-text" style="margin:0 10px;"> There are various options that can be used to deal with your beneficiaries anticipated inheritance tax liability. The most suitable solution will depend on the factual information you have provided.</p>
+		</div>
+		<div id="options-container">
+			<div id="do-nothing-box" style="width: 40%; height:100%; padding:1em">
+			<h3>1. Do nothing</h3>
+			<p class="small-text">If you make no advance provision for the beneficiaries\' inheritance tax liability the beneficiaries may have to either.</p>
+			<ul>
+				<li class="small-text" style="list-style: none"> Sell part of their inheritance, or </li>
+				<li class="small-text" style="list-style: none"> Borrow money to pay inheritance tax </li>
+			</ul>
+			</div>
+			<div id="provide-for-taxes-box" style="width: 40%; height:100%; padding:1em">
+			<h3>2. Make advance provision</h3>
+			<p class="small-text">The solution lies in you effecting a Section 72 Life Insurance Plan for a sum of €<span class="reportTotalTaxLiability"></span> for the benefit of your beneficiaries.</p>
+			</div>
+		</div>
+	<div class="pagebreak"></div>
+
+		<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				WHAT MAKES UP THE VALUE<br> OF YOUR ESTATE
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8">
+			<table class="report-table">
+				<tbody>
+					<tr>
+						<td>Family Home</td>
+						<td>€<span class="reportFamilyHome"></span></td>
+					</tr>
+					<tr>
+						<td>Other Property</td>
+						<td>€<span class="reportOtherProperty"></span></td>
+					</tr>
+					<tr>
+						<td>Savings and Investments</td>
+						<td>€<span class="reportInvestments"></span></td>
+					</tr>
+					<tr>
+						<td>Personal Property</td>
+						<td>€<span class="reportPersonal"></span></td>
+					</tr>
+					<tr>
+						<td>Life Insurance</td>
+						<td>€<span class="reportLifeInsurance"></span></td>
+					</tr>
+					<tr>
+						<td>Pensions - pre-retirement</td>
+						<td>€<span class="reportPensionsPre"></span></td>
+					</tr>
+					<tr>
+						<td>Pensions - post-retirement (ARF/AMRF)</td>
+						<td>€<span class="reportPensionsPost"></span></td>
+					</tr>
+					<tr>
+						<td>Business Assets</td>
+						<td>€<span class="reportBusiness"></span></td>
+					</tr>
+					<tr>
+						<td>Farm Assets</td>
+						<td>€<span class="reportFarm"></span></td>
+					</tr>
+					<tr style="background-color:#F7F7F7; border-top:2px solid darkgray">
+						<td>Total</td>
+						<td><span class="reportEstateTotal"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+
+
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				WE HAVE BASED THE REPORT ON THE<br> FOLLOWING ASSUMPTIONS
+			</div>
+
+			</div>
+		<div class="row">
+				<div class="col-sm-8">
+
+					<ul id="assumptions" class="report-assumptions">
+					<li>We understand that your estate will be divided between your beneficiaries as shown</li>
+					<li>Where the children / beneficiaries have previously received gifts or inheritances from other sources since 5th December 1991 this will have reduced their available Group tax free threshold.</li>
+					<li>If the family home exemption, business relief or farm relief applies these are subject to the conditions being met for each of these reliefs. Full details of the conditions for these reliefs are available in the Appendices.</li>
+					<li>Where the family home exemption questions have been answered and a beneficiary has inherited another property aswell as the family home, it is assumed in the calculations that the second property is being inherited as a result of a specific bequest in the Will of the Disponer.</li>
+					<li>The following only applies where there is an ARF / AMRF in the estate.</li>
+					<li>Where the children are over the age of 21 when they inherit the proceeds of the ARF / AMRF, this amount will be subject to income tax at a rate of 30%.</li>
+					<li>Where the children are not over the age of 21 when they inherit the proceeds of the ARF / AMRF, this amount will be subject to inheritance tax at a rate of 33%.</li>
+					<li>Where the beneficiaries are not your children they will be subject to inheritance tax at a rate of 33% when they inherit the proceeds of the ARF / AMRF.</li>
+					<li>The calculator assumes that the ARF / AMRF amount keyed is a total of any Gross Amount being inherited by a child + any Net Amount being inherited by a person other than a child.</li>
+					</ul>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="small-text">Inheritance tax is due and payable on the valuation date of the inheritance, which will normally be very shortly after death. Unpaid tax attracts interest which is not tax deductible.</p>
+
+			<p class="small-text">This illustration is based on the information you have given us and on our understanding of current legislation and Revenue practice. It is important that you provide all your financial details as information not included cannot be taken into account in providing advice.</p>
+			</div>
+
+		</div>
+
+
+
+			<div class="col-sm-4">
+							<!-- <img src="https://www.qairishlife.ie/sites/retail/files/family-310.png" id="family-img"> -->
+			</div>
+
+			<div class="pagebreak"> </div>
+			<div class="header-bg" style="margin-bottom: 20px;">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				BENEFICIARIES
+			</div>
+			<div id="show-ben-details"></div>
+
+
+
+
+			<div class="pagebreak"> </div>
+
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				SUPPORTING INFORMATION
+			</div>
+			</div>
+			<div id="supporting-information" style="line-height: 1;">
+			<br>
+			<p class="sub-heading">Capital Acquisitions Tax (CAT)</p>
+			<p>Capital Acquisitions Tax (CAT) is a tax levied on the receipt of gifts and inheritances. CAT comprises two separate taxes - a Gift Tax payable on lifetime gifts and an Inheritance Tax payable on inheritances received on death. It is the person receiving the gift or inheritance who is liable to CAT and not the person or estate providing the benefit.</p>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="sub-heading">Basis of Charge</p>
+			<p>With effect from 1st December 1999, a charge to CAT will arise where either the disponer or the beneficiary is resident or ordinarily resident in the State at the date of the Gift or Inheritance.  Where both the disponer and the beneficiary are not resident or ordinarily resident in Ireland, a charge to tax would only arise in relation to Irish property.</p>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+
+			<p class="sub-heading">CAT Rates</p>
+			<p>For new gifts and inheritances received on or after 5th December 2001 tax is calculated according to the total of all gifts and inheritances received from all sources since 5th December, 1991. The following CAT Tax Table currently applies:</p>
+
+			<table class="report-table" style="width:50%;">
+			<th colspan="2">Tax Rate</th>
+			<tr>
+				<td>Group Threshold</td>
+				<td>NIL</td>
+			</tr>
+			<tr>
+				<td>Balance</td>
+				<td>33%</td>
+			</tr>
+			</table>
+			<p>Source CAT Consolidation Act 2003 (as updated by subsequent Finance Acts).</p>
+			<p>The Group threshold amounts vary depending on the relationship between the beneficiary and the disponer, i.e. the person providing the gift or inheritance.</p>
+
+
+
+			<table class="report-table">
+			<th colspan="2">Tax Rate</th>
+			<tr>
+				<td>Group 1 €320,000</td>
+				<td>
+				<ul class="report-table__list">
+				  <p class="small-text">Where the person receiving the property is</p>
+				  <li style="list-style-type: none;">a child of the disponer or,</li>
+				  <li style="list-style-type: none;">a child of the civil partner of the disponer, or,</li>
+				  <li style="list-style-type: none;">a minor child of a deceased child of the disponer or,</li>
+				  <li style="list-style-type: none;">a minor child of a deceased child of the civil partner of the disponer, or,</li>
+				  <li style="list-style-type: none;">a minor child of the civil partner of a deceased child of the disponer, or,</li>
+				  <li style="list-style-type: none;">a minor child of the civil partner of a deceased child of the civil partner of the disponer.</li>
+				  </ul>
+				  </td>
+			</tr>
+			<tr>
+				<td>Group 2 €32,500</td>
+				<td>
+				<ul class="report-table__list">
+				<p class="small-text">Where the person receiving the property is</p>
+				<li style="list-style-type: none;">a lineal ancestor of the disponer, </li>
+				<li style="list-style-type: none;">a descendant of the disponer, </li>
+				<li style="list-style-type: none;">a brother/sister of the disponer, or,</li>
+				<li style="list-style-type: none;">a child of a brother/sister of the disponer or,</li>
+				<li style="list-style-type: none;">a child of a civil partner of a brother or sister of the disponer.</li>
+				</td>
+			</tr>
+			<tr>
+				<td>Group 3 €16,250</td>
+				<td>All other cases
+				</td>
+			</tr>
+
+			</table>
+			<p class="small-text">The threshold amounts are those applying with effect from 10th October 2018.
+			Source CAT Consolidation Act 2003 (as updated by subsequent Finance Acts).
+			</p>
+
+			<div class="pagebreak"> </div>
+
+			<p class="sub-heading sub-heading__agg">Aggregation</p>
+			<p class="small-text">Under the current aggregation rules all benefits from Group 1 will be added together with an overall threshold of <b>€320,000</b>. Benefits from Group 2 members (brother, sister, grandparent etc) will be added together for the purpose of the <b>€32,500</b> threshold, and benefits from Group 3 members (strangers) for the purpose of the €16,250 threshold. So in effect a beneficiary can potentially receive up to <b>€368,750</b> tax-free if the benefits come through different "groups".</p>
+
+			<p class="sub-heading">Relief’s and Exemptions</p>
+			<p class="small-text"> Certain reliefs and exemptions apply to certain types of assets. These have been introduced over the years primarily to encourage private enterprise and to avoid the forced sale of a family farm, business or the family home in certain circumstances.</p>
+
+
+
+
+
+			<p class="small-text">The main reliefs and exemptions are:</p>
+
+			<div class="row report-subtext" style="padding: 5px;">
+			<div class="col-sm-4" class="headings" style="text-decoration:underline">Spouse / Civil Partner</div>
+			<div class="col-sm-8"><p class="small-text">Inheritances received by one spouse / civil partner from the other are totally exempt from CAT.</p></div>
+
+
+			<div class="col-sm-4" class="headings" style="text-decoration:underline">Agricultural Relief</div>
+			<div class="col-sm-8"><p class="small-text">The value of farmland, buildings and stock can be reduced by 90% where the beneficiary is a qualifying farmer and holds the property for a minimum of 6 years.</p></div>
+
+
+			<div class="col-sm-4" class="headings" style="text-decoration:underline">Business Relief</div>
+			<div class="col-sm-8"><p class="small-text">Provides a similar reduction of 90% in the value of certain businesses or private companies, where both the business and the beneficiary meet the qualifying conditions.</p></div>
+
+
+			<div class="col-sm-4"  class="headings" style="text-decoration:underline">Family Home</div>
+			<div class="col-sm-8"><p class="small-text">Exemption from Inheritance Tax may be available on the value of certain dwellings where both the donor and beneficiary satisfy certain conditions. The donor has to be living in the property at the date of his or her death and the beneficiaries must meet all of the following conditions:</p>
+					<li class="small-text">Have occupied the house as his sole or main dwelling for three years prior to the date of the inheritance,</li>
+					<li class="small-text">At the date of the inheritance does not hold an interest in any other dwelling house either in Ireland or outside of the state,</li>
+					<li class="small-text">Continue to occupy the house as his sole or main residence for 6 years after the date of the inheritance.</li></div>
+
+				<br />
+			<div class="col-sm-4"  class="headings" style="text-decoration:underline">Life Assurance Relief</div>
+			<div class="col-sm-8"><p div class="small-text">The proceeds of life assurance policies, where the plan was effected specifically for the payment of Inheritance Tax or the tax payable on the value of an ARF inherited by a child over the age of 21, will not be subject to Inheritance Tax – provided the money is actually used to pay the relevant tax bills.</p></div>
+
+			</div>
+
+			<p class="sub-heading">All reliefs are highly qualified; details of the conditions that apply in relation to reliefs are contained in the Appendices.</p>
+
+
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="sub-heading">Making a Will</p>
+			<p class="small-text">A valid Will, reflecting your current wishes, is a vital part of the estate planning process.  If the provisions of your Will are not in line with the intentions outlined in the information given, this report may not be appropriate. If you die without leaving a Will your estate will be divided in accordance with the Succession Act (see Appendix I).</p>
+			<p class="small-text">You should talk to a solicitor if you do not have a valid Will or if your Will needs to be updated.</p>
+			<p class="small-text">While our recommendation is based on our understanding of current legislation and Revenue practice we recommend you seek professional legal and tax advice to ensure that any arrangement you decide to put in place is appropriate to your individual circumstances.</p>
+		</div>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+	<div class="pagebreak"></div>
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				APPENDIX I<br>SUCCESSION ACT
+			</div>
+			</div>
+
+
+			<div id="appendix-i">
+			<p class="small-text">	When a person dies all their property devolves to their <b>“personal representatives"</b> to transfer to the individual’s successors.  The way property is transferred will depend on whether or not the deceased had made a <b>Will</b>. If there is a valid Will the personal representatives <b>"the executors"</b> distribute the assets in accordance with the terms of the Will. </p>
+			<p class="small-text"> If there is no Will the individual is said to have died <b>“intestate”</b> and the property is distributed by the personal representatives <b>“administrators”</b> in accordance with the provisions of the <b>Succession Act 1965.</b></p>
+			<p class="small-text">The Succession Act provides a legal spouse, a registered civil partner and children with certain minimum legal entitlements as follows:</p>
+
+			<table id="no-will" class="report-table">
+			<p class="small-text"><b>NO Will</b> - <i> where a person dies "intestate"</i></p>
+			<tr>
+				<td>Spouse or civil partner  and no children</td>
+				<td>Spouse or civil partner entitled to full estate.</td>
+			</tr>
+			<tr>
+				<td>Spouse or civil partner and children</td>
+				<td><p class="small-text">Spouse or civil partner gets 2/3rds</p>
+					<p class="small-text">Civil partners entitlement is subject to the financial needs of any children being met</p>
+					<p class="small-text">1/3 equally between children.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>No spouse or civil partner but children:</td>
+				<td><p>Estate is divided equally between children.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>No spouse or civil partner and no children:</td>
+				<td><p>Parent(s) if living, otherwise brothers/sisters</p>
+				</td>
+			</tr>
+			</table>
+
+			<p class="small-text">Where an individual dies "intestate" leaving neither spouse, civil partner nor children, his assets will pass to parents, if his parents are deceased to his brothers and sisters, otherwise to wider family - the Act provides a hierarchical list.</p>
+
+			<table id="will" class="report-table">
+			<p><b>Will</b> -<i>a "testate" death (Entitlement regardless of provisions of will)</i></p>
+			<tr>
+				<td>Spouse or civil partner  and no children</td>
+				<td>Spouse or civil partner entitled to 1/2 of estate.</td>
+			</tr>
+			<tr>
+				<td>Spouse or civil partner and children</td>
+				<td><p class="small-text">Spouse or civil partner entitled to 1/3 of estate.</p>
+					<p class="small-text">Civil partners entitlement is subject to the financial needs of any children being met as directed by the courts</p>
+				</td>
+			</tr>
+			</table>
+
+			<p class="small-text">An individual can make a Will any way he wants, but Sections 111 and 111A of the Succession Act give a surviving spouse or civil partner certain legal rights regardless of what the Will provides.</p>
+
+			<p class="small-text">Children do not have a right to a particular share of the estate under a Will. However, Section 117 of the Act gives a child the right to apply to the Court for a share of the estate under a Will if in the Court’s opinion “the testator has failed in his moral duty to make proper provision for the child in accordance with his means.”</p>
+
+			<p class="small-text">It is worth mentioning that while this right of the child to apply to the Courts will not affect the portion of the estate to which a legal spouse has a statutory right, it could impact on the amount of the estate to which a registered civil partner is entitled.  </p>
+			</div>
+
+			<div class="pagebreak"> </div>
+
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				APPENDIX II<br>FAMILY HOME EXEMPTION
+			</div>
+			</div>
+
+			<div id="appendix-ii">
+
+			<p class="small-text">The value of a "dwelling house" taken on or after 1st December 1999 may be exempt from Inheritance Tax, in the hands of the beneficiary provided certain qualifying conditions are met.
+			<b>"Dwelling House"</b>, for the purpose of this exemption, means a building or part of a building with up to one acre of land that was used or was suitable for use as a dwelling.
+						To obtain the exemption from inheritance tax the disponer and the beneficiary must meet certain conditions.
+
+			The disponer must have occupied the "relevant dwelling house" as his or her only main residence at the date of his or her death, subject to limited exceptions as outlined below.
+
+			The beneficiary must satisfy all of the following conditions:
+			</p>
+			<ol class="appendix-ii-conditions">
+			  <li>He or she must have occupied the “relevant dwelling house” as his or her only or main residence continuously throughout the 3 year period immediately prior to the date of the inheritance,</li>
+			  <li>He or she must not be beneficially entitled to any interest in any other dwelling house at the date of the inheritance. This includes the inheritance of a second property as a result of a specific bequest in the Will of the disponer, </li>
+			  <li>He or she must continue to both own and occupy the dwelling house as his or her only or main residence throughout the period of 6 years following the date of the inheritance*.</li>
+			</ol>
+			<p class="small-text">Where the dwelling house directly or indirectly replaced other property owned by the disponer, the 3 year period in condition a) will be satisfied if the beneficiary occupied both properties for a total of 3 of the 4 years prior to the date of the inheritance.
+			In the case of <b>both the disponer and the beneficiary</b> if either party ceased to occupy the dwelling house as a result of his or her mental or physical infirmity, this period will be taken into account for the purposes of the 3 / 6 year rule.</p>
+			<p class="small-text"><i>* the exemption will not be withdrawn where condition c) above is breached in the following circumstances where the beneficiary:</i></p>
+			<ol class="appendix-ii-conditions-2">
+				<li>Does not occupy the house as a result of his or her mental or physical infirmity. This infirmity must be certified by a registered medical practitioner, or</li>
+				<li>does not occupy the house as a result of working abroad by consequence of any condition imposed by his or her employer requiring the beneficiary to work abroad to carry out the duties of his or her employment, or</li>
+				<li>was aged 65 at the date of the inheritance, or</li>
+				<li>replaces the house and reinvests the proceeds in another dwelling house, and occupies both properties for at least 6 years of the 7 years from the date of the inheritance.</li>
+			</ol>
+			<div class="please-note"><p><b><u>PLEASE NOTE</u></b></p>
+			<p class="small-text">As this report is dealing with your beneficiaries liability to Inheritance Tax, the information above only deals with the conditions for relief from inheritance tax. The conditions to avail of family home exemption in respect of gifts are very different.</p>
+			<p class="small-text">Where a beneficiary has inherited another property aswell as the family home it is assumed in the calculations that the second property is being inherited as a result of a specific bequest in the Will of the Disponer.</p>
+			</div>
+			</div>
+
+
+
+			<div class="pagebreak"> </div>
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				APPENDIX III<br>BUSINESS RELIEF
+			</div>
+			</div>
+
+			<div id="appendix-iii">
+
+			<p class="small-text">For gifts and inheritances taken on or after 23rd January 1997 the taxable value of “relevant business” property is reduced by 90%.</p>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="sub-heading">Company Shares:</p>
+			<p class="small-text">The definition of “relevant business property” includes unquoted shares and securities of Irish incorporated companies subject to certain conditions.</p>
+			<p class="sub-heading">The company</p>
+			<p class="small-text">The company’s business must not consist wholly or mainly of any of the following excluded activities -<i> dealing in currencies, securities, stocks or shares, land or buildings, or making or holding of investments.</i></p>
+
+
+			<p class="sub-heading">The beneficiary</p>
+			<p class="small-text">	For the relief to apply the beneficiary must meet one of the following ownership/control tests:</p>
+			<ol class="appendix-ii-conditions-2">
+				<li>The shares themselves or together with other shares in the company held in the absolute beneficial ownership of the beneficiary, give the beneficiary control of 25% of the voting power over all matters relating to the company,</li>
+				<p><b>or</b></p>
+				<li>the beneficiary controls the company or the company is controlled by the beneficiary and his relatives*, </li>
+				<p><b>or</b></p>
+				<li>the beneficiary holds at least 10% of the issued capital of the company and has worked full time in the company for 5 years prior to the gift/inheritance.</li>
+			</ol>
+			<p class="small-text"><i>* Relatives of a person include his spouse, civil partner, children, mother, father, aunt, uncle and any children, grandchildren of any the forgoing. In addition all spouses of relatives are included for the purposes of determining control.
+					Control includes - having over 50% of the voting power, or owning more than 50% of the shares or being in a position to control the board of directors.</i></p>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="sub-heading">Business Relief - unincorporated business.</p>
+			<p class="small-text">Relevant business property also includes property consisting of a business (Sole trader) or an interest in a business (share in a partnership). A business which is wholly or mainly concerned with<i> dealing in land, shares, securities or currencies or the making or holding of investments is excluded.</i>
+				The relief will apply where the business or part of the business is transferred and not simply where an asset that had been part of the business is subject to CAT.
+			</p>
+
+			<div id="breaking-line "style="background-color:#F7F7F7; height: 5px; width: 100%;"></div>
+
+			<p class="sub-heading">General</p>
+			<p class="small-text">So far we have concentrated on the conditions that apply to the business and the beneficiary in order to qualify for Business Relief. There are some other general conditions worth noting:</p>
+			<p class="sub-heading">Disponer</p>
+			<p class="small-text">The property must have been owned by the disponer for a period of 5 years prior to a gift or 2 years in the case of an inheritance.</p>
+			<p class="sub-heading">Clawback of Relief</p>
+			<p class="small-text">If within 6 years of the gift or the inheritance of business property:
+				<ol class="appendix-ii-conditions-2">
+				<li>	the business ceases to qualify, or </li>
+				<li>the property is sold or compulsorily acquired and not replaced within one year with other business property
+				the entire relief will be clawed back.</li>
+				</ol>
+			</p>
+			</div>
+
+			<div class="pagebreak"></div>
+			<div class="header-bg">
+			<img src="https://www.qairishlife.ie/sites/retail/files/calc-140-100.jpg" class="img-heading">
+			<div class="header-text">
+				APPENDIX IV<br>AGRICULTURAL RELIEF
+			</div>
+			</div>
+
+			<div id="appendix-iv">
+			<p class="small-text">	This is a special relief given in respect of certain agricultural property taken by a "farmer". The relief is given by reducing the market value of the agricultural property by 90% for gifts and inheritances taken on or after 23rd January 1997.</p>
+			<p class="small-text">The market value of the agricultural property as so reduced is then termed "agricultural value" in the Act and is substituted for market value in the calculation of tax.</p>
+
+			<p class="sub-heading"><b>There are certain conditions attaching to this relief:</b></p>
+			<ul class="appendix-ii-conditions">
+				<li>The relief only applies to "agricultural property" which is defined as "agricultural land, pasture and woodlands situated within a Member State and crops, trees and underwood growing on such land and also includes such farm buildings, farm houses and mansion houses (together with lands occupied therewith) as are of a character appropriate to the property."  The relief also applies to stock and farm machinery. With effect from 25th December 2017 land under solar panels, where the solar panels are not installed on more than half of the land comprised in the gift or inheritance, will also qualify as ‘agricultural property’.</li>
+				<li>Any milk quota attaching to lands will also qualify for reduction as part of the market value of the lands.</li>
+				<li>The relief only applies to agricultural property acquired by an individual, who after taking the agricultural gift or inheritance not less than 80% of his gross assets are represented by the value of agricultural property, including livestock, bloodstock, farm machinery and land under solar panels where the acreage of such land does not exceed more than 50% of the land comprised in the gift or inheritance. A donee is allowed to offset borrowings for the purchase, repair or improvement of on an off farm principal private residence against the value of the property for the purpose of the 80% test.</li>
+				<li>For gifts or inheritances received after 1st January 2015 the beneficiary must have </li>
+			</ul>
+			<ol class="appendix-ii-conditions">
+				<li> a relevant agricultural qualification or attain such a qualification within four years of the date of the gift or inheritance, and must farm the agricultural property for a period of not less than six years on a commercial basis with a view to realising a profit, <b>or</b></li>
+				<li> the beneficiary must spend not less than 50% of their normal working time farming the agricultural property for a period of not less than six years on a commercial basis with a view to realising a profit . Normal working time approximates to 40 hours per week.</li>
+			</ol>
+			<p class="small-text">Where the beneficiary leases the agricultural property the individual to whom the property is leased must satisfy either condition a. or b. above.  </p>
+			<br />
+			<p class="sub-heading"><b>The relief is withdrawn in certain circumstances:</b><p>
+			<p class="small-text">If within 6 years of the ‘valuation date’ the beneficiary ceases to qualify as a farmer as outlined and does not lease the land to a lessee who will farm the land for the remainder of the 6 year period.
+			</p>
+			<p class="small-text">Or if within six years after the date of the gift or the inheritance lands are sold or compulsorily acquired in the lifetime of the donee or successor, and the agricultural property is not replaced within a year following a sale, or within 6 years following a compulsory acquisition where the land was compulsorily acquired on or after 25th March 2002.  </p>
+			<p class="small-text">If the gift or inheritance consists of development land and is disposed of in the period commencing 6 years after the date of the gift / inheritance and ending 10 years after the date there will be a partial claw back of the relief. </p>
+			</div>
+			</div>
+			<div class="pagebreak"></div>
+
+
+			<!---------------- Start Modal Content : JBissell 24/09/2018 -------------------------->
+			<div id="businessModalContent">
+	<h3>Business Relief</h3>
+	<br/>
+	For gifts and inheritances taken on or after 23rd January 1997 the taxable value of “relevant business” property is reduced by 90%.
+    <br/>
+	<br/>
+	<strong>Company Shares</strong></br/>
+	The definition of “relevant business property” includes unquoted shares and securities of Irish incorporated companies subject to certain conditions.
+    <br/>
+	<br/>
+	<strong>The company</strong></br/>
+	The company’s business must not consist wholly or mainly of any of the following excluded activities - dealing in currencies, securities, stocks or shares, land or buildings, or making or holding of investments.
+    <br/>
+	<br/>
+	<strong>The beneficiary</strong></br/>
+	For the relief to apply the beneficiary must meet one of the following ownership/control tests:
+	i)	The shares themselves or together with other shares in the company held in the absolute beneficial ownership of the beneficiary, give the beneficiary control of 25% of the voting power over all matters relating to the company, or
+	ii)	the beneficiary controls the company or the company is controlled by the beneficiary and his relatives*,  or
+	iii)	the beneficiary holds at least 10% of the issued capital of the company and has worked full time in the company for 5 years prior to the gift/inheritance.
+	<br/>
+	<br/>
+	* Relatives of a person include his spouse, civil partner, children, mother, father, aunt, uncle and any children, grandchildren of any the forgoing. In addition all spouses of relatives are included for the purposes of determining control.
+	Control includes - having over 50% of the voting power, or owning more than 50% of the shares or being in a position to control the board of directors.
+    <br/>
+	<br/>
+	<strong>Business Relief - unincorporated business</strong></br/>
+	Relevant business property also includes property consisting of a business (Sole trader) or an interest in a business (share in a partnership). A business which is wholly or mainly concerned with dealing in land, shares, securities or currencies or the making or holding of investments is excluded.
+	The relief will apply where the business or part of the business is transferred and not simply where an asset that had been part of the business is subject to CAT.
+    <br/>
+	<br/>
+	<strong>General</strong></br/>
+	So far we have concentrated on the conditions that apply to the business and the beneficiary in order to qualify for Business Relief. There are some other general conditions worth noting:
+    <br/>
+	<br/>
+	<strong>Disponer</strong></br/>
+	The property must have been owned by the disponer for a period of 5 years prior to a gift or 2 years in the case of an inheritance.
+    <br/>
+	<br/>
+	<strong>Clawback of Relief</strong></br/>
+	If within 6 years of the gift or the inheritance of business property:
+	•	the business ceases to qualify, or
+	•	the property is sold or compulsorily acquired and not replaced within one year with other business property
+	the entire relief will be clawed back.
+	</div>
+	<div id="farmModalContent">
+	<h3>Agricultural Relief</h3>
+   <br/>
+	This is a special relief given in respect of certain agricultural property taken by a "farmer". The relief is given by reducing the market value of the agricultural property by 90% for gifts and inheritances taken on or after 23rd January 1997.
+   <br/>
+   <br/>
+	The market value of the agricultural property as so reduced is then termed "agricultural value" in the Act and is substituted for market value in the calculation of tax.
+    <br/>
+    <br/>
+	<strong>There are certain conditions attaching to this relief:</strong><br/>
+	<ul>
+	<li>
+	The relief only applies to "agricultural property" which is defined as "agricultural land, pasture and woodlands situated within a Member State and crops, trees and underwood growing on such land and also includes such farm buildings, farm houses and mansion houses (together with lands occupied therewith) as are of a character appropriate to the property."  The relief also applies to stock and farm machinery. With effect from 25th December 2017 land under solar panels, where the solar panels are not installed on more than half of the land comprised in the gift or inheritance, will also qualify as ‘agricultural property’.
+	</li>
+	<li>
+	Any milk quota attaching to lands will also qualify for reduction as part of the market value of the lands.
+   </li>
+   <li>
+	The relief only applies to agricultural property acquired by an individual, who after taking the agricultural gift or inheritance not less than 80% of his gross assets are represented by the value of agricultural property, including livestock, bloodstock, farm machinery and land under solar panels where the acreage of such land does not exceed more than 50% of the land comprised in the gift or inheritance. A donee is allowed to offset borrowings for the purchase, repair or improvement of on an off farm principal private residence against the value of the property for the purpose of the 80% test.
+   </li>
+   <li>
+	For gifts or inheritances received after 1st January 2015 the beneficiary must have
+	a.	a relevant agricultural qualification or attain such a qualification within four years of the date of the gift or inheritance, and must farm the agricultural property for a period of not less than six years on a commercial basis with a view to realising a profit,
+	<br/>
+	or
+	<br/>
+	b.	the beneficiary must spend not less than 50% of their normal working time farming the agricultural property for a period of not less than six years on a commercial basis with a view to realising a profit . Normal working time approximates to 40 hours per week.
+    <br/>
+    <br/>
+	Where the beneficiary leases the agricultural property the individual to whom the property is leased must satisfy either condition a. or b. above.
+    </li>
+	</ul>
+	<br/>
+    <br/>
+	<strong>The relief is withdrawn in certain circumstances:</strong><br/>
+	If within 6 years of the ‘valuation date’ the beneficiary ceases to qualify as a farmer as outlined and does not lease the land to a lessee who will farm the land for the remainder of the 6 year period. Or if within six years after the date of the gift or the inheritance lands are sold or compulsorily acquired in the lifetime of the donee or successor, and the agricultural property is not replaced within a year following a sale, or within 6 years following a compulsory acquisition where the land was compulsorily acquired on or after 25th March 2002.
+   <br/>
+   <br/>
+	If the gift or inheritance consists of development land and is disposed of in the period commencing 6 years after the date of the gift / inheritance and ending 10 years after the date there will be a partial claw back of the relief.
+	</div>
+	<div id="familyModalContent">
+	<h3>Family Home Exemption </h3>
+	<br/>
+	The value of a “dwelling house” taken on or after 1st December 1999 may be exempt from Inheritance Tax, in the hands of the beneficiary provided certain qualifying conditions are satisfied.
+    <br/>
+	<br/>
+	“Dwelling House”, for the purpose of this exemption, means a building or part of a building with up to one acre of land that was used or was suitable for use as a dwelling.
+     <br/>
+	<br/>
+	To obtain the exemption from inheritance tax both the disponer and the beneficiary must meet certain conditions.
+     <br/>
+	<br/>
+	<strong>The beneficiary must satisfy all of the following conditions:</strong><br/>
+	a)	He or she must have occupied the “relevant dwelling house” as his or her only or main residence continuously throughout the 3 year period immediately prior to the date of the inheritance, * <br/>
+	<br/>
+	b)	He or she must not be beneficially entitled to any interest in any other dwelling house at the date of the inheritance. This includes the inheritance of a second property as a result of a specific bequest in the Will of the disponer,
+     <br/>
+	<br/>
+	c)	He or she must continue to both own and occupy the dwelling house as his or her only or main residence throughout the period of 6 years following the date of the inheritance**.
+     <br/>
+	<br/>
+	* Where the dwelling house directly or indirectly replaced other property owned by the disponer, the 3 year period in condition a) will be satisfied if the beneficiary occupied both properties for a total of 3 of the 4 years prior to the date of the inheritance.
+    <br/>
+	<br/>
+	** The exemption will not be withdrawn where condition c) outlined earlier is breached if the beneficiary:
+	<br/>
+	i.	does not occupy the house as a result of his or her mental or physical infirmity. This infirmity must be certified   by a registered medical practitioner, or
+	<br/>
+	ii.	is required by his employer to live somewhere else in order to carry out the duties of his or her employment, or
+	<br/>
+	iii.	was aged 65 at the date of the inheritance, or
+	<br/>
+	iv.	replaces the house and reinvests the proceeds in another dwelling house, and occupies both properties for at least 6 years of the 7 years from the date of the inheritance.
+	<br/>
+	<br/>
+	<strong>The following are the conditions which must be met by the disponer :</strong>
+    <br/>
+	<br/>
+	The disponer must have occupied the ‘relevant dwelling house’ as his or her only main residence at the date of his or her death, except where either :
+    <br/>
+	<br/>
+	a)	The disponer ceased to occupy the dwelling house as a result of his or her mental or physical infirmity, or
+	<br/>
+	b)	where the dwelling house is inherited by a dependent relative.
+    <br/>
+	A “dependent relative” is defined as someone who is—
+	<br/>
+	(a) permanently and totally incapacitated by reason of mental or physical infirmity from maintaining himself or herself, or
+	<br/>
+	(b) of the age of 65 years or over.
+	</div>
+	' ;
+}
+
+?>

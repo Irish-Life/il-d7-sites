@@ -1,0 +1,2 @@
+var mobileAppMaps = {url:"https://www.irishlife.ie/investments/irish-life-maps", title:"Irish Life MAPS Quarterly Updates"};
+var helpLinks = ["https://www.irishlife.ie/myonlineservices","https://www.irishlife.ie/myonlineservices","https://www.irishlife.ie/myonlineservices/ClientAccount/ForgotPassword1"];

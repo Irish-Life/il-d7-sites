@@ -1,0 +1,9 @@
+.dfm-filefield-wrapper {
+  display: block;
+}
+a.dfm-filefield-opener {
+  display: inline-block;
+  min-height: 18px;
+  padding-left: 20px;
+  background: url(dfm_filefield.png) no-repeat 0 50%;
+}

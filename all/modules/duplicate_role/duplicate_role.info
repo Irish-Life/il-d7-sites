@@ -1,0 +1,16 @@
+name = Duplicate Role
+description = A module that duplicates an existing role and its permissions.
+package = Administration
+core = 7.x
+
+; Loadable code files
+files[] = duplicate_role.module
+
+; Configuration page
+configure = admin/people/duplicate-role
+; Information added by Drupal.org packaging script on 2016-03-29
+version = "7.x-1.3"
+core = "7.x"
+project = "duplicate_role"
+datestamp = "1459273445"
+

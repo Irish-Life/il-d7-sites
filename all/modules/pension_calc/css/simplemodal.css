@@ -1,0 +1,236 @@
+/* ------------------------ CALLBACK TAB ----- */
+
+#callbackSlider {
+	height: 211px;
+	position: fixed;
+	overflow: hidden;
+	right: 0px;
+	top: 40%;
+	width: 52px;
+	z-index: 100;
+}
+
+
+
+#callbackTab {
+	background: #5261AC;
+	cursor: pointer;
+	height: 210px;
+	position: absolute;
+	width: 210px;
+	left: 9999px;
+}
+
+#callbackContainer{
+	position: relative;
+	height: 100%;
+	width:100%;
+}
+
+#callbackTabText{
+	color: #ffffff;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	font-size: 1.2em;
+	height: 0px;
+	width: 0px;
+	margin-top: 0px;
+	margin-left: 55px;
+	padding-top: 30px;
+}
+
+#callbackTab i{
+	color: #ffffff;
+font-size: 2.5em;
+bottom: 25px;
+left: 15px;
+position: absolute;
+-webkit-transform: rotate(250deg);
+-moz-transform: rotate(250deg);
+-ms-transform: rotate(250deg);
+-o-transform: rotate(250deg);
+transform: rotate(250deg);
+}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#dedede!important; cursor:wait;}
+
+#simplemodal-container {
+color: #333;
+background-color: #ffffff;
+-moz-border-radius: 2px;
+ -webkit-border-radius: 2px; 
+border-radius: 2px; 
+-moz-box-shadow: 2px 2px 5px 2px #888888;
+}
+#simplemodal-container a.modalCloseImg {background:url("/sites/all/modules/css/images/x.png") no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+
+
+#progressBoxPopupContentsText h1{margin-bottom:10px;font-size: 18px}
+
+#progressBoxPopupContents .submitDetails{margin-right:42px}
+.progressButtons{color:#ffffff;float:left;
+background:#50C9B5;
+display: block;padding:0.357em;width: 220px;margin-top:0px;margin-bottom:1px;}
+a.progressButtons {text-align:center;}
+a.progressButtons:link{color:#fff;text-decoration:none;font-size:1.2em;text-transform:uppercase}
+.progressButtons:hover{-webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+				-moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+				box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);}
+.progressInputs{width:270px; float:left;margin-bottom:10px}
+.progressSummary{width:220px; float:right;
+    background-color: #fff;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    padding: 10px;padding-right:0px;margin-right:30px;    font-size: 1.2em;
+    line-height: 1.6em;}
+.progressInputs input{width:210px;background-color: #fefefe;border: 1px solid #CCCCCC;font-size: 115%;padding: 4px;font-family:arial,helvetica,sans-serif;}
+.progressInputs select{width:220px;background-color: #fefefe;padding: 4px;}
+
+.submitDetailsButton{background-position: 0 -94px;}
+.submitDetails{background-position: 0 -188px;}
+.complyNote{float:left;clear:both}
+
+.progressBox{
+    background-color: #ffffff;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width:96%;
+    min-height: 0;
+    padding: 19px 15px 19px 15px;
+	float:left;
+	position:relative;
+	margin-top:10px;
+	margin-right:20px;
+}
+#callback-modal-content .progressBox{margin-top:0px;width:540px;height:585px}
+#callback-modal-content .progressSummary{margin-right:0px;}
+
+.progressBoxCompliance {
+    background-color: #EDEAED;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    float: right;
+    margin: 10px 0px 10px 3px;;
+    min-height: 0;
+    padding: 0;
+    width: 265px;
+	padding:12px;}
+
+.progressBoxCompliance h3{
+    background-image: url("/uploadedImages/retail/images/info_orange.png");
+	*background-image: url("/uploadedImages/retail/images/info_orange.gif");
+    background-repeat: no-repeat;
+    height: 35px;
+	top: -4px;
+    padding-left: 25px;}
+
+.progressBoxCompliance p{
+	padding-top:30px;}
+
+.progressBoxSummary{
+    background-color: #fafafa;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width:287px;
+    margin-bottom: 10px;
+    min-height: 0;
+	padding:0px;
+	float:right;
+}
+.progressBoxSummary .selected{
+color:red;
+}
+.progressBoxSummary .notselected{
+color:blue;
+}
+
+.progressBoxSummaryNums{color:#ffffff;
+background-image: url("/uploadedImages/retail/images/markersSmallIL.png");
+background-repeat: no-repeat;
+display: block;height: 20px;width:20px;float:left;position:relative;top:-1px; margin-right:3px;}
+
+
+#progressBoxPopupContents .submitDetails{margin-right:42px;float:left;clear:both}
+.progressBoxSummaryNotHighlight{color:#ccc;}
+.progressBoxSummaryNotHighlight:hover{color:#aaa;}
+.progressBoxSummaryContainer{padding:20px;border-bottom:1px dashed #ccc;}
+.progressBoxSummaryContainerNoBG{background-color:#f3f3f3;}
+
+.progressBox select {
+	border: 1px solid #aaa;
+	color: #333;
+	margin-right:3px;
+	font-size:110%;
+}
+
+.righter{float:right;}
+.hidden{display:none;}
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+.boldspan{font-weight:bold}
+
+@media only screen and (max-width: 740px) {
+	#callbackSlider{
+		display: none;
+	}
+}
+
+
+#simplemodal-container {
+	position: absolute;
+	height: 625px;
+	width: 572px;
+	border-radius: 5px;
+}
+
+/* ------------------------ validation ----- */
+
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea,
+fieldset {
+/* required to properly style form 
+   elements on WebKit based browsers */
+  -webkit-appearance: none;
+  
+  width : 100%;
+  border: 1px solid #333;
+  margin: 0;
+  
+  font-family: inherit;
+  font-size: 90%;
+  
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+#callback input:invalid {
+  /*box-shadow: 0 0 5px 1px red;*/
+  background: #FFB7B7;
+}
+
+
+
+#callback input:focus:invalid {
+  outline: none;
+}
+
+#callback input:valid {
+	background: #C6FFC7;
+  /*box-shadow: 0 0 5px 1px green;*/
+}
+
+#callback input:focus:valid {
+  outline: none;
+}

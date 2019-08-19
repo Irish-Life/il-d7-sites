@@ -1,0 +1,141 @@
+/* lg */ 
+@media (min-width: 1200px) {
+  
+}
+
+/* md */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  .navbar-brand {
+    width: 215px;
+    height: 60px;
+  }
+
+  .navbar-right {
+    padding: 0;
+  }
+ 
+  
+  #slide {
+	  bottom: -170px;
+  }
+  
+  .container {width: 100%; }
+  
+  h1 {
+	  font-size:27px;
+  }
+  
+  h3 {
+	  font-size:22px;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	#slide {
+		bottom: 292px;
+	}
+	
+	
+  .navbar-right li a {
+    padding: 20px 11px;
+    font-size: 17px; 
+  }
+  
+  .bottomLine {
+	  border-bottom: 1px solid #cccccc;
+	  height: 375px;
+      margin-bottom: 27px;
+
+  }
+  
+  h1 {
+	  font-size:27px;
+  }
+  
+  h3 {
+	  font-size:22px;
+  }
+  
+  .read-more {
+	  width: 100%;
+  }
+  
+  hr {display:none;}
+  
+  
+  .hide {
+	  display:none;
+  }
+}
+
+/* xs */
+@media (min-width:480px) and (max-width: 767px) {
+  .logo {
+	  margin-left: 0px !important;
+  }
+  
+  h2 {font-size: 23px;}
+
+  
+  .fixed-menu .container {
+    display: block;
+  }
+
+   .fixed-menu .container {
+    width: 100%;
+  }
+
+  .navbar-brand {
+    width: inherit;
+  }
+  
+  .socialImg {
+	      width: 50%;
+  }
+  
+  .col-centered p {
+    font-size: 18px;
+    padding: 5px;
+}
+
+
+
+}
+
+/* XS Portrait */
+@media (max-width: 479px) {
+	
+  .logo {
+	  margin-left: 0px !important;
+  }
+  
+  h1, h2 {font-size: 20px;}
+  
+  .read-more {width: 100%;}
+  
+  .latest {margin-bottom: 50px;}
+  
+  .featured {margin-bottom: 25px;
+  margin-top:0px;}
+  
+  .posts {margin-top: -49px;}
+  
+  .front-post {margin-bottom: 0px;}
+  
+  .navbar-brand {width: 200px;
+  }
+  
+  .article-header: {
+	  height: 400px;
+  }
+
+  .socialImg {
+	      width: 100%;
+  }
+
+
+}
+

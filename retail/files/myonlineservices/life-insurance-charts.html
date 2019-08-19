@@ -1,0 +1,207 @@
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script type="text/javascript">
+
+$(function () {
+
+$('#container-bar').highcharts({
+        credits:{enabled:false},
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Your Current Life Insurance'
+        },
+        xAxis: {
+            categories: ['Life Cover', 'Specified Illness Cover']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '€'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'normal',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                },
+				formatter: function () {
+                    return "€" + this.total;
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+			enabled:false,
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: €{point.y}<br/>Total: €{point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 0px black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: '12345678',
+            data: [152000]
+        }, {
+            name: '23654789',
+            data: [235000, 24000]
+        }, {
+            name: '12345689',
+            data: [35000, 35000]
+        }]
+    });
+
+
+    $('#container-life').highcharts({
+		credits:'disabled',
+		legend:{enabled:false},
+        chart: {
+            type: 'area'
+        },
+		tooltip:{enabled:false},
+        title: {
+            text: 'Life Cover by Year'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70'],
+            title: {
+                text: "Age"
+            }
+        },
+        yAxis: {
+            title: {
+                text: '€'
+            }
+        },
+        plotOptions: {
+            area: {
+				color:'#50c9b5',
+                stacking: '',
+                lineColor: '#efefef',
+                lineWidth: 1,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total Life Cover',
+            data: [520000,517200,494400,481600,478800,466000,443200,430400,417600,404800,392000,379200,366400,353600,340800,328000,259000,150000,151500,152000,152500,153000,153500,154000,154500,155000,155500,156000,0,0,0,0,0,0,0]
+        }]
+    });
+ $('#container-sic').highcharts({
+		credits:'disabled',
+		legend: {enabled:false},
+        chart: {
+            type: 'area'
+        },
+		tooltip:{enabled:false},		
+        title: {
+            text: 'Specified Illness Cover by Year'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55'],
+            title: {
+                text: 'Age'
+            }
+        },
+        yAxis: {
+            title: {
+                text: '€'
+            }
+        },
+        plotOptions: {
+            area: {
+				color:'rgb(195, 224, 136)',
+                stacking: '',
+                lineColor: '#efefef',
+                lineWidth: 1,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Total SIC',
+            data: [55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000]
+        }]
+    });
+});
+
+var showDay1=true;
+
+function toggleCharts()
+{
+	if (showDay1)
+	{
+		$('.day2').show();
+		$('.day1').hide();
+		showDay1=false;
+	}
+	else
+	{
+		$('.day1').show();
+		$('.day2').hide();
+		showDay1=true;	
+	}
+}
+
+</script>
+</head>
+<body>
+<button onclick="toggleCharts()" style="display:none">Toggle Phase 1 and Phase 2</button>
+<div style="width: 1200px; height: 400px; margin: 0 auto">
+
+    <div id="container-life" class="day2" style="display:none;width: 500px; height: 290px; float: left"></div>
+	<div id="container-sic" class="day2" style="display:none;width: 500px; height: 290px; float: left"></div>
+	<div id="container-bar" class="day1" style="width: 1000px; height: 290px; float: left"></div>
+	
+	
+</div>
+</body>
+</html>

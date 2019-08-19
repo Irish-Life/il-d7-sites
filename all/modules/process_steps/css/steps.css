@@ -1,0 +1,105 @@
+.process-steps {
+    background-color: #edeaed;
+    position: relative;
+    margin: 0px 0% 66px 0%;
+}
+.process-steps .step-circleholder {
+    left: -15px;
+    display: block;
+    position: relative;
+}
+.process-steps .step-circle.selected {
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    background-color: #aec4d8;
+    border: 2px solid rgba(164, 147, 130, 0.2);
+}
+
+.process-steps .step-circle {
+    position: absolute;
+    width: 36%;
+    height: 40px;
+    background-color: #EDEAED;
+    border: 2px solid #EDEAED;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+
+/* .step-circle-2:after {
+    content: "";
+    border-top: 24px solid transparent;
+    border-bottom: 20px solid rgba(237, 234, 237, 0);
+    border-left: 29px solid #e4dce4;
+    position: absolute;
+    /* right: -40px; 
+    top: -2px;
+    z-index: 999;
+} */
+
+	/*
+.step-circle-3:after {
+    content: "";
+    border-top: 24px solid transparent;
+    border-bottom: 20px solid rgba(237, 234, 237, 0);
+    border-left: 29px solid #e4dce4;
+    position: absolute;
+    /* right: -40px; 
+    top: -2px;
+    z-index: 999;
+} */
+
+.process-steps .step-circle .step-circleNum {
+    font-size: 1.2em;
+    position: relative;
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+}
+.process-steps .step-circle .step-circleText {
+    font-size: 1.3em;
+    text-align: center;
+    width: 200px;
+    top: 40px;
+    position: absolute;
+    color: #EDEAED;
+}
+
+.process-steps .selected .step-circleText {
+    color: #50c9b5;
+    font-weight: bold;
+}
+.process-steps .step-meter-value {
+    height: 7px;
+    background: #50c9b5;
+    color: #50c9b5;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+}
+
+@media (max-width: 740px)
+{
+
+	
+.step-circleNum {
+	font-size: 12px !important;
+}	
+
+.process-steps .step-circle .step-circleText {
+    font-size: 1em;
+    width: 105px;
+    text-align: center;
+    line-height: 1em;
+	left:-25px
+}
+.process-steps  .step-circle-3 .step-circleText {
+left:-60px;
+}
+}

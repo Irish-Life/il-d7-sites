@@ -1,0 +1,728 @@
+/* Designer Seed Updated March 2011 */
+/* 3 Column Parameterised With Section Headers */
+/* Litmus Tested*/
+
+/* FreeMarker Section */
+
+/* Makes footer and header text black or white depending on the users choice of background colour */
+
+/* USER DEFINED SPACING */
+
+
+
+
+
+/* BORDERS ON IMAGES? */
+
+
+/* BORDER BETWEEN COLUMN */
+
+/* BORDERS ON PAGE FOR OUTLOOK 2007 */
+
+/* Page Structure and Widths*/
+
+
+
+/* End FreeMarker Section */
+
+
+
+/** RESETS & BROWSER BUGS **/
+/*Prevents Page Jumping with different content */
+html {
+min-height: 101%;
+}
+
+/* Removes image borders if image is a hyperlink */
+img {
+border: none;
+}
+
+/* Prevent Large Images Breaking Layout */
+table {
+/*table-layout: fixed;*/
+}
+
+/* Strip out extra spacing in articles */
+p {
+margin-top:0; padding-top:0; margin-bottom: 2px;
+}
+
+/* Strip out extra spacing in articles summaries on cover page */
+#CoverPage p {
+margin-bottom: 2px;
+}
+
+/* Reset Line Height for Hotmail */
+body, td {
+line-height: normal;
+}
+
+/* Lists for Outlook 2007 */
+ul{
+padding-left:0;
+margin-left:24px;
+list-style-position:outside;
+}
+
+ul li{
+margin-left:0;
+padding-left:0;
+}
+
+/* Fix for FF Gmail & FF Hotmail Bug - img display: block */
+.nw_img_cell img {
+display: block;
+}
+/* Spacer gif used in between fragments */
+.prop img {
+display: block;
+}
+
+table, td {
+padding: 0;
+}
+
+/* iPad/iPhone */
+body, td, table {
+-webkit-text-size-adjust: none;
+}
+
+/* Removal of Trailing Break Tag in Summary and Editor for Outlook 2007 */
+.summary br:last-child, .ContentBlock br:last-child {
+display: none;
+} 
+
+/** PAGE SETTINGS **/
+
+/* Page Background Colour With Lotus Fix - Separate Embedded CSS in Body Defines Background Colour for Outlook 2007 Which Ignores the Important rule*/
+body {
+/* Good browsers */
+background-color: #F1F1F2!important;
+/* For Lotus This Gets Inlined On The Body Tag */
+background-color:transparent;
+}
+
+/* Wrapper Colour */
+#wrapper {
+background-color: #F1F1F2;
+}
+
+/* Print Out Page Structure CSS Here */
+/* Space at top of newsletter */
+body {
+margin-top:1em !important;
+}
+
+/* Layout Pages */
+#CoverPage, .Generic, .ArticlePage, .SystemResponsePage {
+width: 647px;
+border-collapse: separate!important;
+background-color: #FFFFFF;
+
+}
+
+/* Segments */
+#header {
+
+width: 100%;
+}
+
+#left {
+padding-bottom: 0;
+padding-top: 10px;
+width: 0;
+padding-left: 0;
+padding-right: 0;
+background-color: transparent;
+}
+#main {
+padding-bottom: 0;
+padding-top: 10px;
+width: 70%;
+padding-left: 6px;
+padding-right: 6px;
+background-color: transparent;
+
+
+}
+
+#right {
+padding-bottom: 0;
+padding-top: 10px;
+width: 30%;
+padding-left: 6px;
+padding-right: 9px;
+background-color: transparent;
+
+
+}
+
+#footer {
+padding: 0 9px 9px 9px;
+
+width: 100%;
+}
+
+/* Components */
+.DisplayTitle {
+width: 100%;
+}
+.nw_component_wrapper {
+width: 100%;
+}
+
+.nw-componentSpacerMainCell {
+padding-bottom: 10px;
+}
+
+.nw-componentMainCell {
+padding:0;
+background-color: transparent;
+}
+
+/* STYLES FOR LEFT BOXES */
+#left .nw-componentMainCell {
+padding: 8px;
+background-color: transparent;
+border: solid 1px #CCC;}
+
+/* STYLES FOR RIGHT BOXES */
+#right .nw-componentMainCell {
+padding: 8px;
+background-color: #EFEFEF;
+border: solid 1px #D7D7D7;}
+
+
+/* STYLE OVERRIDES BOXES */
+#toc .nw-componentMainCell {
+background-color: #F0F0F0;}
+#Survey .nw-componentMainCell {
+}
+#sidearticles-left .nw-componentMainCell {
+}
+#sidearticles-right .nw-componentMainCell {
+}
+#useful .nw-componentMainCell {
+}
+#contact .nw-componentMainCell {
+}
+#AssociatedArticles .nw-componentMainCell {
+}
+
+
+
+#header .nw-componentSpacerMainCell {
+padding-bottom: 0;
+}
+#footer .nw-componentSpacerMainCell {
+padding-bottom: 0;
+}
+
+.SubscribeBox .nw-componentMainCell, .TellFriend .nw-componentMainCell {
+padding: 7px 0;
+}
+
+.DisplayTitle td{
+font-size:13px;font-weight:bold;
+font-style:normal;
+text-decoration:none;color: #FFffff;
+background-color: #4D26AB;
+padding: 6px;
+border-bottom: solid 2px #0091c5;}
+
+/* STYLE OVERRIDES DISPLAY TITLES */
+#tocDisplayTitle td {
+background-color: #4D26AB;}
+#sidearticles-leftDisplayTitle td {
+color:#FFFFFF; background-color: #4D26AB;}
+#sidearticles-rightDisplayTitle td {
+background-color: #4D26AB;}
+#usefulDisplayTitle td {
+background-color: #4D26AB;}
+#SurveyDisplayTitle td {
+background-color: #4D26AB;}
+#contactDisplayTitle td {
+background-color: #4D26AB;}
+#AssociatedArticlesDisplayTitle td {
+background-color: #4D26AB;}
+
+
+
+
+/* Small Subscribe Box */
+input.sub_box_cover {
+margin-bottom: 5px;
+width: 120px;
+}
+
+.SubscribeBox {
+/*table-layout: fixed;*/
+}
+
+/* Footer Text */
+.ftext {
+font-size:10px;padding: 11px;
+border-top: solid 1px #cccccc;
+padding: 10px;}
+
+/** TYPOGRAPHIC STYLES **/
+/* General Body Text */
+td {
+font-size:11px;color: #494949;
+font-family:Arial, Helvetica, sans-serif;}
+
+/* Links */
+a {
+color: #336699;
+font-weight:normal;
+font-style:normal;
+text-decoration:none;}
+a:hover, .link:hover {
+color: #336699;
+font-weight:normal;
+font-style:normal;
+text-decoration:underline;}
+/* Links hover in inbox version */
+a:hover {
+text-decoration:underline !important;
+}
+
+/* Article Body Text */
+.summary, .full-story {
+font-size:13px;color: #000000;
+}
+/* Article Titles */
+.title, .title a, .title a:hover {
+font-family:Arial, Helvetica, sans-serif;font-size:21px;font-weight:normal;
+font-style:normal;
+text-decoration:none;color: #0091c5;
+}
+/* Article Titles Hover */
+.title a:hover {
+font-family:Arial, Helvetica, sans-serif;font-size:21px;font-weight:normal;
+font-style:normal;
+text-decoration:none;color: #0091c5;
+text-decoration: underline;
+}
+/* Article Titles on Back Page - Not Underlined */
+.ArticleDisplay .title {
+text-decoration: none;
+}
+
+/* Subheads */
+.subtitle {
+font-size:11px;font-weight:normal;
+font-style:italic;
+text-decoration:none;color: #669999;
+}
+
+/*Table of Contents */
+#toc a, #toc a.link, #toc .title, #toc .title a {
+text-decoration: none;
+font-family:Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;
+font-style:normal;
+text-decoration:none;color: #666666;
+}
+#toc .title {
+/*VERY IMPORTANT to include this rule */
+/* OTHERWISE HOTMAIL & GMAIL WILL RENDER MAIN TITLE LINE-HEIGHT **/
+font-size:12px;}
+#toc a:hover, #toc a.link:hover, #toc .title a:hover {
+text-decoration: underline;
+font-family:Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;
+font-style:normal;
+text-decoration:underline;color: #666666;
+}
+
+/* Email List Styles for back page */
+#EmailList .title a {
+color: #336699;
+font-size:11px;}
+#EmailList .title a:hover {
+color: #336699;
+font-size:11px;}
+#EmailList .date a {
+color: #336699;
+font-size:11px;}
+#EmailList .date a:hover {
+color: #336699;
+font-size:11px;}
+
+.nw_readmore {
+font-family:Tahoma, Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;
+font-style:normal;
+text-decoration:none;color: #336699;
+}
+.nw_readmore:hover {
+font-family:Tahoma, Arial, Helvetica, sans-serif;font-size:12px;font-weight:bold;
+font-style:normal;
+text-decoration:underline;color: #336699;
+}
+
+/* Read More Spacing */
+.css_readmore_spacer_table td {
+padding-bottom: 0;
+}
+
+/* Before & After Email and After Microsite */
+#after_text, #before_text {
+background-color: #F1F1F2;
+width: 100%;
+}
+#after_text table, #before_text table {
+width: 100%;
+}
+#before_text td, #after_text td{
+font-size:10px;color: #000000;
+text-align: center;
+}
+#before_text td{
+padding: .5em;
+}
+#after_text td{
+padding-top: 7px;
+}
+#before_text a, #after_text a {
+color: #000000;
+text-decoration: underline;
+}
+#before_text a:hover, #after_text a:hover {
+color: #000000;
+text-decoration: underline;
+}
+
+/* Images and Captions */
+
+/* Default Image Spacing in Articles */
+#main .nw_img_table {
+margin-left: 16px;
+margin-bottom: 4px;
+}
+
+#left .nw_img_table, #left .nw_img_table  {
+margin-left: 0;
+margin-bottom: 0;
+}
+
+.nw_img_wrapper {
+background-color: transparent;
+}
+.nw_img_cell {
+padding:0;
+
+}
+
+/* Caption Cell Styling */
+.nw_img_caption {
+font-family: Verdana;
+font-size:10px;font-style: italic;
+padding: 7px;
+}
+
+/* CSS FOR FRAGMENTS */
+/* Spacer Table after article titles */
+.css_spacer_table td {
+padding-bottom: 5px;
+}
+/* Spacer Table Between Articles */
+.css_between_articles td, .css_after_sections td {
+padding-bottom: 8px;
+}
+
+.css_divider {
+border-bottom: solid 1px #cccccc;
+}
+
+/* Spacer Table Between Articles TOC */
+#left .css_between_articles td {
+padding-bottom: 5px;
+}
+
+/* Important - Images will clear */
+.css_between_articles, .css_after_sections {
+clear: both;
+}
+#coverlink a, #coverlink a:hover {
+font-weight: bold;
+}
+.nw_coverlink2 {
+text-align: right;
+}
+
+#coverlink .nw-componentMainCell {
+padding-bottom: 7px;
+border-bottom: dotted 1px #cccccc;
+}
+
+/* SEARCH BOX */
+#SearchBox form {
+margin-top: 1em;
+}
+input#query{
+background: #E3F2F9;
+margin: 0;
+border: 1px inset #999;
+margin-right: .5em;
+float: left;
+height: 1.2em;
+}
+#SearchBox a {
+height: 1.2em;
+float: left;
+margin: 0;
+padding:0;
+border: 1px inset #999;
+background: #EEEEEE;
+padding: 3px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333;
+font-weight: bold;
+font-size: 10px;
+font-family: Tahoma, Geneva, Verdana;
+text-decoration: none;
+cursor:pointer;
+}
+#SearchBox a:hover {
+text-decoration: none!important;
+background: #FFFFFF !important;
+}
+/* SEARCH RESULTS PAGE */
+div.nw-search-results h1{
+font-size:13px;}
+div.nw-search-results h3, div.nw-search-results h3 a {
+font-family:Arial, Helvetica, sans-serif;font-size:21px;font-weight:normal;
+font-style:normal;
+text-decoration:none;color: #0091c5;
+}
+/* Styles for Form Elements in Sidebar */
+#left input.nw-text,  #left option, #left select {
+width: 120px;
+}
+.nw_submit, .nw-subscribebox-form {
+margin: 0;
+padding: 0;
+}
+
+/* Article Options (Sharing etc.)*/
+.ArticlePage .nw-article-options {
+padding: 7px 0;
+border-bottom: dotted 1px #cccccc;
+border-top: dotted 1px #cccccc;
+}
+
+#CoverPage .nw-article-options {
+margin-top: 10px;
+}
+
+.nw-article-options {
+font-size:12px;;
+color: #666666;
+}
+
+.nw-article-options a {
+font-size:12px;;
+font-weight:normal;
+font-style:normal;
+text-decoration:none;color: #669933;
+
+}
+.nw-article-options a:hover {
+font-size:12px;;
+font-weight:normal;
+font-style:normal;
+text-decoration:underline;color: #669933;
+}
+
+
+/* Print All Page */
+#printall .nw_summary_wrapper {
+margin-bottom: 1em;
+}
+
+#printall .summary{
+font-size:10px;font-style: italic;
+}
+
+#PrintAllPage #left, #PrintAllPage #right {
+display: none;
+}
+
+#PrintAllPage #main .DisplayTitle {
+width: 98%;
+margin: 0 auto;
+margin-bottom: .8em;
+}
+#PrintAllPage #main .nw_component_wrapper {
+width: 98%;
+margin: 0 auto;
+}
+
+#PrintAllPage #main {
+padding-left: .5em;
+padding-right: .5em;
+}
+
+/* Masthead Block Styles */
+#header .nw-componentSpacerMainCell {
+padding-bottom: 0;
+}
+
+#masthead {
+background-color: #FFFFFF;
+}
+
+#introtext td {
+padding: 7px;
+font-size: 12px; padding: 12px; background-color: #4D26AB; color:#ffffff;}
+
+.nw_date_title {
+padding: 10px 10px 2px 10px ;
+font-size:12px;font-weight:normal;
+font-style:normal;
+text-decoration:none;color: #FFFFFF;
+background-color: #00b1e6;
+}
+
+/* Tell a Friend and Subscribe Box */
+#main label {
+font-weight: bold;
+}
+
+/* Styles for sidebar articles in a 3 col layout */
+#right .title, #right .title a, #right .title:hover {
+}
+
+#right .summary, #right .full-story {
+}
+
+#right .nw_readmore, #right .nw_readmore:hover {
+}
+
+/* Feature Story if Using */
+
+#featurestory .title, #featurestory .title a, #featurestory .title a:hover {
+font-size:22px;}
+#featurestory .summary, #featurestory .nw_readmore, #featurestory .nw_readmore:hover {
+font-size:12px;}
+
+#featurestory .nw-componentMainCell {
+padding: 12px;
+background-color: #F0F0F0;
+}
+
+/* Side Articles if Using */
+#sidearticles-left .title, #sidearticles-left .title a, #sidearticles-left .title a:hover {
+font-size:21px;}
+#sidearticles-left .summary, #sidearticles-left .nw_readmore, #sidearticles-left .nw_readmore:hover {
+font-size:12px;}
+
+#sidearticles-right .title, #sidearticles-right .title a, #sidearticles-right .title a:hover {
+font-size:21px;}
+#sidearticles-right .summary, #sidearticles-right .nw_readmore, #sidearticles-right .nw_readmore:hover {
+font-size:12px;}
+
+/* RELATED STORIES COMPONENT */
+.nw-associatedarticle-title a, .nw-associatedarticle-title a:hover {
+font-weight: bold;
+}
+.nw-associatedarticle-title {
+display: block;
+margin-bottom: .4em;
+}
+
+.nw-associatedarticle-summary {
+margin: .2em 0 .5em 0;
+padding-bottom: .2em;
+border-bottom: solid 1px #CCC;
+}
+
+
+
+/* Navigation Bar/Footer Links */
+.nw_navs {
+padding: 7px;
+text-align: center;
+padding-left: 10px; text-align: left; background-color: #EEE; font-size: 11px; border-bottom: solid 1px #CCCCCC; border-top: solid 1px #CCCCCC;}
+.nw_navs a, .nw_navs a:hover {
+font-weight: bold;
+}
+
+/* Articles in Boxes */
+.nw_article_wrap {
+}
+
+/* Normal Articles */
+
+#articles .nw-componentMainCell {
+padding: 7px;
+padding: 0;}
+
+
+/* Section Styles */
+.css_nice_sections td{
+font-size:12px;font-weight:bold;
+font-style:normal;
+text-decoration:none;color: #FFFFFF;
+background-color: #0091c5;
+padding: 6px;
+}
+div div.section-name {
+font-weight:bold;
+font-style:normal;
+text-decoration:none;}
+
+/* Print-friendly Styles */
+@media print {
+}
+
+/* Author Name Text - hacked to use Article Color and Subtitle Size */
+.author {
+font-size:11px;font-weight:normal;
+font-style:italic;
+text-decoration:none;color: #0091c5;
+}
+
+color: #669999;
+}
+
+
+#competition {
+padding: 12px;
+background-color: #EFEFEF;
+border: solid 1px#D7D7D7;
+}
+
+#competition .title {
+font-size: 21px;
+color: #0091c5;
+font-weight: normal;
+}
+
+#competition .summary {
+font-size: 12px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+}
+
+#competition .readmore {
+font-size: 12px;
+color: #0091c5;
+font-weight: bold;
+}
+
+#competition a, #competition a.link {
+color: #92E500;
+font-size: 12px;
+text-decoration: none;
+font-weight: normal;
+}
+
+#competition a:hover, #competition a.link:hover{
+color: #92E500;
+font-size: 12px;
+text-decoration: underline;
+font-weight: normal;
+}

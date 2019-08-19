@@ -1,0 +1,108 @@
+
+.irishlife-atrc-results-holder{
+  border:5px solid #465d5e;
+  background-color:#e8faf8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  background-image: url("../img/full-bg-brain-bulb-bg2.png");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 0px;
+  margin-bottom: 20px;
+   
+}
+#block-investment-profile-builder-save-investment-profile-disclaimer {
+    border: 5px solid #465d5e;
+    background-color: #e8faf8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.irishlife-atrc-results-holder #email-the-pdf-report {width:100%;padding:7px 0px}
+
+.irishlife-atrc-results-holder #call-teleadvice{display:inline;background-color:transparent;}
+
+.irishlife-atrc-results-holder #read-more-maps{display:inline;background-color:transparent}
+
+.irishlife-atrc-results-holder #get-investment-callback{display:inline;background-color:transparent}
+
+.irishlife-atrc-results-holder .investment-options{min-height:200px;margin:auto;margin-top:10px;clear:both;}
+.irishlife-atrc-results-holder .investment-options h2{color:#fff}
+.irishlife-atrc-results-holder  .investment-options a:hover{box-shadow: 0px 0px 0px rgba(0,0,0,0.5)}
+.irishlife-atrc-results-holder  .investment-options i {margin-top:30px}
+.irishlife-atrc-results-holder .investment-options .investment-option-1 {background-color:#5582ab;height:200px;text-align:center}
+.irishlife-atrc-results-holder .investment-options .investment-option-1:hover {box-shadow: 0px 5px 10px rgba(0,0,0,0.5)}
+.irishlife-atrc-results-holder .investment-options .investment-option-1 div{margin-top:10px}
+.irishlife-atrc-results-holder .investment-options .investment-option-2 {background-color:#5582ab;height:200px;text-align:center}
+.irishlife-atrc-results-holder .investment-options .investment-option-2:hover {box-shadow: 0px 5px 10px rgba(0,0,0,0.5)}
+.irishlife-atrc-results-holder .investment-options .investment-option-2 div{margin-top:10px}
+.irishlife-atrc-results-holder .investment-options .investment-option-3 {background-color:#5582ab;height:200px;text-align:center}
+.irishlife-atrc-results-holder .investment-options .investment-option-3:hover {box-shadow: 0px 5px 10px rgba(0,0,0,0.5)}
+.irishlife-atrc-results-holder .investment-options .investment-option-3 div{margin-top:10px}
+
+.mPDF-ilfs{
+
+font-family: 'Lato',arial,helvetica,sans-serif !important;
+}
+a.goBackPage{
+  text-decoration:none  !important;
+}
+#region-content .region-inner img {float:right}
+
+.field-name-field-basic-web-page-warning .field-item, .views-field-field-basic-web-page-warning .field-item, .field-name-field-financial-ad-warning .field-item {
+margin: 1.071em 0em 0em 0em;
+padding: 0.714em;
+border: 0.1em solid #000;
+font-family: inherit;
+font-style: inherit;
+font-variant: inherit;
+font-weight: bold;
+background: none;
+}
+.field-name-field-pdf-url,.field-name-field-call-to-action-link,.field-name-field-call-to-action-text-descri{
+  display:none;
+}
+
+.banner{
+  display:block;
+  height:60px;
+  width:300px;
+}
+.result-question-holder ul li.selected{
+font-size:13px;
+color:#000;
+margin:0px;
+padding:0px;
+color:#435399;
+}
+
+
+.result-question-holder ul li{
+  font-size:11px;
+  margin:0px;
+  padding:0px;
+  list-style: none;
+}
+.result-question-holder ul {
+  margin:0px;
+  padding:0px;
+  margin-bottom:10px;
+}
+.footer{
+
+  font-size:11px;
+  color: #888;
+}
+hr {
+  width:50%;
+  color: #dedede;
+  background-color: #dedede;
+  height: 1px;
+  margin:4px;
+
+}

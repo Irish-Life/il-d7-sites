@@ -1,0 +1,685 @@
+<?php
+/**
+ * Implementation of hook_block_info().
+ */
+function bpp_with_report_block_info() {
+  $blocks['bpp_with_report'] = array(
+    'info' => t('Business Protection Report'),
+  );
+  return $blocks;
+}
+
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+ /**
+ * Implementation of hook_block_permission().
+ */
+
+
+function bpp_with_report_permission() {
+  return array(
+    'bpp_with_report' => array(
+      'title' => t('Administer Document Smart Report'),
+      'description' => t('Perform administration tasks for Business Protection pathfinder with Report.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+
+function bpp_with_report_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#bpp_with_report":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function bpp_with_report_menu() {
+  
+ $items['admin/content/bpp_with_report'] = array(
+    'title' => 'Business Protection Pathfinder with report',
+    'description' => 'Settings for Business Protection Pathfinder with report',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('bpp_with_report_admin'),
+     'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM 
+   ); 
+   
+  $items['report/business-protection-pathfinder-report'] = array(
+    'title' => 'Generate PDF for Business Protection Pathfinder',
+    'page callback' => 'bpp_with_report_save_page',
+     'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+function bpp_with_report_admin(){
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', 'bline_document')
+                  ->execute();   
+
+  $entity_type = 'node';
+  $result = $query->execute();
+
+  if (!empty($result[$entity_type])) {
+    $entities = entity_load($entity_type, array_keys($result[$entity_type]));
+  }
+
+  $nodes = entity_load('node', array_keys($result['node']));
+
+
+  $stack = array();
+  foreach ($nodes as $node) {
+
+    if (!empty($node->field_bline_file_uploaded[und][0][uri]) || strlen($node->field_bline_file_uploaded[und][0][uri])>=5) {
+
+      $uriIn = $node->field_bline_file_uploaded[und][0][uri];
+      $dir_uri = file_stream_wrapper_get_instance_by_uri($uriIn);
+      $result = $dir_uri->getExternalUrl();
+      $stack[t($result)] = t($node->title);
+
+    }
+  }
+
+  asort($stack);
+
+  $form['bpp_with_report_protection_application_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Protection Application Form - CAB and Data Capture'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_protection_application_form'),
+  '#description' => t('global Protection Application Form - For all pages'),
+  );  
+
+  $form['bpp_with_report_how_to_complete_the_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('How To Complete The Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_how_to_complete_the_trust_form'),
+  '#description' => t('global How To Complete The Trust Form - for all pages with trust form'),
+  );   
+
+  //global docs
+
+  $form['bpp_with_report_partnership_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnership : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_underwriting_questionnaire'),
+  '#description' => t('Partnership : Underwriting Questionnaire - slides 5,6'),
+  );  
+
+  $form['bpp_with_report_partnership_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Legal Agreement Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_legal_agreement'),
+  '#description' => t('Partnerhip : Legal Agreement Form - slides 3,5,6'),
+  );    
+
+  $form['bpp_with_report_partnership_insurance_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Partnership Insurance Adviser Guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_insurance_adviser_guide'),
+  '#description' => t('Partnership Insurance Adviser Guide - slides 5,6'),
+  ); 
+
+  $form['bpp_with_report_partnership_own_life_in_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Own Life in Trust - Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_own_life_in_trust_form'),
+  '#description' => t('Partnerhip : Own Life in Trust - Trust Form - slide 6'),
+  );
+
+  $form['bpp_with_report_partnership_life_of_another_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Life Of Another How is the arrangement taxed?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_life_of_another_arrangement_taxed'),
+  '#description' => t('Partnerhip : Life Of Another How is the arrangement taxed? - slide 5'),
+  );  
+
+  $form['bpp_with_report_partnership_own_life_in_trust_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnerhip : Own Life in Trust How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_own_life_in_trust_arrangement_taxed'),
+  '#description' => t('Partnerhip : Own Life in Trust How is the arrangement_taxed? - slide 6'),
+  );     
+
+
+  $form['bpp_with_report_partnership_how_to_complete_the_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Partnership: How To Complete The Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_partnership_how_to_complete_the_trust_form'),
+  '#description' => t('Partnership : How To Complete The Trust Form - for all pages with trust form'),
+  );   
+
+  //key person
+
+  $form['bpp_with_report_key_person_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_key_person_underwriting_questionnaire'),
+  '#description' => t('Key Person : Underwriting Questionnaire - slides 16,18'),
+  );    
+
+  $form['bpp_with_report_key_person_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Keyperson cover – an advisers guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_key_person_adviser_guide'),
+  '#description' => t('Key Person : Keyperson cover – an advisers guide - slides 16,18'),
+  ); 
+
+  $form['bpp_with_report_key_person_you_and_your_business_brochure'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : You and your business brochure'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_key_person_you_and_your_business_brochure'),
+  '#description' => t('ey Person : You and your business brochure - slides 16,18'),
+  ); 
+
+  $form['bpp_with_report_key_person_loan_cover_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Loan Cover How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_key_person_loan_cover_arrangement_taxed'),
+  '#description' => t('Key Person : Loan Cover How is the arrangement taxed? - slide 16'),
+  );  
+
+  $form['bpp_with_report_key_person_loss_of_profits_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Key Person : Loss of Profits / Replacement Costs How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_key_person_loss_of_profits_arrangement_taxed'),
+  '#description' => t('Key Person : Loss of Profits / Replacement Costs How is the arrangement taxed? - slide 18'),
+  );     
+
+  //Personal Shareholder Protection
+
+  $form['bpp_with_report_personal_shareholder_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Shareholders Legal Agreement'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_personal_shareholder_legal_agreement'),
+  '#description' => t('Personal Shareholder : Shareholders Legal Agreement - slides 26,29,31'),
+  );  
+
+  $form['bpp_with_report_shareholder_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_shareholder_underwriting_questionnaire'),
+  '#description' => t('shareholder : Underwriting Questionnaire - slides 29,31,38'),
+  ); 
+
+  $form['bpp_with_report_personal_shareholder_buy_back'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : What happens after the buy back?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_personal_shareholder_buy_back'),
+  '#description' => t('Personal : What happens after the buy back? - slide 36'),
+  ); 
+
+  $form['bpp_with_report_shareholder_adviser_guide'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Shareholder Protection – an advisers guide'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_shareholder_adviser_guide'),
+  '#description' => t('Shareholder : Shareholder Protection – an advisers guide - slides 29,31,38'),
+  ); 
+
+  $form['bpp_with_report_shareholder_you_and_your_business_brochure'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : You and your business brochure'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_shareholder_you_and_your_business_brochure'),
+  '#description' => t('Shareholder : You and your business brochure - slides 29,38'),
+  ); 
+
+  $form['bpp_with_report_personal_shareholder_life_of_another_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Life of Another How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_personal_shareholder_life_of_another_arrangement_taxed'),
+  '#description' => t('Personal Shareholder : Life of Another How is the arrangement taxed? - slide 29'),
+  );
+
+  $form['bpp_with_report_shareholder_trust_form'] = array(
+  '#type' => 'select',
+  '#title' => t('Shareholder : Trust Form'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_shareholder_trust_form'),
+  '#description' => t('Shareholder : Trust Form - slide 31'),
+  );
+
+  $form['bpp_with_report_personal_shareholder_own_life_in_trust_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Personal Shareholder : Own Life in Trust How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_personal_shareholder_own_life_in_trust_arrangement_taxed'),
+  '#description' => t('Personal Shareholder : Own Life in Trust How is the arrangement taxed? - slide 31'),
+  );
+
+  //Corporate Shareholder Protection
+  $form['bpp_with_report_corporate_shareholder_legal_agreement'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : Shareholders Legal Agreement'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_corporate_shareholder_legal_agreement'),
+  '#description' => t('Corporate Shareholder : Shareholders Legal Agreement - slides 36,38'),
+  );  
+
+
+  $form['bpp_with_report_corporate_shareholder_arrangement_taxed'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : How is the arrangement taxed'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_corporate_shareholder_arrangement_taxed'),
+  '#description' => t('Corporate Shareholder : How is the arrangement taxed?- slide 38'),
+  );
+
+  $form['bpp_with_report_corporate_shareholder_buy_back'] = array(
+  '#type' => 'select',
+  '#title' => t('Corporate Shareholder : What happens after the buy back?'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_corporate_shareholder_buy_back'),
+  '#description' => t('Corporate Shareholder : What happens after the buy back? - slide 36'),
+  ); 
+
+
+  $form['bpp_with_report_sole_trader_underwriting_questionnaire'] = array(
+  '#type' => 'select',
+  '#title' => t('Sole Trader : Underwriting Questionnaire'),
+  '#options' => $stack,
+  '#default_value' => variable_get('bpp_with_report_sole_trader_underwriting_questionnaire'),
+  '#description' => t('Sole Trader : Underwriting Questionnaire - slides 44,46'),
+  ); 
+
+
+  return system_settings_form($form);
+}
+
+
+function bpp_with_report_theme(){
+  $themes = array (
+		'bpp_with_report' => array(
+			'template' => 'bpp_with_report_pages',
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates',
+		),
+    'report_1' => array(
+      'template' => 'report_a', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_2' => array(
+      'template' => 'report_b', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_3' => array(
+      'template' => 'report_c', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_4' => array(
+      'template' => 'report_d', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_5' => array(
+      'template' => 'report_e', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_6' => array(
+      'template' => 'report_f', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_7' => array(
+      'template' => 'report_g', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'report_8' => array(
+      'template' => 'report_h', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/reports',
+    ),
+    'document_modals' => array(
+      'template' => 'document_modals', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates',
+    ),
+    'report_forms' => array(
+      'template' => 'all_forms', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates/forms',
+    ),
+    'warnings' => array(
+      'template' => 'warnings', 
+      'path' => drupal_get_path('module', 'bpp_with_report') . '/templates',
+    ),
+	);
+  return $themes;
+}
+
+// Return the template for the main page
+function bpp_with_report_contents(){
+  return theme('bpp_with_report');
+}
+
+function get_business_protection_report_modals(){
+  return theme('document_modals');
+}
+
+function get_business_protection_report_forms(){
+  return theme('report_forms');
+}
+function get_business_protection_report_warnings(){
+  return theme('warnings');
+}
+
+
+// Return the template for the Reports
+function get_business_protection_report($report_id){
+  if($report_id=='a'){
+    return theme('report_1');
+  }
+  elseif($report_id=='b'){
+    return theme('report_2');
+  }
+  elseif($report_id=='c'){
+    return theme('report_3');
+  }
+  elseif($report_id=='d'){
+    return theme('report_4');
+  }
+  elseif($report_id=='e'){
+    return theme('report_5');
+  }
+  elseif($report_id=='f'){
+    return theme('report_6');
+  }
+  elseif($report_id=='g'){
+    return theme('report_7');
+  }
+  elseif($report_id=='h'){
+    return theme('report_8');
+  }
+}
+
+
+//#############################
+
+function bpp_with_report_save_page() {
+
+
+  $html = utf8_encode($html);
+
+  business_protection_report_mpdf_api($html, 'Your Business Protection Document - '.$time);
+
+
+}
+
+/**
+* PDF STUFF
+**/
+
+function business_protection_report_pdf_exists() {
+  $tools = array();
+
+  // Search for mpdf tool first.
+  $pattern = '/^mpdf.php$/';
+
+  // Libraries module to detect mPDF library in case of multisite installation.
+  $tools = array_keys(file_scan_directory(libraries_get_path('mpdf'), $pattern));
+
+  // mPDF library looked for in the module directory itself.
+  $tools = array_merge($tools, array_keys(file_scan_directory(drupal_get_path('module', 'pdf_using_mpdf'), $pattern)));
+
+  if (isset($tools[0])) {
+    require_once $tools[0];
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function business_protection_report_mpdf_api($html, $pdf_using_mpdf_pdf_filename = NULL) {
+
+  if (business_protection_report_pdf_exists() == TRUE) {
+    if ($pdf_using_mpdf_pdf_filename === NULL) {
+      $filename = explode(variable_get('pdf_using_mpdf_pdf_filename'), '[site:name]');
+      $pdf_using_mpdf_pdf_filename = token_replace($filename[0]);
+    }
+    _business_protection_report_mpdf_generator($html, $pdf_using_mpdf_pdf_filename);
+  }
+  else {
+    drupal_set_message(t('No mPDF Library Found', array(
+          '!default_module_path' => drupal_get_path('module', 'investment_profile_builder_save'),
+        )), 'warning');
+  }
+}
+
+
+function _business_protection_report_mpdf_generator($html, $filename = NULL) {
+  //$base_host = $hostname.':'.$port;
+  $stylesheet = 'business-protection-report.css'; // use this stylesheet for the page (in css folder)
+
+  // The settings for the PDF
+  $creator = "Irish Life Financial Services";
+  $author ="Irish Life Financial Services";
+  $title = "Your Business Protection Report";
+  $subject = "Irish Life - Your Business Protection  Report" ;
+
+  /**
+  * The HTML starts here. Add a Header and a Footer
+  **/
+
+  // Enabling header option if available.
+  $header = '<div class="irishlife-atrc-results-holder"></div>';
+  // Enabling Footer option if available.
+  //$footer = "<div class='footer'>".variable_get('investment_profile_builder_save_pdf_footer')."</div>";
+
+
+  ini_set('Display_errors', 'On');
+  error_reporting(E_ALL);
+
+  //$root_path = drupal_get_path('module', 'pdf_using_mpdf');
+  $module_path = drupal_get_path('module', 'bpp_with_report');
+  global $theme_path;
+
+  $page = 'A4';
+  $font_size = '12';
+
+  // DEFAULT PDF margin Values.
+  $margin_top = 20;
+  $margin_right = 15;
+  $margin_bottom = 26;
+  $margin_left = 15;
+  $margin_header = 10;
+  $margin_footer = 5;
+
+  //*****************************************
+  //*****************************************
+  //*****************************************
+  //*****************************************
+  // Creating Instance of mPDF Class Library.
+  $mpdf = new mPDF(
+    '',
+    array(210, 297), //size
+    $font_size,
+    $font_style,
+    $margin_left,
+    $margin_right,
+    $margin_top,
+    $margin_bottom,
+    $margin_header,
+    $margin_footer
+  );
+
+  $mpdf->setAutoTopMargin = 'stretch';
+  $mpdf->setAutoBottomMargin = 'stretch';
+  $mpdf->showImageErrors = true;
+  $mpdf->ignore_invalid_utf8 = true;
+
+  // you can make the document password protected
+  // $mpdf->SetProtection(array(), 'UserPassword', 'MyPassword');
+
+
+  // set document DPI
+  $mpdf->dpi = (int) variable_get('pdf_using_mpdf_dpi', 96);
+
+  // Set image DPI
+  $mpdf->img_dpi = (int) variable_get('pdf_using_mpdf_img_dpi', 96);
+  $mpdf->SetTitle($title);
+  $mpdf->SetAuthor($author);
+  $mpdf->SetSubject($subject);
+  $mpdf->SetCreator($creator);
+
+
+  // Setting CSS stylesheet to PDF.
+  //$stylesheet = variable_get('css/investment-profile-results.css');
+  $stylesheet_content = NULL;
+  if (isset($stylesheet) && $stylesheet != NULL) {
+    $css_file_module = file_scan_directory($module_path, '/.*\.css$/');
+    // Check module directory
+    if (isset($css_file_module[$module_path . '/css/' . $stylesheet])) {
+      $stylesheet_content = file_get_contents($module_path . '/css/' . $stylesheet);
+      $mpdf->WriteHTML($stylesheet_content, 1);
+    }
+  }
+
+  //$mpdf->SetHTMLHeader($header);
+  //$mpdf->SetHTMLFooter($footer);
+
+  //###############################
+  // Get the report contents at this point
+  //###############################
+  //#######
+  //#######
+  //
+
+  /*
+  ____  __    __  __ _  ____     __  ____ 
+  (  _ \(  )  (  )(  ( \(  __)   (  )(  __)
+   ) _ (/ (_/\ )( /    / ) _)  _  )(  ) _) 
+  (____/\____/(__)\_)__)(____)(_)(__)(____)
+  */
+
+  $reportid =  $_POST['report']; // very important
+
+  // now we know what the report is we should output that specific template html
+  $htmlPre = get_business_protection_report($reportid);
+  //
+  //#######
+  //#######
+  //#######
+  //###########################################
+
+  // Writing html content for pdf buffer.
+  $html = preg_replace("/<\\/?a(\\s+.*?>|>)/", "", $htmlPre);
+  $mpdf->WriteHTML("<div class='mPDF-ilfs'>".$html.'</div>');
+
+  // Generating PDF File.
+  switch(variable_get('pdf_using_mpdf_pdf_save_option')) {
+    case 1:
+      // Dialog box for Download as PDF.
+      $mpdf->Output($filename . '.pdf', 'D');
+      exit;
+      break;
+    case 2:
+      $folder = pdf_using_mpdf_get_folder();
+      if (is_dir(drupal_realpath($folder)) ) {
+        if (!pdf_using_mpdf_is_writable(drupal_realpath($folder))) { die('not writable');
+          if (drupal_rmdir($folder)) {
+            drupal_mkdir($folder);
+            drupal_chmod($folder, 0777);
+          }
+          else {
+            drupal_set_message(t("Please ensure that public folder is writable."));
+            exit;
+          }
+        }
+      } else {
+        if (pdf_using_mpdf_is_writable(drupal_realpath(file_build_uri('public://')))) {
+          drupal_mkdir($folder);
+          drupal_chmod($folder, 0777);
+        }
+        else {
+          drupal_set_message(t("Please ensure that public folder is writable."));
+          exit;
+        }
+      }
+      // Save to server 'Public file system path'.
+      $path = $folder . '/' . $filename . '.pdf';
+      $mpdf->Output($path , 'F');
+      drupal_goto($_SERVER['HTTP_REFERER']);
+      exit;
+      break;
+    case 0:
+    default:
+      // Open in same browser.
+      $mpdf->Output($filename . '.pdf', 'I');
+      exit;
+      break;
+  }
+
+  return TRUE;
+}
+//######################
+
+
+
+
+
+
+
+
+
+
+function bpp_with_report_block_view($delta = '') {  
+
+  switch($delta) {
+
+    case 'bpp_with_report':
+
+    $block['subject'] = t('');
+
+    if (user_access('access content')) {
+
+    // Use our custom function to retrieve data
+
+    drupal_add_css(drupal_get_path('module', 'bpp_with_report') . '/css/skeleton.css', array('group' => CSS_DEFAULT));
+    drupal_add_css(drupal_get_path('module', 'bpp_with_report') . '/css/business_protection.css', array('group' => CSS_DEFAULT));
+    drupal_add_css(drupal_get_path('module', 'bpp_with_report') . '/css/remodal.css', array('group' => CSS_DEFAULT));
+    drupal_add_css(drupal_get_path('module', 'bpp_with_report') . '/css/remodal-default-theme.css', array('group' => CSS_DEFAULT));
+    drupal_add_js(drupal_get_path('module', 'bpp_with_report') .'/js/jquery.redirect.js', array('scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'bpp_with_report') .'/js/remodal.js', array('scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'bpp_with_report') .'/js/business_protection.js', array('scope' => 'footer'));
+   
+
+    $pathfinder = bpp_with_report_contents(); // The pathfinder screens
+    $modals = get_business_protection_report_modals(); // all the document modals
+    $forms = get_business_protection_report_forms(); // all the document modals
+    $warnings = get_business_protection_report_warnings(); // The pathfinder warnings - after all the html
+
+    // No content in the last week
+
+    $block['content'] = $pathfinder.''.$modals.''.$forms.''.$warnings;
+
+  }
+
+  return $block;
+
+  }
+
+}

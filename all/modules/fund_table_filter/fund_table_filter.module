@@ -1,0 +1,122 @@
+<?php
+/**
+ * Implementation of hook_block_info().
+ */
+function fund_table_filter_block_info() {
+  $blocks['fund_table_filter'] = array(
+    'info' => t('Fund Table Filter'),
+  );
+  return $blocks;
+}
+
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function fund_table_filter_permission() {
+  return array(
+    'fund_table_filter' => array(
+      'title' => t('Administer Fund Table Filter'),
+      'description' => t('Perform administration tasks for Fund Centre.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+
+function fund_table_filter_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#fund_table_filter":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function fund_table_filter_menu() {
+  
+ $items['admin/content/fund_table_filter'] = array(
+    'title' => 'Fund Table Filter',
+    'description' => 'Settings for Bline Fund Table Filter',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_table_filter_admin'),
+    'access arguments' => array('fund_table_filter'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+   
+
+  return $items;
+}
+
+function fund_table_filter_admin()
+{
+
+	
+/*FIRST CALL TO ACTION FOR IRISH LIFE */	
+$form['fund_table_filter_data']=array(
+	'#type' => 'textarea',
+	'#title' => t('This is the data source'),
+	'#default_value' => variable_get('fund_table_filter_data','var tableData = [{"A": "3i Infrastructure Plc","B": "3i Asset Management Ltd","C": "Other","D": 1.4,"E": "JE00BYR8GK67","F": "GBP","G": "","H": "London Stock Exchange", "J": "3IN","K": "ClosedEnd"}'),
+	'#resizable' => FALSE,
+	'#rows' => 20,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Call To Action Title"),
+	'#required' => TRUE,	
+	);
+	
+   
+	return system_settings_form($form);
+}
+/**
+ * Page callback for /hello.
+ */
+
+
+
+
+function fund_table_filter_content(){
+
+	$base_url = $GLOBALS['base_url'];
+ $HTML =  '<script>'.variable_get('fund_table_filter_data','').'</script><div id="fundModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p class="modal-content-fund-info">Some text in the Modal..</p>
+  </div>
+
+</div>';
+  return $HTML;
+  //return '<div class="maincontent" style="margin-top:30px;">test</div>';
+  
+}
+
+function fund_table_filter_block_view($delta = '') {
+  switch($delta) {
+    case 'fund_table_filter':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = fund_table_filter_content();
+      // No content in the last week
+
+      $block['content'] = $result;
+      drupal_add_css(drupal_get_path('module', 'fund_table_filter') . '/css/tabulator.min.css', array('group' => CSS_DEFAULT));
+      drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/jquery-1.9.1.js');
+      //drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/jquery-2.2.4.min.js');
+      drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/jquery-ui.min.1.11.js');
+     // drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/jquery-ui.min.js');
+      drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/tabulator.min.js');
+	  
+      drupal_add_js(drupal_get_path('module', 'fund_table_filter') .'/js/fund-table-filter.js');
+
+
+    }
+    return $block;
+  }
+ }
+ 

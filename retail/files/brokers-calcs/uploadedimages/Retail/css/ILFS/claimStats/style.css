@@ -1,0 +1,181 @@
+.IL{
+/*width:700px;*/
+height:575px;
+/*margin-left:40px;*/
+}
+.chart{
+position:absolute;
+width:700px;
+height:600px;
+}
+.map{
+position:absolute;
+left:0px;
+width:400px;
+height:500px;
+top:50px;
+}
+#map-holder{
+/*border: 1px solid #E6E6E6;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;*/
+}
+#counties path {
+stroke:white;
+stroke-width:1px;
+cursor:pointer;
+}
+#counties selectCounty {
+stroke:red;
+stroke-width:1px;
+cursor:pointer;
+}
+#arcs path {
+cursor:pointer;
+fill: none;
+stroke-opacity: .9;
+}
+.inspector{
+fill:white;
+opacity:.6;
+stroke-width:1;
+stroke:rgb(255,0,0);
+width:0;
+height:0;
+}
+.inspectorText{
+font:verdana;
+font-size:0px;
+}
+.close{
+cursor:pointer;
+float:right;
+padding-right:2px;
+background-image:url('/uploadedImages/retail/img/close.png');
+background-repeat:no-repeat;
+width:16px;
+height:18px;
+margin-top:20px;
+opacity:0;
+}
+.tooltip{
+position: absolute;
+display: block;
+text-align:center;
+z-index: 1000;
+width: auto;
+height: auto;
+padding: 5px;
+font:12px sans-serif;
+background: white;
+opacity: .9;
+visibility: hidden;
+color: #464646;
+border-radius: 4px;
+border:1px solid black;
+}
+.box_shadow:hover
+{
+box-shadow: 0 2px 1px rgba(0, 0, 0, 0.9);
+-moz-box-shadow: 0 0 1px #aaa inset;
+-webkit-box-shadow: 0 0 1px #aaa inset;
+} 
+.box_shadow{
+box-shadow: 0 4px 3px rgba(0, 0, 0, 0.9);
+-moz-box-shadow: 0 0 2px #aaa;
+-webkit-box-shadow: 0 0 4px #aaa;
+}
+.textShadow {
+-webkit-filter: drop-shadow( -5px -5px 5px #000 );
+filter: drop-shadow( -5px -5px 5px #000 ); 
+}
+.button{
+display:table;
+border-radius:4px;
+border:1px solid #4d4e53;
+background: #f19c2b;
+top:364px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+font: 12px sans-serif;
+padding:2px;
+position:absolute;
+width:90px;
+height:26px;
+text-align:center;
+z-index:100;
+-webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+}
+.buttonHolder{
+width:auto;
+height:auto;
+}
+.internal{
+display:table-cell; 
+vertical-align:middle;
+width:100%;
+height:auto;
+font:12px sans-serif;
+text-align:center;
+}
+.SIC{
+left:210px;
+}
+.DC{
+left:310px;
+}
+.selected{
+background:green;
+color:white;
+}
+.line{
+border:1px;
+border-style:none dashed none none;
+width:1px;
+height:410px;
+position:absolute;
+z-index:-100;
+}
+.textBox{
+visibility:hidden;
+position:absolute;
+top:40px;
+width:400px;
+font-size:12px;
+padding:5px;
+box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+background:white;
+z-index:102;
+}
+.info{
+left:410px;
+}
+.bubble{
+position:absolute;
+border-radius:50px;
+background:#f19c2b;
+border:1px solid black;
+opacity:.7;
+}
+.pieDiv{
+position:absolute;
+}
+.barLabel{
+position:relative;
+font-size:10px;
+width:163px;
+}
+.value{/*for Pies*/
+font-size:9px;
+}
+.label{/*for Pies*/
+font-size:9px;
+}
+.centerRollover{
+opacity:.8;
+fill:white;
+}

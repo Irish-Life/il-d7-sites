@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function ga_event_track_block_info() {
+  $blocks['eventTrack'] = array(
+    'info' => t('Event Tracking Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function ga_event_track_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#callback":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function ga_event_track_block_view($delta = '') {
+  switch($delta) {
+    case 'eventTrack':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      drupal_add_js(drupal_get_path('module', 'ga_event_track') . '/js/event-track.js');
+    }
+    return $block;
+  }
+ }
+

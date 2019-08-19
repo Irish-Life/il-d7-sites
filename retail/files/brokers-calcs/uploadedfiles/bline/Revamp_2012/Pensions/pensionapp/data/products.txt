@@ -1,0 +1,18 @@
+﻿[
+    {
+        "products": [
+            {
+                "id": "CB1PSAA",
+                "name": "Complete Solutions 1 Bond"
+            },
+            {
+                "id": "CA1RSAA",
+                "name": "A(M)RF1"
+            },
+            {
+                "id": "C1RBSAA",
+                "name": "PRB 1"
+            }
+        ]
+    }
+]

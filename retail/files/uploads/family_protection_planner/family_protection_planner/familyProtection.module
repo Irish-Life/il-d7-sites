@@ -1,0 +1,989 @@
+<?php
+
+/**
+ * Implementation of hook_block_info(). */
+ 
+ function familyProtection_permission() {
+  return array(
+    'administer_familyProtection' => array(
+      'title' => t('Administer Family Protection Planner'),
+      'description' => t('Perform administration tasks for Family Protection Planner.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+function familyProtection_block_info() {
+  $blocks['familyProtection'] = array(
+    'info' => t('familyProtection Block'),
+  );
+  return $blocks;
+}
+
+function familyProtection_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#familyProtection":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function familyProtection_menu() {
+
+  	$items = array();
+
+    $items['life-insurance/life-insurance-calculators/family-protection-planner/js/aib'] = array(
+    'page callback' => '_familyProtection_public_js',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
+   
+  return $items;
+  
+}
+
+
+function _familyProtection_public_js() {
+	$snip = str_replace(array("\n", "\t", "\r"), ' ', '<div id="pageTitle"></div>'.familyProtection_contents());
+	$snip = str_replace('\'','&apos;',$snip);
+	$snip = str_replace('  ',' ',$snip);
+	$base_url = $GLOBALS['base_url'];
+    //$baseURL = "http://localhost:9090/";
+    //$baseURL = "https://irishlife-ebiz.net/retail-websites/";	
+	$matches = '
+	var amILoggedIn = false;
+function addFileToHead(filePath, fileType) {
+
+	var headID = document.getElementsByTagName("head")[0];
+	var newFile = \'\';
+	if (fileType == \'script\') {
+		newFile = document.createElement(\'script\');	
+		newFile.type = \'text/javascript\';
+		newFile.src = filePath;
+	}
+	else
+	{
+		newFile = document.createElement(\'link\');	
+		newFile.type = \'text/css\';
+		newFile.rel = \'stylesheet\';
+		newFile.media = \'all\';
+		newFile.href = filePath;
+	}
+	headID.appendChild(newFile);
+}
+
+var baseURL = "'.$base_url.'/";
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css\', \'css\');
+//addFileToHead(\'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\', \'css\');
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css\',\'css\');
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css\',\'css\');
+addFileToHead(baseURL + \'sites/all/themes/irishlife/css/font-awesome.css\',\'css\');
+addFileToHead(baseURL + \'sites/all/modules/family_protection_planner/css/familyProtection.css\', \'css\');
+addFileToHead(baseURL + \'sites/all/modules/family_protection_planner/css/responsive.css\', \'css\');
+addFileToHead(baseURL + \'sites/all/modules/family_protection_planner/testing/aib.css\', \'css\');
+
+addFileToHead(\'https://www.irishlife.ie/servlet/occupationDataSelect.js\', \'script\');
+//addFileToHead(baseURL + \'sites/all/modules/jquery_update/replace/jquery/1.9/jquery.min.js?v=1.9.1\', \'script\');
+//addFileToHead(baseURL + \'misc/jquery.once.js?v=1.2\', \'script\');
+//addFileToHead(baseURL + \'misc/drupal.js\', \'script\');
+addFileToHead(baseURL + \'sites/all/modules/pension_calc/js/jquery-ui.slider.min.js\', \'script\');
+addFileToHead(baseURL + \'sites/all/modules/javascript/js/jquery.ui.touch-punch.min.js\', \'script\');
+//addFileToHead(baseURL + \'sites/all/modules/javascript/js/jquery-ui.min.js\', \'script\');
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js\', \'script\');
+addFileToHead(baseURL + \'sites/all/modules/family_protection_planner/js/familyProtection.js\', \'script\');
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js\',\'script\');
+addFileToHead(\'https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js\',\'script\');
+addFileToHead(baseURL + \'sites/all/modules/javascript/js/mk-uncompressed.js\',\'script\');
+addFileToHead(baseURL + \'sites/all/modules/family_protection_planner/js/knob.js\',\'script\');
+
+
+	$(\'#familyProtectionPlannerDiv\').html(\''.$snip.'\');';
+
+  familyProtection_app_public_output($matches.''.$css.''.$js);
+}
+function familyProtection_app_public_output($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'application/javascript');
+
+  if (isset($var)) {
+   // echo drupal_json_encode($var);
+    echo $var;
+  }
+}
+
+
+
+
+function familyProtection_contents(){
+	$base_url = $GLOBALS['base_url'];
+	$channel = getChannelInUse();
+	
+  return    '  			    			
+  '.(($channel != 'aib' && $channel != 'ptsb' && $channel != 'ub') ? '
+  <!-- JQuery Modal for Online Services Login -->
+	<div id="login-modal" class="modal" style="border: none; max-width: 450px; background: none; box-shadow: none; ">
+		<div id="login-modal-content" class="modal-content" style="padding: 0; max-height: none; background: none; ">
+		<a class="close-login" href="#close-modal" rel="modal:close"><i class="fa fa-times" aria-hidden="true" style="color: white;
+    font-size: 24px;""></i></a>
+		<iframe class="modal-frame" src="/myonlineservices/account/login1modal" style="height: 100vh; width: 100%; border: none; " allowtransparency="true" ></iframe>
+		 <!-- ************* THIS IS WHERE THE MODAL IS INSERTED ********************************************** -->  
+		</div>
+	</div>':'').'
+	
+     <!-- /////////////////////////////////////////////// MODALS ///////////////////////////////////////////////////////////////// -->	
+	 <!-- ************************************** NOT SURE POPUP ***************************************** -->
+<!-- Callback Modal -->
+	<div id="notSure" class="modal" style="display:none;">
+	<div class="modal-head col-lg-12 col-sm-12 col-12">
+	Request a callback <a href="#" class="close-this"><i class="fa fa-times"></i></a>
+	</div>
+		<div class="modal-content">
+			<p>If you have questions then talk to a qualified Irish Life Financial Services advisor now. Irish Life Financial Services Limited is tied to Irish Life Assurance plc for life and pensions.<br/> Use the call back form to send your details.<br><br/>Your personal details will only be used for the purpose of dealing with your request. </p>
+						<form autocomplete="off" id="notSureForm">
+							<div class="form-group" style="margin-top: 20px">
+								<label for="notSurename">Name</label> 
+								<span class="warning" id="notSureNameError" style="display:none">Please enter your name</span> 
+								<br/>
+								<input class="form-control" id="notSureName" name="name" placeholder="" type="text" value="">
+							</div>
+							<div class="form-group">
+								<label for="notSurePhone">Phone Number</label> 
+								<span class="warning" id="notSurePhoneError" style="display:none">Please enter your phone number</span> 
+								<br/>
+								<input class="form-control" id="notSurePhone" name="phone" placeholder="" type="number" value="">
+							</div>
+							<div class="form-group">
+								<label for="notSureEmail">Email (optional)&nbsp;&nbsp;<i class="fa fa-question-circle tooltip" style="color: grey; z-index: 0;"><span class="tooltiptext">We will use it to contact you in case we will be unable to reach you by phone.      </span></i></label> 
+								<span class="warning" id="notSureEmailError" style="display:none">Please enter a valid email</span> 
+								<br/>
+								<input class="form-control" id="notSureEmail" name="email" placeholder="" type="email" value="">
+							</div>
+							<div class="form-group" id="callback-btns">
+								<label>Best time to call</label><br>
+								<span class="warning" id="notSureTimeError" style="display:none">Please select a time<br></span> 
+								<br/>
+								<input class="time" id="notSureBefore12" name="time-to-call-notSure" type="radio" value="call before 12">
+								<label for="notSureBefore12">Before 12</label>
+								<input class="time btn 12-5" id="notSure12-5" name="time-to-call-notSure" type="radio" value="call between 12 - 5">
+								<label for="notSure12-5">12 - 5</label>
+								<input class="time btn after5" id="notSureAfter5" name="time-to-call-notSure" type="radio" value="call after 5">
+								<label for="notSureAfter5">After 5</label>
+							</div>
+							<div id="notSureSubmit" class="notSureSubmit campaign-callback-requested">
+							Submit
+							</div>
+						</form>
+					
+					<div id="notSureSent" class="hidden">
+					<p>Thank you for your message, we will be in touch with you as soon as possible</p>
+					</div>
+		  </div>
+		  <div class="modal-footer" style="text-align:left">
+			<small>In the interest of customer service, calls will be recorded and monitored. </small>
+		  </div>
+		</div>
+		
+	<!-- Lumpsum on death -->
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal" id="death-modal" role="dialog" tabindex="-1">
+		<div class="modal-head col-lg-12 col-sm-12 col-12">
+			How do we calculate your needs on Lump sum on death
+			<a href="#" class="close-this"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="modal-content">
+			<div class="col-lg-12 col-sm-12 col-12">
+				<p><strong>Lump sum on death</strong> is paid as a lump sum to your family if you die. The level of cover decreases over time in line with the income you need.<br>
+				<br>
+				The amount is calculated by taking your net income, minus state benefits and any mortgage payments covered by mortgage protection multiplied by the term. <span class="stateBenefitDesc">State widows benefit of <strong>€<span class="widowsPension">0</span></strong> plus an additional <strong>€<span class="childBenefit">0</span></strong> for each child per month is assumed.<br>
+				The level of state benefit is dependent on the number of PRSI contributions - we assume 48 or more in this instance.</span><br>
+				If you have a mortgage, we assume that you have mortgage protection in place.
+				<br/>
+				<br/>
+				Term is calculated on your youngest child reaching age <strong>25</strong> or the remaining term of your mortgage.<br></p><br>
+				<div class="col-lg-6 your-needs-death">
+					<p>Your Needs</p>
+					<div class="top-slice">
+						Your Income Gap = <span class="money income-gap"></span>
+					</div>
+					<div class="mid-slice">
+						Monthly <span class="MortOrrent"></span> = <span class="money" id="insert-mortgage"></span><br>
+						<strong>Paid off on death</strong>
+					</div>
+					<div class="bot-slice">
+						State Benefit = <span class="money state-benefit"></span>
+					</div>
+				</div>
+				<div class="col-lg-6 partner-info partner-needs-death hidden">
+					<p>Partner Needs</p>
+					<div class="top-slice">
+						Your Income Gap = <span class="money income-gap-partner"></span>
+					</div>
+					<div class="mid-slice">
+						Monthly <span class="MortOrrent"></span> = <span class="money" id="insert-mortgage-partner"></span><br>
+						<strong>Paid off on death</strong>
+					</div>
+					<div class="bot-slice">
+						State Benefit = <span class="money state-benefit"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Income on Illness -->
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal" id="illness-modal" role="dialog" tabindex="-1">
+	<div class="modal-head col-lg-12 col-sm-12 col-12">
+			How do we calculate your needs on Income on Illness
+			<a href="#" class="close-this"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="modal-content">
+			<div class="col-lg-12 col-sm-12 col-12">
+				<p>Protect your income on illness will cover your essential bills (eg. mortgage or rent) if you\'re unable to work because of illness or injury.<br>
+				<br>
+				The amount is calculated using your monthly mortgage or rent amount, plus <strong>€300</strong> for essential bills. A deferral period option of <span class="decreasingCover">8</span><span class="levelTerm">26</span> weeks is assumed; however other deferral period options are available. The amount is capped at <strong>€2,000</strong> per person or <strong>40% of monthly net income</strong>, whichever is lower.
+				<br/>
+				<br/>
+				Term is based on your youngest child reaching <strong>age 25</strong> or the remaining term of your mortgage. <span class="partner-billpay-explanation">The amount of cover is split between you and your partner based on net monthly salary.</span></p><br>
+				<div class="col-lg-6 your-billpay-needs">
+					<p>Your Needs</p>
+					<div class="full-slice">
+						<span class="money" id="incomeIllBill1"></span><br>
+						to pay for your essentials.
+						<p>Bills <span class="money bills1">€300</span><br>
+						<span class="MortOrrent"></span> <span class="money" id="billPayMortgage1"></span></p>
+					</div>
+				</div>
+				<div class="col-lg-6 partner-billpay-needs">
+					<p>Partner\'s Needs</p>
+					<div class="full-slice" style="background-color: #175283;">
+						<span class="money" id="incomeIllBill2"></span><br>
+						to pay for your essentials.
+						<p><Bills <span class="money bills2">€300</span><br>
+						<span class="MortOrrent"></span> <span class="money" id="billPayMortgage2"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Lumpsum Specified Illness -->
+	<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal" id="specified-modal" role="dialog" tabindex="-1">
+	<div class="modal-head col-lg-12 col-sm-12 col-12">
+			How do we calculate your needs on Specified Illness
+			<a href="#" class="close-this"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="modal-content">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+				<p><strong>Lump sum on specified illness</strong> is paid to help you ​recover without additional financial worries. The amount is calculated as <strong><span class="sicAmountCalcDisplay">one year\'s</span> net salary</strong>.<br>
+				<br>
+				Term is based on your youngest child reaching <strong>age 25</strong> or the remaining term of your mortgage.<br>
+				<br>
+				If you are over <strong>65 years of age</strong>, you are not eligible for this benefit.<br></p><br>
+				<div class="col-lg-6 your-needs-specIll">
+					<p>Your Needs</p>
+					<div class="full-slice">
+						We will provide you with <span class="illnessSalaryYears1">one year\'s</span> net salary<br>
+						<span class="money" id="salary"></span>
+					</div>
+				</div>
+				<div class="col-lg-6 partner-info partner-needs-specIll hidden">
+					<p>Partners Needs</p>
+					<div class="full-slice" style="background-color:#175283">
+						We will provide you with<br>
+						<span class="illnessSalaryYears2">one year\'s</span> net salary<br>
+						<span class="money" id="salary-partner"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" id="family-protection-planner">
+	<p class="contact-us anyCallbackButton"><a href="#notSure" rel="modal:open" style="color:#2196f3;font-size:14px;text-decoration:none"><i class="fa fa-comments"></i>&nbsp;&nbsp;Request a callback</a></p>
+		<div class="row centered steps-menu">
+			<div class="col-lg-4 col-sm-4 col-4 item active" id="about-menu">
+				About You
+			</div>
+			<div class="col-lg-4 col-sm-4 col-4 item" id="income-menu">
+				Your Income
+			</div>
+			<div class="col-lg-4 col-sm-4 col-4 item" id="existing-menu">
+				Existing Cover
+			</div>
+		</div><!-- ********************** ABOUT SCREEN *********************** -->
+		<div id="about-you">
+			<div class="row mt">
+				<div class="col-lg-12 col-sm-12 col-12 heading">
+					About you
+				</div>
+				<div class="col-lg-12 col-sm-12 col-12 centered form-content">
+					<div class="col-lg-6 col-lg-offset-3 col-sm-8 col-12 form" id="about-form">
+						<div class="form-group" id="your-age">
+							<label for="about-age" id="age-label">Your age</label><br>
+							<span class="warning3" style="display:none;color:red">You must be of age 18 - 75</span> <input class="form-control" id="about-age" max="75" min="18" required="" type="number" value="">
+							<div></div>
+						</div>
+						<div class="form-group" id="marital-status">
+							<label id="marital-label">Are you Married or in a Civil Partnership?</label><br>
+							<input id="radio-married" name="about-rel" type="radio" value="Married"> <label class="rel-status" for="radio-married">Yes</label><input id="radio-single" name="about-rel" type="radio" value="Single"> <label class="rel-status" for="radio-single">No</label> 
+						</div>
+						<div class="form-group">
+							<label for="occupation" id="occ-label">What is your occupation?</label>
+							<div id="about-occ"></div>
+							<div class="hidden" id="occupationClass1"></div>
+							<div class="hidden" id="phiOccClass1"></div>
+						</div>
+						<div class="form-group" id="smoke-status">
+							<label id="smoker-label">Do you smoke or use e-cigarettes?&nbsp;&nbsp;<i class="fa fa-question-circle tooltip" style="color: grey; z-index: 0;"><span class="tooltiptext">A Non-smoker has not smoked or used any nicotine replacement or e-cigarettes in the last 12 months</span></i></label><br>
+							<input id="radio1" name="radiosSmoker" type="radio" value="yes"> <label class="smoke" for="radio1">Yes</label> <input id="radio2" name="radiosSmoker" type="radio" value="no"> <label class="smoke" for="radio2">No</label>
+						</div>
+						<div class="form-group" id="how-many-children">
+							<label for="age">How many children do you have?</label> <select class="form-control" id="childNum" name="children">
+								<option selected value="0">
+									None
+								</option>
+								<option value="1">
+									1
+								</option>
+								<option value="2">
+									2
+								</option>
+								<option value="3">
+									3
+								</option>
+								<option value="4">
+									4
+								</option>
+								<option value="5">
+									5
+								</option>
+								<option value="6">
+									6
+								</option>
+								<option value="7">
+									7
+								</option>
+								<option value="8">
+									8
+								</option>
+								<option value="9">
+									9
+								</option>
+								<option value="10">
+									10
+								</option>
+							</select>
+						</div>
+						<div class="form-group" id="youngest-child">
+							<label for="age">How old is your youngest child?</label>
+							<select class="form-control" id="family-age">
+								<option disabled selected value="please-select">
+									Please Select
+								</option>
+								<option value="0">
+									Newborn
+								</option>
+								<option value="1">
+									1
+								</option>
+								<option value="2">
+									2
+								</option>
+								<option value="3">
+									3
+								</option>
+								<option value="4">
+									4
+								</option>
+								<option value="5">
+									5
+								</option>
+								<option value="6">
+									6
+								</option>
+								<option value="7">
+									7
+								</option>
+								<option value="8">
+									8
+								</option>
+								<option value="9">
+									9
+								</option>
+								<option value="10">
+									10
+								</option>
+								<option value="11">
+									11
+								</option>
+								<option value="12">
+									12
+								</option>
+								<option value="13">
+									13
+								</option>
+								<option value="14">
+									14
+								</option>
+								<option value="15">
+									15
+								</option>
+								<option value="16">
+									16
+								</option>
+								<option value="17">
+									17
+								</option>
+								<option value="18">
+									18
+								</option>
+								<option value="19">
+									19
+								</option>
+								<option value="20">
+									20
+								</option>
+								<option value="21">
+									21
+								</option>
+								<option value="22">
+									22
+								</option>
+								<option value="23">
+									23
+								</option>
+								<option value="24">
+									24
+								</option>
+								<option value="25">
+									25
+								</option>
+							</select>
+							 <p class="warningChild" style="color:red">Please enter an age</p>
+						</div>
+						<div class="form-group">
+							<div class="partner" style="font-weight:bold">
+								<i class="fa fa-plus"></i> Add a partner
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- ********************** PARTNER SCREEN *********************** -->
+			<div class="hidden" id="partner-fields">
+				<div class="row">
+					<div class="col-lg-12 col-sm-12 col-12 heading" style="border-top:0px">
+						About your partner
+					</div>
+					<div class="col-lg-12 col-sm-12 col-12 centered form-content">
+						<span class="close-btn" style="float:right;color:#2196f3;cursor:pointer;font-weight:bold"><i aria-hidden="true" class="close-btn fa fa-times"></i>&nbsp;&nbsp;Remove Partner</span>
+						<div class="col-lg-6 col-lg-offset-3 col-sm-8 col-12 form">
+							<div class="form-group">
+								<label for="partner-age" id="partner-age-label">Your partner age</label>
+                                <br/>
+								<span class="warning4" style="display:none">Your partner must be of age 18 - 75</span> <input class="form-control" id="partner-age" max="75" min="18"  type="number" value="">
+								<br/>
+								<div></div>
+							</div>
+							<div class="form-group">
+								<label for="partner-occ" id="partner-occ-label">What is your partner occupation?</label>
+								<div id="partner-occ"></div>
+								<div class="hidden" id="occupationClass2"></div>
+								<div class="hidden" id="phiOccClass2"></div>
+							</div>
+							<div class="form-group" id="partner-smoke">
+								<label id="partner-smoke-label">Does your partner smoke or use e-cigarettes?&nbsp;&nbsp;<i class="fa fa-question-circle tooltip" style="color: grey; z-index: 0;"><span class="tooltiptext">A Non-smoker has not smoked or used any nicotine replacement or E-cigarettes in the last 12 months</span></i></label><br>
+								<input id="radio7" name="radiosPartner" type="radio" value="yes"> <label class="smoke" for="radio7">Yes</label> <input id="radio8" name="radiosPartner" type="radio" value="no"> <label class="smoke" for="radio8">No</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-4 col-sm-12 col-12 offset-lg-4">
+					<div class="nextButton next">
+						Next&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+					</div><small id="about-warning"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Please fill out the highlighted fields</small>
+				</div>
+			</div>
+		</div><!-- ********************** INCOME SCREEN *********************** -->
+		<div class="hidden" id="your-income">
+			<div class="row mt">
+				<div class="col-lg-12 col-sm-12 col-12 heading">
+					Your Income
+				</div>
+				<div class="col-lg-12 col-sm-12 col-12 centered form-content">
+					<div class="col-lg-6 col-lg-offset-3 col-sm-8 col-12 form" id="income-form">
+						<div class="form-group">
+							<label for="range1" id="income-label">Your net income per month</label> <span style="color:#5261ac;font-weight:bold;">&euro;</span><output class="output1"></output> <input class="range1" data-rangeslider="" id="range1" max="8000" min="500" step="50" type="range" value="1000">
+						</div>
+						<div class="form-group partnerSlide hidden">
+							<label for="range5" id="partner-income-label">Your partners net income per month</label> <span style="color:#5261ac;font-weight:bold">&euro;</span><output class="output5"></output> <input class="range5" data-rangeslider="" id="range5" max="8000" min="500" step="50" type="range" value="1000">
+						</div>
+						<div class="form-group">
+							<label for="range2" id="rent-label">Your mortgage / rent per month</label> <span style="color:#5261ac;font-weight:bold">&euro;</span><output class="output2"></output> <input class="range2" data-rangeslider="" id="range2" max="3000" min="0" step="50" type="range" value="100">
+						</div>
+						<div class="form-group">
+							<label for="income-age">If you have a mortgage - how many years do you have left for payments (max 35)</label>
+                            <br/>
+							<span class="warning2" style="display:none;color:red">This cannot be more than 35</span> 
+							<br/>
+							<input class="form-control" id="income-age" max="35" min="0" placeholder="Enter years" type="number">
+							<br/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-4 order-lg-2 col-sm-4 order-sm-2  col-12">
+					<div class="nextButton income-next">
+						Next&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+					</div>
+				</div>
+				<div class="col-lg-4 order-lg-1 col-sm-4 order-sm-1  col-12">
+					<div class="income-prev prevButton">
+						<i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Previous
+					</div>
+				</div>
+			</div>
+		</div><!-- ********************** EXISTING COVER SCREEN *********************** -->
+		<div class="hidden" id="existing-cover">
+			<div class="row mt">
+				<div class="col-lg-12 col-sm-12 col-12 heading">
+					Existing Cover
+				</div>
+				<div class="col-lg-12 col-sm-12 col-12 centered form-content">
+					<div class="col-lg-6 col-lg-offset-3 col-sm-8 col-12 form" id="existing-form">
+						<label id="current-label">You currently have:</label><br>
+						<br>
+						<div class="form-group">
+							<input id="radio11" type="checkbox" value=""> <label for="radio11" id="incomeProt-label">Income Protection</label>
+						</div>
+						<div class="form-group slider-form">
+							<input id="radio-life-ins" class="tick2" type="checkbox" value=""> <label for="radio-life-ins" id="life-ins-label">Life Insurance&nbsp;&nbsp;<i class="fa fa-question-circle tooltip" style="color: grey; z-index: 0;"><span class="tooltiptext">Life Insurance does not include Mortgage Protection</span></i></label> <span class="life-ins-slider hidden"><br><br/>
+							<small>Amount of Life Insurance</small> <span class="price"><span style="color:#5261ac;font-weight:bold;display:inline-block">&nbsp;&nbsp;&euro;</span><output class="output3 life-ins-slider hidden"></output></span> <input class="range3" data-rangeslider="" max="500000" min="0" step="1000" type="range" value="0"></span>
+						</div>
+						<div class="form-group slider-form">
+							<input id="radio-spec-ill" class="tick3" type="checkbox"> <label for="radio-spec-ill" id="radio-spec-label">Specified Illness Cover</label> <span class="spec-ill-slider hidden"><br><br/>
+							<small>Amount of Specified Illness</small><span style="color:#5261ac;font-weight:bold;display:inline-block">&nbsp;&nbsp;&euro;</span><output class="output4 spec-ill-slider hidden"></output> <input class="range4" data-rangeslider="" max="100000" min="0" step="1000" type="range" value="0"></span>
+						</div>
+					</div>
+					<hr style="width:50%;margin: 0 auto; margin-bottom: 10px;" id="divider">
+					<div class="col-lg-6 col-lg-offset-3 col-sm-12 col-12 form hidden" id="partner-existing-fields">
+						<label>You partner currently has:</label><br>
+						<br>
+						<div class="form-group">
+							<input id="radio9" type="checkbox" value=""> <label for="radio9" id="partner-incomeProt-label">Income Protection</label>
+						</div>
+						<div class="form-group">
+							<input id="radio-life-ins-partner" class="tick4" type="checkbox" value=""> <label for="radio-life-ins-partner" id="partner-life-ins-label">Life Insurance</label> <span class="life-ins-slider-partner hidden"><br><br/>
+							<small>Amount of Life Insurance</small> <span style="color:#5261ac;font-weight:bold;display:inline-block">&euro;</span><output class="output6 life-ins-slider-partner hidden"></output> <input class="range6" data-rangeslider="" max="500000" min="0" step="1000" type="range" value="1000"></span>
+						</div>
+						<div class="form-group">
+							<input id="radio-spec-ill-partner" class="tick5" type="checkbox"> <label for="radio-spec-ill-partner" id="partner-spec-label">Specified Illness Cover</label> <span class="spec-ill-slider-partner hidden"><br><br/>
+							<small>Amount of Specified Illness</small><span style="color:#5261ac;font-weight:bold;display:inline-block">&euro;</span><output class="output7 spec-ill-slider-partner hidden"></output> <input class="range7" data-rangeslider="" max="100000" min="0" step="1000" type="range" value="1000"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-4 order-lg-2 col-sm-4 order-sm-2 col-12">
+					<div class="nextButton existing-next result">
+						Get your results
+					</div>
+				</div>
+				<div class="col-lg-4 order-lg-1 col-sm-4 order-sm-1 col-12">
+					<div class="existing-prev prevButton">
+						<i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Previous
+					</div>
+				</div>
+			</div>
+		</div><!-- ********************************** YOUR RESULTS ************************************* -->
+		<div class="hidden" id="your-quote">
+			<div class="row mt">
+				<div class="col-lg-8 col-sm-8 col-12 heading changeBroker">
+					<div class="row">
+						<div class="col-lg-9 col-sm-9 col-12">
+							Potential needs
+						</div>
+						<div class="col-lg-3 col-sm-3 col-12">
+							<span id="and">&</span> Guide Price
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 offset-1 col-sm-3 col-12 heading brand-color hideMobResults brokerHide" style="font-weight:normal">
+					What\'s the next step?
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-sm-8 col-12 heading changeBroker" style="border-top:0px;:0px;text-align:left;">
+					<div class="row">
+						<div class="col-lg-9 col-sm-9 col-6 quotehidden">
+							<div class="quote-box quote-box1 quote-boxes">
+								<p class="resultsHeading brand-color"><i class="fa fa-check death-tick"></i>&nbsp;&nbsp;Lump sum on Death</p>
+								<p class="you-info" style="color:grey"><em>Lump sum on death is paid as a lump sum to your family if you die.<br/><span class="decreasingCover decreasingCoverStyle">Cover decreases over time.</span></em></p>
+								<p class="you-info-death"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> may have a need for an initial lump sum of <strong><span class="number" id="lumpsumDeath"></span></strong> for a term of <strong><span class="term1Life"></span>.</strong></p>
+								<p class="ifcovered-message hidden"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> don\'t need Lump sum on Death</p>
+								<p class="partner-info partner-info-death hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> may have a need for an initial lump sum of <strong><span class="number" id="lumpsumDeathPartner"></span></strong> for a term of <strong><span class="term2Life"></span>.</strong></p>
+								<p class="ifcovered-message-partner hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> doesn\'t need Lump sum on Death</p>
+								<p class="you-info hideOnPrint" style="color:#50c9b5;font-size:12px;"><a href="#death-modal" rel="modal:open" class="deathCost" style="cursor:pointer">How do we calculate your needs?</a></p>
+							</div>
+							<div class="quote-box quote-box2 quote-boxes">
+								<p class="resultsHeading brand-color"><i class="fa fa-check income-ill-tick"></i>&nbsp;&nbsp;Protect Your Income on Illness</p>
+								<p class="you-info" style="color:grey"><em>Protect your income on illness will cover your essential bills if you\'re unable to work because of illness or injury.</em></p>
+								<p class="you-info-billpay">After <span class="decreasingCover"><strong>8 weeks</strong></span><span class="levelTerm"><strong>26 weeks</strong></span> off work, <span style="color:#5261ac;font-weight:bold"><em>you</em></span> may require <strong><span class="number" id="billPayCover1Amt1"></span> per month,</strong> lasting <span class="decreasingCover">for <strong><span class="billPayPaymentTerm1">5</span> years</strong> until you return to work</span><span class="levelTerm">until you retire at <strong>65 years of age</strong></span>. <span class="decreasingCover">Your benefit is available for <strong><span class="term1BillPay"></span></strong>, unless you become unemployed.</span></p>
+								<p class="ifcovered-message2 hidden"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> are not eligible or you might not have a need for Income on Illness</p>
+								<p class="partner-info partner-info-billpay hidden"><br>
+								After <span class="decreasingCover"><strong>8 weeks</strong></span><span class="levelTerm"><strong>26 weeks</strong></span> off work, <span style="color:#5261ac;font-weight:bold"><em>your partner</em></span> may require <strong><span class="number" id="billPayCover1Amt2"></span> per month,</strong> lasting <span class="decreasingCover">for <strong><span class="billPayPaymentTerm2">5</span> years</strong> until you return to work</span><span class="levelTerm">until you retire at <strong>65 years of age</strong></span>. <span class="decreasingCover">Your benefit is available for <strong><span class="term2BillPay"></span></strong>, unless you become unemployed.</span></p>
+								<p class="ifcovered-message-partner2 hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> is not eligible or may not have a need for Income on Illness</p>
+								<p class="you-info2 hideOnPrint" style="color:#50c9b5;font-size:12px;"><a href="#illness-modal" rel="modal:open"  class="illnessCost" style="cursor:pointer">How do we calculate your needs?</a></p>
+							</div>
+							<div class="quote-box quote-box3 quote-boxes">
+								<p class="resultsHeading brand-color"><i class="fa fa-check spec-ill-tick"></i>&nbsp;&nbsp;Lump sum on Specified Illness</p>
+								<p class="you-info" style="color:grey"><em>Lump sum on specified illness is paid to help you ​recover without additional financial worries. The amount is calculated as one year\'s net salary.</em></p>
+								<p class="you-info-specIll"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> may require a single lump sum of <strong><span class="number" id="specIll"></span></strong> for a term of <strong><span class="term1Sic"></span></strong></p>
+								<p class="ifcovered-message3 hidden"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> are not eligible or may not have a need for Specified Illness</p>
+								<p class="partner-info partner-info-specIll hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> may require a single lump sum of <strong><span class="number" id="specIllPartner"></span></strong> for a term of <strong><span class="term2Sic"></span></strong></p>
+								<p class="ifcovered-message-partner3 hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> is not eligible or may not have a need for Specified Illness</p>
+								<p class="you-info3 hideOnPrint" style="color:#50c9b5;font-size:12px;"><a href="#specified-modal" rel="modal:open" class="specifiedIllness" style="cursor:pointer">How do we calculate your needs?</a></p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-sm-3 col-12">
+							<p class="deathheading brand-color">Protect Your Income on Death</p>
+							<div class="showOnMob">
+							<p class="you-info-death show"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> may have a need for an initial lump sum of <strong><span class="number" id="lumpsumDeath"></span></strong> for a term of <strong><span class="term1Life"></span>.</strong></p>
+								<p class="ifcovered-message hidden"><span style="color:#5261ac;font-weight:bold">You</span> don\'t need Lump sum on Death</p>
+								<p class="partner-info partner-info-death hidden"><br>
+								<span style="color:#5261ac;font-weight:bold">Your partner</span> may have a need for an initial lump sum of <strong><span class="number" id="lumpsumDeathPartner"></span></strong> for a term of <strong><span class="term2Life"></span>.</strong></p>
+								<p class="ifcovered-message-partner hidden"><br>
+								<span style="color:#5261ac;font-weight:bold">Your partner</span> doesn\'t need Lump sum on Death</p><span class="decreasingCover decreasingCoverStyle">Cover decreases over time.</span>
+								</div>
+							<div class="quote-box cost-box1">
+								<p class="brand-color hideForBline"><strong>Cost per month<br>
+								<span id="totalLifeCoverPrem">Calculating, Please wait...</span></strong></p>
+								<p style="color:#50c9b5;"><a class="deathCost mobile-pop" href="#death-modal" rel="modal:open" style="text-decoration:underline;">See how we calculate this</a></p>
+								<div class="hidden" id="LCoverCost">
+									0
+								</div>
+								<div class="hidden" id="LCoverFee">
+									0
+								</div>
+								<div class="hidden" id="LCoverLevy">
+									0
+								</div>
+								<div class="hidden" id="LTotalPrem">
+									0
+								</div>
+							</div>
+							<p class="illnessheading brand-color">Protect Your Income on Illness</p>
+							<div class="showOnMob">
+								<p class="you-info-billpay">After <span class="decreasingCover"><strong>8 weeks</strong></span><span class="levelTerm"><strong>26 weeks</strong></span> off work, <span style="color:#5261ac;font-weight:bold"><em>you</em></span> may require <strong><span class="number" id="billPayCover1Amt1"></span> per month,</strong> lasting <span class="decreasingCover">for <strong><span class="billPayPaymentTerm1">5</span> years</strong> until you return to work</span><span class="levelTerm">until you retire at <strong>65 years of age</strong></span>. <span class="decreasingCover">Your benefit is available for <strong><span class="term1BillPay"></span></strong>, unless you become unemployed.</span></p>
+								<p class="ifcovered-message2 hidden"><span style="color:#5261ac;font-weight:bold">You</span> are not eligible or may not have a need for Income on Illness</p>
+								<p class="partner-info partner-info-billpay hidden"><br>
+								<i aria-hidden="true" class="fa fa-users brand-color"></i>&nbsp;&nbsp;After <span class="decreasingCover"><strong>8 weeks</strong></span><span class="levelTerm"><strong>26 weeks</strong></span> off work, <span style="color:#5261ac;font-weight:bold"><em>your partner</em></span> may require <strong><span class="number" id="billPayCover1Amt2"></span> per month,</strong> lasting <span class="decreasingCover">for <strong><span class="billPayPaymentTerm2">5</span> years</strong> until you return to work</span><span class="levelTerm">until you retire at <strong>65 years of age</strong></span>. <span class="decreasingCover">Your benefit is available for <strong><span class="term2BillPay"></span></strong>, unless you become unemployed.</span></p>
+								<p class="ifcovered-message-partner2 hidden"><br>
+								<span style="color:#5261ac;font-weight:bold">Your partner</span> is not eligible or may not have a need for Income on Illness</p>
+								</div>
+							<div class="quote-box cost-box2">
+								<p class="cost hideForBline brand-color"><strong>Cost per month<br>
+								<span id="totalBillPayPrem">Calculating, Please wait...</span></strong></p>
+								<p style="color:#50c9b5;text-decoration:underline;"><a class="illnessCost mobile-pop" href="#illness-modal" rel="modal:open">See how we calculate this</a></p>
+								<div class="hidden" id="IPCoverCost1">
+									0
+								</div>
+								<div class="hidden" id="IPCoverFee1">
+									0
+								</div>
+								<div class="hidden" id="IPCoverLevy1">
+									0
+								</div>
+								<div class="hidden" id="IPTotalPrem1">
+									0
+								</div>
+								<div class="hidden" id="IPCoverCost2">
+									0
+								</div>
+								<div class="hidden" id="IPCoverFee2">
+									0
+								</div>
+								<div class="hidden" id="IPCoverLevy2">
+									0
+								</div>
+								<div class="hidden" id="IPTotalPrem2">
+									0
+								</div>
+								<p></p>
+							</div>
+							<p class="specheading brand-color">Lump sum on Specified Illness</p>
+							<div class="showOnMob">
+								<p class="you-info-specIll"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> may require a single lump sum of <strong><span class="number" id="specIll"></span></strong> for a term of <strong><span class="term1Sic"></span></strong></p>
+								<p class="ifcovered-message3 hidden"><span style="color:#5261ac;font-weight:bold"><em>You</em></span> are not eligible or may not have a need for Specified Illness</p>
+								<p class="partner-info partner-info-specIll hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> may require a single lump sum of <strong><span class="number" id="specIllPartner"></span></strong> for a term of <strong><span class="term2Sic"></span></strong></p>
+								<p class="ifcovered-message-partner3 hidden"><br>
+								<span style="color:#5261ac;font-weight:bold"><em>Your partner</em></span> is not eligible or may not have a need for Specified Illness</p>
+								</div>
+							<div class="quote-box cost-box3">
+								<p class="cost2 hideForBline brand-color"><strong>Cost per month<br>
+								<span id="totalSicCoverPrem">Calculating, Please wait...</span></strong></p>
+								<p style="color:#50c9b5;text-decoration:underline;"><a class="specifiedIllness mobile-pop" data-placement="left" href="#specified-modal" rel="modal:open">See how we calculate this</a></p>
+								<div class="hidden" id="LSICoverCost">
+									0
+								</div>
+								<div class="hidden" id="LSICoverFee">
+									0
+								</div>
+								<div class="hidden" id="LSICoverLevy">
+									0
+								</div>
+								<div class="hidden" id="LSITotalPrem">
+									0
+								</div>
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-8 col-sm-8 cols-xs-12 print-save">
+							<div class="row">
+								<div class="col-lg-6" style="text-align:center">
+									<p class="printBtn hideOnPrint"><i class="fa fa-print"></i>&nbsp;&nbsp;Print your results</p>
+								</div>
+								<div class="col-lg-6" style="text-align:center">
+									<a href="#login-modal" id="login-register" rel="modal:open"><i class="fa fa-save">&nbsp;&nbsp;</i>Save results in your account</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-4 col-12" style="color:#5261ac;text-align:right;padding: 10px;">
+							<p class="total hideForBline"><span class="totalText">TOTAL</span><br>
+							<span class="totalPrem">€</span><span id="totalPrem">0</span><br>
+							<span class="totalText">per month</span></p>
+							<span class="totalList">
+							<small>Cost of Cover = €<span id="totalCost">0</span></small><br>
+							<small>Policy Fee = €<span id="thePolicyFee">0</span></small><br>
+							<small>Government Levy = €<span id="theLevy">0</span></small>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-3 col-12 offset-1 heading brokerHide" style="border-top:0px;text-align:left;">
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 col-12" style="text-align:center;color;padding: 10px;font-size: 38px;">
+							<img id="woman" src="/sites/all/modules/family_protection_planner/css/woman1.png">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 col-12">
+							<div class="talk-now nextButton quote-next">
+								<i class="fa fa-comments"></i>&nbsp;Request a callback
+							</div>
+							<div class="discussion" style="text-align:center">
+								<small style="color:grey"><em>And start the discussion about
+								protecting your family</em></small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt" class="hideOnPrint">
+			<div class="col-lg-12 col-sm-12 col-12" style="margin-bottom:20px">
+			<div class="heading personShow" style="border-bottom: 0px!important;">
+			Person like you
+			</div>
+			<div class="person-like-you heading">
+            			<table>
+						<tr>
+						<td></td>
+						<th style="border-bottom: 1px solid grey!important;">Age</th>
+						<th style="border-bottom: 1px solid grey!important;">Occupation</th>
+						<th style="border-bottom: 1px solid grey!important;">Net Income</th>
+						<td></td>
+						<td id="childAge" style="border-left: 1px solid grey!important;text-align:left"></td>
+						</tr>
+			<tr>
+			<td style="text-align:left;color:#5261ac"><em>You</em></td>
+			<td id="ageVal"></td>
+			<td id="occupation"></td>
+			<td id="netIncome"></td>
+			<td></td>
+		    <td style="border-left: 1px solid grey!important;text-align:left" id="relStatus"></td>
+			</tr>
+			<tr>
+			<td class="partner-info-table" style="text-align:left;color:#5261ac"><em>Your partner</em></td>
+			<td class="partner-info-table" id="parAge"></td>
+			<td class="partner-info-table" id="paroccupation"></td>
+			<td class="partner-info-table" id="parIncome"></td>
+			<td></td>
+			<td style="border-left: 1px solid grey!important;text-align:left"><span class="MortOrrent"></span>: <span id="morRent"></span></td>
+			</tr>
+			</table>
+			</div>
+			</div>
+			<div class="row mt">
+			<div class="col-lg-8 col-sm-8 col-xs-12">
+			<strong>Note:</strong> This is an indicative quotation for One Plan Protection  which is subject to underwriting. The quote is valid either for 7 days  or to your next birthday, whichever is sooner and is subject to no  changes to the applicable regulatory or tax rules within that period.  You must keep up payments to stay on cover.  
+			This planner gives general guidance but it\'s not individual financial advice. We recommend you discuss your full circumstances and the cover you ​​​​​​​need with a financial broker or advisor. 
+			</div>
+			<div class="col-lg-4 col-sm-3 col-12 ">
+			<div class="nextButton talk-now quote-next hideOnMobile">
+			Request a callback
+			</div>
+			</div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-12 col-sm-12 col-12">
+					<div class="quote-prev prevButton">
+						<i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Previous
+					</div>
+				</div>
+			</div>
+			</div>
+		</div><!-- ************************************** CALLBACK SCREEN ***************************************** -->
+		<div id="callback-screen" class="hidden">
+			<div class="row mt">
+				<div class="col-lg-8 col-sm-12 col-12">
+				<div class="heading">
+					<i class="fa fa-comments"></i>&nbsp;&nbsp;Request a callback
+				</div>
+                <div class="centered form-content">
+					<div class="col-lg-8 col-sm-12 col-12" style="margin:0 auto">
+					<br/>
+						<p>If you have questions then talk to a qualified Irish Life Financial Services advisor now. Irish Life Financial Services Limited is tied to Irish Life Assurance plc for life and pensions. Use the call back form to send your details.</p>
+						<form autocomplete="off" id="talkToUsForm" name="talkToUsForm">
+							<div class="form-group" style="margin-top: 20px">
+								<label for="name">Name</label> <span class="warning" id="talkToUsNameError" style="display:none">Please enter your name</span>
+								<br/>
+								<input class="form-control" id="talkToUsName" name="name" placeholder="" type="text" value="">
+							</div>
+							<div class="form-group">
+								<label for="phone">Phone Number</label> <span class="warning" id="talkToUsPhoneError" style="display:none">Please enter your phone number</span>
+                                <br/>
+								<input class="form-control" id="talkToUsPhone" name="phone" placeholder="" type="number" value="">
+							</div>
+							<div class="form-group">
+								<label for="email">Email (optional)&nbsp;&nbsp;<i class="fa fa-question-circle tooltip" style="color: grey; z-index: 0;"><span class="tooltiptext">We will use it to contact you in case we will be unable to reach you by phone.</span></i></label> <span class="warning" id="talkToUsEmailError" style="display:none">Please enter a valid email</span> 
+								<br/>
+								<input class="form-control" id="talkToUsEmail" name="email" placeholder="" type="email" value="">
+							</div>
+							<div class="form-group" id="callback-btns">
+								<label>Best time to call</label><br>
+								<span class="warning" id="talkToUsTimeError" style="display:none">Please select a time<br></span> 
+								<br/>
+								<input class="time" id="talkToUsBefore12" name="time-to-call" type="radio" value="call before 12">
+								<label for="talkToUsBefore12">Before 12</label>
+								<input class="time btn 12-5" id="talkToUs12-5" name="time-to-call" type="radio" value="call between 12 - 5">
+								<label for="talkToUs12-5">12 - 5</label>
+								<input class="time btn after5" id="talkToUsAfter5" name="time-to-call" type="radio" value="call after 5">
+								<label for="talkToUsAfter5">After 5</label>
+							</div>
+							<div id="submitBtn" class="talkToUsSubmit campaign-callback-requested">
+							Submit
+							</div>
+						</form>
+					</div>
+				</div>
+				</div>
+				<div class="col-lg-4 col-sm-12 col-12" id="privacy-box">
+						<p class="privacy"><i aria-hidden="true" class="fa fa-1x fa-lock"></i>&nbsp;&nbsp;Privacy</p>
+						<p class="privacy-text">Your personal details will only be used for the purpose of dealing with your request. 
+                         <br/>
+						 <br/>
+                         In the interest of customer service, calls will be recorded and monitored.
+						 </p>
+			    </div>
+			</div>
+			<div class="row mt">
+				<div class="col-lg-4 col-sm-4 col-12">
+					<div class="callback-prev prevButton">
+						<i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Previous
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-4 col-12">
+
+				</div>
+			</div>
+		</div>
+		    <!-- ************************************** THANK YOU SCREEN ***************************************** -->
+    <div id="thanks-screen">  
+            <div class="row mt">           
+                 <div class="sub-heading-step-last col-lg-12 col-md-12 col-xs-12">
+                 <p  class="brand-color" style="float:left">Thanks for getting in touch</p>
+                 </div> 
+            </div>
+            <div class="row">
+                 <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+                    <img class="logoImg" src="/sites/all/modules/family_protection_planner/css/logo.jpg" width="30%">
+                    <p style="font-size:16px">
+                    One of our advisors will <strong><span id="callTime"></span></strong> tomorrow.
+                    <br/>
+                    We look forward to talking to you then.
+                    <br/>
+                    <br/>
+                    <span class="reminder">A reminder has been emailed to you</span>&nbsp;&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<br/>
+					<br/>
+					 <span  class="brand-color" style="float:left">Additional Information</span>
+					 <br/>
+					 <br/>
+                    Talk to your broker or financial advisor
+                    <br/>
+                     <a href="https://www.irishlife.ie/financial-advice/financial-planning/find-a-financial-advisor">Find out more</a>
+                    </p>
+                </div>
+            </div>         
+    </div>
+	</div>
+	
+	 <!--####################################### SAVE BAR STUFF ####################################################-->
+  <div class="full-width-container" id="quote-saved-bar">
+  <div id="quote-saved-container">
+  <div id="quote-is-saved">Results Saved!</div>
+  <a class="mos-go-saved" href="/myonlineservices/ClientB2C/Home" target="_blank">
+  Go to my account
+  </a>
+  </div>
+  </div>
+	
+  <div class="full-width-container" id="save-bar">
+  <div id="save-btn-container">
+  <div id="save-go">
+  Save
+  </div>
+  </div>
+  </div>
+
+';
+}
+
+function familyProtection_block_view($delta = '') {
+  switch($delta) {
+    case 'familyProtection':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = familyProtection_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+	  drupal_add_css(drupal_get_path('module', 'familyProtection') . '/css/family-protection-new.css', array('group' => CSS_DEFAULT));
+      //drupal_add_css(drupal_get_path('module', 'familyProtection') . '/css/responsive.css', array('group' => CSS_DEFAULT));
+	  drupal_add_js('https://www.irishlife.ie/servlet/occupationDataSelect.js', array('type' => 'external', 'scope' => 'footer'));
+	  drupal_add_js(drupal_get_path('module', 'familyProtection')  . '/js/familyProtection.js', array('scope' => 'footer'));
+	  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css(drupal_get_path('module', 'life_insurance_quote') . '/css/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css', 'external', array('scope' => 'header'));
+	  //drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external', 'scope' => 'footer'));
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js', array('scope' => 'footer','type' => 'external'));
+	  drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css', 'external', array('scope' => 'header'));
+	  drupal_add_css('https://fonts.googleapis.com/css?family=Lato:300,400,700', 'external', array('scope' => 'header')); 
+      drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css', 'external', array('scope' => 'header'));
+      drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js', array('scope' => 'footer', 'type' => 'external'));
+	  drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui.min.js', array('scope' => 'footer'));
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js', 'external', array('scope' => 'header'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/mk-uncompressed.js');	  
+      drupal_add_js(drupal_get_path('module', 'familyProtection') . '/js/knob.js', array('scope' => 'footer'));
+    }
+    return $block;
+  }
+ }

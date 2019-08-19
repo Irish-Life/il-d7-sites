@@ -1,0 +1,392 @@
+<?php
+function group_site_nav_permission() {
+  return array(
+    'administer_group_site_nav' => array(
+      'title' => t('Administer Group Site Nav'),
+      'description' => t('Perform administration tasks for Group Site Navigation.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+
+function group_site_nav_admin()
+{
+	$form['group_site_nav_website_1_order']=array(
+	'#type' => 'select',
+	'#title' => variable_get('group_site_nav_website_1_title','Irish Life'),
+	'#options' => array(
+          1 => t('1'),
+          2 => t('2'),
+		  3 => t('3'),
+       ),
+	'#default_value' => variable_get('group_site_nav_website_1_order','1'),
+	'#description' => t("What order to you want this website to appear"),
+	'#required' => TRUE,
+	);
+		
+	$form['group_site_nav_website_2_order']=array(
+	'#type' => 'select',
+	'#title' => variable_get('group_site_nav_website_2_title','Irish Life Corporate Business'),
+	'#options' => array(
+          1 => t('1'),
+          2 => t('2'),
+		  3 => t('3'),
+       ),
+	'#default_value' => variable_get('group_site_nav_website_2_order','2'),
+	'#description' => t("What order to you want this website to appear"),
+	'#required' => TRUE,
+	);
+	
+	$form['group_site_nav_website_3_order']=array(
+	'#type' => 'select',
+	'#title' => variable_get('group_site_nav_website_3_title','Irish Life Investment Managers'),
+	'#options' => array(
+          1 => t('1'),
+          2 => t('2'),
+		  3 => t('3'),
+       ),
+	'#default_value' => variable_get('group_site_nav_website_3_order','3'),
+	'#description' => t("What order to you want this website to appear"),
+	'#required' => TRUE,
+	);
+	
+	$form['group_site_nav_website_1_title']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 1 Title'),
+	'#default_value' => variable_get('group_site_nav_website_1_title','Irish Life'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("Website Title - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_1_description']=array(
+	'#type' => 'textarea',
+	'#title' => t('Website 1 description'),
+	'#default_value' => variable_get('group_site_nav_website_1_description',
+    'Irish Life the largest life and pensions group and fund manager in Ireland, employing 2,000 people and servicing one million customers.'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 2,
+	'#cols' => 5,
+	'#description' => t("Introductory text - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_1_image']=array(
+		'#type' => 'textfield',
+	'#title' => t('Website 1 Image'),
+	'#default_value' => variable_get('group_site_nav_website_1_image','/sites/all/modules/group_site_nav/img/irishlife.ie.jpg'),
+	'#resizable' => FALSE,
+	'#maxlength' => 100,
+	'#size' => 60,
+	'#description' => t("Image location - 290x152. Internal url only"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_1_url']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 1 URL'),
+	'#default_value' => variable_get('group_site_nav_website_1_url','https://www.irishlife.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The URL of the website"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_1_url_label']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 1 URL label'),
+	'#default_value' => variable_get('group_site_nav_website_1_url_label','irishlife.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The label of the URL to be shown"),
+	'#required' => TRUE,	
+	);
+	
+	
+	
+	
+		$form['group_site_nav_website_2_title']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 2 Title'),
+	'#default_value' => variable_get('group_site_nav_website_2_title','Irish Life Corporate Business'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("Website Title - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_2_description']=array(
+	'#type' => 'textarea',
+	'#title' => t('Website 2 description'),
+	'#default_value' => variable_get('group_site_nav_website_2_description',
+    'The largest provider of company pensions, life insurance and income protection for companies and affinity groups across Ireland.'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 2,
+	'#cols' => 5,
+	'#description' => t("Introductory text - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_2_image']=array(
+		'#type' => 'textfield',
+	'#title' => t('Website 2 Image'),
+	'#default_value' => variable_get('group_site_nav_website_2_image','/sites/all/modules/group_site_nav/img/irishlifecorporatebusiness.ie.jpg'),
+	'#resizable' => FALSE,
+	'#maxlength' => 100,
+	'#size' => 60,
+	'#description' => t("Image location - 290x152. Internal url only"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_2_url']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 2 URL'),
+	'#default_value' => variable_get('group_site_nav_website_2_url','http://www.irishlifecorporatebusiness.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The URL of the website"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_2_url_label']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 2 URL label'),
+	'#default_value' => variable_get('group_site_nav_website_2_url_label','irishlifecorporatebusiness.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The label of the URL to be shown"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_3_title']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 3 Title'),
+	'#default_value' => variable_get('group_site_nav_website_3_title','Irish Life Investment Managers'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("Website Title - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_3_description']=array(
+	'#type' => 'textarea',
+	'#title' => t('Website 3 description'),
+	'#default_value' => variable_get('group_site_nav_website_3_description',
+    'Managing assets in excess 39bn, ILIM manages money on behalf of multinational corporations, charities and domestics.'
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 2,
+	'#cols' => 5,
+	'#description' => t("Introductory text - text only, no html"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_3_image']=array(
+		'#type' => 'textfield',
+	'#title' => t('Website 3 Image'),
+	'#default_value' => variable_get('group_site_nav_website_3_image','/sites/all/modules/group_site_nav/img/ilim.ie.jpg'),
+	'#resizable' => FALSE,
+	'#maxlength' => 100,
+	'#size' => 60,
+	'#description' => t("Image location - 290x152. Internal url only"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_3_url']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 3 URL'),
+	'#default_value' => variable_get('group_site_nav_website_3_url','https://www.ilim.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The URL of the website"),
+	'#required' => TRUE,	
+	);
+	
+	$form['group_site_nav_website_3_url_label']=array(
+	'#type' => 'textfield',
+	'#title' => t('Website 3 URL label'),
+	'#default_value' => variable_get('group_site_nav_website_3_url_label','ilim.ie'),
+	'#resizable' => FALSE,
+	'#maxlength' => 70,
+	'#size' => 40,
+	'#description' => t("The label of the URL to be shown"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function group_site_nav_menu() {
+$items = array();
+
+  $items['admin/content/group-site-navigation'] = array(
+    'title' => 'Group Sites Navigation',
+    'description' => 'Settings for Irish Life Group Site Header Navigation Menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('group_site_nav_admin'),
+	'access arguments' => array('administer_group_site_nav'), // Those with this permission will be allowed to see the results
+    'type' => MENU_NORMAL_ITEM
+   );
+
+	return $items;
+   
+}
+
+/**
+ * @file
+ * A block module that displays the group navigation widget.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function group_site_nav_block_info() {
+  $blocks['group_site_nav_left_block'] = array(
+    'info' => t('Group Sites Navigation Left Hand Side'),
+  );
+  
+  $blocks['group_site_nav_right_block'] = array(
+    'info' => t('Group Sites Navigation Right Hand Side'),
+  );  
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function group_site_nav_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#group_site_nav":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function group_site_nav_contents_left(){
+	$base_url = $GLOBALS['base_url']."/sites/all/modules/group_site_nav/img/";
+
+  return '<div class="group-websites-navigation-top">
+  
+  <div class="group-navigation-label" onclick="javascript:toggleSiteNav()">Irish Life websites<span class="caret"></span></div></div>
+  
+  '.group_site_nav_dropdown();
+
+}
+function group_site_nav_contents_right(){
+	$base_url = $GLOBALS['base_url']."/sites/all/modules/group_site_nav/img/";
+
+  return '<p><img alt="" src="'.$base_url.'il-logo-small_0.png" style="width: 116px; height: 31px;"></p>';
+
+}
+/*
+
+Get the complete navigation dropdown html in the correct order
+
+Assumes three websites
+
+*/
+function group_site_nav_dropdown() {
+  
+  $columnsHTML = array();
+  
+  $columnsHTML["website".variable_get('group_site_nav_website_1_order','1')]=getWebsiteHTML('1');
+  $columnsHTML["website".variable_get('group_site_nav_website_2_order','2')]=getWebsiteHTML('2');
+  $columnsHTML["website".variable_get('group_site_nav_website_3_order','3')]=getWebsiteHTML('3');
+	
+return '<div id="group-nav-dropdown" style="display:none" onfocusout="this.style.display=\'none\';">'
+.$columnsHTML["website1"]
+.$columnsHTML["website2"]
+.$columnsHTML["website3"]
+.'</div>';
+
+}
+
+function getWebsiteHTML($whichOne)
+{
+	return '<div id="group-nav-dropdown-column-'.$whichOne.'" class="group-nav-dropdown-column grid-4"><div class="group-nav-column-inner mega-inner clearfix"><div class="group-nav-dropdown-block tb-block group-nav-dropdown-block"><div class="block-inner"><section class="block block-views clearfix"><div class="view-content"><div class="views-row views-row-'
+		  .$whichOne.
+		  ' views-row-odd views-row-first views-row-last"><div class="views-field views-field-field-menu-image"><div class="field-content"><a href="'
+		.variable_get('group_site_nav_website_'.$whichOne.'_url').'" target="_blank">'.
+		  '<img typeof="foaf:Image" src="'
+  .variable_get('group_site_nav_website_'.$whichOne.'_image').
+  '" alt=""></a></div></div><div class="views-field views-field-title"><span class="field-content">'
+  .variable_get('group_site_nav_website_'.$whichOne.'_title').'</span></div><div class="views-field views-field-body"><div class="field-content">
+  <p>'
+  .variable_get('group_site_nav_website_'.$whichOne.'_description').
+  '</p></div></div><div class="views-field views-field-field-link"><div class="field-content"><a href="'
+  .variable_get('group_site_nav_website_'.$whichOne.'_url').
+  '" target="_blank">'
+  .variable_get('group_site_nav_website_'.$whichOne.'_url_label').
+  '</a></div>  </div>    </div></div></section></div> <!-- /.block --></div></div></div>';
+
+}
+
+
+
+
+function group_site_nav_block_view($delta = '') {
+  switch($delta) {
+    case 'group_site_nav_left_block':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = group_site_nav_contents_left();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'group_site_nav') . '/css/group-site-nav.css', array('group' => CSS_DEFAULT,'weight' => 100));
+      drupal_add_js(drupal_get_path('module', 'group_site_nav') .'/js/group-site-nav.js', array('scope' => 'footer'));
+    }
+	break;
+    case 'group_site_nav_right_block':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = group_site_nav_contents_right();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'group_site_nav') . '/css/group-site-nav.css', array('group' => CSS_DEFAULT,'weight' => 100));
+      drupal_add_js(drupal_get_path('module', 'group_site_nav') .'/js/group-site-nav.js', array('scope' => 'footer'));
+    }
+	break;
+  }		
+	
+    return $block;
+
+ }
+
+

@@ -1,0 +1,26 @@
+/* -------  Apps landing page */
+.appLanding{width:250px; display:inline;float:left;padding-top:0px;}
+.appstoreLink a{margin-top:10px;position:relative}
+.appsHolder{
+width:950px;
+height:500px;
+padding:0;
+margin:0px;}
+.appTabs {list-style: none outside none;margin-top: 4px;}
+.appTabs li{background:url("/uploadedImages/retail/images/Smartphone_apps/mob-fade.gif") repeat-x 0 1px}
+.appTabs li a{display:block;height:60px;border-bottom:1px solid #EBEBEB;color:#525252;text-decoration:none;font-size:1.5em;line-height:1;padding:40px 10px 0 10px;border-right:1px solid #EBEBEB;opacity:.5}
+.appTabs .on{background:0;}
+.appTabs .on a{border-right:0;opacity:1}
+.appTabs_Container{float: right;min-height: 175px;overflow: hidden;width:650px; display:inline;padding-top:20px;}
+.mob-demo{float: left;height: 500px;position: relative;width: 400px;}
+.mob-info{float:left; width:250px; display:inline;}
+.mob-info h3{padding:5px;text-align:left;color:#525252;}
+.mob-info ul{list-style-type:circle;text-align:left;padding:5px 5px 5px 30px;}
+.mob-info p{text-align:left;padding:5px;}
+.mob-requirements{float:left; padding;0px;}
+.previous{cursor: pointer; height: 55px;left: 30px; position: absolute; top: 150px; width: 50px;}
+.next {cursor: pointer;height: 55px;left: 320px;position: absolute;top: 150px;width: 50px;}
+.frame{height: 432px;left:105px;position: absolute;width:200px;background:url("/uploadedImages/retail/images/Smartphone_apps/iphone_grey.jpg") no-repeat scroll 0 0 transparent}
+.frame .img{  font-size: 10px; font-weight: bold; left: 18px; position: absolute; top: 65px; }
+#textDescription{font-weight: bold; margin-top: 435px; text-align: center; width: 350px;}
+/*** Apps landing page **************************************/	

@@ -1,0 +1,171 @@
+				<!-- start of Irish Life widget -->
+               <style type="text/css" media="screen">
+@import url("https://www.irishlife.ie/sites/all/libraries/owl-carousel/owl.carousel.css?ntdnpq");
+@import url("https://www.irishlife.ie/sites/all/libraries/owl-carousel/owl.theme.css?ntdnpq");
+@import url("https://www.irishlife.ie/sites/all/libraries/owl-carousel/owl.transitions.css?ntdnpq");
+</style>
+<style>
+.views-field-field-basic-web-page-image{float:right}
+.views-field-field-basic-web-page-description{display:inline}
+</style>
+  <script type="text/javascript" src="https://www.irishlife.ie/sites/all/modules/jquery_update/replace/jquery/1.8/jquery.min.js?v=1.8.2"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/misc/drupal.js?ntdnpq"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/sites/all/libraries/owl-carousel/owl.carousel.min.js?ntdnpq"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/sites/all/modules/picture/picturefill/matchmedia.js?v=0.1"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/sites/all/modules/picture/picturefill/picturefill.js?v=0.1"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/sites/all/modules/picture/picture.js?v=7.38"></script>
+<script type="text/javascript" src="https://www.irishlife.ie/sites/all/modules/owlcarousel/includes/js/owlcarousel.settings.js?ntdnpq"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {
+    "owlcarousel": {
+        "owl-carousel-block-533": {
+            "settings": {
+                "items": 1,
+                "itemsDesktop": [
+                    "1199",
+                    "1"
+                ],
+                "itemsDesktopSmall": [
+                    "979",
+                    "1"
+                ],
+                "itemsTablet": [
+                    "768",
+                    "1"
+                ],
+                "itemsTabletSmall": [
+                    "0",
+                    "0"
+                ],
+                "itemsMobile": [
+                    "479",
+                    "1"
+                ],
+                "singleItem": false,
+                "itemsScaleUp": false,
+                "slideSpeed": 200,
+                "paginationSpeed": 800,
+                "rewindSpeed": 1000,
+                "autoPlay": "8000",
+                "stopOnHover": true,
+                "navigation": true,
+                "navigationText": [
+                    "prev",
+                    "next"
+                ],
+                "rewindNav": true,
+                "scrollPerPage": false,
+                "pagination": true,
+                "paginationNumbers": false,
+                "responsive": true,
+                "responsiveRefreshRate": 200,
+                "baseClass": "owl-carousel",
+                "theme": "owl-theme",
+                "lazyLoad": false,
+                "lazyFollow": true,
+                "lazyEffect": "fadeIn",
+                "autoHeight": true,
+                "jsonPath": false,
+                "jsonSuccess": false,
+                "dragBeforeAnimFinish": true,
+                "mouseDrag": true,
+                "touchDrag": true,
+                "addClassActive": false,
+                "transitionStyle": false
+            },
+            "views": {
+                "ajax_pagination": 0
+            }
+        }
+    }
+});
+</script>
+      <div id="owl-carousel-block-533" class="owl-carousel" style="display: block;margin: auto;padding: 15px; width: 85%;">
+  <div class="item-0">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-1-safety-first-investor/"><span data-picture="" data-alt="Safety First Investor" data-title="Safety First Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-1.png?itok=0n3hwAld"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-1.png?itok=0n3hwAld"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-1.png?itok=jydpKalT"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-1.png?itok=mggaaWQM"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-1.png?itok=cX6asdGH"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-1.png?itok=0n3hwAld" width="250" height="162" alt="Safety First Investor" title="Safety First Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-1-safety-first-investor/">Safety First Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>Making investment decisions or financial decisions in general, can be quite difficult and may not be something you look forward to doing.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-1">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-2-careful-investor/"><span data-picture="" data-alt="Careful Investor" data-title="Careful Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-2.png?itok=m5vx4p_5"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-2.png?itok=m5vx4p_5"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-2.png?itok=3beGk3Eu"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-2.png?itok=bBmcj2pw"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-2.png?itok=n4cOQGkh"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-2.png?itok=m5vx4p_5" width="250" height="162" alt="Careful Investor" title="Careful Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-2-careful-investor/">Careful Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>You are a very careful person, and you probably do not enjoy making investment decisions. You will tend to focus firstly on ways to limit or, if possible, remove the risks on your investments before you think about the growth opportunities.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-2">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-3-conservative-investor"><span data-picture="" data-alt="Conservative Investor" data-title="Conservative Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-3.png?itok=ooaZ0fu-"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-3.png?itok=ooaZ0fu-"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-3.png?itok=xgExWOCO"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-3.png?itok=1kIpjnAC"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-3.png?itok=3Icy5Mf9"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-3.png?itok=ooaZ0fu-" width="250" height="162" alt="Conservative Investor" title="Conservative Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-3-conservative-investor">Conservative Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>You tend to lean towards taking a cautious approach. However, when it comes to investments, you are willing to venture a little to get the opportunity for a better reward. You are not intimidated by making investment decisions although it may not be an area that you take a very active interest in.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-3">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-4-balanced-investor/"><span data-picture="" data-alt="Balanced Investor" data-title="Balanced Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-4.png?itok=K0W5B8f4"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-4.png?itok=K0W5B8f4"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-4.png?itok=iMXs0_pe"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-4.png?itok=nvqP2E3c"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-4.png?itok=nWwwT-0X"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-4.png?itok=K0W5B8f4" width="250" height="162" alt="Balanced Investor" title="Balanced Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-4-balanced-investor/">Balanced Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>You have some interest in exploring investment opportunities and are familiar with how they work in general. In particular, you accept the fact that, to get a good potential return on your money, you can expect to see some movement up and down in the value of your investments from time to time.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-4">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-5-experienced-investor/"><span data-picture="" data-alt="Experienced Investor" data-title="Experienced Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-5.png?itok=92iMvVnG"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-5.png?itok=92iMvVnG"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-5.png?itok=44bk1OuG"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-5.png?itok=tcLsTMfU"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-5.png?itok=Ajsrts2y"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-5.png?itok=92iMvVnG" width="250" height="162" alt="Experienced Investor" title="Experienced Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-5-experienced-investor/">Experienced Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>You take an active interest in exploring your investment options and are very familiar with how different types of investments work. In particular you accept the fact that investment markets move up and down in value but offer excellent opportunities for growth over the long-term.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-5">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-6-adventurous-investor/"><span data-picture="" data-alt="Adventurous Investor" data-title="Adventurous Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-6.png?itok=r4knn549"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-6.png?itok=r4knn549"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-6.png?itok=JoOgnNXY"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-6.png?itok=jjIhcPmo"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-6.png?itok=uViGsneZ"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-6.png?itok=r4knn549" width="250" height="162" alt="Adventurous Investor" title="Adventurous Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-6-adventurous-investor/">Adventurous Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>You take a very active interest in exploring your investment options and in particular have a detailed understanding of how stock markets work. You probably have good experience of investments in shares and have a portfolio of investments. </p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div><div class="item-6">  
+  <div class="views-field views-field-field-basic-web-page-image">        <div class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-7-very-adventurous-investor/"><span data-picture="" data-alt="Very Adventurous Investor" data-title="Very Adventurous Investor">
+<span data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-7.png?itok=kPnEwFhh"  data-width="250" data-height="162"></span>
+<span data-media="(max-width: 739px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-7.png?itok=kPnEwFhh"  data-width="250" data-height="162"></span>
+<span data-media="(min-width: 960px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_normal_breakpoint/public/investor-7.png?itok=2_tcb3dG"  data-width="350" data-height="227"></span>
+<span data-media="(min-width: 740px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_narrow_breakpoint/public/investor-7.png?itok=bSGrBiRw"  data-width="315" data-height="204"></span>
+<span data-media="(min-width: 1220px)" data-src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_wide_breakpoint/public/investor-7.png?itok=fEt4ZWhV"  data-width="355" data-height="230"></span>
+<noscript><img typeof="foaf:Image" src="https://www.irishlife.ie/sites/retail/files/styles/investments_landing_image_mobile_breakpoint/public/investor-7.png?itok=kPnEwFhh" width="250" height="162" alt="Very Adventurous Investor" title="Very Adventurous Investor" /></noscript>
+</span></a></div>  </div>  
+  <div class="views-field views-field-title">        <h2 class="field-content"><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/result-7-very-adventurous-investor/">Very Adventurous Investor</a></h2>  </div>  
+  <div class="views-field views-field-field-basic-web-page-description">        <div class="field-content"><p>Exploring your investment options is probably part of your daily life, and you have a detailed understanding of how stock markets work. You probably have extensive experience of investments in shares and have a portfolio of investments.</p>
+</div>  </div>  
+  <div class="views-field views-field-field-basic-web-page-url-label">        <div class="field-content"><h2><a href="https://www.permanenttsb.ie/whatweoffer/savings-and-investing/investments/investor-profile-builder/">Take the test</a></h2></div>  </div></div></div>
+  
+  <!-- end of Irish Life widget -->

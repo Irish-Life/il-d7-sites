@@ -1,0 +1,5 @@
+; $Id: group_site_nav.info,v 1.0.0.0 2014/10/01 10:11:15 Ger Exp $
+name = "Group Site Navigation"
+description = "Group Site Navigation Widget"
+core = "7.x"
+package = "Irish Life"

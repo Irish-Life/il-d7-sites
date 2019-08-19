@@ -1,0 +1,297 @@
+<?php
+function free_life_cover_pages_permission() {
+  return array(
+    'administer_free_life_cover_pages' => array(
+      'title' => t('Administer Free Life Insurance Pages'),
+      'description' => t('Perform administration tasks for Free Parent Life Insurance.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+function free_life_cover_pages_admin() {
+
+	$base_url = $GLOBALS['base_url'];
+
+		$form ["free_life_cover_end_date"] = array(
+	      '#type' => 'textfield',
+	      '#title' => t("Free parent life cover end date"),
+	      '#default_value' => variable_get("free_life_cover_end_date","30th June 2015"),
+	      '#description' => t("General end date in the format dd MMM YYYY, e.g. 30 June 2015"),
+	      '#required' => FALSE,
+		);
+		
+	$form['free_life_cover_pages_remaining_ids']=array(
+	'#type' => 'textarea',
+	'#title' => t('Seller Ids'),
+	'#default_value' => variable_get('free_life_cover_pages_remaining_ids','1058;1059;1060;1061;1062;1063;1064;3601;3605;360A;3612;3615;3617;3619;3621;3628;3629;3637;3641;3650;3654;3655;3657;3665;3668;3672;3673;3682;3686;3687;3689;3693;3694;3695;3801;3804;3805;380A;3819;3825;3828;3830;3831;3836;3838;3842;3846;3848;3850;3874;3877;3878;3880;3881;4216;4227;4288;4294;4706;4707;4708;4711;4713;4714;4719;4720;4721;4725;4726;4727;4728;4729;4733;4735;4736;4738;4739;4741;4742;4743;4747;4748;4750;4753;4755;4756;4757;4758;4759;4760;4761;4762;4763;4764;4766;4767;4768;4769;4772;4774;4777;4778;4779;4780;4782;4790;4791;4792;4793;4794;4795;4796;4797;4799;6007;6014;6021;6040;6042;6047;6048;6050;6053;6067;6070;6071;6075;6076;6077;6095;6106;6114;6117;6118;6121;6123;6125;6126;6130;6131;6132;6133;6134;6147;6148;6162;6179;6188;6198;4789;6208;6369;6401;6375;6373;6397;6309;6330;6379;6388;6391;6314;6364;6339;6363;6395;6361;6357;6346;6333;6384;6302;6318;6358;6317;6313;6332;6385;6338;6378;6321;6376;6359;6345;6343;6348;6382;6351;6328;6322;6381;63426354;6398;6400;6347;6360;6305;6320;6386;6362;6390;6337;6353;6303;6377;6307;6374;6310;6308;6399;6329;6393;6371;6389;6394;6372;6352;6340;6316;6324;6325;TS02;TS03;TS04;TS05;TS06;TS08;Z401;4785;4783;4786;Z402;TN71;VG93;E529;4517;RJ02;RK42;6207;6209'),
+	'#resizable' => FALSE,
+	'#rows' => 7,
+	'#cols' => 120,
+	'#description' => t("ID's for the remaining sellers"),
+	'#required' => TRUE,	
+	);
+
+
+	$form['free_life_cover_pages_active_sellers']=array(
+	'#type' => 'textarea',
+	'#title' => t('Campaign Sellers'),
+	'#default_value' => variable_get('free_life_cover_pages_active_sellers',"4025;4241;4206;4261;4228;4271;3880;3654;3601;3627;4218;4056;3848;4089;3619;4283;3655;4215;3825;3628;4294;"),
+	'#rows' => 2,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("ID's for the Campaign Sellers"),
+	'#required' => TRUE,	
+	);
+
+
+	$sellerCodes = explode(";", variable_get('free_life_cover_pages_active_sellers',""));
+	$title = "";
+	for ($i=0; $i < sizeof($sellerCodes); $i++) { 
+		$title = $sellerCodes[$i];
+		$form[$title] = array(
+		  '#type' => 'fieldset',
+		  '#title' => t("$title"),
+		  '#collapsible' => TRUE, // Added
+		  '#collapsed' => TRUE,  // Added
+		);
+
+		$form [$title][$title."_name"] = array(
+	      '#type' => 'textfield',
+	      '#title' => t("Seller Name"),
+	      '#default_value' => variable_get($title."_name",$title),
+	      '#description' => t("Name to use rather than seller code"),
+	      '#required' => FALSE,
+		);
+
+		$form [$title][$title."_start_date"] = array(
+	      '#type' => 'date', 
+	      '#title' => t("Start Date"),
+	      '#default_value' => variable_get($title."_start_date"),
+	      '#description' => t("Start date for seller code ".$title."'s campaign"),
+	      '#required' => TRUE,
+		);
+
+		$form [$title][$title."_end_date"] = array(
+	      '#type' => 'date', 
+	      '#title' => t("End Date"),
+	      '#default_value' => variable_get($title."_end_date"),
+	      '#description' => t("End date for seller code ".$title."'s campaign"),
+	      '#required' => TRUE,
+		);
+
+		$form [$title][$title."_limit"] = array(
+	      '#type' => 'textfield', 
+	      '#title' => t("Limit"),
+	      '#default_value' => variable_get($title."_limit",'99999'),
+	      '#description' => t("Free life cover policy limit for seller code ".$title."'s campaign"),
+	      '#required' => TRUE,
+		);
+
+		$startDate = variable_get($title."_start_date");
+		$date = str_pad($startDate['day'], 2, "0", STR_PAD_LEFT)."/".str_pad($startDate['month'], 2, "0", STR_PAD_LEFT)."/".$startDate["year"];
+		$limit = variable_get($title."_limit");
+
+		$form [$title]['title'] = array(
+		  '#type' => 'textfield', 
+		  '#title' => t('Activation Link (NOTE: Save admin settings before navigating to this URL!)'), 
+		  '#default_value' => $base_url."/servlet/addFreeCoverSeller?s=".$title."&l=".$limit."&startDate=".$date."%2000:00:00", 
+		  '#description' => t("Go to this URL to create the seller code in numAvailable.jsp"),
+		  '#size' => 100, 
+		  '#maxlength' => 128, 
+		);
+
+		/*https://www.irishlife.ie/servlet/addFreeCoverSeller?s=4783&l=1100&startDate=01/01/2015%2000:00:00*/
+	}
+	return system_settings_form($form);
+}
+ 
+
+function free_life_cover_pages_menu() {
+  $items = array();
+  $items['admin/content/free_life_cover_pages/values'] = array(
+    'title' => 'Free Life Cover Pages',
+    'description' => 'Questions and answers for the Free Parent Life Insurance',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('free_life_cover_pages_admin'),
+	'access arguments' => array('administer_free_life_cover_pages'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+  );
+
+  return $items;
+}
+
+function free_life_cover_pages_block_info() {
+  $blocks['free_life_cover_pages_left'] = array(
+    'info' => t('Free Life Cover Block Left'),
+  );
+  $blocks['free_life_cover_pages_right'] = array(
+    'info' => t('Free Life Cover Block Right'),
+  );
+  return $blocks;
+}
+
+function free_life_cover_pages_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#free_life_cover_pages":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function free_life_cover_pages_l_contents(){
+	$today = new DateTime("now");
+	$compareDate = new DateTime("now");
+	$refer = htmlspecialchars($_GET["refer"]);
+	$endDate = variable_get($refer.'_end_date');
+	$remainingIds = variable_get('free_life_cover_pages_remaining_ids').';'.variable_get('free_life_cover_pages_active_sellers');
+	$htmlContents = "<div id='saleContent' class='salePageLeft hFirst'>
+  		<div class='section leading vFirst noBg'>
+  			<img class='leading' alt='Free Life Insurance Offer' src='/sites/all/modules/free_life_cover_pages/img/25k-free-cover-image.jpg'>
+  			<h2 id='limitedOffer' class='biggerH2'>This offer is closed</h2>
+			<ul class='downloads'>
+				<li>Free life insurance of €25,000 for each parent for 12 months.</li>
+				<li>No payment needed, and cover begins instantly.</li>
+			</ul>
+			<span class='mainBodyDownloadpdf'><a title='booklet' href='/sites/retail/files/free-parent-life-insurance-booklet.pdf' rel='external'>Download the Plan Booklet with Terms &amp; Conditions</a>
+			</span>
+		</div>
+	</div>";
+	if ($endDate['year'] == '')
+	{
+		$endDate = variable_get('free_life_cover_end_date');
+		$compareDate = DateTime::createFromFormat('j M Y',$endDate);
+	}
+	else
+	{
+		$endDate = str_pad($endDate['day'], 2, "0", STR_PAD_LEFT)."/".str_pad($endDate['month'], 2, "0", STR_PAD_LEFT)."/".$endDate['year'];
+		$compareDate = DateTime::createFromFormat('d/m/Y',$endDate);
+	}
+
+	if ($refer != '' && strpos($remainingIds, $refer) !== false && $today <= $compareDate)
+	{
+	
+	
+	$placesRemaining = variable_get($refer.'_limit');
+	if ($placesRemaining != '')
+	{
+		$placesRemaining = "<div>There are <span class='freecoverRemain highlight'>".$placesRemaining."</span> places remaining.</div>";
+	}
+	$htmlContents = "<div id='saleContent' class='salePageLeft hFirst'>
+  		<div class='section leading vFirst noBg'>
+  			<img class='leading' alt='Free Life Insurance Offer' src='/sites/all/modules/free_life_cover_pages/img/25k-free-cover-image.jpg'>
+  			<h2 id='limitedOffer' class='biggerH2'>This offer is open until <span class='highlight'>".$endDate."</span> or until fully subscribed. <span>".$placesRemaining."</h2>
+			<ul class='downloads'>
+				<li>Free life insurance of €25,000 for each parent for 12 months.</li>
+				<li>No payment needed, and cover begins instantly.</li>
+			</ul>
+			<span class='mainBodyDownloadpdf'><a title='booklet' href='/sites/retail/files/free-parent-life-insurance-booklet.pdf' rel='external'>Download the Plan Booklet with Terms &amp; Conditions</a>
+			</span>
+		</div>
+	</div>";
+	}
+  	return $htmlContents;
+  	
+}
+
+function free_life_cover_pages_r_contents(){
+	$today = new DateTime("now");
+	$compareDate = new DateTime("now");
+	$base_url = $GLOBALS['base_url'];
+	$refer = htmlspecialchars($_GET["refer"]);
+	$endDate = variable_get($refer.'_end_date');
+	$remainingIds = variable_get('free_life_cover_pages_remaining_ids').';'.variable_get('free_life_cover_pages_active_sellers');
+	$htmlContents =  "
+  	<div id='saleContent' class='salePageRight hFirst'>
+  		<h2 class='block-title'>Eligibility Questions</h2>
+		<p>Getting your €25,000 Free Life Insurance is easy, once you meet the following criteria</p>
+		<ul class='important'>
+		<li>Your youngest child is aged 13 or younger when you apply</li>
+		<li>You are aged 55 or younger</li>
+		<li>You are resident of the Republic of Ireland</li>
+		<li>You are named on the Birth Certificate or Adoption Certificate of your child</li>
+		<li>You consent to being kept informed in writing, by post, email or telephone about products, services or additional benefits that Irish Life believe might be of interest to you</li>
+		<li>You have not had or do not currently have any form of malignant cancer, brain tumour, heart condition or heart surgery, stroke, multiple sclerosis, motor neurone disease, transplant, disorder of the kidney, liver or pancreas, you have not been an in-patient in the last 12 months(excluding childbirth) nor are you awaiting any medical results or future medical procedures, or you are currently unwell and planning to see a doctor in the near future.</li>
+		<li>The offer does not apply to Irish Life staff members and their families.</li>
+		</ul>
+		<div style='WIDTH: 87%' class='banner panel'>				
+			<div id='notOpen'>
+				<span class='highlight offerClosed'>The Free Parent Life Insurance Offer is closed!!!</span>
+			</div>
+			<div class='clearer'></div>
+		</div>
+	</div>";
+	
+	if ($endDate['year'] == '')
+	{
+		$endDate = variable_get('free_life_cover_end_date');
+		$compareDate = DateTime::createFromFormat('j M Y',$endDate);
+	}
+	else
+	{
+		$endDate = str_pad($endDate['day'], 2, "0", STR_PAD_LEFT)."/".str_pad($endDate['month'], 2, "0", STR_PAD_LEFT)."/".$endDate['year'];
+		$compareDate = DateTime::createFromFormat('d/m/Y',$endDate);
+	}
+	
+	
+	if ($refer != '' && strpos($remainingIds, $refer)  !== false && $today <= $compareDate)
+	{
+	$companyName =variable_get($refer.'_name', "Irish Life");	
+	$url = $base_url.'/eBusinessApps/Launch/Referral/Free/';
+  	$htmlButton = "";
+  	if ($refer !='') {
+		$url = $url.$refer;
+	}
+	$htmlContents = "
+  	<div id='saleContent' class='salePageRight hFirst'>
+  		<h2 class='block-title'>Eligibility Questions</h2>
+		<p>Getting your €25,000 Free Life Insurance is easy, once you meet the following criteria</p>
+		<ul class='important'>
+		<li>Your youngest child is aged 13 or younger when you apply</li>
+		<li>You are aged 55 or younger</li>
+		<li>You are resident of the Republic of Ireland</li>
+		<li>You are named on the Birth Certificate or Adoption Certificate of your child</li>
+		<li>You consent to being kept informed in writing, by post, email or telephone about products, services or additional benefits that ".$companyName." believe might be of interest to you</li>
+		<li>You have not had or do not currently have any form of malignant cancer, brain tumour, heart condition or heart surgery, stroke, multiple sclerosis, motor neurone disease, transplant, disorder of the kidney, liver or pancreas, you have not been an in-patient in the last 12 months(excluding childbirth) nor are you awaiting any medical results or future medical procedures, or you are currently unwell and planning to see a doctor in the near future.</li>
+		<li>The offer does not apply to ".$companyName." staff members and their families.</li>
+		</ul>
+		<div style='WIDTH: 87%' class='banner panel'>
+			<div id='open'>
+				<a class='launchFreeCover button' href='".$url."'>Get Free Cover Now</a>
+				<div class='boldspan eligible'>Yes, I am eligible</div>
+			</div>		
+			<div id='notOpen' style='display:none;'>
+				<span class='highlight offerClosed'>The Free Parent Life Insurance Offer is now closed!!!</span>
+			</div>
+			<div class='clearer'></div>
+		</div>
+	</div>";
+	}
+  	return $htmlContents;
+}
+
+ function free_life_cover_pages_block_view($delta = '') {
+  $block=array(); 
+  switch($delta) {
+    case 'free_life_cover_pages_left':
+	   	drupal_add_css(drupal_get_path('module','free_life_cover_pages').'/css/free_life_cover_pages.css',array('group'=>CSS_DEFAULT,'weight'=>100));
+      	drupal_add_js(drupal_get_path('module','free_life_cover_pages').'/js/free_life_cover_pages.js',array('scope'=>'footer'));
+	    $block['subject'] = t('');
+	      $result = free_life_cover_pages_l_contents();
+	      // No content in the last week
+	      $block['content'] = $result;
+	  break;
+	  case 'free_life_cover_pages_right':
+	    drupal_add_css(drupal_get_path('module','free_life_cover_pages').'/css/free_life_cover_pages.css',array('group'=>CSS_DEFAULT,'weight'=>100));
+      	drupal_add_js(drupal_get_path('module','free_life_cover_pages').'/js/free_life_cover_pages.js',array('scope'=>'footer'));
+	    $block['subject'] = t('');
+	      // Use our custom function to retrieve data
+	      $result = free_life_cover_pages_r_contents();
+	      // No content in the last week
+	      $block['content'] = $result;
+	  break;
+  }
+  
+    return $block;
+
+ }

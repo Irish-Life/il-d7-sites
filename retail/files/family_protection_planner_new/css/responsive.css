@@ -1,0 +1,370 @@
+@media screen and (min-width:473px) and (max-width:1024px) { /* ********************* IPAD ****************************** */
+
+.container, .container-intro {
+	width:100% !important;
+} 
+
+.lifelens-cta {
+	display: block;
+}
+
+.row-eq-mob {
+	display: flex;
+}
+
+.steps-menu p {
+	font-size: 14px;
+}
+
+.quote-box {
+height: 220px;}
+
+.directions1 {
+	display: none;
+}
+
+.directions2 {
+	display:block;
+}
+
+.quote-box p {
+    font-size: 13px;}
+
+.previous {
+	width: 30% !important;
+}
+
+
+.sub-heading-step p {
+    font-size: 17px;
+}
+
+.sub-heading-step small {
+	text-align:center;
+	float:none;
+}
+
+.chosen-container {
+	width: 100% !important;
+}
+
+.lifelens-cta {
+	display: block;
+	width: 100%;
+}
+
+.dial {
+	width: 129px !important;
+}
+
+.quote-heading p {
+	font-size: 15px;
+}
+
+.form-group input[type="number"],
+.form-group input[type="range"],
+.form-group input[type="text"],
+.form-group input[type="email"], .rangeslider--horizontal,
+select {
+	width: 100%!important;
+}
+
+
+input[type="radio"] + label {
+	width:49%;
+}
+
+}
+
+@media screen and (min-width:473px) and (max-width:767px) {
+
+.rangeslider--horizontal,	
+input[type="number"],
+input[type="range"],
+input[type="text"],
+input[type="email"],
+select {
+	width: 100%!important;
+}	
+
+input[type="radio"] + label {
+	width:49%;
+}
+
+.container-intro {
+	width:100% !important;
+} 
+
+.total {
+	font-size: 29px;
+}
+
+.lifelens-cta {
+	display: block;
+}
+
+.row-eq-mob {
+	display: flex;
+}
+
+.steps-menu p {
+	font-size: 14px;
+}
+
+.sub-heading-step {
+	padding-left: 0px!important;
+	text-align:center;
+}
+
+.sub-heading-step p {
+    font-size: 17px;
+}
+
+.sub-heading-step small {
+	text-align:center;
+	float:none;
+}
+
+.knob {
+	display:none;
+}
+
+.knob-title {
+	display: none;
+}
+
+.quote-box {
+height: 220px;}
+
+.lifelens-cta {
+	display: block;
+	width: 100%;
+}
+
+.row-eq-height {
+	display:block !important;
+}
+
+.quote-body h4 {
+	margin-top: 0px!important;
+}
+
+.container {
+	width:100% !important;
+}
+
+.directions2 {display:none;}
+
+.chosen-container {
+	width: 100% !important;
+
+	}
+
+}
+
+
+@media screen and (max-width:472px) { /* ********************** MOBILE **************************** */
+
+.rangeslider--horizontal,	
+input[type="number"],
+input[type="range"],
+input[type="text"],
+input[type="email"],
+select {
+	width: 100%!important;
+}	
+
+input[type="radio"] + label {
+	width:49%;
+	font-size: 15px;
+	padding:13px;	
+}
+
+h4 {
+	font-size: 16px !important;
+}
+
+#privacy-box {
+	display: none;
+}
+
+.previous {
+	width: 50% !important;
+}
+
+.deathheading, .illnessheading, .specheading {
+	display: block;
+	color:black !important;
+}
+
+.quotehidden {
+	display:none !important;
+}
+
+.directions1 {
+	display: none;
+}
+
+.directions2 {
+	display:block;
+}
+
+.container-intro {
+	width:100% !important;
+} 
+
+.lifelens-cta {
+	display: block;
+	width: 100%;
+}
+
+.note {
+	margin-left: 0px;
+}
+
+.row-eq-mob {
+	display: flex;
+}
+
+
+.steps-menu {
+	display: none;
+}
+
+.steps-menu p {
+	font-size: 11px;
+}
+
+.partner {
+	margin-left: -10px;
+
+}
+
+.first {
+	margin-bottom:0px;
+}
+
+.time {width: 29% !important;
+       height: 57px;}
+
+.sub-heading-step {
+	padding-left: 0px!important;
+	text-align:center;
+	margin-top: 6px;
+}
+
+.sub-heading-step p {
+    font-size: 13px;
+}
+
+.sub-heading-step small {
+	text-align:center;
+	float:none;
+}
+
+.knob {
+	display:none;
+}
+
+.knob-title {
+	display: none;
+}
+
+.row-eq-height {
+	display:block !important;
+}
+
+.quote-body small {
+	margin-bottom:20px;
+}
+
+.container {
+	width:100% !important;
+}
+
+.output1, .output2, .output3, .output4 {
+	    font-size: 32px !important;
+		margin-bottom: 5px;
+}
+
+.partner p {
+	font-size: 16px;
+}
+
+.help {
+	font-size: 11px;
+}
+
+.popover {
+	width: 100%;
+	top: 0px !important;
+    left: 0px !important;
+}
+
+
+.specifiedIll p, .illness p {
+	font-size: 15px;
+}
+
+.money {
+	font-size: 18px;
+}
+
+.fa-arrow-right {
+display:none !important;}
+
+.chosen-container {
+	width: 100% !important;
+}
+
+#circleDiv {
+	text-align:left;
+}
+
+#circleDiv p {
+	font-size: 14px;
+}
+
+.total {
+	font-size: 22px;
+}
+
+.region-content .title {
+    font-size: 22px !important;}
+
+#existing-form .form-group p {
+	font-size: 14px;
+    padding-bottom: 22px;
+}
+
+.tick1, .tick2, .tick3 {
+	height: 24px;
+}
+
+.btn, input[type=radio] + label, input[type=checkbox] + label {
+font-size: 11px !important;}
+
+.btn {
+	padding: 0px !important;
+}
+
+.logoImg {
+width: 37%;}
+
+.popover-content p {
+    font-size: 12px;
+    width: 100%; }
+	
+.quote-box {
+   height:92px !important;
+	}
+
+.mobile-pop {
+	display:block;
+	color:#50C9B5;}
+	
+.printBtn {
+	display: none!important;
+}	
+	
+}

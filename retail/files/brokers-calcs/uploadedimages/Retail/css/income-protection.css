@@ -1,0 +1,237 @@
+#income-protection-app #radioInputs label {
+display:inline-block!important;
+margin-left:5px;
+}
+
+#income-protection-app .errorText {
+display:inline!important;
+color:red!important;
+font-weight:bolder;
+}
+
+#income-protection-app .ui-widget {
+font-size:.875em!important;
+font-family:font-family: "Helvetica Neue", Helvetica, Helvetica, Arial, sans-serif!important;
+}
+
+#income-protection-app .hideDays {
+display:none;
+}
+
+#income-protection-app .clacSlider {
+margin-top:20px;
+}
+
+#income-protection-app #sliderOutput {
+margin-top:40px;
+}
+
+#income-protection-app #income-protection-app form.custom .custom.dropdown .current {
+font-size:13px;
+}
+
+#income-protection-app #income-protection-app #pageOne label {
+color:#4d4e53;
+text-shadow:-1px 1px 0 #fff;
+font-size:18px;
+text-align:center;
+}
+
+#income-protection-app #pageTwo {
+padding:65px;
+}
+
+#income-protection-app .output {
+color:#f19c2b;
+font-weight:700;
+font-size:17px;
+}
+
+#income-protection-app .sliderActive {
+border:#5cc151 solid thin;
+background:#FFF;
+color:#5cc151;
+padding:5px;
+}
+
+#income-protection-app #userJob .ui-widget-content {
+background:#FFF!important;
+}
+
+.ui-autocomplete {
+background:#fff!important;
+}
+
+.foundation-scope .button.supplementary {
+background-color:#f19c2b;
+color:#FFF;
+border-color:#db830e;
+}
+
+.foundation-scope #pageOne a {
+-webkit-transition:none;
+-moz-transition:none;
+-ms-transition:none;
+-o-transition:none;
+transition:none;
+}
+
+#income-protection-app #myModal input {
+height:40px;
+font-size:16px;
+}
+
+#income-protection-app #myModal label {
+font-size:16px;
+font-weight:700;
+}
+
+#income-protection-app #myModal p {
+font-size:18px;
+}
+
+#income-protection-app #myModal form.custom .custom.dropdown.large {
+height:100%;
+}
+
+#income-protection-app #personalDetails .description {
+font-size:15px;
+}
+
+#income-protection-app #salaryError,#jobError {
+margin-top:0!important;
+}
+
+#income-protection-app #userJob,#salary {
+width:100%!important;
+}
+
+#income-protection-app #pageThree p {
+color:#777;
+font-size:17px;
+font-weight:400;
+line-height:1.4;
+border-bottom:dotted 1px #ddd;
+padding:.9375em;
+}
+
+
+.foundation-scope #income-protection-app form.custom .custom.dropdown {
+font-size: 16px !important;
+}
+
+.reveal-modal label {
+float:none!important;
+font-size: 18px;
+margin-right:8px;
+padding-top:6px;
+text-align:center;
+width:auto!important;
+}
+.reveal-modal form input {
+font-size: 18px;
+}
+
+
+#income-protection-app form label {
+float:none!important;
+font-size: 18px;
+margin-right:8px;
+padding-top:6px;
+text-align:center;
+width:auto!important;
+}
+
+#income-protection-app form input {
+font-size: 18px;
+}
+
+#income-protection-app a.right {
+background-image:none!important;
+}
+
+.lt-ie9 option {
+text-align:center!important;
+}
+
+#income-protection-app #pageOne legend,#income-protection-app .dropdown,#salary,#userJob {
+text-align:center;
+font-size: 16px !important;
+}
+
+#income-protection-app #pageTwo .description,#income-protection-app #jobClassIssue,#income-protection-app #myModal form.custom .custom.dropdown .current {
+font-size:17px;
+}
+
+.reveal-modal form,#income-protection-app form {
+border:none!important;
+}
+
+.center {
+margin-left: auto!important;
+margin-right: auto!important;
+display: block!important;
+}
+
+
+* + html #leftSummary, * + html #rightSummary {
+width: 47% !important;
+float: left !important;
+} 
+
+
+* + html #userDetails {
+width: 65% !important;
+float: left !important;
+} 
+
+* + html #chart {
+width: 30% !important;
+float: left !important;
+} 
+
+* + html #userDetails select, * + html #userDetails input[type="radio"], * + html #callTime {
+display: block !important;
+}
+
+#userDetails input[type="radio"] {
+width: 20% !important;
+}
+
+* + html #annualSalaryDiv, * + html #jobTitleDiv, * + html #retirementAgeDiv, * + html #deferredStatusDiv{
+width: 45% !important;
+float: left !important;
+}
+
+* + html #monthDiv, * + html #yearDiv, * + html #dayDiv, * + html #radioInputs .columns .columns {
+width: 28% !important;
+float: left !important;
+}
+
+* + html #bottomRow, * + html #topRow{
+	width: 100%;
+}
+
+* + html #bottomRow .large-6 , * + html #topRow .large-6, * + html #leftTable, * + html #rightTable{
+	float: left !important;
+	width: 45%;
+}
+}
+
+* + html #callTime input[type="text"] {
+	width: 85% !important;
+}
+
+* + html .reveal-modal-bg {
+	z-index: -1 !important;
+	background: transparent !important;
+	position: absolute !important;
+}
+
+* + html #userJob, * + html #salary {
+height: auto !important;
+}
+
+#badDiv{
+	display: none!important;
+}

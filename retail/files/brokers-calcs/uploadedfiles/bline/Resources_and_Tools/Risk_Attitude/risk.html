@@ -1,0 +1,57 @@
+<html><head><title>Attitude To Risk</title>
+<script type="text/javascript">
+var req;
+var divName;
+/* This function loads the client association details
+* into the divId panel. It calls functions located in javascript_functions.js.
+*
+*/
+function executeAjaxRequest(url, divId, pleaseWaitHTML) {
+		divName = divId;
+		document.getElementById(divName).innerHTML=pleaseWaitHTML;
+		document.body.style.cursor='wait';
+		var callback = processAjaxResponse;
+		executeXhr(callback, url);
+		document.body.style.cursor='default';		
+}
+
+function executeXhr(callback, url) {
+// branch for native XMLHttpRequest object
+	if (window.XMLHttpRequest) {
+    	req = new XMLHttpRequest();
+    	req.onreadystatechange = callback;
+    	req.open("GET", url, true);
+    	req.send(null);
+    } // branch for IE/Windows ActiveX version
+    else if (window.ActiveXObject) {
+    	req = new ActiveXObject("Microsoft.XMLHTTP");
+    	if (req) {
+       		req.onreadystatechange = callback;
+       		req.open("GET", url, true);
+       		req.send();
+    	}
+    }
+}
+  
+function processAjaxResponse() {
+// only if req shows "loaded"
+	if (req.readyState == 4) {
+  		// only if "OK"
+   		if (req.status == 200) {
+       		document.getElementById(divName).innerHTML = req.responseText;
+   		} else {
+       		document.getElementById(divName).innerHTML= "There was a problem retrieving the data:\n" + req.statusText;
+   		}
+	}
+} 
+</script>
+
+</head>
+<body>
+<div id="AttitudeToRisk">&nbsp;</div>
+<script type="text/javascript">
+executeAjaxRequest('http://blinedev.internal.irishlife.ie:8002/servlet/getRiskQuestionnaire.do',
+'AttitudeToRisk', '<p>Retrieving Questions ...</p>');
+</script>
+</body>
+</html>

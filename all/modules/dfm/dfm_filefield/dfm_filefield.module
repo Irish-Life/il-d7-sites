@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @file
+ * Integrates Drupella FM into FileField.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function dfm_filefield_menu() {
+  $items = array();
+  $items['dfm-filefield/%/%/%'] = array(
+    'page callback' => 'dfm_filefield_page',
+    'page arguments' => array(1, 2, 3),
+    'access callback' => 'dfm_filefield_field_edit_access',
+    'access arguments' => array(1, 2, 3),
+    'file' => 'dfm_filefield.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_element_info().
+ */
+function dfm_filefield_element_info() {
+  $elements = array();
+  $elements['managed_file']['#process'] = array('dfm_filefield_field_process');
+  $elements['managed_file']['#pre_render'] = array('dfm_filefield_field_pre_render');
+  $elements['managed_file']['#file_value_callbacks'] = array('dfm_filefield_field_value');
+  return $elements;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dfm_filefield_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  $instance = $form['#instance'];
+  if (in_array($instance['widget']['type'], dfm_filefield_supported_widgets())) {
+    $form['instance']['widget']['settings'] += array('dfm_filefield_on' => array(
+      '#type' => 'checkbox', 
+      '#title' => t('Allow users to select files from <a href="!url">Drupella File Manager</a> for this field.', array('!url' => url('admin/config/media/dfm'))),
+      '#default_value' => $instance['widget']['settings']['dfm_filefield_on'],
+      '#weight' => 16,
+    ));
+  }
+}
+
+/**
+ * Implements hook_field_widget_info_alter().
+ */
+function dfm_filefield_field_widget_info_alter(&$info) {
+  foreach (dfm_filefield_supported_widgets() as $widget) {
+    if (isset($info[$widget])) {
+      $info[$widget]['settings']['dfm_filefield_on'] = 0;
+    }
+  }
+}
+
+/**
+ * Returns supported file widgets.
+ */
+function dfm_filefield_supported_widgets() {
+  static $widgets;
+  if (!isset($widgets)) {
+    $widgets = array('file_generic', 'image_image');
+    drupal_alter('dfm_filefield_supported_widgets', $widgets);
+    $widgets = array_unique($widgets);
+  }
+  return $widgets;
+}
+
+/**
+ * Extends filefield_widget element.
+ */
+function dfm_filefield_field_process($element, &$form_state, $form) {
+  dfm_filefield_inc();
+  return _dfm_filefield_field_process($element, $form_state, $form);
+}
+
+/**
+ * Field value callback.
+ */
+function dfm_filefield_field_value($element, &$item, &$form_state) {
+  if (!empty($item['dfm_filefield_fid'])) {
+    dfm_filefield_inc();
+    return _dfm_filefield_field_value($element, $item, $form_state);
+  }
+}
+
+/**
+ * Pre render callback. Add page elements.
+ */
+function dfm_filefield_field_pre_render($element) {
+  if (isset($element['dfm_filefield_fid'])) {
+    dfm_filefield_inc();
+    _dfm_filefield_field_pre_render($element);
+  }
+  return $element;
+}
+
+/**
+ * Menu access callback that checks edit access to a field.
+ */
+function dfm_filefield_field_edit_access($entity_type, $bundle_name, $field_name) {
+  $field = field_info_field($field_name);
+  return $field && field_access('edit', $field, $entity_type);
+}
+
+/**
+ * Includes dfm_filefield.inc.
+ */
+function dfm_filefield_inc() {
+  static $done;
+  if (!isset($done)) {
+    $done = TRUE;
+    include_once './' . drupal_get_path('module', 'dfm_filefield') . '/dfm_filefield.inc';
+  }
+}

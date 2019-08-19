@@ -1,0 +1,5 @@
+; $Id: search_holder.info,v 1.0.0.1 2014/11/19 10:11:15 Alan Exp $
+name = "Irish Life - Persistent Login"
+description = "Persistent Login"
+core = "7.x"
+package = "Irish Life"

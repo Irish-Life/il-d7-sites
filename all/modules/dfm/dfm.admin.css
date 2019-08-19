@@ -1,0 +1,26 @@
+.dfma-dirs {
+  padding: 0 0 0 20px;
+}
+table.token-tree {
+  margin-left: 0;
+}
+table.token-tree caption {
+  margin: 0;
+  text-align: left;
+}
+table.token-tree .expander {
+  margin: 0 !important;
+}
+.dfma-perms {
+  border-bottom: 1px solid #ddd;
+}
+.dfma-perms > .form-item {
+  width: 170px;
+  float: left;
+  margin: 0 5px 5px 0;
+}
+.dfma-perms .perm-type {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
+}

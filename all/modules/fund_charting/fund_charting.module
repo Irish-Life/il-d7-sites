@@ -1,0 +1,1832 @@
+<?php
+function fund_charting_permission() {
+  return array(
+    'administer_fund_charting' => array(
+      'title' => t('Administer Fund Charting'),
+      'description' => t('Perform administration tasks for Fund Charting.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+function fund_charting_range_returns_admin()
+{
+
+	$form['fund_charting_range_returns_show_avg']=array(
+	'#type' => 'checkbox',
+	'#title' => t('Show average range of return on chart'),
+	'#default_value' => variable_get('fund_charting_range_returns_show_avg',1),
+	'#description' => t("Show average range of return"),	
+	);	
+
+	$form['fund_charting_range_returns_explanation']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bar chart explanation'),
+	'#default_value' => variable_get('fund_charting_range_returns_explanation','<p>The possible return numbers are produced by Irish Life Investment Managers (ILIM). The returns are calculated before taxes and allow for an annual management charge of 1.15% (1.05% for MAP6). The actual fund management charge and product charge will depend on your plan. Please see your Product Booklet or Fund Guide for details.</p> <p>This graph shows the range of possible annual returns you may expect in a 1, 3, 5, 7 and 10 year period for each of the Irish Life MAPS funds. Use the slider to change the years. </p> <p>In 95% of the time, the return is expected to be within the range of the blue bars shown. This means that 5% of the time the return could be higher or lower than the bars shown.</p><p>However, not all of the returns are equally likely to happen. In fact, returns closer to the middle of each bar would be more likely than those at the extremes. This is represented by the average annual return.</p>'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 60,
+	'#description' => t("Range of Return bar chart explanation"),
+	'#required' => TRUE,	
+	);
+
+	/*1 year*/
+	$form['fund_charting_range_returns_1_year_pos']=array(
+	'#type' => 'textfield',
+	'#title' => t('1 Year Positive Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_1_year_pos','[11.4,14.8,22.1,25.8,31.4]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 1 year positive returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_1_year_neg']=array(
+	'#type' => 'textfield',
+	'#title' => t('1 Year Negative Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_1_year_neg','[-9.8,-13.8,-20.1,-22.3,-25.6]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 1 year negative returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_1_year_avg']=array(
+	'#type' => 'textfield',
+	'#title' => t('1 Year Average Return'),
+	'#default_value' => variable_get('fund_charting_range_returns_1_year_avg','[0.3, 1.3, 2.7, 3.5, 3.9]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 1 year average returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	/*3 year*/
+	$form['fund_charting_range_returns_3_year_pos']=array(
+	'#type' => 'textfield',
+	'#title' => t('3 Year Positive Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_3_year_pos','[6.6,9.8,13.9,16.9,20.5]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 3 year positive returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_3_year_neg']=array(
+	'#type' => 'textfield',
+	'#title' => t('3 Year Negative Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_3_year_neg','[-4.8,-6.5,-8.7,-10.2,-12.8]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 3 year negative returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_3_year_avg']=array(
+	'#type' => 'textfield',
+	'#title' => t('3 Year Average Return'),
+	'#default_value' => variable_get('fund_charting_range_returns_3_year_avg','[0.8, 2, 3, 3.6, 4.4]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 3 year average returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	/*5 year*/
+	$form['fund_charting_range_returns_5_year_pos']=array(
+	'#type' => 'textfield',
+	'#title' => t('5 Year Positive Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_5_year_pos','[5.4,8.2,11.7,14,17.1]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 5 year positive returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_5_year_neg']=array(
+	'#type' => 'textfield',
+	'#title' => t('5 Year Negative Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_5_year_neg','[-3.4,-4.3,-5.8,-6.8,-8.5]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 5 year negative returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_5_year_avg']=array(
+	'#type' => 'textfield',
+	'#title' => t('5 Year Average Return'),
+	'#default_value' => variable_get('fund_charting_range_returns_5_year_avg','[1, 2.1, 3.1, 3.8, 4.4]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 5 year average returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	/*7 year*/
+	$form['fund_charting_range_returns_7_year_pos']=array(
+	'#type' => 'textfield',
+	'#title' => t('7 Year Positive Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_7_year_pos','[4.9,7.3,10.4,12.5,15.1]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 7 year positive returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_7_year_neg']=array(
+	'#type' => 'textfield',
+	'#title' => t('7 Year Negative Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_7_year_neg','[-2.5,-3.3,-4.3,-5.1,-6.6]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 7 year negative returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_7_year_avg']=array(
+	'#type' => 'textfield',
+	'#title' => t('7Year Average Return'),
+	'#default_value' => variable_get('fund_charting_range_returns_1_year_avg','[1.2, 2.2, 3.3, 4, 4.5]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 7 year average returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	/*10 year*/
+	$form['fund_charting_range_returns_10_year_pos']=array(
+	'#type' => 'textfield',
+	'#title' => t('10 Year Positive Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_10_year_pos','[4.5,6.7,9.5,11.4,13.6]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 10 year positive returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_10_year_neg']=array(
+	'#type' => 'textfield',
+	'#title' => t('10 Year Negative Returns'),
+	'#default_value' => variable_get('fund_charting_range_returns_10_year_neg','[-1.8,-2.2,-2.8,-3.4,-4.7]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 10 year negative returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_range_returns_10_year_avg']=array(
+	'#type' => 'textfield',
+	'#title' => t('10 Year Average Return'),
+	'#default_value' => variable_get('fund_charting_range_returns_10_year_avg','[1.4, 2.4, 3.5, 4.2, 4.8]'),
+	'#resizable' => FALSE,
+	'#maxlength' => 150,
+	'#size' => 50,
+	'#description' => t("Range of Return 10 year average returns for each MAP fund"),
+	'#required' => TRUE,	
+	);
+	
+		return system_settings_form($form);
+}
+
+function fund_charting_ptsb_admin()
+{
+$form['fund_charting_map_array_url_ptsb']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAPs Pages'),
+	'#default_value' => variable_get('fund_charting_map_array_url_ptsb','investments/irish-life-maps/funds/multi-asset-portfolio-fund-2|investments/irish-life-maps/funds/multi-asset-portfolio-fund-3|investments/irish-life-maps/funds/multi-asset-portfolio-fund-4|investments/irish-life-maps/funds/multi-asset-portfolio-fund-5|investments/irish-life-maps/funds/multi-asset-portfolio-fund-6'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("MAP page array"),
+	'#required' => TRUE,	
+	);
+
+	
+	
+	return system_settings_form($form);
+}
+
+function fund_charting_bline_admin()
+{
+$form['fund_charting_map_array_url_bline']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAPs Pages'),
+	'#default_value' => variable_get('fund_charting_map_array_url_bline','bline/investments/irish-life-maps/funds/multi-asset-portfolio-fund-2|bline/investments/irish-life-maps/funds/multi-asset-portfolio-fund-3|bline/investments/irish-life-maps/funds/multi-asset-portfolio-fund-4|bline/investments/irish-life-maps/funds/multi-asset-portfolio-fund-5|bline/investments/irish-life-maps/funds/multi-asset-portfolio-fund-6'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("MAP page array"),
+	'#required' => TRUE,	
+	);
+
+	
+	
+	return system_settings_form($form);
+}
+
+function fund_charting_barometer_admin()
+{
+	$form['fund_charting_barometer_params']=array(
+	'#type' => 'textarea',
+	'#title' => t('Risk Profile Barometer chart settings'),
+	'#default_value' => variable_get('fund_charting_barometer_params','		[{
+            name: \'Reviews 2014\',
+            data: [ {
+                  name: \'Safety First\',
+                  color: \'#5261ac\',
+                  y: 8.53
+                    },
+                    {
+                    name: \'Careful\',
+                    color: \'#f19c2b\',
+                    y: 30.8
+                    },
+                    {
+                  name: \'Conservative\',
+                  color: \'#f7a35c\',
+                  y: 32.08
+                    },
+                    {
+                  name: \'Balanced\',
+                  color: \'#8085e9\',
+                  y: 19.97
+                    },
+                    {
+                  name: \'Experienced\',
+                  color: \'#f15c80\',
+                  y: 8.17
+                    },
+                    {
+                  name: \'Adventurous\',
+                  color: \'#e4d354\',
+                  y: 0.41
+                    },
+                    {
+                  name: \'Very Adventurous\',
+                  color: \'#8085e8\',
+                  y: 0.03
+                    }
+            ]'),
+	'#rows' => 30,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("Risk Profile Barometer chart settings"),
+	'#required' => TRUE,	
+	);
+	
+		return system_settings_form($form);
+}
+
+function fund_charting_maps_widget_admin()
+{
+	$form = array();
+	$form['fund_charting_map_array_url']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAPs Pages URLs'),
+	'#default_value' => variable_get('fund_charting_map_array_url','investments/irish-life-maps/funds/multi-asset-portfolio-fund-2|investments/irish-life-maps/funds/multi-asset-portfolio-fund-3|investments/irish-life-maps/funds/multi-asset-portfolio-fund-4|investments/irish-life-maps/funds/multi-asset-portfolio-fund-5|investments/irish-life-maps/funds/multi-asset-portfolio-fund-6'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("MAP page array"),
+	'#required' => TRUE,	
+	);
+	
+          
+	
+	$form['fund_charting_map_array_title']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAPs Widget Titles'),
+	'#default_value' => variable_get('fund_charting_map_array_title','Multi Asset Portfolio Fund 2|Multi Asset Portfolio Fund 3|Multi Asset Portfolio Fund 4|Multi Asset Portfolio Fund 5|Multi Asset Portfolio Fund 6'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("MAP page array"),
+	'#required' => TRUE,	
+	);
+		
+$form['fund_charting_map_array_descs']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAPs Widget Descriptions'),
+	'#default_value' => variable_get('fund_charting_map_array_descs','This is a low risk fund for careful investors, which aims to have a small allocation to higher risk assets such as shares and property.|This is a low to medium risk fund for conservative investors, which aims to have a significant proportion invested in cash and bonds and a lower allocation to higher risk assets such as shares and property.|This is a medium risk fund for balanced investors, which aims to have a moderate allocation to higher risk assets such as shares and property.|This is a medium to high risk fund for experienced investors, which aims to have a relatively high allocation to higher risk assets such as shares and property.This is a high risk fund for adventurous and very adventurous investors, which aims to have a high allocation to higher risk assets such as shares and property.'),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("MAP page array"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function fund_charting_admin()
+{
+	$form = array();
+		
+	$form['fund_charting_help_html']=array(
+	'#type' => 'textarea',
+	'#title' => t('Funds Help Text'),
+	'#default_value' => variable_get('fund_charting_help_html','<div id="helpTextHeader" >
+    <div><div class="name" onclick="void(0);"><a class="toggle-nav showHelp helpTextButton" href="javascript:void(0);"> </a>
+        <h2><a class="showHelp helpTextButton" href="javascript:void(0);">Need Help?</a></h2>
+      </div>
+    </div>
+    <div id="helpText" style="DISPLAY: none">
+      <div class="helpTitle"><h2>Using the historical performance chart</h2></div>
+      <div class="helpSection">
+        <h3>Check the price of a fund on a particular date.</h3><img src="/sites/all/modules/fund_charting/images/histPerfHover.png"> 
+      </div>
+      <div class="helpTitle"><h2>Change the time frame for the fund</h2></div>
+      <div class="helpSection">
+        <h3>1. By selecting a date from the top right corner.</h3>
+        <img src="/sites/all/modules/fund_charting/images/hisPerDate.png">
+      </div>
+      <div class="helpSection">
+        <h3>2. By selecting a time from the zoom in the top left corner.</h3> 
+        <img src="/sites/all/modules/fund_charting/images/hisPerfZoom.png">
+      </div>
+      <div class="helpSection">
+        <h3>3. Or change the range via the handles at the bottom of the graph.</h3> 
+        <img src="/sites/all/modules/fund_charting/images/hisPerfRange.png">
+      </div>      <div class="clearer"></div> </div>  </div>'),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("Funds Page Help Section HTML"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_asset_split_height']=array(
+	'#type' => 'textfield',
+	'#title' => t('Asset Split Chart Height'),
+	'#default_value' => variable_get('fund_charting_asset_split_height','500'),
+	'#resizable' => FALSE,
+	'#maxlength' => 3,
+	'#size' => 3,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+
+		$form['fund_charting_alts_split_height']=array(
+	'#type' => 'textfield',
+	'#title' => t('Alternatives Split Chart Height'),
+	'#default_value' => variable_get('fund_charting_alts_split_height','400'),
+	'#resizable' => FALSE,
+	'#maxlength' => 3,
+	'#size' => 3,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+		$form['fund_charting_geo_split_height']=array(
+	'#type' => 'textfield',
+	'#title' => t('Country Split Chart Height'),
+	'#default_value' => variable_get('fund_charting_geo_split_height','540'),
+	'#resizable' => FALSE,
+	'#maxlength' => 3,
+	'#size' => 3,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_asset_split_margin_top']=array(
+	'#type' => 'textfield',
+	'#title' => t('Asset Split Chart Margin Top'),
+	'#default_value' => variable_get('fund_charting_asset_split_margin_top','-100'),
+	'#resizable' => FALSE,
+	'#maxlength' => 5,
+	'#size' => 5,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+
+		$form['fund_charting_alts_split_margin_top']=array(
+	'#type' => 'textfield',
+	'#title' => t('Alternatives Split Chart Margin Top'),
+	'#default_value' => variable_get('fund_charting_alts_split_margin_top','-25'),
+	'#resizable' => FALSE,
+	'#maxlength' => 5,
+	'#size' => 5,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+		$form['fund_charting_geo_split_margin_top']=array(
+	'#type' => 'textfield',
+	'#title' => t('Country Split Chart Margin Top'),
+	'#default_value' => variable_get('fund_charting_geo_split_margin_top','-120'),
+	'#resizable' => FALSE,
+	'#maxlength' => 5,
+	'#size' => 5,
+	'#description' => t("Height in pixels"),
+	'#required' => TRUE,	
+	);
+	
+	
+	$form['fund_charting_map2_fund_id']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP2 Fund Id'),
+	'#default_value' => variable_get('fund_charting_map2_fund_id','RKP'),
+	'#resizable' => FALSE,
+	'#maxlength' => 4,
+	'#size' => 4,
+	'#description' => t("MAP 2 Fund Id"),
+	'#required' => TRUE,	
+	);
+		$form['fund_charting_map3_fund_id']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP3 Fund Id'),
+	'#default_value' => variable_get('fund_charting_map3_fund_id','MKP'),
+	'#resizable' => FALSE,
+	'#maxlength' => 4,
+	'#size' => 4,
+	'#description' => t("MAP 3 Fund Id"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map4_fund_id']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP4 Fund Id'),
+	'#default_value' => variable_get('fund_charting_map4_fund_id','GZP'),
+	'#resizable' => FALSE,
+	'#maxlength' => 4,
+	'#size' => 4,
+	'#description' => t("MAP 4 Fund Id"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map5_fund_id']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP5 Fund Id'),
+	'#default_value' => variable_get('fund_charting_map5_fund_id','GWP'),
+	'#resizable' => FALSE,
+	'#maxlength' => 4,
+	'#size' => 4,
+	'#description' => t("MAP 5 Fund Id"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map6_fund_id']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP6 Fund Id'),
+	'#default_value' => variable_get('fund_charting_map6_fund_id','XKP'),
+	'#resizable' => FALSE,
+	'#maxlength' => 4,
+	'#size' => 4,
+	'#description' => t("MAP 6 Fund Id"),
+	'#required' => TRUE,	
+	);
+	
+	
+	$form['fund_charting_map2_asset_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP2 Asset Splits'),
+	'#default_value' => variable_get('fund_charting_map2_asset_split',"['Global Cash(17.8%)',   17.8],     
+['Bonds (41.6%)',   41.6],
+['Alternative (19%)',   19],
+['Low Volatility Shares (10.2%)',   10.2],
+['Developed Market Shares (8.2%)',   8.2],
+['Property (3.2%)',   3.2]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 2 Assets Split Array"),
+	'#required' => TRUE,	
+	);
+
+	$form['fund_charting_map3_asset_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP3 Asset Splits'),
+	'#default_value' => variable_get('fund_charting_map3_asset_split',"['Bonds (29.4%)',   29.4],
+['Alternative (19%)',   19],
+['Low Volatility Shares (15.3%)',   15.3],
+['Developed Market Shares (18.8%)',   18.8],	 
+['Cash (9.9%)',   9.9],
+['Emerging Market Shares (2.5%)',   2.5],
+['Property (5.3%)',   5.3]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 3 Assets Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map4_asset_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP4 Asset Splits'),
+	'#default_value' => variable_get('fund_charting_map4_asset_split',"['Developed Market Shares (36.3%)',   36.3],
+['Low Volatility Shares (20.2%)',   20.2],
+['Alternative (18.9%)',   18.9],
+['Bonds (14.4%)',   14.4],
+['Emerging Market Shares (4.9%)',   4.9],
+['Property (5.3%)',   5.3]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 4 Assets Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map5_asset_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP5 Asset Splits'),
+	'#default_value' => variable_get('fund_charting_map5_asset_split',"['Developed Market Shares (50.4%)',   50.4],
+['Alternatives (14.3%)',   14.3],
+['Low Volatility Shares (15.2%)',   15.2],
+['Emerging Market Shares (12.3%)',   12.3],
+['Property (7.9%)',   7.9]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 5 Assets Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map6_asset_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP6 Asset Splits'),
+	'#default_value' => variable_get('fund_charting_map6_asset_split',"['Emerging Market Shares (34.5%)',   34.5],
+['Developed Market Shares (50.6%)',   50.6],
+['Alternative (4.5%)',   4.5],
+['Low Volatility Fund (5.1%)',   5.1],
+['Others (5%)',   5]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 6 Assets Split Array"),
+	'#required' => TRUE,	
+	);
+
+$form['fund_charting_map2_alt_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP2 Alternatives Splits'),
+	'#default_value' => variable_get('fund_charting_map2_alt_split',"['GMO (60%)',   60.0],
+	['AMUNDI (15%)',   15.0],        
+	['Blackrock (15%)',   15.0],
+	['Pimco (10%)',   10]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 2 Alternatives Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map3_alt_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP3 Alternatives Splits'),
+	'#default_value' => variable_get('fund_charting_map3_alt_split',"['GMO (60%)',   60.0],
+	['AMUNDI (15%)',   15.0],        
+	['Blackrock (15%)',   15.0],
+	['Pimco (10%)',   10]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 3 Alternatives Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map4_alt_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP4 Alternatives Splits'),
+	'#default_value' => variable_get('fund_charting_map4_alt_split',"['GMO (60%)',   60.0],
+	['AMUNDI (15%)',   15.0],        
+	['Blackrock (15%)',   15.0],
+	['Pimco (10%)',   10]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 4 Alternatives Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map5_alt_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP5 Alternatives Splits'),
+	'#default_value' => variable_get('fund_charting_map5_alt_split',"['GMO (60%)',   60.0],
+['AMUNDI (15%)',   15.0],        
+['Blackrock (15%)',   15.0],
+['Pimco (10%)',   10]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 5 Alternatives Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map6_alt_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP6 Alternatives Splits'),
+	'#default_value' => variable_get('fund_charting_map6_alt_split',"['GMO (60%)',   60.0],
+['AMUNDI (15%)',   15.0],        
+['Blackrock (15%)',   15.0],
+['Pimco (10%)',   10]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 6 Alternatives Split Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map2_geo_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP2 Country Splits'),
+	'#default_value' => variable_get('fund_charting_map2_geo_split',"['France (23%)',   23],
+['Italy (15.7%)',   15.7],
+['Netherlands (13.1%)',   13.1],
+['Germany (12.9%)',   12.9],
+['Spain (8.6%)',   8.6],
+['United States (5.6%)',   5.6],
+['United Kingdom (4.6%)',   4.6],
+['Belgium (3.2%)',   3.2],
+['Austria (2.2%)',   2.2],
+['Other (11.1%)',   11.1]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 2 Country Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map3_geo_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP3 Country Splits'),
+	'#default_value' => variable_get('fund_charting_map3_geo_split',"['France (21.1%)',   21.1],
+['Italy (13.9%)',   13.9],
+['Netherlands (12.3%)',   12.3],
+['Germany (11.5%)',   11.5],
+['Ireland (10.3%)',   10.3],
+['Spain (7.7%)',   7.7],
+['United States (5.4%)',   5.4],
+['United Kingdom (4.4%)',   4.4],
+['Belgium (2.8%)',   2.8],
+['Other (10.6%)',   10.6]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 3 Country Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map4_geo_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP4 Country Splits'),
+	'#default_value' => variable_get('fund_charting_map4_geo_split',"['United States (52%)',  52],
+['Japan (7.9%)',  7.9],
+['United Kingdom (7.1%)',  7.1],
+['Switzerland (3.9%)',  3.9],
+['Germany (3.5%)',  3.5],
+['France (3.2%)',   3.2],
+['Canada (2.5%)',   2.5],
+['Hong Kong (2%)',   2],
+['Australia (2%)',   2],
+['Other (15.9%)',   15.9]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP4 Country Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map5_geo_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP5 Country Splits'),
+	'#default_value' => variable_get('fund_charting_map5_geo_split',"['United States (47.8%)',  47.8],
+['Japan (7%)',  7],
+['United Kingdom (6.7%)',  6.7],
+['Switzerland (3.4%)',  3.4],
+['Germany (3.1%)',  3.1],
+['France (3%)',   3],
+['Canada (2.7%)',   2.7],
+['Korea (2.3%)',   2.3],
+['Hong Kong (2.1%)',   2.1],
+['Other (21.9%)',   21.9]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 5 Country Split Array"),
+	'#required' => TRUE,	
+	);
+	
+		$form['fund_charting_map6_geo_split']=array(
+	'#type' => 'textarea',
+	'#title' => t('MAP6 Country Splits'),
+	'#default_value' => variable_get('fund_charting_map6_geo_split',"['United States (35.2%)', 35.2],
+['Korea (5.5%)',   5.5],
+['United Kingdom (5.2%)',  5.2],
+['Japan (5%)',  5],
+['Taiwan (4.7%)',  4.7],
+['China (4.4%)',  4.4],
+['Brazil (3.7%)',   3.7],
+['South Africa (3%)',   3],
+['India (2.8%)',   2.8],
+['Other (30.5%)',   30.5]"),
+	'#rows' => 6,
+	'#cols' => 60,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 6 Country Split Array"),
+	'#required' => TRUE,	
+	);
+
+	
+	$form['fund_charting_map2_pie_chart_colours']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP2 Pie Chart Colours'),
+	'#default_value' => variable_get('fund_charting_map2_pie_chart_colours',"['#c3e088', '#b0ca7a', '#9cb36d', '#899d5f', '#758652', '#627044', '#4e5a36', '#3b4329', '#272d1b', '#12160a']"),
+'#maxlength' => 120,
+	'#size' => 100,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 2 Pie Chart Colours Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map3_pie_chart_colours']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP3 Pie Chart Colours'),
+	'#default_value' => variable_get('fund_charting_map3_pie_chart_colours',"['#9dead0', '#8fd5bd', '#81c0aa', '#72aa97', '#649584', '#568071', '#486b5f', '#39554c', '#1d2b26', '#060f0c']"),
+'#maxlength' => 120,
+	'#size' => 100,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 3 Pie Chart Colours Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map4_pie_chart_colours']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP4 Pie Chart Colours'),
+	'#default_value' => variable_get('fund_charting_map4_pie_chart_colours',"['#5ffee6', '#58ead4', '#50d7c3', '#49c3b1', '#42b09f', '#3a9c8e', '#33897c', '#256259', '#163b35', '#0a2823']"),
+'#maxlength' => 120,
+	'#size' => 100,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 4 Pie Chart Colours Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map5_pie_chart_colours']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP5 Pie Chart Colours'),
+	'#default_value' => variable_get('fund_charting_map5_pie_chart_colours',"['#1c2936', '#2f455a', '#41607e', '#5d89b4', '#6697c6', '#79b2ea', '#8cceff', '#95dbff', '#9ee9ff', '#9EE9FF']"),
+'#maxlength' => 120,
+	'#size' => 100,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 5 Pie Chart Colours Array"),
+	'#required' => TRUE,	
+	);
+	
+	$form['fund_charting_map6_pie_chart_colours']=array(
+	'#type' => 'textfield',
+	'#title' => t('MAP6 Pie Chart Colours'),
+	'#default_value' => variable_get('fund_charting_map6_pie_chart_colours',"['#202440', '#313761', '#414981', '#515ba1', '#616dc1', '#717fe1', '#8292ff', '#92a4ff', '#9aadff', '#c4cced']"),
+'#maxlength' => 120,
+	'#size' => 100,
+	'#resizable' => FALSE,
+	'#description' => t("MAP 6 Pie Chart Colours Array"),
+	'#required' => TRUE,	
+	);	
+	
+	return system_settings_form($form);
+}
+
+function fund_charting_menu() {
+
+  	$items = array();
+
+  	$items['admin/content/fund_charting'] = array(
+    'title' => 'Fund Pie Charts',
+    'description' => 'Settings for fund pie charts',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM 
+   );
+     	$items['admin/content/fund_charting/maps'] = array(
+    'title' => 'MAPS Widget ',
+    'description' => 'Settings for MAPs widget',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_maps_widget_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   
+   $items['admin/content/fund_charting/range_returns'] = array(
+    'title' => 'Range of Returns',
+    'description' => 'Settings for the Range of Returns Charts',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_range_returns_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK    
+   );
+   $items['admin/content/fund_charting/barometer'] = array(
+    'title' => 'Risk Profile Barometer Chart',
+    'description' => 'Settings for the Risk Profile Barometer Chart',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_barometer_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   $items['admin/content/fund_charting/ptsb'] = array(
+    'title' => 'PTSB MAPS content',
+    'description' => 'Settings for PTSB MAPs content',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_ptsb_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+ $items['admin/content/fund_charting/bline'] = array(
+    'title' => 'Bline MAPS content',
+    'description' => 'Settings for Bline MAPs content',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_charting_bline_admin'),
+	'access arguments' => array('administer_fund_charting'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+  return $items;
+}
+
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function fund_charting_block_info() {
+  $blocks['maps_assets_split'] = array(
+    'info' => t('Irish Life MAPS Asset Split Chart'),
+   'status' => 1,
+  );
+  $blocks['maps_assets_split_grouped'] = array(
+    'info' => t('Irish Life MAPS Asset Split Chart For all MAPS Grouped'),
+   'status' => 1,
+  );
+  $blocks['maps_geographic_split'] = array(
+    'info' => t('Irish Life MAPS Geographic Split Chart'),
+   'status' => 1,
+  );
+  $blocks['maps_alternatives_split'] = array(
+    'info' => t('Irish Life MAPS Alternatives Split Chart'),
+   'status' => 1,
+  );
+  $blocks['maps_performance_chart'] = array(
+    'info' => t('Irish Life MAPS Performance Chart'),
+   'status' => 1,
+  );  
+  $blocks['maps_help_text'] = array(
+    'info' => t('Irish Life MAPS Help text for users'),
+   'status' => 1,
+  ); 
+
+  $blocks['maps_performance_table'] = array(
+    'info' => t('Irish Life MAPS Performance Table'),
+   'status' => 1,
+  ); 
+  $blocks['reviews_barometer_chart'] = array(
+    'info' => t('Irish Life Reviews Barometer Chart'),
+   'status' => 1,
+  ); 
+  $blocks['range_returns_bar_chart'] = array(
+    'info' => t('Irish Life Range of Returns Bar Chart'),
+   'status' => 1,
+  );
+  $blocks['range_returns_area_chart'] = array(
+    'info' => t('Irish Life Range of Returns Area Chart'),
+   'status' => 1,
+  );
+    $blocks['emerging_market_shares_chart'] = array(
+    'info' => t('MAPS Asset Classes Emerging Markets Shares Chart'),
+   'status' => 1,
+  );
+   $blocks['developed_market_shares_chart'] = array(
+    'info' => t('MAPS Asset Classes Developed Markets Shares Chart'),
+   'status' => 1,
+  );
+     $blocks['low_volatility_shares_chart'] = array(
+    'info' => t('MAPS Asset Classes Low Volatility Shares Chart'),
+   'status' => 1,
+  );
+   $blocks['government_bonds_chart'] = array(
+    'info' => t('MAPS Asset Classes Government Bonds Chart'),
+   'status' => 1,
+  );
+   $blocks['corporate_bonds_chart'] = array(
+    'info' => t('MAPS Asset Classes Corporate Bonds Chart'),
+   'status' => 1,
+  );
+   $blocks['emerging_market_debt_chart'] = array(
+    'info' => t('MAPS Asset Classes Emerging Market Debt Chart'),
+   'status' => 1,
+  );
+   $blocks['dsc_signal_chart'] = array(
+    'info' => t('Irish Life DSC Signal Movement Chart'),
+   'status' => 1,
+  );  
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function fund_charting_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#fund_charting":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function getPieChart($divTitle, $chartTitle, $chartData, $pieChartColorArray, $chartHeight, $marginTop ){
+
+return '<div id="'.$divTitle.'"></div>
+  <script type="text/javascript">
+(function ($) {
+
+    // Make monochrome colors and set them as default for all pies
+    Highcharts.getOptions().plotOptions.pie.colors = (function () {
+    return '.$pieChartColorArray.
+    '}());
+
+    // Build the chart
+    $(\'#'.$divTitle.'\').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+      height: '.$chartHeight.',
+      marginTop: '.$marginTop.',
+      style: {
+      fontFamily: \'Arial, sans-serif\',
+      fontSize: \'12px\',
+      },
+      margin:[0,0,0,0]
+        },
+    credits:{enabled:false},
+        title: {
+            text: \''.$chartTitle.'\'
+        },
+        tooltip: {
+            pointFormat: \'{series.name}: <b>{point.percentage:.1f}%</b>\'
+        },
+        plotOptions: {
+            pie: {
+          allowPointSelect: true,
+                    cursor: \'pointer\',
+          size:220,
+          center: ["50%", "40%"],
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true,
+          
+            }
+      
+        },
+    legend: {
+            align: \'center\',
+             verticalAlign: \'top\',
+             floating: true,
+             y: 255,
+             layout: \'vertical\',
+			 labelFormatter: function() {
+			 if (this.y > 0) {
+			 return this.name;
+			 }
+			 },
+            },
+        series: [{
+            type: \'pie\',
+            name: \'\',
+            data: ['.$chartData.']'.
+        '}]
+    });
+})(jQuery);
+    
+  </script>';
+}
+
+/**
+ * Custom content function.
+ *
+ * Get's the assest split of all MAP funds. Sets up 
+ * the highcharts and allows the user to toggle between
+ * each of the MAPS.
+ *
+ * @return
+ *  The widget HTML to Output
+ */
+
+function maps_assets_group($channel){
+  $r = getPieChartData('allassets');
+  $js_r_build='';
+  $circleSelector='';
+	if ($channel == '_ptsb')
+	{
+	  $circleSelector='<a href="javascript:void(0);" class="circle switch-asset-3" style="left:0%">3</a><a href="javascript:void(0);" class="circle switch-asset-4" style="left:33%">4</a><a href="javascript:void(0);"  class="circle switch-asset-5" style="left:67%">5</a><a href="javascript:void(0);"  class="circle switch-asset-6" style="left:100%">6</a>';
+	}
+	else
+	{
+	  $circleSelector='<a href="javascript:void(0);" class="circle switch-asset-2" style="left:0%">2</a><a href="javascript:void(0);" class="circle switch-asset-3" style="left:25%">3</a><a href="javascript:void(0);" class="circle switch-asset-4" style="left:50%">4</a><a href="javascript:void(0);"  class="circle switch-asset-5" style="left:75%">5</a><a href="javascript:void(0);"  class="circle switch-asset-6" style="left:100%">6</a>';
+	}
+  
+  
+	$tHTML =  '<h2>Range of Multi Asset Portfolio Funds</h2><div class="irishlife-fc-asset-group-holder" style="display:none;">';
+	$tHTML .=  '<div id="irishlife-fc-asset-group-btn-holder" style="text-align:center;">';
+  $tHTML .=  '<div class="meter-wrap"><span class="circleholder">';
+  $tHTML .=  $circleSelector;
+  $tHTML .=  '</span><div class="meter-value" style="width: 0%;"></div></div>';
+	$tHTML .=  '</div>';
+	$tHTML .=  '<div class="container-12"><div class="prefix-1 suffix-1 grid-4"><div id="irishlife-fc-asset-group-holder" ></div></div><div class="grid-5" ><div id="irishlife-fc-asset-group-text" ></div></div><div class="clearer"></div></div>';
+	$tHTML .=  '<div id="irishlife-fc-asset-bars">';
+  $tHTML .=  '<div class="container-12"><div class="prefix-1 suffix-1 grid-4" >';
+  $tHTML .=  '<span class="asset-split-bars-left"></span>';
+  $tHTML .=  '</div><div class="grid-4 suffix-2 " ><span class="asset-split-bars-right"></span></div><div class="clearer"></div></div>';
+  $tHTML .=  '</div></div>';
+  $tHTML .=  '<div class="irishlife-fc-asset-group-spinner-holder"><div class="irishlife-fc-asset-group-spinner"><div class="throbber">Loading...</div></div></div>';
+
+	  $js_r_build =  "<script type=\"text/javascript\">var allAssetsData = new Array([". $r[0] . "],[". $r[1] . "],[". $r[2] . "],[". $r[3] . "],[". $r[4] . "]);</script>";
+  
+  return $tHTML.$js_r_build;
+}
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function fund_charting_assets(){
+  return getPieChart('assetSplitChartDiv','Asset Splits',getPieChartData('assets'), getChartColor(),
+  variable_get('fund_charting_asset_split_height','540'),
+  variable_get('fund_charting_asset_split_margin_top','-120'));
+}
+
+function fund_charting_geo(){
+	$whichPage = drupal_get_path_alias();
+	$geoTitle = '';
+	if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false || strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+		$geoTitle = 'Bond Country Splits';
+	}
+	else{
+		$geoTitle = 'Shares Country Splits';
+	}
+  return getPieChart('geoSplitChartDiv',$geoTitle,getPieChartData('geo'), getChartColor(),
+  variable_get('fund_charting_geo_split_height','540'),
+  variable_get('fund_charting_geo_split_margin_top','-120'));
+}
+
+function fund_charting_alts(){
+  return getPieChart('altsSplitChartDiv','Alternative Manager Splits',getPieChartData('alts'), getChartColor(),
+  variable_get('fund_charting_alts_split_height','540'),
+  variable_get('fund_charting_alts_split_margin_top','-120'));
+}
+
+
+function getPieChartData($whichType)
+{
+  $result='';
+
+  switch($whichType) {
+    case 'assets':
+	$result=getAssetSplitChartData(false);
+	break;
+    case 'allassets':
+	$result=getAssetSplitChartData(true);
+	break;
+    case 'geo':
+	$result=getGeoSplitChartData();
+	break;
+    case 'alts':
+	$result=getAltsSplitChartData();
+	break;
+	}
+	return $result;
+}
+
+function getAltsSplitChartData()
+{
+    $whichPage = drupal_get_path_alias();
+  $result ='';
+  if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false) {
+    $result=variable_get('fund_charting_map2_alt_split','');;
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+    $result=variable_get('fund_charting_map3_alt_split','');;
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-4') !== false) {
+    $result=variable_get('fund_charting_map4_alt_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-5') !== false) {
+    $result=variable_get('fund_charting_map5_alt_split','');;
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-6') !== false) {
+    $result=variable_get('fund_charting_map6_alt_split','');
+  }
+
+  return $result;
+}
+
+
+function getGeoSplitChartData()
+{
+    $whichPage = drupal_get_path_alias();
+  $result ='';
+  if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false) {
+    $result=variable_get('fund_charting_map2_geo_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+    $result=variable_get('fund_charting_map3_geo_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-4') !== false) {
+    $result=variable_get('fund_charting_map4_geo_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-5') !== false) {
+    $result=variable_get('fund_charting_map5_geo_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-6') !== false) {
+    $result=variable_get('fund_charting_map6_geo_split','');
+  }
+
+  return $result;
+}
+
+
+/*
+multi-asset-portfolio-fund-4
+drupal_get_path_alias()
+*/
+function getAssetSplitChartData($allAssetsBool)
+{
+
+  
+    $whichPage = drupal_get_path_alias();
+  $result ='';
+  if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false) {
+    $result=variable_get('fund_charting_map2_asset_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+    $result=variable_get('fund_charting_map3_asset_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-4') !== false) {
+    $result=variable_get('fund_charting_map4_asset_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-5') !== false) {
+    $result=variable_get('fund_charting_map5_asset_split','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-6') !== false) {
+    $result=variable_get('fund_charting_map6_asset_split','');
+  }
+	else if ($allAssetsBool) {
+	  $assetVals = array();
+	  $assetVals[0] = variable_get('fund_charting_map2_asset_split','');
+	  $assetVals[1] = variable_get('fund_charting_map3_asset_split','');
+	  $assetVals[2] = variable_get('fund_charting_map4_asset_split','');
+	  $assetVals[3] = variable_get('fund_charting_map5_asset_split','');
+	  $assetVals[4] = variable_get('fund_charting_map6_asset_split','');
+    // return all the assets in one array
+		$result=$assetVals;
+	}
+
+  return $result;
+}
+
+function getChartColor()
+{
+    $whichPage = drupal_get_path_alias();
+  $result ='';
+  if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false) {
+    $result=variable_get('fund_charting_map2_pie_chart_colours','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+    $result=variable_get('fund_charting_map3_pie_chart_colours','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-4') !== false) {
+    $result=variable_get('fund_charting_map4_pie_chart_colours','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-5') !== false) {
+    $result=variable_get('fund_charting_map5_pie_chart_colours','');
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-6') !== false) {
+    $result=variable_get('fund_charting_map6_pie_chart_colours','');
+  }
+
+  return $result;
+}
+
+
+function fund_charting_help_text(){
+  return variable_get('fund_charting_help_html','');
+}
+
+function fund_charting_table(){
+	$chargeDisplay = (getChannelInUse() !='' ? 'style="display:none"':'');
+	
+  $html = '<table class="dataList persist-area ">
+<thead class="persist-header floatingHeader"><tr>
+<th class="sort dateVal show-for-small" data-sort="date" width="9%">Date value</th>
+<th class="sort" width="9%" data-sort="date">Date</th>
+<th class="sort" width="8%" data-sort="charge" '.$chargeDisplay.'>Fund Charge</th>
+<th class="sort" width="8%" data-sort="price">Price</th>
+<th class="sort" width="7%" data-sort="3mth">3 Mths</th>
+<th class="sort" width="7%" data-sort="6mth">6 Mths</th>
+<th class="sort" width="7%" data-sort="12mth">12 Mths</th>
+<th class="sort 3yrs" width="7%" data-sort="3yrs">3 Yrs</th>
+<th class="sort 5yrs" width="7%" data-sort="5yrs">5 Yrs</th>
+<th class="sort" width="8%" data-sort="fromlaunch">From Launch</th>
+</tr></thead>
+<tbody class="list"><tr>
+<td class="date"></td>
+<td class="charge" '.$chargeDisplay.'></td>
+<td class="price"></td>
+<td class="3mth"></td>
+<td class="6mth"></td>
+<td class="12mth"></td>
+<td class="3yrs"></td>
+<td class="5yrs "></td>
+<td class="fromlaunch"></td></tr>
+</tbody>
+</table>';
+return $html;
+}
+function fund_charting_history(){
+  
+  $whichPage = drupal_get_path_alias();
+  $localStorageScript='<script type="text/javascript">';
+  if (strpos($whichPage,'multi-asset-portfolio-fund-2') !== false) {
+    $localStorageScript=$localStorageScript.'localStorage.setItem("mapsFundSelected", "'.variable_get('fund_charting_map2_fund_id','').';Multi Asset Portfolio 2");';
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-3') !== false) {
+    $localStorageScript=$localStorageScript.'localStorage.setItem("mapsFundSelected", "'.variable_get('fund_charting_map3_fund_id','').';Multi Asset Portfolio 3");'; 
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-4') !== false) {
+    $localStorageScript=$localStorageScript.'localStorage.setItem("mapsFundSelected", "'.variable_get('fund_charting_map4_fund_id','').';Multi Asset Portfolio 4");';
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-5') !== false) {
+    $localStorageScript=$localStorageScript.'localStorage.setItem("mapsFundSelected", "'.variable_get('fund_charting_map5_fund_id','').';Multi Asset Portfolio 5");'; 
+  }
+  else if (strpos($whichPage,'multi-asset-portfolio-fund-6') !== false) {
+    $localStorageScript=$localStorageScript.'localStorage.setItem("mapsFundSelected", "'.variable_get('fund_charting_map6_fund_id','').';Multi Asset Portfolio 6");'; 
+  }
+  $localStorageScript=$localStorageScript."</script>";
+  return $localStorageScript.'<div style="DISPLAY: none" id="fundsChartBody"></div>';
+}
+
+function reviews_barometer_chart(){
+  return '<div id="reviews-barometer-chart"></div>
+  <script type="text/javascript">
+(function ($) {
+    $(\'#reviews-barometer-chart\').highcharts({
+        chart: {
+            type: \'column\',
+      inverted: true,
+        },
+         credits:{enabled:false},
+        title: {
+            text: \'Investor Profile Breakdown 2015\'
+        },
+        subtitle: {
+            text: \'Source: Irish Life 2016\'
+        },
+        xAxis: {
+            type: \'category\',
+            labels: {
+                style: {
+                    fontSize: \'0.9em\',
+                    fontFamily: \'Arial, sans-serif\'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: \'Percentage\'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: \'<b>{point.y:.1f}%</b>\'
+        },
+        series: '.variable_get('fund_charting_barometer_params','').',
+            dataLabels: {
+                enabled: false,
+                color: \'#FFFFFF\',
+                align: \'center\',
+                x: 2,
+                y: 20,
+                style: {
+                    fontSize: \'0.8em\',
+                    fontFamily: \'Arial, sans-serif\',
+                    textShadow: \'0 0 3px black\'
+                }
+            }
+        }]
+    });
+})(jQuery);
+    
+  </script>';
+}
+function range_returns_bar_chart(){
+
+	 $chartHTML =  '<h2>Possible Annual Return in <span id="years" >any 1</span>-year period</h2>
+  <div id=\'rangeReturnBarChart\' >Range of Returns Bar Chart</div>
+
+<div id="slider"></div>'.variable_get('fund_charting_range_returns_explanation','').
+
+  '<script type="text/javascript">
+(function ($) {    
+         Highcharts.getOptions().plotOptions.column.colors = (function () {
+        var colors = [],
+            base = Highcharts.getOptions().colors[0],
+            i;
+
+        for (i = 0; i < 10; i += 1) {
+            // Start out with a darkened base color (negative brighten), and end
+            // up with a much brighter color
+            colors.push(Highcharts.Color(base).brighten(-0.3).get());
+        }
+        return colors;
+    }());
+    var categories = [\'MAP2\',\'MAP3\',\'MAP4\',\'MAP5\',\'MAP6\'];
+    $(\'#rangeReturnBarChart\').highcharts({
+        title: {
+            text: \'\'
+        },   
+		tooltip: {enabled:false},
+    credits:{enabled:false},
+        xAxis: {
+            categories: categories
+        },
+              yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return (Math.abs(this.value) / 1) + \'%\';
+                    }
+                },
+                min: -30,
+                max: 35
+            },
+         plotOptions: {
+                series: {
+                    stacking: \'normal\'
+                },
+             spline: {
+                dataLabels: {
+                    enabled: false,
+                     borderRadius: 5,
+                    backgroundColor: \'rgba(252, 255, 197, 0.7)\',
+                    borderWidth: 1,
+                    borderColor: \'#AAA\',
+                    y: -6,
+                    formatter: function () {
+                        return (this.y) + \'%\';
+                    }
+                }
+                },
+            },
+        series: [
+		{
+            type: \'column\',
+            name: \'Positive Range\',
+            data: '.variable_get('fund_charting_range_returns_1_year_pos','[11.4,14.8,22.1,25.8,31.4]').'
+        },
+		
+        {
+            type: \'column\',
+            name: \'Negative Range\',
+            data: '.variable_get('fund_charting_range_returns_1_year_neg','[-9.8,-13.8,-20.1,-22.3,-25.6]').'
+        },';
+
+		if (variable_get('fund_charting_range_returns_show_avg',1))
+		{
+		$chartHTML = $chartHTML.
+		'{
+            type: \'spline\',
+            name: \'Average Annual Return\',
+            data: '.variable_get('fund_charting_range_returns_1_year_avg','[0.3, 1.3, 2.7, 3.5, 3.9]').',
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: \'white\'
+            }
+        }';
+		}
+		$chartHTML = $chartHTML.
+		']
+    });
+})(jQuery);
+
+   var araObj = new Array( 1, 3, 5, 7, 10);
+(function($) {
+var years = ["1", "3", "5", "7", "10"];';
+	
+    $chartHTML = $chartHTML.'$( \'#slider\' ).slider({
+     animate : true,
+	  value:1,
+      min: 1,
+      max: araObj.length,
+      step: 1,
+      slide: function( event, ui ) {       
+         var years = araObj[ui.value -1];
+         var chart = $(\'#rangeReturnBarChart\').highcharts();
+             if (years == 1){
+              chart.series[0].setData(
+                '.variable_get('fund_charting_range_returns_1_year_pos','').');
+                 chart.series[1].setData(
+                 '.variable_get('fund_charting_range_returns_1_year_neg','').');';
+				 
+				 if (variable_get('fund_charting_range_returns_show_avg',1))
+				{
+					$chartHTML = $chartHTML.'
+					chart.series[2].setData(
+					'.variable_get('fund_charting_range_returns_1_year_avg','').');';
+				 }
+                $chartHTML = $chartHTML.'
+				$( "#years" ).html( "any " + years );
+             }
+             else if (years == 3){
+              chart.series[0].setData(
+                 '.variable_get('fund_charting_range_returns_3_year_pos','').');
+                 chart.series[1].setData(
+                 '.variable_get('fund_charting_range_returns_3_year_neg','').');';
+				 if (variable_get('fund_charting_range_returns_show_avg',1))
+				{
+                 $chartHTML = $chartHTML.'
+				 chart.series[2].setData(
+                 '.variable_get('fund_charting_range_returns_3_year_avg','').');';
+				 }
+                $chartHTML = $chartHTML.'
+				$( "#years" ).html( "any " + years );
+             }
+              else if (years == 5){
+              chart.series[0].setData(
+                '.variable_get('fund_charting_range_returns_5_year_pos','').');
+                 chart.series[1].setData(
+                '.variable_get('fund_charting_range_returns_5_year_neg','').');';
+				 if (variable_get('fund_charting_range_returns_show_avg',1))
+				{
+                 $chartHTML = $chartHTML.'
+				 chart.series[2].setData(
+                 '.variable_get('fund_charting_range_returns_5_year_avg','').');';
+				 }
+                $chartHTML = $chartHTML.'
+				$( "#years" ).html( "a " + years );
+             }
+              else if (years == 7){
+              chart.series[0].setData(
+                 '.variable_get('fund_charting_range_returns_7_year_pos','').');
+                 chart.series[1].setData(
+                 '.variable_get('fund_charting_range_returns_7_year_neg','').');';
+				 if (variable_get('fund_charting_range_returns_show_avg',1))
+				{
+                 $chartHTML = $chartHTML.'
+				 chart.series[2].setData(
+                 '.variable_get('fund_charting_range_returns_7_year_avg','').');';
+				 }
+                $chartHTML = $chartHTML.'
+				$( "#years" ).html( "a " + years );
+             }
+              else if (years == 10){
+              chart.series[0].setData(
+                 '.variable_get('fund_charting_range_returns_10_year_pos','').');
+              chart.series[1].setData(
+                 '.variable_get('fund_charting_range_returns_10_year_neg','').');';
+				 if (variable_get('fund_charting_range_returns_show_avg',1))
+				{
+                 $chartHTML = $chartHTML.'
+				 chart.series[2].setData(
+                 '.variable_get('fund_charting_range_returns_10_year_avg','').');';
+				 }
+                $chartHTML = $chartHTML.'
+				$( "#years" ).html( "a " + years );
+				}
+    }})
+	.slider("pips",{rest: "label", labels: years}).slider("float",{rest: "label", labels: years});
+    $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+
+})(jQuery);
+  </script>';
+  
+  return $chartHTML;
+  
+}
+function range_returns_area_chart(){
+  return '
+  <script type="text/javascript">
+  (function ($) {
+        $(\'#rangeReturnsAreaChart\').highcharts({
+			credits:{enabled:false},
+            title: {
+                text: null
+            },
+            chart: {
+				height:350
+            },
+            xAxis: {
+                title: {
+				text:null
+            },
+			categories: ["Start","1 year","2 years","3 years","4 years","5 years","6 years","7 years"],
+			step:"1",
+			plotLines:[{
+			color: \'#5261ac\',
+			width: 5,
+			value: 7
+			}]
+			},
+			 plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true,
+					align:\'left\',
+					useHTML: true,
+					formatter: function() {
+						if (this.point.name == \'Start\' || this.point.name == \'7 years\') return \'<b><span style="font-size:1.4em;color:#333;">€\'+this.y+\'</span></b>\';
+					},
+                },
+                enableMouseTracking: false
+            }
+			
+        },
+        yAxis: {
+            title: {
+                text: \'Potential Returns €\'
+            },
+			opposite: true,
+			labels: {
+                align: \'left\',
+                x: -20,
+                y: -2
+            }
+        },
+
+        tooltip: {
+			enabled:false
+        },
+
+        legend: {
+			enabled:false
+        },
+
+        series: [{
+            name: \'Average\',
+            data: averages,
+            zIndex: 1,
+			color:\'red\',
+            marker: {
+				enabled:true,
+                fillColor: \'red\',
+                lineWidth: 2,
+                lineColor: \'red\'
+            }
+        }, {
+            name: \'Range\',
+            data: ranges,
+            type: \'arearange\',
+            lineWidth: 0,
+            color: \'#5261ac\',
+            fillOpacity: 0.3,
+            zIndex: 0
+        }]
+
+        });
+})(jQuery);</script>  ';
+}
+
+
+//Asset Classes Charts
+function  dsc_signal_chart(){
+
+	return'';
+}
+
+
+
+function fund_charting_block_view($delta = '') {
+  $block=array(); 
+  switch($delta) {
+    case 'maps_assets_split':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'header', 'weight' => 2));
+    $block['subject'] = t('');
+      $result = fund_charting_assets();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+    case 'maps_assets_split_grouped':
+	 drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'footer', 'weight' => 1));
+	 drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting_asset_group.js',array('scope' => 'footer', 'weight' => 2));
+	 $channel = getChannelInUse();
+	 if ($channel != '')
+	 {
+		$channel = '_'.$channel;
+	 }
+	   drupal_add_js(
+    array(
+          'fund_charting' => array(
+          'title' => explode('|',variable_get('fund_charting_map_array_title','Multi Asset Portfolio Fund 2|Multi Asset Portfolio Fund 3|Multi Asset Portfolio Fund 4|Multi Asset Portfolio Fund 5|Multi Asset Portfolio Fund 6')),
+          'url' => explode('|',variable_get('fund_charting_map_array_url'.$channel,			  	'investments/irish-life-maps/funds/multi-asset-portfolio-fund-2| investments/irish-life-maps/funds/multi-asset-portfolio-fund-3| investments/irish-life-maps/funds/multi-asset-portfolio-fund-4| investments/irish-life-maps/funds/multi-asset-portfolio-fund-5| investments/irish-life-maps/funds/multi-asset-portfolio-fund-6')),
+          'text' => explode('|',variable_get('fund_charting_map_array_descs','Multi Asset Portfolio Fund 2|Multi Asset Portfolio Fund 3|Multi Asset Portfolio Fund 4|Multi Asset Portfolio Fund 5|Multi Asset Portfolio Fund 6'))
+          ),
+        ),
+        'setting'
+      );
+	 
+	 
+      drupal_add_css(drupal_get_path('module', 'fund_charting') . '/css/fund_charting_asset_split.css', array('group' => CSS_DEFAULT));
+    $block['subject'] = t('');
+      $result = maps_assets_group($channel);
+      // No content in the last week
+      $block['content'] = $result;
+	break;
+  case 'maps_geographic_split':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'footer', 'weight' => 2));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = fund_charting_geo();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'maps_alternatives_split':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'footer', 'weight' => 2));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = fund_charting_alts();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'maps_performance_chart':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'footer', 'weight' => 2));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = fund_charting_history();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+    case 'maps_help_text':
+    drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/helpText.js',array('scope' => 'footer'));
+    drupal_add_css(drupal_get_path('module', 'fund_charting') . '/css/fund_charting.css', array('group' => CSS_DEFAULT));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = fund_charting_help_text();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+
+
+    case 'maps_performance_table':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'footer', 'weight' => 2));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/populateTable.js',array('scope' => 'footer', 'weight' => 3));
+   drupal_add_css(drupal_get_path('module', 'fund_charting') . '/css/fund_charting.css', array('group' => CSS_DEFAULT));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = fund_charting_table();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'reviews_barometer_chart':
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/fund_charting.js',array('scope' => 'footer', 'weight' => 2));
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+      $result = reviews_barometer_chart();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'range_returns_bar_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));   
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+	drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/jquery-ui-slider-pips.js',array('scope' => 'header'));
+	  drupal_add_css(drupal_get_path('module', 'fund_charting') . '/css/jquery-ui-slider-pips.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css(drupal_get_path('module', 'fund_charting') . '/css/pips-styling.css', array('group' => CSS_DEFAULT));
+      $result = range_returns_bar_chart();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'range_returns_area_chart':
+   
+    $block['subject'] = t('');
+	drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highcharts.js',array('scope' => 'header'));
+	drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highcharts-more.js',array('scope' => 'header'));
+
+      // Use our custom function to retrieve data
+      $result = range_returns_area_chart();
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+case 'emerging_market_shares_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/emerging-markets-shares.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+  case 'developed_market_shares_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/developed-markets-shares.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+  break;
+   case 'low_volatility_shares_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/low-volatility-shares.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+	   break;
+   case 'government_bonds_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/government-bonds.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+	   break;
+   case 'corporate_bonds_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/corporate-bonds.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+	   break;
+   case 'emerging_market_debt_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/emerging-market-debt.js',array('scope' => 'footer', 'weight' => 2));
+      
+      // No content in the last week
+      $block['content'] = $result;
+	   break;
+   case 'dsc_signal_chart':
+    $block['subject'] = t('');
+      // Use our custom function to retrieve data
+   drupal_add_css(drupal_get_path('module', 'jquery_update') . '/replace/ui/themes/base/minified/jquery-ui.min.css', array('group' => CSS_DEFAULT));
+   drupal_add_js(drupal_get_path('module', 'jquery_update') .'/replace/ui/ui/minified/jquery-ui.min.js',array('scope' => 'header'));
+   drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'header', 'weight' => 1));
+   drupal_add_js(drupal_get_path('module', 'fund_charting') .'/js/dsc-signal.js',array('scope' => 'footer', 'weight' => 2));
+      $result = dsc_signal_chart();
+      // No content in the last week
+      $block['content'] = $result;
+  }
+  
+    return $block;
+
+ }

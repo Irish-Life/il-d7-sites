@@ -1,0 +1,222 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Customer Intel Map</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/cust.intel.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="cs-panel-loading" >Loading Map</div>
+<div class="pc-container-12 pc-panel" style="display:none;">
+
+    <div class="pc-grid-12" style="margin-top: 0px;" >
+      
+    </div>
+    <div class="clearer" ></div>
+    <div class="mapcontentHolder">
+    <div class="claimsOverlay" style="display:none;">
+      <a href="javascript:void(0)" class="closeOverlay">X</a>
+      <span></span>
+    </div>
+      <div class="pc-grid-6" id="claimsStatsHolder">
+        <div class="map">
+          <span>Loading map. Please wait. </span>
+        </div>
+      </div>
+      <div class="pc-grid-6">
+    
+		<div class="styled-select">
+           <select id="changeBarVals">
+              <option value="customer_count">Customer Count</option>
+              <option value="mobile_phone_pop">Mobile Phone Population</option>
+              <option value="email_pop">Email Population</option>
+           </select>
+        </div>
+        
+        <div class="countyDataAll" style="margin-top:15px;">
+        Please wait. Loading data. shouldn\'t be long :)
+        </div>
+          
+       </div>
+     </div>
+  </div>
+  
+<script>
+  	var CustIntelMapData = {
+  		"counties": [{
+  			"Carlow": [{
+  				"County": "Carlow",
+  				"customer_count": "9950",
+  				"mobile_phone_pop": "7077",
+  				"email_pop": "4291"
+  			}],
+  			"Cavan": [{
+  				"County": "Cavan",
+  				"customer_count": "12710",
+  				"mobile_phone_pop": "8956",
+  				"email_pop": "5331"
+  			}],
+  			"Clare": [{
+  				"County": "Clare",
+  				"customer_count": "17268",
+  				"mobile_phone_pop": "12171",
+  				"email_pop": "7756"
+  			}],
+  			"Cork": [{
+  				"County": "Cork",
+  				"customer_count": "84190",
+  				"mobile_phone_pop": "57576",
+  				"email_pop": "38899"
+  			}],
+  			"Donegal": [{
+  				"County": "Donegal",
+  				"customer_count": "24511",
+  				"mobile_phone_pop": "16264",
+  				"email_pop": "9936"
+  			}],
+  			"Dublin": [{
+  				"County": "Dublin",
+  				"customer_count": "217500",
+  				"mobile_phone_pop": "149167",
+  				"email_pop": "106441"
+  			}],
+  			"Galway": [{
+  				"County": "Galway",
+  				"customer_count": "33343",
+  				"mobile_phone_pop": "23001",
+  				"email_pop": "14982"
+  			}],
+  			"Kerry": [{
+  				"County": "Kerry",
+  				"customer_count": "22118",
+  				"mobile_phone_pop": "15657",
+  				"email_pop": "8961"
+  			}],
+  			"Kildare": [{
+  				"County": "Kildare",
+  				"customer_count": "38441",
+  				"mobile_phone_pop": "27346",
+  				"email_pop": "18515"
+  			}],
+  			"Kilkenny": [{
+  				"County": "Kilkenny",
+  				"customer_count": "13999",
+  				"mobile_phone_pop": "9694",
+  				"email_pop": "6161"
+  			}],
+  			"Laois": [{
+  				"County": "Laois",
+  				"customer_count": "10782",
+  				"mobile_phone_pop": "7817",
+  				"email_pop": "4968"
+  			}],
+  			"Leitrim": [{
+  				"County": "Leitrim",
+  				"customer_count": "4362",
+  				"mobile_phone_pop": "3088",
+  				"email_pop": "1874"
+  			}],
+  			"Limerick": [{
+  				"County": "Limerick",
+  				"customer_count": "29380",
+  				"mobile_phone_pop": "20416",
+  				"email_pop": "12490"
+  			}],
+  			"Longford": [{
+  				"County": "Longford",
+  				"customer_count": "6269",
+  				"mobile_phone_pop": "4574",
+  				"email_pop": "2546"
+  			}],
+  			"Louth": [{
+  				"County": "Louth",
+  				"customer_count": "25132",
+  				"mobile_phone_pop": "16625",
+  				"email_pop": "9784"
+  			}],
+  			"Mayo": [{
+  				"County": "Mayo",
+  				"customer_count": "19540",
+  				"mobile_phone_pop": "13635",
+  				"email_pop": "7897"
+  			}],
+  			"Meath": [{
+  				"County": "Meath",
+  				"customer_count": "36715",
+  				"mobile_phone_pop": "26221",
+  				"email_pop": "16582"
+  			}],
+  			"Monaghan": [{
+  				"County": "Monaghan",
+  				"customer_count": "11296",
+  				"mobile_phone_pop": "7572",
+  				"email_pop": "4236"
+  			}],
+  			"Offaly": [{
+  				"County": "Offaly",
+  				"customer_count": "10889",
+  				"mobile_phone_pop": "7547",
+  				"email_pop": "4394"
+  			}],
+  			"Roscommon": [{
+  				"County": "Roscommon",
+  				"customer_count": "8116",
+  				"mobile_phone_pop": "5755",
+  				"email_pop": "3415"
+  			}],
+  			"Sligo": [{
+  				"County": "Sligo",
+  				"customer_count": "9783",
+  				"mobile_phone_pop": "6897",
+  				"email_pop": "4246"
+  			}],
+  			"Tipperary": [{
+  				"County": "Tipperary",
+  				"customer_count": "24494",
+  				"mobile_phone_pop": "16807",
+  				"email_pop": "10144"
+  			}],
+  			"Waterford": [{
+  				"County": "Waterford",
+  				"customer_count": "17125",
+  				"mobile_phone_pop": "11980",
+  				"email_pop": "8040"
+  			}],
+  			"Westmeath": [{
+  				"County": "Westmeath",
+  				"customer_count": "13987",
+  				"mobile_phone_pop": "9821",
+  				"email_pop": "5834"
+  			}],
+  			"Wexford": [{
+  				"County": "Wexford",
+  				"customer_count": "23689",
+  				"mobile_phone_pop": "16662",
+  				"email_pop": "10255"
+  			}],
+  			"Wicklow": [{
+  				"County": "Wicklow",
+  				"customer_count": "23613",
+  				"mobile_phone_pop": "16278",
+  				"email_pop": "11488"
+  			}]
+  		}]
+  	}
+</script>
+  <script src="js/jquery-1.12.1.min.js"></script>
+  <script src="js/raphael-min.js"></script>
+  <script src="js/jquery.mapael.js"></script>
+  <script src="js/ireland.counties.js"></script>
+  <script src="js/cust.intel.js"></script>
+</body>
+</html>

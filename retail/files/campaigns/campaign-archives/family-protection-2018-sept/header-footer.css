@@ -1,0 +1,478 @@
+body {
+	font-family: 'lato';
+}
+a {
+	text-decoration:none;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto; 
+  height: 60px;}
+  
+.search-box input, .sub-nav .search input {
+    line-height: 1.2em;
+    font-weight: lighter;
+    padding: .75em 2.7em;
+    width: 100%;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid #999;
+}
+
+.searchHead {
+    width: 40%;
+    float: right;
+    margin-top: 17px;
+    margin-right: 18px;
+    padding-top: 10px;
+}
+
+.searchMenu li {
+  display: inline;
+  margin: 0 0 0 .5em;
+  padding-left: 3px;
+  color: #0062a0;
+  font-size: 14px;
+  padding: .2em .5em 0 0;}
+
+.searchMenu a {
+  color: #0062a0;}
+
+#onlineServ:before {
+      color: #50c9b5;
+      font-family: FontAwesome;
+      content: "\f023";
+      margin-right: 10px;
+      font-size: 1em;}
+  
+
+.gsc-search-box td {
+      border : 0px !important;
+}
+
+.gsc-search-box input[type=button] {
+    background-color: #50c9b5 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    border: 0 solid #fff !important;
+    text-align: center;
+    text-decoration: none;
+    width: 80px !important;
+    height: 23px !important;
+    text-shadow: none;
+    background-image: none !important;
+    line-height: 0px;
+    font-weight: 100;
+    margin-left: -20px;}
+
+.gsc-clear-button {
+  display:none;}
+
+.article-list a {
+  text-decoration: underline;}
+
+#button {
+    background-color: rgb(80, 201, 181);
+    color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.188235) 2px 2px 3px;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(69, 162, 147) !important;
+    width: 40%;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 10px;
+    /* margin: 10px 7px; */
+    float: right;
+    margin-top: 32px;}
+
+#group-nav-dropdown {    
+    padding-left: 15px;
+    padding-right: 15px;
+	  padding-top: 30px;
+    background-color: #5261ac;
+    position: absolute;
+    top: 41px;
+    z-index: 9999;
+    transition-delay: 0.2s;
+    transition-duration: 0.4s;
+    margin: 0 auto;	}
+	
+#topBar {
+    background-color: #5261ac;
+    background: url('https://www.irishlife.ie/sites/all/modules/group_site_nav/img/gradient-header.jpg') repeat-x left bottom #5261ac;
+    height: 50px;
+    color: white;}
+
+.container-12 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+.group-navigation-label {
+    font-size: 16px;
+    line-height: 3em;
+    cursor: pointer;
+	  color: white;
+}
+
+.group-navigation-label:hover {
+    text-decoration: underline;
+}
+
+.grid-6 {
+    width: 515px;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.grid-4 {
+	  width: 300px;
+	  display: inline;
+    float: left;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;}	
+
+.column {
+	padding-bottom: 25px;
+	color: #fff;}
+
+.column a {
+    color: white;
+	text-decoration: none;}
+	
+.column img {
+	width: 253px;}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    border-top: 8px solid #fff;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+    margin-left: 6px;
+  margin-top: 20px;
+}
+
+.kbase { text-align: right;
+         margin: 0px 75px 0px 0px; }
+
+
+.bulb {display: inline-block;}
+
+.know {font-size: 28px;
+      display: inline-block;
+      padding-left: 10px;
+      color: #675c53;
+      font-family: 'FoundrySans' }
+
+#zone-menu {width: 100%;
+            text-align: center;
+            margin: 0 auto;}
+
+.navigation {background-color: #5261ac;  					
+             margin-left: 0;
+             clear:both;
+             width: 100%; }
+
+.navigation li:first-child a {
+    display: inline-block;
+    text-indent: -2999px;
+    border-left: 0;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+  background-image:    url("https://www.irishlife.ie/sites/all/themes/irishlife/home.png");
+  background-color:rgba(255,255,255,0.4)
+}
+
+.navigation li:last-child a {
+    background-color: #50C9B5;
+    color: #fff;
+}
+.navigation li:last-child a:before {
+    color: #fff;
+    font-family: FontAwesome;
+    content: "\f023";
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.links li {
+           display: inline;
+           padding-left: 0;
+           color: white;
+          }
+
+.navigation a {     display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px 2.143em;
+    border-left: 0;
+    margin: 2px 3px;
+    font-family: 'Lato';}
+
+
+.navigation a:hover {
+  background-color: #fff;
+  color:#5251ac;
+text-decoration: none;}
+
+#user-name {color: white}
+
+.breadcrumbs li a {
+  border: 1px solid #5261ac;
+  text-decoration: underline;
+  padding: 10px; }
+  
+/* Mobile Menu */
+.mean-container .mean-nav ul li {
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #5261ac;
+}
+.mean-bar {
+    background-color: #5261ac;
+    position: absolute;
+    top: 0;
+}   
+
+.logo {
+	margin-top:20px;
+}
+
+/* footer */
+/* Footer Styles */
+
+
+
+
+footer {
+display:block}
+
+.zone-footer .grid-3 {height: auto !important; }
+
+.zone-footer a:hover {
+  text-decoration: underline !important;}
+
+#block-bean-contact-us .block-title:before {
+    font-family: FontAwesome;
+    content: "\f10b";
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#block-bean-call-in .block-title:before {
+    font-family: FontAwesome;
+    content: "\f007";
+    margin-right: 10px;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+#block-menu-menu-footer-about-irish-life-men .block-title:before {
+    font-family: FontAwesome;
+    content: "\f129";
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+#block-menu-menu-footer-customer-service-men .block-title:before {
+    font-family: FontAwesome;
+    content: "\f0c0";
+    margin-right: 10px;
+    font-size: 1em;
+    margin-right: 10px;
+    font-stretch: condensed;
+}
+
+#region-footer-fourth {
+  border-bottom: 0px !important;}
+
+
+
+.zone-footer #region-footer-fourth {
+    border-right: 0;
+}
+
+#zone-footer-wrapper {
+    margin-top: 25px;
+    background-color: #675c53;
+}
+
+.container-12 {
+	margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+.zone-footer {
+    color: #fff;
+    border-radius: 6px;
+    padding: 20px 20px 20px 20px;
+    line-height: 26px;
+}
+
+.zone-footer .grid-3.region {
+    margin-right: 8px;
+    padding-right: 8px;
+    margin-left: 0;
+    border-right: 1px solid #edeaed;
+    float: left;
+}
+
+.container-12 .grid-3 {
+    width: 220px;
+}
+
+.zone-footer h2 {
+    color: #fff;
+    padding-bottom: 6px;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.field-label-inline .field-label, .field-label-inline .field-items {
+    float: left;
+}
+
+.zone-footer .field-label {
+    display: inline-block;
+}
+
+.field .field-label {
+    font-weight: bold;
+}
+
+.zone-footer .field-items {
+    display: inline-block;
+}
+
+#region-footer-full-width {
+    margin-top: 205px;
+    margin-left: 0;
+}
+
+.container-12 .grid-12 {
+    width: 940px;
+}
+
+#block-menu-menu-footer-general-links {
+    margin-bottom: 1em;
+    margin-top: 9em;
+}
+
+.zone-footer ul {
+    list-style: none;
+}
+
+.zone-footer a {
+  color:white;}
+
+#region-footer-full-width .leaf {
+    list-style: none;
+    float: left;
+}
+.zone-footer ul.menu li {
+    margin: 0;
+}
+.zone-footer li.leaf {
+    padding: 0;
+}
+
+#region-footer-full-width .leaf.first a {
+    padding-left: 0;
+}
+.zone-footer #region-footer-full-width .leaf a {
+    padding: 0 10px;
+}
+#region-footer-full-width .leaf a {
+    color: #fff !important;
+    text-decoration: none;
+    border-right: 1px solid #edeaed;
+    padding: 3px 5px 0 5px;
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 960px) {
+ 
+#mean-bar{display:none;} 
+ 
+.sub-nav {
+    margin-bottom: 15px;
+    margin-top: 80px;
+}
+  
+.zone-footer .grid-3 {
+  height: auto !important;}
+  
+#region-footer-fourth {
+    padding-bottom: 50px !important;}
+  
+.home-heading {margin-top: 87px !important;}
+ 
+ 
+#block-menu-menu-footer-general-links {
+  margin-top: 0px !important;}
+  
+.container-12 {
+  width:100% !important;}
+  
+#region-footer-full-width {
+  width: 100% !important;}
+ 
+.section h3 a {
+  font-size: 16px !important;}
+
+.article-comments {display: none !important;}  
+
+.main-column {width: 100% !important;}  
+ 
+.section-tree .section {
+    width: 100% !important;
+}  
+  
+.search input[type=search] 
+ {font-size: 17px;}
+  
+h1 {font-size: 19px !important;}  
+  
+main {width: 100% !important;}  
+ 
+.category-list li {  
+    left: 0px !important;
+    width: 100% !important;
+  }
+  
+#topBar {display: none;}
+  
+#zone-menu {display: none;}
+
+.searchHead {display: none;}
+  
+#onlineServMenu {
+  display: block !important;}
+  
+.logo {
+  display:none;
+    
+}
+  
+.zone-footer .grid-3 {
+    width: 90% !important;
+    padding-bottom: 10px !important;
+    border-right: 0px !important;
+    border-bottom: 1px solid #edeaed !important;}
+} 

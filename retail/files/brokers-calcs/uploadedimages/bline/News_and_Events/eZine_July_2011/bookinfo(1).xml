@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<value000>
+	<value030 value028="1752" value029="1238" value031="1752" value032="1238" value201="1" value191="true" value034="false" value035="true" value037="true" value038="false" value039="false" value170="false" value171="false" value202="l2r" value172="true" value173="false" value174="true" value209="true" value210="false" value051a="0" value193="" value194="" value099="master_files\library2" value051b="000000" value213a="1" value040="13" value200="">
+	</value030>
+	<value001>
+		<value012 value013="hot" value014="1" value018="266" value019="27" value016="353" value017="534" value020="2"/>
+		<value012 value013="hot" value014="1" value018="264" value019="28" value016="353" value017="557" value020="3"/>
+		<value012 value013="hot" value014="1" value018="278" value019="30" value016="353" value017="585" value020="5"/>
+		<value012 value013="hot" value014="1" value018="355" value019="27" value016="353" value017="611" value020="9"/>
+		<value012 value013="hot" value014="1" value018="437" value019="26" value016="353" value017="638" value020="7"/>
+		<value012 value013="hot" value014="1" value018="252" value019="26" value016="353" value017="660" value020="10"/>
+		<value012 value013="hot" value014="1" value018="51" value019="28" value016="1076" value017="709" value020="vicky.dunne@irishlife.ie"/>
+		<value012 value013="hot" value014="3" value018="126" value019="25" value016="1083" value017="537" value020="http://www.bline.ie/"/>
+		<value012 value013="hot" value014="3" value018="671" value019="379" value016="986" value017="596" value020="http://www.bline.ie/Protection_Crusade_TV_Advert.html"/>
+		<value012 value013="hot" value014="4" value018="152" value019="85" value016="925" value017="351" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="4" value018="150" value019="107" value016="939" value017="768" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="4" value018="51" value019="28" value016="789" value017="588" value020="http://www.bline.ie/uploadedFiles/bline/Sales_Day/protection_product_news.pdf"/>
+		<value012 value013="hot" value014="4" value018="52" value019="29" value016="191" value017="638" value020="http://www.bline.ie/uploadedFiles/bline/Protection/Protection_Library/why_choose_il_for_sic.pdf"/>
+		<value012 value013="hot" value014="6" value018="53" value019="28" value016="168" value017="813" value020="http://www.bline.ie/uploadedFiles/bline/Sales_Day/Step_by_step_guide_to_downloading_apps_for_your_Smartphone.doc"/>
+		<value012 value013="hot" value014="7" value018="491" value019="34" value016="148" value017="985" value020="http://www.bline.ie/uploadedFiles/bline/Sales_Day/Savings_Article.doc"/>
+		<value012 value013="hot" value014="7" value018="50" value019="28" value016="1152" value017="977" value020="http://www.bline.ie/uploadedFiles/bline/Sales_Day/autostart_flyer.pdf"/>
+		<value012 value013="hot" value014="8" value018="113" value019="36" value016="420" value017="665" value020="http://www.bline.ie/uploadedFiles/bline/Sales_Day/broker360_flyer.pdf"/>
+		<value012 value013="hot" value014="8" value018="294" value019="37" value016="146" value017="859" value020="http://www.bline.ie/resources-tools/attitude-to-risk.html"/>
+		<value012 value013="hot" value014="8" value018="219" value019="87" value016="1198" value017="829" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="9" value018="263" value019="85" value016="209" value017="837" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="9" value018="225" value019="93" value016="809" value017="835" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="9" value018="219" value019="107" value016="1346" value017="849" value020="http://www.bline.ie/sales_ideas.html"/>
+		<value012 value013="hot" value014="9" value018="56" value019="28" value016="197" value017="298" value020="http://www.bline.ie/uploadedFiles/bline/Pensions/Pensions_Library/pension_levy_update_0611.pdf"/>
+		<value012 value013="hot" value014="9" value018="51" value019="26" value016="547" value017="580" value020="http://www.bline.ie/uploadedFiles/bline/Pensions/Pensions_Library/the_magnificent_7_new_commission_options_flyer.pdf"/>
+	</value001>
+	<value002>
+		<value600><![CDATA[Contents]]></value600>
+		<value601><![CDATA[Print]]></value601>
+		<value602><![CDATA[Download Offline version]]></value602>
+		<value603><![CDATA[Search]]></value603>
+		<value604><![CDATA[Send email to a friend]]></value604>
+		<value605><![CDATA[Settings]]></value605>
+		<value606><![CDATA[Thumbnails]]></value606>
+		<value607><![CDATA[Previous Issues]]></value607>
+		<value608><![CDATA[Help]]></value608>
+		<value609><![CDATA[Exit]]></value609>
+		<value610><![CDATA[Email:]]></value610>
+		<value611><![CDATA[Web:]]></value611>
+		<value612><![CDATA[Jump to page:]]></value612>
+		<value613><![CDATA[Download file]]></value613>
+		<value614><![CDATA[Play audio clip]]></value614>
+		<value615><![CDATA[Play flash file]]></value615>
+		<value616><![CDATA[Play video clip]]></value616>
+		<value617><![CDATA[Leave comment]]></value617>
+		<value618><![CDATA[Video Player]]></value618>
+		<value619><![CDATA[Ready]]></value619>
+		<value620><![CDATA[Complete]]></value620>
+		<value621><![CDATA[Seeking]]></value621>
+		<value622><![CDATA[Send an email to a friend]]></value622>
+		<value623><![CDATA[Your  name]]></value623>
+		<value624><![CDATA[Your email Address]]></value624>
+		<value625><![CDATA[Your friend's Name]]></value625>
+		<value626><![CDATA[Your friend's email address]]></value626>
+		<value627><![CDATA[Message]]></value627>
+		<value628><![CDATA[Submit]]></value628>
+		<value629><![CDATA[Reset]]></value629>
+		<value630><![CDATA[Send a comment]]></value630>
+		<value631><![CDATA[Submit Error]]></value631>
+		<value632><![CDATA[Enter your name]]></value632>
+		<value633><![CDATA[Your email is not valid]]></value633>
+		<value634><![CDATA[Enter your friend's name]]></value634>
+		<value635><![CDATA[Your friends email is not valid]]></value635>
+		<value636><![CDATA[Submit Error!]]></value636>
+		<value637><![CDATA[Please wait while sending your message]]></value637>
+		<value638><![CDATA[Error occur while sending your message]]></value638>
+		<value639><![CDATA[Error connecting to the server]]></value639>
+		<value640><![CDATA[Your message is successfully sent!]]></value640>
+		<value641><![CDATA[Search]]></value641>
+		<value642><![CDATA[matches found]]></value642>
+		<value643><![CDATA[No matches found]]></value643>
+		<value644><![CDATA[Page]]></value644>
+		<value645><![CDATA[Print]]></value645>
+		<value646><![CDATA[Print current pages]]></value646>
+		<value647><![CDATA[Print Selected pages]]></value647>
+		<value648><![CDATA[printing pages]]></value648>
+		<value649><![CDATA[Control Panel]]></value649>
+		<value650><![CDATA[Zoom to double page]]></value650>
+		<value651><![CDATA[Zoom to single page]]></value651>
+		<value652><![CDATA[When zoomed in, navigate by moving the mouse]]></value652>
+		<value653><![CDATA[When zoomed in, navigate by clicking and dragging the pages]]></value653>
+		<value654><![CDATA[Zoom to 100 percent]]></value654>
+		<value655><![CDATA[Zoom to browser width]]></value655>
+	</value002>
+</value000>

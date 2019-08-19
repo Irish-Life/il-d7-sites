@@ -1,0 +1,767 @@
+<?php
+/**
+ * @file
+ * A block module that displays the Fund Centre.
+ */
+ 
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function fund_centre_permission() {
+  return array(
+    'administer_fund_centre' => array(
+      'title' => t('Administer Fund Centre'),
+      'description' => t('Perform administration tasks for Fund Centre.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_block_menu().
+ */
+
+
+function fund_centre_menu() {
+
+  	$items = array();
+ $items['admin/content/fund_centre'] = array(
+    'title' => 'Funds Centre ',
+    'description' => 'Settings for Irish Life Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM
+   );
+   
+   $items['admin/content/fund_centre/irishlife'] = array(
+    'title' => 'Irish Life Funds ',
+    'description' => 'Settings for Irish Life Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_irishlife_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+     	$items['admin/content/fund_centre/aib'] = array(
+    'title' => 'AIB Funds ',
+    'description' => 'Settings for AIB Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_aib_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+     	$items['admin/content/fund_centre/canada'] = array(
+    'title' => 'Canada Life Funds ',
+    'description' => 'Settings for Canada Life Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_canada_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );   
+   	$items['admin/content/fund_centre/ptsb'] = array(
+    'title' => 'PTSB Funds ',
+    'description' => 'Settings for PTSB Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_ptsb_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+   $items['admin/content/fund_centre/bline'] = array(
+    'title' => 'Bline Funds ',
+    'description' => 'Settings for Bline Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_bline_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+    $items['admin/content/fund_centre/ulsterbank'] = array(
+    'title' => 'Ulster Bank Funds ',
+    'description' => 'Settings for Ulster bank Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_ub_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+   
+ 
+  return $items;
+}
+function fund_centre_admin()
+{
+return null;
+}
+/**
+ * Implementation of hook_block_admin().
+ */
+
+function fund_centre_irishlife_admin()
+{
+$form['fund_centre_irishlife_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('Irish Life Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_irishlife_fund_group_id','73'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Irish Life Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_irishlife_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Irish Life Group Names'),
+	'#default_value' => variable_get('fund_centre_irishlife_fund_group_names',["Multi Asset Portfolio Funds","Clear PRSA Managed Portfolios","Irish Life Indexed Funds","CORE","Protected Funds","Irish Life Actively Managed Funds","External Fund Managers","Public Sector Funds for Cornmarket"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_irishlife_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('Irish Life Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_irishlife_fund_upper_limits',["19","29","69","79","99","139","199","219"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_irishlife_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('Irish Life Product Group'),
+	'#default_value' => variable_get('fund_centre_irishlife_product_group',["PRD"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Irish Life Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function fund_centre_bline_admin()
+{
+$form['fund_centre_bline_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_bline_fund_group_id','72'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Bline Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Group Names'),
+	'#default_value' => variable_get('fund_centre_bline_fund_group_names',["Multi Asset Portfolio Funds", "ILIM Indexed Funds", "CORE", "Protected Fund", "ILIM Active Funds", "External Fund Managers", "Public Sector Funds for Cornmarket"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_bline_fund_upper_limits',["49","99","109","119","149","199","219"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Product Group'),
+	'#default_value' => variable_get('fund_centre_bline_product_group',["BLW"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Bline Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+ 
+ 
+function fund_centre_aib_admin()
+{
+$form['fund_centre_aib_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('AIB Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_aib_fund_group_id','63'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("AIB Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_aib_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Fund Group Names'),
+	'#default_value' => variable_get('fund_centre_aib_fund_group_names',["Fund Prices"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_aib_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('AIB Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_aib_fund_upper_limits',["100"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_aib_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('AIB Product Group'),
+	'#default_value' => variable_get('fund_centre_aib_product_group',["AIP"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("AIB Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function fund_centre_canada_admin()
+{
+$form['fund_centre_canada_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('Canada Life Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_canada_fund_group_id','63'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Canada Life Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_canada_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Fund Group Names'),
+	'#default_value' => variable_get('fund_centre_canada_fund_group_names',["Fund Prices"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_canada_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('Canada Life Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_canada_fund_upper_limits',["100"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_canada_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('Canada Life Product Group'),
+	'#default_value' => variable_get('fund_centre_canada_product_group',["AIP"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Canada Life Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function fund_centre_ptsb_admin()
+{
+$form['fund_centre_ptsb_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('PTSB Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_ptsb_fund_group_id','75'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("PTSB Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ptsb_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('PTSB Fund Group Names'),
+	'#default_value' => variable_get('fund_centre_ptsb_fund_group_names',["Multi Asset Portfolio Funds","Clear PRSA Managed Portfolios","Irish Life Indexed Funds","Irish Life Actively Managed Funds"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ptsb_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('PTSB Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_ptsb_fund_upper_limits',["19","29","69","139"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ptsb_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('PTSB Product Group'),
+	'#default_value' => variable_get('fund_centre_ptsb_product_group',["BWW"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("PTSB Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+function fund_centre_ub_admin()
+{
+$form['fund_centre_ub_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('Ulster Bank Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_ub_fund_group_id','75'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ub_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Ulster Bank Fund Group Names'),
+	'#default_value' => variable_get('fund_centre_ub_fund_group_names',["Multi Asset Portfolio Funds","Clear PRSA Managed Portfolios","Irish Life Indexed Funds","Irish Life Actively Managed Funds"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ub_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('Ulster Bank Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_ub_fund_upper_limits',["19","29","69","139"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_ub_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('Ulster Bank Product Group'),
+	'#default_value' => variable_get('fund_centre_ub_product_group',["BWW"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Ulster Bank Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function fund_centre_block_info() {
+  $blocks['fund_centre'] = array(
+    'info' => t('Fund Centre Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function fund_centre_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#fund_centre":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+
+
+function fund_centre_contents(){
+  return '<script type="text/javascript" src="'.$GLOBALS['base_url'].'/sites/all/modules/claim_stats_map/js/modernizr.js"></script>
+
+<!-- ****************************************************** FUND DETAILS DIV *************************************************************** -->
+<div id="fundScreenBody" class="container-12">
+<div id="fundName" class="chart-head"><span id="theName">Multi Asset Portfolio 2</span><i onclick="hideFund();" class="material-icons hideChartClose" style="">close</i></div>
+<div class="row">
+<div class="card card-plan col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div class="row-title" style="background-color: #717fe1;color: white;">&nbsp;&nbsp;&nbsp;&nbsp;Fund Performance</div>
+			<div id="fundGrowth">
+			</div>
+</div>
+<div class="card card-plan col-lg-4 col-md-4 col-sm-4 col-xs-12" style="height: 355px;">
+<div class="fundDetails fundDetailsWhite">
+<div class="row-title" style="background-color: white;">&nbsp;&nbsp;&nbsp;&nbsp;Fund Details</div>
+            <div class="row-item">
+                <div class="col-lg-6">
+                    Price:
+                </div>
+                <div class="col-lg-6">
+				€&nbsp;<span id="price"></span>
+                </div>
+            </div>
+            <div class="row-item">
+                <div class="col-lg-6">
+                    Price Date:
+                </div>
+                <div class="col-lg-6">
+				<span id="date"></span>
+                </div>
+            </div>
+            <div class="row-item hideOnCanada" style="border-bottom: 1px solid #edeaed;">
+             <div class="col-lg-6">
+                        Risk:
+             </div>
+             <div class="col-lg-6">
+			 <span id="fundRisk" class="risk circle-risk rated-2"></span>
+             </div>
+			</div>
+			<div class="row-item addFundGuide" style="margin-top:20px;">
+			<div class="col-lg-2">
+                    <img src="https://www.irishlife.ie/myonlineservices/Content/images/icons/pdf_icon_grey.png" style="width: 48px; height: 48px;">
+		    </div>
+			<div class="col-lg-7">
+			Download <a id="factsheet" onclick="" href=""><br><span class="fundName">Factsheet</span></a>
+            </div>
+			</div>
+        </div>
+</div>
+</div>
+<div class="row">
+<div class="card card-plan card-height col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div class="row-title" style="background-color:white">&nbsp;&nbsp;&nbsp;&nbsp;Yearly Performace</div>
+            <div id="fundPerfChart"></div>
+</div>
+<div class="card card-plan col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="row-title" style="background: #61a4e0;color: white;">&nbsp;&nbsp;&nbsp;&nbsp;Historical Performance</div>
+<div class="fundDetails" style="background: #61a4e0;color: white;">
+                    <div class="row-item">
+                        <div class="col-lg-6">
+                            1 month:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="lastMonth"></span></div>
+                    </div>
+                    <div class="row-item">
+                        <div class="col-lg-6">
+                            6 months:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="sixMonth"></span>
+                        </div>
+                    </div>
+                    <div class="row-item">
+                        <div class="col-lg-6">
+						    1 year:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="1year"></span>
+                        </div>
+                    </div>
+                    <div class="row-item">
+                        <div class="col-lg-6">
+                            3 years:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="3years"></span></div>
+                    </div>
+                    <div class="row-item" style="">
+                   <div class="col-lg-6">
+                        All time:
+                    </div>
+                   <div class="col-lg-6">
+					<span id="sinceLaunch">15%</span>
+                    </div>
+                    </div>
+					<div style="display:none" class="row-item">
+                        <div class="col-lg-6">
+                            3 years annualised:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="3yearsAnn"></span></div>
+                    </div>
+					<div style="display:none" class="row-item">
+                        <div class="col-lg-6">
+                            5 years annualised:
+                        </div>
+                        <div class="col-lg-6">
+						<span id="5yearsAnn"></span></div>
+                    </div>
+			</div>
+</div>
+<div class="back col-lg-12 col-md-12 col-sm-12 col-xs-12" style="width:100%;">
+			<p style="padding:30px;font-size: 19px;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back to all funds</p>
+</div>	
+</div>	
+</div>
+
+<!-- ****************************************************** COMPARISON CHART DIV *************************************************************** -->
+<div style="DISPLAY: none" id="fundsChartBody">
+</div>
+  
+ <!-- ****************************************************** FUND CENTRE DIV *************************************************************** --> 
+<div id="fund-centre-app">
+		<div class="centered" id="tabs">
+			<ul style="display:none;">  <!-- EBUS-1596 Fund Center - Hide Product Fund Tab - 22/08/2018 -->
+				<li>
+					<a class="showDefaultFunds" href="#default">Default Funds</a>
+				</li>
+				<li>
+					<a class="showFundProducts" href="#products">Product Funds</a>
+				</li> 
+			</ul>
+			<div class="tipBox"><p style="margin-bottom:0px;"> <strong>The level of risk stretches from 1 to 7</strong>
+	        <br/>
+		    1 being the fund with the least amount of risk, and 7 being the fund with the most amount of risk.</p>
+		   </div>
+			
+			<div id="products">
+				<div class="row">
+					<div class="large-12 columns fundsProductsHeader">
+						<div class="fundsProductsHeaderContent">
+							<p>Select a product category to view price and performance information.</p>
+							<p id="fundCategorySelect"></p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div id="productsTableBody">
+					</div>
+				</div>
+			</div>
+			<div id="default">
+				<div id="fundsTableBody">
+					<div class="loadingBox">
+					    <h4>Please wait while funds are loaded. This may take a few seconds.</h4>
+						<br/>
+						<br/>
+						<img alt="loading gif" style="text-align:center;margin:0 auto;float: none;" src="'.$GLOBALS['base_url'].'/sites/all/modules/css/images/loading.orange.gif">
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+<!-- ****************************************************** COMPARE BARS *************************************************************** -->
+<div id="compareFundsBar">
+					<div class="showChart has-tip">
+						 Compare
+					</div>
+</div>
+ <div id="compareProductsBar">
+					<div class="showProductChart has-tip">
+						 Compare
+					</div>
+ </div>
+ <div id="backToFundsBar">
+					<div class="backToFunds" onclick="hideChart();">
+						 Back to Funds Available
+					</div>
+ </div>
+
+
+<script language="javascript" type="text/javascript">
+window.onload=function(){'.
+
+getFundSettings().
+'
+
+window.loadFundsCentre();
+
+};
+</script>';
+
+}
+
+function getFundSettings()
+{
+
+//1. get the url of the current page so that we know which setting to user_access
+$channel = getChannelInUse(); 
+
+//2. depending on the url, assign the appropriate values to the variables.
+if ($channel == 'bline')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_bline_fund_group_id','').'; 
+fundsGroupUpperLimits = '.variable_get('fund_centre_bline_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_bline_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_bline_product_group',[""]).';'; 
+}
+else if ($channel == 'aib')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_aib_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_aib_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_aib_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_aib_product_group',[""]).';';
+}
+else if ($channel == 'ptsb')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_ptsb_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_ptsb_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_ptsb_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_ptsb_product_group',[""]).';';
+}
+else if ($channel == 'ub')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_ub_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_ub_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_ub_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_ub_product_group',[""]).';';
+}
+else if ($channel == 'canada')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_canada_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_canada_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_canada_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_canada_product_group',[""]).';';
+}
+else 
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_irishlife_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_irishlife_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_irishlife_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_irishlife_product_group',[""]).';'; 
+}
+
+
+return $settings;
+
+}
+
+function fund_centre_block_view($delta = '') {
+  switch($delta) {
+    case 'fund_centre':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = fund_centre_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  // display charges
+	  $channel = getChannelInUse();
+	  $chargeDisplay = ($channel =='ptsb' || 'canada' ? 'style="display:none"':'');
+		
+	  //display risk
+	  $riskDisplay = ($channel =='canada' ? 'style="display:none"':'');
+	  
+	  $showProductGroups = ($channel =='canada' ? 'N':'Y');
+	  drupal_add_js(
+    array(
+	'fund_centre' => array(
+	'chargeDisplay' =>$chargeDisplay,
+	'showProductGroups' => $showProductGroups,
+	'riskDisplay' => $riskDisplay,)
+	),
+	'setting'
+	);
+	  
+      drupal_add_css(drupal_get_path('module', 'fund_centre') . '/css/app.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'fund_centre') . '/css/alertify.core.min.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'fund_centre') . '/css/alertify.default.css', array('group' => CSS_DEFAULT));
+	  drupal_add_css("https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css",'external',array('scope' => 'header'));
+	  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css','external');
+      drupal_add_css(drupal_get_path('module', 'fund_centre') . '/css/fund.centre.css', array('group' => CSS_DEFAULT, 'scope' => 'footer'));
+	  drupal_add_css("https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css",'external',array('scope' => 'footer'));
+	  drupal_add_css("https://fonts.googleapis.com/icon?family=Material+Icons",'external',array('scope' => 'footer'));
+
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.cookie.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'fund_centre') .'/js/alertify.min.js',array('scope' => 'footer'));
+	  drupal_add_js(drupal_get_path('module','javascript').'/js/jquery-ui.min.js',array('scope' => 'header'));
+      //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'footer'));
+	  drupal_add_js("https://code.highcharts.com/stock/highstock.js",'external',array('scope' => 'header'));
+	  //drupal_add_js("https://code.highcharts.com/highcharts.js",'external',array('scope' => 'header'));
+	  drupal_add_js("https://code.highcharts.com/modules/exporting.js",'external',array('scope' => 'header'));
+      //drupal_add_js(drupal_get_path('module', 'javascript') .'/js/exporting.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/list.min.js',array('scope' => 'footer'));
+	  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js','external');
+      drupal_add_js(drupal_get_path('module', 'fund_centre') .'/js/funds.min.js',array('scope' => 'footer'));
+	  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js','external');
+      
+    }
+    return $block;
+  }
+ }

@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<title>Import Investor Profile - ptsb</title>
+
+<script src="https://code.jquery.com/jquery-1.8.1.js"></script>
+<style type="text/css" media="all">
+
+body{
+  background-color:#f1f1f1;
+}
+.bodyHolder{
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  border:1px dashed #ccc;
+}
+@media screen and (max-width:650px) {
+   
+    .bodyHolder{
+      width:100%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+<div class="bodyHolder" >
+
+							<!--Widget Code Starts-->
+							<script type='text/javascript'>
+							var ts=new Date().getTime();
+							document.write('<div id="ilfs-ipb">loading</div>');
+							var _ilfsa = _ilfsa || [];
+							_ilfsa.push(['_setUser', 'ILFS-PTSB']);
+							(function() {
+							var ilfs = document.createElement('script'); ilfs.type = 'text/javascript'; ilfs.async = true;
+							ilfs.src = '/investments/investor-profile/ptsb?ts='+ts;
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ilfs, s);
+							})();
+							//--></script>
+							<!--Widget Code Ends-->
+
+
+</body>
+</html>

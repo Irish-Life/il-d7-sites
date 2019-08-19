@@ -1,0 +1,211 @@
+<?php
+/**
+ * @file
+ * A block module that displays the Key Information Documents search.
+ */
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function key_information_docs_mod_v1_17_block_info() {
+  $blocks['key_information_docs_mod_v1_17'] = array(
+    'info' => t('key information documents Block v1.1'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function key_information_docs_mod_v1_17_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#key_information_docs_mod_v1_17":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+
+//Retrieve KIDS data from service and Cache
+function GetKidDataJSON(&$httpcode) {
+    $ch = curl_init();
+	
+    curl_setopt($ch, CURLOPT_URL, 'http://192.168.3.49:5086/myonlineservices/KidQueryApi/List'); //This will need to change to the server name when moved to production
+    
+    $date = new DateTime();
+    $timestamp = $date->format('d/m/Y H:i:00');
+    
+    curl_setopt($ch, CURLOPT_POST, 1);
+    //curl_setopt($ch, CURLOPT_POSTFIELDS, $parms);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT ,3);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Auth-Token: 6da52967-b118-4a7c-94d0-dfa50e32a2ee',
+    'TimeStamp: '.str_replace('"', '', $timestamp),
+	'Content-Length:0'
+    ));
+	
+    $response = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+	
+    return $response;
+}
+//Cache the json file
+function GetCachedKidsList() {
+    $cachefile = __DIR__.'/kids-cache.json';
+    
+    if (!file_exists($cachefile) || ($_SERVER['REQUEST_TIME'] - filemtime($cachefile) > 43200)) { // 12 hours in seconds
+        $httpcode = 0;
+        $json = GetKidDataJSON($httpcode);
+        
+        if ($httpcode == 200
+        && strlen($json) > 1000) { // ensure that we got at least 1000 bytes, and not just an error message
+            file_put_contents($cachefile, $json);
+        } else {
+            trigger_error('Got response code '.$httpcode.' when trying to get Kids List. Contents: '.$json);
+            $json = '[{}] /* Got response code '.$httpcode.' when trying to get Kids List. Contents: '.$json.' */';
+        }
+    } else {
+        $json = file_get_contents($cachefile);
+    }
+    
+    return $json;
+}
+
+//create a server side timestamp
+/*function writeDate() {
+	$date = new DateTime();
+	$newDate = $date->format('d/m/Y H:i:00') . "\n";
+    return '<script>var phpDate = ' . json_encode($newDate) . ';</script>';
+}*/
+
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function key_information_docs_mod_v1_17_contents(){
+  return //writeDate().
+/*'<script type="text/javascript">'.
+'var kidsData = '.GetCachedKidsList().';'.
+'$(document).ready(function() {'.
+'    setUpData(kidsData);'.
+'});'.
+'</script>'.*/
+'<div id="example2" class="container col-sm-12 text-left">  
+	
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#search-docs">Search Documents</a></li>
+  <!--<li><a data-toggle="tab" href="#menu1" class="help-tab">Help</a></li>-->
+  <div class="nav-grey">&nbsp;</div>
+</ul>
+
+<div class="tab-content">
+	
+  <div id="search-docs" class="tab-pane fade in active">
+	
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+			<h4>What type of product is it?</h4>
+			<select class="step1 form-control" name="PremiumTypeDesc">
+				<option value="">Select Product Type</option>
+			</select>
+		</div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="form-group">
+			<h4>Product Name</h4>
+			<select class="step2 form-control" name="PublicProductName">
+				<option value="">Product Name</option>
+			</select>
+		</div>    
+    </div>
+    <div class="col-sm-4">
+		<div class="form-group">
+			<h4>Who is your Advisor</h4>
+			<select class="step3 form-control" name="SellerName">
+				<option value="">Select Advisor</option>
+			</select>
+		</div>
+    </div>
+  </div>
+		
+  </div>
+  
+  <div id="menu1" class="tab-pane fade">
+    <h3>Help</h3>
+    
+  </div>
+  
+  <div id="search-results text-center">
+	<h4><img src="/js/res/ajax-loader.gif" data-bind="visible: loading" /></h4>
+				<ul id="results-list-id" class="results-list" data-bind="foreach: PublicFundNames, visible: PublicFundNames().length > 0">
+					<li class="results-list-item">
+						<i class="pdf-grey fa fa-file-pdf-o">&nbsp;</i><span data-bind="text: PublicFundName"></span>
+						
+							<button type="button" class="view-pdf-button" data-bind="value:[PremiumType,SellerCode,ProductCode,Fund]" >View PDF</button>
+						
+						<!--<span data-bind="text: model"></span>-->
+					</li>
+				</ul>
+		<p data-bind="visible: PublicFundNames().length == 0">Please enter your search criteria to find the correct documents.</p>
+  </div>
+  
+</div>
+
+
+
+</div>';
+}
+
+function key_information_docs_mod_v1_17_block_view($delta = '') {
+  switch($delta) {
+    case 'key_information_docs_mod_v1_17':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = key_information_docs_mod_v1_17_contents();
+      // No content in the last week
+      $block['content'] = $result;
+		//drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'external', array('scope' => 'header'));
+		drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', 'external', array('scope' => 'header'));
+		drupal_add_css(drupal_get_path('module', 'key_information_docs_mod_v1_17') . '/css/kids-style.css', array('group' => CSS_THEME,'weight' => 999));
+
+		drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.js', array('scope' => 'header','type' => 'external'));
+		//drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('scope' => 'header','type' => 'external'));
+		drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js', array('scope' => 'header','type' => 'external'));
+		drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js', array('scope' => 'footer','type' => 'external'));
+		drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.1/jquery.mockjax.min.js', array('scope' => 'footer','type' => 'external'));
+		drupal_add_js(drupal_get_path('module', 'key_information_docs_mod_v1_17') . '/js/res/ajax-mocks.js', array('scope' => 'footer'));
+		drupal_add_js(drupal_get_path('module', 'key_information_docs_mod_v1_17') . '/js/dist/jquery.cascadingdropdown.min.js', array('scope' => 'footer'));
+		drupal_add_js(drupal_get_path('module', 'key_information_docs_mod_v1_17') . '/js/kids.js', array('scope' => 'footer'));
+
+    }
+    return $block;
+  }
+ }
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>Bline </title>
+  <link>http://www.bline.ie</link>
+  <description>Saving document store</description>
+  
+  <item>
+    <title>Pinnacle application form</title>
+    <link>http://www.bline.ie/uploadedFiles/bline/Investments_and_Saving/Investments_Library/pinnacle_application_form.pdf?ts=1404464677606</link>
+	<image>http://www.bline.ie/uploadedImages/bline/Revamp_2012/Investments_and_Savings/Pinnacle-screenshot.PNG</image>
+    <description>Pinnacle application form</description>
+  </item>
+  <item>
+    <title>Deed of assignment - Pinnacle savings plan</title>
+    <link>http://www.bline.ie/uploadedFiles/bline/Revamp_2012/Investments_and_Savings/deed_of_assignment_pinnacle_savings_plan.pdf?ts=1404471847488</link>
+    <description>Deed of assignment - Pinnacle savings plan</description>
+  </item>
+</channel>
+
+</rss>

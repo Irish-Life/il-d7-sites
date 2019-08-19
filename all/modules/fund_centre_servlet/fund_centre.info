@@ -1,0 +1,5 @@
+; $Id: Fund Centre.info,v 1.0.0.0 2014/06/18 10:11:15 Conor Exp $
+name = "Fund Centre"
+description = "Fund Centre Block"
+core = "7.x"
+package = "Irish Life"

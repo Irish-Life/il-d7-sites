@@ -1,0 +1,25 @@
+        <div data-role="page" class="p_det_menu" id="p_det_menu">
+            <div data-role="header" class="header" data-theme="irish">
+               <span class="main_menu"></span>
+               
+                <a href="#" data-role="none" data-direction="reverse">
+                    Plan Details: <br/ > $ln, $fn <br/> $pid, $ptype
+                </a>
+            </div>
+            <form action="javascript:app.changePageAlt('details_req.html');" method="POST" id="reqs">
+                <input type="submit" data-role="none" value="Requirements"  class="orange_btn" />
+            </form>
+            <form action="javascript:app.changePageAlt('benefit_details.html');" method="POST" id="befs">
+                <input type="submit" data-role="none" value="Benefit Details"  class="orange_btn" />
+            </form>
+            <form action="javascript:app.changePageAlt('plan_values.html');" method="POST" id="vls">
+                <input type="submit" data-role="none" value="Plan Values"  class="orange_btn" />
+            </form>
+            <form action="javascript:app.changePageAlt('payments.html');" method="POST" id="pyms">
+                <input type="submit" data-role="none" value="Payment Details"  class="orange_btn" />
+            </form>
+            <form action="javascript:app.changePageAlt('detail_docs.html');" method="POST" id="dcs">
+                <input type="submit" data-role="none" value="Documents"  class="orange_btn" />
+            </form>
+        </div>
+

@@ -1,0 +1,131 @@
+@font-face{font-family:'fs_albert_web_extraboldRg';src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot');src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot?#iefix') format('embedded-opentype'),url('/retail-websites/sites/all/modules/pension_calc/testing/aspira-heavy.woff') format('woff'),url('fonts/FSAlbertWebExtraBold/aspira-heavy.svg#fs_albert_web_extraboldRg') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webregular';src:url('fonts/FSAlbertWebRegular/aspira-regular.eot');src:url('fonts/FSAlbertWebRegular/aspira-regular.eot?#iefix') format('embedded-opentype'),url('/retail-websites/sites/all/modules/pension_calc/testing/aspira-regular.woff') format('woff'),url('fonts/FSAlbertWebRegular/aspira-regular.svg#fs_albert_webregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_web_lightregular';src:url('fonts/FSAlbertWebLight/aspira-light.eot');src:url('fonts/FSAlbertWebLight/aspira-light.eot?#iefix') format('embedded-opentype'),url('/retail-websites/sites/all/modules/pension_calc/testing/aspira-light.woff') format('woff'),url('fonts/FSAlbertWebLight/aspira-light.svg#fs_albert_web_lightregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webbold';src:url('fonts/FSAlbertWebBold/aspira-bold.eot');src:url('fonts/FSAlbertWebBold/aspira-bold.eot?#iefix') format('embedded-opentype'),url('/retail-websites/sites/all/modules/pension_calc/testing/aspira-bold.woff') format('woff'),url('fonts/FSAlbertWebBold/aspira-bold.svg#fs_albert_webbold') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_web_extraboldRg';src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot');src:url('fonts/FSAlbertWebExtraBold/aspira-heavy.eot?#iefix') format('embedded-opentype'),url('/sites/all/modules/pension_calc/testing/aspira-heavy.woff') format('woff'),url('fonts/FSAlbertWebExtraBold/aspira-heavy.svg#fs_albert_web_extraboldRg') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webregular';src:url('fonts/FSAlbertWebRegular/aspira-regular.eot');src:url('fonts/FSAlbertWebRegular/aspira-regular.eot?#iefix') format('embedded-opentype'),url('/sites/all/modules/pension_calc/testing/aspira-regular.woff') format('woff'),url('fonts/FSAlbertWebRegular/aspira-regular.svg#fs_albert_webregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_web_lightregular';src:url('fonts/FSAlbertWebLight/aspira-light.eot');src:url('fonts/FSAlbertWebLight/aspira-light.eot?#iefix') format('embedded-opentype'),url('/sites/all/modules/pension_calc/testing/aspira-light.woff') format('woff'),url('fonts/FSAlbertWebLight/aspira-light.svg#fs_albert_web_lightregular') format('svg');font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_albert_webbold';src:url('fonts/FSAlbertWebBold/aspira-bold.eot');src:url('fonts/FSAlbertWebBold/aspira-bold.eot?#iefix') format('embedded-opentype'),url('/sites/all/modules/pension_calc/testing/aspira-bold.woff') format('woff'),url('fonts/FSAlbertWebBold/aspira-bold.svg#fs_albert_webbold') format('svg');font-weight:normal;font-style:normal}
+
+@media only screen and (min-width: 960px) {
+#familyProtectionPlannerDiv{width:960px;margin:auto;}
+}
+#familyProtectionPlannerDiv .input:active, select:focus, select:active, textarea:focus, textarea:active {
+    -moz-box-shadow: #06f 0 0 7px;
+    -webkit-box-shadow: #06f 0 0 7px;
+    box-shadow: #06f 0 0 7px;
+    z-index: 1;
+}
+
+#familyProtectionPlannerDiv .form-group label {
+    display: block;
+    margin-bottom: 13px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    max-width: 100%;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+#familyProtectionPlannerDiv select {
+    padding-right: 20px;
+}
+}
+
+#familyProtectionPlannerDiv textarea, #familyProtectionPlannerDiv select, #familyProtectionPlannerDiv input[type="date"], 
+#familyProtectionPlannerDiv input[type="datetime"], #familyProtectionPlannerDiv input[type="datetime-local"], 
+#familyProtectionPlannerDiv input[type="email"], #familyProtectionPlannerDiv input[type="month"], #familyProtectionPlannerDiv input[type="number"], 
+#familyProtectionPlannerDiv input[type="password"], #familyProtectionPlannerDiv input[type="search"],
+#familyProtectionPlannerDiv input[type="tel"], #familyProtectionPlannerDiv input[type="text"], #familyProtectionPlannerDiv input[type="time"], 
+#familyProtectionPlannerDiv input[type="url"], #familyProtectionPlannerDiv input[type="week"] {
+    -webkit-appearance: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid;
+    border-color: #848484 #c1c1c1 #e1e1e1;
+    color: #000;
+    outline: 0;
+    padding: 2px 3px;
+    font-size: 13px;
+    font-family: Arial,sans-serif;
+    height: 1.8em;
+}
+
+#familyProtectionPlannerDiv .form-group option:first-child {
+    color: #ccc;
+}
+
+#familyProtectionPlannerDiv textarea,#familyProtectionPlannerDiv select,#familyProtectionPlannerDiv input[type="date"],
+#familyProtectionPlannerDiv input[type="datetime"],#familyProtectionPlannerDiv input[type="datetime-local"],
+#familyProtectionPlannerDiv input[type="email"],#familyProtectionPlannerDiv input[type="month"],#familyProtectionPlannerDiv input[type="number"],
+#familyProtectionPlannerDiv input[type="password"],#familyProtectionPlannerDiv input[type="search"],
+#familyProtectionPlannerDiv input[type="tel"],#familyProtectionPlannerDiv input[type="text"],#familyProtectionPlannerDiv input[type="time"],
+#familyProtectionPlannerDiv input[type="url"],#familyProtectionPlannerDiv input[type="week"] {
+    -webkit-appearance: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid;
+    border-color: #848484 #c1c1c1 #e1e1e1;
+    color: #000;
+    outline: 0;
+    padding: 2px 3px;
+    font-size: 13px;
+    font-family: Arial,sans-serif;
+    height: 1.8em;
+}
+
+#familyProtectionPlannerDiv .container {padding:0px !important}
+#familyProtectionPlannerDiv .styled-select-value{display:none !important}
+#familyProtectionPlannerDiv #about-rel, #familyProtectionPlannerDiv #childNum, #familyProtectionPlannerDiv #partner-rel {opacity:100 !important}
+#familyProtectionPlannerDiv .result {display:inline-block !important}
+.modal{height:600px !important}
+#familyProtectionPlannerDiv .knob-a-icon-1, #familyProtectionPlannerDiv .knob-a-icon-2, #familyProtectionPlannerDiv .knob-a-icon-3, #familyProtectionPlannerDiv .knob-a-icon-4 {color:#6E2E7A}
+#familyProtectionPlannerDiv input[type=radio]:checked + label, #familyProtectionPlannerDiv input[type=checkbox]:checked + label {
+    background-color: #00856A !important;
+}
+#familyProtectionPlannerDiv .lifelens-cta {
+    background-color: #00856A !important;
+}
+
+#familyProtectionPlannerDiv .fa-user-plus {
+    color: #6E2E7A;
+}
+#familyProtectionPlannerDiv .steps-menu {
+    background-color: #E5CCEA;
+    text-align: center;
+}
+
+#familyProtectionPlannerDiv .active {
+    background-color: #E5CCEA; 
+    border-bottom: 1px solid #6E2E7A;
+}
+#familyProtectionPlannerDiv .sub-heading-step p{color:#6E2E7A !important}
+#familyProtectionPlannerDiv .rangeslider__fill {
+    background: #6E2E7A !important;
+}
+#familyProtectionPlannerDiv .personal_title_text .personal_text p {
+    color: #6E2E7A;
+}
+
+#familyProtectionPlannerDiv .brand-color{color:#6E2E7A !important}
+#familyProtectionPlannerDiv .steps-menu .col-lg-2 {
+    border-right: none !important;
+}
+#familyProtectionPlannerDiv .deathCost, #familyProtectionPlannerDiv .illnessCost, #familyProtectionPlannerDiv .specifiedIllness {
+    color: #00856a;
+}

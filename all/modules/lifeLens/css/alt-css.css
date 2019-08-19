@@ -1,0 +1,277 @@
+html, body {
+height: auto;
+overflow-x: hidden;
+
+}
+
+body{
+background-color:#fff;
+background: #fff;
+}
+
+#ffr {
+position: relative;
+min-height: 500px;
+border: #e5e5e5;
+border-style: solid;
+border-width: 1px;
+background: url("/sites/all/modules/css/images/pension-calc-background.png") repeat scroll 0 -28px transparent;
+overflow-y: hidden;
+}
+
+#ffr .sliderOutput {
+    background: none repeat scroll 0 0 #334076;
+    border-color: #000000;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: -10px;
+}
+
+#ffr .pricing-table .description {
+    font-size: 15px;
+}
+#ffr .buttonGroup {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+#ffr #navMenu .fa-check-circle {
+    color: #50C9B5 !important;
+}
+
+#ffr #coveredText img {
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+}
+
+.centerDiv:after {
+    clear: both;
+}
+
+#ffr p,#ffr dl,#ffr hr,#ffr h1,#ffr h2,#ffr h3,#ffr h4,#ffr h5,#ffr h6,#ffr ol,#ffr ul,#ffr pre,#ffr table,#ffr address,#ffr fieldset {
+    margin-bottom: auto;
+}
+#ffr #navMenu #sub-nav li {
+    list-style: none;
+}
+#ffr #sub-nav {
+    background: transparent;
+    height: 100%;
+}
+#ffr #navMenu #sub-nav i h4 {
+    font-size: 18px !important;
+}
+#ffr #navMenu #sub-nav li.active {
+    background: #50C9B5;
+}
+#ffr #navMenu #sub-nav .active i, #navMenu #sub-nav .active h4 {
+    color: white !important;
+}
+#ffr .ABOptionsBlock:hover {
+    background: #fff;
+}
+
+#ffr ul{
+    list-style-position: inside;
+}
+
+#ffr .startList li {
+  font-size: 1.1em;
+}
+
+#ffr p{
+    margin-bottom: 15px;
+    line-height: 1.9;
+}
+
+#ffr h3 {
+  font-size: 1.6875em !important;
+}
+
+#ffr h2 {
+    font-size: 40px !important;
+}
+
+#ffr .highlight {
+    color: #50C9B5;
+    background: #fff;
+}
+
+#ffr .recommendedCover{
+    font-weight: 900;
+
+}
+
+#ffr .complyText{
+    font-size: 1em;
+}
+
+#ffr .ABOptionsBlock i, #ffr .ABOptionsBlock span, #ffr .complyText a{
+    color: #435399;
+}
+
+#ffr .ABOptionsBlock h4{
+font-size: 1.4em;
+}
+
+#ffr .ABOptionsBlock p{
+font-size: 1.1em;
+}
+
+#ffr .ABOptionsBlock span{
+font-size: 1.3em;
+}
+  
+#ffr a {
+    color: #fff;
+    text-decoration: none;
+    line-height: inherit;
+}
+
+#ffr select, #ffr #thirdResultsScreen input {
+  height: 40px;
+}
+
+#ffr .hidden {
+  display: none;
+}
+
+#ffr h6, #ffr h2, #ffr h3, #ffr h5, #ffr #splash h1, #ffr #splash ol {
+    color: #555;
+}
+
+#ffr .invisible{
+    display: none;
+}
+
+
+#ffr #yourFamilyScreen .blurb h5 {
+width: 100px;
+float: right;
+line-height: 1.2;
+margin-top: 55px;
+}
+
+#ffr #thirdResultsScreen h2, #ffr #thirdResultsScreen p {
+color: #555!important;
+}
+
+#ffr #main-nav {
+height: 100%;
+}
+#ffr #navMenu {
+background-color: #fff;
+text-align: center;
+position: absolute;
+z-index: 5;
+width: 100%;
+}
+
+#ffr #resultsScreen{
+position: relative;
+background: url("/sites/all/modules/css/images/pension-calc-background.png") repeat scroll 0 -28px transparent;
+}
+
+#ffr #thirdResultsScreen{
+    min-height: 500px;
+}
+
+
+#ffr .knob {
+    display: inline-block;
+}
+#ffr .knob:before,
+#ffr .knob:after {
+    content: "";
+}
+#ffr .knob:before {
+    position: absolute;
+}
+
+#ffr .knob:after {
+    position: absolute
+}
+
+@media only screen and (min-width: 737px){
+
+    #ffr #splash, #ffr #yourInfoScreen, #ffr #yourFamilyScreen, #ffr #yourJobScreen,#ffr #yourCoverScreen, #ffr #yourExpensesScreen{
+        position: relative;
+        min-height: 410px;
+        top: 0%;
+        left: 0%;
+        -ms-transform: translate(0%, 0%);
+        -webkit-transform: translate(0%, 0%);
+        -moz-transform: translate(0%, 0%);
+        -o-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+  }
+
+    #ffr .screen .centerDiv {
+        position: relative;
+        top: 0%;
+        left: 0%;
+        -ms-transform: translate(0%, 0%);
+        -webkit-transform: translate(0%, 0%);
+        -moz-transform: translate(0%, 0%);
+        -o-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
+
+    #ffr .screen .dob .centerDiv {
+        position: absolute;
+        top: 43%;
+        left: 50%;
+        -ms-transform: translate(-50%, -43%);
+        -webkit-transform: translate(-50%, -43%);
+        -moz-transform: translate(-50%, -43%);
+        -o-transform: translate(-50%, -43%);
+        transform: translate(-50%, -43%);
+    }
+    #ffr #navMenu .fa-check-circle {
+        margin-left: 0px;
+    }
+    
+}
+
+@media only screen and (max-width: 737px){
+    #ffr #resultsScreen{
+    position: relative;
+    }
+
+
+  #ffr #resultsScreen .centerDiv{
+     position: relative;
+    top: 0%;
+    left: 0%;
+    -ms-transform: translate(0%,0%);
+    -webkit-transform: translate(0%,0%);
+    -moz-transform: translate(0%,0%);
+    -o-transform: translate(0%,0%);
+    transform: translate(0%,0%);
+  }
+}
+
+
+@media only screen and (max-width: 737px){
+    #ffr #navMenu {
+        position: relative;    }
+
+}
+
+
+*, :after, :before {
+-moz-box-sizing: inherit !important;
+ -webkit-box-sizing: inherit!important; 
+ box-sizing: content-box!important; 
+}
+
+
+#ffr *, #ffr :after, #ffr :before {
+-moz-box-sizing: border-box!important;
+ -webkit-box-sizing: border-box!important; 
+ box-sizing: border-box!important; 
+}

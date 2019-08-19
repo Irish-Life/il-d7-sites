@@ -1,0 +1,380 @@
+<?php
+/**
+ * @file
+ * A block module that displays the Fund Centre.
+ */
+ 
+ /**
+ * Implementation of hook_block_permission().
+ */
+ 
+function fund_centre_old_permission() {
+  return array(
+    'administer_fund_centre_old' => array(
+      'title' => t('Administer Fund Centre'),
+      'description' => t('Perform administration tasks for Fund Centre.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_block_menu().
+ */
+
+
+function fund_centre_old_menu() {
+
+  	$items = array();
+ $items['admin/content/fund_centre'] = array(
+    'title' => 'Funds Centre',
+    'description' => 'Settings for Irish Life Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM
+   );
+   
+   $items['admin/content/fund_centre/bline'] = array(
+    'title' => 'Funds Bline',
+    'description' => 'Settings for Bline Funds',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('fund_centre_bline_admin'),
+	'access arguments' => array('administer_fund_centre'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_LOCAL_TASK 
+   );
+  
+ 
+  return $items;
+}
+function fund_centre_old_admin()
+{
+return null;
+}
+/**
+ * Implementation of hook_block_admin().
+ */
+
+
+
+function fund_centre_bline_old_admin()
+{
+$form['fund_centre_bline_fund_group_id']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Fund Group ID'),
+	'#default_value' => variable_get('fund_centre_bline_fund_group_id','72'),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Bline Fund Group ID"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_fund_group_names']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Group Names'),
+	'#default_value' => variable_get('fund_centre_bline_fund_group_names',["Multi Asset Portfolio Funds", "ILIM Indexed Funds", "CORE", "Protected Fund", "ILIM Active Funds", "External Fund Managers", "Public Sector Funds for Cornmarket"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Group Names"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_fund_upper_limits']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Group Upper Limits'),
+	'#default_value' => variable_get('fund_centre_bline_fund_upper_limits',["49","99","109","119","149","199","219"]),
+	'#resizable' => FALSE,
+	'#rows' => 3,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Fund Upper Limits"),
+	'#required' => TRUE,	
+	);
+	
+$form['fund_centre_bline_product_group']=array(
+	'#type' => 'textarea',
+	'#title' => t('Bline Product Group'),
+	'#default_value' => variable_get('fund_centre_bline_product_group',["BLW"]),
+	'#resizable' => FALSE,
+	'#rows' => 1,
+	'#cols' => 20,
+	'#resizable' => FALSE,
+	'#description' => t("Bline Product Group"),
+	'#required' => TRUE,	
+	);
+	
+	return system_settings_form($form);
+}
+ 
+
+
+
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function fund_centre_old_block_info() {
+  $blocks['fund_centre'] = array(
+    'info' => t('Fund Centre Old Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function fund_centre_old_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#fund_centre":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+
+
+function fund_centre_old_contents(){
+  return '<script type="text/javascript" src="'.$GLOBALS['base_url'].'/sites/all/modules/claim_stats_map/js/modernizr.js"></script>
+
+<div id="fund-centre-app" >
+  <div id="helpTextHeader" >
+    <div class="row">
+      <div class="large-12 columns">
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="name" onclick="void(0);">
+                  <a class="toggle-nav showHelp helpTextButton" href="javascript:void(0);"> </a>
+                  <h2><a class="showHelp helpTextButton" href="javascript:void(0);">Need Help?</a></h2>
+                </div>
+              </div>
+            </div>
+            <div id="helpText" class="row" style="DISPLAY: none">
+              <div> <h2>Getting Started</h2></div>
+              <div class="helpSection">
+                <h3>1. Set favourites/Funds for charting</h3>
+                <img src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/fund-banner-2.png"  alt="fund banner">
+              </div>
+              <div class="helpSection">
+                <h3>2. Show favourites</h3> 
+                <img src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/favs.png" alt="favs"> 
+              </div>
+              <div class="helpSection">
+                <h3>3. Show fund chart(s)</h3> 
+                <img src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/open-chart.png" alt="open chart">
+              </div>
+              <div class="helpSection">
+                <h3>4. The level of the Fund\'s risk stretches from 1 to 7</h3> 
+                <p>One being the fund with the least amount of risk, and 7 being the fund with the most amount of risk.</p>
+                <div class="riskRating rated-1"><span class="rateditem">1</span></div>
+                <div class="riskRating rated-2"><span class="rateditem">2</span></div>
+                <div class="riskRating rated-3"><span class="rateditem">3</span></div>
+                <div class="riskRating rated-4"><span class="rateditem">4</span></div>
+                <div class="riskRating rated-5"><span class="rateditem">5</span></div>
+                <div class="riskRating rated-6"><span class="rateditem">6</span></div>
+                <div class="riskRating rated-7"><span class="rateditem">7</span></div>
+              </div>
+              <div class="clearer"></div>
+              <p></p>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fundsProductsHeader">
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="name" onclick="void(0);">
+              <a class="toggle-nav showFundProducts fundsProductHeaderButton" href="javascript:void(0);"> </a>
+              <h2><a class="showFundProducts fundsProductHeaderButton" href="javascript:void(0);">Product Fund Price and Performance Information</a></h2>
+            </div>
+          </div>
+        </div>
+        <div style="DISPLAY: none" class="fundsProductsHeaderContent">
+          <p>Select a product category to view price and performance information.</p>
+          <p id="fundCategorySelect"> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div style="DISPLAY: none" id="fundsChartBody"></div>
+  </div>
+
+  <div class="row pageContentHolder">
+    <div class="show-for-small fundOptionsHeaderSmall" data-magellan-expedition="fixed"><div class="row">
+      <div class="small-6 columns">
+        <div style="DISPLAY: none" class="showAllFundsBtn large-12 small-12 columns">
+          <a class="showAllFunds" href="javascript:void(0);">
+            <img class="has-tip" title="Show All Funds" src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/icon-funds-star-all.png" alt="star icon" />
+          </a>
+        </div>
+
+        <div class="showFavFundsBtn large-12 small-12 columns">
+          <a class="showFavFunds" href="javascript:void(0);">
+            <img title="Show Favourite Funds Only" src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/icon-funds-star.png" alt="star icon"/>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="small-6 columns">
+        <div class="showChartBtn">
+          <a class="showChart" title="Show Chart of Selected Funds" href="javascript:void(0);">
+            <img alt="Show Chart of Selected Funds" src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/icon-chart-off.png" alt="chart off icon" />
+          </a>
+        </div>
+
+        <div style="DISPLAY: none" class="hideChartBtn">
+          <a class="hideChart" title="Hide Chart of Selected Funds" href="javascript:void(0);">
+            <img src="'.$GLOBALS['base_url'].'/sites/all/modules/fund_centre/css/images/icon-chart-on.png" alt="chart on icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="fundsTableBody">
+    <div id="loadingBox"><img class="center" src="'.$GLOBALS['base_url'].'/sites/all/modules/css/images/loading.orange.gif" alt="loading gif" />
+      <h4> Please wait while funds are loaded. This may take a few seconds.</h4>
+    </div>
+  </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+window.onload=function(){'.
+
+getFundSettingsOld().
+'
+
+window.loadFundsCentre();
+
+};
+</script>';
+
+}
+
+function getFundSettingsOld()
+{
+
+//1. get the url of the current page so that we know which setting to user_access
+$channel = getChannelInUse(); 
+
+//2. depending on the url, assign the appropriate values to the variables.
+if ($channel == 'bline')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_bline_fund_group_id','').'; 
+fundsGroupUpperLimits = '.variable_get('fund_centre_bline_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_bline_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_bline_product_group',[""]).';'; 
+}
+else if ($channel == 'aib')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_aib_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_aib_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_aib_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_aib_product_group',[""]).';';
+}
+else if ($channel == 'ptsb')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_ptsb_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_ptsb_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_ptsb_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_ptsb_product_group',[""]).';';
+}
+else if ($channel == 'ub')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_ub_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_ub_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_ub_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_ub_product_group',[""]).';';
+}
+else if ($channel == 'canada')
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_canada_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_canada_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_canada_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_canada_product_group',[""]).';';
+}
+else 
+{
+$settings = 'fundsProfile = '.variable_get('fund_centre_irishlife_fund_group_id','').';
+fundsGroupUpperLimits = '.variable_get('fund_centre_irishlife_fund_upper_limits',[""]).';
+fundGroupNamesLimits = '.variable_get('fund_centre_irishlife_fund_group_names',[""]).';
+productGroup = '.variable_get('fund_centre_irishlife_product_group',[""]).';'; 
+}
+
+
+return $settings;
+
+}
+
+function fund_centre_old_block_view($delta = '') {
+  switch($delta) {
+    case 'fund_centre':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = fund_centre_old_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  // display charges
+	  $channel = getChannelInUse();
+	  $chargeDisplay = ($channel =='ptsb' || 'canada' ? 'style="display:none"':'');
+		
+	  //display risk
+	  $riskDisplay = ($channel =='canada' ? 'style="display:none"':'');
+	  
+	  $showProductGroups = ($channel =='canada' ? 'N':'Y');
+	  drupal_add_js(
+    array(
+	'fund_centre' => array(
+	'chargeDisplay' =>$chargeDisplay,
+	'showProductGroups' => $showProductGroups,
+	'riskDisplay' => $riskDisplay,)
+	),
+	'setting'
+	);
+	  
+      drupal_add_css(drupal_get_path('module', 'fund_centre_old') . '/css/app.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'fund_centre_old') . '/css/alertify.core.min.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'fund_centre_old') . '/css/alertify.default.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'fund_centre_old') . '/css/fund.centre.css', array('group' => CSS_DEFAULT));
+
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.cookie.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'fund_centre_old') .'/js/alertify.min.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highstock.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/exporting.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/list.min.js',array('scope' => 'footer'));
+      drupal_add_js(drupal_get_path('module', 'fund_centre_old') .'/js/funds.min.js',array('scope' => 'footer'));
+      
+    }
+    return $block;
+  }
+ }

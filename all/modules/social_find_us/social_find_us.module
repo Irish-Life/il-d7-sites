@@ -1,0 +1,106 @@
+<?php
+/**
+ * @file
+ * A block module that displays the pension calculator.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function social_find_us_block_info() {
+  $blocks['social_find_us'] = array(
+    'info' => t('Irish Life Social Find Us Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function social_find_us_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#social_find_us":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function social_find_us_contents(){
+  return 
+  '<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=irishlifedotie"></script>
+
+<div class="bodyFooterSocial">
+	<div class="socialBlock">
+		<div class="socialBlockImg fa fa-facebook">
+		</div>
+		<div id="fb-likebox-footer" class="socialBlockShare">
+			<iframe width="100" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; height:21px;" scrolling="no" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Firishlifeassurance&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=204555346398643"></iframe>
+		</div>
+	</div>
+	<div class="socialBlock">
+		<div class="socialBlockImg fa fa-twitter">
+		</div>
+		<div id="twitter-followbox-footer" class="socialBlockShare">
+			<a class="twitter-follow-button" href="https://twitter.com/irishlife" data-show-count="true" data-size="medium" data-show-screen-name="false">Follow @irishlife</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\'https://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script>
+		</div>
+	</div>
+	<div class="socialBlock">
+		<div class="socialBlockImg fa fa-google">
+		</div>
+		<div id="googleplus-followbox-footer" class="socialBlockShare">
+			<div class="g-follow" data-annotation="none" data-height="24" data-href="https://plus.google.com/114099101562658002307" data-rel="publisher"></div><script type="text/javascript">
+			window.___gcfg = {lang: \'en-GB\'};
+			(function() {
+			var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+			po.src = \'https://apis.google.com/js/platform.js\';
+			var s = document.getElementsByTagName(\'script\')[0]; 
+			s.parentNode.insertBefore(po, s);
+			})();
+			</script>
+		</div>
+	</div>
+	<div class="socialBlock">
+		<div class="socialBlockImg fa fa-youtube">
+		</div>
+		<!--div id="youtube-likebox-footer" class="socialBlockShare">	
+			<div class="g-ytsubscribe" data-channelid="UC_gVCQovL60zV-1HyvipKyA" data-layout="default" data-count="hidden"></div>		
+		</div -->
+	</div>
+</div>';
+}
+
+function social_find_us_block_view($delta = '') {
+  switch($delta) {
+    case 'social_find_us':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = social_find_us_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  drupal_add_css(drupal_get_path('module', 'social_find_us') . '/css/social.css', array('group' => CSS_DEFAULT));
+    }
+    return $block;
+  }
+ }

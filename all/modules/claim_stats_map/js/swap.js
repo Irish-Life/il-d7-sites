@@ -1,0 +1,1 @@
+document.getElementById('target').style.display = 'none';

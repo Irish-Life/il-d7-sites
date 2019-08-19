@@ -1,0 +1,54 @@
+h1,h2,h3, p{clear:both}
+
+#RiskProfileQuestionsResponse h1
+{ color: #2487CA;
+    float: left;
+    font-size: 1.6em;
+    font-style: italic;
+    padding: 12px 0;
+}
+
+#RiskProfileQuestionsResponse h3
+{ color: #2487CA;
+    float: left;
+    font-size: 1.1em;
+    font-style: italic;
+    padding: 12px 0;
+}
+
+#RiskProfileQuestionsResponse p {
+    line-height: 180%;
+    padding: 0 0 10px 3px;
+	clear:both;
+}
+
+.riskDescription{float:left;margin-top:5px}
+
+.riskTitle{float:left;
+    color: #2487CA;
+    font-size: 1.2em;
+    font-style: italic;
+    padding: 12px 0;
+}
+
+.riskFooterText{
+    float: left;
+    font-size: 0.75em;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+#importantInformation{float:left;clear:both}
+#importantInformation h3{color: #2487CA;
+    float: left;
+    font-size: 1em;
+    font-style: italic;
+    padding: 12px 0;
+}
+.risk-questions{float:left;clear:both}
+#risk-profile-questions {float:left;clear:both}
+#risk-profile-questions h3{float:left;clear:both}
+
+.risk-question-prefix {
+     font-weight: bold;
+}

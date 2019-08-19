@@ -1,0 +1,274 @@
+<?php
+function external_calcs_permission() {
+  return array(
+    'administer_external_calcs' => array(
+      'title' => t('Administer Life Insurance Quotes'),
+      'description' => t('Perform administration tasks for Life Insurance Quotes.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+function life_insurance_quotes_save_admin()
+{
+  // The variables required that are different between products
+  // are as follow:
+  //	$ILFSTermMax = variable_get('investment_profile_builder_save_question_all');
+	// $ILFSProductName = 'lifeTermSum';
+	// $ILFSProductID = '19';
+	// $ILFSProductScreenTitle = 'Life Insurance';
+	// $ILFSProductScreenProductName = 'Term Life Insurance';
+
+$form['life_insurance_quotes_save_term_vars']=array(
+	'#type' => 'textarea',
+	'#title' => t('Variables for each type of product'),
+	'#default_value' => variable_get('life_insurance_quotes_save_term_vars',
+    ''
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 60,
+	'#description' => t("Variables for the Term Life Insurance Quote"),
+	'#required' => TRUE,	
+	);
+  
+$form['life_insurance_quotes_save_mortgage_vars']=array(
+	'#type' => 'textarea',
+	'#title' => t('Variables for mortgage protection quote'),
+	'#default_value' => variable_get('life_insurance_quotes_save_mortgage_vars',
+    ''
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 60,
+	'#description' => t("Variables for the Mortgage Life Insurance Quote"),
+	'#required' => TRUE,	
+	);
+$form['life_insurance_quotes_save_whole_vars']=array(
+	'#type' => 'textarea',
+	'#title' => t('Variables for Whole of Life quote'),
+	'#default_value' => variable_get('life_insurance_quotes_save_whole_vars',
+    ''
+  ),
+	'#resizable' => FALSE,
+	'#rows' => 10,
+	'#cols' => 60,
+	'#description' => t("Variables for the Whole of Life Insurance Quote"),
+	'#required' => TRUE,	
+	);
+		return system_settings_form($form);
+  }
+  
+  
+
+  
+function external_calcs_menu() {
+  $items = array();
+ // Add a new URL 
+ // This is for KBC and teh result will output a JS file that 
+ // they can import and will display the questionaire on their 
+ // site.
+  $items['life-insurance/quotes/premium-term-life-app'] = array(
+    'page callback' => '_premium_term_life_app_js',
+    'access arguments' => array('access example autocomplete'),
+    'type' => MENU_CALLBACK
+  );
+  
+   $items['admin/content/quotes/values'] = array(
+    'title' => 'Life Quote',
+    'description' => 'Questions and answers for the Investor Profile Builder',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('life_insurance_quotes_save_admin'),
+	'access arguments' => array('administer_external_calcs'), // Those with this permission will be allowed to see the results	
+    'type' => MENU_NORMAL_ITEM    );
+  return $items;
+}
+
+  
+function _premium_term_life_app_js($product = 't', $callback = 't', $type = 'p', $dual = 'f') {
+// http://localhost/retail-websites/life-insurance/quotes/premium-term-life-app/t/t/p
+
+	$base_url = $GLOBALS['base_url'];
+  $temp = trim(preg_replace('/\s+/', ' ', variable_get('investment_profile_builder_save_question_all')));
+  $temp = preg_replace('~[\r\n]+~', '', $temp);
+  $temp = json_encode($temp);
+  $questionData = $temp;
+  //questionData = JSON.parse(Drupal.settings.investment_profile_builder_save.question_data);
+  //setupQuestions(questionData);
+  
+        
+	//########################################
+	// html object to hold layout
+  // Add the default CSS file 
+  
+   $jsDefault =  drupal_get_path('module', 'external_calcs') .'/js/ilfs-default-life-quote.js';
+   $cssDefault =  drupal_get_path('module', 'external_calcs') .'/css/ilfs-default-life-quote.css';
+  
+  $css = "var stylesheet = document.createElement('link');";
+	$css .= "stylesheet.href = '".$base_url .'/'.$cssDefault."';";
+	$css .= "stylesheet.rel = 'stylesheet';";
+	$css .= "stylesheet.type = 'text/css';";
+	$css .= "document.getElementsByTagName('head')[0].appendChild(stylesheet);";
+  
+  // clean up the variable data to remove newlines
+  $temp = trim(preg_replace('/\s+/', ' ', variable_get('investment_profile_builder_save_result_disclaimer')));
+  $temp = preg_replace('~[\r\n]+~', '', $temp);
+  $disclaimerTXT = preg_replace('~[\r\n]+~', '', $temp);
+  
+  $js .= "var js = document.createElement('script');";
+	$js .= "js.type = 'text/javascript';";
+	$js .= "js.src = '".$base_url .'/'.$jsDefault."';";
+	$js .= "document.body.appendChild(js);";
+  
+  
+  $prodVarJson = "";
+  $prodVarURL = "";
+  if(strtoupper($product) =="W"){
+  // whole of life insurance
+  
+    $temp = trim(preg_replace('/\s+/', ' ', variable_get('life_insurance_quotes_save_whole_vars')));
+    $temp = preg_replace('~[\r\n]+~', '', $temp);
+    $prodVarJson = preg_replace('~[\r\n]+~', '', $temp);
+  }
+  elseif(strtoupper($product) =="M"){
+  // Mortgage Life Insurance
+    $temp = trim(preg_replace('/\s+/', ' ', variable_get('life_insurance_quotes_save_mortgage_vars')));
+    $temp = preg_replace('~[\r\n]+~', '', $temp);
+    $prodVarJson = preg_replace('~[\r\n]+~', '', $temp);
+  
+  }
+  elseif(strtoupper($product) =="T"){
+  // Term Life Insurance
+    $temp = trim(preg_replace('/\s+/', ' ', variable_get('life_insurance_quotes_save_term_vars')));
+    $temp = preg_replace('~[\r\n]+~', '', $temp);
+    $prodVarJson = preg_replace('~[\r\n]+~', '', $temp);
+  
+  }
+  else{
+  // Default product is Term Life Insurance 
+  // Term Life Insurance
+    $temp = trim(preg_replace('/\s+/', ' ', variable_get('life_insurance_quotes_save_term_vars')));
+    $temp = preg_replace('~[\r\n]+~', '', $temp);
+    $prodVarJson = preg_replace('~[\r\n]+~', '', $temp);
+  }
+  
+  $prodVarURL = json_encode(array(
+    'product' => $product,
+    'callback' => $callback,
+    'type' => $type,
+    'dual' => $dual
+    ), JSON_FORCE_OBJECT);
+    
+    
+ 
+
+  
+  
+  
+
+  $tHTML =  '<script type="text/javascript">var prodDetails = '.$prodVarJson.';var urlDetails = '.$prodVarURL.';</script> Product: ('.$product.') callback: ('.$callback.') type: ('.$type.') dual: ('.$dual.')';
+
+  // add matches to $matches  
+    $matches = "$('#ilfs-ipb').html('".$tHTML."');";
+ 
+  // return for JS
+  //drupal_json_output($matches);
+  external_calcs_app_public_output($matches.''.$css.''.$js);
+}
+
+
+
+
+
+
+
+
+  
+function external_calcs_app_public_output($var = NULL) {
+  // We are returning JSON, so tell the browser.
+  drupal_add_http_header('Content-Type', 'application/javascript');
+
+  if (isset($var)) {
+   // echo drupal_json_encode($var);
+    echo $var;
+  }
+}
+
+/**
+ * Implementation of hook_block_info().
+ */
+
+function external_calcs_block_info() {
+  $blocks['external_calcs'] = array(
+    'info' => t('External Calcs Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function external_calcs_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#external_calcs":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function external_calcs_contents(){
+  return "
+    <!--Widget Code Starts-->
+      <script type='text/javascript'>
+      var ts=new Date().getTime();
+      document.write('<div id=\'ilfsWidget\'></div>');
+      var _ilfsa = _ilfsa || [];
+      _ilfsa.push(['_setUser', 'ILFS-123']);
+      _ilfsa.push(['_callbackRHS', 'false']);
+
+      //--></script>
+      <!--Widget Code Ends-->";
+}
+
+function external_calcs_block_view($delta = '') {
+  switch($delta) {
+    case 'external_calcs':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = external_calcs_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'external_calcs') . '/css/ilfsWidget.css', array('group' => CSS_DEFAULT,'weight' => 100));
+      drupal_add_css(drupal_get_path('module', 'external_calcs') . '/css/grid.css', array('group' => CSS_DEFAULT,'weight' => 100));
+
+      drupal_add_js(drupal_get_path('module', 'external_calcs') .'/js/lifeWidget.js', array('scope' => 'footer'));
+	  if (strpos($_SERVER['REQUEST_URI'],'bline') !== false)
+	  {
+		drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highcharts.js',array('scope' => 'header'));
+		drupal_add_js(drupal_get_path('module', 'javascript') .'/js/exporting.js',array('scope' => 'header'));
+	  }
+    }
+    return $block;
+  }
+ }
+
+

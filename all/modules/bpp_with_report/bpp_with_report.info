@@ -1,0 +1,4 @@
+name = Business Protection Pathfinder (BBP) with Report
+description = Business Protection Pathfinder (BBP) with Report
+core = 7.x
+package = bline

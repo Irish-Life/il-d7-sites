@@ -1,0 +1,222 @@
+/* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+
+.pc-container-12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 938px;
+}
+.pc-grid-4, .pc-grid-6,.pc-grid-8 ,.pc-grid-12{
+  float:left;
+}
+.pc-container-12 .pc-grid-6 {
+  width: 46%;
+  margin:2%;
+}
+
+.pc-container-12 .pc-grid-8 {
+  width: 62%;
+  margin:2%;
+}
+.pc-container-12 .pc-grid-4 {
+  width: 29%;
+  margin:2%;
+}
+
+.pc-container-12 .pc-grid-12 {
+ 
+  width: 96%;
+  margin:2%;
+}
+.pc-container-12:after {
+    font-size: 0;
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+@media (max-width:960px){
+  .pc-container-12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  }
+  .pc-container-12 .pc-grid-6,.pc-container-12 .pc-grid-8,.pc-container-12 .pc-grid-4 {
+  width: 96%;
+  margin:2%;
+  }
+  .pc-container-12 .pc-grid-small-6 {
+  width: 46%;
+  margin:2%;
+  }
+
+  .pc-container-12 .pc-grid-12 {
+  width: 96%;
+  margin:2%;
+  }
+  
+  
+
+}
+
+  .mapTooltip {
+    position : fixed;
+    background-color : #fff;
+    moz-opacity:0.70;
+    opacity: 0.70;
+    filter:alpha(opacity=70);
+    border-radius:10px;
+    padding : 10px;
+    z-index: 1000;
+    max-width: 200px;
+    display:none;
+    color:#343434;
+  }
+  .statBlock{
+  position:relative;
+  width:33%;
+  float:left;
+  text-align:center;
+    margin-bottom: 14px;
+  }
+  
+.clearer{clear:both;height:1px;font-size:1px;border:none;margin:0; padding:0;background:transparent;}
+  .circleStat{
+    background-color:#50C9B5;
+    -webkit-border-radius: 9999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:4px;
+  }
+  .circleStatText{
+  font-weight:bold;
+  font-size:11px;
+  }
+  .claimsOverlay{
+       position: absolute;
+    background: #fff;
+    width: 90%;
+    height: auto;
+    border: 1px solid #ccc;
+    z-index: 100000;
+    padding: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin: 0 4%;
+    -webkit-box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
+  }
+  .mapcontentHolder{
+  position:relative;
+  border;1px solid red;
+  }
+  .closeOverlay{
+    position: absolute;
+    top: -9px;
+    font-size: 22px;
+    right: -9px;
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 9999px;
+    border-radius: 9999px;
+    height: 31px;
+    width: 31px;
+    line-height: 31px;
+    text-align: center;
+    border: 3px solid #000000;
+    background-color: #5261ac;
+  }
+  a.closeOverlay{
+  color:white !important;
+  text-decoration:none !important;
+  }
+  .county{
+    width:100%;
+    height:10px;
+    padding: 0px;
+    position: relative;
+    clear:both;
+    margin-bottom:6px;
+  }
+  .countyName{
+    width:20%;
+    height:10px;
+    padding: 0px;
+    position: relative;
+    top:0px;
+    left:0px;
+    display: block;
+    float:left;
+    line-height: 10px;
+    font-size:12px;
+    font-weight:bold;
+  }
+  .countyBar{
+    width:58%;
+    border:1px solid #50C9B5;
+    float:left;
+    height:10px;
+    padding: 0px;
+    position: relative;
+    top:0px;
+    left:0px;
+    display: block;
+    line-height:10px;
+    margin-right:1%;
+  }
+  .countySolid{
+    display:block;
+    background-color:#50C9B5;
+    height:100%;
+    -webkit-transition: all 1.3s ease;
+    transition: all 1.3s ease;
+  }
+  .countyVal{
+    width:20%;
+    height:10px;
+    padding: 0px;
+    position: relative;
+    top:0px;
+    left:0px;
+    display: block;
+    float:left;
+    line-height: 10px;
+    font-size:12px;
+  }
+  .styled-select select{
+    background-color: #50c9b5;
+    border: 1px solid #41988A;
+    font-size: 16px;
+    height: 34px;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: bold;
+  }
+@media (max-width:960px){
+
+
+}
+
+@media (min-width:740px) and (max-width:960px){
+
+}
+@media (max-width:740px){
+
+}
+

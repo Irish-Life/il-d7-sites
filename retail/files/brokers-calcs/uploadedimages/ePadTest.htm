@@ -1,0 +1,123 @@
+<html>
+
+<head>
+	<title>ePad Test</title>
+	
+	<script type="text/javascript" >
+		var consoleCounter = 0;
+		function log(message){ 
+			try {
+				console.log(consoleCounter++ + "\t" + message);
+				return this;
+			} catch(e) {
+				try {
+				if(document.getElementById("consoleDiv") != null)
+					document.getElementById("consoleDiv").innerHTML += (consoleCounter++ + "      " + message + "<br />");
+				} catch(e){}
+			}
+		}
+		
+		function clearEpadScreen(id)
+		{
+			signatureObject = document.getElementById(id + "Object");
+			signatureObject.DisplayName = " ";
+		}
+
+		// Initalises the signature objects
+		function initSignatureActiveX(id)
+		{
+			signatureObject = document.getElementById(id + "Object");
+			
+			label = document.getElementById(id + "Label").value;
+			
+			signatureObject.SetSignerDetailsEx(label, "", "", "", "", "", "", "");
+			signatureObject.SetSignAppearanceOptionsEx(0, 1, 1, 0, 0, 0);
+			signatureObject.EnableAntiAliasing = true;
+			
+			// epadImage.bmp should be in C:\WINDOWS\system32
+			// If image not found
+			//  we put in the text to appear on top of the ePad
+			//  the horizontal line across the middle will not be displayed
+			if(signatureObject.SetBkImageEx("epadImage.bmp", 0, 0, 320, 199) != 0)
+			{
+				signatureObject.SetAffirmationText("\n   Please sign below:");
+			}
+		}
+
+		// This signNow function responsible for the capture and paint of the signatures
+		function signNow(id)
+		{
+			signatureObject = document.getElementById(id + "Object");
+			
+			initSignatureActiveX(id);
+			
+			document.getElementById(id + "Progress").style.visibility = "visible"; 
+			
+			var btnClicked = "Clear";
+			
+			while (btnClicked == "Clear")
+			{
+				btnClicked = signatureObject.StartSignEx(6, "OK~Clear~Cancel");
+				
+				if(btnClicked == "OK")
+				{
+					signatureObject.getSignData();
+					signatureObject.CloseConnection();
+				}
+				else if(btnClicked == "Clear")
+				{
+					signatureObject.ClearSign();
+				}
+				else if(btnClicked == "Cancel")
+				{
+					signatureObject.CloseConnection();
+				}
+			}
+			
+			document.getElementById(id + "Progress").style.visibility = "hidden"; 
+		}
+
+	</script>
+
+	<style type="text/css">
+		
+		body{background: #ddf; }
+		span{display: block;}
+		input{display: block; margin-bottom: 10px; }
+		.checkbox{display: inline; }
+		.signatureProgress{visibility: hidden; }
+
+	</style>
+
+</head>
+
+
+<body onload="clearEpadScreen('statutoryLife1Signature')" >
+	
+	<input type="text" id="statutoryLife1SignatureLabel" value="Mr Joe Bloggs" />
+	
+	<object 
+	id="statutoryLife1SignatureObject" 
+	classid="clsid:84C046A7-4370-4D91-8737-87C12F4C63C5"
+	width="300" height="180" 
+	codebase="xxxcab/websignax.cab" 
+	VIEWASTEXT border="1" 
+	tabindex="999" >
+	<param name="useslibrary" value="websignAx">
+	<param name="useslibrarycodebase" value="xxxcab/websignax.cab">
+	<param name="useslibraryversion" value="7,5,0,4">
+	</object>
+	
+	<div id="statutoryLife1SignatureProgress" class="signatureProgress" >
+		<span>Signing in progress...</span>
+	</div><br />
+	
+	<input type="button" value="Sign" class="sign" onclick="signNow('statutoryLife1Signature');" />
+	
+	<br /><br />
+	
+</body>
+
+</html>
+
+

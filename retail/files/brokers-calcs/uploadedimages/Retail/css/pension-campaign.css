@@ -1,0 +1,1015 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;	
+}
+blockquote{margin:5px 40px 10px;font-style:italic}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* ----------- UNIVERSAL HTML STYLING -------------- */
+
+body {
+	background-color: #EFEFEF;
+	color: #333333;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+}
+body.small {
+	font-size: 12px;
+	line-height: 18px;
+}
+body.medium {
+	font-size: 14px;
+	line-height: 20px;
+}
+body.large {
+	font-size: 16px;
+	line-height: 22px;
+}
+
+b{font-weight:bold;}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+h2 {
+	font-size: 1.375em;
+}
+h3 {
+	font-size: 1.250em;
+}
+h4 {
+	font-size: 1.125em;
+}
+h6 {
+	font-size: 1em;
+}
+a {
+	color: #435399;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	background: #FFF url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/border_horizontal.gif?150911') left bottom repeat-x;
+	border: 0px;
+	height: 1px;
+	margin-top: 25px;
+}
+
+/* -------  NAKED LANDING PAGE SPECIFIC  */
+
+.share-this {
+	padding: 14px 8px 8px;
+	float:right;
+	height:18px;
+	border:none !important;
+	min-width:245px;
+}
+.addthis_button_google_plusone{margin-left:5px !important;}
+
+/* ------------------------ HEADER ----- */
+
+#bodyHeader {
+	position:absolute;
+	top:0px;
+	width:960px;
+}
+#breadcrumbs{
+padding-top:170px \0/;
+*padding-top:175px;
+}
+
+/* -------  NAMEPLATE */
+
+#headerNameplate {
+	background-color: #FFFFFF;
+	padding: 25px 25px 25px 40px;
+	
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+  
+  
+	/*position: relative;*/
+}
+#headerNameplate .logo {float:left;
+ background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/utility_belt.gif?150911") no-repeat scroll 0 -331px #FFFFFF;height:45px;width:158px;}
+ #headerNameplate .logo2 {float:left;
+ background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/fpplogo2?1") no-repeat #FFFFFF;height:75px;width:158px;}
+#headerNameplate.homepage {
+	padding: 35px 30px 35px 40px;
+}
+#headerNameplate h2 {
+	background: #FFFFFF url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/mainIrishLifeLogo.gif?150911') left top no-repeat;
+	float: left;
+	height: 45px;
+	width: 158px; 
+}
+#headerNameplate h2 span{
+	display: none;
+}
+
+
+/* -------  SECONDARY */
+
+#headerSecondNav {
+	float: right;
+	font-size: 1.1em;
+	padding-top: 6px;
+	text-align: right;
+	width: 630px;
+}
+#headerSecondNav ul {
+	display: block;
+	margin-top: 12px;
+}
+#headerSecondNav ul li {
+	border-right: 1px solid #cfcfcf;
+	display: inline;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;	
+}
+#headerSecondNav ul li.last {
+	border-right: none;
+	padding: 10px;
+}
+#headerSecondNav ul li a {
+	padding: 0px 8px 0px 6px;
+}
+
+.blockContainer {
+  background-color:#FFFFFF;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+  clear:both;
+  display:block;
+  margin-bottom:10px;
+  min-height:0;
+  padding:10px 25px 55px 25px;
+}
+
+#progressBoxPopupContentsText h1{margin-bottom:10px;font-size: 18px}
+
+#progresscallUs
+{
+	float:left;
+	padding-left:27px;
+	margin-bottom:3px;
+	margin-top:5px;
+}
+
+#progress,#complete {
+	float:left;
+    width: 593px;
+    margin: 20px 0 0px;
+    *margin: 0px;
+    height: 60px;
+    background:url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/progressIL.png?1');
+    position:relative;
+}
+#complete {
+    background-position: 0px 68px;
+    margin-top: 0;
+}
+#complete #marker {
+    position: absolute;
+    top: -9px;
+    right: -33px;
+    background:url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/markersIL.png?1');
+    *background:url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/markersIL.gif?1');
+    width: 56px;
+    height: 66px;
+}
+#progress .s1 {
+    width: 83px;
+	overflow:visible !important;
+}
+#progress .s2 {
+    width:337px;
+	overflow:visible !important;
+}
+#progress .s3 {
+    width:203px;
+	overflow:visible !important;
+}
+#progress .s2 #marker {
+    background-position: -56px 0;
+}
+#progress .s3 #marker {
+    background-position: -112px 0;
+}
+.progressBox{
+    background-color: #fafafa;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width:540px;
+    min-height: 0;
+    padding: 25px 25px 30px;
+	float:left;
+	position:relative;
+}
+
+.popupProgressBox
+{
+ background-color: #fafafa;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	padding:5px;
+}
+.progressBoxComplianceMainBody {
+margin: auto;
+min-height: 0;
+padding: 5px 40px 30px;
+width: 430px;
+
+
+}
+.progressBoxComplianceMainBody h2{
+font-size:1.5em;
+}
+.progressBoxComplianceMainBody p{
+font-size:1.3em;
+}
+
+	
+.progressBoxSummary{
+    background-color: #fafafa;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	width:287px;
+    margin-bottom: 10px;
+    min-height: 0;
+	padding:0px;
+	float:right;
+}
+.progressBoxSummary .selected{
+color:red;
+}
+.progressBoxSummary .notselected{
+color:blue;
+}
+
+.progressBoxSummaryNums{color:#ffffff;
+background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/markersSmallIL.png?1");
+background-repeat: no-repeat;
+display: block;height: 20px;width:20px;float:left;position:relative;top:-1px; margin-right:3px;}
+.progressSmall1Off{background-position: 0px -20px;}
+.progressSmall2{background-position: -20px 0px;}
+.progressSmall2Off{background-position: -20px -20px;}
+.progressSmall3{background-position: -39px 0px;}
+.progressSmall3Off{background-position: -39px -20px;}
+
+
+.righter{float:right;}
+.lefter{float:left;}
+.getQuote{background-position: 0 0px;}
+.completePurchase{background-position: 0 -47px;}
+.submitDetails{background-position: 0 -188px;}
+.submitDetailsAlt{background-position: 0 -235px;}
+.needHelp{background-position:0 -282px}
+.changeDetails{background-position: 0 -141px;}
+.getStarted{background-position: 0 -329px;}
+#progressBoxPopupContents .submitDetails{margin-right:42px}
+.progressButtons{color:#ffffff;
+background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/lifeinsuranceprocessbutsprite.png?180112");
+background-repeat: no-repeat;
+display: block;height: 47px;width: 220px;margin-top:0px;margin-bottom:1px;}
+
+.getStartedButton{    background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/landing.get.instant.quote.png?180112");
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    display: block;
+    height: 74px;
+    margin: auto;
+	margin-top:30px;
+	margin-bottom:0px;
+    width: 260px;}
+.getStartedButton:hover{margin-top:29px;margin-bottom:1px;}
+
+
+.progressButtons:hover{margin-top:1px;margin-bottom:0px;}
+.progressInputs{width:270px; float:left;}
+.progressSummary{width:220px; float:right;
+    background-color: #fff;
+	border:1px solid #ccc;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    padding: 10px;padding-right:0px;margin-right:30px;}
+.progressInputs input{width:210px;background-color: #fefefe;border: 1px solid #CCCCCC;font-size: 115%;padding: 4px;font-family:arial,helvetica,sans-serif;}
+.progressInputs select{width:220px;background-color: #fefefe;padding: 4px;}
+.progressBoxSummaryHighlight{}
+.progressBoxSummaryNotHighlight{color:#ccc;}
+.progressBoxSummaryNotHighlight:hover{color:#aaa;}
+.progressBoxSummaryContainer{padding:20px;border-bottom:1px dashed #ccc;}
+.progressBoxSummaryContainerNoBG{background-color:#f3f3f3;}
+.complyNote{font-size: 90%;}
+.progressPerson1{background-color:#fefefe;width:230px; float:left; padding:15px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	
+	-moz-box-shadow: 1px 2px 6px 2px #ddd;
+	-webkit-box-shadow: 1px 2px 6px 2px #ddd;
+	box-shadow: 1px 2px 6px 2px #ddd;
+	}
+.progressPerson2{background-color:#fefefe;width:230px; float:right;padding:15px; position:relative;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-moz-box-shadow: 1px 2px 6px 2px #ddd;
+	-webkit-box-shadow: 1px 2px 6px 2px #ddd;
+	box-shadow: 1px 2px 6px 2px #ddd;}
+.progressBox select {
+	border: 1px solid #aaa;
+	color: #333;
+	margin-right:3px;
+	font-size:110%;
+}
+.progressCampaignQuoteBox{
+    background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/sale.bg.patern.png?1");
+    border-bottom: 1px dashed #7FAB4F;
+    border-top: 1px dashed #7FAB4F;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding: 10px 10px 20px 100px;
+	position:relative;
+}
+
+.fatherSonBanner{
+
+    background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/fatherson.banner.quote.jpg?1");
+	display:block;
+	height:257px;
+	width:540px;
+}
+
+#progressPersonAddRemove {
+    font-size: 90%;
+    position: absolute;
+    right: 7px;
+    top: 0;
+}
+#progressPersonAdd {
+    cursor: pointer;
+}
+#sliderBubble {
+    background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/sliderBubble.png?a") no-repeat scroll 0 0 transparent;
+    font-weight: bold;
+    height: 65px;
+    left: 75px;
+    overflow: hidden;
+    padding: 8px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    width: 213px;
+    z-index: 10;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------  FORM */
+
+form {
+	border: 1px solid #E6E6E6;
+
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+form h3 {
+	color: #FFF;
+	display: block;
+	padding: 15px 25px;
+	text-align: left;
+
+	background: #323e80; /* Old browsers */
+	background: -moz-linear-gradient(top, #323e80 0%, #46569d 2%, #2a3877 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#323e80), color-stop(2%,#46569d), color-stop(100%,#2a3877)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #323e80 0%,#46569d 2%,#2a3877 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #323e80 0%,#46569d 2%,#2a3877 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #323e80 0%,#46569d 2%,#2a3877 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#323E80', endColorstr='#2A3877',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #323e80 0%,#46569d 2%,#2a3877 100%); /* W3C */
+	
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+
+	-webkit-border-top-right-radius: 6px;
+	-webkit-border-top-left-radius: 6px;
+	
+	-moz-border-radius-topright: 6px;
+	-moz-border-radius-topleft: 6px;
+}
+form fieldset {
+	padding: 25px;
+}
+form label {
+	float: left;
+	margin-right: 8px;
+	padding-top: 6px;
+	text-align: right;
+	width: 160px;
+}
+
+form textarea  {
+	background-color: #f7f7f7;
+	border: 1px solid #CCCCCC;
+	font-size: 115%;
+	padding: 4px;
+	width: 350px;
+	height:200px;
+	font:inherit;
+}
+form input  {
+	background-color: #f7f7f7;
+	border: 1px solid #CCCCCC;
+	
+	font-size: 115%;
+	
+	padding: 4px;
+	
+	width: 350px;
+}
+
+form input.whitebackground {background-color:#ffffff;border:none}
+
+form input.small  {
+	width: 60px;
+}
+form input.short {
+	margin-right: 10px;
+	width: 164px;
+}
+form button {
+	background: #FFF url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/form_send_button.gif?150911') top left no-repeat;
+	border: none;
+	color: #FFF;
+	cursor: pointer;
+	float: left;
+	margin-left: 166px;
+	margin-top: 10px;
+	padding: 16px 44px;
+}
+.anyCallbackButton{cursor:pointer}
+.callbackSend{background: #FFF url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/form_get_callback.gif?150911') top left no-repeat;padding: 16px 55px;}
+form button i {
+	position: relative;
+	left: -9999em;
+}
+form .notice {
+	float: none;/*right;*/
+	margin-top: 10px;
+	padding: 0px;
+	width: 230px;
+}
+#callback-statusOn{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/status_online.png") no-repeat scroll 0 0 transparent;padding-left:35px;display:block;height:35px}
+#callback-statusOff{background:url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/status_offline.png") no-repeat scroll 0 0 transparent;padding-left:35px;display:block;height:35px}
+
+.form-advisors{float:right;margin-top:25px;margin-right:10px}
+
+/* ----------- UNIVERSAL PAGE LAYOUT BLOCKS -------------- */
+
+#bodyContainer {
+	margin: 0 auto;
+	text-align: left;
+	width: 960px;
+	position:relative;
+}
+
+#asideColumn {
+	width: 295px;
+}
+
+
+
+
+
+.panel {
+	border: 1px solid #E6E6E6 !important;	
+	margin-top: 25px !important;
+	padding: 20px !important;
+
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+
+	background-color: #F4F4F4; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #ececec 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ececec)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#ececec 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#ececec 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#ececec 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#ECECEC',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #ffffff 0%,#ececec 100%); /* W3C */	
+}
+
+
+
+
+/* -------  POSITION CONTROLS */
+
+.clear {
+	clear: both;
+}
+.hFirst {
+	margin-left: 0px !important;
+	padding-left: 0px !important;
+}
+.vFirst {
+	margin-top: 0px !important;
+	padding-top: 0px !important;
+}
+.hLast {
+	margin-right: 0px !important;
+	padding-right: 0px !important;
+}
+.vLast {
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+}
+.noBorder {
+	border: 0px !important;
+}
+.noBg {
+	background: none !important;
+}
+
+
+
+/* -------  ONLINE SERVICES */
+
+#onlineServiceNav {
+	display: block;
+	float: right;
+	padding: 10px;
+}
+#headerSecondNav ul#onlineServiceNav {
+	margin-top: 0px;
+	margin-right: 0px;
+}
+#onlineServiceNav ul li {
+	border-right: 1px solid #f8b964;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+#onlineServiceNav ul li a {
+	color: #FFFFFF;
+}
+
+
+
+/* ------------------------ CALLBACK TAB ----- */
+
+#callbackSlider {
+	height: 230px;
+	position: fixed;
+	overflow: hidden;
+	right: 0px;
+	top: 40%;
+	width: 52px;
+	z-index: 100;
+}
+#callbackTab {
+
+ background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/utility_belt.gif?150911") no-repeat scroll 0 -121px #FFFFFF;
+	cursor: pointer;
+	height: 210px;
+	padding-left: 52px;
+	position: absolute;
+	-moz-box-shadow: 8px 2px 5px 3px #bbbbbb;
+	-webkit-box-shadow: 8px 2px 5px 3px #bbbbbb;
+	box-shadow: 8px 2px 5px 3px #bbbbbb;
+}
+#callbackTab .message {
+	background: transparent url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/advisorResource.gif?150911') 12px 12px no-repeat;
+	border-bottom: 1px solid #dbdbdb;
+	border-top: 1px solid #dbdbdb;
+	height: 134px;
+	line-height: 16px;
+	padding: 15px;
+	padding-bottom: 0px;
+	padding-top:75px;
+	width: 165px;
+}
+#callbackTab .message  h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+#callbackTab .message p {
+	font-size: 12px;
+	padding-top: 8px;
+}
+
+
+#trailingFooter {
+	margin: 0 auto;
+	margin-bottom: 25px;
+	padding: 0px 25px;
+	text-align: left;
+	width: 910px;
+}
+#trailingFooter a.socialLogo {
+ background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/utility_belt.gif?150911") no-repeat scroll 0 -100px #FFFFFF;
+    display: inline-block;
+    float: left;
+    height: 21px;
+	width:21px;
+}
+#trailingFooter ul {
+	padding-top: 5px;
+}
+#trailingFooter ul li {
+	display: inline;
+}
+#trailingFooter li a {
+	border-right: 1px solid #b4b4b4;
+	padding: 3px 10px 0px 6px;
+}
+#trailingFooter p small {
+	color: #777777;
+	font-size: 0.75em;
+}
+#trailingFooter strong  {
+	color: #333333;
+	font-weight: bold;
+}
+
+
+
+
+/* ----------------------------------- GENERAL CONTENT -------- */
+
+#mainContent h1 {
+	border-bottom: 1px solid #EBEBEB;
+	font-size: 1.6em;
+	margin: 20px 0px;
+	padding-bottom: 20px;
+}
+
+
+/** IQ CONTENT FINISHED - IRISHLIFE NEW**/
+
+.error{color:red;}
+.errorBox{border-color:red;}
+.clearer {clear:both;height:1px;font-size:0px;border:none;margin:0;padding:0;background:transparent;}
+.stronger{color:#fff;font-size:110%;}
+.boldspan{font-weight:bold}
+.boldspanHeading{font-weight:bold;font-size: 1.4em;padding:5px;}
+.boldspanLarger{font-weight:bold;font-size: 1.3em; padding:5px;}
+.italicspan{font-style:italic}
+.middle{text-align:center;}
+.goLeft{text-align:left;}
+.reduceText{font-size:80%;}
+.hidden{display:none !important}
+.orangeColor{color:#F39D2C; font-size:180%;}
+.blueColor{color:#435294; font-size:180%;}
+.campaignEmailError{color:red;}
+.campaignsignoff{font-size:70%;}
+.emboldened{font-size: 1.7em;}
+
+
+.bigCenter{
+	padding-left:210px;
+	font-size: 1.7em;
+	}
+
+	
+	
+/** AJAX FORMS **/
+.loading{
+    clear: both;
+    height: 150px;
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+
+/* Overlay */
+.simplemodal-wrap{overflow:hidden !important;}
+#simplemodal-overlay {background-color:#dedede; cursor:wait;}
+#simplemodal-container {height:490px; width:613px;*width:623px; color:#333; background-color:#fff; border:1px solid #fefefe; padding:12px;
+	-moz-border-radius: 2px; 
+	-webkit-border-radius:2px; 
+	border-radius:2px;
+	
+	-moz-box-shadow: 2px 2px 5px 2px #888888;
+	-webkit-box-shadow: 2px 2px 5px 2px #888888;
+	box-shadow: 2px 2px 5px 2px #888888;
+	text-align:left;
+	}
+#simplemodal-container .simplemodal-data {padding:8px;}
+#simplemodal-container a.modalCloseImg {background:url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/x.png") no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+
+
+
+.complybox {
+font-size: 12px !important;
+padding: 4px !important;
+background: none !important;
+border: 1px solid #000 !important;
+width:675px !important;
+margin: 1px 1px 1px 1px !important;
+}
+
+
+.contentChunk{border-top: 1px dashed #CCCCCC;padding-top:20px;padding-bottom:20px;}
+
+
+
+/* Section for the life insurance landing page*/
+.lifelandingfullholder{background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/story.callback.jpg");
+	height:600px;
+	width:774px;
+    background-repeat:no-repeat;
+	position:relative;
+    margin-top:45px;
+    margin-left:45px;
+    }
+.lifelandingfirstcall{position:absolute;top:115px;left:335px;color:#a0a0a0;font-size:12px;width:240px;text-align:justify;}
+.lifelandingfirstcall h4{color:#a0a0a0;font-size:14px; font-style:italic;font-weight:bold;}
+.lifelandingfirstcall a{color:#d37c0a;font-weight:bold;}
+
+.lifelandingsecondcall{position:absolute;top:190px;left:635px;font-size:12px;color:#a0a0a0; width:200px;text-align:justify;}
+.lifelandingsecondcallButton{background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/story.callback.button.jpg");
+	height:38px;
+	width:134px;
+    display:block;
+    margin-top:10px;
+    margin-bottom:1px;}
+    
+.lifelandingsecondcallButton:hover{margin-bottom:0px;margin-top:11px;text-decoration:none;}
+.lifelandingAdvisorCallback{background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/story.callback.phone.png");height:105px;background-repeat:no-repeat;position:absolute;top:410px;left:45px;color:#a0a0a0;font-size:12px;width:250px;padding-left:110px;padding-top:22px;}
+.lifelandingQuoteRef{background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/story.callback.shield.png");height:105px;background-repeat:no-repeat;position:absolute;top:410px;left:445px;color:#a0a0a0;font-size:12px;width:250px;padding-left:100px;padding-top:12px;}
+.lifelandingQuoteRef a,.lifelandingAdvisorCallback a{color:#d37c0a;font-weight:bold;}
+
+.landinghighlight{    color: #787878;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;}
+.landingcomply{color: #777777;font-style: italic;position: absolute;top:360px;}
+.pensionCalcBanner{
+background-image: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/pensioncalc.Banner.bg.png?1") !important;
+width: 900px !important;
+max-height: 280px !important;
+position: relative !important;
+color: #5161ac !important;
+-moz-border-radius: 6px !important;
+-webkit-border-radius: 6px !important;
+border-radius: 6px !important;
+padding: 10px !important;
+background-color: #82a21e !important;
+height:auto !important;
+}
+.pensioncalCalcBannerCTAHolder{
+padding: 10px;
+width: 475px;
+position: absolute;
+right: 20px;
+top: 20px;
+height: 190px;
+}
+#pensionCalcBannerAd{
+    position: relative;
+    left: 50px;
+    top: 8px;
+}
+.pensionCalcBannerText{
+position: relative !important; 
+text-align: center !important;
+color: rgb(241, 241, 241) !important;
+font-weight: bold !important;
+display: block !important;
+width: 100% !important;
+right:auto !important;
+top:auto !important;
+}
+.pensionCalcBannerText h2{font-size:26px !important;}
+.pensionCalcBannerText p{
+font-size: 30px !important;
+padding-top: 10px !important;
+line-height: 33px !important;
+text-shadow: 3px 3px 11px rgba(0, 0, 0, 0.57) !important;
+}
+.pensionCalcBannerCTA{
+bottom: 4px !important;
+position: absolute !important;
+width: 100% !important;
+text-align: center !important;
+right:auto !important;
+}
+#pensionCalc-modal-content{
+padding-left: 0px !important;
+padding-top: 0px !important;}
+.threeColHolder{
+    display: block;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 280px;
+	text-align:left;
+}
+.twothirdsColHolder{
+    display: block;
+    float: left;
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 600px;
+	text-align:left;
+}
+.panel p.button {
+	background: transparent url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/button_pointer.gif?150911') left top no-repeat;
+	height: 47px;
+	bottom: -15px;
+	padding-top: 0px;
+	position:relative;
+}
+.panel p.button a {
+	background: transparent url('https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/button_expander.gif?150911') right top no-repeat;
+	color: #FFFFFF;
+	display: block;
+	float: left;
+	font-size: 1.13em;
+	font-weight: bold;
+	margin-left: 31px;
+	padding: 15px 14px 17px 0px;
+}
+.panel p.button a:hover {text-decoration:none;}
+#outerdiv1 {
+margin-left:100px;
+width:610px;
+height:600px;
+overflow:hidden;
+position:relative;
+}
+#outerdiv2 {
+width:878px;
+height:600px;
+overflow:hidden;
+position:relative;
+}
+#outerdiv3 {
+margin-right:5px;
+width:890px;
+height:600px;
+overflow:hidden;
+position:relative;
+}
+
+#inneriframe
+{
+
+position:absolute;
+top:-210px;
+left:-145px;
+width:1200px;
+height:1200px;
+}
+
+
+.getStartedButtonNext {
+  background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/right.arrow.png") no-repeat scroll 11px 15px #565AA4;
+    border: 2px solid #A9A8D4;
+    border-radius: 20px 20px 20px 20px;
+    bottom: 0;
+    color: white !important;
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    padding-right: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.pensionCalcAssumptions{
+height: 258px;
+overflow: auto;
+text-align: left;
+border: 1px solid #eee;
+background-color: #fafafa;
+padding: 10px;
+margin-bottom: 10px;
+}
+#pensionCalc-modal-content h1{
+color: #6d910b;
+text-align:left;
+border-bottom: 1px solid #ddd;
+margin-bottom: 12px;
+padding: 5px;
+font-size: 20px;
+font-weight: bold;
+height: 22px;
+}
+
+#onlineServiceNav{display:none !important}
+#callbackSlider {display:none !important}
+.viewDemo{
+position: absolute;
+float:right;
+padding-top:150px;
+padding-left: 650px;
+margin-right:0 !important;
+padding-right: 0!important;
+}

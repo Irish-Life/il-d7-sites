@@ -1,0 +1,223 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Pension </title> 
+	<link rel="stylesheet" href="css/jquery.mobile.structure.latest.min.css" />
+	<link rel="stylesheet" href="css/ilfs.min.css" />
+    <link rel="shortcut icon" href="images/fav.ico" />
+
+	<script src="js/jquery.latest.min.js"></script>
+	<script src="js/jquery.mobile.latest.min.js"></script>
+
+</head> 
+
+<body> 
+
+<div data-role="page" id ="page-0" data-theme="a">
+
+	<div data-role="header">
+		<h1>Welcome</h1>
+
+	</div><!-- /header -->
+    
+    <div class="loadingTextHome"><img src="images/irishlife.logo.png" /><h3>Welcome to Irish Life's Broker Pension App</h3>
+    <span id="startLoading">Loading...</span></div>
+    <div class="homeStartBlock"><a href="javascript:goToPage(1)"><span id="startButtonHolder"style="display:none"><img src="images/start.png"/></span></a></div>
+    <div id="loadingButton"> </div>
+
+	
+</div><!-- /page -->
+
+<div data-role="page" id ="page-1" data-theme="a" class="hidden">
+
+	<div data-role="header">
+		<h1>Premium Details</h1>
+
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="premiumSliderHolder">
+		<label for="premiumAmt">Premium Amount:</label>
+		<input name="premiumAmt" id="premiumAmt" value="" data-theme="b" />
+		</div>
+		
+		<div class="premiumSliderHolder">
+		<fieldset data-role="controlgroup" data-theme="b">
+		
+			<input type="radio" name="freq" id="freq-m" value="12" checked="checked"  data-theme="b"/>
+			<label for="freq-m">Per Month</label>
+
+			<input type="radio" name="freq" id="freq-q" value="4"  data-theme="b" />
+			<label for="freq-q">Per Quarter</label>
+
+			<input type="radio" name="freq" id="freq-h" value="2"  data-theme="b" />
+			<label for="freq-h">Per Half-Year</label>
+
+			<input type="radio" name="freq" id="freq-y" value="1"  data-theme="b" />
+			<label for="freq-y">Per Year</label>
+
+			<input type="radio" name="freq" id="freq-sp" value="sp" data-theme="b" />
+			<label for="freq-sp">Single Premium</label>
+		</fieldset>
+		</div>
+
+		<div class="premiumSliderHolder">
+			<input type="checkbox" name="exitPen" id="exitPen" class="custom" data-mini="false" data-theme="b"/>
+			<label for="exitPen">Exit Penalties?</label>
+		</div>
+		<a href="javascript:void(0)" id="setPremiumDetails" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">Next</a>
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+
+
+
+
+<div data-role="page" id ="page-2" data-theme="b">
+
+	<div data-role="header">
+		<h1>Contract Info</h1>
+		<a href="javascript:goBackToPage('0')" class="homeIcon"></a>
+		<a href="javascript:goBackToPage('1')" class="backIcon"></a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="premiumSliderHolder">
+			<label for="contractName">Contract Name:</label>
+		<select name="contractName" id="contractName" data-mini="false">
+			<option value="none">Please Select a Product</option>
+		</select> 
+		</div>
+
+		<a href="javascript:void('0')" id="setProductChoice"  data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">Next</a>
+	</div><!-- /content -->
+	
+	
+</div><!-- /page -->
+
+
+<div data-role="page" id ="page-3" data-theme="b">
+
+	<div data-role="header">
+		<h1>Allocation Info</h1>
+		<a href="javascript:goBackToPage('0')" class="homeIcon"></a>
+		<a href="javascript:goBackToPage('2')" class="backIcon"></a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+
+		<div class="premiumSliderHolder">
+		
+		<label for="clientAlloc" class="select">Client Allocation:</label>
+		<select name="clientAlloc" id="clientAlloc" data-mini="false">
+			<option value="standard">Please Select Allocation</option>
+		</select> 
+		</div>
+		
+		<div class="premiumSliderHolder">
+		
+		<label for="annualMgtCha" class="select">Annual Mgt Charge:</label>
+		<select name="annualMgtCha" disabled="disabled" id="annualMgtCha" data-mini="false">
+			<option value="none">0%</option>
+		</select> 
+		</div>
+
+		<a href="javascript:void(0)" id="showProfiles"  data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">Next</a>
+	</div><!-- /content -->
+	
+	
+</div><!-- /page -->
+
+
+<div data-role="page" id ="page-4" data-theme="a">
+
+	<div data-role="header">
+		<h1>Result</h1>
+		<a href="javascript:goBackToPage('0')" class="homeIcon"></a>
+		<a href="javascript:goBackToPage('3')" class="backIcon"></a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+
+		<div class="premiumSliderHolder">
+		<p><span id="resultDetailsHeader"></span><br/><br/>Available Profiles:</p>
+			<div data-role="collapsible-set" id="resultsSet" data-theme="d"></div>
+		</div>
+		
+		<div class="premiumSliderHolder">
+			<a href="javascript:void('0')" id="setEmailAddress"  data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">Email This Info</a>
+		</div>
+	</div><!-- /content -->
+	
+	
+</div><!-- /page -->
+
+
+
+
+<div data-role="page" id ="page-5" data-theme="a">
+
+	<div data-role="header">
+		<h1>Result</h1>
+		<a href="javascript:goBackToPage('0')" class="homeIcon"></a>
+		<a href="javascript:goBackToPage('4')" class="backIcon"></a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="premiumSliderHolder">
+            <h3>Email this information</h3>
+    		<label for="name">Email address:</label>
+   			<input type="text" name="emailAdd" id="emailAdd" value=""  />
+			<a id="sendEmail" href="javascript:void(0)"  data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="d">Send Email</a>
+		</div>
+	</div><!-- /content -->
+	
+	
+</div><!-- /page -->
+
+
+
+
+<div data-role="dialog" id ="page-error" data-theme="b">
+
+	<div data-role="header" data-theme="b">
+		<h1>Error</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="b">
+    <span id="errorDialogContents">There is an error</span><br/>
+    <a href="javascript:void(0)" class="closeDialogError">[ok]</div>
+
+		
+	</div><!-- /content -->
+</div><!-- /page -->
+
+
+
+
+<div data-role="dialog" id ="page-emailAlert" data-theme="b">
+
+	<div data-role="header" data-theme="b">
+		<h1>Email Sent</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="b">
+    <span id="emailDialogContents">Email sent!</span>
+
+		
+	</div><!-- /content -->
+</div><!-- /page -->
+
+
+
+
+	<script src="js/customJS.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,424 @@
+<?php
+/**
+ * @file
+ * A block module that displays the Income protection calculator.
+ */
+
+/**
+ * Implementation of hook_block_info().
+ */
+function income_protection_calc_block_info() {
+  $blocks['income_protection_calc'] = array(
+    'info' => t('Income protection Calculator Block'),
+  );
+  return $blocks;
+}
+
+function income_protection_calc_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#income_protection_calc":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Custom content function.
+ *
+ * Set beginning and end dates, retrieve posts from database
+ * saved in that time period.
+ *
+ * @return
+ *   A result set of the targeted posts.
+ */
+function income_protection_calc_contents(){
+  return '
+<div id="income-protection-app" class= "row"><div style="DISPLAY: none" id="loadingPage" class="large-12 columns panel">
+
+
+<img class="center" alt="loading" src="/sites/all/modules/css/images/loading.orange.gif" />
+                        
+
+</div>
+<div id="splash" class="large-12 columns"><div class="row">
+
+<div>
+<img alt="income protection calculator" style="width:100%" src="/sites/all/modules/income_protection_calc/css/images/Swimmers_iP.jpg" />
+
+</div></div><div id="summary" class="row panel"><div class="large-12 columns"><div id="leftSummary" class="large-6 columns">
+
+
+<h3>Benefits</h3>
+<p>It pays you a regular monthly income, replacing some of your earned income. Cover continues until the plan ends or you return to work.</p>
+<p>If you do claim on this plan, your incapacity benefit will be treated as normal income and so is assessed for income tax, PRSI and the Universal Social Charge.</p>
+<p>Payments on your plan are eligible for income tax relief at your marginal rate of tax.</p>
+
+
+<h3>Cost</h3>
+<p>Cost depends on your Age, Income, health, occupation and the benefits you choose.</p>
+
+</div>
+
+
+<div id="rightSummary" class="large-6 columns">
+
+<h3>Cover is limited to:</h3>
+<ul class="menu">
+<li class="leaf"><i>The maximum benefit payable is now €250,000. Benefits paid are less any State benefits or other income protection plans. If you already have a plan with us, please check your plan terms and conditions to determine what the maximum benefit payable is under your own plan</i></li>
+<li class="leaf"><i>The maximum benefits payable is 75% of total yearly earnings, less any State benefits or other income protection plans.</i></li>
+</ul>
+
+
+
+<div class="small-12 large-12 columns" >
+
+<a style="margin-top: 30px !important;" id="start" class="button custom supplementary radius expand" href="javascript:void(0)">Get Started</a></div></div></div></div></div>
+
+<div style="DISPLAY: none" id="pageOne" class="large-12 small-12 columns">
+<div class="row">
+
+
+<div id="userDetails" class="large-8 columns">
+<form class="custom">
+   <fieldset>
+      <legend>Your Details</legend>
+      <div class="row">
+         <div id="annualSalaryDiv" class="large-6 columns">
+            <label>Your Annual salary</label><input id="salary" value="30,000" placeholder="e.g. 30,000" />
+            <small style="DISPLAY: none" id="salaryError" class="error">Salary must be greater than €15,000</small>
+         </div>
+         <div id="jobTitleDiv" class="large-6 columns">
+            <label>Job Title</label>
+            <input id="userJob" class="occupation" placeholder="Enter your Job Title" />
+            <small style="DISPLAY: none" id="jobError" class="error">You must select an occupation</small>
+         </div>
+      </div>
+      <br />
+      <div class="row panel">
+         <div class="small-12 large-11 large-centered columns">
+            Set % of income to protect <span id="sliderOutput"></span>
+            <div class="clacSlider">
+               <div id="employerMI" class="slider" max="5000" outputdiv="monthlyEmployer" value="0"></div>
+            </div>
+            <span style="DISPLAY: none" id="precentError">
+            Cover from the state is greater than the cover you want, increase the % to protect
+            </span>
+         </div>
+      </div>
+
+
+      <div class="row">
+         <div id="retirementAgeDiv" class="large-6 small-8 small-centered large-uncentered columns">
+            <span data-tooltip class="tip-top" title="The maximum retirement age on our income protection plan is 65, however depending on your age, you may not be eligible for the state pension until age 68.">
+            <label for="retirementAge">Retirement Age</label>
+            <select id="retirementAge" class="medium">
+               <option disabled="disabled">Select a retirement age</option>
+               <option selected="selected">65</option>
+               <option>60</option>
+               <option>55</option>
+            </select>
+            </span>
+         </div>
+         <div id="deferredStatusDiv" class="large-6 small-8 small-centered large-uncentered columns">
+            <label for="deferredStatus">Deferred Period</label>
+            <select id="deferredStatus" class="medium">
+               <option disabled="disabled">Select an option</option>
+               <option selected="selected" value="13">13 weeks</option>
+               <option value="26">26 weeks</option>
+               <option value="52">52 weeks</option>
+            </select>
+         </div>
+      </div>
+      <br />
+
+
+
+
+
+      <div class="row">
+         <div style="TEXT-ALIGN: center" class="large-12 small-12 small-centered large-uncentered columns">
+            <label>Date of Birth</label>
+         </div>
+         <div id="dayDiv" class="large-4 small-8 small-centered large-uncentered columns">
+            <select style="DISPLAY: none" id="day" class="medium">
+               <option disabled="disabled" selected="selected">Day</option>
+               <option value="1" selected>1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+               <option value="11">11</option>
+               <option value="12">12</option>
+               <option value="13">13</option>
+               <option value="14">14</option>
+               <option value="15">15</option>
+               <option value="16">16</option>
+               <option value="17">17</option>
+               <option value="18">18</option>
+               <option value="19">19</option>
+               <option value="20">20</option>
+               <option value="21">21</option>
+               <option value="22">22</option>
+               <option value="23">23</option>
+               <option value="24">24</option>
+               <option value="25">25</option>
+               <option value="26">26</option>
+               <option value="27">27</option>
+               <option value="28">28</option>
+               <option value="29">29</option>
+               <option value="30">30</option>
+               <option value="31">31</option>
+            </select>
+            <small style="DISPLAY: none" id="dayError" class="error">Invalid Day</small>
+         </div>
+         <div id="monthDiv" class="large-4 small-8 small-centered large-uncentered columns">
+            <select style="DISPLAY: none" id="month" class="medium">
+               <option value="1" selected>Jan</option>
+               <option value="2">Feb</option>
+               <option value="3">Mar</option>
+               <option value="4">Apr</option>
+               <option value="5">May</option>
+               <option value="6">Jun</option>
+               <option value="7">Jul</option>
+               <option value="8">Aug</option>
+               <option value="9">Sep</option>
+               <option value="10">Oct</option>
+               <option value="11">Nov</option>
+               <option value="12">Dec</option>
+            </select>
+            <small style="DISPLAY: none" id="monthError" class="error">Invalid Month</small>
+         </div>
+         <div id="yearDiv" class="large-4  small-8 small-centered large-uncentered columns">
+            <select style="DISPLAY: none" id="year" class="medium">
+               <option disabled="disabled" selected="selected">Year</option>
+            </select>
+            <small style="DISPLAY: none" id="badDiv" class="error">This should be hidden</small>
+            <small style="DISPLAY: none" id="yearError" class="error">Invalid Year</small>
+         </div>
+      </div>
+      <br />
+
+
+
+      <div id="radioInputs" class="row">
+         <div class="large-4 small-6 small-centered large-uncentered columns">
+            <h6>Do you smoke?</h6>
+            <label for="smokeYes"><input id="smokeYes" name="radio1" type="radio" /> Yes</label> 
+            <label for="smokeNo"><input id="smokeNo" name="radio1" checked="checked" type="radio" /> No</label>
+         </div>
+         <div class="large-4 small-6 small-centered large-uncentered columns">
+            <h6>Self Employed?</h6>
+            <label for="selfEmployedYes">
+            <input id="selfEmployedYes" name="radio2" type="radio" /> Yes
+            </label> 
+            <label for="selfEmployedNo">
+            <input id="selfEmployedNo" name="radio2" checked="checked" type="radio" /> No
+            </label>
+         </div>
+         <div class="large-4 small-6 small-centered large-uncentered columns">
+            <h6>Increase with inflation?</h6>
+            <label for="inflationYes"><input id="inflationYes" name="radio3" type="radio" /> Yes</label> 
+            <label for="inflationNo"><input id="inflationNo" name="radio3" checked="checked" type="radio" /> No</label>
+         </div>
+      </div>
+   </fieldset>
+</form>
+
+</div><div id="chart" class="large-4 columns"><div id="chartsContainer"></div></div></div><div class="row"><div class="small-12 large-11 large-centered columns"><a id="getQuote" class="button custom supplementary right radius medium" href="javascript:void(0)">Get Quote</a></div></div></div>
+
+
+<div style="DISPLAY: none" id="pageTwo" class="large-12 small-12 columns"><div class="row"><div id="leftTable" class="large-6 small-12 columns"><ul id="personalDetails" class="pricing-table">
+<li class="title">Personal Details</li>
+<li class="description">Salary/income: <span class="salaryResult"> </span></li>
+<li class="description">Self Employed: <span id="selfEmployedResult"></span></li>
+<li class="description">% of Income to Protect: <span class="incomeToProtectResult"> </span></li>
+<li class="description">Retirement Age: <span id="retirementAgeResult"></span></li>
+<li class="description">Date of Birth: <span id="dobResult"></span></li>
+<li class="description">Occupation: <span id="occupationResult"></span></li>
+<li class="description">Smoker: <span id="smokerResult"></span></li>
+<li class="description">Deferred Period: <span id="deferredResult"></span></li>
+<li class="description">Increase With Inflation: <span id="inflationResult"></span></li>
+<li class="cta-button"><a id="back" class="button custom supplementary radius medium disable" href="javascript:void(0)">Change Details</a></li>
+</ul>
+</div><div id="rightTable" class="large-6 small-12 columns"><ul id="quote" class="pricing-table">
+<li class="title">Your Quote</li>
+<li id="price1" class="price">Monthly Premium: <span class="monthlyPrem output">17.66</span><!--  <li class="bullet-item">1 Database --></li>
+<li class="bullet-item"><a id="showBreakdown" href="javascript:void(0)">Show Breakdown</a><div style="DISPLAY: none" id="quoteBreakdown">Cost of income protection <span id="prem">x</span><br />
+Policy Fee €4.00<br />
+Government Levy <span id="levy">x</span><br />
+Inflation <span id="inflation">x</span></div></li>
+<li id="price2" class="price">Annual Incapacity Benefit: <span class="annualIncapacityBenefit output">12,724</span></li>
+<li style="HEIGHT: 294px" class="description"><h6>What this means</h6>
+<p>In order to protect <span class="incomeToProtectResult output"> </span> of your total income (<span class="salaryResult output">x</span>) you need to insure <span class="annualIncapacityBenefit output">x</span>. <span class="output">€9,776</span> is covered by state disability</p>
+<p>This would cost <span class="monthlyPrem output">x</span> per month</p>
+<p>This quote is valid for 7 days, or until your birthday, whichever comes sooner.</p>
+<p>This quote is based on our <a title="Income Insurance product" href="/life-insurance/income-protection">Personal Income Insurance product</a></p>
+</li>
+<li class="cta-button"><a id="bookReview" class="button custom supplementary radius medium" href="javascript:void(0)">Get Callback</a></li>
+</ul>
+</div></div></div>
+
+
+<div style="DISPLAY: none" id="pageThree" class="large-12 columns">
+  <div class="row">
+    <div class="row"><div class="large-7 large-centered columns">
+      <img "alt="income protection quote" src="/sites/all/modules/css/images/fatherson.banner.quote.jpg" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-7 large-centered columns">
+      <h3>Interested in other things?</h3>
+      <p>Why not try the latest version of our <a title="irish life pension calculator" href="https://www.irishlife.ie/secureWeb/advice/pension-calculator.html">Pension Calculator</a> and figure out your pension needs or try the latest version of our <a title="Life insurance calculator" href="https://www.irishlife.ie/secureWeb/life-assurance/life-insurance-quote-from-15-per-month.html">Life insurance calculator</a> and get an instant quote.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 large-centered columns">
+      <a id="thirdScreenResultsBckBtn" class="button custom supplementary radius medium">Back to my results</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div id="myModal" class="reveal-modal medium hide-for-print">
+
+<div class="row">
+  <div class="small-12 large-10 large-centered columns">
+    <div class="row">
+      <div class="large-12 large-centered columns">
+        <h2>How to get a callback</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>Fill in the required fields below and an Irish Life Financial Services Advisor can call you back to look at all your options, answer your questions and see what protection plan may suit your life cover needs. Irish Life Financial Service is a tied agent of Irish Life Assurance plc for life and pensions.</p>
+      </div>
+    </div>
+    <div class="row">
+     <div class="large-11 small-12 columns">
+
+        <form id="callBackForm" class="custom">
+          <div class="row">
+
+            <div class="large-2 small-2 columns">
+              <label class="inline" for="name">Name:</label>
+            </div>
+            <div class="large-5 small-5 columns">
+              <input id="name" placeholder="Enter your Name here" />
+            </div>
+             <div class="large-5 small-12 columns">
+              <span style="VISIBILITY: hidden" id="nameError" class="error">Please enter a valid Name</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-2 small-2 columns">
+              <label class="inline" for="telephone">Phone:</label>
+            </div>
+
+            <div class="large-5 small-5 columns">
+              <input id="telephone" placeholder="Phone number" />
+            </div>
+            <div class="large-5 small-5 columns">
+              <span style="VISIBILITY: hidden" id="phoneError" class="error">Please enter a valid telephone nummber</span>
+            </div>
+
+          </div>
+          <div class="row">
+              <div class="large-2 small-2 columns">
+                <label class="inline" for="email">Email:</label>
+              </div>
+
+              <div class="large-5 small-5 columns">
+                <input id="email" placeholder="Enter your email" />
+              </div>
+                
+              <div class="large-5 small-5 columns">
+                <span style="VISIBILITY: hidden" id="phoneError" class="error">Please enter a valid email</span>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="large-2 small-5 columns">
+              <label class="inline" for="callTime">Call Time:</label>
+            </div>
+
+            <div class="large-5 small-7 columns">
+              <select style="DISPLAY: none" id="callTime" class="large">
+                <option selected="selected" value="Now">Now</option>
+                <option value="Anytime">Anytime</option>
+                <option value="Morning (Before 12pm)">Morning (Before 12pm)</option>
+                <option value="Afternoon (12pm to 5pm)">Afternoon (12pm to 5pm)</option>
+                <option value="Evening (5pm to 8pm)">Evening (5pm to 8pm)</option>
+              </select>
+            </div>
+            <div class="large-5 small-12 columns">
+                <span style="VISIBILITY: hidden" id="phoneError" class="error">Please select a call time</span>
+              </div>
+          </div>
+        </form>
+      </div>
+
+        <div class="row">
+      <div class="large-12 columns">
+        <p>In the interest of customer service we will record and monitor calls. We will only use your personal details for the purpose of dealing with your request. Your privacy is important to us. By completing your contact details above, you authorise us to contact you by telephone, mobile and/or email.</p>
+      </div>
+    </div>
+
+    </div>
+
+
+    <div class="row"><div class="large-4 small-5 small-centered large-centered columns"><a id="callback" class="button custom supplementary radius medium" href="javascript:void(0)">Call Me Back</a></div></div></div></div><a class="close-reveal-modal">×</a></div><div id="jobClassIssue" class="reveal-modal large hide-for-print"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-9 columns large-centered">
+
+
+    <h2>Quote Unavailable</h2>
+    <h3><strong>Unfortunately we do not provide cover for your occupation.</strong></h3>
+</div></div><div class="row"><div class="large-9 columns large-centered"><p>Your job will influence the cost of your cover and the options available. This is because some jobs are more dangerous than others. For example, a bank clerk will pay less for cover than a carpenter becasue of the increased risk of accident in the carpenter\'s job.</p>
+<h3><strong>Income protection does not cover you if you become unemployed</strong></h3>
+</div></div><div class="row"><div class="small-12 large-3 large-centered columns"><a id="backToInputs" class="button custom supplementary radius medium disable" href="javascript:void(0)">Back</a></div></div></div></div><a class="close-reveal-modal">×</a></div>
+';
+}
+
+function income_protection_calc_block_view($delta = '') {
+  switch($delta) {
+    case 'income_protection_calc':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = income_protection_calc_contents();
+      // No content in the last week
+      $block['content'] = $result;
+
+      drupal_add_css(drupal_get_path('module', 'css') . '/css/foundation.min.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'css') . '/css/slider.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'income_protection_calc') . '/css/income-protection.css', array('group' => CSS_DEFAULT));
+      drupal_add_css(drupal_get_path('module', 'css') . '/css/normalize.css', array('group' => CSS_DEFAULT));
+
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/munchkin.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/custom.modernizr.js');
+      
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/mk-uncompressed.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/highCharts.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/exporting.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.easing.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery-ui-1.10.3.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/jquery.ui.touch-punch.min.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.forms.js');
+      drupal_add_js(drupal_get_path('module', 'javascript') .'/js/foundation.tooltips.js');
+      drupal_add_js(drupal_get_path('module', 'income_protection_calc') .'/js/income-protection.js', array('scope' => 'footer'));
+
+
+    }
+    return $block;
+  }
+ }

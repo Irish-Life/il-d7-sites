@@ -1,0 +1,48 @@
+[
+   {
+      "questions":[
+         {
+            "id":"1",
+            "head":"this is a test header",
+			"question": "If I had picked an investment with potential for large gains but also the risk of large losses I would feel",
+			"answers":[
+               {
+                  "a":"Very uncomfortable",
+                  "b":"Quite uneasy",
+                  "c":"Accepting of the possible highs and lows",
+                  "d":"Excited by the potential for gain"
+               }
+            ]
+         },
+         {
+            "id":"2",
+            "head":"",
+			"question": "Imagine that six months after making a long term investment the financial markets start to perform badly. In line with this, your own investment goes down by a significant amount. What would your reaction be?",
+			"answers":[
+               {
+                  "a":"Withdraw my money and put it in a bank deposit account to prevent any further losses.",
+                  "b":"Transfer my money to a more secure investment option to reduce the risk of further losses.",
+                  "c":"Monitor the investment and wait to see if it improves before deciding what to do",
+                  "d":"Invest more funds to take advantage of the lower price, expecting future growth",
+                  "e":"Transfer my money to a riskier investment, with possible higher return, to try to recoup my losses. "
+               }
+            ]
+         },
+         {
+            "id":"3",
+            "head":"",
+			"question": "When I make a financial investment I normally feel",
+			"answers":[
+               {
+                  "a":"Very optimistic",
+                  "b":"Generally optimistic",
+                  "c":"Sometimes optimistic and sometimes a bit concerned",
+                  "d":"Generally concerned",
+                  "e":"Very concerned",
+                  "f":"I have never made an investment other than a savings account"
+               }
+            ]
+         }
+      ]
+   }
+]

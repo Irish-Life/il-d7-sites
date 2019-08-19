@@ -1,0 +1,145 @@
+.arrow-wrap {
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:108em;
+  margin-left:-5em;
+  background:#111;
+  width:10em;
+  height:10em;
+  padding:4em 2em;
+  border-radius:50%;
+  font-size:0.5em;
+  display:block;
+}
+
+.arrow {
+  float:left;
+  position:relative;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 3em 3em 0 3em;
+  border-color: #ffffff transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
+
+.arrow:after {
+  content:'';
+  position:absolute;
+  top:-3.2em;
+  left:-3em;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 3em 3em 0 3em;
+  border-color: #111 transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
+
+.products {
+	border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+	background: #cacaca;
+}
+
+.products p {
+	height: 112px;
+	color:black;
+	font-size:14px;
+}
+
+.products h3 {
+	color:black;
+}
+
+.product-list {
+	font-size: 20px;
+	text-align: left;
+	width: 100%;
+	color:white;
+}
+
+.product-list td {
+	padding:15px;
+	border-bottom: 1px white solid;
+	font-size:14px;
+}
+
+.last {
+	border-bottom: 0px !important;
+}
+
+.aboutIL {
+	color: #675c53;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.success p {
+	color: #675c53;
+}
+
+#contact {
+background: #cacaca;
+}
+
+.testimonial {
+    background-color:white;
+	height: 112px;
+}
+
+.ILservices {
+	display: inline-block;
+	float: none !important;
+}
+
+.serviceList {
+	text-align: center;
+}
+
+.see-more {
+	text-align:center;
+	margin-top:55px;
+}
+
+.news {margin-top:100px;}
+
+.news h4 {
+	text-align:center;
+	color:#5261ac;
+}
+
+.news p {
+	text-align:center;
+}
+
+hr {
+	 width: 70% !important;
+
+}
+
+.careers {
+background: #cacaca; }
+
+footer h3 {
+	color:white;
+	text-align:left;
+}
+
+.footer-list {
+	list-style-type: none;
+    text-align: left;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0;
+}
+
+.footer-container {
+	width: 960px !important;
+}
+
+
+

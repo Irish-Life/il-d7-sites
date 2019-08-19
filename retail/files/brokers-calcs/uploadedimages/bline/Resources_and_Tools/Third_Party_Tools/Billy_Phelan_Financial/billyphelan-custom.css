@@ -1,0 +1,39 @@
+h1,h2,h3, p{text-align:left; font-family: Verdana,Sans-Serif; font-size:0.8em;}
+#RiskProfileQuestionsResponse{
+	padding-top:0px;
+	height:650px;}
+#RiskProfileQuestionsResponse h1{	
+	font-size: 12pt;
+	color: #d40000;}
+#importantInformation h3{color:#000000; font-size:10pt;}
+#risk-profile-questions { 
+    padding: 0 15px;
+	clear:both;}
+.risk-questions{float:left;clear:both; list-style-type:none; padding-left:10px;}
+.risk-question-alternatives{list-style-type:none; padding:15px;}
+#riskProfileResults h3{font-size: 14pt;}
+}
+BODY{MARGIN-LEFT: 0px;MARGIN-RIGHT: 0px;MARGIN-TOP: 0px;MARGIN-BOTTOM: 0px; BACKGROUND-REPEAT: repeat; BACKGROUND-ATTACHMENT: scroll; BACKGROUND-COLOR: #FFFFFF;FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Verdana, Sans-Serif;}
+.border12537990-a3c7-4993-b741-24129c47dec5 { background-color: White; width: 200px; border: solid 1px Black}
+.cell112537990-a3c7-4993-b741-24129c47dec5 { padding: 0px 5px 5px 5px; width:100% }
+.cell212537990-a3c7-4993-b741-24129c47dec5 { padding: 0px 5px 5px 0px}
+.label12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:bold; FONT-SIZE: 12pt; COLOR: Black; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: Left; }
+
+.input12537990-a3c7-4993-b741-24129c47dec5 { border: solid 1px Black; width:100% }
+.button12537990-a3c7-4993-b741-24129c47dec5 { background-color: Silver; border: solid 1px Black; color: Black; font-family: Arial; font-size: 12pt; font-weight: normal; font-style: normal; text-decoration: none }
+.head12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:bold; FONT-SIZE: 12pt; COLOR: Black; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+div.result12537990-a3c7-4993-b741-24129c47dec5 { margin-top:10px; }
+div.resultspage12537990-a3c7-4993-b741-24129c47dec5 { overflow:hidden; }
+.result12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:bold; FONT-SIZE: 12pt; COLOR: Blue; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+.result12537990-a3c7-4993-b741-24129c47dec5:hover{FONT-WEIGHT:bold; FONT-SIZE: 12pt; COLOR: Green; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+.desc12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:normal; FONT-SIZE: 10pt; COLOR: Black; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+.url12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:normal; FONT-SIZE: 9pt; COLOR: Green; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; MARGIN-BOTTOM: 0px}
+.page12537990-a3c7-4993-b741-24129c47dec5{FONT-WEIGHT:normal; FONT-SIZE: 10pt; COLOR: Black; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+.page12537990-a3c7-4993-b741-24129c47dec5 a{FONT-WEIGHT:normal; FONT-SIZE: 10pt; COLOR: Green; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+.page12537990-a3c7-4993-b741-24129c47dec5 a:hover{FONT-WEIGHT:normal; FONT-SIZE: 10pt; COLOR: Red; FONT-STYLE: normal; FONT-FAMILY: Verdana; TEXT-DECORATION: none; TEXT-ALIGN: left; }
+
+a.class1:link {font-family:Verdana; font-size:10pt;color:blue;text-decoration:underline;}
+a.class1:visited {font-family:Verdana; font-size:10pt;color:blue;text-decoration:underline;}
+a.class1:hover {font-family:Verdana; font-size:10pt;color:blue;text-decoration:underline;}
+li.class1 {display:list-item; color:black; margin-bottom:5}
+div.class1 {font-family:Verdana; font-size:10pt;color:Black;text-decoration:none;}

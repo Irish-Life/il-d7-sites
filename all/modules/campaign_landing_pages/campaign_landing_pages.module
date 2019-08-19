@@ -1,0 +1,127 @@
+<?php
+/**
+ * @file
+ * A block module that registers the campaign landing pages
+ */
+
+function campaign_landing_pages_menu() {
+	$items = array();
+		
+		$items['investments/get-comfortable-investing-irish-life-maps'] = array(
+			'title' => 'MAPS Campaign First Time Page',
+			'page callback' => 'maps_campaign_first_time_contents',
+			 'access arguments' => array('access content'),
+		 );	 
+			 
+		$items['investments/start-investing-with-irish-life-maps'] = array(
+			'title' => 'MAPS Campaign Returning Page',
+			'page callback' => 'maps_campaign_returning_contents',
+			 'access arguments' => array('access content'),
+		 );
+		 
+		 $items['life-insurance/family-protection-planner'] = array(
+			'title' => 'Family Protection Planner Landing Page',
+			'page callback' => 'family_protection_planner_contents',
+			 'access arguments' => array('access content'),
+		 );
+		 
+		 $items['plan-your-future'] = array(
+			'title' => 'Online Services Landing Page',
+			'page callback' => 'online_services_promo_contents',
+			 'access arguments' => array('access content'),
+		 );
+
+		 $items['plan-your-retirement'] = array(
+			'title' => 'Irish Life Point Of Retirement',
+			'page callback' => 'retirement_campaign_contents',
+			 'access arguments' => array('access content'),
+		 );
+		 
+
+     
+	 return $items;
+}
+
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+
+function campaign_landing_pages_help($path, $arg) {
+  switch ($path) {
+	case "admin/help#campaign_landing_pages":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function maps_campaign_first_time_contents(){ 
+	$file = file_get_contents('sites/retail/files/campaigns/maps-2018/index.html', FILE_USE_INCLUDE_PATH);
+
+	echo $file;
+}
+
+
+function maps_campaign_returning_contents(){ 
+	$file = file_get_contents('sites/retail/files/campaigns/maps-landing/returning.html', FILE_USE_INCLUDE_PATH);
+
+	echo $file;
+}
+
+function family_protection_planner_contents(){ 
+	$file = file_get_contents('sites/retail/files/campaigns/family-protection-2018-sept/index.html', FILE_USE_INCLUDE_PATH);
+
+	echo $file;
+}
+
+function online_services_promo_contents(){ 
+	$file = file_get_contents('sites/retail/files/campaigns/mos-landing-page/index.html', FILE_USE_INCLUDE_PATH);
+
+	echo $file;
+}
+
+function retirement_campaign_contents(){ 
+	$file = file_get_contents('sites/retail/files/campaigns/point-of-retirement/index.html', FILE_USE_INCLUDE_PATH);
+
+	echo $file;
+}
+
+
+function maps_campaign_ver_one() {
+	$cookie_name = "mapsversion";
+	$cookie_value = "1";
+	setcookie($cookie_name, $cookie_value); 
+	$file = file_get_contents('sites/retail/files/campaigns/maps-2017/index.html', FILE_USE_INCLUDE_PATH);	
+	echo $file;
+}
+
+function maps_campaign_ver_two() {
+	$file = file_get_contents('sites/retail/files/campaigns/maps-2017/index.html', FILE_USE_INCLUDE_PATH);
+	$cookie_name = "mapsversion";
+	$cookie_value = "2";
+	setcookie($cookie_name, $cookie_value); 
+	echo $file;
+}
+
+function maps_campaign_ver_three() {
+	$file = file_get_contents('sites/retail/files/campaigns/maps-2017/index.html', FILE_USE_INCLUDE_PATH);
+	$cookie_name = "mapsversion";
+	$cookie_value = "3";
+	setcookie($cookie_name, $cookie_value); 
+	echo $file;
+}
+
+function maps_campaign_ver_four() {
+	$file = file_get_contents('sites/retail/files/campaigns/maps-2018/index.html', FILE_USE_INCLUDE_PATH);
+	$cookie_name = "mapsversion";
+	$cookie_value = "3";
+	setcookie($cookie_name, $cookie_value); 
+	echo $file;
+}

@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * Implementation of hook_block_info(). */
+ 
+ function oscomingsoon_permission() {
+  return array(
+    'administer_oscomingsoon' => array(
+      'title' => t('Administer OS Coming Soon Page'),
+      'description' => t('Perform administration tasks for OS Coming Soon Page.'),
+	  'restrict access' => true,
+    ),
+  );
+}
+
+function oscomingsoon_block_info() {
+  $blocks['oscomingsoon'] = array(
+    'info' => t('oscomingsoon Block'),
+  );
+  return $blocks;
+}
+
+function oscomingsoon_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#oscomingsoon":
+      return '<p>' . t("Displays links to nodes created on this date") . '</p>';
+      break;
+  }
+}
+
+function oscomingsoon_contents(){
+	$base_url = $GLOBALS['base_url'];
+  return '    <div class="headline container">
+			<div class="row">
+			<div class="col-lg-12">
+			 <img id="logo" src="/sites/all/modules/oscomingsoon/css/img/purple-logo.jpg">
+			</div> 
+            </div>
+			<div class="row">
+			<div class="col-lg-12">
+			<p>Coming Soon, the new<br/><span class="bold">My Online Services</span></p>
+			</div>
+			</div>
+		</div>	
+    
+	
+    <!-- Page Content -->
+    <div class="container">
+		<div class="row" style="background-color:white">
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		 <img src="/sites/all/modules/oscomingsoon/css/img/img_login.png">
+		 </div>
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		 <h1 style="color:#5161ac" >Easier Log in</h1>
+		 <p class="desc">
+		 The Log in and Sign up screens will be more accessible across Irishlife.ie with clearly visible links in plain English.
+		 </p>
+		 </div>
+		</div>
+		<div class="row">
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center;">
+		 <img src="/sites/all/modules/oscomingsoon/css/img/img_nav.png">
+		 </div>
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		 <h1 class="clear-nav" style="color:#5161ac">Clear navigation</h1>
+		 <p class="desc">
+		 A simplified navigation menu with larger text will cater to all of your devices.
+		 </p>
+		 </div>
+		</div>
+		<div class="row rowCust" style="background-color:white">
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		 <img src="/sites/all/modules/oscomingsoon/css/img/img_tech.png">
+		 </div>
+		 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		 <h1 class="multi" style="color:#5161ac;margin-top: 51px;" >Multi-device</h1>
+		 <p class="desc">
+		 An intuitive layout will optimize your experience on your computer, tablet and smart phone.   
+		 </p>
+		 </div>
+		</div>
+    </div> 
+';
+}
+
+function oscomingsoon_block_view($delta = '') {
+  switch($delta) {
+    case 'oscomingsoon':
+    $block['subject'] = t('');
+    if (user_access('access content')) {
+      // Use our custom function to retrieve data
+      $result = oscomingsoon_contents();
+      // No content in the last week
+      $block['content'] = $result;
+	  
+	  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'external', array('scope' => 'footer'));
+      drupal_add_css(drupal_get_path('module', 'oscomingsoon') . '/css/online-services.css', array('group' => CSS_DEFAULT));
+   
+      drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'external', array('scope' => 'footer')); 
+    }
+    return $block;
+  }
+ }

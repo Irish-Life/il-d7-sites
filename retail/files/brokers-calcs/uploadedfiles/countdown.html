@@ -1,0 +1,34 @@
+<html>
+<head>
+<script type="text/javascript" src="/uploadedFiles/retail/js/jquery-1.4.3.min.js?150911"><!--
+//--></script>
+</head>
+<h1 style="border-bottom: 1px solid #EEE8EE;font-family: Trebuchet MS,Lucida Grande,Arial;
+    font-size: 23px;font-weight:normal;
+    margin: 10px 10px 10px 0;
+    padding: 0;">Tell your customers now - only <span style="color:#FF0000;font-weight:bold" class="freecoverRemain">20,000</span> places remaining.</h1>
+<script type="text/javascript"><!--
+function addCommas(nStr)
+{
+ nStr += '';
+ x = nStr.split('.');
+ x1 = x[0];
+ x2 = x.length > 1 ? '.' + x[1] : '';
+ var rgx = /(\d+)(\d{3})/;
+ while (rgx.test(x1)) {
+  x1 = x1.replace(rgx, '$1' + ',' + '$2');
+ }
+ return x1 + x2;
+}
+
+
+if ($('.freecoverRemain').length >0)
+  {
+   $.get("/eBusinessApps/FreeAvailablePolicy/Number", function(data){
+   data=addCommas(data);
+   $('.freecoverRemain').html(data+"");
+   });
+  }
+  
+
+//--></script>

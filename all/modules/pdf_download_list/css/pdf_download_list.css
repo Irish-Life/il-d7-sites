@@ -1,0 +1,25 @@
+.pdf_download_list{
+padding:0; 
+}
+.pdf_download_list h2{
+  background: #5261ac;
+    margin-top: 0;
+    color:white;
+    padding:0.3em 0.5em;
+    margin-bottom: 1em;
+}
+.pdf_download_list ul{
+  padding:0 1em; 
+}
+.pdf_download_list ul li{
+    padding: 0 0 1em 0;
+    line-height: 1.62em;
+}
+.pdf_download_list ul li i{
+padding-right:0.5em; 
+color:#d53737;
+}
+.pdf_download_list a {
+    text-decoration: none !important;
+    color: #5261ac !important;
+}

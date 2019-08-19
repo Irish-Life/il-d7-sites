@@ -1,0 +1,4 @@
+name = "Irish Life - Bline PDF Download List"
+description = "Irish Life Bline PDF Download List"
+core = "7.x"
+package = "Irish Life"

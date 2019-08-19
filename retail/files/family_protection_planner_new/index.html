@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+	
+	<!-- CSS -->
+    <link href="css/familyProtection.css" media="all" rel="stylesheet" type="text/css">
+	<link href="css/responsive.css" media="all" rel="stylesheet" type="text/css">
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
+	<!--
+	<link href="https://www.irishlife.ie/sites/retail/files/advagg_css/css__ZUkaZ_cwsa8NH7MUwTLywMnRcToPcDp-R8agxqbLdFk__rb3YtlBrf6AHjr91g2LGQGRzoK37oH3OQg9W5l8gzWM__pnKUOwTKFXknClTg7fd75d1-Zk87DwtpPPKToeOjFY4.css" media="all" rel="stylesheet" type="text/css">
+	<link href="https://www.irishlife.ie/sites/retail/files/advagg_css/css__9hY9UBiafkLk2YYNsQiCGqDnIvIICmLMxECh3QbKiHY__gU4TLcYmLDLmwK11WR_qxTb9toGgfMKdTTYgrC9yXBQ__pnKUOwTKFXknClTg7fd75d1-Zk87DwtpPPKToeOjFY4.css" media="all" rel="stylesheet" type="text/css">
+	<link href="https://www.irishlife.ie/sites/retail/files/advagg_css/css__54w07mDqc37BDR-xy-vtBG9FWBM46_IXNjvAfvILKZQ__NUHuBrRV8tWO0NBKwb10R1tNcBe0n0OaoBXSYA38GxU__pnKUOwTKFXknClTg7fd75d1-Zk87DwtpPPKToeOjFY4.css" media="all" rel="stylesheet" type="text/css">
+	-->
+	<title>LifeLens life insurance calculator</title>
+</head>
+<body>
+<!-- /////////////////////////////////////////////// MODALS ///////////////////////////////////////////////////////////////// -->	
+
+<!-- ************************************** NOT SURE POPUP ***************************************** -->
+<!-- Callback Modal -->
+	<div class="modal fade" id="notSure" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Not sure of the answer?&nbsp; Don\'t Worry.</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>A financial advisor can call you back to discuss your needs at a time that suits you.<br/> Irish Life Financial Services is tied to Irish Life Assurance plc for life and pensions.</p>
+			        <form id="notSureForm">
+					<div class="form-group">
+					<label for="name">Name</label> 
+					<span id="notSureNameError" class="warning" style="display:none">Please enter your name</span>
+					<input id="notSureName" type="text" value="" placeholder="">
+					</div>
+					
+					<div class="form-group">
+					<label for="phone">Phone</label> 
+					<span id="notSurePhoneError" class="warning" style="display:none">Please enter your phone number</span>
+					<input id="notSurePhone" type="number" value="" placeholder="">
+					</div>
+					
+					<div class="form-group">
+					<label for="email">Email</label> 
+					<span id="notSureEmailError" class="warning" style="display:none">Please enter a valid email</span>
+					<input id="notSureEmail" type="email" value="" placeholder="">
+					</div> 
+					
+					<div class="button-group">
+					<label style="display: block;">Best time to call</label>
+					<span id="notSureTimeError" class="warning" style="display:none">Please select a time<br/></span>
+                    <button id="notSureBefore12" type="button" class="time btn" for="radio11">Before 12pm</button>
+
+                    <button id="notSure12-5" type="button" class="time btn" for="radio9">12pm to 5pm</button>
+					
+                    <button id="notSureAfter5" type="button" class="time btn" for="radio10">After 5pm</button>
+					</div>
+					
+					</form>
+					
+					<div id="notSureSent" class="hidden">
+					<p>Thank you for your message, we will be in touch with you as soon as possible</p>
+					</div>
+		  </div>
+		  <div class="modal-footer" style="text-align:left">
+			<button id="notSureSubmit" type="submit" class="btn-submit submit">Submit</button>
+			<small>Privacy notice: In the interest of customer service we will record and monitor calls. We will only use your personal details for the purpose of dealing with your request. Your privacy is important to us. By completing your contact details above, you authorise us to contact you by telephone, mobile and/or email.</small>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- Lumpsum on death -->
+	<div class="modal fade" id="death-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Lumpsum on death</h4>
+		  </div>
+		  <div class="modal-body">
+		  <div class="col-lg-12 col-sm-12 col-xs-12">
+					  <p>
+					    <strong>Lumpsum on death</strong> is paid as a lump sum to your family if you die. The level 
+                        of cover decreases over time inline with the income you need.						
+						<br/>
+						<br/>
+						The amount is calculated by taking your net income, minus state benefits and any mortgage payments covered by mortgage protection multiplied by the term. State widows benefit of <strong>€960.77</strong> plus an additional <strong>€150</strong> for each child per month is assumed.
+						<br/>
+						Term is calculated on your youngest child reaching age 25 or the remaining term of your mortgage.
+						<br/></p>
+						<br/>
+
+					  <div class="col-lg-6 your-needs-death">
+					  <h3>Your Needs</h3>
+					  <div class="top-slice">
+					  Your Income Gap = <span class="money income-gap"></span>
+					  </div>
+					  
+					  <div class="mid-slice">
+					  <strong>Mortgage Protection</strong>
+					  <br/>
+					  Monthly Mortgage = <span class="money" id="insert-mortgage"></span>
+					  <br/>
+					 <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;<strong>Paid off on death</strong>
+					  </div>
+					  
+					  <div class="bot-slice">
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;State Benefit = <span class="money state-benefit"></span>
+					  </div>
+					  </div>
+					  
+					  <div class="col-lg-6 partner-info partner-needs-death hidden">
+					  <h3>Partner Needs</h3>
+					  <div class="top-slice">
+					  Your Income Gap = <span class="money income-gap-partner"></span>
+					  </div>
+					  
+					  <div class="mid-slice">
+					  <strong>Mortgage Protection</strong>
+					  <br/>
+					  Monthly Mortgage = <span class="money" id="insert-mortgage-partner"></span>
+					  <br/>
+					 <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;<strong>Paid Off</strong>
+					  </div>
+					  
+					  <div class="bot-slice">
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;State Benefit = <span class="money state-benefit"></span>
+					  </div>
+					  </div>
+		  </div>		  
+		  </div>
+		  <div class="modal-footer">
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<!-- Income on Illness -->
+	<div class="modal fade" id="illness-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Protect your income on illness<h4>
+		  </div>
+		  <div class="modal-body">
+					  <p>
+					    <strong>Protect your income on illness</strong> will cover your essentila bills (eg. mortgage or rent) if
+                        you're unable to work because of illnes or injury.
+                        <br/>
+						<br/>
+						The amount is calculated using your monthly mortgage or rent amount, plus <strong>€300</strong> for essential bills. A deferral period option of 8 weeks is assumed; however other deferral period options are available. Term is based on your youngest child reaching age 25 or 
+						the remaining term of your mortgage. 
+						<br/>​​​​​​​
+						<br/>
+						If you are over 60 years of age, you are not eligible for this benefit.
+						</p>
+						<br/>
+					
+                      <div class="billpay-needs">					
+					  <h3>Your Needs</h3>	
+					  <div class="full-slice">
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;<span class="money" id="incomeIllBill"></span><br/> to pay for your essentials.
+					  <p>
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Bills <span class="money">€300</span>
+					  <br/>
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;<span id="MortOrrent"></span> <span class="money" id="billPayMortgage"></span>
+					  </p>
+					  </div>
+					  </div>
+
+  
+		  </div>
+		  <div class="modal-footer">
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<!-- Lumpsum Specified Illness -->
+	<div class="modal fade" id="specified-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Protect your income on specified illness</h4>
+		  </div>
+		  <div class="modal-body">
+		    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					  <p>
+					    <strong>Lump sum on specified illness</strong> is paid to help you ​recover without additional financial worries.
+                        <br/>
+						The amount is calculated as <strong>one year\'s net salary</strong>.
+                        <br/>
+						<br/>
+						Term is based on your youngest child reaching <strong>age 25</strong> or the remaining term of your mortgage. 
+						<br/>
+						<br/>
+						If you are over <strong>65 years of age</strong>, you are not eligible for this benefit.
+						<br/></p>
+						<br/>	
+					  <div class="col-lg-6 your-needs-specIll">
+					  <h3>Your Needs</h3>
+					  <div class="full-slice">
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i>
+					  <br/>
+					  We will provide you with <br/><span class="illnessSalaryYears1">one year\'s</span> net salary<br/>
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;<span class="money" id="salary"></span>
+					  </div>
+					  </div>
+					  
+					  <div class="col-lg-6 partner-info partner-needs-specIll hidden">
+					  <h3>Partners Needs</h3>
+					  <div class="full-slice" style="background-color:#175283">
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i>
+					  <br/>
+					  We will provide you with <br/><span class="illnessSalaryYears2">one year\'s</span> net salary<br/>
+					  <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;<span class="money" id="salary-partner"></span>
+					  </div>
+					  </div>
+			</div>		  
+		 </div>
+		  <div class="modal-footer">
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+<!-- ///////////////////////////////////////////////START SCREENS ///////////////////////////////////////////////////////////////// -->	
+
+    			<!-- ************************************** INTRO SCREEN *****************************************
+	<div class="col-lg-12 col-md-12 col-xs-12">
+		<div class="container-intro" id="intro">			
+
+				<div class="row">			
+					 <div class="sub-heading-no-top col-lg-12 col-md-12 col-xs-12">
+					 <p>With Irish Life Family Protection, we not only provide life insurance, but can also help protect your family’s income even if you can’t work because of illness or injury.
+                        <br/>
+						<br/>
+                        Where do you start? Your first step is to take two minutes to answer a few questions in our Family Protection Planner. This can help you understand how much cover you might need and how long you might need it.
+                        </span></p>
+					 <div class="note">
+					 <br/>
+					 <a id="start" class="lifelens-cta" >Let\'s Go</a>
+					 <br/>
+					  </div>
+					 </div>
+					 <strong>Note:</strong> <small>Completing this planner isn’t the same as getting complete financial advice. This will help you get started but you should always discuss the level of cover that’s right for you with your Financial Broker or Advisor.<br/> Irish Life 2017 - All rights reserved.</small>
+				 </div>
+				 
+		</div>
+	</div> -->
+	
+	<div class="container" id="menu">
+	   <div class="row">
+				 <div class="row-eq-mob steps-menu col-lg-12">
+				    <div id="about" class="col-lg-2 col-lg-offset-1 col-md-2 col-xs-2 first">
+					<p class="active">
+					<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+					<span>About You</span></p>
+					</div>
+					
+					<div id="family" class="col-lg-2 col-md-2 col-xs-2 about-family locked">
+					<p>
+					<i class="fa fa-users fa-2x" aria-hidden="true"></i>
+					Your Family</p>
+					</div>
+					
+					<div id="income" class="col-lg-2 col-md-2 col-xs-2  about-income locked">
+					<p>
+					<i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>
+					Your Income</p>
+					</div>
+					
+					<div id="existing" class="col-lg-2 col-md-2 col-xs-2  about-existing locked">
+					<p>
+					<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+					Existing Cover</p>
+					</div>
+					
+					<div id="yourresult" class="col-lg-2 col-md-2 col-xs-2  about-quote locked">
+					<p>
+					<i class="fa fa-calculator fa-2x" aria-hidden="true"></i>
+					 Your Result</p>
+					</div>
+				 </div>
+	    </div>	
+    </div>
+	
+	
+	<!-- ************************************** ABOUT YOU ***************************************** -->
+	<div class="container" id="about-you">
+				
+            <div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-xs-12">
+				 <p style="color:#5261ac;">About You&nbsp;&nbsp;<i class="fa fa-user fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="help" data-toggle="modal" data-target="#notSure">Not Sure?&nbsp;Click Here&nbsp;&nbsp;<i class="fa fa-phone-square" aria-hidden="true"></i></a></p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 about-you-form">
+				    <form id="about-form">
+					<div class="form-group" style="margin-top:0px">
+					<label for="age">Age</label> 
+					<span class="warning3" style="display:none">You must be of age 18 - 75</span>
+					<input id="about-age" type="number" value="" min="18" max="75" placeholder="18">
+					</div>
+					
+					<div class="form-group">
+					<label for="relationship">Relationship Status</label> 
+					<select id="about-rel">
+					<option value="" disabled selected>Please Select</option>
+					 <option value="1">Married</option>
+					 <option value="2">Single</option>
+					 <option value="3">Divorced</option>
+					 <option value="4">Separated</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label for="occupation">What is your occupation</label> 
+					<div id="about-occ">
+					
+					</div>
+					<div id="occupationClass1" class="hidden"></div>
+					</div>
+					
+					<div class="form-group">
+					<label>Do you smoke?</label>
+					<input type="radio" id="radio1" name="radios" value="false">
+                    <label class="smoke" for="radio1">Yes</label>
+                    <input type="radio" id="radio2" name="radios" value="false">
+                    <label class="smoke" for="radio2">No</label>
+					</div>
+					
+				    <div class="partner col-lg-6 col-md-6 col-xs-12">
+			        <p><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;Add Partner</p>
+			        </div>
+					
+					</form>
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				  <h3 class="knob-title" style="text-align:center">About You</h3>
+				    <div class="knob">
+                    <div class="knob-a-icon-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                    <input id="aboutCirc" data-displayInput=false class="dial animated" data-thickness=".2" data-skin="tron" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+			</div>	 
+
+			<!-- ******************************* PARTNER ABOUT FIELDS *********************************** -->
+			<div id="partner-fields" class="hidden">
+			<div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-xs-12">
+				 <div class="col-lg-12 col-md-12 col-xs-12">
+				 <div style="padding-left: 0px;" class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
+				 <p style="color:#5261ac;padding-left:0px">Partner&nbsp;&nbsp;<i class="fa fa-user fa-2x" aria-hidden="true"></i></p>
+				 </div>
+				 <div class="col-lg-10 col-md-6 col-xs-6">
+				 <p><i style="cursor:pointer" class="close-btn fa fa-times-circle" aria-hidden="true"></i></p>
+				 </div>
+				 </div>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 about-you-form">
+				    <form id="partner-form">
+					<div class="form-group" style="margin-top:0px">
+					<label for="partner-age">Age</label> 
+					<span class="warning4" style="display:none">You must be of age 18 - 75</span>
+					<input id="partner-age" type="number" value="" min="18" max="75" placeholder="18">
+					</div>
+					
+					<div class="form-group">
+					<label for="partner-relationship">Relationship Status</label> 
+					<select id="partner-rel">
+					<option value="" disabled selected>Please Select</option>
+					 <option value="1">Married</option>
+					 <option value="2">Single</option>
+					 <option value="3">Divorced</option>
+					 <option value="4">Separated</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label for="occupation">What is your occupation</label> 
+					<div id="partner-occ">
+					
+					</div>
+					<div id="occupationClass2" class="hidden"></div>
+					</div>
+					
+					<div class="form-group">
+					<label>Do you smoke?</label>
+					<input type="radio" id="radio7" name="radios" value="false">
+                    <label class="smoke" for="radio7">Yes</label>
+                    <input type="radio" id="radio8" name="radios" value="false">
+                    <label class="smoke" for="radio8">No</label>
+					</div>
+					</form>
+					
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				  <h3 class="knob-title" style="text-align:center">Your Partner</h3>
+				    <div class="knob">
+					<div class="knob-a-icon-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+					 <input id="partnerCirc" data-displayInput=false  data-thickness=".2" data-skin="tron" class="dial" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+				</div> 
+			</div>	 
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-xs-12">
+					<a class="disabled lifelens-cta first-btn next" >Next&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+				</div>
+				
+			</div>
+	</div>
+			
+	
+			
+	
+	<!-- ************************************** YOUR FAMILY ***************************************** -->
+	<div class="container" id="your-family">
+
+            <div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 <p style="color:#5261ac;">Your Family&nbsp;&nbsp;<i class="fa fa-users fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="help" data-toggle="modal" data-target="#notSure">Not Sure?&nbsp;Click Here&nbsp;&nbsp;<i class="fa fa-phone-square" aria-hidden="true"></i></a></p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 about-you-form">
+				    <form id="family-form" name="familyForm">
+					
+					<div class="form-group" style="margin-top:0px">
+					<label>Do you have children?</label>
+					<input type="radio" id="radio3" name="radios" value="false">
+                    <label class="smoke" for="radio3">Yes</label>
+                    <input type="radio" id="radio4" name="radios" value="false">
+                    <label class="smoke" for="radio4">No</label>
+					</div>
+					
+					<div class="form-group" style="margin-top: 44px;">
+					<label for="age">How many children do you have?</label> 
+					<select id="childNum" value="">
+					<option value="0" disabled selected>Please Select</option>
+					<option value="1">1</option>
+					 <option value="2">2</option>
+					 <option value="3">3</option>
+					 <option value="4">4</option>
+					 <option value="5">5</option>
+					 <option value="6">6</option>
+					 <option value="7">7</option>
+					 <option value="8">8</option>
+					 <option value="9">9</option>
+					 <option value="10">10</option>
+					</select> 
+					</div>
+					
+					<div class="form-group" style="margin-top: 44px;">
+					<label for="age">Age of your youngest child (max 25)</label> 
+					<span class="warning" style="display:none">This cannot be more than 25</span>
+					<select id="family-age">
+					<option value="notSelected" disabled selected>Please Select</option>
+					 <option value="0">Newborn</option>
+					 <option value="1">1</option>
+					 <option value="2">2</option>
+					 <option value="3">3</option>
+					 <option value="4">4</option>
+					 <option value="5">5</option>
+					 <option value="6">6</option>
+					 <option value="7">7</option>
+					 <option value="8">8</option>
+					 <option value="9">9</option>
+					 <option value="10">10</option>
+					 <option value="11">11</option>
+					 <option value="12">12</option>
+					 <option value="13">13</option>
+					 <option value="14">14</option>
+					 <option value="15">15</option>
+					 <option value="16">16</option>
+					 <option value="17">17</option>
+					 <option value="18">18</option>
+					 <option value="19">19</option>
+					 <option value="20">20</option>
+					 <option value="21">21</option>
+					 <option value="22">22</option>
+					 <option value="23">23</option>
+					 <option value="24">24</option>
+					 <option value="25">25</option>
+					</select>
+					</div>
+					
+					</form>
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				    <h3 class="knob-title" style="text-align:center">Your Family</h3>
+				    <div class="knob">
+					<div class="knob-a-icon-2"><i class="fa fa-users" aria-hidden="true"></i></div>
+					 <input id="familyCirc" data-displayInput=false class="dial" data-thickness=".2" data-skin="tron" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+			</div>
+			
+			<div class="row">
+			<div class="col-lg-6 col-md-6 col-xs-12 directions1">
+				     <a class="lifelens-cta family-prev previous" >Previous</a><a class="disabled lifelens-cta family-next continue" >Next&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+		    </div>
+			<div class="col-lg-6 col-md-6 col-xs-12  directions2">
+				     <a class="disabled lifelens-cta family-next continue">Next&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					 <a class="lifelens-cta family-prev previous" >Previous</a>
+		    </div>
+			</div>
+	</div>
+	
+	<!-- ************************************** YOUR INCOME ***************************************** -->
+	<div class="container" id="your-income">
+			
+            <div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 <p style="color:#5261ac;">Your Income&nbsp;&nbsp;<i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="help" data-toggle="modal" data-target="#notSure">Not Sure?&nbsp;Click Here&nbsp;&nbsp;<i class="fa fa-phone-square" aria-hidden="true"></i></a></p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 about-you-form">
+				    <form id="income-form">
+					
+					<div class="form-group" style="margin-top:0px">
+					<label>Your net income per month<a style="color:#5261ac;" title="Your Net Income details" data-toggle="popover" data-content="Your monthly net income is your monthly salary, minus any taxes, pension or other deductions. I.e. Your monthly take home pay.">&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></a></label>
+					<output class="output1"></output>
+					<input class="range1" data-rangeslider="" max="8000" min="1000" step="10" type="range" value="1000" />
+					<br/>
+					<span id="home-maker" class="hidden"><i class="fa fa-arrow-up" aria-hidden="true"></i>&nbsp;&nbsp;This is the salary we are assuming for Home Makers
+					<hr/></span>
+					</div>
+					
+					<div class="form-group partnerSlide hidden" style="margin-top:45px">
+					<label>Your partners net income per month</label>
+					<output class="output5"></output>
+					<input class="range5" data-rangeslider="" max="8000" min="1000" step="10" type="range" value="1000" />
+					<br/>
+					<span id="home-maker-partner" class="hidden"><i class="fa fa-arrow-up" aria-hidden="true"></i>&nbsp;&nbsp;This is the salary we are assuming for Home Makers
+					<hr/></span>
+					</div>
+					
+					<div class="form-group">
+					<label>Your mortgage / rent per month</label>
+					<output class="output2"></output>
+					<input class="range2" data-rangeslider="" max="3000" min="100" step="10" type="range" value="100" />
+					</div>
+				
+					
+					
+					<div class="form-group" style="margin-top: 35px;">
+					<label for="age">If you have a mortgage - how many years do you have left for payments (max 35)</label> 
+					<p><input class="tick6" type="checkbox" value=""/>I don\'t have a Mortgage</p>
+					<span class="warning2" style="display:none">This cannot be more than 35</span>
+					<input id="income-age" type="number" max="35" placeholder="Enter years">
+					</div>
+					
+					</form>
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				    <h3 class="knob-title" style="text-align:center">Your Income</h3>
+				    <div class="knob">
+					<div class="knob-a-icon-2"><i class="fa fa-suitcase" aria-hidden="true"></i></div>
+					 <input id="incomeCirc" data-displayInput=false class="dial" data-thickness=".2" data-skin="tron" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+			</div>
+			
+			<div class="row">
+			<div class="col-lg-6 col-md-6 col-xs-12 directions1">
+				     <a class="lifelens-cta income-prev previous" >Previous</a><a class="disabled lifelens-cta income-next continue" >Next&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+		    </div>
+			<div class="col-lg-6 col-md-6 col-xs-12 directions2">
+				    <a class="disabled lifelens-cta income-next continue" >Next&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					 <a class="lifelens-cta income-prev previous" >Previous</a>
+		    </div>
+			</div>
+	</div>
+	
+	<!-- ************************************** EXISTING COVER ***************************************** -->
+	<div class="container" id="existing-cover">
+	
+            <div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 <p style="color:#5261ac;">Existing Cover&nbsp;&nbsp;<i class="fa fa-home fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="help" data-toggle="modal" data-target="#notSure">Not Sure?&nbsp;Click Here&nbsp;&nbsp;<i class="fa fa-phone-square" aria-hidden="true"></i></a></p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 about-you-form">
+				    <form id="existing-form">
+					
+					<div class="form-group" id="you-protection">
+					<label>Do you have Income Protection?<a style="color:#5261ac;" title="Your Income Protection details" data-toggle="popover" data-content="Income Protection is an insurance policy which pays benefits to you if you are incapacitated and hence unable to work due to illness or accident.">&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></a></label>
+					<input type="radio" id="radio11" name="radios" value="false">
+                    <label class="smoke" for="radio11">Yes</label>
+                    <input type="radio" id="radio12" name="radios" value="false">
+                    <label class="smoke" for="radio12">No</label>
+					</div>
+					
+					<div class="form-group">
+					<label>How much Life Insurance do you currently have?</label>
+			        <p><input class="tick2" type="checkbox" value=""/>I don\'t have Life Insurance</p>
+					<output class="output3"></output>
+					<input class="range3" data-rangeslider="" max="500000" min="0" step="1000" type="range" value="1000" />
+					<br/>
+					<span class="glyphicon glyphicon-share-alt"></span><strong>Note:</strong><small>This does not include mortgage protection</small>
+			
+					</div>
+					
+					<div class="form-group" id="you-spec-existing" style="margin-top: 62px;">
+					<label>How much specified illness do you currently have?</label>
+					<p><input class="tick3" type="checkbox" value=""/>I don\'t have specified illness</p>
+					<output class="output4"></output>
+					<input class="range4" data-rangeslider="" max="100000" min="0" step="1000" type="range" value="1000" />
+	
+					</div>
+					
+					</form>
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				    <h3 class="knob-title" style="text-align:center">Existing Cover</h3>
+				    <div class="knob">
+					<div class="knob-a-icon-2"><i class="fa fa-home" aria-hidden="true"></i></div>
+					 <input id="existingCirc" data-displayInput=false class="dial" data-thickness=".2" data-skin="tron" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+			</div>
+			
+			<!-- ******************************* PARTNER EXISTING FIELDS *********************************** -->
+			<div id="partner-existing-fields" class="hidden">
+			<div class="row">			
+				 <div class="sub-heading-step col-lg-12 col-md-12 col-xs-12">
+				 <div class="col-lg-12 col-md-12 col-xs-12">
+				 <div style="padding-left: 0px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 <p style="color:#5261ac;padding-left:0px">Partner&nbsp;&nbsp;<i class="fa fa-user fa-2x" aria-hidden="true"></i></p>
+				 </div>
+				 </div>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 about-you-form">
+				    <form id="existing-form">
+					
+					<div class="form-group" id="partner-protection">
+					<label>Does your partner have Income Protection?<a  style="color:#5261ac;" title="Your net income & mortgage details" data-toggle="popover" data-content="Some content inside the popover">&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></a></label>
+					<input type="radio" id="radio9" name="radios" value="false">
+                    <label class="smoke" for="radio9">Yes</label>
+                    <input type="radio" id="radio10" name="radios" value="false">
+                    <label class="smoke" for="radio10">No</label>
+					</div>
+					
+					<div class="form-group">
+					<label>How much Life Insurance does your partner currently have?</label>
+			        <p><input class="tick4" type="checkbox" value=""/>I don\'t have Life Insurance</p>
+					<output class="output6"></output>
+					<input class="range6" data-rangeslider="" max="500000" min="0" step="1000" type="range" value="1000" />
+					<br/>
+					<span class="glyphicon glyphicon-share-alt"></span><strong>Note:</strong><small>This does not include mortgage protection</small>
+			
+					</div>
+					
+					<div class="form-group" id="partner-spec-existing" style="margin-top: 62px;">
+					<label>How much specified illness does your partner currently have?</label>
+					<p><input class="tick5" type="checkbox" value=""/>I don\'t have specified illness</p>
+					<output class="output7"></output>
+					<input class="range7" data-rangeslider="" max="100000" min="0" step="1000" type="range" value="1000" />
+	
+					</div>
+					
+					</form>
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-sm-6">
+				    <h3 class="knob-title" style="text-align:center">Partners Existing Cover</h3>
+				    <div class="knob">
+					<div class="knob-a-icon-2"><i class="fa fa-home" aria-hidden="true"></i></div>
+					 <input id="existingCircPartner" data-displayInput=false class="dial" data-thickness=".2" data-skin="tron" type="text" value="0">
+                    </div>
+				  </div>
+				 </div>
+			</div>
+			</div>	 
+			
+			<div class="row">
+			<div class="col-lg-12 col-md-6 col-xs-12 directions1">
+				     <a class="lifelens-cta existing-prev previous">Previous</a><a class="result disabled lifelens-cta existing-next" >Get Your Result&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+		    </div>
+			<div class="col-lg-12 col-md-6 col-xs-12 directions2">
+				     <a class="result disabled lifelens-cta existing-next" >Get Your Result&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					 <a class="lifelens-cta existing-prev previous" >Previous</a>
+		    </div>
+			</div>
+	</div>
+	
+	<!-- ************************************** YOUR QUOTE ***************************************** -->
+	
+	<div class="container" id="your-quote">
+
+			<div class="row row-eq-height quote-boxes">
+			     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 quote-body quotehidden">
+				 <div class="col-lg-12 col-md-12 quote-heading quotehidden"><p style="color:#5261ac;">Person Like You</p>
+				 </div>
+				 <div class="col-lg-12 person-info">
+				 <div class="col-lg-6">
+				 <p style="padding: 20px;"><i class="fa fa-user fa-3x" aria-hidden="true" style="color:#5261ac;" ></i>
+				 <p>
+					<strong><span style="color:#5261ac;font-weight:bold">You</span></strong>
+					<br/>
+					Age: <span id="ageVal"></span>
+					<br/>
+					<span id="relStatus"></span>
+					<br/>
+					<span id="occupation"></span>
+					<br/>
+					Income: <br/> <span class="number" id="netIncome"></span>
+				</div>	
+				 <div class="col-lg-6">
+				 <div class="partner-info hidden">
+				 <p style="padding: 20px;"><i class="fa fa-users fa-3x" aria-hidden="true" style="color:#5261ac;" ></i>
+				 <p>
+					<strong><span style="color:#5261ac;font-weight:bold">Partner</span></strong>
+					<br/>
+					Age: <span id="parAge"></span>
+					<br/>
+					<span id="parStatus"></span>
+					<br/>
+					<span id="paroccupation"></span>
+					<br/>
+					Income: <br/> <span id="parIncome"></span>
+				</div>	
+				</div>	
+				<div class="col-lg-12" style="border-top: 1px solid #f0f0f0; margin-top: 20px;">
+				    <br/>
+					Age of youngest child: <span id="childAge"></span>
+                    <br/>
+					<br/>
+					Mortgage / rent per month
+					<br/>
+					= <span class="number" id="morRent"></span>
+				</p>	
+				</div>
+				</div>
+				</div>
+				 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 quote-body">
+				 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6 quote-heading quotehidden"><p style="color:#5261ac;">Potential Protection Needs</p></div>
+				 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 quote-heading"><p style="color:#5261ac;">Guide Price</p></div>
+		         
+				 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6 quotehidden">
+				 
+				 <div class="quote-box">
+				 <h4 style="color:#5261ac;font-weight:bold">Lumpsum on Death&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+				 <p class="you-info-death"><i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - you may have a need for an initial lumpsum of <strong><span class="number" id="lumpsumDeath"></span></strong> for a term of  <strong><span class="term"></span>.</strong>
+				 Cover decreases over time.
+				 </p>
+				 <p class="ifcovered-message hidden">
+				 <i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - You are not eligible for Lumpsum on Death</p>
+				 <p class="partner-info partner-info-death hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - you may have a need for an initial lumpsum of <strong><span class="number" id="lumpsumDeathPartner"></span></strong> for a term of  <strong><span class="term"></span>.</strong>
+				 <br/>
+				 This is equivalent to a monthly income of <strong><span class="number income-gap-partner"></span>.​</strong>​​​​​​​
+				 </p>
+				 <p class="ifcovered-message-partner hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - Your partner is not eligible for Lumpsum on Death</p>
+				 <p class="you-info" style="color:#50c9b5;"><a class="deathCost" style="text-decoration:underline;" data-toggle="modal" data-target="#death-modal"
+					 >See how we calculate your needs</a></p>
+				 </div>
+				 
+				 <div class="quote-box">
+				 <h4 style="color:#5261ac;font-weight:bold">Protect Your Income on Illness&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+				 <p class="you-info-billpay"><i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - After <strong>8 weeks</strong> off work, you may require <strong><span class="number" id="billPayCover1Amt1"></span> per month, </strong> lasting for <strong>5 years</strong> until you return to work, for a term of <strong><span class="term"></span>.</strong>
+				 <p class="ifcovered-message2 hidden">
+				 <i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - You are not eligible for Income on Illness</p>
+				 <p class="partner-info partner-info-billpay hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - After <strong>8 weeks</strong> off work, you may require <strong><span class="number" id="billPayCover1Amt2"></span> per month,</strong> lasting for <strong>5 years</strong> until you return to work. Your benefit is available for <strong><span class="term"></span></strong>, unless you become unemployed.
+				 </p>
+				 <p class="ifcovered-message-partner2 hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - Your partner is not eligible for Income on Illness</p>
+				 <p class="you-info2" style="color:#50c9b5;text-decoration:underline;"><a class="illnessCost" data-toggle="modal" data-target="#illness-modal"
+					 >See how we calculate your needs</a></p>
+				 </div>
+				 
+				 <div class="quote-box">
+				 <h4 style="color:#5261ac;font-weight:bold">Lumpsum on Specified Illness&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+				 <p class="you-info-specIll"><i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - You may require a single lump sum of <strong><span class="number" id="specIll"></span></strong> for a term of <strong><span class="term"></span></strong></p>
+				 <p class="ifcovered-message3 hidden">
+				 <i class="fa fa-user" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;You - You are not eligible for Specified Illness</p>
+				 <p class="partner-info partner-info-specIll hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - You may require a single lump sum of <strong><span id="specIllPartner" class="number"></span></strong> for a term of <strong><span class="term"></span></strong>
+				 </p>
+				 <p class="ifcovered-message-partner3 hidden">
+				 <br/>
+				 <i class="fa fa-users" aria-hidden="true" style="color:#5261ac;" ></i>&nbsp;&nbsp;Partner - Your partner is not eligible for Specified Illness</p>
+				 <p class="you-info3" style="color:#50c9b5;text-decoration:underline;"><a class="specifiedIllness"  data-toggle="modal" data-target="#specified-modal"
+					 >See how we calculate your needs</a></p>
+				 </div>
+				 
+				 </div>
+
+				 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				     <h4 class="deathheading" style="color:#5261ac;font-weight:bold">Protect Your Income on Death&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+					 
+					 <div class="quote-box">
+					 <p style="color:#5261ac"><strong>Cost per month = <br/><span id="totalLifeCoverPrem">Calculating, Please wait...</span></strong>
+					 <p style="color:#50c9b5;"><a style="text-decoration:underline;" class="deathCost mobile-pop" data-toggle="modal" data-target="#death-modal"
+					 >See how we calculate this</a></small></p>
+					 
+					 </div>
+					
+					<h4 class="illnessheading" style="color:#5261ac;font-weight:bold">Protect Your Income on Illness&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+					 
+					 <div class="quote-box">
+					 <p class="cost" style="color:#5261ac"><strong>Cost per month =<br/><span id="totalBillPayPrem">Calculating, Please wait...</span></strong>
+					 <p style="color:#50c9b5;text-decoration:underline;"><a class="illnessCost mobile-pop" data-toggle="modal" data-target="#illness-modal"
+					 >See how we calculate this</a></p>
+					 </p>
+					 </div>
+					
+					 <h4 class ="specheading" style="color:#5261ac;font-weight:bold">Protect Your Income on Specified Illness&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+					 
+					 <div class="quote-box">
+					 <p class="cost2" style="color:#5261ac"><strong>Cost per month = <br/><span id="totalSicCoverPrem">Calculating, Please wait...</span></strong>
+					 <p style="color:#50c9b5;text-decoration:underline;"><a  data-placement="left" class="specifiedIllness mobile-pop" data-toggle="modal" data-target="#specified-modal"
+					 >See how we calculate this</a></p>
+					 </p>
+					 </div>
+				
+				</div>
+					
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 10px;border-top: 1px solid rgba(128, 128, 128, 0.17);">
+				<a class="lifelens-cta printBtn">Print your results&nbsp;&nbsp;<i class="fa fa-print" aria-hidden="true"></i></a>
+				</div>
+				 
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 10px;border-top: 1px solid rgba(128, 128, 128, 0.17);">
+					<p class="total">TOTAL = €<span id="totalPrem">0</span> per month</p>
+					<small>Cost of Cover = €<span id="totalCost">0</span></small>
+					<br/>
+					<small>Policy Fee = €<span id="thePolicyFee">0</span></small>
+					<br/>
+					<small>Government Levy = €<span id="theLevy">0</span></small>
+				</div>
+				</div>
+			</div>
+			
+            <div class="col-lg-4">
+			</div>
+            <div class="directions1 col-lg-8 col-xs-12 col-md-12" style="text-align:right">
+				     <a class="lifelens-cta quote-prev" >Previous</a>
+					 <a class="lifelens-cta quote-next cta-talk-to-us" >Talk To Us&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+		    </div>
+			<div class="directions2 col-lg-8 col-xs-12 col-md-12" style="text-align:right">
+					 <a class="lifelens-cta quote-next" >Talk To Us&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					 <a class="lifelens-cta quote-prev previous" >Previous</a>
+		    </div>
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="note">
+					 <small>
+					 <strong>Note:</strong> This is an indicative quotation for One Plan Protection which is subject to underwriting. The quote is valid either for 7 days or to your next birthday, whichever is sooner and is subject to no changes to the applicable regulatory or tax rules within that period. 
+                     <br/>
+					 <br/>
+                     You must keep up payments to stay on cover.</small>
+				</div>
+            </div>			
+	</div>
+	
+	<!-- ************************************** CALLBACK SCREEN ***************************************** -->
+	<div class="container" id="callback-screen">
+				
+            <div class="row">			
+				 <div class="sub-heading-step-last col-lg-12 col-md-12 col-xs-12">
+				 <p style="color:#5261ac;float:left">Talk To Us&nbsp;&nbsp;<i class="fa fa-phone-square fa-2x" aria-hidden="true"></i></p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				  <div class="col-lg-6 col-md-6 col-xs-12 about-you-form">
+				    <p>
+                    An advisor will call you to talk you through all of your options, answer any of your questions and see which protection plan might be right for you.
+					</p>
+					<br/>
+					<p style="color: #5261ac;font-size:20px">Contact Details</p>
+				    <form id="talkToUsForm">
+					<div class="form-group" style="margin-top: 20px">
+					<label for="name">Name</label> 
+					<span id="talkToUsNameError" class="warning" style="display:none">Please enter your name</span>
+					<input id="talkToUsName" type="text" value="" placeholder="">
+					</div>
+					
+					<div class="form-group">
+					<label for="phone">Phone</label> 
+					<span id="talkToUsPhoneError" class="warning" style="display:none">Please enter your phone number</span>
+					<input id="talkToUsPhone" type="number" value="" placeholder="">
+					</div>
+					
+					<div class="form-group">
+					<label for="email">Email</label> 
+					<span id="talkToUsEmailError" class="warning" style="display:none">Please enter a valid email</span>
+					<input id="talkToUsEmail" type="email" value="" placeholder="">
+					</div>
+					
+					<div class="form-group">
+					<label>Best time to call</label>
+					<span id="talkToUsTimeError" class="warning" style="display:none"">Please select a time<br/></span>
+                    <button id="talkToUsBefore12" type="button" class="time btn" for="radio11">Before 12pm</button>
+                    <button id="talkToUs12-5" type="button" class="time btn 12-5" for="radio9">12pm to 5pm</button>
+                    <button id="talkToUsAfter5" type="button" class="time btn after5" for="radio10">After 5pm</button>
+					</div>
+					
+					</form>
+					
+					<div id="talkToUsSent" class="hidden">
+					<p>Thank you for your message, we will be in touch with you as soon as possible</p>
+					</div>
+					
+				  </div>
+				  <div class="col-lg-6 col-md-6 col-xs-12" id="privacy-box">
+				  <p class="privacy">Privacy&nbsp;&nbsp;<i class="fa fa-lock" aria-hidden="true"></i></p>
+				  <p class="privacy-text">
+				  In the interest of customer service we will record and monitor calls. We will only use your personal details for the purpose of dealing with your request. Your privacy is important to us. By completing your contact details above, you authorise us to contact you by telephone, mobile and/or email.
+				  </p>
+				  </div>
+			    </div>
+			</div>	 	 
+			<div class="row">
+				<div class="col-lg-6 directions1">
+				    <a class="lifelens-cta callback-prev">Previous</a>
+					<button class="talkToUsSubmit lifelens-cta submit">Submit</button>
+				</div>
+				<div class="col-lg-6 directions2">
+					<button type="submit" class="talkToUsSubmit lifelens-cta submit">Submit</button>
+					<a class="lifelens-cta callback-prev">Previous</a>
+				</div>
+			</div>
+	</div>
+	
+	<!-- ************************************** THANK YOU SCREEN ***************************************** -->
+	<div class="container" id="thanks-screen">
+				
+            <div class="row">			
+				 <div class="sub-heading-step-last col-lg-12 col-md-12 col-xs-12">
+				 <p style="color:#5261ac;float:left">Thanks for getting in touch</p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				    <img class="logoImg" src="css/logo.jpg">
+				    <p style="font-size:16px">
+			        One of our advisors will call you tomorrow between <strong><span id="callTime"></span></strong>.
+					<br/>
+					We look forward to talking to you then.
+					<br/>
+					<br/>
+					<span class="reminder">A reminder has been emailed to you</span>&nbsp;&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</p>
+			    </div>
+			</div>	 	 
+			<div class="row">			
+				 <div class="sub-heading-step-last col-lg-12 col-md-12 col-xs-12">
+				 <p style="color:#5261ac;float:left">Additional Information</p>
+				 </div> 
+			</div>
+			<div class="row">
+			     <div class="col-lg-12 col-md-12 col-xs-12 sub-heading">
+				    <p style="font-size:16px">
+					Talk to your broker or financial advisor
+					<br/>
+					 <a href="https://www.irishlife.ie/financial-advice/financial-planning/find-a-financial-advisor" class="lifelens-cta find-out-more">Find out more</a>
+					</p>
+				
+			    </div>
+			</div>
+	</div>
+   
+    <script src="https://www.irishlife.ie/servlet/occupationDataSelect.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/chosen.jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+	<script type="text/javascript"  src="js/knob.js"></script>
+	<script type="text/javascript" src="https://www.irishlife.ie/sites/retail/files/lifelens/browser-check.js"></script>
+	<script type="text/javascript" src="/sites/all/modules/javascript/js/mk.js?okph7w"></script>
+	<script type="text/javascript"  src="js/familyProtection.js"></script>
+	
+	<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('450-GHO-121', {"wsInfo":"j1RQ"});
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,467 @@
+ /* -----------------------------------------
+   Universal Styles for Desktop and everything
+   else that is not tablet or phone
+----------------------------------------- */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+.row{
+background-color:transparent;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Open Sans', sans-serif;
+}
+body{
+
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/top-line-border.png");
+background-repeat:repeat-x;
+}
+.headerRow{
+position:relative;
+top:0px;
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-sky-1400.jpg");
+height:480px;
+color:#fff;
+}
+.headerRow h1,.headerRow h2,.headerRow h3,.headerRow h4{
+font-family: 'Open Sans', sans-serif;
+color:#fff;
+
+text-shadow: 0px -1px 4px rgba(0, 0, 0, 0.64);
+}
+.topLogo{
+padding:2em 0em 4em 0em;
+}
+
+.menuRow {
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/top-line-border.png");
+background-repeat:repeat-x;
+background-color:#edeaed;
+}
+.menuList{
+margin:0px;
+}
+.menuList li{
+text-transform: uppercase;
+padding: 0 0 0 0;
+line-height:77px;
+margin-left:0.6em;
+
+}
+#small-menu li.active a, #small-menu li a:hover, .menuList li.active a,.menuList li a:hover{
+background-color: #435399;
+color:#fff;
+  -webkit-transition: background-color 0.4s;
+-moz-transition:background-color 0.4s;
+-ms-transition:background-color 0.4s;
+-o-transition: background-color 0.4s;
+transition: background-color 0.4s;
+
+  -webkit-transition: color 0.2s;
+-moz-transition:color 0.2s;
+-ms-transition:color 0.2s;
+-o-transition: color 0.2s;
+transition: color 0.2s;
+text-decoration:none;
+
+}
+#small-menu li a, .menuList li a{
+
+
+color:#747476;
+font-size:0.8em;
+font-weight:bold;
+padding: 10px;
+display: inline;
+
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+}
+.brightContentRow{
+padding-top:50px;
+padding-bottom:50px;
+}
+.brightContentRow h1,.brightContentRow h2,.brightContentRow h3,.brightContentRow h4,.brightContentRow h5,.brightContentRow h6{
+color:#d5d9e8;
+}
+.brightContentRow,.brightContentRow .row{
+background-color:#435399;
+color:#fff;
+text-align:center;
+}
+
+
+.secondContentRow{
+padding-top:50px;
+padding-bottom:50px;
+}
+.secondContentRow h1,.secondContentRow h2,.secondContentRow h3,.secondContentRow h4,.secondContentRow h5,.secondContentRow h6{
+color:#c7edf7;
+}
+.secondContentRow,.secondContentRow .row{
+background-color:#00aedc;
+color:#fff;
+text-align:center;
+}
+
+.lightContentRow{
+padding-top:50px;
+padding-bottom:50px;
+background-color:#efefef;
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/bg-paper.png");
+border-top:1px solid #efefef;
+border-bottom:1px solid #efefef;
+}
+.lightContentRow h1,.lightContentRow h2,.lightContentRow h3,.lightContentRow h4,.lightContentRow h5,.lightContentRow h6{
+color:#333;
+}
+
+
+.justifyText{
+text-align:justify;
+}
+.leftText{
+text-align:left;
+}
+.centerText{
+text-align:center;
+}
+
+.darkText{
+color:#000 !important;
+text-shadow:0px 0px 0px rgba(255, 255, 255, 0) !important;
+}
+
+.newsIcon img{
+padding:10px;
+background-color:#fff;
+-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+-webkit-border-radius: 9999px;
+-moz-border-radius: 9999px;
+border-radius: 9999px;
+width: 200px;
+height: 200px;
+display: block;
+}
+
+
+.defaultContentRow{
+padding-top:50px;
+padding-bottom:50px;
+color:#747476;
+}
+
+.defaultContentRow h1,.defaultContentRow h2,.defaultContentRow h3,.defaultContentRow h4,.defaultContentRow h5,.defaultContentRow h6{
+color:#333;
+}
+
+
+.stockContentRow h1,.stockContentRow h2,.stockContentRow h3,.stockContentRow h4,.stockContentRow h5{
+color:#fff;
+}
+
+
+.stockContentRow{
+padding-top:100px;
+background-position:bottom center;
+position:relative;
+top:0px;
+height:250px;
+color:#fff;
+}
+
+.stockCR1{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-1-1400.jpg");
+}
+.stockCR2{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-2-1400.jpg");
+}
+.stockCR3{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-7-1400.jpg");
+}
+.stockCR4{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-6-1400.jpg");
+}
+.stockCR5{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-9-1400.jpg");
+}
+.stockCR6{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/page-banner-10-1400.jpg");
+
+}
+.meetPhoto{
+width: 500px;
+padding: 50px;
+margin: 0 auto;
+background-color: #fff;
+-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.meetTeam img{
+padding:10px;
+-webkit-box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.18);
+-moz-box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.18);
+box-shadow: 01px 1px 6px 0px rgba(0, 0, 0, 0.18);
+background-color:#fff;
+}
+.meetTeam h4{
+}
+.meetTeam h6{
+}
+
+
+.pageHeaderRow{
+padding-top:50px;
+background-position:bottom center;
+position:relative;
+top:0px;
+height:250px;
+background-size: 100%;
+color:#fff;background-size:cover;
+}
+.aboutHeader{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/home-banner-about-1400.jpg");
+}
+.newsHeader{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-news-1400.jpg");
+}
+.libraryHeader{ /* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-library-1400.jpg"); 
+}
+.toolsHeader{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-tools-1400.jpg");
+}
+.broker360Header{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-broker-360-1400.jpg");
+}
+.fundsHeader{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-funds-1400.jpg");
+}
+.pageHeaderRow h1,.pageHeaderRow h2,.pageHeaderRow h3,.pageHeaderRow h4,.pageHeaderRow h5,.pageHeaderRow h6{
+color:#fff;text-shadow: 0px -1px 4px rgba(0, 0, 0, 0.64);
+}
+.pageHeaderRow h1{
+font-size:3em;
+padding:0px;
+margin:0px;
+}
+.quoteText{
+
+font-size:1.2em;
+}
+
+navbar .btn-navbar .icon-bar {
+display: block;
+width: 18px;
+height: 2px;
+background-color: #f5f5f5;
+-webkit-border-radius: 1px;
+-moz-border-radius: 1px;
+border-radius: 1px;
+-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+/* -----------------------------------------
+   tabletish size
+----------------------------------------- */
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+
+.stockContentRow{
+padding-top:20px;
+background-position:bottom center;
+position:relative;
+top:0px;
+height:200px;
+color:#fff;
+}
+
+.menuList li{
+margin-left:0.01em;
+
+}
+.stockCR1{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-1-1024.jpg");
+}
+.stockCR2{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-2-1024.jpg");
+}
+.stockCR3{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-7-1024.jpg");
+}
+.stockCR4{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-6-1024.jpg");
+}
+.stockCR5{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-9-1024.jpg");
+}
+.stockCR6{
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/page-banner-10-1024.jpg");
+
+}
+.f-dropdown li{
+	font-size:inherit;
+}
+	.headerRow{
+	position:relative;
+	top:5px;
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-sky-1024.jpg");
+	height:295px;
+	color:#fff;
+	}
+	h1, h2, h3, h4, h5, h6 {
+
+	margin-top: 0.2em;
+	margin-bottom: 0.5em;
+	line-height: 1.2125em;
+	}
+	
+	.pageHeaderRow h1, h1{
+	font-size:2em;
+	}
+	.pageHeaderRow h2, h2{
+	font-size:1.6875em;
+	}
+	.pageHeaderRow h3, h3{
+	font-size:1.375em;
+	}
+	.pageHeaderRow h4, h4{
+	font-size:1.125em;
+	}
+	.pageHeaderRow h5, h5{
+	font-size:1.125em;
+	}
+	.pageHeaderRow h6, h6{
+	font-size:1.125em;
+	}
+	.pageHeaderRow{
+		padding-top:30px;
+		height:200px;
+	}
+	.headerRow{
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-sky-1024.jpg");
+	
+	}
+	.aboutHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/home-banner-about-1024.jpg");
+	}
+	.newsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-news-1024.jpg");
+	}
+	.libraryHeader{ /* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-library-1024.jpg"); 
+	}
+	.toolsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-tools-1024.jpg");
+	}
+	.broker360Header{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-broker-360-1024.jpg");
+	}
+	.fundsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-funds-1024.jpg");
+	}
+}
+
+
+
+/* -----------------------------------------
+   smaller and phone
+----------------------------------------- */
+@media only screen and (max-width: 767px) { 
+	.stockContentRow{
+	padding-top:10px;
+	background-position:bottom center;
+	position:relative;
+	top:0px;
+	height:100px;
+	color:#fff;
+	background-size: 100%;
+	}
+
+	.stockCR1{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-1-767.jpg");
+	}
+	.stockCR2{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-2-767.jpg");
+	}
+	.stockCR3{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-7-767.jpg");
+	}
+	.stockCR4{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-6-767.jpg");
+	}
+	.stockCR5{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/page-banner-9-767.jpg");
+	}
+	
+.stockCR6{/* done */
+background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/page-banner-10-767.jpg");
+
+}
+.f-dropdown li{
+	font-size:inherit;
+}
+	h1, h2, h3, h4, h5, h6 {
+	margin-top: 0.1em;
+	margin-bottom: 0.3em;
+	line-height: 1.125em;
+	}
+	
+	.pageHeaderRow h1, h1{
+	font-size:1.7em;
+	}
+	.pageHeaderRow h2, h2{
+	font-size:1.6875em;
+	}
+	.pageHeaderRow h3, h3{
+	font-size:1.375em;
+	}
+	.pageHeaderRow h4, h4{
+	font-size:1.125em;
+	}
+	.pageHeaderRow h5, h5{
+	font-size:1.125em;
+	}
+	.pageHeaderRow h6, h6{
+	font-size:1.125em;
+	}
+	.topLogo{
+	padding:0.2em 0em .4em 0em;
+	}
+	.pageHeaderRow{
+		padding-top:10px;
+		height:150px;
+	}
+	.headerRow{
+	position:relative;
+	top:5px;
+	height:220px;
+	color:#fff;
+	}
+	.headerRow{
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-sky-767.jpg");
+	}
+
+	.aboutHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/foundation_responsive/img/home-banner-about-767.jpg");
+	}
+	.newsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-news-767.jpg");
+	}
+	.libraryHeader{ /* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-library-767.jpg"); 
+	}
+	.toolsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-tools-767.jpg");
+	}
+	.broker360Header{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-broker-360-767.jpg");
+	}
+	.fundsHeader{/* done */
+	background-image:url("http://www.bline.ie/uploadedImages/bline/2012/Investments_and_Savings/MAPS/home-banner-funds-767.jpg");
+	}
+
+}

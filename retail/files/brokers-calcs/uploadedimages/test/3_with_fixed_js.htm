@@ -1,0 +1,614 @@
+
+
+
+<html><head><title>Irish Life - Help Desk  1850 29 89 89</title><noscript><META HTTP-EQUIV="refresh" CONTENT="1; URL=epos/html/nojavascript.html"></noscript><link rel="stylesheet" href="css/pos.css" type="text/css"><meta http-equiv="X-UA-Compatible" content="IE=7"><script> var EXIT_FORM_NAME; var EXIT_REQUEST_TYPE; var DEFAULT_REQUEST_TYPE; var INFORM_INFO_LOST;var IS_NONDISPLAY_CLIENT_APP = false;var IMAGES_URL_PATH = "epos/images/";var SUBMIT_INTERVAL = "30000";var CONFIRM_EXIT_URL = "ConfirmExit.jsp";</script><script src="cleaned_javascript/1231761576126page_initial.js"></script><script src="cleaned_javascript/1231761576126epos_utilities.js"></script> <script src="cleaned_javascript/1231761576126exit_script.js"></script> <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"><script>function checkLayers() {  document.bgColor = "#ffffff";}</script></head><body class="midBackground" text=#000000 link=#0000cc vlink=#551A8B alink=#ff0000 onResize="checkLayers()" topmargin="0" leftmargin="0">  <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p align="center" class="formLoadingText">Loading application form please wait ........</p> 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<noscript>
+
+<META HTTP-EQUIV="refresh" CONTENT="1; URL=epos/html/nojavascript.html">
+</noscript>
+
+
+
+<link rel="stylesheet" href="css/pos.css" type="text/css">
+
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+
+
+
+
+
+
+<script>
+
+
+
+    var EXIT_FORM_NAME;
+    var EXIT_REQUEST_TYPE;
+    var DEFAULT_REQUEST_TYPE;
+    var INFORM_INFO_LOST;
+
+
+
+
+var IS_NONDISPLAY_CLIENT_APP = false;
+
+
+
+var IMAGES_URL_PATH = "epos/images/";
+
+
+var SUBMIT_INTERVAL = "30000";
+
+
+
+	var CONFIRM_EXIT_URL = "confirmSelection.jsp";
+
+
+</script>
+
+
+
+
+<script src="cleaned_javascript/1231761576126page_initial.js"></script>
+
+
+<script src="cleaned_javascript/1231761576126epos_utilities_edited.js"></script>
+
+
+
+	
+	    <script src="cleaned_javascript/1231761576126pageMenu_script.js"></script>
+    
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+var isHiddenPersProposerTitleCd = false; var isHiddenPersProposerInsurableInterestCd = false;
+var isHiddenOtherDisabilityBenefitEntitlementAmt = false;
+var isHiddenOtherDisabilityBenefitEntitlementProviderTxt = false;
+var isHiddenOtherDisabilityBenefitEntitlementContinueCd = false;
+
+
+</script>
+
+
+
+
+
+<script src="cleaned_javascript/1231761576126validate.js">
+</script>
+
+
+
+<script src="cleaned_javascript/1231761576126app_PersonalDetails.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_PolicyDetails_FurtherInfo.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_BenefitDetails.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_FundOptions.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_RegularIncome.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_Premiums_Pay_Admin.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_EmployerDetails.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_AdminDetails.js">
+</script>
+<script src="cleaned_javascript/1231761576126app_TrustInfo.js">
+</script>
+
+
+
+
+<script src="cleaned_javascript/1231761576126mandatory.js">
+</script>
+
+<script language="javascript">
+
+
+var appInterval;
+
+function doAppInterval()
+{
+    
+
+    appInterval = setInterval("document.forms[0].submitted=false;",
+                                   SUBMIT_INTERVAL);
+}
+
+var appForm = document; var appLayer = document;
+var bLoaded = false; var firstErrorField = "";
+
+var sCountryOptions = "";
+var sLife1BirthCountryVal = "";
+var sLife2BirthCountryVal = "";
+
+var sLife1Occ1Val = "";
+var sLife2Occ1Val = "";
+
+var IN_APP_FORM = true; var isErrorAppForm = false; var isExceptionMsgAppForm;
+var isNonDisplayPrepopErrorAppForm; var hiddenFieldsNonHiddenType = new Array();
+var isRegularPremMand = false;
+
+var numColsParentTable = -1;
+
+window.onload = body_Load;
+
+function body_Load() {
+    
+    bLoaded = true;
+    document.bgColor = '#ffffff';
+
+    var theAppForm = document.forms['ApplicationForm'];
+
+     
+
+    
+    if ( firstErrorField != "" )
+    {
+        isErrorField = true;
+
+        if(theAppForm[firstErrorField])
+        {
+            var errorField = theAppForm[firstErrorField];
+
+            if (errorField.type == 'text' || errorField.type == 'select-one')
+                firstFocusField = errorField;
+            else if (errorField.length > 0)
+            {
+                if (errorField[0].type == 'radio')
+                    firstFocusField = errorField[0];
+            }
+        }
+        firstErrorField = ""; 
+    }
+    else
+    {
+        for ( var i = 0; i < theAppForm.length; i++ )
+        {
+            if ( theAppForm[i].type != "hidden" && theAppForm[i].isDisabledMode != true )
+            {
+                firstFocusField = theAppForm[i];
+                break;
+            }
+        }   
+    }
+
+    if ( firstFocusField != null )
+        setFirstFocusField();
+
+    
+    
+
+
+
+var isExceptionMessage = false;
+
+var isNonDisplayClientApp = false;
+
+var isNonDisplayPrepopulatedError = false;
+
+var isPasswordExpiringSoon = false;
+
+
+
+    
+
+    var iposnTop = (screen.availHeight - 300) / 2;
+    var iposnLeft = (screen.availWidth - 400) / 2;
+
+    if ( isNonDisplayPrepopulatedError )
+    {
+        window.open(
+            "posMessagePopup.jsp?posMessage=", 
+            "ExceptionMessageWindow", 
+            "resizable=no,width=400,height=300,top=" + iposnTop + ",left=" + iposnLeft);
+    }
+    
+    else if ( isExceptionMessage && isNonDisplayClientApp && (IN_APP_FORM && IN_APP_FORM == true) )
+    {
+        var popupMessageURL;
+
+        
+                popupMessageURL = 
+                "posMessagePopup.jsp?posMessage=Unable+to+start+underwriting.+Please+contact+the+help+desk+on+1850+29+89+89."; 
+            
+
+            window.open(
+                popupMessageURL, 
+                "ExceptionMessageWindow", 
+                "resizable=no,width=400,height=300,top=" + iposnTop + ",left=" + iposnLeft);
+    }
+    else if ( isExceptionMessage )
+    {
+        window.open(
+            "exceptionMessagePopup.jsp", 
+            "ExceptionMessageWindow", 
+            "resizable=no,width=400,height=300,top=" + iposnTop + ",left=" + iposnLeft);
+    }
+    else if ( isPasswordExpiringSoon )
+    {
+            
+            popupMessageURL = "posMessagePopup.jsp?posMessage=Your+password+will+expire+in+null+days+time.";
+
+            window.open(
+                popupMessageURL, 
+                "ExceptionMessageWindow", 
+                "resizable=no,width=400,height=300,top=" + iposnTop + ",left=" + iposnLeft);
+    }
+
+
+
+    isExceptionMsgAppForm = isExceptionMessage;
+    isNonDisplayPrepopErrorAppForm = isNonDisplayPrepopulatedError;
+
+    if ( isExceptionMsgAppForm || isNonDisplayPrepopErrorAppForm )
+    {
+        isErrorAppForm = true;
+    }
+
+    
+    if ( isErrorAppForm )
+    {
+		var theImages = document.all;
+		
+        if (theImages)
+            theImages.NEXT.src="epos/images/next_disabled.gif";
+    }
+
+    
+    
+
+
+        <!-- provide pre compliance pop up reminder -->
+        
+                
+
+                var iposnTop = (screen.availHeight - 450) / 2;
+                var iposnLeft = (screen.availWidth - 350) / 2;
+
+                
+              
+
+
+    if ( !isErrorAppForm )
+        isValidate = true;
+    else
+        isValidate = false;
+}
+
+function noClick()
+{return false;}
+
+</script>
+
+
+
+<script language="JavaScript">
+
+EXIT_FORM_NAME = "ApplicationForm";
+
+EXIT_REQUEST_TYPE = "ExitToStart";
+
+
+DEFAULT_REQUEST_TYPE  = "ValidateNonUnderwritingQuestions";
+
+
+
+</script>
+
+
+            
+            
+            
+    
+			
+			
+			
+	
+ 
+
+
+
+
+
+
+
+            
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+          
+
+          
+
+
+
+
+
+
+
+
+
+
+
+<div class="topDiv" id="topOfDocID"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="bodyBackground">  <tr>  <td width="679"><img src="epos/images/eposdefaultlogo.gif"  alt=""></td>   <td rowspan="2" valign="top"><img src="epos/images/epossellerlogo.gif"  alt="" align="right" width="100" height="64"></td> </tr>  <tr> <td width="679"><img src="epos/images/atProductproposal.gif"><img src="epos/images/endOfProductSelector.gif"></td> </tr> <tr> <td colspan="2"><img align="top" width="100%" height="1" src="epos/images/blackline.gif"></td> </tr> </table><div class="bodyBackground"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="bodyBackground"><tr class="bodyBackground"><td width="6%">&nbsp;</td><td align="right" width="94%"><form action="/pointofsale/POSRequestProcessor" method="POST" name="ApplicationForm" enctype="application/x-www-form-urlencoded" onsubmit="if (isFormAlreadySubmitted() || isErrorAppForm) {return false;} else {if (validateApplication(this)) {this.submitted=true;doAppInterval();return true;} else return false;}"  Autocomplete="off"> <input type="hidden" name="RequestTypeName" value="ValidateNonUnderwritingQuestions"> <input type="hidden" name="performExit" value="0"> <input type="hidden" name="enterDefault"> <input type="hidden" name="userid" value="S919BANC"> <table width="100%" cellpadding="4" cellspacing="0" border="0" class="paleBackground">  <tr class="bodyBackground"> <td width="15" height="1"> <img src="epos/images/spacer.gif" width="12" height="1" border="0"></td> <td width="50%"> <img src="epos/images/spacer.gif" width="320" height="1" border="0"></td> <td width="15" height="1"> <img src="epos/images/spacer.gif" width="12" height="1" border="0"></td> <td width="50%"> <img src="epos/images/spacer.gif" width="320" height="1" border="0"></td> <td width="6"> <img src="epos/images/spacer.gif" width="4" height="1" border="0"></td> </tr>  <tr>  <td colSpan="5" class="mainheading">   Life Cash Cover (Rider) </td> </tr> <script>  addToMandatory("life1TitleCd");addToMandatory("life1ForeName");addToMandatory("life1SurName");addToMandatory("life1BirthDtDay");addToMandatory("life1BirthDtMonth");addToMandatory("life1BirthDtYear");addToMandatory("life1SexCd");addToMandatory("life1MaritalStatusCd");addToMandatory("life1AddressLine1Txt");addToMandatory("life1AddressLine2Txt");addToMandatory("life1CountryOfBirthTxt");addToMandatory("life1Occupation1Cd");addToMandatory("life1SalaryAmt");addToMandatory("life1SmokerCd");  numColsParentTable = 5; </script><script language="javascript">sCountryOptions = '<option value="Ireland">Ireland<option value="Afghanistan">Afghanistan<option value="Albania">Albania<option value="Algeria">Algeria<option value="Andorra">Andorra<option value="Angola">Angola<option value="Anguilla">Anguilla<option value="Antigua and Barbuda">Antigua and Barbuda<option value="Argentina">Argentina<option value="Armenia">Armenia<option value="Ascension Island">Ascension Island<option value="Australia">Australia<option value="Austria">Austria<option value="Azerbaijan">Azerbaijan<option value="Bahamas">Bahamas<option value="Bahrain">Bahrain<option value="Bangladesh">Bangladesh<option value="Barbados">Barbados<option value="Belarus">Belarus<option value="Belgium">Belgium<option value="Belize">Belize<option value="Benin">Benin<option value="Bermuda">Bermuda<option value="Bhutan">Bhutan<option value="Bolivia">Bolivia<option value="Bosnia and Herzegovina">Bosnia and Herzegovina<option value="Botswana">Botswana<option value="Brazil">Brazil<option value="Brunei Darussalam">Brunei Darussalam<option value="Bulgaria">Bulgaria<option value="Burkina Faso">Burkina Faso<option value="Burundi">Burundi<option value="Cameroon">Cameroon<option value="Canada">Canada<option value="Cape Verde">Cape Verde<option value="Casamance">Casamance<option value="Cayman Islands">Cayman Islands<option value="Central African Republic">Central African Republic<option value="Chad">Chad<option value="Chechnya">Chechnya<option value="Chile">Chile<option value="China">China<option value="Colombia">Colombia<option value="Comoros">Comoros<option value="Congo">Congo<option value="Costa Rica">Costa Rica<option value="Croatia">Croatia<option value="Cuba">Cuba<option value="Cyprus">Cyprus<option value="Czech Republic">Czech Republic<option value="Democratic Republic of the Congo">Democratic Republic of the Congo<option value="Denmark">Denmark<option value="Djibouti">Djibouti<option value="Dominica">Dominica<option value="Dominican Republic">Dominican Republic<option value="Ecuador">Ecuador<option value="Egypt">Egypt<option value="Eire">Eire<option value="El Salvador">El Salvador<option value="Equatorial Guinea">Equatorial Guinea<option value="Eritrea">Eritrea<option value="Estonia">Estonia<option value="Ethiopia">Ethiopia<option value="Faeroe Islands">Faeroe Islands<option value="Falkland Islands">Falkland Islands<option value="Fiji">Fiji<option value="Finland">Finland<option value="France">France<option value="French Guiana">French Guiana<option value="French Polynesia">French Polynesia<option value="Gabon">Gabon<option value="Gambia">Gambia<option value="Georgia">Georgia<option value="Germany">Germany<option value="Ghana">Ghana<option value="Gibraltar">Gibraltar<option value="Greece">Greece<option value="Greenland">Greenland<option value="Grenada">Grenada<option value="Guadeloupe">Guadeloupe<option value="Guatemala">Guatemala<option value="Guinea">Guinea<option value="Guinea Bissau">Guinea Bissau<option value="Guyana">Guyana<option value="Haiti">Haiti<option value="Honduras">Honduras<option value="Hong Kong">Hong Kong<option value="Hungary">Hungary<option value="Iceland">Iceland<option value="India">India<option value="Indonesia">Indonesia<option value="Iran">Iran<option value="Iraq">Iraq<option value="Israel">Israel<option value="Italy">Italy<option value="Ivory Coast">Ivory Coast<option value="Jamaica">Jamaica<option value="Japan">Japan<option value="Jordan">Jordan<option value="Kampuchea">Kampuchea<option value="Kazakhstan">Kazakhstan<option value="Kenya">Kenya<option value="Kiribati">Kiribati<option value="Kuwait">Kuwait<option value="Kyrgyzstan">Kyrgyzstan<option value="Laos">Laos<option value="Latvia">Latvia<option value="Lebanon">Lebanon<option value="Lesotho">Lesotho<option value="Liberia">Liberia<option value="Libya">Libya<option value="Liechtenstein">Liechtenstein<option value="Lithuania">Lithuania<option value="Luxembourg">Luxembourg<option value="Macao">Macao<option value="Macedonia">Macedonia<option value="Madagascar">Madagascar<option value="Madeira">Madeira<option value="Malawi">Malawi<option value="Malaysia">Malaysia<option value="Maldives">Maldives<option value="Mali">Mali<option value="Malta">Malta<option value="Marshall Islands">Marshall Islands<option value="Martinique">Martinique<option value="Mauritania">Mauritania<option value="Mauritius">Mauritius<option value="Mexico">Mexico<option value="Micronesia">Micronesia<option value="Moldova">Moldova<option value="Monaco">Monaco<option value="Mongolia">Mongolia<option value="Montserrat">Montserrat<option value="Morocco">Morocco<option value="Mozambique">Mozambique<option value="Myanmar">Myanmar<option value="Namibia">Namibia<option value="Nauru">Nauru<option value="Nepal">Nepal<option value="Netherlands">Netherlands<option value="New Caledonia">New Caledonia<option value="New Zealand">New Zealand<option value="Nicaragua">Nicaragua<option value="Niger">Niger<option value="Nigeria">Nigeria<option value="North Korea">North Korea<option value="Northern Ireland">Northern Ireland<option value="Northern Marianas">Northern Marianas<option value="Norway">Norway<option value="Oman">Oman<option value="Pakistan">Pakistan<option value="Palau">Palau<option value="Palestine">Palestine<option value="Panama">Panama<option value="Papua New Guinea">Papua New Guinea<option value="Paraguay">Paraguay<option value="Peru">Peru<option value="Philippines">Philippines<option value="Poland">Poland<option value="Portugal">Portugal<option value="Puerto Rico">Puerto Rico<option value="Qatar">Qatar<option value="Reunion">Reunion<option value="Romania">Romania<option value="Russia">Russia<option value="Rwanda">Rwanda<option value="Samoa">Samoa<option value="San Marino">San Marino<option value="Sao Tome and Principe">Sao Tome and Principe<option value="Saudi Arabia">Saudi Arabia<option value="Scotland">Scotland<option value="Senegal">Senegal<option value="Serbia and Montenegro">Serbia and Montenegro<option value="Seychelles">Seychelles<option value="Sierra Leone">Sierra Leone<option value="Singapore">Singapore<option value="Slovakia">Slovakia<option value="Slovenia">Slovenia<option value="Solomon Islands">Solomon Islands<option value="Somalia">Somalia<option value="South Africa">South Africa<option value="South Korea">South Korea<option value="Spain">Spain<option value="Sri Lanka">Sri Lanka<option value="St Helena">St Helena<option value="St Kitts and Nevis">St Kitts and Nevis<option value="St Lucia">St Lucia<option value="St Martin">St Martin<option value="Sudan">Sudan<option value="Suriname">Suriname<option value="Swaziland">Swaziland<option value="Sweden">Sweden<option value="Switzerland">Switzerland<option value="Syria">Syria<option value="Tajikistan">Tajikistan<option value="Tanzania">Tanzania<option value="Thailand">Thailand<option value="Tibet">Tibet<option value="Togo">Togo<option value="Tonga">Tonga<option value="Trinidad and Tobago">Trinidad and Tobago<option value="Tunisia">Tunisia<option value="Turkey">Turkey<option value="Turkmenistan">Turkmenistan<option value="Turks and Caicos Islands">Turks and Caicos Islands<option value="Tuvalu">Tuvalu<option value="Uganda">Uganda<option value="Ukraine">Ukraine<option value="United Arab Emirates">United Arab Emirates<option value="United Kingdom">United Kingdom<option value="Uruguay">Uruguay<option value="USA">USA<option value="Uzbekistan">Uzbekistan<option value="Vanuatu">Vanuatu<option value="Venezuela">Venezuela<option value="Vietnam">Vietnam<option value="Virgin Islands">Virgin Islands<option value="Wake Island">Wake Island<option value="Wales">Wales<option value="Western Sahara">Western Sahara<option value="Western Samoa">Western Samoa<option value="Yemen">Yemen<option value="Yugoslavia">Yugoslavia<option value="Zambia">Zambia<option value="Zimbabwe">Zimbabwe'; sLife1BirthCountryVal = "";sOccupationOptions = '<option value="10173">AA Patrolman<option value="10174">Abattoir Inspector<option value="10175">Accountant<option value="11408">accounts assistant<option value="10176">Accounts Clerk<option value="10177">Actor<option value="10178">Actress<option value="10179">Actuary<option value="10180">Acupuncturist<option value="10181">Administration Manager<option value="10182">Administration Worker<option value="10183">Adult Education Teacher<option value="10184">Advertising Consultant<option value="10185">Advertising Designer<option value="10186">Advertising Salesperson<option value="10187">Aerial Erector<option value="10188">Aerial Photographer<option value="10189">Aerial Rigger<option value="10190">Aerobics Instructor<option value="10191">Aeroplane Maintenance Technician<option value="10192">Agricultural Advisor<option value="10193">Agricultural Contractor<option value="10194">Agricultural Worker<option value="10195">Agriculturist<option value="10196">AI Man<option value="10197">Air Conditioning Engineer<option value="10198">Air Hostess<option value="10199">Air Steward<option value="10200">Air Traffic Controller<option value="10201">Aircraft Engineer<option value="10202">Aircraft Mechanic/Fitter<option value="10203">Aircraft Pilot (Commercial)<option value="10204">Airline baggage handler<option value="10205">Airline Executive<option value="10206">Airline Ground Staff<option value="10207">Airline Pilot<option value="10208">Airlines - Cabin Crew<option value="10209">Airlines - Flying Crew<option value="10210">Airport Police<option value="10211">Ambulance Driver<option value="10212">Ambulance Paramedic<option value="10213">Anaesthetist<option value="10214">Analyst Programmer<option value="10215">Animator<option value="10216">Antique Dealer<option value="10217">Archaeologist<option value="10218">Architect<option value="10219">Architectural Engineer<option value="10220">Architectural Technician<option value="11301">Architectural Technologist<option value="10221">Area Sales Manager<option value="10222">Army (Irish)<option value="11481">Army Ranger<option value="10223">Aromatherapist<option value="10224">Art Dealer<option value="10225">Art Director<option value="10226">Art Gallery Attendant<option value="10227">Artificial Inseminator<option value="10228">Artist<option value="11305">Arts Officer<option value="10229">Asbestos Worker<option value="10230">Assembly Line Worker - Heavy Manual<option value="10231">Assembly Line Worker - Light Manual<option value="10232">Assessor<option value="11401">assistant bank manager<option value="10233">Assistant Hotel Manager<option value="10234">Assistant Manager (Retail)<option value="10235">Astrologer<option value="10236">Astronomer<option value="10237">Attorney<option value="10238">Au Pair<option value="10239">Auctioneer<option value="10240">Audio Engineer<option value="10241">Audio Typist<option value="10242">Auditor<option value="10243">Author<option value="10245">Aviation Engineer (Commercial)<option value="10244">Aviation Engineer (Irish Army)<option value="10246">B&B Proprietor<option value="10247">Baggage Handler<option value="10248">Bailiff<option value="10249">Baker<option value="10250">Bakery Worker<option value="10251">Bank Manager<option value="10252">Bank Official<option value="10253">Bank Secretary<option value="10254">Banker<option value="10255">Bar Manager<option value="10256">Barber<option value="10257">Barman/Barmaid<option value="10258">Barrelman<option value="10259">Barrister<option value="10260">Beautician<option value="10261">Beauty Consultant<option value="10262">Beekeeper<option value="10263">Benefit Assessor<option value="10264">Betting Office Clerk<option value="10265">Betting Office Manager<option value="10266">Binman<option value="10267">Biochemist<option value="10268">Biological Researcher<option value="10269">Biologist<option value="10270">Blacksmith<option value="10271">Blind Maker<option value="11441">blocklayer<option value="10272">Boatbuilder<option value="10273">Bodyguard<option value="10274">Boiler<option value="10275">Boiler Worker<option value="10276">Bomb Disposal Worker<option value="10277">Boner<option value="10278">Book Binder<option value="10279">Book Shop Manager<option value="10280">book Shop Owner<option value="10281">Book-Keeper<option value="10282">Bookmaker (On Course)<option value="10283">Bookmaker (Shop)<option value="10284">Bouncer<option value="10285">Boutique Manager<option value="10286">Boutique Owner<option value="10287">Box Office Clerk<option value="10288">Box Office Manager<option value="10289">Branch Manager<option value="10290">Bread Baker<option value="10291">Bread Roundsman<option value="10292">Brewery Manager<option value="10293">Brewery Worker<option value="10294">BrickLayer<option value="10295">Bridge Builder<option value="10296">Bridge Worker<option value="10297">Broadcaster<option value="10298">Broker (Insurance)<option value="10299">Broker Consultant<option value="10300">Brokerage Manager<option value="10301">Builder<option value="10302">Builder Labourer<option value="10303">Building Contractor - Manual Work<option value="10304">Building Contractor - No Manual Work<option value="10305">Building Foreman<option value="10306">Building Inspector<option value="10307">Building Site Foreman<option value="10308">Building Society Clerk<option value="10309">Building Society Executive<option value="10310">Building Society Manager<option value="10311">Building Surveyor<option value="10312">Bulldozer Driver<option value="10313">Bus Conductor<option value="10314">Bus Driver<option value="10315">Bus Inspector<option value="10316">Business Administrator<option value="10317">Business Analyst<option value="10318">Business Consultant<option value="10319">Business Manager<option value="10320">Business Research Analyst<option value="10321">Butcher - No Slaughtering<option value="10322">Butcher - Slaughtering<option value="10323">Butler<option value="11181">Buyer<option value="10325">Cab Driver<option value="10326">Cabin Crew (Commercial)<option value="10327">Cabinet Maker<option value="10328">Cable Hand<option value="10329">Cable Layer<option value="10330">Cable TV Engineer<option value="10331">Cafe Proprietor<option value="10332">Cafe Worker<option value="11469">call centre worker<option value="10333">Calligrapher<option value="10334">Cameraman (Films Television)<option value="10335">Cameraman (Journalism)<option value="10336">Canal Inspector<option value="10337">Candle Maker<option value="10338">Canteen Cashier<option value="10339">Canteen Manager<option value="10340">Canteen Worker<option value="10341">Captain (Merchant Marine)<option value="10342">Captain Aviation (Commercial)<option value="10343">Car Assembly Line Worker<option value="10344">Car Body Repairer<option value="10345">Car Dealer<option value="10346">Car Mechanic<option value="10347">Car Paint Sprayer<option value="10348">Car Park Attendant<option value="10349">Car Salesperson<option value="10350">Car Valeter<option value="10351">Cardiologist<option value="10352">Cardiovascular Surgeon<option value="11444">Care assistant<option value="10353">Care Worker<option value="10354">Careers Advisor<option value="10355">Careers Consultant<option value="10356">Caretaker<option value="10357">Cargo Checker<option value="10358">Cargo Reservation Clerk<option value="10359">Cargo Superintendent<option value="10360">Carpenter<option value="10361">Carpet Layer/Fitter<option value="10362">Carpet Retailer<option value="10363">Cartographer<option value="10364">Carton Machine Minder<option value="10365">Cartoonist<option value="10366">Cash Room Assistant<option value="10367">Cash Room Manager<option value="10368">Cash Room Supervisor<option value="10369">Cashier<option value="11470">cashier (office/bank/building society)<option value="10370">Catalogue Compiler<option value="10371">Caterer<option value="10372">Catering Consultant<option value="10373">Catering Officer (Other)<option value="10374">Catering Staff (Oil/Gas Rigs)<option value="10375">Catering Worker<option value="10376">Ceiling Fitter<option value="10377">Cellar Worker<option value="10378">Cemetery Worker<option value="10379">Central Heating Engineer<option value="10380">Central Heating Installer<option value="10381">Certified Accountant<option value="10382">Chartered Accountant<option value="10383">Chartered Architect<option value="10384">Chartered Engineer<option value="10385">Chartered Surveyor<option value="10386">Chauffeur<option value="10387">Check Out Assistant<option value="10388">Check Out Supervisor<option value="10389">Checker Packer<option value="10390">Cheesemonger<option value="10391">Chef<option value="11471">chemical analyst<option value="10392">Chemical Engineer (Oil/Gas Rigs)<option value="10393">Chemical Engineering Consultant<option value="10394">Chemical Researcher<option value="10395">Chemist<option value="10396">Chemist (Oil/Gas Rigs)<option value="10397">Chief Executive Officer<option value="10398">Child Care Worker<option value="10399">Child Minder<option value="10400">Childrens Nurse<option value="10401">Chimney Sweep<option value="10402">Chip Shop Assistant<option value="10403">Chiropodist<option value="10404">Chiropractor<option value="10405">Choreographer<option value="10406">CIE Conductor<option value="10407">CIE Guard<option value="10408">CIE Rail Trackman<option value="10409">CIE Train Driver<option value="10410">Cinema Staff<option value="10411">Civil Defence Officer<option value="10412">Civil Engineer<option value="10413">Civil Servant<option value="10414">Claims Assessor<option value="10415">Class Room Assistant<option value="10416">Cleaner (Windows) < 30 ft<option value="10417">Cleaner (Windows) > 30 ft<option value="10418">Cleaning Lady<option value="11296">Cleaning Person<option value="10419">Clergyman<option value="10420">Clerical Assistant - Civil Service<option value="10421">Clerical Officer - Civil Service<option value="10422">Clerk/Clerical Worker<option value="10423">Clinic Nurse<option value="10424">Clock Maker/Repairer<option value="11472">clothes designer<option value="10425">Club Owner<option value="10426">Club Secretary<option value="11344">co-director - manual<option value="11347">co-director - non-manual<option value="10427">Coach Builder<option value="10428">Coach Driver<option value="10429">Coal Deliveryperson<option value="10430">Coal Merchant<option value="10431">Coal Miner<option value="10432">Coal Yard Worker<option value="10433">Coastguard<option value="10434">Cobbler<option value="10435">Coffin Maker<option value="10436">College Administrator<option value="10437">College Lecturer<option value="10438">College Student<option value="10439">Columnist<option value="10440">Comedian<option value="10441">Commercial Artist<option value="11405">commercial director<option value="10442">Commercial Pilot<option value="10443">Commercial Traveller<option value="10444">Commis Chef<option value="10445">Commissioner Of Oaths<option value="10446">Commodity Broker<option value="10447">Community Nurse<option value="11448">Community Welfare Officer<option value="10448">Community Worker<option value="10449">Company Accountant<option value="11343">company director - manual<option value="10450">Company Director - non-manual<option value="10451">Company Executive<option value="11295">Company Representative<option value="10452">Company Secretary<option value="10453">Compliance Officer<option value="10454">Compliant Officer<option value="10455">Comprehensive School Teacher<option value="10456">Computer Aided Designer<option value="10457">Computer Assembler<option value="10458">Computer Manager<option value="10459">Computer Operations Manager<option value="10460">Computer Operator/Engineer<option value="10461">Computer Programmer<option value="10462">Computer Project Manager<option value="10463">Computer Salesman<option value="10464">Computer Software Consultant<option value="10465">Computer Systems Analyst<option value="10466">Concrete Worker<option value="10467">Conductor (Bus)<option value="10468">Conductor (Music)<option value="10469">Confectioner<option value="10470">Construction Engineer<option value="10471">Construction Site Foreman<option value="10472">Construction Worker < 30 feet<option value="10473">Construction Worker > 30 feet<option value="10474">Consultant Anaesthetist<option value="10475">Consultant Cardiologist<option value="10476">Consultant Gynaecologist<option value="10477">Consultant Physician<option value="10478">Consultant Surgeon<option value="10479">Contract Cleaner<option value="10480">Conveyor Belt Worker<option value="10481">Cook<option value="10482">Cook (Merchant Marine)<option value="10483">Coppersmith<option value="10484">Copywriter<option value="10485">Coroner<option value="10486">Costume Designer<option value="10487">Council Clerk<option value="10488">Council Officer<option value="10489">Counsellor<option value="10491">County Council Worker - Manual<option value="10490">County Council Worker - Non Manual<option value="10492">Courier Motor Bike<option value="10493">Courier Van Driver<option value="10494">Court Bailiff<option value="10495">Court Clerk<option value="10496">Court Usher<option value="10497">Crane Driver - > 15 feet<option value="10498">Crane Driver - Ground Level<option value="10499">Creche Owner<option value="10500">Credit Controller<option value="10501">Credit Union Cashier<option value="10502">Curtain Fitter/Maker<option value="10503">Customer Service Worker<option value="10504">Customs & Excise Officer<option value="10505">Customs And Excise Inspector<option value="10506">Dairy Worker<option value="10507">Dance Teacher<option value="10508">Data Processing Clerk<option value="10509">Debt Collector<option value="10510">Deck Officer (Irish Army)<option value="10511">Deckhand (Fishing)<option value="10512">Deep Sea Diver (Commercial)<option value="10513">Defence Forces Member<option value="10514">Delivery Driver<option value="10515">Demolition Worker<option value="10516">Demonstrator (Sales)<option value="11222">Dental Hygienist<option value="10517">Dental Nurse<option value="10518">Dental Receptionist<option value="10519">Dental Surgeon<option value="10520">Dental Technician<option value="10521">Dermatologist<option value="10522">Design Engineer<option value="10523">Designer<option value="10524">Desk Top Publisher<option value="10525">Detective (Police)<option value="10526">Detective (Private)<option value="10527">Detective (Store)<option value="10528">Dietician<option value="10529">Digger Driver<option value="10530">Dinner Lady<option value="10531">Diplomat<option value="10532">Directory Enquiries Operator<option value="10533">Disc Jockey<option value="10534">Dispatch Controller<option value="10535">Dispensing Chemist<option value="10536">Dispensing Optician<option value="10537">District Midwife<option value="10538">District Nurse<option value="10539">District Planner<option value="10540">Diver<option value="10541">Docker<option value="10542">Doctor<option value="10543">Doctors Receptionist<option value="10544">Domestic Cleaner<option value="10545">Domestic Electrician<option value="10546">Doorman (Club)<option value="10547">Double Glazing Installer<option value="10548">Double Glazing Salesperson<option value="10549">Drama Teacher<option value="10550">Draper<option value="10551">Draughtsman<option value="10552">Dress Maker<option value="10553">Driver (Bus)<option value="10554">Driver (HGV)<option value="10555">Driver (Taxi)<option value="10556">Driver (Van)<option value="10557">Driving Instructor<option value="10558">Driving Test Examiner<option value="10559">Dry Cleaner<option value="10560">Dumper Driver<option value="10561">Dustman<option value="10562">Economist<option value="11182">Editor<option value="10563">Eircom Engineer<option value="10564">Eircom Operator<option value="10565">Elderly Care Assistant<option value="10566">Electrical Contractor<option value="10567">Electrical Draughtsman<option value="10568">Electrical Engineer<option value="10569">Electrical Fitter<option value="10570">Electrical Retailer<option value="10571">Electrician - Domestic<option value="10572">Electrician - Industrial<option value="10573">Electronic Goods Assembler<option value="10574">Electronics Designer<option value="10575">Employment Officer<option value="10576">Endocrinologist<option value="10577">Engineer Civil<option value="10578">Engineer Electrical<option value="10579">Engineer Mechanical<option value="10580">Engineer Structural<option value="10581">Engraver<option value="10582">Environmental Health Officer<option value="10583">Estate Agent<option value="11297">Event Manager<option value="11302">Event Organiser<option value="10584">Excavator Worker<option value="10585">Executive Officer<option value="10586">Exhaust Fitter<option value="10587">Exhibition Co-ordinator<option value="10588">Export Manager<option value="10589">Factory Manager<option value="10590">Factory Worker - Heavy Manual<option value="10591">Factory Worker - Light Manual<option value="10592">Farm Labourer/Worker<option value="10593">Farm Manager<option value="10594">Farmer<option value="10595">Farrier<option value="10596">Fas Student<option value="10597">Fashion Buyer<option value="10598">Fashion Designer<option value="10599">Felt Roofer<option value="10600">Fence Erector<option value="10601">Filing Clerk<option value="10602">Film Processor<option value="10603">Finance Broker<option value="10604">Finance Director<option value="11410">finance manager<option value="10605">Financial Advisor<option value="10606">Financial Controller<option value="11473">financial services (includes insurance brokers agents)<option value="10607">Fireperson<option value="10608">First Officer<option value="10609">Fish And Chip Shop Owner<option value="10610">Fish Factory Worker<option value="10611">Fish Farmer<option value="10612">Fisherman<option value="10613">Fishmonger<option value="10614">Fitness Instructor<option value="10615">Fitted Kitchen Salesman<option value="10616">Fitter<option value="10617">Flat Racing Jockey<option value="10618">Floor Layer<option value="10619">Floor Tiler<option value="11465">florist<option value="10620">Flour Miller<option value="10621">Foreign Correspondent<option value="10622">Foreman - No Manual Work<option value="10623">Foreman - Some Manual Work<option value="10624">Forestry Worker<option value="10625">Forge Assistant<option value="10626">Fork Lift Driver<option value="10627">Freelance Journalist<option value="10628">Freight Controller<option value="10629">French Polisher<option value="10630">Fruit Grower<option value="10631">Fruit Salesman<option value="10632">Funeral Director<option value="10633">Furnace Worker<option value="10634">Furniture Assembler<option value="10635">Furniture Remover<option value="10636">Furniture Shop Owner<option value="10637">Ganger<option value="10638">Garage Mechanic<option value="10639">Garage Owner/Manager Non-Manual<option value="10640">Garbage Collector<option value="10641">Garda<option value="10642">Garda Sergeant<option value="10643">Garda Superintendent<option value="10644">Gardener<option value="10645">Gas Board Clerk<option value="10646">Gas Fitter<option value="10647">Gas Meter Reader<option value="10648">Gas Meter Tester<option value="10649">Gate Keeper<option value="10650">Genealogist<option value="10651">General Foreman<option value="10652">General Labourer<option value="10654">General Operative - Heavy Manual<option value="10653">General Operative - Light Manual<option value="10655">General Practitioner<option value="10656">Geneticist<option value="10657">Geologist (Oil/Gas Rigs)<option value="10658">Geologist (Other)<option value="10659">Glass Worker<option value="10660">Glazier<option value="11406">goldsmith<option value="10661">Government Official<option value="10662">Graphic Designer<option value="10663">Grave Digger<option value="10664">Green Keeper<option value="10665">GreenGrocer<option value="10666">Groom<option value="10667">Ground Steward<option value="10668">Guest House Proprietor<option value="10669">Gym Instructor<option value="10670">Gynaecologist<option value="10671">Hackney Driver<option value="10672">Hairdresser<option value="10673">Harbour Pilot<option value="10674">Haulage Contractor<option value="10675">Head Chef<option value="10676">Head Teacher<option value="10677">Health And Safety Consultant<option value="10678">Health Inspector<option value="10679">Healthcare Worker<option value="10680">Heating Engineer<option value="10681">Heavy Goods Driver<option value="10682">Herbalist<option value="10683">Hgv Driver<option value="10684">Higher Executive Officer<option value="10685">Historian<option value="10686">Home Care Assistant<option value="10687">Home Maker<option value="10688">Homeopath<option value="10689">Horse Breeder<option value="10690">Horse Riding Instructor<option value="10691">Horticulturist<option value="10692">Hospital Attendant<option value="10693">Hospital Porter<option value="10694">Hospital Secretary<option value="10695">Hotel Chef<option value="10696">Hotel Manager<option value="10697">Hotel Porter<option value="10698">Hotel Proprietor<option value="10699">House Decorator<option value="10700">Househusband<option value="10701">Housekeeper<option value="10702">Housewife<option value="10703">Housing Inspector<option value="10704">Human Resources Administrator<option value="11467">human resources consultant<option value="10705">Hypnotherapist<option value="10706">Ice Cream Vendor<option value="10707">Immigration Officer<option value="10708">Import Administrator<option value="10709">Independent Financial Advisor<option value="10710">Industrial Cleaner<option value="10711">Industrial Relations Advisor<option value="11407">information officer<option value="10712">Inseminator<option value="10713">Inspector Of Taxes<option value="10714">Instore Demonstrator<option value="10715">Insurance Agent<option value="10716">Insurance Assessor<option value="10717">Insurance Associate<option value="10718">Insurance Broker/Agent<option value="10719">Insurance Consultant<option value="10720">Insurance Salesperson<option value="10721">Insurance Staff<option value="10722">Insurance Underwriter<option value="10723">Interior Designer<option value="10724">Internal Auditor<option value="11285">Internet Designer<option value="11286">Internet Specialist<option value="10725">Interpreter<option value="10726">Investment Analyst<option value="10727">Investment Banker<option value="10728">Investment Broker<option value="10729">Investment Consultant<option value="10730">Ironmonger<option value="11403">IT administrator<option value="10731">IT Consultant<option value="11442">it manager<option value="10732">IT Programmer<option value="11402">IT technician<option value="10733">Janitor<option value="10734">JCB Digger Driver<option value="10735">Jeweller - Repairs/Making<option value="10736">Jewellery Designer<option value="10737">Jewelry Retailer<option value="10738">Jiggerman<option value="10739">Jockey<option value="10740">Joiner<option value="10741">Journalist<option value="10742">Judge<option value="10743">Keep Fit Instructor<option value="10744">Kitchen Assistant<option value="10745">Kitchen Porter<option value="10746">Kitchen Supplier Fitter<option value="10747">Lab. Technician<option value="10748">Labourer<option value="10749">Land Surveyor<option value="10750">Landlord<option value="10751">Landscape Gardener<option value="10752">Laundry Worker<option value="10753">Lawyer<option value="10754">Lecturer<option value="10755">Legal Advisor<option value="10756">Legal Secretary<option value="10757">Leisure Centre Attendant<option value="10758">Letting Agent<option value="10759">Librarian<option value="10760">Licensed Victualler<option value="10761">Life Assurance Broker<option value="10762">Life Assurance Consultant<option value="10763">Life Assurance Salesperson<option value="10764">Life Guard<option value="10765">Lifeboat Man<option value="10766">Lift Repair person<option value="10767">Lighting Technician<option value="10768">Linesman<option value="10769">Lithographer<option value="10770">Litigation Manager<option value="10771">Lobster Fisherman<option value="10772">Local Council Officer<option value="10773">Locksmith<option value="10774">Locomotive Driver<option value="10775">Lollipop Lady<option value="10776">Lorry Driver<option value="10777">Loss Adjuster<option value="10778">Loss Assessor<option value="10779">Lumberjack<option value="10780">Machine Worker<option value="10781">Machinist<option value="10782">Magazine Editor<option value="10783">Magistrate<option value="10784">Maintenance Engineer<option value="10785">Maintenance Fitter<option value="10786">Maintenance Technician (Oil/Gas Rigs)<option value="10787">Make Up Artist<option value="10788">Management Consultant<option value="11418">manager<option value="10789">Manager - clerical<option value="11342">manager - non-clerical<option value="11474">managing director (no manual work)<option value="11290">Manual Worker<option value="10790">Map Maker<option value="10791">Marine Engineer<option value="10792">Marine Maintenance Fitter<option value="10793">Market Gardener<option value="10794">Market Researcher<option value="10795">Market Trader<option value="10796">Marketing Analyst<option value="10797">Marketing Assistant<option value="10798">Marketing Executive<option value="10799">Mason<option value="10800">Masonry Restorer<option value="10801">Master Butcher<option value="10802">Mathematician<option value="10803">Matron (Nursing)<option value="10804">Mature Student<option value="10805">Meat Supplier<option value="10806">Mechanic<option value="10807">Mechanical Engineer<option value="10808">Mechanics Assistant<option value="10809">Medical Practitioner<option value="10810">Medical Representative<option value="10811">Medical Researcher<option value="10812">Medical Secretary<option value="10813">Member Of European Parliament<option value="10814">Member Of The Stock Exchange<option value="10815">Merchandiser<option value="10816">Merchant Banker<option value="10817">Merchant Seaman<option value="10818">Metal Worker<option value="10819">Meter Collector<option value="10820">Meter Fitter<option value="10821">Meter Reader<option value="10822">Meter Tester<option value="10823">Microbiologist<option value="10824">Midwife<option value="10825">Milk Roundsperson<option value="10826">Milliner<option value="10827">Milling Worker<option value="10828">Miner<option value="10829">Minicab Driver<option value="10830">Minister (Religious)<option value="10831">Mobile Crane Driver (Ground Level)<option value="10832">Model<option value="10833">Money Broker<option value="10834">Montessori Teacher<option value="10835">Mortgage Advisor<option value="10836">Mortician<option value="10837">Mother And Housewife<option value="10838">Motor Car Dealer<option value="10839">Motor Cycle Courier<option value="10840">Motor Mechanic<option value="10841">Motorbike Mechanic<option value="10842">Motorway Maintenance<option value="10843">Museum Worker<option value="10844">Musician<option value="10845">Nanny<option value="10846">National Hunt Jockey<option value="11468">navy officer<option value="10847">Neurologist<option value="10848">News Correspondent<option value="10849">News Editor<option value="10850">Newsagent<option value="10851">Newspaper Reporter<option value="10852">Newsreader<option value="10853">Night Club Owner<option value="10854">Night Porter<option value="10855">Not Currently Employed<option value="10856">Nurse - Other<option value="10857">Nurse - Psychiatric<option value="10858">Nursery Worker (Agriculture)<option value="10859">Nursery Worker (Education)<option value="10860">Nursing Home Owner<option value="10861">Nutritionist<option value="10862">Obstetrician<option value="10863">Occupational Therapist<option value="10864">Off License Manager<option value="10865">Office Cleaner<option value="10866">Office Messenger<option value="10867">Office Worker<option value="10868">Oil Rigs - Manual<option value="10869">Oil Rigs - Non-Manual<option value="10870">Oncologist<option value="11413">operations manager<option value="10871">Opthalmic Surgeon<option value="10872">Optician<option value="10873">Optometrist<option value="10874">Organist<option value="10875">Orthodontist<option value="10876">Orthopaedic Surgeon<option value="10877">Orthoptist<option value="10878">Osteopath<option value="10879">Overhead Linesman<option value="10880">Overseas Voluntary Worker<option value="10881">P.R. Consultant<option value="10882">Paediatric Surgeon<option value="10883">Paediatrician<option value="10884">Paint Sprayer<option value="10885">Painter & Decorator - avg < 30 feet<option value="10886">Painter & Decorator - avg > 30 feet<option value="10887">Pallet Maker<option value="10888">Panel Beater<option value="10889">Paramedic<option value="10890">Park Keeper<option value="10891">Park Ranger<option value="10892">Parking Attendant<option value="10893">Pastry Chef<option value="10894">Pathologist<option value="10895">Pawnbroker<option value="10896">Payroll Clerk<option value="10897">PC Support Engineer<option value="10898">Pension Administrator<option value="10899">Pension Consultant<option value="10900">Pension Manager<option value="10901">Pensioner<option value="10902">Permanent Way Inspector<option value="10903">Personal Assistant<option value="10904">Personal Financial Advisor<option value="10905">Personal Secretary<option value="10906">Personnel Assistant<option value="10907">Personnel Manager<option value="10908">Pet Shop Owner<option value="10909">Petrol Pump Attendant<option value="10910">Pharmaceutical Worker<option value="10911">Pharmacist<option value="10912">Pharmacy Assistant<option value="10913">Philatelist<option value="10914">Phlebotomist<option value="10915">Phone Engineer<option value="10916">Photocopy Engineer<option value="10917">Photographer<option value="10918">Photographer (Aerial)<option value="10919">Physical Education Teacher<option value="10920">Physicist<option value="10921">Physiotherapist<option value="10922">Picture Framer<option value="10923">Picture Restorer<option value="10924">Pilot Airline<option value="10925">Pilot Helicopter (Commercial)<option value="10926">Pipe Layer<option value="10927">Planning Advisor<option value="10928">Plant Hire Worker<option value="10929">Plasterer<option value="10930">Plastic Surgeon<option value="10931">Plate Layer<option value="10932">Playgroup Leader<option value="10933">Playschool Assistant<option value="10934">Plumber<option value="10935">Plumbing And Heating Engineer<option value="10936">Pneumatic Drill Worker<option value="10937">Podiatrist<option value="10938">Police<option value="10939">Political Correspondent<option value="10940">Politician<option value="10941">Port Worker<option value="10942">Porter Hotel/Hospital<option value="10946">Post Primary Teacher<option value="10943">Postal Worker<option value="11417">postman<option value="10944">Postperson - Driving<option value="10945">Postperson - No Driving<option value="10947">Pottery Worker<option value="10948">Poultry Worker<option value="10949">Power Station Worker<option value="11475">practice manager (gp surgery)<option value="10950">Precision Engineer<option value="10951">Press Officer<option value="10952">Priest<option value="10953">Primary School Teacher<option value="10954">Principal<option value="10955">Printer<option value="10956">Prison Officer<option value="10957">Private Detective<option value="10958">Private Pilot<option value="10959">Probation Officer<option value="11411">process technician<option value="11404">production control manager<option value="10960">Production Operator<option value="11244">Professional footballer<option value="11242">Professional Golfer<option value="11243">Professional rugby player<option value="11294">Professional Sports Person<option value="10961">Professor<option value="10962">Programmer<option value="11461">project director<option value="11462">project manager<option value="11262">Projectionist<option value="11304">Promotions Assistant<option value="11303">Promotions Manager<option value="10963">Property Developer<option value="11443">property supervisor<option value="10964">Psychiatrist<option value="10965">Psychologist<option value="10966">Psychotherapist<option value="10967">Public Health Inspector<option value="10968">Public Relations Officer<option value="10969">Publican<option value="10970">Publisher<option value="11464">quality analyst<option value="10971">Quality Controller<option value="10972">Quantity Surveyor<option value="10973">Quarry Worker<option value="10974">Racehorse Jockey<option value="10975">Racehorse Trainer<option value="10976">Radio Presenter<option value="10977">Radiographer<option value="10978">Radiologist<option value="10979">Radiotherapist<option value="10981">Railway - Guard<option value="10982">Railway - Maintenance<option value="10980">Railway - Signaler<option value="10983">Railway - Ticket Collector / Inspector<option value="10984">Railway Crossing Keeper<option value="10985">Receptionist<option value="10986">Recruitment Consultant<option value="10987">Redundant<option value="10988">Reflexology Consultant<option value="10989">Refuse Collector<option value="10990">Regional Sales Manager<option value="10991">Registered Child Minder<option value="10992">Remedial Teacher<option value="10993">Removal Worker<option value="10994">Reporter<option value="10995">Researcher<option value="10996">Restaurant Worker<option value="10997">Restauranteur<option value="10998">Restorer (Furniture)<option value="11445">Retail assistant<option value="11409">retail manager<option value="10999">Retailer<option value="11000">Retired<option value="11463">revenue manager<option value="11001">Revenue Officer<option value="11002">Rheumatologist<option value="11003">Rigger (Oil/Gas Rigs)<option value="11004">Rigger (Onshore)<option value="11005">Road Maintenance Worker<option value="11006">Road Safety Officer<option value="11007">Roofer<option value="11008">Sacristan<option value="11009">Safety Analyst<option value="11010">Safety Training Consultant<option value="11011">Sailor (Merchant Marine)<option value="11012">Sales Assistant - Light Goods<option value="11013">Sales Assistant - Shop<option value="11014">Sales Executive<option value="11414">sales manager<option value="11416">sales rep<option value="11015">Salesperson/Commercial Traveller<option value="11016">Salmon Farmer<option value="11017">Sander<option value="11018">Satellite Dish Installer<option value="11019">Saw Doctor<option value="11020">Sawmill Worker<option value="11021">Scaffolder<option value="11022">School Caretaker<option value="11023">School Teacher<option value="11024">Schools Inspector<option value="11025">Scientific Researcher<option value="11026">Scrapman<option value="11027">Seaman (Merchant Marine)<option value="11028">Seamstress<option value="11029">Search Rescue Worker<option value="11031">Secondary School Teacher<option value="11032">Secretary<option value="11033">Security Guard<option value="11034">Security Van Driver<option value="11035">Senior Executive Officer<option value="11030">Service Co-ordinator/Supervisor<option value="11036">Service Engineer<option value="11037">Sewage Worker<option value="11038">Sewing Machinist<option value="11039">Share Dealer<option value="11040">Sheet Metal Worker<option value="11041">Shipbuilder<option value="11042">Shipping Clerk<option value="11043">Ships Captain<option value="11044">Ships Steward<option value="11045">Shoe Maker<option value="11046">Shoe Repairer<option value="11047">Shop Assistant<option value="11048">Shop Detective<option value="11049">Shop Steward<option value="11050">Shopfitter<option value="11051">Shopkeeper - Light Goods<option value="11052">Shunter<option value="11053">Sign Erector - Greater than 30ft<option value="11054">Sign Erector - Less than 30ft<option value="11055">Signalman<option value="11056">Silversmith<option value="11057">Singing Teacher<option value="11058">Site Foreman<option value="11059">Sky Dish Installer<option value="11060">Slater<option value="11061">Social Worker<option value="11062">Software Engineer<option value="11063">Soldier<option value="11064">Solicitor<option value="11065">Sorting Office Worker<option value="11066">Sound Engineer<option value="11067">Sound Technician<option value="11447">Special Needs Assistant<option value="11068">Speech Therapist<option value="11323">sports coach<option value="11322">Sports Development Officer<option value="11291">Sports Player<option value="11069">Sports Reporter<option value="11292">Sportsman<option value="11293">Sportswoman<option value="11070">Spray Painter<option value="11071">Stable Hand<option value="11072">Staff Nurse<option value="11073">Station Master<option value="11074">Statistician<option value="11075">Steel Erector<option value="11076">Steelworker<option value="11077">Steeplejack<option value="11078">Stevedore<option value="11079">Stock Broker<option value="11080">Stockroom Controller<option value="11081">Stone Mason<option value="11082">Store Detective<option value="11083">Store Manager<option value="11084">Street Cleaner<option value="11085">Street Market Trader<option value="11086">Structural Engineer<option value="11087">Student<option value="11088">Supermarket Worker<option value="11415">supervisor<option value="11089">Surgeon<option value="11090">Surveyor<option value="11091">Swimming Pool Attendant<option value="11092">Switchboard Operator<option value="11093">Systems Analyst<option value="11094">Systems Programmer<option value="11095">Tailor<option value="11096">Takeaway Owner<option value="11097">Tanner<option value="11098">Tarmac Layer<option value="11099">Tax Advisor<option value="11100">Tax Inspector<option value="11101">Taxi Driver<option value="11102">Taxidermist<option value="11103">Teacher - School<option value="11104">Tealady<option value="11105">Team Manager<option value="11412">technical assistant<option value="11449">technician<option value="11106">Telecom Installer/Engineer<option value="11107">Telephonist<option value="11108">Telesales<option value="11109">Television Engineer<option value="11110">Television Producer<option value="11111">Theatre Sister<option value="11446">Theatre worker (surgical)<option value="11112">Theatrical Worker<option value="11113">Therapist<option value="11114">Ticket Clerk<option value="11115">Ticket Inspector<option value="11116">Tiler - Floor/Wall<option value="11117">Tiler - Roof<option value="11118">Timber Worker<option value="11119">Toolmaker<option value="11466">tour guide<option value="11476">town planner<option value="11120">Trade Union Official<option value="11121">Traffic Warden<option value="11122">Train Driver<option value="11123">Trainee Accountant<option value="11124">Trainee Doctor<option value="11125">Training Consultant<option value="11126">Travel Consultant<option value="11127">Treasurer<option value="11128">Tree Surgeon<option value="11129">Truck Driver<option value="11130">Tunneller<option value="11131">Turf Accountant<option value="11132">Turner Fitter<option value="11133">TV Cameraman<option value="11134">TV Presenter<option value="11135">TV Repairer<option value="11136">Typesetter<option value="11137">Typist<option value="11138">Tyre and Exhaust Fitter<option value="11139">Undertaker<option value="11140">Underwriter<option value="11141">Unemployed<option value="11142">University Lecturer<option value="11143">University Student<option value="11144">Upholsterer<option value="11145">Valet<option value="11146">Valuer<option value="11147">Van Driver/Delivery Person<option value="11148">Vat Inspector<option value="11149">Vegetable Supplier<option value="11150">Vehicle Inspector<option value="11152">vet surgeon small animals<option value="11151">Veterinary Surgeon - Large Animal<option value="11153">Vice Principal<option value="11154">Victualler<option value="11155">Vintner<option value="11156">Vocational Training Instructor<option value="11157">Voluntary Work<option value="11158">Wages Clerk<option value="11159">Waiter/Waitress<option value="11160">Wall Tiler<option value="11161">Warden (Prison Service)<option value="11162">WareHouse Person<option value="11163">Waste Disposal Collector<option value="11183">Watch Maker/Repairer<option value="11284">Website Creator<option value="11282">Website Designer<option value="11283">Website Specialist<option value="11164">Welder<option value="11165">Wholesaler<option value="11166">Wife and Mother<option value="11167">Window Cleaner - Less than 30ft<option value="11168">Window Cleaner - Other<option value="11169">Window Dresser<option value="11170">Window Installer < 30 ft<option value="11171">Window Installer > 30 ft<option value="11172">Windscreen Fitter<option value="11173">Wine Bar Owner<option value="11174">Wood Worker<option value="11175">Works Foreman<option value="11176">Writer<option value="11177">X-Ray Technician<option value="11178">Youth Worker<option value="11179">Zoo Keeper<option value="11180">Zoologist'; sLife1Occ1Val = "";</script> <tr>  <td class="whiteheading">&nbsp;</td> <td colspan="4" class="whiteheading"> <a name="TopofScreen">E</a>nter Customer Details </td> </tr>  <tr>  <td height="29">&nbsp;</td> <td colspan="4" height="29" class="questions"> Please read each question carefully to the customer, and complete the answers  on their behalf.<br>  Enter all money amounts in  <b> Euro (€ )</b>.<br><br> <font class="fieldAlert">*</font> indicates information which must be provided. <br><br>   </td> </tr> <tr>  <td height="29">&nbsp;</td> <td colspan="3">  <hr noshade size="1" class="standard"> </td> <td>&nbsp;</td> </tr>    <script> var life1TitleCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Title&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1TitleCd" size="1"  > <option value="">  title  </option>  <option value="Mr"  >Mr </option>  <option value="Prf"  >Prof </option>  <option value="Ms"  >Ms </option>  <option value="Mrs"  >Mrs </option>  <option value="Dr"  >Dr </option>  <option value="Fr"  >Fr </option>  <option value="Sir"  >Sir </option>  <option value="Rev"  >Rev </option>  <option value="Sr"  >Sr </option>  <option value="Ms"  >Miss </option>  </select> </td> <td>&nbsp;</td> </tr> '; document.write(life1TitleCdOutput); </script>      <script> var life1ForeNameOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  First name&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1ForeName"  maxLength="30"  size="30"   onBlur="return rule2(this, \'First name\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1ForeNameOutput); </script>      <script> var life1InitialNmOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Initial&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1InitialNm"  maxLength="1"  size="1"   onBlur="return rule1(this, \'Initial\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1InitialNmOutput); </script>      <script> var life1SurNameOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Surname&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1SurName"  maxLength="30"  size="30"   onBlur="return rule16(this, \'Surname\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1SurNameOutput); </script>      <script> var life1BirthDtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Date of birth&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1BirthDtDay" size="1"> <option value="">day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><span class="questions">- </span><select name="life1BirthDtMonth" size="1"> <option value="">month</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select><span class="questions">- </span><input type="text" name="life1BirthDtYear"  maxlength="4"  size="4"  onBlur="return rule8(this, \'Date of birth year\');"  value=""><input type="hidden" name="life1BirthDt" value=""> </td> <td>&nbsp;</td> </tr> '; document.write(life1BirthDtOutput); </script>      <script> var life1SexCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Gender&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1SexCd" type="radio" value="M" class="paleBackground"   >male <input name="life1SexCd" type="radio" value="F" class="paleBackground"   >female </td> <td>&nbsp;</td> </tr> '; document.write(life1SexCdOutput); </script>      <script> var life1MaritalStatusCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Marital status&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1MaritalStatusCd" size="1"  > <option value="">  Select an Option  </option>  <option value="SI"  >Single </option>  <option value="MA"  >Married </option>  <option value="DI"  >Divorced </option>  <option value="WI"  >Widowed </option>  <option value="SE"  >Separated </option>  </select> </td> <td>&nbsp;</td> </tr> '; document.write(life1MaritalStatusCdOutput); </script>      <script> var life1AddressLine1TxtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Home address&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1AddressLine1Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Home address line 1\');"   onKeyup="life1AddressLine1TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1AddressLine1TxtOutput); </script>      <script> var life1AddressLine2TxtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1AddressLine2Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Home address line 2\');"   onKeyup="life1AddressLine2TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1AddressLine2TxtOutput); </script>      <script> var life1AddressLine3TxtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1AddressLine3Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Home address line 3\');"   onKeyup="life1AddressLine3TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1AddressLine3TxtOutput); </script>      <script> var life1AddressLine4TxtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1AddressLine4Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Home address line 4\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1AddressLine4TxtOutput); </script>       <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Country of birth&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select class="occWidth" size="1" name="life1CountryOfBirthTxt"> <script>document.write('<option value="">Select an Option</option>' + sCountryOptions);</script></select> </td> <td>&nbsp;</td> </tr>   <tr> <td>&nbsp;</td> <td colspan="3" class="questionsem"> <b> Please pick your occupation from the list provided or choose the closest occupation in description to your own from this list. </b></td> <td>&nbsp;</td> </tr>      <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  What is your precise occupation&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select class="occWidth" size="1" name="life1Occupation1Cd"> <script>document.write('<option value="">Select an Option</option>' + sOccupationOptions);</script></select> </td> <td>&nbsp;</td> </tr>      <script> var life1SalaryAmtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Current level of earnings or salary each year&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1SalaryAmt"  maxLength="9"  size="9"   onBlur="return rule14(this, \'Salary\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1SalaryAmtOutput); </script>   <tr> <td>&nbsp;</td> <td colspan="3" class="questionsem"> <b>Note: We need this information to ensure the level of cover is appropriate to the applicant's circumstances</b> </td> <td>&nbsp;</td> </tr>    <tr> <td> &nbsp; </td> <td class="questions">Contact Phone Numbers</td> <td class="questionsem" width ="10%">Number</td> <td class="questionsem">&nbsp;</td> <td> &nbsp; </td> </tr> <tr> <td> &nbsp; </td> <td class="questions">Home</td> <td valign="top">  <input name="life1ContactPhoneNo"  size="14"  maxlength="14"  onBlur="return rule12(this,  'Home phone number');"  value=""> </td> <td> &nbsp;</td>  <td> &nbsp; </td> </tr>  <tr> <td> &nbsp; </td> <td class="questions">Mobile</td> <td valign="top">  <input name="life1MobilePhoneNo"  size="14"  maxlength="14"  onBlur="return rule12(this,  'Mobile phone number');"  value=""> </td> <td> &nbsp;</td>  <td> &nbsp; </td> </tr>  <tr> <td> &nbsp; </td> <td class="questions">Work</td> <td valign="top">  <input name="life1WorkPhoneNo"  size="14"  maxlength="14"  onBlur="return rule12(this,  'Work phone number');"  value=""> </td> <td> &nbsp;</td>  <td> &nbsp; </td> </tr>   <tr> <td>&nbsp;</td> <td colspan="3" class="questionsem"> <b> Note: If provided, we will be able to phone you to seek any additional information we may need, to enable us to process your application quicker </b></td> <td>&nbsp;</td> </tr>      <script> var life1EmailAddressTxtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Contact e-mail address&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1EmailAddressTxt"  maxLength="70"  size="30"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1EmailAddressTxtOutput); </script>    <script> var smokerQuestionsOutput =  ' <tr>  <td>&nbsp;&nbsp;  <font class="fieldAlert">*</font>  </td>  <td class="questions" width="50%">  Have you smoked tobacco of any kind in the past twelve months or do you intend to smoke in the future?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1SmokerCd" type="radio" value="Y" class="paleBackground"   >Yes <input name="life1SmokerCd" type="radio" value="N" class="paleBackground"   >No </td> <td>&nbsp;</td> </tr>   '; document.write(smokerQuestionsOutput); </script>  <tr> <td>&nbsp;</td> <td colspan="3" class="questionsem"> <b> Note: It is our practice to carry out occasional testing to confirm non smoker status. Non disclosure of tobacco consumption can result in a claim not being paid. </b></td> <td>&nbsp;</td> </tr>  <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr>  <script> addToMandatory("proposerHdrTxt"); </script> <tr>  <td class="whiteheading">&nbsp;</td> <td class="whiteheading" colspan="3">  Policy Owner Details  </td><td class="whiteheading">&nbsp;</td> </tr><script> numColsParentTable = 5;</script>       <tr>  <td> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td> <td class="questions"> Who will own this policy when it is issued (before any assignment)?  </td> <td class="questions" colspan="2"> <input name="proposerHdrTxt" type="radio" value="P" class="paleBackground"  onClick="proposerHdrTxtClick();" onKeyDown="if(this.checked) iChecked=0;"   >the person(s) named above </td> <td>&nbsp;</td> </tr> <tr>  <td>&nbsp;</td> <td>&nbsp;</td> <td colSpan="2" class="questions"> <input name="proposerHdrTxt" type="radio" value="A" class="paleBackground"  onClick="proposerHdrTxtClick();"  onKeyDown="if(this.checked) iChecked=1;"   >a person other than the above </td> <td>&nbsp;</td> </tr> <tr>  <td>&nbsp;</td> <td>&nbsp;</td> <td colSpan="2" class="questions"> <input name="proposerHdrTxt" type="radio" value="B" class="paleBackground"  onClick="proposerHdrTxtClick();"  onKeyDown="if(this.checked) iChecked=2;"   >a business </td> <td>&nbsp;</td> </tr><script> numColsParentTable = 5;</script>   <script>var policyOwnerAnotherPersonOutput_1 = '<table border="0" width="100%" class="paleBackground"> <tr>  <td width="2%">  &nbsp;&nbsp;<span id="persProposerTitleCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Policy owner\'s title </td> <td colSpan="2">  <select name="persProposerTitleCd" size="1" Disabled onfocus="blur()"  onChange="checkPersProposerSexCd(this.form)"> <option value="">Select</option>  <option value="Mr"  >Mr</option>  <option value="Prf"  >Prof</option>  <option value="Ms"  >Ms</option>  <option value="Mrs"  >Mrs</option>  <option value="Dr"  >Dr</option>  <option value="Fr"  >Fr</option>  <option value="Sir"  >Sir</option>  <option value="Rev"  >Rev</option>  <option value="Sr"  >Sr</option>  <option value="Ms"  >Miss</option>  </select> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="persProposerForeNameStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Policy owner\'s first name </td> <td colSpan="2"> <input name="persProposerForeName" size="30" maxlength="30"  onBlur="return rule2(this, \'Policy owner\\\'s first name\');"Disabled class="disabledBackground" onfocus="blur()"  value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="persProposerSurNameStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Policy owner\'s last name </td> <td colSpan="2">  <input name="persProposerSurName" size="30" maxlength="30"  onBlur="return rule2(this, \'Policy owner\\\'s last name\');"Disabled class="disabledBackground" onfocus="blur()"  value=""> </td> <td>&nbsp;</td> </tr>    <tr>  <td width="2%" height="21">  &nbsp;&nbsp;<span id="persProposerSexCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Policy owner\'s gender </td> <td colSpan="2" class="questions"> <input name="persProposerSexCd" type="radio" value="M" class="paleBackground"  Disabled onClick="persPropSexRadio(this);"   >male  <input name="persProposerSexCd" type="radio" value="F" class="paleBackground"  Disabled onClick="persPropSexRadio(this);"   >female </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="persProposerBirthDtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td class="questions"> Policy owner\'s date of birth</td> <td class="questions" colspan="2"> <select name="persProposerBirthDtDay" size="1"> <option value="">day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option> </select> <span class="questions">- </span> <select name="persProposerBirthDtMonth" size="1"> <option value="">month</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option> </select> <span class="questions">- </span> <input type="text" name="persProposerBirthDtYear" size="4" maxlength="4"  onBlur="return rule8(this, \'Policy owner\\\'s date of birth year\');"  value=""> <input type="hidden" name="persProposerBirthDt" value=""> </td> <td>&nbsp;</td> </tr> </table>';var policyOwnerPersonalInsurableInterest = ' <table border="0" width="100%" class="paleBackground"> <tr>  <td width="2%">  &nbsp;&nbsp;<span id="persProposerInsurableInterestCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Insurable interest </td> <td colSpan="2"> <select name="persProposerInsurableInterestCd" size="1" Disabled onfocus="blur()"> <option value="">Select</option>  <option value="PL"  >Proposed Life</option>  <option value="SP"  >Spouse</option>  <option value="EN"  >Engaged</option>  <option value="JM"  >Joint Mortgage</option>  <option value="CL"  >Common-Law</option>  <option value="OP"  >Other Personal Cover</option>  </select> </td> <td>&nbsp;</td> </tr>  </table> ';var policyOwnerAnotherPersonOutput_2 = '<table border="0" width="100%" class="paleBackground"> <tr> <td>&nbsp;</td> <td class="questions">Contact phone numbers</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td class="questionsem">Number</td> <td class="questionsem">&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr> <tr> <td> &nbsp; </td> <td class="questions">Home</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td>   <input name="persProposerHomePhoneNo"  size="14" maxlength="14"  onBlur="return rule12(this, \'Policy owner\\\'s home number\');"  value="">  </td> <td>&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr>    <tr> <td> &nbsp; </td> <td class="questions">Mobile</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td>   <input name="persProposerMobilePhoneNo"  size="14" maxlength="14"  onBlur="return rule12(this, \'Policy owner\\\'s mobile number\');"  value="">  </td> <td>&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr>    <tr> <td> &nbsp; </td> <td class="questions">Work</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td>   <input name="persProposerWorkPhoneNo"  size="14" maxlength="14"  onBlur="return rule12(this, \'Policy owner\\\'s work number\');"  value="">  </td> <td>&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr>      <tr>  <td width="2%">  &nbsp;&nbsp;<span id="proposerAddressLine1TxtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td width="48%" class="questions">  Address of the policy owner  </td> <td colSpan="2" >  <input name="proposerAddressLine1Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Policy owner\\\'s address line 1\');"  onKeyUp="proposerAddressLine1TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="proposerAddressLine2TxtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2" >  <input name="proposerAddressLine2Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Policy owner\\\'s address line 2\');"  onKeyUp="proposerAddressLine2TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%"> &nbsp;</td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2" >  <input name="proposerAddressLine3Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Policy owner\\\'s address line 3\');"  onKeyUp="proposerAddressLine3TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%"> &nbsp;</td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2" >  <input name="proposerAddressLine4Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Policy owner\\\'s address line 4\');"  onKeyUp="proposerAddressLine4TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>    </table>';var policyOwnerBusinessOutput = '<table border="0" width="100%" class="paleBackground"> <tr>  <td width="2%">  &nbsp;&nbsp;<span id="busiProposerNameStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Business name  </td> <td colSpan="2"> <input name="busiProposerName" size="50" maxlength="50"  onBlur="return rule29(this, \'Business proposer\\\'s name\');"  Disabled class="disabledBackground" onfocus="blur()"  value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="busiProposerInsurableInterestCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span>  </td> <td width="48%" class="questions"> Insurable interest </td> <td colSpan="2"> <select name="busiProposerInsurableInterestCd" size="1" Disabled onfocus="blur()"> <option value="">Select</option>  <option value="BL"  >Business Loan</option>  <option value="KE"  >Keyman</option>  <option value="CC"  >Corporate Co-Directors / Partnership</option>  <option value="OB"  >Other Business Cover</option>  </select> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="busiProposerAddressLine1TxtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td width="48%" class="questions">   Business address   </td> <td colSpan="2">  <input name="busiProposerAddressLine1Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Business proposer\\\'s address line 1\');" onKeyUp="busiProposerAddressLine1TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%">  &nbsp;&nbsp;<span id="busiProposerAddressLine2TxtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2">  <input name="busiProposerAddressLine2Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Business proposer\\\'s address line 2\');" onKeyUp="busiProposerAddressLine2TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%"> &nbsp;</td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2">  <input name="busiProposerAddressLine3Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Business proposer\\\'s address line 3\');" onKeyUp="busiProposerAddressLine3TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>   <tr>  <td width="2%"> &nbsp;</td>  <td width="48%" class="questions"> &nbsp; </td> <td colSpan="2">  <input name="busiProposerAddressLine4Txt" maxlength="30" size="30" onBlur="return rule7(this, \'Business proposer\\\'s address line 4\');" onKeyUp="busiProposerAddressLine4TxtKeyUp();" value=""> </td> <td>&nbsp;</td> </tr>     <tr> <td>&nbsp;</td> <td class="questions">Contact numbers</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td class="questionsem">&nbsp;</td> <td class="questionsem">&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr> <tr> <td> &nbsp; </td> <td class="questions">Phone</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td>   <input name="busiProposerContactPhoneNo"  size="14" maxlength="14"  onBlur="return rule12(this, \'Business proposer\\\'s phone number\');"  value=""> </td> <td>&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr>    <tr> <td> &nbsp; </td> <td class="questions">Fax</td> <td valign="top" colspan="2">  <table width="40%" cellpadding="0" cellspacing="4" border="0" class="questions"> <tr> <td>   <input name="busiProposerFaxNo"  size="14" maxlength="14"  onBlur="return rule12(this, \'Business proposer\\\'s fax number\');"  value=""> </td> <td>&nbsp;</td> </tr> </table> </td> <td> &nbsp; </td> </tr>     </table>';document.write(getDynamicPosition("policyOwnerAnotherPersonSection", "questions", 5));document.write(getDynamicPosition("policyOwnerBusinessSection", "questions", 5));</script> <script> numColsParentTable = 5;</script>              <tr> <td colspan="5" class="bodyBackground">&nbsp; </td> </tr> <script>  addToMandatory("issuedInTrustCd"); </script> <tr>  <td class="whiteheading">&nbsp;</td> <td class="whiteheading" colspan="4">Trust Information</td> </tr>   <script> var issuedInTrustCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Is this policy to be issued in trust?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="issuedInTrustCd" type="radio" value="Y" class="paleBackground"   onClick="issuedInTrustCdClick();"   >Yes <input name="issuedInTrustCd" type="radio" value="N" class="paleBackground"   onClick="issuedInTrustCdClick();"   >No </td> <td>&nbsp;</td> </tr> '; document.write(issuedInTrustCdOutput); </script>    <script> var trustTypeCdOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<span id="trustTypeCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Please indicate the type of trust required&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="trustTypeCd" size="1"   onChange="trustTypeCdChange();" > <option value="">  Select an Option  </option>  <option value="F"  >Flexible Trust </option>  <option value="S"  >Shareholder Trust </option>  <option value="P"  >Partners Trust </option>  </select> </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("trustTypeCdPosition", "questions", numColsParentTable)); setDynamicOutput(trustTypeCdOutput, "trustTypeCdPosition"); </script>    <script> var appointorTitleCdOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Appointor\'s title&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="appointorTitleCd" size="1"  > <option value="">  title  </option>  <option value="Mr"  >Mr </option>  <option value="Prf"  >Prof </option>  <option value="Mrs"  >Mrs </option>  <option value="Ms"  >Ms </option>  <option value="Dr"  >Dr </option>  <option value="Fr"  >Fr </option>  <option value="Sir"  >Sir </option>  <option value="Rev"  >Rev </option>  <option value="Sr"  >Sr </option>  <option value="Ms"  >Miss </option>  </select> </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorTitleCdPosition", "questions", numColsParentTable)); setDynamicOutput(appointorTitleCdOutput, "appointorTitleCdPosition"); </script>    <script> var appointorForeNameOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<span id="appointorForeNameStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Appointor\'s first name&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorForeName"  maxLength="30"  size="30"   onBlur="return rule2(this, \'Appointor first name\');"   onKeyup="appointorForeNameKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorForeNamePosition", "questions", numColsParentTable)); setDynamicOutput(appointorForeNameOutput, "appointorForeNamePosition"); </script>    <script> var appointorSurNameOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<span id="appointorSurNameStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Appointor\'s last name&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorSurName"  maxLength="30"  size="30"   onBlur="return rule16(this, \'Appointor last name\');"   onKeyup="appointorSurNameKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorSurNamePosition", "questions", numColsParentTable)); setDynamicOutput(appointorSurNameOutput, "appointorSurNamePosition"); </script>    <script> var appointorAddressLine1TxtOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Appointor\'s address&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorAddressLine1Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Appointor address line 1\');"   onKeyup="appointorAddressLine1TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorAddressLine1TxtPosition", "questions", numColsParentTable)); setDynamicOutput(appointorAddressLine1TxtOutput, "appointorAddressLine1TxtPosition"); </script>    <script> var appointorAddressLine2TxtOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorAddressLine2Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Appointor address line 2\');"   onKeyup="appointorAddressLine2TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorAddressLine2TxtPosition", "questions", numColsParentTable)); setDynamicOutput(appointorAddressLine2TxtOutput, "appointorAddressLine2TxtPosition"); </script>    <script> var appointorAddressLine3TxtOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorAddressLine3Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Appointor address line 3\');"   onKeyup="appointorAddressLine3TxtKeyUp();"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorAddressLine3TxtPosition", "questions", numColsParentTable)); setDynamicOutput(appointorAddressLine3TxtOutput, "appointorAddressLine3TxtPosition"); </script>    <script> var appointorAddressLine4TxtOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  &nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="appointorAddressLine4Txt"  maxLength="30"  size="30"   onBlur="return rule7(this, \'Appointor address line 4\');"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("appointorAddressLine4TxtPosition", "questions", numColsParentTable)); setDynamicOutput(appointorAddressLine4TxtOutput, "appointorAddressLine4TxtPosition"); </script>  <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr>  <script> addToMandatory("mortgageApplicationCd");addToMandatory("conversionOptionCd"); </script> <tr>  <td class="whiteheading">&nbsp; </td> <td class="whiteheading" colspan="4">  Further Information </td> </tr>  <tr>  <td> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td> <td class="questions"> Is this application in connection with a mortgage? </td> <td colspan="2" class="questions"> <input name="mortgageApplicationCd" type="radio" value="Y" class="paleBackground"  onClick="enableMortgageCodes(this.form);"   >Yes  <input name="mortgageApplicationCd" type="radio" value="N" class="paleBackground"  onClick="enableMortgageCodes(this.form);"  >No </td> <td>&nbsp;</td> </tr>   <tr>  <td> &nbsp;&nbsp; </td> <td class="questions"> The cover amount is less than or equal to the mortgage amount </td> <td colspan="2" class="questions"> <input name="mortgageSameLesserCd" type="radio" value="Y" class="paleBackground"  Disabled onClick="clickMgtCode(this);"   >Yes  <input name="mortgageSameLesserCd" type="radio" value="N" class="paleBackground"  Disabled onClick="clickMgtCode(this);"   >No </td> <td>&nbsp;</td> </tr>   <tr>  <td> &nbsp;&nbsp; </td> <td class="questions"> Is the policy to be assigned immediately on issue to the lender? </td> <td colspan="2" class="questions">  <input name="mortgageAssignPolicyCd" type="radio" value="Y" class="paleBackground"  Disabled onClick="clickMgtCode(this);"   >Yes  <input name="mortgageAssignPolicyCd" type="radio" value="N" class="paleBackground"  Disabled onClick="clickMgtCode(this);"   >No </td> <td>&nbsp;</td> </tr>       <script> var conversionOptionCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Is this policy being set up under a conversion option from an existing Irish Life or Progressive Life policy?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="conversionOptionCd" type="radio" value="Y" class="paleBackground"   onClick="conversionOptionCdClick();"   >Yes <input name="conversionOptionCd" type="radio" value="N" class="paleBackground"   onClick="conversionOptionCdClick();"   >No </td> <td>&nbsp;</td> </tr> '; document.write(conversionOptionCdOutput); </script>      <script> var conversionOptionIDTxtOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<span id="conversionOptionIDTxtStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Please provide policy number or group scheme name/number under which the conversion is being exercised&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="conversionOptionIDTxt"  maxLength="39"  size="30"   onBlur="return rule19(this, \'Policy number / group scheme number question\');"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("conversionOptionIDTxtPosition", "questions", numColsParentTable)); setDynamicOutput(conversionOptionIDTxtOutput, "conversionOptionIDTxtPosition"); </script>      <script> var conversionOptionAssignedInTrustCdOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<span id="conversionOptionAssignedInTrustCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Is the policy under which the conversion is being exercised assigned or held in trust?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="conversionOptionAssignedInTrustCd" type="radio" value="Y" class="paleBackground"   onClick="conversionOptionAssignedInTrustCdClick();"   >Yes <input name="conversionOptionAssignedInTrustCd" type="radio" value="N" class="paleBackground"   onClick="conversionOptionAssignedInTrustCdClick();"   >No </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("conversionOptionAssignedInTrustCdPosition", "questions", numColsParentTable)); setDynamicOutput(conversionOptionAssignedInTrustCdOutput, "conversionOptionAssignedInTrustCdPosition"); </script>   <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr> <script>  addToMandatory("contractTermQty");addToMandatory("startDateHoldCd");addToMandatory("confirmStartDateHoldCd");  numColsParentTable = 5; </script> <tr>  <td class="whiteheading">&nbsp;</td> <td colspan="4" class="whiteheading">Benefit Details</td> </tr>     <script> var contractTermQtyOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Policy term&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="contractTermQty"  maxLength="2"  size="2"   onBlur="return rule3(this, \'Contract term question\');"   value="">  <span class="questions"> years</span>  </td> <td>&nbsp;</td> </tr> '; document.write(contractTermQtyOutput); </script>           <script> var life1LifeCoverAmtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Amount of Life Cover you want (if any)&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1LifeCoverAmt"  maxLength="11"  size="11"   onBlur="return rule14(this, \'Life Cover amount\');"   onKeyup="life1LifeCoverAmtKeyUp();"   value="0">  </td> <td>&nbsp;</td> </tr> '; document.write(life1LifeCoverAmtOutput); </script>           <script> var life1SpecifiedIllnessCoverAmtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Amount of Specified Illness Cover you want (if any)&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1SpecifiedIllnessCoverAmt"  maxLength="9"  size="9"   onBlur="return rule13(this, \'Specified Illness Cover amount\');"   onKeyup="life1SpecifiedIllnessCoverAmtKeyUp();"   value="0">  </td> <td>&nbsp;</td> </tr> '; document.write(life1SpecifiedIllnessCoverAmtOutput); </script>           <script> var life1SpecifiedIllnessCoverTypeCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  If you have chosen Life Cover and Specified Illness Cover, please select the type of specified illness cover you want&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1SpecifiedIllnessCoverTypeCd" size="1"  > <option value="">  Select an Option  </option>  <option value="I"  >Independent </option>  <option value="A"  >Accelerated </option>  </select> </td> <td>&nbsp;</td> </tr> '; document.write(life1SpecifiedIllnessCoverTypeCdOutput); </script>           <script> var life1HospitalCashCoverAmtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Amount of Hospital Cash Cover you want a day (if any)&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1HospitalCashCoverAmt"  maxLength="5"  size="5"   onBlur="return rule17(this, \'Hospital Cash Cover amount\');"   value="0">  </td> <td>&nbsp;</td> </tr> '; document.write(life1HospitalCashCoverAmtOutput); </script>           <script> var life1OccupationClassCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Occupation Class, if you have chosen Hospital Cash Cover&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1OccupationClassCd" size="1"  > <option value="">  Select an Option  </option>  <option value="A"  >A </option>  <option value="B"  >B </option>  </select> </td> <td>&nbsp;</td> </tr> '; document.write(life1OccupationClassCdOutput); </script>           <script> var life1AccidentCoverAmtOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Amount of Accident Cover you want a week (if any)&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="life1AccidentCoverAmt"  maxLength="11"  size="11"   onBlur="return rule14(this, \'Accident Cover amount\');"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(life1AccidentCoverAmtOutput); </script>           <script> var life1ACOccupationClassCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Occupation Class, if you have chosen Accident Cover&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <select name="life1ACOccupationClassCd" size="1"  > <option value="">  Select an Option  </option>  <option value="X"  >X </option>  <option value="Y"  >Y </option>  </select> </td> <td>&nbsp;</td> </tr> '; document.write(life1ACOccupationClassCdOutput); </script>           <script> var inflationProtectionAppliesCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<span id="inflationProtectionAppliesCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Do you want Inflation Protection?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="inflationProtectionAppliesCd" type="radio" value="Y" class="paleBackground"   >Yes <input name="inflationProtectionAppliesCd" type="radio" value="N" class="paleBackground"   checked >No </td> <td>&nbsp;</td> </tr> '; document.write(inflationProtectionAppliesCdOutput); </script>           <script> var guaranteedInsurabilityAppliesCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<span id="guaranteedInsurabilityAppliesCdStar"  class="starBoxHideIE"><font class="fieldAlert">*</font></span> </td>  <td class="questions" valign="top" width="50%">  Do you want Guaranteed Cover again (convertible option) ?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="guaranteedInsurabilityAppliesCd" type="radio" value="Y" class="paleBackground"   >Yes <input name="guaranteedInsurabilityAppliesCd" type="radio" value="N" class="paleBackground"   >No </td> <td>&nbsp;</td> </tr> '; document.write(guaranteedInsurabilityAppliesCdOutput); </script>           <script> var startDateHoldCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Is the cover to start immediately? (If not please let us know later when you want cover to start)&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="startDateHoldCd" type="radio" value="N" class="paleBackground"   onClick="startDateHoldCdClick();"   >Yes <input name="startDateHoldCd" type="radio" value="Y" class="paleBackground"   onClick="startDateHoldCdClick();"   >No </td> <td>&nbsp;</td> </tr> '; document.write(startDateHoldCdOutput); </script>           <script> var confirmStartDateHoldCdOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  You requested your cover to start immediately is this ok?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="confirmStartDateHoldCd" type="radio" value="Y" class="paleBackground"   >Yes <input name="confirmStartDateHoldCd" type="radio" value="N" class="paleBackground"   >No </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("confirmStartDateHoldCdPosition", "questions", numColsParentTable)); setDynamicOutput(confirmStartDateHoldCdOutput, "confirmStartDateHoldCdPosition"); </script>        <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr>  <script> addToMandatory("regularPremiumAmt");addToMandatory("paymentFrequencyCd"); </script> <tr>  <td class="whiteheading">&nbsp;</td> <td class="whiteheading" colspan="4">  <b>Premium Details</b>  </td> </tr>       <tr>  <td> &nbsp;<font class="fieldAlert">*</font> </td>  <td class="questions">  Total premium amount  &nbsp; </td> <td colSpan="2" class="questions"> <input name="regularPremiumAmt" maxLength="11" size="11"  onKeyUp="regularEnable(this)"  onBlur="return rule14(this, 'Total premium amount');"  value=""> </td> <td>&nbsp;</td> </tr>        <tr>  <td> &nbsp;<font class="fieldAlert">*</font> </td>  <td class="questions"> Payment frequency  </td> <td colSpan="2"> <select name="paymentFrequencyCd" size="1"> <option value="">Select an Option</option>  <option value="M" >Monthly</option>  <option value="Q" >Quarterly</option>  <option value="H" >Half-yearly</option>  <option value="Y" >Yearly</option>  </select> </td> <td>&nbsp;</td> </tr>                    <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr>  <script> addToMandatory("brokingForBusinessCd");addToMandatory("ddThirdPartyCd");addToMandatory("ddDeductPremsDayNo");addToMandatory("ddBankSortCd1");addToMandatory("ddBankSortCd2");addToMandatory("ddBankSortCd3");addToMandatory("ddBankAccountNo");addToMandatory("ddBankAccountNm"); </script> <tr>  <td class="whiteheading">&nbsp;</td> <td colspan="4" class="whiteheading">  Payment details </td> </tr> <tr>  <td> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td>  <td class="questions">Are you Broking for Business?  </td> <td colSpan="2" class="questions">  <input name="brokingForBusinessCd" type="radio" value="Y" class="paleBackground" onClick="enableInitialDdBankDetails(this.form)"  >Yes&nbsp; <input name="brokingForBusinessCd" type="radio" value="N" class="paleBackground" onClick="enableInitialDdBankDetails(this.form)"  >No </td> <td>&nbsp;</td> </tr>  <tr>  <td>&nbsp; </td> <td colspan="3">  <hr noshade size="1" class="standard"> </td> <td>&nbsp;</td> </tr>   <script> var ddBankSectionOutput =  ' <table border="0" width="100%" class="paleBackground"> <tr>  <td>&nbsp;</td> <td colspan="3" class="questions">  <b>Direct Debit</b></td> <td>&nbsp;</td> </tr> <tr>  <td width="2%"> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td> <td width="49%" class="questions"> Will direct debits be paid from a third party bank account? </td> <td width="48%" colSpan="2" class="questions"> <input name="ddThirdPartyCd" type="radio" value="Y" class="paleBackground" Disabled onClick="clickDdThirdPartyCode(this);"  >Yes  <input name="ddThirdPartyCd" type="radio" value="N" class="paleBackground" Disabled onClick="clickDdThirdPartyCode(this);"  >No </td> </td> <td>&nbsp;</td> </tr>  <tr>  <td width="2%"> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td> <td width="49%" class="questions"> On what date in the month do you want direct debits to be  collected from this bank account? </td> <td width="48%" colSpan="2" class="paleBackground"> <select name="ddDeductPremsDayNo" size="1" <option value="">Select</option> <option value="">day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option> </select> </td> <td>&nbsp;</td> </tr>  <tr>  <td> <font class="fieldAlert">*</font>&nbsp;&nbsp; </td>  <td width="49%" class="questions">Bank sort code</td> <td width="48%" colSpan="2" class="questions">   <input type="text" name="ddBankSortCd1" size="2" maxlength="2"  onKeyUp="enableDdBankDetails(this.form); if (this.value.length == 2 && iLastKeyPressed != 9) this.form.ddBankSortCd2.focus();"  onBlur="return rule10(this, \'First part of direct debit bank sort code\');"  value=""> - <input type="text" name="ddBankSortCd2" size="2" maxlength="2"  onKeyUp="enableDdBankDetails(this.form); if (this.value.length == 2 && iLastKeyPressed != 9) this.form.ddBankSortCd3.focus();"  onBlur="return rule10(this, \'Second part of direct debit bank sort code\');" value=""> - <input type="text" name="ddBankSortCd3" size="2" maxlength="2"  onKeyUp="enableDdBankDetails(this.form);  if (this.value.length == 2 && iLastKeyPressed != 9  && !this.form.ddBankAccountNo.isDisabledMode) this.form.ddBankAccountNo.focus();"  onBlur="return rule10(this, \'Third part of direct debit bank sort code\');"  value=""> <input type="hidden" name="ddBankSortCd" value=""> </td> <td>&nbsp;</td> </tr>    <tr>  <td> <font class="fieldAlert">*</font>&nbsp;&nbsp; </td>  <td class="questions"> Bank account number  </td>  <td colSpan="2"> <input name="ddBankAccountNo" size="8" maxlength="8" Disabled onFocus="blur();" class="disabledBackground"  onBlur="return rule28(this, \'Bank account number\');"  onKeyUp="enableDdBankDetails(this.form);"  value=""> </td> <td>&nbsp;</td> </tr>  <tr>  <td> <font class="fieldAlert">*</font>&nbsp;&nbsp; </td>  <td class="questions">Name of account holder to be debited</td> <td colSpan="2">  <input type="text" name="ddBankAccountNm" size="30" maxlength="30"  Disabled onFocus="blur();" class="disabledBackground"  onBlur="return rule16(this, \'Name of account to be debited\');"  value=""> </td> <td>&nbsp;</td> </tr>  </table> '; document.write(getDynamicPosition("ddBankSectionPosition", "questions", 5)); setDynamicOutput(ddBankSectionOutput, "ddBankSectionPosition"); </script> <tr> <td colspan="5" class="bodyBackground">&nbsp;</td> </tr>   <script> addToMandatory("replacementPolicyCd");addToMandatory("larcNo");addToMandatory("commissionProfileCd");addToMandatory("paperProposalInputCd");   numColsParentTable = 5; </script>   <tr><td class="whiteheading">&nbsp;</td><td class="whiteheading" colspan="4">Business Replacement Information</td> </tr><script> var replacementPolicyCdOutput = '<tr> <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font> </td><td colspan="3" class="questions" valign="top">Please confirm whether or not this policy replaces in whole or in part any existing policy with Irish Life or any other insurer which has been, or is to be, cancelled or reduced.</td><td>&nbsp;</td></tr><tr><td>&nbsp;&nbsp;&nbsp;</td><td colspan="3" class="questions"> <input name="replacementPolicyCd" type="radio" value="Y" class="paleBackground" onClick="replacementPolicyCdClick();"  > Yes <br><br> <input name="replacementPolicyCd" type="radio" value="N" class="paleBackground" onClick="replacementPolicyCdClick();"  > No <br><br> </td><td>&nbsp;</td></tr>';document.write(replacementPolicyCdOutput);</script>   <script> var replacementPolicyNoOutput =  '  <table border="0" width="100%"> <tr>  <td valign="top">&nbsp;&nbsp; </td>  <td class="questions" valign="top" width="50%">  Please provide the policy number which is being replaced&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="replacementPolicyNo"  maxLength="8"  size="8"   value="">  </td> <td>&nbsp;</td> </tr> </table>'; document.write(getDynamicPosition("replacementPolicyNoPosition", "questions", numColsParentTable)); setDynamicOutput(replacementPolicyNoOutput, "replacementPolicyNoPosition"); </script> <tr> <td colspan="5" class="bodyBackground">&nbsp; </td> </tr> <tr>  <td class="whiteheading">&nbsp; </td> <td class="whiteheading" colspan="4">  Administration details </td> </tr>     <script> var larcNoOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  L.A.R.C.&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="larcNo"  maxLength="6"  size="6"   value="">  </td> <td>&nbsp;</td> </tr> '; document.write(larcNoOutput); </script>   <tr>  <td>&nbsp;</td> <td colspan="3">  <hr noshade size="1" class="standard"> </td> <td>&nbsp;</td> </tr> <script> var commissionProfileCdOutput =  ' <table border="0" width="100%"> <tr>  <td width="25"> &nbsp;&nbsp;<font class="fieldAlert">*</font> </td width="48%">  <td width="48%" class="questions"> Profile </td> <td colSpan="2"> <select name="commissionProfileCd" size="1"> <option value="">Select an Option</option>  <option value="2"  >10T90/R3 [2]</option>  <option value="381"  >9T80/R4 [381]</option>  <option value="382"  >8T70/R5 [382]</option>  <option value="383"  >7.5T57.5/R6 [383]</option>  <option value="384"  >6.75T45/R7 [384]</option>  <option value="385"  >6T32.5/R8 [385]</option>  <option value="386"  >5.25T20/R9 [386]</option>  <option value="387"  >10/R10 [387]</option>  <option value="1617"  >B-LINE SPECIAL OFFER Max 100%</option>  <option value="5296"  >B-Line Index 11.11%T,M100%/R6%</option>  <option value="5297"  >Indexing Cases 10%t,M90 R6%</option>  </select> </td> <td>&nbsp;</td> </tr> </table>';document.write(getDynamicPosition("commissionProfileCdPosition", "questions", 9));setDynamicOutput(commissionProfileCdOutput, "commissionProfileCdPosition"); </script>  <script> var pctOfMaxInitialCommissionPctOutput =  '<table border="0" width="100%"> <tr>  <td width="25"> &nbsp;&nbsp; </td>  <td width="48%" class="questions"> TUI </td> <td colSpan="2" class="questions">   <input name="pctOfMaxInitialCommissionPct" size="6" maxlength="6"  onBlur="return rule17(this, \'Administration - Profile - TUI\');"  value="100"> </td> <td>&nbsp;</td> </tr> </table>';document.write(getDynamicPosition("pctOfMaxInitialCommissionPctPosition", "questions", 9));setDynamicOutput(pctOfMaxInitialCommissionPctOutput, "pctOfMaxInitialCommissionPctPosition"); </script>  <script> var pctOfMaxRenewalCommissionPctOutput =  '<table border="0" width="100%"> <tr>  <td width="25"> &nbsp;&nbsp; </td>  <td width="48%" class="questions"> TUR </td> <td colSpan="2" class="questions">   <input name="pctOfMaxRenewalCommissionPct" size="6" maxlength="6"  onBlur="return rule17(this, \'Administration - Profile - TUR\');"  value="100"> </td> <td>&nbsp;</td> </tr> <tr> <td>&nbsp;</td><td colspan="3"> <hr noshade size="1" class="standard"></td><td>&nbsp;</td></tr></table>';document.write(getDynamicPosition("pctOfMaxRenewalCommissionPctPosition", "questions", 9));setDynamicOutput(pctOfMaxRenewalCommissionPctOutput, "pctOfMaxRenewalCommissionPctPosition"); </script>       <script> var paperProposalInputCdOutput =  '   <tr>  <td valign="top">&nbsp;&nbsp;<font class="fieldAlert">*</font>  </td>  <td class="questions" valign="top" width="50%">  Are you inputting information that was gathered earlier on paper from the customer?&nbsp; </td> <td colSpan="2" class="questions" width="50%">   <input name="paperProposalInputCd" type="radio" value="Y" class="paleBackground"   onClick="paperProposalInputCdClick();"   >Yes <input name="paperProposalInputCd" type="radio" value="N" class="paleBackground"   onClick="paperProposalInputCdClick();"   checked >No </td> <td>&nbsp;</td> </tr> '; document.write(paperProposalInputCdOutput); </script>  <tr> <td>&nbsp;</td> <td colspan="3" class="questionsem"> <b> Warning - if you complete this incorrectly the appropriate questions will not display. </b></td> <td>&nbsp;</td> </tr> <tr>  <td>&nbsp;</td> <td colspan="3">  <hr noshade size="1" class="standard"> </td> <td>&nbsp;</td> </tr> <tr>  <td height="27">&nbsp;</td> <td>  <script language="javascript"> function submit_Clicked() { var theApplicationForm = document.layers[0].document.forms[0];  if ( isFormAlreadySubmitted() || isErrorAppForm) {  return false; } else { if(bValidData) { if (validateApplication(theApplicationForm)) { theApplicationForm.submit(); theApplicationForm.submitted = true; doAppInterval(); } } } return false; } </script> <input type='image' name="NEXT" src="epos/images/next.gif"  border="0" value="Submit"> </td> <td colspan="2" align="right"> <table width="280" border="0"><tr><td>&nbsp;</td><td width="58"> <script language="javascript">document.write("<input type='image' "+ 'name="SAVE" type="image" src="epos/images/redSave.gif" '+ 'border=0 value="Save" onClick="saveClicked();return false;">');</script></td><td width="10">&nbsp; </td><td width="104"><script language="javascript">document.write("<input type='image' "+ 'name="CORRECT_ERROR" type="image" src="epos/images/redCorrectError.gif" '+ 'border=0 value="CorrectError" onClick="correctErrorClicked();return false;">');</script></td><td width="10">&nbsp; </td><td width="132"><script language="javascript">document.write("<input type='image' "+ 'name="EXIT_WITHOUT_SAVING" type="image" src="epos/images/redExitWithoutSaving.gif" '+ 'border=0 value="Exit" onClick="exitClicked();return false;">');</script></td><td width="10">&nbsp;</td></tr></table>   </td> <td>&nbsp;</td> </tr> <tr>  <td>&nbsp;</td> <td colSpan="4"><a href="#TopofScreen" name="topLink">top of screen</a></td> </tr> <tr> <td colspan="5">&nbsp;</td> </tr>  </table>   </form> </td> </tr></table></div></div><script src="cleaned_javascript/1231761576126init_en_dis.js"></script></body></html>
+
+
+
+
+
+
+
+

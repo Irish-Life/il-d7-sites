@@ -1,0 +1,5 @@
+; $Id: social_find_us.info,v 1.0.0.1 2014/06/18 10:11:15 Ger Exp $
+name = "Irish Life - Social Find Us Block"
+description = "Irish Life Social Find Us Block"
+core = "7.x"
+package = "Irish Life"

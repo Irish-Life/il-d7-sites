@@ -1,0 +1,77 @@
+.pensionJourney a {background-position: 0 -298px;}
+li .pensionJourney a:hover {background-position: 0 -825px;}
+.pensionJourneyHolder{position:relative;background: transparent url(/uploadedimages/retail/img/pension-journey.2.png) no-repeat scroll 0 0; height:350px;width:920px;}
+#pensionJourneyInfoHolder{background-color: #F7F7F7;border-color: #CDCDCD;border-style: solid none;border-width: 3px 0;height: auto;left: -21px;position: relative;top:-20px;width: 961px;}
+.pensionJourneyInfoBox{background-color: #F7F7F7;border: 4px solid #CDCDCD;left: 268px;position: relative;top: -280px;width: 300px;
+	-moz-box-shadow: 0 0 170px 75px #FFFFFF;-webkit-box-shadow: 0 0 170px 75px #FFFFFF;box-shadow: 0 0 170px 75px #FFFFFF;
+	}
+#pjIntro{
+    height: 33px;
+    left: 590px;
+    position: absolute;
+    top: 1px;
+    width: 299px;}
+#pjEmployeeEmployer{height: 34px;left:37px;position: absolute;top: 7px;width: 95px;}
+#pjPensioncalcalculator{height: 31px;left: 190px;position:absolute;top: 77px;width: 62px;}
+#pjStartAPension{height: 73px;left: 148px;position: absolute;top: 235px;width: 162px;}
+#pjStartAPensionPersonal{height: 38px;left: 40px;position: absolute;top: 273px;width: 79px;}
+#pjStartAPensionExecutive{height:39px;left: 340px;position: absolute;top:272px;width:107px;}
+#pjTaxRelief{height: 34px;left: 337px;position: absolute;top: 33px;width: 87px;}
+#pjHowSafe{ height: 41px; left: 420px; position: absolute; top: 87px; width: 93px;}
+#pjRetiringSoon{height:30px;left: 540px;position: absolute;top:46px;width: 57px;}
+#pjRetire{height: 67px;left: 628px;position: absolute;top: 228px;width: 145px;}
+#pjRetireAge{height: 43px;left: 638px;position: absolute;top: 59px;width: 66px;}
+#pjRetireHowTo{height: 21px;left: 581px;position: absolute;top: 245px;width: 60px;}
+#pjRetireArfs{height: 18px;left: 801px;position: absolute;top: 235px;width: 48px;}
+#pjStartAPensionHow{height: 19px;left: 351px;position: absolute;top: 179px;width: 40px;}
+#pjRetireAnnuity{height: 18px;left: 801px;position: absolute;top: 269px;width: 48px;}
+#arrow{position: absolute;left: 0%;top: 261px;z-index: 2;width: 120px;height: 91px;background-image: url(/uploadedimages/retail/img/pension.journey.arrow.png);background-repeat: no-repeat;}
+#pjIntroJourney{text-align:center;}
+#pjIntroJourney input{border:1px solid #ccc;}
+#pjShareTwitter {   background-image: url("/uploadedimages/retail/img/pensions-share.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 18px;
+    left: 625px;
+    position: absolute;
+    top: 42px;
+    width: 68px;}
+#pjShareFacebook {    background-image: url("/uploadedimages/retail/img/pensions-share.png");
+    background-position: -146px 0;
+    background-repeat: no-repeat;
+    height: 18px;
+    left: 700px;
+    position: absolute;
+    top: 42px;
+    width: 64px;}
+#pjSharePrint{    background-image: url("/uploadedimages/retail/img/pensions-share.png");
+    background-position: -72px 0;
+    background-repeat: no-repeat;
+    height: 18px;
+    left: 770px;
+    position: absolute;
+    top: 42px;
+    width: 67px;}
+
+.pjClose{position:absolute; top:10px; right:10px;}
+.pensionJourneyInfoHolderBlock{ padding: 15px 30px 20px;}
+.pjImportantInfo{   border-right: 2px dashed #FCF7F1;
+padding-top:10px;
+    display: block;
+    float: left;
+    height: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 200px;
+	text-align:center;
+	}
+.pjImportantInfoLast{border:none}
+.pjImportantInfo h3{font-size:140%;font-weight:bold;}
+.journeyBox{background: transparent url(/uploadedimages/retail/img/img.png) no-repeat scroll 0 0;display:block;}
+a.journeyBox:link    {color:#5d4f68; background-color:transparent; text-decoration: none;border:0px none #98c815;}
+a.journeyBox:visited {color:#5d4f68; background-color:transparent; text-decoration: none; border:0px none #000;}
+a.journeyBox:active  {color:#5d4f68; background-color:transparent; text-decoration: none;border:0px none #d17a07; }
+a.journeyBox:hover   {color:#d17a07; background-color:transparent; text-decoration: none;  border:2px solid #98c815;}
+
+
+a.journeyBoxdisabled:hover   {color:#d17a07; background-color:transparent; text-decoration: none;  border:0px solid #98c815;}

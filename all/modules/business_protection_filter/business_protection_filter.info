@@ -1,0 +1,4 @@
+name = "Bline - Business Protection Filter"
+description = "Bline Business Protection Filter"
+core = "7.x"
+package = "Dataconversion"

@@ -1,0 +1,452 @@
+.ui-widget-content {border-left: 1px solid #A5A5A5;
+border-right: 1px solid #A5A5A5;
+border-top: 1px solid #A5A5A5;
+border-bottom: 1px solid #777; background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.inside.bg.life.insurance.png") repeat scroll 0 0 #aaa }
+
+.ui-widget-header { border: 1px solid #B7BAC4;  background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.highlight.bg.life.insurance.png") repeat-x scroll 0 0 transparent; color: #ffffff; font-weight: bold; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 0 transparent; *background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 0 transparent; -moz-border-radius: 15px !important; -webkit-border-radius:  15px !important; border-radius:  15px !important; border:0px solid white !important;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 -28px transparent;*background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 -28px transparent;border:0px solid white !important;}
+.ui-state-hover a, .ui-state-hover a:hover { color: #2b2b2b; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.png") repeat scroll 0 -56px transparent;*background: url("https://www.irishlife.ie/secureWeb/uploadedImages/retail/images/slider.handle.sprite.life.insurance.gif") repeat scroll 0 -56px transparent; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+.ui-corner-all { -moz-border-radius: 9px; -webkit-border-radius: 9px; border-radius: 9px; }
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 30px; height: 30px; cursor: pointer;outline-width: 0; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 0/*1*/; font-size: .7em; display: block; border: 0; background-position: 0 0; -moz-border-radius-topleft: 9px; -webkit-border-top-left-radius: 9px; border-top-left-radius: 9px; -moz-border-radius-bottomleft: 9px; -webkit-border-bottom-left-radius: 9px; border-bottom-left-radius: 9px;}
+
+.ui-slider-horizontal { height: 7px; }
+.ui-slider-horizontal .ui-slider-handle { top: -10px; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+
+
+.ilfsListPanel {
+background-color:#f0f0f1;
+font-size:1.2em;
+padding-bottom:20px;
+}
+.ilfsListPanel h1,.ilfsListPanel h2,.ilfsListPanel h3,.ilfsListPanel h4,.ilfsListPanel h5{
+background-color:#706f73;
+color:#fff;
+font-weight:normal;
+padding:10px;
+font-family:Verdana, Geneva, sans-serif;
+position:relative;
+margin-bottom:20px;
+}
+.ilfsListPanel h2:after {
+content: "";
+position: absolute;
+bottom: -12px;
+left: 12px;
+border-width: 12px 12px 0px 0px;
+border-style: solid;
+border-color: #706f73 transparent;
+display: block;
+width: 0;
+}
+.ilfsListPanel ul {
+	margin-bottom: 5px;
+}
+.ilfsListPanel ul li {
+color:#706f73 !important;
+	list-style-type: none;
+	padding: 2px 0px 12px 26px;
+	background-image:url('/uploadedImages/retail/images/ilfs.list.checkmark.png');
+	
+	background-repeat:no-repeat;
+background-position:10px 5px; 
+	
+}
+.ilfsListPanel ul li span {
+
+}
+.linkPanel ul li a {
+	display: block;
+	padding: 0px;
+}
+.section p {
+padding-bottom: 15px;
+}
+
+#sliderGroup{
+background-color:#fff;
+height:50px;
+width:650px;
+padding: 0px;
+background-image:url('/uploadedImages/retail/images/ilfs.free.life.ruler.png');
+background-repeat:no-repeat;
+background-position:0px 20px;
+margin-bottom:10px; 
+}
+.regularText{
+/*position: absolute;*/
+top: 0px;
+left: 20px;
+font-size: 16px;
+z-index: 2;
+background-color: #fff;
+padding: 2px 8px 2px 8px;
+}
+#sliderValue{
+display:inline;
+color:#779a1d;
+font-weight: bold;
+
+}
+#simpleLifeInsuranceSlider{
+width: 600px;
+left: 20px;
+}
+#simpleCoverApp{
+background-color: #fff;
+min-width: 800px;
+margin-bottom: 10px;
+padding: 0px;
+position: relative;
+z-index:10;
+text-align: left;
+}
+#firstScreen{
+padding:20px;
+}
+
+#simpleCoverApp h2{
+background-color: #435399;
+color: #fff;
+font-weight: normal;
+padding: 10px;
+font-family: Verdana, Geneva, sans-serif;
+position: relative;
+margin-bottom: 0px;
+font-size:1.5em;
+}
+#simpleCoverApp h3{
+color: #435399;
+font-weight: bold;
+padding-top:10px;
+border-top: 3px solid #435399;
+font-family: Verdana, Geneva, sans-serif;
+position: relative;
+margin-bottom: 4px;
+font-size:1.35em;
+}
+#simpleCoverApp h2:after {
+content: "";
+position: absolute;
+bottom: -12px;
+left: 12px;
+border-width: 12px 12px 0px 0px;
+border-style: solid;
+border-color: #435399 transparent;
+display: block;
+width: 0;
+}
+#results{
+	background-color: white;
+	height: 450px;
+	width: 900px;
+}
+
+#resultsLeft{
+	background-color: blue;
+	float:left;
+	height: 450px;
+	width: 450px;
+}
+
+#resultsRight{
+	background-color: red;
+	float:left;
+	height: 450px;
+	width: 450px;
+}
+
+.formTable{
+width:100%;
+position:relative;
+}
+.formTable td{
+width:200px;
+padding-left: 20px;
+position:relative;
+}
+.formTable .formContent{
+border-left: 1px solid #435399;
+position:relative;
+width: auto;
+}
+.formTable .formDetails {
+text-align:right;
+padding: 20px 20px 0px 0px;
+color:#435399;
+}
+.formContent ul{
+	list-style-type:disc;
+	list-style-position:inside;
+	list-style-image:url('/uploadedImages/retail/images/ilfs.form.bullet.png');
+
+}
+.formContent ul li{
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.formTable .formDetails:before {
+content: "";
+position: absolute;
+top: 35px;
+left: 199px;
+display: block;
+content: "";
+   display: block;
+   width: 0px;
+   height: 0px;
+border-top: 10px solid transparent;
+border-left: 10px solid #435399;
+border-bottom: 10px solid transparent;
+}
+.formTable .formDetails:after {
+content: "";
+position: absolute;
+top: 36px;
+left: 199px;
+display: block;
+content: "";
+display: block;
+width: 0px;
+height: 0px;
+border-top: 9px solid transparent;
+border-left: 9px solid rgb(255, 255, 255);
+border-bottom: 9px solid transparent;
+}
+
+.dropDown{
+background-color: #435399;
+color:#fff;
+font-size:1.3em;
+margin-right:3px;
+font-weight:bold;
+
+}
+.loadingBox{
+position: absolute;
+width: 660px;
+height: 100px;
+
+background-image:url('/uploadedImages/retail/images/small.lines.pension.bg.alpha.png');
+
+z-index: 1;
+text-align: center;
+padding-top: 30px;
+}
+
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label {
+    color:#f2f2f2;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+/*
+
+input[type="radio"] + label span {
+    display:inline-block;
+    width:25px;
+    height:25px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url('/uploadedImages/retail/images/ilfs.form.radio.png') 0px top no-repeat;
+    cursor:pointer;
+}
+
+
+input[type="radio"]:checked + label span {
+    background:url('/uploadedImages/retail/images/ilfs.form.radio.png') -25px top no-repeat;
+}
+
+*/
+.unchecked{
+	color:#f2f2f2;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    display:inline-block;
+    width:25px;
+    height:25px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url('/uploadedImages/retail/images/ilfs.form.radio.png') 0px top no-repeat;
+    cursor:pointer;
+
+}
+.checked{
+background:url('/uploadedImages/retail/images/ilfs.form.radio.png') -25px top no-repeat;
+}
+
+.resourceChoice span {
+	background-image: url('/uploadedImages/retail/images/ilfs.resources.png');
+	display: block;
+	float: left;
+	height: 60px;
+	margin-right: 10px;
+	width: 60px
+}
+.resourceChoice.info span {
+	background-position: 0px 0px;
+}
+.resourceChoice.rule span {
+	background-position: 0px 360px;
+}
+.resourceChoice.penPaper span {
+	background-position: 0px 300px;
+}
+.resourceChoice.heart span {
+	background-position: 0px 240px;
+}
+.resourceChoice.clock span {
+	background-position: 0px 180px;
+}
+.resourceChoice.scroll span {
+	background-position: 0px 120px;
+}
+.resourceChoice.umbrella span {
+	background-position: 0px 60px;
+}
+.resourceChoice.arrowRight span {
+	background-position: 0px 60px;
+}
+
+.formResource {
+width: 260px;
+float: left;
+padding: 10px;
+margin: 20px 10px 10px 10px ;
+}
+.formContent .formBtn .resourceSpan{
+
+	background-image: url('/uploadedImages/retail/images/ilfs.big.arrow.right.png');
+	display: block;
+	float: left;
+	height: 37px;
+	margin-right: 15px;
+	margin-left: 15px;
+	width: 35px;
+	background-position: 0 2px;
+	background-repeat: no-repeat;
+}
+.formContent .formBtn{
+border:2px solid #f4aa00; 
+-moz-border-radius: 3px; 
+-webkit-border-radius: 3px; 
+border-radius: 3px;
+font-weight:bold;
+color:#fff;
+font-size:20px;
+line-height:22px;
+float:right;
+
+height: 40px;
+margin-top: 25px;
+
+background: #f4aa00 !important; /* Old browsers */
+background: -moz-linear-gradient(top,  #f4aa00 0%, #f19c2b 63%, #ea8100 100%) !important; /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4aa00), color-stop(63%,#f19c2b), color-stop(100%,#ea8100)) !important; /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f4aa00 0%,#f19c2b 63%,#ea8100 100%) !important; /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f4aa00 0%,#f19c2b 63%,#ea8100 100%) !important; /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f4aa00 0%,#f19c2b 63%,#ea8100 100%) !important; /* IE10+ */
+background: linear-gradient(to bottom,  #f4aa00 0%,#f19c2b 63%,#ea8100 100%) !important; /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4aa00', endColorstr='#ea8100',GradientType=0 ) !important; /* IE6-9 */
+
+}
+.formContent .formBtn:hover{
+background: #e88b19 !important; /* Old browsers */
+background: -moz-linear-gradient(top,  #e88b19 2%, #db7400 100%) !important; /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#e88b19), color-stop(100%,#db7400)) !important; /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #e88b19 2%,#db7400 100%) !important; /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #e88b19 2%,#db7400 100%) !important; /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #e88b19 2%,#db7400 100%) !important; /* IE10+ */
+background: linear-gradient(to bottom,  #e88b19 2%,#db7400 100%) !important; /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88b19', endColorstr='#db7400',GradientType=0 ) !important; /* IE6-9 */
+}
+
+table.ilfsFormTable {
+background-color: #FCF7F1;
+border: 0px solid #E6E6E6;
+margin-top: 0px;
+padding-bottom: 0px;
+width: 100%;
+border-radius: 0px;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+position:relative;
+}
+table.ilfsFormTable tr {
+background: #f0f0f1;
+}
+table.ilfsFormTable td {
+padding: 0px;
+}
+table.ilfsFormTable td.ilfsFormTableIcon {
+width:100px;
+height:100px;
+background-color:#435399;
+}
+table.ilfsFormTable td.ilfsFormTableIcon img {
+position:relative;
+top:20px;
+left:18px;
+}
+table.ilfsFormTable td.ilfsFormTableInfo {
+width:auto;
+height:90px;
+padding-left: 16px;
+padding-top: 10px;
+background-color:#f0f0f1;
+vertical-align: top;
+}
+table.ilfsFormTable td.ilfsFormTableCTA {
+background-color: #f19c2b;
+vertical-align: middle;
+font-size: 24px;
+text-align: center;
+padding: 0px;
+height: 100px;
+font-weight: bold;
+}
+table.ilfsFormTable td.ilfsFormTableCTA a{
+color:#fff;
+}
+table.ilfsFormTable td.ilfsFormTableIcon:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 100px;
+	display: block;
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid transparent;
+	border-left: 10px solid #435399;
+	border-bottom: 0px solid transparent;
+}
+
+#showSimpleCoverApp {
+    background: none repeat scroll 0 0 #F19C2B;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+}

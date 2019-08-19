@@ -1,0 +1,4 @@
+name = "Income Protection Calculator"
+description = "Income Protection Calc Block"
+core = "7.x"
+package = "Irish Life"

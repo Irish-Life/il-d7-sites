@@ -1,0 +1,30 @@
+#thinking-differently-tabs li{display:inline}
+
+.ebusiness {color:#51BADF !important;font-weight:bold}
+.marketing{font-weight:bold;color:#AF006E !important}
+.pensions{font-weight:bold;color:#F09C55 !important}
+.protection{font-weight:bold;color:#4E5FAB !important}
+.investments{font-weight:bold;color:#6CB33F !important}
+.corporate {font-weight:bold;color:#0067AC !important}
+.advisory {font-weight:bold;color:#F09C55 !important}
+.a-section{margin-bottom:20px;margin-left:10px;width:420px}
+.a-section p {margin-left:10px;margin-bottom:3px}
+#tabs h1{margin-bottom:15px}
+
+#content-modal p{font-size:16px}
+#content-modal ul{margin-left:15px;font-size:16px}
+#content-modal h3{text-align:center;margin-bottom:10px;font-size:20px}
+#content-modal h4{font-weight:bold;margin-top:5px;margin-bottom:0px}
+#content-modal ul li{
+	padding:3px;
+    background: url("/uploadedImages/bline/templates/images/listArrow.gif") no-repeat scroll 5px center transparent;
+	padding-left:20px;
+}
+#content-modal ul li a{text-decoration:underline}
+.modal-image{float:right}
+.twobytwoli {float:left;width:45%}
+.ultoppadding{float:left;clear:both;padding-top:15px}
+.listcontent{float:left;width:520px}
+.rightcontent{float:left;width:400px}
+p strong a{background: url("/uploadedImages/bline/templates/images/listArrow.gif") no-repeat scroll 5px center transparent;
+padding:3px 3px 3px 20px;color:#505FAB !important;text-decoration:underline}

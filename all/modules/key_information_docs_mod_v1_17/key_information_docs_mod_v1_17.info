@@ -1,0 +1,5 @@
+; $Id: key_information_docs_mod_v1_17.info,v 1.17.0.0 2017/15/12 10:11:15 Alan Exp $
+name = "Key Information Documents V1.17"
+description = "key information documents V1.17 Block"
+core = "7.x"
+package = "Irish Life"
