@@ -18,12 +18,3 @@ for additional information about obtaining and organizing extensions.
 See INSTALL.txt in the Drupal root for information about single-site
 installation or multisite configuration.
 
-Comment
-Alan
-
-New change
-
-Another change for ck-test
-2019 Comment
-
-Test comnment
