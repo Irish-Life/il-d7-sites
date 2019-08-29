@@ -82,7 +82,8 @@ function callback_page_contents(){
         </select>
 		<br>
 		
-      <a id="sendAdvisorCallbackForm" class="progressButtons submitDetails " href="javascript:void(0);">Call me back</a>
+      <a id="sendAdvisorCallbackForm" class="progressButtons submitDetails " href="javascript:void(0);" style="display:none">Call me back</a>
+      <a id="sendAdvisorCallbackForm2" class="progressButtons submitDetails " href="javascript:void(0);" style="display:none">Call me back</a>
 	  <br>
 	  <div class="complyNote"><p>In the interest of customer service, calls will be recorded and monitored.<br />
 	  Callbacks are available Monday to Friday.</p></div>
@@ -112,7 +113,7 @@ function callback_page_contents(){
   
 </div>
 <p>Irish Life Financial Services does not provide advice in relation to health insurance.<br>
-Looking to buy health insurance from Irish Life Health, please <a href="https://www.irishlifehealth.ie/">click here</a> to find out more.</p>
+Looking to buy health insurance from Irish Life Health, please <a href="https://www.irishlifehealth.ie/" target="_blank">click here</a> to find out more.</p>
 </div>
 <br>
 <div class="clearer"></div>

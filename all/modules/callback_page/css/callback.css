@@ -6,6 +6,10 @@
 	color: #FFFFFF;
 }
 
+#sendAdvisorCallbackForm2, #sendAdvisorCallbackForm2 {
+	display:none;
+}
+
 #callbackAdvisorImg img{
 	float: none !important;
 	margin: 0px !important;

@@ -5,6 +5,10 @@
 	color: #FFFFFF;
 }
 
+#sendAdvisorCallbackForm2, #sendAdvisorCallbackForm2 {
+	display:none;
+}
+
 #progressBoxPopupContentsText h1{margin-bottom:10px;font-size: 18px}
 
 #progressBoxPopupContents .submitDetails{margin-right:42px}

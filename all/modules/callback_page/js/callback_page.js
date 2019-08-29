@@ -3,6 +3,14 @@
 
 	$(document).ready(function($) {
 
+		//check for retirement planning param in URL and show the relevant callback button
+		if(window.location.href.indexOf('retirement-planning') > -1) {
+			$('#sendAdvisorCallbackForm2').show();
+		}
+		else {
+			$('#sendAdvisorCallbackForm').show();
+		}
+
 		// validate email address format
 		function isEmail(email) {
 		  //var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -41,7 +49,7 @@
 		}
 
 		// Submitting a RHS callback
-		$('#sendAdvisorCallbackForm').click(function(){
+		$('#sendAdvisorCallbackForm, #sendAdvisorCallbackForm2').click(function(){
 			var n,e,p,t,z,a,ae;
 			z = 0;
 			n = $("#progressName").val()
@@ -55,10 +63,10 @@
 				alert("Please enter a valid PHONE NUMBER.");
 			}
 
-			if(isEmail(e) == false){
+			/* if(isEmail(e) == false){
 				e ="N/A";
 				alert("Please enter a valid email.");
-			}
+			} */
 			if (z==0)
 			{
 				// no errors
