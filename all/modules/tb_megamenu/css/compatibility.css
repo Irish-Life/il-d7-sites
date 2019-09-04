@@ -2,6 +2,8 @@
 
 .tb-megamenu{
   position: relative;
+  height: 60px !important;
+  padding-top: 5px;
 }
 .tb-megamenu .nav,
 .tb-megamenu .tb-block ul, .tb-megamenu .tb-block .nav {
